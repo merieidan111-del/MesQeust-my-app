@@ -1,0 +1,6 @@
+{
+  "name": "MedQuest - Gamified Medical QCM & AI Study Platform",
+  "description": "Gamified medical education platform for 3rd, 4th, and 5th-year medical externs with interactive clinical QCMs, Google Drive QCM import, Gemini AI summarizer, and Supabase architecture.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
