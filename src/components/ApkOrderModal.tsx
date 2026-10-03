@@ -53,9 +53,9 @@ export const ApkOrderModal: React.FC<ApkOrderModalProps> = ({
   const [phoneNumber, setPhoneNumber] = useState('');
   const [faculty, setFaculty] = useState('Faculté de Médecine d\'Alger');
   const [academicYear, setAcademicYear] = useState<string>(defaultAcademicYear);
-  const [packSelected, setPackSelected] = useState('Pack Annuel Complet Externat');
+  const [packSelected, setPackSelected] = useState('Accès Intégral Gratuit');
   const [deviceBrand, setDeviceBrand] = useState('Samsung Galaxy / Android 14');
-  const [paymentMethod, setPaymentMethod] = useState('BaridiMob / CCP');
+  const [paymentMethod, setPaymentMethod] = useState('Accès 100% Gratuit (Offert)');
   const [notes, setNotes] = useState('');
 
   // Status & Submissions
@@ -79,25 +79,25 @@ export const ApkOrderModal: React.FC<ApkOrderModalProps> = ({
 
   const packs = [
     {
-      id: 'Pack Annuel Complet Externat',
-      name: 'Pack Annuel Complet Externat',
-      price: 4500,
-      description: 'Accès illimité aux 3 années (3ème, 4ème, 5ème), 24 cours officiels, 720 QCMs & IA intégrée.',
-      badge: 'Le plus populaire',
-    },
-    {
-      id: 'Pack Spécialités 4ème Année',
-      name: 'Pack Spécialités 4ème Année',
-      price: 3200,
-      description: 'Modules Cardio, Neuro, Pneumo, Néphro, Hépato avec dossiers cliniques complets.',
-      badge: 'Ciblé 4ème Année',
-    },
-    {
-      id: 'Pack Découverte Étudiant',
-      name: 'Pack Découverte Étudiant',
+      id: 'Accès Intégral Gratuit',
+      name: 'Accès Intégral Gratuit',
       price: 0,
-      description: 'Version APK d\'évaluation avec 100 QCMs commentés et fiches de cardiologie.',
-      badge: 'Essai Gratuit',
+      description: 'Accès illimité et 100% gratuit aux 3 années (3ème, 4ème, 5ème), 24 cours officiels, 720 QCMs & IA intégrée.',
+      badge: '100% Gratuit',
+    },
+    {
+      id: 'Pack Externat Libre',
+      name: 'Pack Externat Libre',
+      price: 0,
+      description: 'Modules Cardio, Neuro, Pneumo, Néphro, Hépato avec dossiers cliniques complets en libre accès.',
+      badge: 'Offre Libre',
+    },
+    {
+      id: 'Pack Concours & Résidanat',
+      name: 'Pack Concours & Résidanat',
+      price: 0,
+      description: 'Banque intégrale de cas cliniques et QCMs d\'entraînement pour tous les étudiants en médecine.',
+      badge: 'Accès Offert',
     },
   ];
 
@@ -502,16 +502,16 @@ export const ApkOrderModal: React.FC<ApkOrderModalProps> = ({
                     </div>
                   </div>
 
-                  {/* Payment Method */}
+                  {/* Mode d'obtention / Accès Libre */}
                   <div>
                     <label className="block text-xs font-extrabold uppercase tracking-wider text-slate-700 mb-2">
-                      3. Mode de Règlement
+                      3. Mode d'Obtention de l'APK (100% Gratuit)
                     </label>
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                       {[
-                        { id: 'BaridiMob / CCP', label: 'BaridiMob / CCP', sub: 'Paiement instantané par Rip' },
-                        { id: 'Virement Bancaire', label: 'Virement Bancaire', sub: 'BNA, BEA, CPA, etc.' },
-                        { id: 'Main propre / Campus', label: 'Main Propre', sub: 'Remise au campus hospitalier' },
+                        { id: 'Accès 100% Gratuit (Offert)', label: 'Accès 100% Gratuit', sub: 'Activation directe et sans frais' },
+                        { id: 'Téléchargement Direct WhatsApp/Email', label: 'Lien Direct APK', sub: 'Envoi instantané par Email' },
+                        { id: 'Partenariat Étudiant Libre', label: 'Pack Solidaire', sub: 'Accessible à tous les externes' },
                       ].map((item) => (
                         <div
                           key={item.id}
@@ -571,7 +571,7 @@ export const ApkOrderModal: React.FC<ApkOrderModalProps> = ({
                         ) : (
                           <>
                             <Send className="w-4 h-4" />
-                            <span>Valider la Commande ({currentPack.price === 0 ? 'Gratuit' : `${currentPack.price} DZD`})</span>
+                            <span>Obtenir l'Accès Gratuit (100% Offert)</span>
                           </>
                         )}
                       </button>
