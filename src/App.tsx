@@ -318,7 +318,7 @@ export default function App() {
         />
 
         {/* Main View Area */}
-        <main className="flex-1 w-full min-w-0">
+        <main className="flex-1 w-full min-w-0 pb-20 xl:pb-0">
           <MobileFrame
             isMobilePreview={isMobilePreview}
             bottomBar={
@@ -428,6 +428,15 @@ export default function App() {
               </>
             )}
           </MobileFrame>
+
+          {/* Fixed Bottom Navigation Bar for Mobile Screens (outside mobile preview) */}
+          {!isMobilePreview && (
+            <FixedBottomNavBar
+              activeTab={getActiveBottomNavTab()}
+              onTabChange={handleBottomTabChange}
+              isMobilePreview={false}
+            />
+          )}
         </main>
       </div>
 
