@@ -22,7 +22,7 @@ export const MEDICAL_MODULES: Module[] = [
     description: 'Programme officiel complet (24 cours) : Insuffisance cardiaque, SCA, troubles du rythme & conduction, péricardites, valvulopathies, HTA, HTAP, EP, cardiomyopathies, RAA, AOMI, TVP, choc & ACR.',
     totalQuestions: ALL_CARDIOLOGY_QUESTIONS.length,
     coursesCount: ALL_CARDIOLOGY_COURSES.length,
-    progressPercent: 68,
+    progressPercent: 0,
   },
   {
     id: 'mod-neuro',
@@ -33,7 +33,7 @@ export const MEDICAL_MODULES: Module[] = [
     description: 'AVC ischémiques & hémorragiques, épilepsie, maladie de Parkinson, méningites.',
     totalQuestions: 24,
     coursesCount: 4,
-    progressPercent: 45,
+    progressPercent: 0,
   },
   {
     id: 'mod-gastro',
@@ -44,7 +44,7 @@ export const MEDICAL_MODULES: Module[] = [
     description: 'Cirrhose et complications, pancréatite aiguë, MICI, hémorragies digestives.',
     totalQuestions: 20,
     coursesCount: 4,
-    progressPercent: 30,
+    progressPercent: 0,
   },
   {
     id: 'mod-pneumo',
@@ -55,7 +55,7 @@ export const MEDICAL_MODULES: Module[] = [
     description: 'Asthme aigu grave, BPCO, pneumopathie franche lobaire, embolie pulmonaire.',
     totalQuestions: 18,
     coursesCount: 4,
-    progressPercent: 55,
+    progressPercent: 0,
   },
   {
     id: 'mod-hemato',
@@ -66,7 +66,7 @@ export const MEDICAL_MODULES: Module[] = [
     description: 'Anémies, leucémies aiguës, lymphomes, hémostase et thrombopénie.',
     totalQuestions: 16,
     coursesCount: 3,
-    progressPercent: 20,
+    progressPercent: 0,
   },
   {
     id: 'mod-semio3',
@@ -77,7 +77,7 @@ export const MEDICAL_MODULES: Module[] = [
     description: 'Examen physique général, bruits cardiaques, râles respiratoires, sémiologie abdominale.',
     totalQuestions: 22,
     coursesCount: 5,
-    progressPercent: 82,
+    progressPercent: 0,
   },
   {
     id: 'mod-pharma3',
@@ -88,7 +88,7 @@ export const MEDICAL_MODULES: Module[] = [
     description: 'Pharmacocinétique, surveillance des AVK/AOD, antibiotiques majeurs, toxicité.',
     totalQuestions: 18,
     coursesCount: 4,
-    progressPercent: 60,
+    progressPercent: 0,
   },
   {
     id: 'mod-urg5',
@@ -99,7 +99,7 @@ export const MEDICAL_MODULES: Module[] = [
     description: 'États de choc (septique, cardiogénique, anaphylactique), arrêt cardio-respiratoire.',
     totalQuestions: 26,
     coursesCount: 5,
-    progressPercent: 40,
+    progressPercent: 0,
   },
   {
     id: 'mod-ped5',
@@ -110,7 +110,7 @@ export const MEDICAL_MODULES: Module[] = [
     description: 'Bronchiolite du nourrisson, déshydratation aiguë, purpura fulminans, convulsions.',
     totalQuestions: 20,
     coursesCount: 4,
-    progressPercent: 25,
+    progressPercent: 0,
   },
 ];
 
@@ -485,16 +485,15 @@ export const INITIAL_LEADERBOARD: LeaderboardEntry[] = [
   },
   {
     rank: 3,
-    userId: 'user-extern-01',
-    username: 'meriem_laidani',
-    fullName: 'Meriem Laidani',
+    userId: 'u-3',
+    username: 'amine_cardio',
+    fullName: 'Amine Khelifi',
     academicYear: '4ème Année',
-    faculty: 'Faculté de Médecine',
+    faculty: 'Faculté de Médecine d\'Alger',
     totalXp: 2890,
     streakCount: 14,
-    title: 'Interne Prometteuse',
-    avatarUrl: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=120&auto=format&fit=crop&q=80',
-    isCurrentUser: true,
+    title: 'Interne Prometteur',
+    avatarUrl: 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=120&auto=format&fit=crop&q=80',
   },
   {
     rank: 4,

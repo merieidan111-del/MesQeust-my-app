@@ -12,6 +12,7 @@ import {
   Stethoscope,
   Activity,
   HeartPulse,
+  LogOut,
 } from 'lucide-react';
 import { AcademicYear, UserProfile } from '../types/medical';
 import {
@@ -25,6 +26,7 @@ interface AuthModalProps {
   onClose: () => void;
   userProfile: UserProfile;
   onUpdateProfile: (updated: Partial<UserProfile>) => void;
+  onLogout?: () => void;
 }
 
 export const AuthModal: React.FC<AuthModalProps> = ({
@@ -32,6 +34,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
   onClose,
   userProfile,
   onUpdateProfile,
+  onLogout,
 }) => {
   const [isSignUp, setIsSignUp] = useState<boolean>(false);
   const [username, setUsername] = useState<string>(userProfile.username || '');
@@ -340,6 +343,23 @@ export const AuthModal: React.FC<AuthModalProps> = ({
               )}
             </button>
           </div>
+
+          {/* Logout Action */}
+          {onLogout && (
+            <div className="pt-2">
+              <button
+                type="button"
+                onClick={() => {
+                  onClose();
+                  onLogout();
+                }}
+                className="w-full py-2.5 rounded-2xl bg-rose-50 hover:bg-rose-100 text-rose-700 text-xs font-bold flex items-center justify-center gap-2 border border-rose-200 transition-colors cursor-pointer"
+              >
+                <LogOut className="w-4 h-4 text-rose-600" />
+                <span>Se Déconnecter de cette session</span>
+              </button>
+            </div>
+          )}
         </form>
 
         {/* Security badge footer */}

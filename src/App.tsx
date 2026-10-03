@@ -18,6 +18,16 @@ import { MobileFrame } from './components/MobileFrame';
 import { SupabaseFlutterStudio } from './components/SupabaseFlutterStudio';
 import { ApkOrderModal } from './components/ApkOrderModal';
 import { FixedBottomNavBar, BottomNavTab } from './components/FixedBottomNavBar';
+import { AuthLandingScreen } from './components/AuthLandingScreen';
+import {
+  getCurrentSessionAccount,
+  getUserProgress,
+  saveUserProgress,
+  buildUserProfile,
+  logoutAccount,
+  purgeObsoleteMockData,
+  RegisteredAccount,
+} from './services/authSessionManager';
 import {
   AcademicYear,
   UserProfile,
@@ -42,10 +52,25 @@ import {
 } from 'lucide-react';
 
 export default function App() {
+  // User Session Management & Strict Auth Guard
+  const [currentUserAccount, setCurrentUserAccount] = useState<RegisteredAccount | null>(() => {
+    purgeObsoleteMockData();
+    return getCurrentSessionAccount();
+  });
+
+  const [userProfile, setUserProfile] = useState<UserProfile | null>(() => {
+    const acc = getCurrentSessionAccount();
+    if (!acc) return null;
+    const progress = getUserProgress(acc);
+    return buildUserProfile(acc, progress);
+  });
+
   const [currentTab, setCurrentTab] = useState<
     'home' | 'directory' | 'qcm' | 'gamification' | 'drive' | 'ai' | 'architecture'
   >('home');
-  const [selectedYear, setSelectedYear] = useState<AcademicYear>('4ème Année');
+  const [selectedYear, setSelectedYear] = useState<AcademicYear>(
+    () => currentUserAccount?.academicYear || '4ème Année'
+  );
   const [isMobilePreview, setIsMobilePreview] = useState<boolean>(false);
   const [isAuthModalOpen, setIsAuthModalOpen] = useState<boolean>(false);
   const [isYearsSidebarOpenMobile, setIsYearsSidebarOpenMobile] = useState<boolean>(false);
@@ -59,28 +84,7 @@ export default function App() {
   // Authentication State with Google Workspace Drive
   const [isGoogleConnected, setIsGoogleConnected] = useState<boolean>(false);
   const [accessToken, setAccessToken] = useState<string | null>(null);
-  const [googleUserEmail, setGoogleUserEmail] = useState<string>('meriemlaidani117@gmail.com');
-
-  // Gamification User Profile State (with username & customizable exam countdown)
-  const [userProfile, setUserProfile] = useState<UserProfile>({
-    userId: 'user-extern-01',
-    username: 'meriem_laidani',
-    fullName: 'Meriem Laidani',
-    email: 'meriemlaidani117@gmail.com',
-    academicYear: '4ème Année',
-    totalXp: 2890,
-    level: 3,
-    title: 'Interne Prometteuse',
-    streakCount: 14,
-    streakFreezesCount: 2,
-    lastActiveDate: new Date().toISOString().split('T')[0],
-    avatarUrl: 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=120&auto=format&fit=crop&q=80',
-    questionsSolvedToday: 8,
-    dailyGoal: 10,
-    customExamDate: new Date(Date.now() + 18 * 86400000).toISOString(),
-    examTitle: 'Examen Clinique de Cardiologie',
-    examModule: 'Cardiologie',
-  });
+  const [googleUserEmail, setGoogleUserEmail] = useState<string>('');
 
   // Questions Database
   const [questions, setQuestions] = useState<Question[]>(INITIAL_QUESTIONS);
@@ -126,23 +130,39 @@ export default function App() {
     }, 3500);
   };
 
-  // Listen to Firebase Auth state on mount
+  // Listen to Firebase Auth state for Google Drive integration
   useEffect(() => {
     const unsubscribe = initAuth((user) => {
       if (user) {
         setIsGoogleConnected(true);
         if (user.email) setGoogleUserEmail(user.email);
-        setUserProfile((prev) => ({
-          ...prev,
-          fullName: user.displayName || prev.fullName,
-          email: user.email || prev.email,
-        }));
       } else {
         setIsGoogleConnected(false);
       }
     });
     return () => unsubscribe();
   }, []);
+
+  const handleAuthenticated = (account: RegisteredAccount) => {
+    setCurrentUserAccount(account);
+    const progress = getUserProgress(account);
+    const profile = buildUserProfile(account, progress);
+    setUserProfile(profile);
+    setSelectedYear(account.academicYear);
+    setCurrentTab('home');
+    showToast(`Bienvenue, ${account.fullName} !`, 'success');
+  };
+
+  const handleLogout = () => {
+    logoutAccount();
+    setCurrentUserAccount(null);
+    setUserProfile(null);
+    setCurrentTab('home');
+    setActiveDrillModule(null);
+    setActiveCourse(null);
+    setIsAuthModalOpen(false);
+    showToast('Session terminée. Déconnexion effectuée.', 'info');
+  };
 
   // Handle Google Drive / Workspace Sign In
   const handleGoogleSignIn = async () => {
@@ -171,9 +191,11 @@ export default function App() {
     }
   };
 
-  // Gamification Actions
+  // Gamification Actions with Partitioned Local Storage Persistence
   const handleAwardXp = (amount: number, reason: string) => {
+    if (!currentUserAccount) return;
     setUserProfile((prev) => {
+      if (!prev) return prev;
       const newXp = prev.totalXp + amount;
       const newLevel = Math.floor(newXp / 1000) + 1;
       let newTitle = prev.title;
@@ -182,40 +204,82 @@ export default function App() {
       else if (newLevel >= 3) newTitle = 'Interne Prometteuse';
       else if (newLevel >= 2) newTitle = 'Externe Confirmée';
 
-      return {
+      const updated = {
         ...prev,
         totalXp: newXp,
         level: newLevel,
         title: newTitle,
         questionsSolvedToday: prev.questionsSolvedToday + 1,
       };
+
+      const existingProgress = getUserProgress(currentUserAccount);
+      saveUserProgress(currentUserAccount.email, {
+        ...existingProgress,
+        totalXp: updated.totalXp,
+        level: updated.level,
+        title: updated.title,
+        questionsSolvedToday: updated.questionsSolvedToday,
+      });
+
+      return updated;
     });
     showToast(`+${amount} XP : ${reason}`, 'xp');
   };
 
   const handleSpendXp = (amount: number, itemName: string): boolean => {
+    if (!userProfile || !currentUserAccount) return false;
     if (userProfile.totalXp < amount) {
       showToast(`XP insuffisant pour débloquer : ${itemName}`, 'info');
       return false;
     }
-    setUserProfile((prev) => ({
-      ...prev,
-      totalXp: prev.totalXp - amount,
-    }));
+    const newXp = userProfile.totalXp - amount;
+    setUserProfile((prev) => {
+      if (!prev) return prev;
+      return { ...prev, totalXp: newXp };
+    });
+
+    const existingProgress = getUserProgress(currentUserAccount);
+    saveUserProgress(currentUserAccount.email, {
+      ...existingProgress,
+      totalXp: newXp,
+      purchasedItemIds: [...existingProgress.purchasedItemIds, itemName],
+    });
+
     showToast(`Débloqué avec succès : ${itemName} (-${amount} XP)`, 'success');
     return true;
   };
 
   const handleBuyFreeze = () => {
-    setUserProfile((prev) => ({
-      ...prev,
-      streakFreezesCount: prev.streakFreezesCount + 1,
-    }));
+    if (!currentUserAccount) return;
+    setUserProfile((prev) => {
+      if (!prev) return prev;
+      const newFreezes = prev.streakFreezesCount + 1;
+      const existingProgress = getUserProgress(currentUserAccount);
+      saveUserProgress(currentUserAccount.email, {
+        ...existingProgress,
+        streakFreezesCount: newFreezes,
+      });
+      return { ...prev, streakFreezesCount: newFreezes };
+    });
     showToast('Gel de Série ajouté à votre inventaire avec succès', 'success');
   };
 
-  const handleQuestionCompleted = (_isCorrect: boolean) => {
-    // Session tracking callback
+  const handleQuestionCompleted = (isCorrect: boolean) => {
+    if (!currentUserAccount) return;
+    const existingProgress = getUserProgress(currentUserAccount);
+    const newStreak = isCorrect
+      ? (existingProgress.streakCount === 0 ? 1 : existingProgress.streakCount)
+      : existingProgress.streakCount;
+
+    saveUserProgress(currentUserAccount.email, {
+      ...existingProgress,
+      streakCount: newStreak,
+    });
+
+    setUserProfile((prev) => {
+      if (!prev) return prev;
+      return { ...prev, streakCount: newStreak };
+    });
   };
 
   // Drive integration actions
@@ -249,14 +313,58 @@ export default function App() {
   };
 
   const handleUpdateExamCountdown = (newDateIso: string, newTitle: string, newModule: string) => {
-    setUserProfile((prev) => ({
-      ...prev,
+    if (!currentUserAccount) return;
+    setUserProfile((prev) => {
+      if (!prev) return prev;
+      return {
+        ...prev,
+        customExamDate: newDateIso,
+        examTitle: newTitle,
+        examModule: newModule,
+      };
+    });
+
+    const existingProgress = getUserProgress(currentUserAccount);
+    saveUserProgress(currentUserAccount.email, {
+      ...existingProgress,
       customExamDate: newDateIso,
       examTitle: newTitle,
       examModule: newModule,
-    }));
+    });
+
     showToast('Compte à rebours d\'examen mis à jour !', 'success');
   };
+
+  // STRICT AUTH GUARD:
+  // When any user opens the app without an active session, block direct access
+  // and force landing on the Sign-Up / Login screen!
+  if (!currentUserAccount || !userProfile) {
+    return (
+      <div className="min-h-screen bg-[#F8F9FD]">
+        <AuthLandingScreen onAuthenticated={handleAuthenticated} />
+        {toastMessage && (
+          <div className="fixed bottom-6 right-6 z-50 animate-in fade-in slide-in-from-bottom-5 duration-300">
+            <div
+              className={`px-4 py-3 rounded-2xl shadow-xl border flex items-center gap-3 text-xs font-bold backdrop-blur-xl ${
+                toastMessage.type === 'xp'
+                  ? 'bg-amber-50/95 border-amber-300 text-amber-900 shadow-amber-500/10'
+                  : toastMessage.type === 'success'
+                  ? 'bg-emerald-50/95 border-emerald-300 text-emerald-900 shadow-emerald-500/10'
+                  : 'bg-white/95 border-slate-200 text-slate-800 shadow-slate-500/10'
+              }`}
+            >
+              {toastMessage.type === 'xp' ? (
+                <Award className="w-4 h-4 text-amber-500 shrink-0" />
+              ) : (
+                <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
+              )}
+              <span>{toastMessage.text}</span>
+            </div>
+          </div>
+        )}
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-[#F8FAFD] text-slate-900 flex flex-col font-sans selection:bg-indigo-500/20 selection:text-indigo-950">
@@ -297,6 +405,7 @@ export default function App() {
         onGoogleSignIn={handleGoogleSignIn}
         onGoogleSignOut={handleGoogleSignOut}
         onOpenAuthModal={() => setIsAuthModalOpen(true)}
+        onLogout={handleLogout}
         isMobilePreview={isMobilePreview}
         setIsMobilePreview={setIsMobilePreview}
         onToggleYearsSidebar={() => setIsYearsSidebarOpenMobile((prev) => !prev)}
@@ -445,8 +554,20 @@ export default function App() {
         isOpen={isAuthModalOpen}
         onClose={() => setIsAuthModalOpen(false)}
         userProfile={userProfile}
+        onLogout={handleLogout}
         onUpdateProfile={(updated) => {
-          setUserProfile((prev) => ({ ...prev, ...updated }));
+          if (!currentUserAccount) return;
+          setUserProfile((prev) => {
+            if (!prev) return prev;
+            const merged = { ...prev, ...updated };
+            const existingProgress = getUserProgress(currentUserAccount);
+            saveUserProgress(currentUserAccount.email, {
+              ...existingProgress,
+              totalXp: merged.totalXp,
+              streakCount: merged.streakCount,
+            });
+            return merged;
+          });
           if (updated.academicYear) setSelectedYear(updated.academicYear);
           showToast(`Profil mis à jour : @${updated.username || userProfile.username}`, 'success');
         }}
@@ -484,12 +605,6 @@ export default function App() {
           </div>
         </div>
       </footer>
-      {/* Mobile Fixed Bottom Navigation Bar (Part 2: 5 items, clean white, purple active, muted gray inactive) */}
-      <FixedBottomNavBar
-        activeTab={getActiveBottomNavTab()}
-        onTabChange={handleBottomTabChange}
-        isMobilePreview={false}
-      />
     </div>
   );
 }

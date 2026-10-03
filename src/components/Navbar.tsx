@@ -13,6 +13,7 @@ import {
   User,
   GraduationCap,
   Code2,
+  LogOut,
 } from 'lucide-react';
 import { AcademicYear, UserProfile } from '../types/medical';
 import { VectorHeart } from './VectorOrgans';
@@ -48,6 +49,7 @@ interface NavbarProps {
   setIsMobilePreview: (val: boolean) => void;
   onToggleYearsSidebar?: () => void;
   onOpenApkOrder?: () => void;
+  onLogout?: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -60,6 +62,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   setIsMobilePreview,
   onToggleYearsSidebar,
   onOpenApkOrder,
+  onLogout,
 }) => {
   return (
     <header className="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-100 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.03)]">
@@ -243,7 +246,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Username / Profile Button */}
           <button
             onClick={onOpenAuthModal}
-            className="flex items-center gap-2 pl-1.5 pr-3 py-1 rounded-full bg-white border border-slate-200 text-slate-700 hover:border-indigo-400 hover:shadow-sm transition-all"
+            className="flex items-center gap-2 pl-1.5 pr-3 py-1 rounded-full bg-white border border-slate-200 text-slate-700 hover:border-indigo-400 hover:shadow-sm transition-all cursor-pointer"
             title="Profil étudiant"
           >
             <img
@@ -255,6 +258,18 @@ export const Navbar: React.FC<NavbarProps> = ({
               @{userProfile.username || 'externe'}
             </span>
           </button>
+
+          {/* Visible Logout Button */}
+          {onLogout && (
+            <button
+              onClick={onLogout}
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-rose-50 hover:bg-rose-100 border border-rose-200/80 text-rose-700 text-xs font-extrabold shadow-2xs transition-all cursor-pointer"
+              title="Déconnexion (retour à l'écran d'accueil)"
+            >
+              <LogOut className="w-3.5 h-3.5 text-rose-600" />
+              <span className="hidden sm:inline">Déconnexion</span>
+            </button>
+          )}
         </div>
       </div>
 

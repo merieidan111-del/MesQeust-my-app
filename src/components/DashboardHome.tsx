@@ -101,6 +101,15 @@ export const DashboardHome: React.FC<DashboardHomeProps> = ({
   const filteredModules = modules.filter((m) => m.academicYear === selectedYear);
   const cardioModule = modules.find((m) => m.id === 'mod-cardio') || filteredModules[0];
 
+  // Dynamic user progress percentage (strictly 0% for new registrations)
+  const dynamicProgressPercent = userProfile.totalXp > 0
+    ? Math.min(100, Math.round((userProfile.totalXp / 3000) * 100))
+    : 0;
+
+  const dynamicAccuracyPercent = userProfile.questionsSolvedToday > 0
+    ? Math.min(100, Math.round((userProfile.questionsSolvedToday / Math.max(1, userProfile.questionsSolvedToday)) * 100))
+    : 0;
+
   return (
     <div className="space-y-6 max-w-6xl mx-auto pb-12">
       {/* 1. Header Greeting with Soft Pastel Vibe */}
@@ -149,10 +158,13 @@ export const DashboardHome: React.FC<DashboardHomeProps> = ({
             <div className="space-y-1.5 pt-1">
               <div className="flex justify-between text-xs font-bold text-indigo-100">
                 <span>Progression globale</span>
-                <span>65% complété</span>
+                <span>{dynamicProgressPercent}% complété</span>
               </div>
               <div className="w-full h-2.5 rounded-full bg-black/20 overflow-hidden p-0.5">
-                <div className="h-full bg-gradient-to-r from-emerald-400 to-teal-300 rounded-full w-[65%]" />
+                <div
+                  className="h-full bg-gradient-to-r from-emerald-400 to-teal-300 rounded-full transition-all duration-500"
+                  style={{ width: `${dynamicProgressPercent}%` }}
+                />
               </div>
             </div>
 
@@ -255,13 +267,13 @@ export const DashboardHome: React.FC<DashboardHomeProps> = ({
               <TrendingUp className="w-5 h-5" />
             </div>
             <span className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-700">
-              +4.2% ce mois
+              {userProfile.questionsSolvedToday > 0 ? `${userProfile.questionsSolvedToday} QCMs validés` : 'Départ session'}
             </span>
           </div>
 
           <div className="mt-4">
             <div className="flex items-baseline gap-1">
-              <span className="text-2xl font-black text-slate-900">84%</span>
+              <span className="text-2xl font-black text-slate-900">{dynamicAccuracyPercent}%</span>
               <span className="text-xs font-bold text-emerald-600">de réussite</span>
             </div>
             <p className="text-xs text-slate-600 font-medium mt-0.5">Précision diagnostique</p>

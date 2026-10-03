@@ -44,16 +44,39 @@ export const GamificationDashboard: React.FC<GamificationDashboardProps> = ({
     )
   );
 
-  // Past 7 days streak activity
+  // Past 7 days streak activity dynamically derived from actual streak and today's activity
   const pastDays = [
-    { label: 'Lun', completed: true, count: 12 },
-    { label: 'Mar', completed: true, count: 15 },
-    { label: 'Mer', completed: true, count: 10 },
-    { label: 'Jeu', completed: true, count: 18 },
-    { label: 'Ven', completed: true, count: 14 },
-    { label: 'Sam', completed: true, count: 8 },
-    { label: 'Auj', completed: userProfile.questionsSolvedToday >= userProfile.dailyGoal, count: userProfile.questionsSolvedToday },
+    { label: 'Lun', completed: userProfile.streakCount >= 7, count: userProfile.streakCount >= 7 ? 10 : 0 },
+    { label: 'Mar', completed: userProfile.streakCount >= 6, count: userProfile.streakCount >= 6 ? 10 : 0 },
+    { label: 'Mer', completed: userProfile.streakCount >= 5, count: userProfile.streakCount >= 5 ? 10 : 0 },
+    { label: 'Jeu', completed: userProfile.streakCount >= 4, count: userProfile.streakCount >= 4 ? 10 : 0 },
+    { label: 'Ven', completed: userProfile.streakCount >= 3, count: userProfile.streakCount >= 3 ? 10 : 0 },
+    { label: 'Sam', completed: userProfile.streakCount >= 2, count: userProfile.streakCount >= 2 ? 10 : 0 },
+    { label: 'Auj', completed: userProfile.questionsSolvedToday >= userProfile.dailyGoal && userProfile.dailyGoal > 0, count: userProfile.questionsSolvedToday },
   ];
+
+  // Dynamic leaderboard merging peers and the active user with their real isolated stats
+  const dynamicLeaderboard: LeaderboardEntry[] = [
+    ...INITIAL_LEADERBOARD.filter((s) => s.userId !== userProfile.userId),
+    {
+      rank: 0,
+      userId: userProfile.userId,
+      username: userProfile.username || 'externe',
+      fullName: userProfile.fullName,
+      academicYear: userProfile.academicYear,
+      faculty: 'Faculté de Médecine',
+      totalXp: userProfile.totalXp,
+      streakCount: userProfile.streakCount,
+      title: userProfile.title,
+      avatarUrl: userProfile.avatarUrl,
+      isCurrentUser: true,
+    },
+  ]
+    .sort((a, b) => b.totalXp - a.totalXp)
+    .map((item, index) => ({
+      ...item,
+      rank: index + 1,
+    }));
 
   const handleBuyItem = (item: ShopItem) => {
     const success = onSpendXp(item.priceXp, item.name);
@@ -296,7 +319,7 @@ export const GamificationDashboard: React.FC<GamificationDashboardProps> = ({
 
           {/* Leaderboard Table / Cards */}
           <div className="space-y-2.5">
-            {INITIAL_LEADERBOARD.map((student) => {
+            {dynamicLeaderboard.map((student) => {
               const isUser = student.isCurrentUser;
               let rankBadge = (
                 <span className="font-extrabold text-sm text-slate-400 w-7 text-center">
