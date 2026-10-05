@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import {
   Flame,
   Award,
@@ -24,6 +24,12 @@ import {
   Shield,
   Smartphone,
   Database,
+  Bone,
+  HeartHandshake,
+  Baby,
+  Droplets,
+  Pill,
+  ShieldAlert,
 } from 'lucide-react';
 import { Module, UserProfile, AcademicYear } from '../types/medical';
 import {
@@ -110,6 +116,87 @@ export const DashboardHome: React.FC<DashboardHomeProps> = ({
     ? Math.min(100, Math.round((userProfile.questionsSolvedToday / Math.max(1, userProfile.questionsSolvedToday)) * 100))
     : 0;
 
+  const [hoveredDayIdx, setHoveredDayIdx] = useState<number | null>(null);
+
+  // Sync Weekly Progression Graph directly with the user's real progress
+  const weeklyProgressData = useMemo(() => {
+    const today = new Date();
+    const dayOfWeek = today.getDay(); // 0: Dim, 1: Lun, 2: Mar, ...
+    // Standard European/French medical academic week: Monday to Sunday
+    const diffToMonday = dayOfWeek === 0 ? -6 : 1 - dayOfWeek;
+    const monday = new Date(today);
+    monday.setDate(today.getDate() + diffToMonday);
+
+    const dayNames = ['Lun', 'Mar', 'Mer', 'Jeu', 'Ven', 'Sam', 'Dim'];
+    const todayIso = today.toISOString().split('T')[0];
+    const dailyMap = userProfile.dailyActivity || {};
+
+    const days = dayNames.map((name, index) => {
+      const dayDate = new Date(monday);
+      dayDate.setDate(monday.getDate() + index);
+      const iso = dayDate.toISOString().split('T')[0];
+      const isToday = iso === todayIso;
+      const isPast = dayDate.getTime() < today.getTime() && !isToday;
+      const isFuture = dayDate.getTime() > today.getTime() && !isToday;
+
+      let xp = dailyMap[iso] || 0;
+      // Real-time synchronization fallback if questionsSolvedToday updated before flush
+      if (isToday && xp === 0 && userProfile.questionsSolvedToday > 0) {
+        xp = userProfile.questionsSolvedToday * 10;
+      }
+
+      return {
+        label: name,
+        dateFormatted: `${dayDate.getDate()} ${dayDate.toLocaleDateString('fr-FR', { month: 'short' })}`,
+        iso,
+        isToday,
+        isPast,
+        isFuture,
+        xp,
+      };
+    });
+
+    const totalWeekXp = days.reduce((sum, d) => sum + d.xp, 0);
+    const activeDaysCount = days.filter((d) => d.xp > 0).length;
+    const todayEntry = days.find((d) => d.isToday) || days[0];
+    const maxDayXp = Math.max(...days.map((d) => d.xp), 0);
+
+    // Chart scale: minimum 50 XP range so baseline is clean and curves scale accurately
+    const chartMax = Math.max(50, maxDayXp + 20);
+
+    // Compute coordinates for SVG viewBox 0 0 500 130
+    // x from 35 to 465
+    // y baseline at 105 (0 XP), peak at 25
+    const points = days.map((day, idx) => {
+      const x = 35 + idx * ((465 - 35) / 6);
+      const y = day.xp > 0 ? 105 - (day.xp / chartMax) * 80 : 105;
+      return { x, y, day };
+    });
+
+    // Smooth Bézier curve path through real points
+    let linePath = `M ${points[0].x} ${points[0].y}`;
+    for (let i = 0; i < points.length - 1; i++) {
+      const p0 = points[i];
+      const p1 = points[i + 1];
+      const cpX = (p0.x + p1.x) / 2;
+      linePath += ` C ${cpX} ${p0.y}, ${cpX} ${p1.y}, ${p1.x} ${p1.y}`;
+    }
+
+    const areaPath = `${linePath} L ${points[points.length - 1].x} 110 L ${points[0].x} 110 Z`;
+
+    return {
+      days,
+      points,
+      linePath,
+      areaPath,
+      totalWeekXp,
+      activeDaysCount,
+      todayEntry,
+      maxDayXp,
+      chartMax,
+    };
+  }, [userProfile.dailyActivity, userProfile.questionsSolvedToday, userProfile.totalXp]);
+
   return (
     <div className="space-y-6 max-w-6xl mx-auto pb-12">
       {/* 1. Header Greeting with Soft Pastel Vibe */}
@@ -123,14 +210,6 @@ export const DashboardHome: React.FC<DashboardHomeProps> = ({
           <p className="text-sm text-slate-600 font-medium mt-1">
             Que souhaitez-vous réviser aujourd'hui pour votre <span className="font-bold text-indigo-700">{selectedYear}</span> ?
           </p>
-        </div>
-
-        {/* Mascot Study Group Mini Preview */}
-        <div className="hidden md:flex items-center gap-2 bg-white px-3.5 py-1.5 rounded-full border border-slate-200/80 shadow-xs">
-          <VectorHeart size={28} />
-          <VectorBrain size={28} />
-          <VectorLungs size={28} />
-          <span className="text-xs font-bold text-slate-600 ml-1">Mascottes d'Études</span>
         </div>
       </div>
 
@@ -189,10 +268,14 @@ export const DashboardHome: React.FC<DashboardHomeProps> = ({
             </div>
           </div>
 
-          {/* Right Mascot Illustration */}
-          <div className="hidden sm:flex flex-col items-center justify-center shrink-0 pr-4">
-            <div className="p-3 rounded-3xl bg-white/15 backdrop-blur-md border border-white/30 shadow-lg animate-in zoom-in-95 duration-500">
-              <VectorHeart size={110} showSpeech speechText="24 Cours Prêts !" />
+          {/* Right Clean Medical Summary Pill */}
+          <div className="hidden sm:flex flex-col items-end justify-center shrink-0 pr-2">
+            <div className="p-4 rounded-2xl bg-white/15 backdrop-blur-md border border-white/25 shadow-lg text-right space-y-1">
+              <span className="text-[10px] font-black uppercase tracking-wider text-indigo-200 block">
+                Objectif Réussite
+              </span>
+              <div className="text-xl font-black text-white">24 Cours</div>
+              <div className="text-xs text-indigo-100 font-semibold">Programme Officiel National</div>
             </div>
           </div>
         </div>
@@ -228,37 +311,147 @@ export const DashboardHome: React.FC<DashboardHomeProps> = ({
           </div>
         </div>
 
-        {/* Card 2: Compte à Rebours d'Examen (Soft Pastel Sky Blue) */}
-        <div className="p-5 rounded-3xl bg-[#F0F7FF] border border-sky-100 shadow-[0_4px_20px_-4px_rgba(14,165,233,0.05)] flex flex-col justify-between transition-transform hover:-translate-y-0.5">
-          <div className="flex items-center justify-between">
-            <div className="w-10 h-10 rounded-2xl bg-sky-500/10 text-sky-600 flex items-center justify-center">
-              <Calendar className="w-5 h-5" />
-            </div>
-            <button
-              onClick={() => setIsEditingCountdown(!isEditingCountdown)}
-              className="text-[11px] font-bold px-2 py-0.5 rounded-full bg-sky-100 text-sky-700 hover:bg-sky-200 transition-colors flex items-center gap-1 cursor-pointer"
+        {/* Card 2: Compte à Rebours d'Examen - Circular Progress Bar */}
+        {(() => {
+          const totalAllocatedDays = 30; // Total duration allocated for the current Module (30 days)
+          const remainingDays = Math.max(0, timeLeft.days);
+          const isCountdownUrgent = remainingDays <= 7;
+          const countdownRatio = Math.max(0, Math.min(1, remainingDays / totalAllocatedDays));
+          const countdownRadius = 28;
+          const countdownCircumference = 2 * Math.PI * countdownRadius;
+          const countdownDashoffset = countdownCircumference - countdownRatio * countdownCircumference;
+
+          return (
+            <div
+              className={`p-5 rounded-3xl border transition-all duration-300 flex flex-col justify-between ${
+                isCountdownUrgent
+                  ? 'bg-[#FFF5F5] border-rose-200 shadow-[0_4px_20px_-4px_rgba(239,68,68,0.15)] ring-1 ring-rose-300/50'
+                  : 'bg-[#F0F7FF] border-sky-100 shadow-[0_4px_20px_-4px_rgba(14,165,233,0.05)]'
+              }`}
             >
-              <Edit2 className="w-2.5 h-2.5" />
-              <span>Régler</span>
-            </button>
-          </div>
+              <div className="flex items-center justify-between">
+                <span
+                  className={`text-[11px] font-extrabold px-2.5 py-0.5 rounded-full flex items-center gap-1.5 ${
+                    isCountdownUrgent
+                      ? 'bg-rose-100 text-rose-800'
+                      : 'bg-sky-100 text-sky-800'
+                  }`}
+                >
+                  {isCountdownUrgent ? (
+                    <>
+                      <span className="w-1.5 h-1.5 rounded-full bg-red-600 animate-ping" />
+                      <span>Urgence : ≤ 7 jours !</span>
+                    </>
+                  ) : (
+                    <span>Échéance Module</span>
+                  )}
+                </span>
 
-          <div className="mt-4">
-            <div className="flex items-baseline gap-1">
-              <span className="text-2xl font-black text-slate-900">{timeLeft.days}</span>
-              <span className="text-sm font-bold text-slate-600">jours</span>
-              <span className="text-xs text-slate-600 ml-1">({timeLeft.hours}h {timeLeft.minutes}m)</span>
+                <button
+                  onClick={() => setIsEditingCountdown(!isEditingCountdown)}
+                  className={`text-[11px] font-bold px-2 py-0.5 rounded-full transition-colors flex items-center gap-1 cursor-pointer ${
+                    isCountdownUrgent
+                      ? 'bg-rose-100 hover:bg-rose-200 text-rose-700'
+                      : 'bg-sky-100 hover:bg-sky-200 text-sky-700'
+                  }`}
+                >
+                  <Edit2 className="w-2.5 h-2.5" />
+                  <span>Régler</span>
+                </button>
+              </div>
+
+              {/* Circular Progress & Metrics */}
+              <div className="flex items-center gap-3.5 my-2">
+                {/* Styled Circular Progress Ring */}
+                <div className="relative w-20 h-20 shrink-0 flex items-center justify-center">
+                  <svg className="w-20 h-20 -rotate-90" viewBox="0 0 72 72">
+                    {/* Background track circle */}
+                    <circle
+                      cx="36"
+                      cy="36"
+                      r={countdownRadius}
+                      className={isCountdownUrgent ? 'stroke-rose-200/70' : 'stroke-sky-200/70'}
+                      strokeWidth="6"
+                      fill="transparent"
+                    />
+                    {/* Dynamic colored progress circle */}
+                    <circle
+                      cx="36"
+                      cy="36"
+                      r={countdownRadius}
+                      className={`transition-all duration-700 ${
+                        isCountdownUrgent ? 'stroke-red-500' : 'stroke-[#2A75D3]'
+                      }`}
+                      strokeWidth="6"
+                      strokeDasharray={countdownCircumference}
+                      strokeDashoffset={countdownDashoffset}
+                      strokeLinecap="round"
+                      fill="transparent"
+                    />
+                  </svg>
+
+                  <div className="absolute inset-0 flex flex-col items-center justify-center text-center">
+                    <span
+                      className={`text-lg font-black leading-tight ${
+                        isCountdownUrgent ? 'text-red-600' : 'text-slate-900'
+                      }`}
+                    >
+                      {remainingDays}
+                    </span>
+                    <span
+                      className={`text-[9px] font-bold tracking-tight leading-none ${
+                        isCountdownUrgent ? 'text-red-500' : 'text-slate-500'
+                      }`}
+                    >
+                      jours
+                    </span>
+                  </div>
+                </div>
+
+                {/* Countdown Details & Allocated Duration */}
+                <div className="min-w-0 space-y-0.5">
+                  <div
+                    className={`text-xs font-black truncate ${
+                      isCountdownUrgent ? 'text-red-700' : 'text-slate-800'
+                    }`}
+                    title={userProfile.examTitle}
+                  >
+                    {userProfile.examTitle || 'Examen Clinique'}
+                  </div>
+                  <div className="text-[11px] font-semibold text-slate-500">
+                    Temps actif :{' '}
+                    <strong className={isCountdownUrgent ? 'text-red-600' : 'text-slate-700'}>
+                      {timeLeft.hours}h {timeLeft.minutes}m
+                    </strong>
+                  </div>
+                  <div className="text-[11px] font-medium text-slate-500">
+                    Durée allouée :{' '}
+                    <strong className="text-slate-700">{totalAllocatedDays} jours</strong>
+                  </div>
+                </div>
+              </div>
+
+              <div
+                className={`flex items-center gap-1.5 text-[11px] font-semibold pt-1 border-t ${
+                  isCountdownUrgent
+                    ? 'border-rose-200/70 text-red-600'
+                    : 'border-sky-100 text-sky-700'
+                }`}
+              >
+                <Hourglass
+                  className={`w-3 h-3 ${
+                    isCountdownUrgent ? 'text-red-500 animate-bounce' : 'text-sky-500 animate-spin'
+                  }`}
+                />
+                <span>
+                  {isCountdownUrgent
+                    ? 'Dernière semaine de révisions !'
+                    : 'Planning de révision en cours'}
+                </span>
+              </div>
             </div>
-            <p className="text-xs text-slate-600 font-medium mt-0.5 truncate" title={userProfile.examTitle}>
-              {userProfile.examTitle || 'Examen Clinique'}
-            </p>
-          </div>
-
-          <div className="mt-3 flex items-center gap-1 text-[11px] text-sky-700 font-semibold">
-            <Hourglass className="w-3 h-3 text-sky-500 animate-spin" />
-            <span>Échéance officielle</span>
-          </div>
-        </div>
+          );
+        })()}
 
         {/* Card 3: Précision Clinique (Soft Pastel Mint) */}
         <div className="p-5 rounded-3xl bg-[#F0FDF4] border border-emerald-100 shadow-[0_4px_20px_-4px_rgba(16,185,129,0.05)] flex flex-col justify-between transition-transform hover:-translate-y-0.5">
@@ -367,7 +560,7 @@ export const DashboardHome: React.FC<DashboardHomeProps> = ({
         </div>
       )}
 
-      {/* 3.5 APK Order & Supabase Checkout Banner */}
+      {/* 3.5 APK Mobile Application Banner */}
       <div className="p-5 sm:p-6 rounded-3xl bg-gradient-to-r from-teal-50/90 via-indigo-50/50 to-white border border-teal-200/80 shadow-xs flex flex-col md:flex-row md:items-center justify-between gap-4">
         <div className="flex items-start gap-4">
           <div className="w-12 h-12 rounded-2xl bg-teal-600 text-white flex items-center justify-center shrink-0 shadow-sm">
@@ -378,16 +571,15 @@ export const DashboardHome: React.FC<DashboardHomeProps> = ({
               <span className="text-[10px] font-black uppercase tracking-wider text-teal-800 bg-teal-100/70 border border-teal-200 px-2 py-0.5 rounded-full">
                 Application Mobile Android
               </span>
-              <span className="text-[10px] font-bold text-slate-500 flex items-center gap-1">
-                <Database className="w-3 h-3 text-teal-600" />
-                Base Supabase Connectée
+              <span className="text-[10px] font-bold text-slate-500">
+                Mode Hors-Ligne & Synchronisation
               </span>
             </div>
             <h4 className="text-sm sm:text-base font-black text-slate-900 mt-1">
-              Commandez l'Accès APK MedQuest pour Smartphone & Tablette
+              Accédez à MedQuest sur Smartphone & Tablette
             </h4>
             <p className="text-xs text-slate-600 font-medium mt-0.5 max-w-xl">
-              Remplissez le formulaire de commande : vos informations de checkout sont enregistrées en direct dans votre base Supabase (table public.apk_orders).
+              Révisez vos cours officiels, séries de QCMs et fiches cliniques partout avec suivi en direct de vos scores et de vos points XP.
             </p>
           </div>
         </div>
@@ -398,7 +590,7 @@ export const DashboardHome: React.FC<DashboardHomeProps> = ({
             className="px-5 py-2.5 rounded-full bg-teal-600 hover:bg-teal-700 text-white font-black text-xs flex items-center justify-center gap-2 shadow-sm transition-all shrink-0 cursor-pointer"
           >
             <Smartphone className="w-4 h-4" />
-            <span>Commander l'APK (Checkout)</span>
+            <span>Commander l'Accès APK</span>
           </button>
         )}
       </div>
@@ -504,11 +696,20 @@ export const DashboardHome: React.FC<DashboardHomeProps> = ({
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {filteredModules.map((module) => {
-            // Assign vector organ character according to module domain
+            // Assign custom matching organ/medical icon according to module domain
             const isCardio = module.id === 'mod-cardio';
             const isNeuro = module.id === 'mod-neuro';
             const isPneumo = module.id === 'mod-pneumo';
-            const isLiver = module.id.includes('gastro') || module.id.includes('nephro');
+            const isInfectio = module.id === 'mod-infectio';
+            const isLiver = module.id.includes('gastro');
+            const isOtr = module.id === 'mod-5-otr';
+            const isGyneco = module.id === 'mod-5-gyn';
+            const isPediatrie = module.id === 'mod-5-ped';
+            const isPsy = module.id === 'mod-5-psy';
+            const isEndo = module.id === 'mod-5-endo';
+            const isUro = module.id === 'mod-5-uro-nephro';
+            const isSemio = module.id === 'mod-semio3';
+            const isPharma = module.id === 'mod-pharma3';
 
             const organAvatar = isCardio ? (
               <VectorHeart size={48} />
@@ -516,10 +717,28 @@ export const DashboardHome: React.FC<DashboardHomeProps> = ({
               <VectorBrain size={48} />
             ) : isPneumo ? (
               <VectorLungs size={48} />
+            ) : isInfectio ? (
+              <ShieldAlert className="w-9 h-9 text-emerald-600" />
             ) : isLiver ? (
               <VectorLiver size={48} />
+            ) : isOtr ? (
+              <Bone className="w-9 h-9 text-amber-500" />
+            ) : isGyneco ? (
+              <HeartHandshake className="w-9 h-9 text-rose-500" />
+            ) : isPediatrie ? (
+              <Baby className="w-9 h-9 text-sky-500" />
+            ) : isPsy ? (
+              <Brain className="w-9 h-9 text-purple-500" />
+            ) : isEndo ? (
+              <Activity className="w-9 h-9 text-teal-500" />
+            ) : isUro ? (
+              <Droplets className="w-9 h-9 text-cyan-500" />
+            ) : isSemio ? (
+              <BookOpen className="w-9 h-9 text-emerald-500" />
+            ) : isPharma ? (
+              <Pill className="w-9 h-9 text-teal-500" />
             ) : (
-              <VectorHeart size={48} />
+              <HeartPulse className="w-9 h-9 text-indigo-500" />
             );
 
             return (
@@ -552,6 +771,16 @@ export const DashboardHome: React.FC<DashboardHomeProps> = ({
                   <p className="text-xs text-slate-600 mt-3 line-clamp-2 leading-relaxed font-medium">
                     {module.description}
                   </p>
+                  {module.id === 'mod-hemato' && (
+                    <div className="flex items-center gap-1.5 mt-2 flex-wrap">
+                      <span className="text-[10px] font-extrabold px-2 py-0.5 rounded-lg bg-rose-50 border border-rose-200 text-rose-700">
+                        🩸 Hématologie (14 cours)
+                      </span>
+                      <span className="text-[10px] font-extrabold px-2 py-0.5 rounded-lg bg-purple-50 border border-purple-200 text-purple-700">
+                        🎗️ Oncologie (10 cours)
+                      </span>
+                    </div>
+                  )}
                 </div>
 
                 <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-600 font-semibold">
@@ -576,168 +805,211 @@ export const DashboardHome: React.FC<DashboardHomeProps> = ({
         </div>
       </div>
 
-      {/* 6. Mascottes d'Étude • Organes Vectoriels Minimalistes (Corporate Memphis Study Style) */}
-      <div className="p-6 sm:p-8 rounded-3xl bg-white border border-slate-200/80 shadow-xs space-y-6">
+      {/* 6. Real-Time Weekly Progression Graph (Synced with User Progress) */}
+      <div className="p-6 rounded-3xl bg-white border border-slate-200/80 shadow-xs space-y-4">
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
             <div className="flex items-center gap-2">
-              <span className="text-[10px] font-extrabold uppercase tracking-wider text-rose-600 px-2.5 py-0.5 rounded-full bg-rose-50 border border-rose-200">
-                Compagnons de Révision
+              <h3 className="font-extrabold text-sm sm:text-base text-slate-900 tracking-tight">
+                Activité & Progression de la Semaine
+              </h3>
+              <span className="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-200">
+                Temps Réel
               </span>
             </div>
-            <h3 className="font-black text-base sm:text-lg text-slate-900 tracking-tight mt-1">
-              Groupe d'Étude des Organes Vectoriels
-            </h3>
-            <p className="text-xs text-slate-600 font-medium">
-              Chaque organe incarne votre concentration studieuse pour les épreuves de concours de l'externat.
+            <p className="text-xs text-slate-600 font-medium mt-0.5">
+              {weeklyProgressData.totalWeekXp === 0
+                ? "0 XP gagné cette semaine • Répondez à des QCMs pour voir progresser votre courbe d'entraînement !"
+                : `${weeklyProgressData.totalWeekXp} XP cumulés cette semaine • ${weeklyProgressData.activeDaysCount} jour(s) actif(s)`}
             </p>
           </div>
 
-          <span className="text-xs font-bold text-slate-500 bg-slate-50 border border-slate-200/70 px-3 py-1 rounded-full w-fit">
-            Style Corporate Memphis Médical
-          </span>
-        </div>
+          <div className="flex items-center gap-2">
+            <span
+              className={`text-xs font-bold px-3 py-1.5 rounded-full border transition-all ${
+                weeklyProgressData.todayEntry.xp > 0
+                  ? 'bg-emerald-50 text-emerald-700 border-emerald-200 shadow-2xs font-extrabold'
+                  : 'bg-slate-50 text-slate-600 border-slate-200'
+              }`}
+            >
+              {weeklyProgressData.todayEntry.xp > 0
+                ? `+${weeklyProgressData.todayEntry.xp} XP aujourd'hui`
+                : "0 XP aujourd'hui"}
+            </span>
 
-        {/* 4 Organ Mascot Cards Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-          {/* Heart Mascot */}
-          <div className="p-5 rounded-3xl bg-[#FFF5F2] border border-rose-100 flex flex-col items-center text-center justify-between group hover:shadow-md transition-all">
-            <div className="py-2">
-              <VectorHeart size={80} showSpeech speechText="Focus Cardio !" />
-            </div>
-            <div className="mt-2">
-              <h4 className="font-black text-sm text-slate-900 group-hover:text-rose-600 transition-colors">
-                Cœur Rigoureux
-              </h4>
-              <p className="text-[11px] text-slate-600 font-medium mt-0.5 leading-snug">
-                Cardiologie & Vasculaire (24 cours • 720 QCMs)
-              </p>
-            </div>
-          </div>
-
-          {/* Brain Mascot */}
-          <div className="p-5 rounded-3xl bg-[#F5F3FF] border border-indigo-100 flex flex-col items-center text-center justify-between group hover:shadow-md transition-all">
-            <div className="py-2">
-              <VectorBrain size={80} showSpeech speechText="Mémoire Neuro !" />
-            </div>
-            <div className="mt-2">
-              <h4 className="font-black text-sm text-slate-900 group-hover:text-indigo-600 transition-colors">
-                Cerveau Savant
-              </h4>
-              <p className="text-[11px] text-slate-600 font-medium mt-0.5 leading-snug">
-                Neurologie, Sémiologie & Raisonnement clinique
-              </p>
-            </div>
-          </div>
-
-          {/* Lungs Mascot */}
-          <div className="p-5 rounded-3xl bg-[#F0F7FF] border border-sky-100 flex flex-col items-center text-center justify-between group hover:shadow-md transition-all">
-            <div className="py-2">
-              <VectorLungs size={80} showSpeech speechText="Pneumo & O2 !" />
-            </div>
-            <div className="mt-2">
-              <h4 className="font-black text-sm text-slate-900 group-hover:text-sky-600 transition-colors">
-                Poumons Sereins
-              </h4>
-              <p className="text-[11px] text-slate-600 font-medium mt-0.5 leading-snug">
-                Pneumologie, Gazométrie & Ventilation d'urgence
-              </p>
-            </div>
-          </div>
-
-          {/* Liver Mascot */}
-          <div className="p-5 rounded-3xl bg-[#FFFDF0] border border-amber-100 flex flex-col items-center text-center justify-between group hover:shadow-md transition-all">
-            <div className="py-2">
-              <VectorLiver size={80} showSpeech speechText="Hépato & Métabo !" />
-            </div>
-            <div className="mt-2">
-              <h4 className="font-black text-sm text-slate-900 group-hover:text-amber-700 transition-colors">
-                Foie Méthodique
-              </h4>
-              <p className="text-[11px] text-slate-600 font-medium mt-0.5 leading-snug">
-                Hépato-Gastro-Entérologie & Métabolisme
-              </p>
-            </div>
+            {weeklyProgressData.totalWeekXp === 0 && (
+              <button
+                type="button"
+                onClick={onStartQuickPractice}
+                className="px-3.5 py-1.5 rounded-full bg-indigo-600 hover:bg-indigo-700 text-white font-black text-xs shadow-2xs transition-all cursor-pointer"
+              >
+                S'entraîner (+10 XP)
+              </button>
+            )}
           </div>
         </div>
 
-        {/* High-fidelity Vector Organs Artwork Banner */}
-        <div className="rounded-2xl overflow-hidden border border-slate-200/80 shadow-2xs">
-          <img
-            src={vectorOrgansGroupBanner}
-            alt="Mascottes d'Étude des Organes Vectoriels"
-            referrerPolicy="no-referrer"
-            className="w-full h-auto object-cover max-h-56"
-          />
-        </div>
-      </div>
-
-      {/* 7. Weekly Activity Wave Curve Chart (Inspired by Screenshot 1 & 3) */}
-      <div className="p-6 rounded-3xl bg-white border border-slate-200/80 shadow-sm space-y-4">
-        <div className="flex items-center justify-between">
-          <div>
-            <h3 className="font-extrabold text-sm sm:text-base text-slate-900 tracking-tight">
-              Activité & Progression de la Semaine
-            </h3>
-            <p className="text-xs text-slate-600 font-medium">
-              350 XP gagnés • 7 jours d'activité régulière
-            </p>
-          </div>
-          <span className="text-xs font-bold px-3 py-1 rounded-full bg-indigo-50 text-indigo-700 border border-indigo-100">
-            Cette Semaine
-          </span>
-        </div>
-
-        {/* SVG Smooth Curved Area Graph (Corporate Memphis style) */}
-        <div className="h-36 w-full pt-2">
-          <svg viewBox="0 0 500 120" className="w-full h-full overflow-visible">
+        {/* SVG Smooth Curved Area Graph Synced to Real XP */}
+        <div className="h-40 w-full pt-2 relative">
+          <svg viewBox="0 0 500 130" className="w-full h-full overflow-visible select-none">
             <defs>
-              <linearGradient id="chartGradient" x1="0" y1="0" x2="0" y2="1">
-                <stop offset="0%" stopColor="#818CF8" stopOpacity="0.35" />
-                <stop offset="100%" stopColor="#818CF8" stopOpacity="0.0" />
+              <linearGradient id="realChartGradient" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="0%" stopColor="#818CF8" stopOpacity="0.45" />
+                <stop offset="100%" stopColor="#818CF8" stopOpacity="0.02" />
               </linearGradient>
             </defs>
 
-            {/* Area under curve */}
-            <path
-              d="M 10 90 Q 70 30, 150 70 T 300 40 T 420 20 L 480 50 L 480 115 L 10 115 Z"
-              fill="url(#chartGradient)"
-            />
-            {/* The Curve Line */}
-            <path
-              d="M 10 90 Q 70 30, 150 70 T 300 40 T 420 20 L 480 50"
-              fill="none"
-              stroke="#6366F1"
-              strokeWidth="3.5"
-              strokeLinecap="round"
-            />
+            {/* Horizontal Guide Lines */}
+            <line x1="30" y1="25" x2="470" y2="25" stroke="#F1F5F9" strokeWidth="1" strokeDasharray="3 3" />
+            <line x1="30" y1="65" x2="470" y2="65" stroke="#F1F5F9" strokeWidth="1" strokeDasharray="3 3" />
+            <line x1="30" y1="105" x2="470" y2="105" stroke="#E2E8F0" strokeWidth="1.5" />
 
-            {/* Data Dots */}
-            <circle cx="10" cy="90" r="4" fill="#FFFFFF" stroke="#6366F1" strokeWidth="2.5" />
-            <circle cx="90" cy="50" r="4" fill="#FFFFFF" stroke="#6366F1" strokeWidth="2.5" />
-            <circle cx="170" cy="72" r="4" fill="#FFFFFF" stroke="#6366F1" strokeWidth="2.5" />
-            <circle cx="250" cy="54" r="4" fill="#FFFFFF" stroke="#6366F1" strokeWidth="2.5" />
-            <circle cx="330" cy="38" r="4" fill="#FFFFFF" stroke="#6366F1" strokeWidth="2.5" />
-            <circle cx="410" cy="22" r="5" fill="#6366F1" stroke="#FFFFFF" strokeWidth="2" />
-            <circle cx="480" cy="50" r="4" fill="#FFFFFF" stroke="#6366F1" strokeWidth="2.5" />
+            {/* Dynamic Area Under Curve */}
+            {weeklyProgressData.totalWeekXp > 0 && (
+              <path
+                d={weeklyProgressData.areaPath}
+                fill="url(#realChartGradient)"
+                className="transition-all duration-700"
+              />
+            )}
 
-            {/* Floating label on peak day */}
-            <rect x="382" y="0" width="56" height="18" rx="9" fill="#4F46E5" />
-            <text x="410" y="12" fill="#FFFFFF" fontSize="9" fontWeight="bold" textAnchor="middle">
-              +70 XP
-            </text>
+            {/* Dynamic Progression Curve Line */}
+            {weeklyProgressData.totalWeekXp > 0 ? (
+              <path
+                d={weeklyProgressData.linePath}
+                fill="none"
+                stroke="#6366F1"
+                strokeWidth="3.5"
+                strokeLinecap="round"
+                className="transition-all duration-700"
+              />
+            ) : (
+              /* Flat baseline for 0 XP with subtle accent */
+              <path
+                d="M 35 105 L 465 105"
+                fill="none"
+                stroke="#CBD5E1"
+                strokeWidth="2.5"
+                strokeDasharray="4 4"
+              />
+            )}
+
+            {/* Data Points on Curve */}
+            {weeklyProgressData.points.map((pt, idx) => {
+              const isHovered = hoveredDayIdx === idx;
+              const hasXp = pt.day.xp > 0;
+              const isToday = pt.day.isToday;
+
+              return (
+                <g
+                  key={pt.day.iso}
+                  className="cursor-pointer group"
+                  onMouseEnter={() => setHoveredDayIdx(idx)}
+                  onMouseLeave={() => setHoveredDayIdx(null)}
+                >
+                  {/* Subtle vertical indicator line on hover or today */}
+                  {(isHovered || isToday) && (
+                    <line
+                      x1={pt.x}
+                      y1={25}
+                      x2={pt.x}
+                      y2={105}
+                      stroke={isToday ? '#6366F1' : '#CBD5E1'}
+                      strokeWidth={isToday ? '1.5' : '1'}
+                      strokeDasharray={isToday ? '2 2' : '1 2'}
+                      opacity={isToday ? 0.7 : 0.5}
+                    />
+                  )}
+
+                  {/* Pulsing ring on Today */}
+                  {isToday && (
+                    <circle
+                      cx={pt.x}
+                      cy={pt.y}
+                      r={hasXp ? '10' : '7'}
+                      fill="#6366F1"
+                      opacity="0.25"
+                      className="animate-ping"
+                    />
+                  )}
+
+                  {/* Main Data Dot */}
+                  <circle
+                    cx={pt.x}
+                    cy={pt.y}
+                    r={isToday || isHovered ? '5.5' : hasXp ? '4.5' : '3.5'}
+                    fill={hasXp ? '#6366F1' : isToday ? '#818CF8' : '#FFFFFF'}
+                    stroke={hasXp || isToday ? '#FFFFFF' : '#CBD5E1'}
+                    strokeWidth={hasXp || isToday ? '2.5' : '2'}
+                    className="transition-all duration-300"
+                  />
+
+                  {/* Floating Pill on Today or Hovered Day */}
+                  {(isHovered || (isToday && (hasXp || hoveredDayIdx === null))) && (
+                    <g className="animate-in fade-in zoom-in-95 duration-200">
+                      <rect
+                        x={Math.max(10, Math.min(410, pt.x - (isToday ? 45 : 30)))}
+                        y={Math.max(2, pt.y - 28)}
+                        width={isToday ? 90 : 60}
+                        height={20}
+                        rx={10}
+                        fill={isToday ? '#4F46E5' : '#1E293B'}
+                        className="shadow-md"
+                      />
+                      <text
+                        x={Math.max(10, Math.min(410, pt.x - (isToday ? 45 : 30))) + (isToday ? 45 : 30)}
+                        y={Math.max(2, pt.y - 28) + 13}
+                        fill="#FFFFFF"
+                        fontSize="9.5"
+                        fontWeight="bold"
+                        textAnchor="middle"
+                      >
+                        {isToday ? `+${pt.day.xp} XP (Auj.)` : `+${pt.day.xp} XP`}
+                      </text>
+                    </g>
+                  )}
+                </g>
+              );
+            })}
           </svg>
         </div>
 
-        {/* Days of week footer */}
-        <div className="flex justify-between text-xs font-bold text-slate-600 px-2 pt-1 border-t border-slate-100">
-          <span>Lun</span>
-          <span>Mar</span>
-          <span>Mer</span>
-          <span>Jeu</span>
-          <span>Ven</span>
-          <span className="text-indigo-600 font-black">Sam (Auj.)</span>
-          <span>Dim</span>
+        {/* Dynamic Days of the Week Footer */}
+        <div className="flex justify-between items-center text-xs px-2 pt-2 border-t border-slate-100 select-none">
+          {weeklyProgressData.days.map((day, idx) => (
+            <div
+              key={day.iso}
+              onClick={() => setHoveredDayIdx(hoveredDayIdx === idx ? null : idx)}
+              className={`flex flex-col items-center gap-0.5 cursor-pointer transition-all ${
+                day.isToday
+                  ? 'scale-105'
+                  : 'hover:text-indigo-600'
+              }`}
+            >
+              <span
+                className={`text-xs ${
+                  day.isToday
+                    ? 'font-black text-indigo-700 bg-indigo-50 border border-indigo-200 px-2.5 py-0.5 rounded-full shadow-2xs'
+                    : day.xp > 0
+                    ? 'font-bold text-slate-800'
+                    : 'font-semibold text-slate-400'
+                }`}
+              >
+                {day.label}
+              </span>
+              <span
+                className={`text-[10px] ${
+                  day.isToday
+                    ? 'font-bold text-indigo-600'
+                    : day.xp > 0
+                    ? 'font-bold text-slate-600'
+                    : 'text-slate-400'
+                }`}
+              >
+                {day.xp > 0 ? `${day.xp} XP` : day.isToday ? 'Auj.' : '0'}
+              </span>
+            </div>
+          ))}
         </div>
       </div>
     </div>

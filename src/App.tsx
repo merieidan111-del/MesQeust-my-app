@@ -19,6 +19,7 @@ import { SupabaseFlutterStudio } from './components/SupabaseFlutterStudio';
 import { ApkOrderModal } from './components/ApkOrderModal';
 import { FixedBottomNavBar, BottomNavTab } from './components/FixedBottomNavBar';
 import { AuthLandingScreen } from './components/AuthLandingScreen';
+import { Repository } from './components/Repository';
 import {
   getCurrentSessionAccount,
   getUserProgress,
@@ -38,6 +39,7 @@ import {
 } from './types/medical';
 import {
   MEDICAL_MODULES,
+  MEDICAL_COURSES,
   INITIAL_QUESTIONS,
 } from './data/mockMedicalData';
 import {
@@ -66,7 +68,7 @@ export default function App() {
   });
 
   const [currentTab, setCurrentTab] = useState<
-    'home' | 'directory' | 'qcm' | 'gamification' | 'drive' | 'ai' | 'architecture'
+    'home' | 'directory' | 'qcm' | 'gamification' | 'repository' | 'drive' | 'ai' | 'architecture'
   >('home');
   const [selectedYear, setSelectedYear] = useState<AcademicYear>(
     () => currentUserAccount?.academicYear || '4ème Année'
@@ -79,6 +81,7 @@ export default function App() {
   // Drill-down navigation state
   const [activeDrillModule, setActiveDrillModule] = useState<Module | null>(null);
   const [activeCourse, setActiveCourse] = useState<Course | null>(null);
+  const [activeSubdivision, setActiveSubdivision] = useState<string | null>(null);
   const [practiceModeFilter, setPracticeModeFilter] = useState<QuestionType | 'all'>('all');
 
   // Authentication State with Google Workspace Drive
@@ -194,6 +197,8 @@ export default function App() {
   // Gamification Actions with Partitioned Local Storage Persistence
   const handleAwardXp = (amount: number, reason: string) => {
     if (!currentUserAccount) return;
+    const todayKey = new Date().toISOString().split('T')[0];
+
     setUserProfile((prev) => {
       if (!prev) return prev;
       const newXp = prev.totalXp + amount;
@@ -204,21 +209,30 @@ export default function App() {
       else if (newLevel >= 3) newTitle = 'Interne Prometteuse';
       else if (newLevel >= 2) newTitle = 'Externe Confirmée';
 
+      const existingProgress = getUserProgress(currentUserAccount);
+      const currentDaily = existingProgress.dailyActivity || {};
+      const newDailyXp = (currentDaily[todayKey] || 0) + amount;
+      const updatedDaily = {
+        ...currentDaily,
+        [todayKey]: newDailyXp,
+      };
+
       const updated = {
         ...prev,
         totalXp: newXp,
         level: newLevel,
         title: newTitle,
         questionsSolvedToday: prev.questionsSolvedToday + 1,
+        dailyActivity: updatedDaily,
       };
 
-      const existingProgress = getUserProgress(currentUserAccount);
       saveUserProgress(currentUserAccount.email, {
         ...existingProgress,
         totalXp: updated.totalXp,
         level: updated.level,
         title: updated.title,
         questionsSolvedToday: updated.questionsSolvedToday,
+        dailyActivity: updatedDaily,
       });
 
       return updated;
@@ -306,10 +320,20 @@ export default function App() {
 
   const handleLaunchPracticeMode = (course: Course, mode: QuestionType) => {
     setActiveCourse(course);
+    setActiveSubdivision(null);
     setPracticeModeFilter(mode);
     setActiveDrillModule(null);
     setCurrentTab('qcm');
     showToast(`Lancement de l'entraînement : ${course.title}`, 'info');
+  };
+
+  const handleLaunchSubdivisionPractice = (subdivision: string, mode: QuestionType) => {
+    setActiveCourse(null);
+    setActiveSubdivision(subdivision);
+    setPracticeModeFilter(mode);
+    setActiveDrillModule(null);
+    setCurrentTab('qcm');
+    showToast(`Lancement de l'entraînement complet : Volet ${subdivision}`, 'info');
   };
 
   const handleUpdateExamCountdown = (newDateIso: string, newTitle: string, newModule: string) => {
@@ -441,11 +465,19 @@ export default function App() {
             {/* If currentTab is 'qcm', ALWAYS render QCMEngine */}
             {currentTab === 'qcm' ? (
               <QCMEngine
-                key={`${activeCourse?.id || 'all'}-${practiceModeFilter}`}
+                key={`${activeCourse?.id || activeSubdivision || 'all'}-${practiceModeFilter}`}
                 questions={
                   activeCourse
                     ? (() => {
                         const matched = questions.filter((q) => q.courseId === activeCourse.id);
+                        return matched.length > 0 ? matched : questions;
+                      })()
+                    : activeSubdivision
+                    ? (() => {
+                        const courseIds = MEDICAL_COURSES.filter(
+                          (c) => c.subdivision?.toLowerCase() === activeSubdivision.toLowerCase()
+                        ).map((c) => c.id);
+                        const matched = questions.filter((q) => courseIds.includes(q.courseId));
                         return matched.length > 0 ? matched : questions;
                       })()
                     : questions
@@ -453,15 +485,25 @@ export default function App() {
                 modules={MEDICAL_MODULES}
                 selectedYear={selectedYear}
                 initialTypeFilter={practiceModeFilter}
-                courseName={activeCourse?.title}
+                courseName={activeCourse?.title || (activeSubdivision ? `Volet ${activeSubdivision}` : undefined)}
+                activeModuleName={
+                  activeDrillModule?.title ||
+                  (activeCourse
+                    ? MEDICAL_MODULES.find((m) => m.id === activeCourse.moduleId)?.title
+                    : activeSubdivision
+                    ? 'Hématologie & Oncologie Médicale'
+                    : undefined)
+                }
                 onAwardXp={handleAwardXp}
                 onQuestionCompleted={handleQuestionCompleted}
                 onExitSession={() => {
                   if (activeDrillModule) {
                     setActiveCourse(null);
+                    setActiveSubdivision(null);
                     setCurrentTab('directory');
                   } else {
                     setActiveCourse(null);
+                    setActiveSubdivision(null);
                     setCurrentTab('home');
                   }
                 }}
@@ -470,8 +512,12 @@ export default function App() {
               /* If a module is being drilled down into, show CourseHub */
               <CourseHub
                 module={activeDrillModule}
-                onBack={() => setActiveDrillModule(null)}
+                onBack={() => {
+                  setActiveDrillModule(null);
+                  setActiveSubdivision(null);
+                }}
                 onLaunchPracticeMode={handleLaunchPracticeMode}
+                onLaunchSubdivisionPractice={handleLaunchSubdivisionPractice}
               />
             ) : (
               <>
@@ -507,6 +553,16 @@ export default function App() {
                     selectedYear={selectedYear}
                     onSpendXp={handleSpendXp}
                     onBuyFreeze={handleBuyFreeze}
+                  />
+                )}
+
+                {currentTab === 'repository' && (
+                  <Repository
+                    onLoadQuestionsToEngine={(loadedQuestions, sourceTitle) => {
+                      handleLoadQuestionsToEngine(loadedQuestions);
+                      showToast(`${loadedQuestions.length} QCMs chargés depuis : ${sourceTitle}`, 'success');
+                    }}
+                    onSendToAISummarizer={handleSendToAISummarizer}
                   />
                 )}
 
@@ -601,7 +657,7 @@ export default function App() {
             <span>•</span>
             <span>720 QCMs & Cas Cliniques</span>
             <span>•</span>
-            <span>Mascottes Vectorielles d'Étude</span>
+            <span>Programme National d'Externat</span>
           </div>
         </div>
       </footer>

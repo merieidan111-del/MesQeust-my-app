@@ -1,7 +1,7 @@
 export type AcademicYear = '3ème Année' | '4ème Année' | '5ème Année';
 
-export type QuestionType = 'QCM' | 'CasClinique';
-export type ResourceType = 'Resume' | 'Astuce';
+export type QuestionType = 'QCM' | 'CasClinique' | 'Cas Clinique';
+export type ResourceType = 'Resume' | 'Astuce' | 'mindmap' | 'astuce' | 'resume';
 
 export interface Module {
   id: string;
@@ -25,6 +25,7 @@ export interface Course {
   resumesCount: number;
   astucesCount: number;
   completedPercent?: number;
+  subdivision?: string; // e.g. 'Hématologie' | 'Oncologie'
 }
 
 export interface Question {
@@ -32,14 +33,16 @@ export interface Question {
   courseId: string;
   questionNumber: number;
   type: QuestionType;
-  questionText: string;
+  questionText?: string;
+  content?: string;
   options: string[];
   correctAnswers: number[]; // 0-indexed array
   explanation: string;
   clinicalPearl?: string;
+  clinicalCaseNumber?: number;
   module?: string;
   academicYear?: AcademicYear;
-  difficulty?: 'Standard' | 'Avancé' | 'Concours Résidanat';
+  difficulty?: 'Standard' | 'Avancé' | 'Concours Résidanat' | 'facile' | 'moyen' | 'difficile';
 }
 
 export interface CourseResource {
@@ -47,9 +50,11 @@ export interface CourseResource {
   courseId: string;
   type: ResourceType;
   title: string;
-  contentMarkdown: string;
+  contentMarkdown?: string;
+  content?: string;
   fileUrl?: string;
   authorOrSource?: string;
+  author?: string;
   tags?: string[];
 }
 
@@ -86,6 +91,7 @@ export interface UserProfile {
   customExamDate: string;
   examTitle: string;
   examModule: string;
+  dailyActivity?: Record<string, number>;
 }
 
 export interface ShopItem {

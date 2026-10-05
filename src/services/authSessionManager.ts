@@ -30,6 +30,7 @@ export interface UserProgressData {
   examModule: string;
   bookmarkedQuestions: string[];
   purchasedItemIds: string[];
+  dailyActivity?: Record<string, number>; // date "YYYY-MM-DD" -> XP earned
 }
 
 const STORAGE_KEY_CURRENT_SESSION = 'medquest_active_session_email';
@@ -76,6 +77,7 @@ export function getFreshDefaultProgress(
     examModule: defaultExamModule,
     bookmarkedQuestions: [],
     purchasedItemIds: [],
+    dailyActivity: {},
   };
 }
 
@@ -335,6 +337,7 @@ export function buildUserProfile(
     customExamDate: progress.customExamDate,
     examTitle: progress.examTitle,
     examModule: progress.examModule,
+    dailyActivity: progress.dailyActivity || {},
   };
 }
 

@@ -58,14 +58,14 @@ export const YEARS_DATA: YearMeta[] = [
   },
   {
     id: '5ème Année',
-    subtitle: 'Urgences & Pédiatrie',
-    focus: 'Réanimation, Infectiologie, Pédiatrie & Gynécologie-Obstétrique',
-    badge: 'Urgences',
+    subtitle: 'Spécialités Cliniques & Urgences',
+    focus: 'OTR, Gynéco-Obstétrique, Pédiatrie, Psychiatrie, Endocrino, Uro-Néphro',
+    badge: '6 Modules',
     organMascot: <VectorBrain size={46} />,
     bgPastel: 'from-indigo-50/80 to-purple-50/40',
     activeBorder: 'border-indigo-400 bg-indigo-50/70 shadow-sm shadow-indigo-200/50',
     badgeColor: 'bg-indigo-100 text-indigo-800 border-indigo-200',
-    modulesCount: 2,
+    modulesCount: 6,
   },
 ];
 

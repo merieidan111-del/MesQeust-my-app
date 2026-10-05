@@ -24,6 +24,7 @@ interface NavbarProps {
     | 'directory'
     | 'qcm'
     | 'gamification'
+    | 'repository'
     | 'drive'
     | 'ai'
     | 'architecture';
@@ -33,6 +34,7 @@ interface NavbarProps {
       | 'directory'
       | 'qcm'
       | 'gamification'
+      | 'repository'
       | 'drive'
       | 'ai'
       | 'architecture'
@@ -61,7 +63,6 @@ export const Navbar: React.FC<NavbarProps> = ({
   isMobilePreview,
   setIsMobilePreview,
   onToggleYearsSidebar,
-  onOpenApkOrder,
   onLogout,
 }) => {
   return (
@@ -138,15 +139,15 @@ export const Navbar: React.FC<NavbarProps> = ({
           </button>
 
           <button
-            onClick={() => setCurrentTab('drive')}
+            onClick={() => setCurrentTab('repository')}
             className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-bold transition-all ${
-              currentTab === 'drive'
-                ? 'bg-white text-amber-600 shadow-sm border border-slate-200/50'
+              currentTab === 'repository'
+                ? 'bg-white text-indigo-600 shadow-sm border border-slate-200/50'
                 : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
             }`}
           >
             <HardDrive className="w-3.5 h-3.5" />
-            <span>Google Drive</span>
+            <span>Repository</span>
           </button>
 
           <button
@@ -172,18 +173,6 @@ export const Navbar: React.FC<NavbarProps> = ({
             <Trophy className="w-3.5 h-3.5" />
             <span>XP & Rangs</span>
           </button>
-
-          <button
-            onClick={() => setCurrentTab('architecture')}
-            className={`flex items-center gap-1.5 px-4 py-2 rounded-full text-xs font-bold transition-all ${
-              currentTab === 'architecture'
-                ? 'bg-white text-teal-600 shadow-sm border border-slate-200/50'
-                : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
-            }`}
-          >
-            <Code2 className="w-3.5 h-3.5" />
-            <span>Code Flutter & Supabase</span>
-          </button>
         </nav>
 
         {/* Right: Gamification Badges, User Profile & Device Toggle */}
@@ -206,19 +195,6 @@ export const Navbar: React.FC<NavbarProps> = ({
             <Award className="w-4 h-4 text-indigo-600" />
             <span className="font-extrabold text-xs">{userProfile.totalXp} XP</span>
           </div>
-
-          {/* Commander APK Button */}
-          {onOpenApkOrder && (
-            <button
-              onClick={onOpenApkOrder}
-              className="flex items-center gap-1.5 px-3.5 py-1.5 rounded-full text-xs font-black bg-gradient-to-r from-teal-500/10 to-indigo-500/10 hover:from-teal-500/20 hover:to-indigo-500/20 text-teal-800 border border-teal-200 shadow-2xs transition-all cursor-pointer"
-              title="Commander l'accès APK Android (Enregistrement Supabase)"
-            >
-              <Smartphone className="w-3.5 h-3.5 text-teal-600" />
-              <span className="hidden md:inline">Commander APK</span>
-              <span className="md:hidden">APK</span>
-            </button>
-          )}
 
           {/* Device Mockup Toggle */}
           <button
@@ -300,12 +276,12 @@ export const Navbar: React.FC<NavbarProps> = ({
           QCM
         </button>
         <button
-          onClick={() => setCurrentTab('drive')}
+          onClick={() => setCurrentTab('repository')}
           className={`px-3.5 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-colors ${
-            currentTab === 'drive' ? 'bg-amber-500 text-white shadow-sm' : 'bg-white border border-slate-200 text-slate-600'
+            currentTab === 'repository' ? 'bg-indigo-600 text-white shadow-sm' : 'bg-white border border-slate-200 text-slate-600'
           }`}
         >
-          Google Drive
+          Repository
         </button>
         <button
           onClick={() => setCurrentTab('ai')}
@@ -322,14 +298,6 @@ export const Navbar: React.FC<NavbarProps> = ({
           }`}
         >
           XP & Rangs
-        </button>
-        <button
-          onClick={() => setCurrentTab('architecture')}
-          className={`px-3.5 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-colors ${
-            currentTab === 'architecture' ? 'bg-teal-600 text-white shadow-sm' : 'bg-white border border-slate-200 text-slate-600'
-          }`}
-        >
-          Code Flutter & Supabase
         </button>
       </div>
     </header>

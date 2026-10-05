@@ -20,9 +20,21 @@ import {
   Lightbulb,
   Award,
   CheckSquare,
+  HeartPulse,
+  Brain,
+  Wind,
+  Bone,
+  HeartHandshake,
+  Baby,
+  Activity,
+  Droplets,
+  BookOpen,
+  Pill,
+  Layers,
 } from 'lucide-react';
 import { Question, QuestionType, Module, AcademicYear } from '../types/medical';
-import { VectorHeart, VectorBrain } from './VectorOrgans';
+import { MEDICAL_COURSES } from '../data/mockMedicalData';
+import { VectorHeart, VectorBrain, VectorLungs, VectorLiver } from './VectorOrgans';
 
 interface QCMEngineProps {
   questions: Question[];
@@ -30,6 +42,7 @@ interface QCMEngineProps {
   selectedYear: AcademicYear;
   initialTypeFilter?: QuestionType | 'all';
   courseName?: string;
+  activeModuleName?: string;
   onAwardXp: (amount: number, reason: string) => void;
   onQuestionCompleted: (isCorrect: boolean) => void;
   onExitSession?: () => void;
@@ -41,11 +54,13 @@ export const QCMEngine: React.FC<QCMEngineProps> = ({
   selectedYear,
   initialTypeFilter = 'all',
   courseName,
+  activeModuleName,
   onAwardXp,
   onQuestionCompleted,
   onExitSession,
 }) => {
   const [selectedType, setSelectedType] = useState<QuestionType | 'all'>(initialTypeFilter);
+  const [selectedSubdivision, setSelectedSubdivision] = useState<string>('all');
   const [currentIndex, setCurrentIndex] = useState<number>(0);
   const [selectedOptions, setSelectedOptions] = useState<number[]>([]);
   const [hasSubmitted, setHasSubmitted] = useState<boolean>(false);
@@ -55,12 +70,74 @@ export const QCMEngine: React.FC<QCMEngineProps> = ({
   const [soundEnabled, setSoundEnabled] = useState<boolean>(true);
   const [sessionCompleted, setSessionCompleted] = useState<boolean>(false);
 
+  // Available subdivisions among questions
+  const availableSubdivisions = React.useMemo(() => {
+    const subs: string[] = [];
+    questions.forEach((q) => {
+      const crs = MEDICAL_COURSES.find((c) => c.id === q.courseId);
+      if (crs?.subdivision && !subs.includes(crs.subdivision)) {
+        subs.push(crs.subdivision);
+      }
+    });
+    return subs;
+  }, [questions]);
+
   // Jump-List Drawer state
   const [isJumpListOpen, setIsJumpListOpen] = useState<boolean>(false);
   const [questionResults, setQuestionResults] = useState<Record<string, 'correct' | 'incorrect'>>({});
 
   // Timer state
   const [timerSeconds, setTimerSeconds] = useState<number>(0);
+
+  // Resolve current module to display context header (Requirement 6)
+  const currentModule = React.useMemo(() => {
+    if (activeModuleName) {
+      const found = modules.find(
+        (m) =>
+          m.title.toLowerCase() === activeModuleName.toLowerCase() ||
+          m.id.toLowerCase() === activeModuleName.toLowerCase()
+      );
+      if (found) return found;
+    }
+    const sampleQ = questions[currentIndex] || questions[0];
+    if (sampleQ?.module) {
+      const found = modules.find(
+        (m) =>
+          m.id === sampleQ.module ||
+          m.title.toLowerCase().includes(sampleQ.module!.toLowerCase()) ||
+          sampleQ.module!.toLowerCase().includes(m.title.toLowerCase())
+      );
+      if (found) return found;
+    }
+    if (courseName) {
+      const foundCourse = MEDICAL_COURSES.find(
+        (c) => c.title.toLowerCase() === courseName.toLowerCase() || c.id === courseName
+      );
+      if (foundCourse) {
+        const found = modules.find((m) => m.id === foundCourse.moduleId);
+        if (found) return found;
+      }
+    }
+    // Default fallback based on selectedYear
+    const yearMods = modules.filter((m) => m.academicYear === selectedYear);
+    return yearMods[0] || modules[0];
+  }, [activeModuleName, questions, currentIndex, courseName, modules, selectedYear]);
+
+  const getModuleIcon = (mod: Module | undefined) => {
+    const id = mod?.id || '';
+    if (id === 'mod-cardio') return <VectorHeart size={44} />;
+    if (id === 'mod-neuro' || id === 'mod-5-psy') return <VectorBrain size={44} />;
+    if (id === 'mod-pneumo') return <VectorLungs size={44} />;
+    if (id.includes('gastro')) return <VectorLiver size={44} />;
+    if (id === 'mod-5-otr') return <Bone className="w-7 h-7 text-amber-500" />;
+    if (id === 'mod-5-gyn') return <HeartHandshake className="w-7 h-7 text-rose-500" />;
+    if (id === 'mod-5-ped') return <Baby className="w-7 h-7 text-sky-500" />;
+    if (id === 'mod-5-endo' || id === 'mod-hemato') return <Activity className="w-7 h-7 text-teal-500" />;
+    if (id === 'mod-5-uro-nephro') return <Droplets className="w-7 h-7 text-cyan-500" />;
+    if (id === 'mod-semio3') return <BookOpen className="w-7 h-7 text-emerald-500" />;
+    if (id === 'mod-pharma3') return <Pill className="w-7 h-7 text-teal-500" />;
+    return <VectorHeart size={44} />;
+  };
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -87,9 +164,19 @@ export const QCMEngine: React.FC<QCMEngineProps> = ({
   }, [initialTypeFilter]);
 
   const filteredQuestions = React.useMemo(() => {
-    if (selectedType === 'all') return questions;
-    return questions.filter((q) => q.type === selectedType);
-  }, [questions, selectedType]);
+    let list = questions;
+    if (selectedSubdivision !== 'all') {
+      const courseIds = MEDICAL_COURSES.filter((c) => c.subdivision === selectedSubdivision).map((c) => c.id);
+      list = list.filter((q) => courseIds.includes(q.courseId));
+    }
+    if (selectedType === 'CasClinique' || (selectedType as any) === 'Cas Clinique') {
+      return list.filter((q) => q.type === 'CasClinique' || q.type === 'Cas Clinique');
+    }
+    if (selectedType !== 'all') {
+      return list.filter((q) => q.type === selectedType);
+    }
+    return list;
+  }, [questions, selectedType, selectedSubdivision]);
 
   // Handle case where filteredQuestions is empty or changes size
   useEffect(() => {
@@ -99,6 +186,11 @@ export const QCMEngine: React.FC<QCMEngineProps> = ({
   }, [filteredQuestions.length, currentIndex]);
 
   const currentQ = filteredQuestions[currentIndex] || questions[0];
+
+  const currentCourse = React.useMemo(() => {
+    if (!currentQ?.courseId) return null;
+    return MEDICAL_COURSES.find((c) => c.id === currentQ.courseId);
+  }, [currentQ?.courseId]);
 
   const playFeedbackSound = (isCorrect: boolean) => {
     if (!soundEnabled) return;
@@ -304,28 +396,62 @@ export const QCMEngine: React.FC<QCMEngineProps> = ({
 
   return (
     <div className="space-y-4 max-w-4xl mx-auto">
-      {/* Top Header: Navigation & Action Tools */}
-      <div className="bg-white border border-slate-200/80 rounded-3xl p-4 flex flex-col md:flex-row items-center justify-between gap-3 shadow-xs">
-        {/* Course Info & Type Filter */}
-        <div className="flex items-center gap-2 overflow-x-auto w-full md:w-auto pb-1 md:pb-0 scrollbar-none">
+      {/* 1. PROMINENT MODULE CONTEXT HEADER (Requirement 6) */}
+      <div className="bg-white border border-slate-200/90 rounded-3xl p-5 sm:p-6 shadow-xs flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+        <div className="flex items-center gap-4 min-w-0">
+          <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-slate-50 border border-slate-200 flex items-center justify-center p-2.5 shadow-2xs shrink-0">
+            {getModuleIcon(currentModule)}
+          </div>
+          <div className="min-w-0">
+            <div className="flex items-center gap-2 flex-wrap">
+              <span className="text-[10px] font-black uppercase tracking-wider text-indigo-700 bg-indigo-50 border border-indigo-200/80 px-2.5 py-0.5 rounded-full">
+                {currentModule?.academicYear || selectedYear}
+              </span>
+              <span className="text-[10px] font-bold text-slate-300">•</span>
+              <span className="text-[11px] font-extrabold text-slate-600">
+                Module d'Externat
+              </span>
+              {courseName && (
+                <>
+                  <span className="text-[10px] font-bold text-slate-300">•</span>
+                  <span className="text-[10px] font-black text-rose-700 bg-rose-50 border border-rose-200 px-2 py-0.5 rounded-md truncate max-w-[200px]">
+                    {courseName}
+                  </span>
+                </>
+              )}
+            </div>
+            <h1 className="text-xl sm:text-2xl font-black text-slate-900 tracking-tight mt-1 truncate">
+              {currentModule?.title || 'Cardiologie & Vasculaire'}
+            </h1>
+            <p className="text-xs text-slate-500 font-medium truncate max-w-xl mt-0.5 hidden sm:block">
+              {currentModule?.description || "Banque officielle de questions et cas cliniques d'externat"}
+            </p>
+          </div>
+        </div>
+
+        {/* Right side of prominent header: Questions count & Exit action */}
+        <div className="flex items-center gap-2.5 shrink-0 self-end sm:self-center">
+          <div className="px-3.5 py-1.5 rounded-2xl bg-slate-50 border border-slate-200/80 text-center">
+            <span className="text-[10px] font-bold text-slate-400 block uppercase tracking-wider">Banque</span>
+            <span className="text-xs sm:text-sm font-black text-slate-800">{filteredQuestions.length} QCMs</span>
+          </div>
           {onExitSession && (
             <button
               onClick={onExitSession}
-              className="px-3 py-1.5 rounded-full text-xs font-bold bg-slate-100 hover:bg-slate-200 text-slate-700 transition-colors flex items-center gap-1 shrink-0 cursor-pointer"
-              title="Quitter la série et revenir au cours"
+              className="px-3.5 py-2 rounded-2xl bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-extrabold transition-colors flex items-center gap-1.5 cursor-pointer shadow-2xs"
+              title="Quitter la série et revenir au module"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
-              <span className="hidden sm:inline">Retour</span>
+              <span>Quitter</span>
             </button>
           )}
+        </div>
+      </div>
 
-          {courseName && (
-            <div className="px-3.5 py-1.5 rounded-full text-xs font-bold bg-rose-50 border border-rose-200 text-rose-700 whitespace-nowrap flex items-center gap-1.5 shrink-0">
-              <VectorHeart size={16} />
-              <span className="truncate max-w-[180px] sm:max-w-xs">{courseName}</span>
-            </div>
-          )}
-
+      {/* 2. Top Header: Navigation & Action Tools */}
+      <div className="bg-white border border-slate-200/80 rounded-3xl p-4 flex flex-col md:flex-row items-center justify-between gap-3 shadow-xs">
+        {/* Course Info & Type Filter */}
+        <div className="flex items-center gap-2 overflow-x-auto w-full md:w-auto pb-1 md:pb-0 scrollbar-none flex-wrap">
           <div className="flex items-center bg-slate-100 p-0.5 rounded-full">
             <button
               onClick={() => setSelectedType('all')}
@@ -358,6 +484,49 @@ export const QCMEngine: React.FC<QCMEngineProps> = ({
               Cas Cliniques
             </button>
           </div>
+
+          {/* Subdivision Filter Pills */}
+          {availableSubdivisions.length > 1 && (
+            <div className="flex items-center bg-slate-100 p-0.5 rounded-full">
+              <button
+                onClick={() => {
+                  setSelectedSubdivision('all');
+                  setCurrentIndex(0);
+                }}
+                className={`px-2.5 py-1 rounded-full text-[11px] font-extrabold whitespace-nowrap transition-all cursor-pointer ${
+                  selectedSubdivision === 'all'
+                    ? 'bg-white text-slate-900 shadow-xs'
+                    : 'text-slate-600 hover:text-slate-900'
+                }`}
+              >
+                Tout le module
+              </button>
+              {availableSubdivisions.map((sub) => {
+                const isSelected = selectedSubdivision === sub;
+                const isHem = sub === 'Hématologie';
+                return (
+                  <button
+                    key={sub}
+                    onClick={() => {
+                      setSelectedSubdivision(sub);
+                      setCurrentIndex(0);
+                    }}
+                    className={`px-2.5 py-1 rounded-full text-[11px] font-extrabold whitespace-nowrap transition-all cursor-pointer ${
+                      isSelected
+                        ? isHem
+                          ? 'bg-rose-600 text-white shadow-xs'
+                          : 'bg-purple-600 text-white shadow-xs'
+                        : isHem
+                        ? 'text-rose-700 hover:bg-rose-50'
+                        : 'text-purple-700 hover:bg-purple-50'
+                    }`}
+                  >
+                    {isHem ? '🩸 Hématologie' : '🎗️ Oncologie'}
+                  </button>
+                );
+              })}
+            </div>
+          )}
         </div>
 
         {/* Action icons: Questions Drawer button, Elimination, Sound, Timer */}
@@ -461,7 +630,7 @@ export const QCMEngine: React.FC<QCMEngineProps> = ({
               Question {currentIndex + 1} sur {filteredQuestions.length}
             </span>
             <span className="px-3 py-1 rounded-full text-xs font-bold bg-slate-100 text-slate-700 flex items-center gap-1.5">
-              {currentQ.type === 'CasClinique' ? (
+              {currentQ.type === 'CasClinique' || currentQ.type === 'Cas Clinique' ? (
                 <>
                   <Stethoscope className="w-3.5 h-3.5 text-sky-600" />
                   <span>Cas Clinique</span>
@@ -476,6 +645,22 @@ export const QCMEngine: React.FC<QCMEngineProps> = ({
             {isMulti && (
               <span className="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-purple-100 text-purple-700 border border-purple-200">
                 Choix multiple
+              </span>
+            )}
+            {currentCourse?.subdivision && (
+              <span
+                className={`px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase border ${
+                  currentCourse.subdivision === 'Oncologie'
+                    ? 'bg-purple-50 text-purple-700 border-purple-200'
+                    : 'bg-rose-50 text-rose-700 border-rose-200'
+                }`}
+              >
+                {currentCourse.subdivision === 'Oncologie' ? '🎗️ Oncologie' : '🩸 Hématologie'}
+              </span>
+            )}
+            {currentCourse && (
+              <span className="hidden sm:inline-block px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-slate-100 text-slate-700 truncate max-w-xs">
+                {currentCourse.title}
               </span>
             )}
           </div>
@@ -505,10 +690,10 @@ export const QCMEngine: React.FC<QCMEngineProps> = ({
         <div className="p-5 sm:p-6 rounded-2xl bg-indigo-50/50 border border-indigo-100/80 relative">
           <div className="flex items-center gap-2 text-indigo-700 text-xs font-extrabold mb-2">
             <Stethoscope className="w-4 h-4" />
-            <span>{currentQ.type === 'CasClinique' ? 'Dossier Clinique Progressif :' : 'Énoncé Médical :'}</span>
+            <span>{currentQ.type === 'CasClinique' || currentQ.type === 'Cas Clinique' ? 'Dossier Clinique Progressif :' : 'Énoncé Médical :'}</span>
           </div>
           <p className="text-slate-900 text-base sm:text-lg leading-relaxed font-semibold">
-            {currentQ.questionText}
+            {currentQ.questionText || currentQ.content}
           </p>
         </div>
 

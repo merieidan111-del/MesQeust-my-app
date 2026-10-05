@@ -5,6 +5,15 @@ import {
   Layers,
   ChevronRight,
   Sparkles,
+  Bone,
+  HeartHandshake,
+  Baby,
+  Brain,
+  Activity,
+  Droplets,
+  Pill,
+  Stethoscope,
+  ShieldAlert,
 } from 'lucide-react';
 import { Module, AcademicYear } from '../types/medical';
 import {
@@ -33,7 +42,16 @@ export const ModulesDirectory: React.FC<ModulesDirectoryProps> = ({
     if (moduleId === 'mod-cardio') return <VectorHeart size={48} />;
     if (moduleId === 'mod-neuro') return <VectorBrain size={48} />;
     if (moduleId === 'mod-pneumo') return <VectorLungs size={48} />;
-    if (moduleId.includes('gastro') || moduleId.includes('nephro')) return <VectorLiver size={48} />;
+    if (moduleId === 'mod-infectio') return <ShieldAlert className="w-9 h-9 text-emerald-600" />;
+    if (moduleId.includes('gastro')) return <VectorLiver size={48} />;
+    if (moduleId === 'mod-5-otr') return <Bone className="w-9 h-9 text-amber-500" />;
+    if (moduleId === 'mod-5-gyn') return <HeartHandshake className="w-9 h-9 text-rose-500" />;
+    if (moduleId === 'mod-5-ped') return <Baby className="w-9 h-9 text-sky-500" />;
+    if (moduleId === 'mod-5-psy') return <Brain className="w-9 h-9 text-purple-500" />;
+    if (moduleId === 'mod-5-endo') return <Activity className="w-9 h-9 text-teal-500" />;
+    if (moduleId === 'mod-5-uro-nephro') return <Droplets className="w-9 h-9 text-cyan-500" />;
+    if (moduleId === 'mod-pharma3') return <Pill className="w-9 h-9 text-emerald-500" />;
+    if (moduleId === 'mod-semio3') return <Stethoscope className="w-9 h-9 text-teal-500" />;
     return <VectorHeart size={48} />;
   };
 
@@ -119,18 +137,36 @@ export const ModulesDirectory: React.FC<ModulesDirectoryProps> = ({
                 </div>
 
                 <div className="flex items-center gap-1.5">
-                  <span className="text-[10px] font-extrabold px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-700">
-                    {mod.coursesCount} cours
-                  </span>
-                  <span className="text-[10px] font-extrabold px-2.5 py-0.5 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-700">
-                    {mod.totalQuestions} QCMs
-                  </span>
+                  {mod.totalQuestions === 0 ? (
+                    <span className="text-[10px] font-extrabold px-2.5 py-0.5 rounded-full bg-amber-50 border border-amber-200 text-amber-700">
+                      Module à venir
+                    </span>
+                  ) : (
+                    <>
+                      <span className="text-[10px] font-extrabold px-2.5 py-0.5 rounded-full bg-slate-100 text-slate-700">
+                        {mod.coursesCount} cours
+                      </span>
+                      <span className="text-[10px] font-extrabold px-2.5 py-0.5 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-700">
+                        {mod.totalQuestions} QCMs
+                      </span>
+                    </>
+                  )}
                 </div>
               </div>
 
               <h4 className="font-extrabold text-base text-slate-900 group-hover:text-indigo-600 transition-colors">
                 {mod.title}
               </h4>
+              {mod.id === 'mod-hemato' && (
+                <div className="flex items-center gap-1.5 mt-1.5 mb-1 flex-wrap">
+                  <span className="text-[10px] font-extrabold px-2 py-0.5 rounded-lg bg-rose-50 border border-rose-200 text-rose-700">
+                    🩸 Hématologie (14 cours)
+                  </span>
+                  <span className="text-[10px] font-extrabold px-2 py-0.5 rounded-lg bg-purple-50 border border-purple-200 text-purple-700">
+                    🎗️ Oncologie (10 cours)
+                  </span>
+                </div>
+              )}
               <p className="text-xs text-slate-600 mt-1 line-clamp-2 leading-relaxed font-medium">
                 {mod.description}
               </p>
@@ -149,7 +185,9 @@ export const ModulesDirectory: React.FC<ModulesDirectoryProps> = ({
               </div>
 
               <div className="flex items-center justify-between text-xs text-slate-600 font-bold group-hover:text-indigo-600">
-                <span>Accéder aux 24 cours officiels</span>
+                <span>
+                  {mod.totalQuestions === 0 ? "Contenu en cours d'intégration" : "Accéder aux cours officiels"}
+                </span>
                 <ChevronRight className="w-4 h-4 text-indigo-500 group-hover:translate-x-1 transition-transform" />
               </div>
             </div>

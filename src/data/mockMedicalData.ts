@@ -11,6 +11,26 @@ import {
   ALL_CARDIOLOGY_COURSES,
   ALL_CARDIOLOGY_QUESTIONS,
 } from './cardiologyMaster';
+import {
+  PNEUMO_COURSES,
+  ALL_PNEUMOLOGY_QUESTIONS,
+  ALL_PNEUMOLOGY_RESOURCES,
+} from './pneumoMaster';
+import {
+  INFECTIO_COURSES,
+  ALL_INFECTIOLOGY_QUESTIONS,
+  ALL_INFECTIOLOGY_RESOURCES,
+} from './infectioMaster';
+import {
+  ALL_NEUROLOGY_COURSES,
+  ALL_NEUROLOGY_QUESTIONS,
+  ALL_NEUROLOGY_RESOURCES,
+} from './neuroMaster';
+import {
+  ALL_HEMATOLOGY_COURSES,
+  ALL_HEMATOLOGY_QUESTIONS,
+  ALL_HEMATOLOGY_RESOURCES,
+} from './hematoMaster';
 
 export const MEDICAL_MODULES: Module[] = [
   {
@@ -26,13 +46,13 @@ export const MEDICAL_MODULES: Module[] = [
   },
   {
     id: 'mod-neuro',
-    title: 'Neurologie Clinique',
+    title: 'Neurologie Clinique & Neurochirurgie',
     academicYear: '4ème Année',
     icon: 'Brain',
     color: 'from-indigo-500 to-purple-600',
-    description: 'AVC ischémiques & hémorragiques, épilepsie, maladie de Parkinson, méningites.',
-    totalQuestions: 24,
-    coursesCount: 4,
+    description: 'Programme officiel complet (26 cours extraits exactement des fichiers) : Démences, Syndromes topographiques, Syndromes neuromusculaires, Compression médullaire, AVC ischémique & hémorragique, Parkinson, TCE, Céphalées, Hydrocéphalie, Épilepsies, Pathologie musculaire, Craniosténoses, Neurodégénératif, Spina Bifida, SNP, Infections SNC, SEP, Tumeurs cérébrales, Urgences neurochir, HSA, HIC, Examen neurologique, Cas cliniques de motricité et ataxies.',
+    totalQuestions: ALL_NEUROLOGY_QUESTIONS.length,
+    coursesCount: ALL_NEUROLOGY_COURSES.length,
     progressPercent: 0,
   },
   {
@@ -52,20 +72,31 @@ export const MEDICAL_MODULES: Module[] = [
     academicYear: '4ème Année',
     icon: 'Wind',
     color: 'from-cyan-500 to-blue-600',
-    description: 'Asthme aigu grave, BPCO, pneumopathie franche lobaire, embolie pulmonaire.',
-    totalQuestions: 18,
-    coursesCount: 4,
+    description: 'Programme officiel complet (26 cours extraits exactement des fichiers originaux) : Tuberculose (prévention, pulmonaire, traitement), Cancers broncho-pulmonaires & TNM, Pleursies, BPCO, Asthme, DDB, Suppurations pulmonaires, PID, Sarcoïdose, Kyste hydatique, Pneumoconioses, Tumeurs médiastinales, Embolie pulmonaire, Gazométrie artérielle, Drainage & Ponction pleurale, EFR, Anapath.',
+    totalQuestions: ALL_PNEUMOLOGY_QUESTIONS.length,
+    coursesCount: PNEUMO_COURSES.length,
+    progressPercent: 0,
+  },
+  {
+    id: 'mod-infectio',
+    title: 'Infectiologie',
+    academicYear: '4ème Année',
+    icon: 'ShieldAlert',
+    color: 'from-emerald-600 to-teal-700',
+    description: 'Programme officiel complet (23 cours & cas cliniques extraits exactement des fichiers) : DHBNN & DHBN, Fièvre Boutonneuse Méditerranéenne, La Rage, Ictères infectieux, AES, Bon usage des antibiotiques, MNI (EBV), Diarrhées & TIAC, Méningites bactériennes, Leptospirose, Choléra, VIH/SIDA, Infections à Staphylocoques, Diphtérie, Streptocoques, Méningites purulentes, Brucellose, Bactériémie & Fongémie, Sepsis & Choc septique, Paludisme, Varicelle-Zona, Méningites à liquide clair, Recueil 20 Cas Pratiques Algérie.',
+    totalQuestions: ALL_INFECTIOLOGY_QUESTIONS.length,
+    coursesCount: INFECTIO_COURSES.length,
     progressPercent: 0,
   },
   {
     id: 'mod-hemato',
-    title: 'Hématologie & Onco',
+    title: 'Hématologie & Oncologie Médicale',
     academicYear: '4ème Année',
     icon: 'Activity',
     color: 'from-fuchsia-500 to-pink-600',
-    description: 'Anémies, leucémies aiguës, lymphomes, hémostase et thrombopénie.',
-    totalQuestions: 16,
-    coursesCount: 3,
+    description: 'Programme officiel complet (24 cours extraits exactement des fichiers avec subdivisions) : Subdivision 1 - Hématologie Clinique & Biologique (LLC Taoussi, CAT syndrome hémorragique, Adénopathies & SPM, CAT devant une anémie, Anémies hémolytiques, Leucémies aiguës, Hémostase, Cytopénies & Aplasie médullaire, LLC fiches révision, Lymphomes Hodgkin & Non-Hodgkin, Hémophilie & Coagulopathies, PTI, LMC, Anémies par carence en FAP). Subdivision 2 - Cancérologie & Oncologie Médicale (Urgences oncologiques, Diagnostic histologique des lymphomes, Effets secondaires des traitements, Armes thérapeutiques du cancer, Suivi du malade atteint de cancer, Classifications & Échelles, Bilan pré-thérapeutique, Diagnostic du cancer, Facteurs de risque & Prévention, Carcinogénèse moléculaire).',
+    totalQuestions: ALL_HEMATOLOGY_QUESTIONS.length,
+    coursesCount: ALL_HEMATOLOGY_COURSES.length,
     progressPercent: 0,
   },
   {
@@ -91,25 +122,69 @@ export const MEDICAL_MODULES: Module[] = [
     progressPercent: 0,
   },
   {
-    id: 'mod-urg5',
-    title: 'Urgences & Réanimation',
+    id: 'mod-5-otr',
+    title: 'Appareil locomoteur (OTR)',
     academicYear: '5ème Année',
-    icon: 'Flame',
-    color: 'from-red-500 to-rose-700',
-    description: 'États de choc (septique, cardiogénique, anaphylactique), arrêt cardio-respiratoire.',
-    totalQuestions: 26,
-    coursesCount: 5,
+    icon: 'Bone',
+    color: 'from-amber-500 to-orange-600',
+    description: 'Orthopédie, Traumatologie & Rhumatologie : fractures, arthropathies, rachis et pathologies dégénératives.',
+    totalQuestions: 0,
+    coursesCount: 0,
     progressPercent: 0,
   },
   {
-    id: 'mod-ped5',
-    title: 'Pédiatrie & Néonatalogie',
+    id: 'mod-5-gyn',
+    title: 'Gynécologie–Obstétrique',
+    academicYear: '5ème Année',
+    icon: 'HeartHandshake',
+    color: 'from-rose-500 to-pink-600',
+    description: 'Suivi de grossesse, accouchement, hémorragies obstétricales, pathologies gynécologiques et dépistage.',
+    totalQuestions: 0,
+    coursesCount: 0,
+    progressPercent: 0,
+  },
+  {
+    id: 'mod-5-ped',
+    title: 'Pédiatrie',
     academicYear: '5ème Année',
     icon: 'Baby',
     color: 'from-sky-500 to-indigo-600',
-    description: 'Bronchiolite du nourrisson, déshydratation aiguë, purpura fulminans, convulsions.',
-    totalQuestions: 20,
-    coursesCount: 4,
+    description: 'Croissance, développement psychomoteur, déshydratation, détresses respiratoires et urgences néonatales.',
+    totalQuestions: 0,
+    coursesCount: 0,
+    progressPercent: 0,
+  },
+  {
+    id: 'mod-5-psy',
+    title: 'Psychiatrie',
+    academicYear: '5ème Année',
+    icon: 'Brain',
+    color: 'from-purple-500 to-violet-600',
+    description: 'Troubles de l\'humeur, schizophrénie, états anxieux, conduites addictives et urgences psychiatriques.',
+    totalQuestions: 0,
+    coursesCount: 0,
+    progressPercent: 0,
+  },
+  {
+    id: 'mod-5-endo',
+    title: 'Endocrinologie & maladies métaboliques',
+    academicYear: '5ème Année',
+    icon: 'Activity',
+    color: 'from-teal-500 to-emerald-600',
+    description: 'Diabète de type 1 & 2, thyroïde, insuffisance surrénale, dyslipidémies et métabolisme phosphocalcique.',
+    totalQuestions: 0,
+    coursesCount: 0,
+    progressPercent: 0,
+  },
+  {
+    id: 'mod-5-uro-nephro',
+    title: 'Urologie & Néphrologie',
+    academicYear: '5ème Année',
+    icon: 'Droplets',
+    color: 'from-cyan-500 to-teal-600',
+    description: 'Syndromes néphrotiques, insuffisance rénale aiguë et chronique, lithiases urinaires et cancers urologiques.',
+    totalQuestions: 0,
+    coursesCount: 0,
     progressPercent: 0,
   },
 ];
@@ -117,40 +192,8 @@ export const MEDICAL_MODULES: Module[] = [
 export const MEDICAL_COURSES: Course[] = [
   ...ALL_CARDIOLOGY_COURSES,
 
-  // Neurology Courses
-  {
-    id: 'crs-neuro-1',
-    moduleId: 'mod-neuro',
-    title: 'Accidents Vasculaires Cérébraux Ischémiques & Reperfusion',
-    orderIndex: 1,
-    qcmCount: 12,
-    casCliniqueCount: 3,
-    resumesCount: 2,
-    astucesCount: 4,
-    completedPercent: 75,
-  },
-  {
-    id: 'crs-neuro-2',
-    moduleId: 'mod-neuro',
-    title: 'Crises Épileptiques & État de Mal Convulsif',
-    orderIndex: 2,
-    qcmCount: 10,
-    casCliniqueCount: 2,
-    resumesCount: 1,
-    astucesCount: 3,
-    completedPercent: 40,
-  },
-  {
-    id: 'crs-neuro-3',
-    moduleId: 'mod-neuro',
-    title: 'Maladie de Parkinson & Syndromes Parkinsoniens',
-    orderIndex: 3,
-    qcmCount: 8,
-    casCliniqueCount: 2,
-    resumesCount: 1,
-    astucesCount: 2,
-    completedPercent: 15,
-  },
+  // All 26 Neurology & Neurosurgery courses extracted exactly from the user's files
+  ...ALL_NEUROLOGY_COURSES,
 
   // Gastroenterology Courses
   {
@@ -200,12 +243,33 @@ export const MEDICAL_COURSES: Course[] = [
     resumesCount: 2,
     astucesCount: 4,
     completedPercent: 45,
-  }
+  },
+
+  // All 26 Pneumology courses extracted exactly from the user's PDF files
+  ...PNEUMO_COURSES,
+
+  // All 23 Infectiology courses extracted exactly from the user's files
+  ...INFECTIO_COURSES,
+
+  // All 24 Hematology & Oncology courses extracted exactly from the user's files
+  ...ALL_HEMATOLOGY_COURSES,
 ];
 
 export const INITIAL_QUESTIONS: Question[] = [
   // All comprehensive Cardiology questions integrated without skipping any
   ...ALL_CARDIOLOGY_QUESTIONS,
+
+  // All comprehensive Pneumology questions extracted directly from user files
+  ...ALL_PNEUMOLOGY_QUESTIONS,
+
+  // All comprehensive Infectiology questions extracted directly from user files
+  ...ALL_INFECTIOLOGY_QUESTIONS,
+
+  // All comprehensive Neurology & Neurosurgery questions extracted directly from user files
+  ...ALL_NEUROLOGY_QUESTIONS,
+
+  // All comprehensive Hematology & Oncology questions extracted directly from user files
+  ...ALL_HEMATOLOGY_QUESTIONS,
 
   // Question 1
   {
@@ -385,6 +449,10 @@ export const INITIAL_QUESTIONS: Question[] = [
 ];
 
 export const COURSE_RESOURCES: CourseResource[] = [
+  ...ALL_PNEUMOLOGY_RESOURCES,
+  ...ALL_INFECTIOLOGY_RESOURCES,
+  ...ALL_NEUROLOGY_RESOURCES,
+  ...ALL_HEMATOLOGY_RESOURCES,
   {
     id: 'res-cardio-1',
     courseId: 'crs-cardio-1',
