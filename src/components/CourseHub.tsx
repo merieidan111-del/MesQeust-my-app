@@ -19,6 +19,150 @@ import { Module, Course, CourseResource } from '../types/medical';
 import { MEDICAL_COURSES, COURSE_RESOURCES } from '../data/mockMedicalData';
 import { VectorHeart, VectorBrain, VectorLungs, VectorLiver } from './VectorOrgans';
 
+export const getSubdivisionMeta = (subdivision: string) => {
+  const s = subdivision.trim();
+  const lower = s.toLowerCase();
+
+  if (lower.includes('anapath')) {
+    return {
+      label: 'ANAPATH',
+      name: 'Anatomopathologie Digestive',
+      icon: '🔬',
+      badgeBg: 'bg-teal-50 text-teal-800 border-teal-200',
+      activeCardBg: 'bg-teal-50/80 border-teal-400 shadow-md ring-2 ring-teal-200',
+      hoverCardBg: 'bg-white hover:bg-teal-50/30 border-slate-200/80 shadow-xs hover:border-teal-200',
+      iconBg: 'bg-teal-100 text-teal-700',
+      pillActive: 'bg-teal-600 text-white shadow-sm',
+      pillInactive: 'text-teal-700 hover:text-teal-900 hover:bg-teal-50',
+      pillCount: 'bg-teal-100 text-teal-800',
+      pillCountActive: 'bg-teal-700 text-white',
+      btnActive: 'bg-teal-600 text-white shadow-xs',
+      btnPlay: 'bg-teal-700 hover:bg-teal-800 text-white',
+      bannerBg: 'bg-teal-50/90 border-teal-200 text-teal-900',
+      desc: 'Histologie, biopsies digestives, polypes adénomateux, dysplasie, métaplasie et critères microscopiques de malignité.',
+    };
+  }
+
+  if (lower.includes('cancer')) {
+    return {
+      label: 'LES CANCER',
+      name: 'Cancérologie & Oncologie Digestive',
+      icon: '🎗️',
+      badgeBg: 'bg-purple-50 text-purple-700 border-purple-200',
+      activeCardBg: 'bg-purple-50/80 border-purple-400 shadow-md ring-2 ring-purple-200',
+      hoverCardBg: 'bg-white hover:bg-purple-50/30 border-slate-200/80 shadow-xs hover:border-purple-200',
+      iconBg: 'bg-purple-100 text-purple-700',
+      pillActive: 'bg-purple-600 text-white shadow-sm',
+      pillInactive: 'text-purple-700 hover:text-purple-900 hover:bg-purple-50',
+      pillCount: 'bg-purple-100 text-purple-800',
+      pillCountActive: 'bg-purple-700 text-white',
+      btnActive: 'bg-purple-600 text-white shadow-xs',
+      btnPlay: 'bg-purple-700 hover:bg-purple-800 text-white',
+      bannerBg: 'bg-purple-50/90 border-purple-200 text-purple-900',
+      desc: 'Cancers colorectaux (CCR), adénocarcinome gastrique, cancer de l\'œsophage, CHC sur cirrhose, cancer pancréatique & TNM.',
+    };
+  }
+
+  if (lower.includes('urgence')) {
+    return {
+      label: 'Urgences',
+      name: 'Urgences Médico-Chirurgicales',
+      icon: '🚨',
+      badgeBg: 'bg-rose-50 text-rose-700 border-rose-200',
+      activeCardBg: 'bg-rose-50/80 border-rose-400 shadow-md ring-2 ring-rose-200',
+      hoverCardBg: 'bg-white hover:bg-rose-50/30 border-slate-200/80 shadow-xs hover:border-rose-200',
+      iconBg: 'bg-rose-100 text-rose-700',
+      pillActive: 'bg-rose-600 text-white shadow-sm',
+      pillInactive: 'text-rose-700 hover:text-rose-900 hover:bg-rose-50',
+      pillCount: 'bg-rose-100 text-rose-800',
+      pillCountActive: 'bg-rose-700 text-white',
+      btnActive: 'bg-rose-600 text-white shadow-xs',
+      btnPlay: 'bg-rose-700 hover:bg-rose-800 text-white',
+      bannerBg: 'bg-rose-50/90 border-rose-200 text-rose-900',
+      desc: 'Hémorragies digestives (hématémèse/méléna), pancréatite aiguë sévère, péritonites, OIA par strangulation & angiocholite.',
+    };
+  }
+
+  if (lower.includes('gastro')) {
+    return {
+      label: 'Gastro',
+      name: 'Gastroentérologie Médicale & Hépatologie',
+      icon: '🩺',
+      badgeBg: 'bg-amber-50 text-amber-800 border-amber-200',
+      activeCardBg: 'bg-amber-50/80 border-amber-400 shadow-md ring-2 ring-amber-200',
+      hoverCardBg: 'bg-white hover:bg-amber-50/30 border-slate-200/80 shadow-xs hover:border-amber-200',
+      iconBg: 'bg-amber-100 text-amber-800',
+      pillActive: 'bg-amber-600 text-white shadow-sm',
+      pillInactive: 'text-amber-800 hover:text-amber-950 hover:bg-amber-50',
+      pillCount: 'bg-amber-100 text-amber-900',
+      pillCountActive: 'bg-amber-700 text-white',
+      btnActive: 'bg-amber-600 text-white shadow-xs',
+      btnPlay: 'bg-amber-700 hover:bg-amber-800 text-white',
+      bannerBg: 'bg-amber-50/90 border-amber-200 text-amber-900',
+      desc: 'MUGD et H. pylori, MICI (Crohn et RCH), cirrhose & hypertension portale, hépatites virales B/C, lithiase & malabsorption.',
+    };
+  }
+
+  if (lower.includes('hémato') || lower.includes('hemato')) {
+    return {
+      label: 'Hématologie',
+      name: 'Hématologie Clinique & Biologique',
+      icon: '🩸',
+      badgeBg: 'bg-rose-50 text-rose-700 border-rose-200',
+      activeCardBg: 'bg-rose-50/80 border-rose-400 shadow-md ring-2 ring-rose-200',
+      hoverCardBg: 'bg-white hover:bg-rose-50/30 border-slate-200/80 shadow-xs hover:border-rose-200',
+      iconBg: 'bg-rose-100 text-rose-700',
+      pillActive: 'bg-rose-600 text-white shadow-sm',
+      pillInactive: 'text-rose-700 hover:text-rose-900 hover:bg-rose-50',
+      pillCount: 'bg-rose-100 text-rose-800',
+      pillCountActive: 'bg-rose-700 text-white',
+      btnActive: 'bg-rose-600 text-white shadow-xs',
+      btnPlay: 'bg-rose-700 hover:bg-rose-800 text-white',
+      bannerBg: 'bg-rose-50/90 border-rose-200 text-rose-900',
+      desc: 'LLC, syndromes hémorragiques, adénopathies & splénomégalie, anémies, leucémies aiguës, hémostase, PTI & coagulopathies.',
+    };
+  }
+
+  if (lower.includes('onco')) {
+    return {
+      label: 'Oncologie',
+      name: 'Cancérologie & Oncologie Médicale',
+      icon: '🎗️',
+      badgeBg: 'bg-purple-50 text-purple-700 border-purple-200',
+      activeCardBg: 'bg-purple-50/80 border-purple-400 shadow-md ring-2 ring-purple-200',
+      hoverCardBg: 'bg-white hover:bg-purple-50/30 border-slate-200/80 shadow-xs hover:border-purple-200',
+      iconBg: 'bg-purple-100 text-purple-700',
+      pillActive: 'bg-purple-600 text-white shadow-sm',
+      pillInactive: 'text-purple-700 hover:text-purple-900 hover:bg-purple-50',
+      pillCount: 'bg-purple-100 text-purple-800',
+      pillCountActive: 'bg-purple-700 text-white',
+      btnActive: 'bg-purple-600 text-white shadow-xs',
+      btnPlay: 'bg-purple-700 hover:bg-purple-800 text-white',
+      bannerBg: 'bg-purple-50/90 border-purple-200 text-purple-900',
+      desc: 'Urgences oncologiques, histologie des lymphomes, effets secondaires de chimio, armes thérapeutiques & classifications.',
+    };
+  }
+
+  // Fallback (e.g. 'Autres' or other future subdivisions)
+  return {
+    label: s,
+    name: s === 'Autres' ? 'Volet Complémentaire (Fichiers à venir)' : s,
+    icon: '📁',
+    badgeBg: 'bg-sky-50 text-sky-700 border-sky-200',
+    activeCardBg: 'bg-sky-50/80 border-sky-400 shadow-md ring-2 ring-sky-200',
+    hoverCardBg: 'bg-white hover:bg-sky-50/30 border-slate-200/80 shadow-xs hover:border-sky-200',
+    iconBg: 'bg-sky-100 text-sky-700',
+    pillActive: 'bg-sky-600 text-white shadow-sm',
+    pillInactive: 'text-sky-700 hover:text-sky-900 hover:bg-sky-50',
+    pillCount: 'bg-sky-100 text-sky-800',
+    pillCountActive: 'bg-sky-700 text-white',
+    btnActive: 'bg-sky-600 text-white shadow-xs',
+    btnPlay: 'bg-sky-700 hover:bg-sky-800 text-white',
+    bannerBg: 'bg-sky-50/90 border-sky-200 text-sky-900',
+    desc: 'Section réceptrice prête pour l\'intégration de vos prochains documents et cours de gastroentérologie.',
+  };
+};
+
 interface CourseHubProps {
   module: Module;
   onBack: () => void;
@@ -157,24 +301,25 @@ export const CourseHub: React.FC<CourseHubProps> = ({
     return (
       <div className="space-y-6 max-w-4xl mx-auto pb-12">
         <div className="p-8 sm:p-12 rounded-3xl bg-white border border-slate-200/80 shadow-xs text-center space-y-4">
-          <div className="w-16 h-16 rounded-2xl bg-indigo-50 text-indigo-600 flex items-center justify-center mx-auto shadow-xs">
-            <BookOpen className="w-8 h-8" />
+          <div className="w-20 h-20 rounded-2xl bg-slate-50 border border-slate-100 flex items-center justify-center mx-auto shadow-xs p-2">
+            {organMascot}
           </div>
           <span className="text-[11px] font-extrabold uppercase tracking-wider text-amber-700 px-3 py-1 rounded-full bg-amber-50 border border-amber-200">
-            {module.academicYear} • Module en cours d'intégration
+            {module.academicYear} • Module actuellement vide
           </span>
           <h2 className="text-2xl font-black text-slate-900 tracking-tight">
             {module.title}
           </h2>
           <p className="text-sm text-slate-600 max-w-md mx-auto leading-relaxed">
-            Ce module officiel est configuré comme espace de travail pour la {module.academicYear}. Les cours détaillés et banques de QCMs de concours seront ajoutés lors des prochaines mises à jour.
+            Ce module est actuellement totalement vide. Les cours, QCMs et cas cliniques y seront intégrés dès que vous fournirez son contenu ultérieurement.
           </p>
           <div className="pt-2">
             <button
+              type="button"
               onClick={onBack}
               className="px-6 py-3 rounded-full bg-indigo-600 hover:bg-indigo-700 text-white font-extrabold text-xs shadow-md transition-all cursor-pointer"
             >
-              Retourner aux modules
+              ← Retourner aux autres modules
             </button>
           </div>
         </div>
@@ -231,192 +376,146 @@ export const CourseHub: React.FC<CourseHubProps> = ({
         </div>
       </div>
 
-      {/* DEDICATED SUBDIVISION BENTO: Hematologie Aside & Oncologie Aside */}
+      {/* Module Gastro Notice Banner if in mod-gastro */}
+      {module.id === 'mod-gastro' && (
+        <div className="p-4 rounded-3xl bg-amber-500/10 border border-amber-300 text-amber-950 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-2xs">
+          <div className="flex items-center gap-3">
+            <span className="text-2xl">📋</span>
+            <div>
+              <div className="flex items-center gap-2">
+                <h3 className="text-xs font-black uppercase tracking-wider text-amber-900">
+                  Hépato-Gastroentérologie : Subdivisions Configurées
+                </h3>
+                <span className="text-[10px] font-extrabold px-2 py-0.5 rounded-full bg-amber-200/80 text-amber-900">
+                  5 Volets
+                </span>
+              </div>
+              <p className="text-xs font-medium text-amber-800 mt-0.5">
+                Subdivisions actives : <strong>ANAPATH</strong>, <strong>LES CANCER</strong>, <strong>Urgences</strong>, <strong>Gastro</strong> et <strong>Volet Complémentaire</strong> (prêt à recevoir vos prochains fichiers).
+              </p>
+            </div>
+          </div>
+          <span className="shrink-0 text-[11px] font-bold text-amber-900 bg-amber-100 border border-amber-200 px-3 py-1 rounded-xl">
+            Prêt pour vos fichiers
+          </span>
+        </div>
+      )}
+
+      {/* DEDICATED DYNAMIC SUBDIVISION BENTO: Supports ANAPATH, LES CANCER, Urgences, Gastro, Hématologie, Oncologie, etc. */}
       {hasSubdivisions && (
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          {/* Subdivision Card 1: Hématologie */}
-          <div
-            onClick={() => {
-              setSelectedSubdivision('Hématologie');
-              const firstHem = courses.find((c) => c.subdivision === 'Hématologie');
-              if (firstHem) {
-                setSelectedCourse(firstHem);
-                setExpandedCourseId(firstHem.id);
-              }
-            }}
-            className={`p-6 rounded-3xl border transition-all cursor-pointer relative overflow-hidden group ${
-              selectedSubdivision === 'Hématologie'
-                ? 'bg-rose-50/80 border-rose-400 shadow-md ring-2 ring-rose-200'
-                : 'bg-white hover:bg-rose-50/30 border-slate-200/80 shadow-xs hover:border-rose-200'
-            }`}
-          >
-            <div className="flex items-start justify-between gap-3 mb-3">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-2xl bg-rose-100 text-rose-700 flex items-center justify-center font-black text-2xl shadow-xs shrink-0">
-                  🩸
-                </div>
+        <div
+          className={`grid gap-4 ${
+            subdivisions.length === 1
+              ? 'grid-cols-1'
+              : subdivisions.length === 2
+              ? 'grid-cols-1 md:grid-cols-2'
+              : subdivisions.length === 3
+              ? 'grid-cols-1 md:grid-cols-3'
+              : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-4'
+          }`}
+        >
+          {subdivisions.map((sub, sIdx) => {
+            const meta = getSubdivisionMeta(sub);
+            const isSubSelected = selectedSubdivision === sub;
+            const stats = subdivisionStats[sub] || { count: 0, qcms: 0, cas: 0, total: 0 };
+
+            return (
+              <div
+                key={sub}
+                onClick={() => {
+                  setSelectedSubdivision(sub);
+                  const firstSubCourse = courses.find((c) => c.subdivision === sub);
+                  if (firstSubCourse) {
+                    setSelectedCourse(firstSubCourse);
+                    setExpandedCourseId(firstSubCourse.id);
+                  }
+                }}
+                className={`p-5 rounded-3xl border transition-all cursor-pointer relative overflow-hidden group flex flex-col justify-between ${
+                  isSubSelected ? meta.activeCardBg : meta.hoverCardBg
+                }`}
+              >
                 <div>
-                  <div className="flex items-center gap-1.5">
-                    <span className="text-[10px] font-extrabold uppercase tracking-wider text-rose-600 px-2 py-0.5 rounded-full bg-rose-100/60 border border-rose-200">
-                      Volet n°1
+                  <div className="flex items-start justify-between gap-2 mb-3">
+                    <div className="flex items-center gap-2.5 min-w-0">
+                      <div
+                        className={`w-11 h-11 rounded-2xl ${meta.iconBg} flex items-center justify-center font-black text-xl shadow-xs shrink-0`}
+                      >
+                        {meta.icon}
+                      </div>
+                      <div className="min-w-0">
+                        <div className="flex items-center gap-1.5 flex-wrap">
+                          <span
+                            className={`text-[9px] font-extrabold uppercase tracking-wider px-2 py-0.5 rounded-full border ${meta.badgeBg}`}
+                          >
+                            Volet n°{sIdx + 1}
+                          </span>
+                          {isSubSelected && (
+                            <span className="text-[9px] font-black uppercase text-emerald-700 bg-emerald-100 px-1.5 py-0.5 rounded-full">
+                              Actif
+                            </span>
+                          )}
+                        </div>
+                        <h3 className="text-sm sm:text-base font-black text-slate-900 tracking-tight mt-0.5 truncate">
+                          {meta.label}
+                        </h3>
+                      </div>
+                    </div>
+                    <span className={`text-[11px] font-black px-2.5 py-1 rounded-xl shrink-0 ${meta.badgeBg}`}>
+                      {stats.count} Cours
                     </span>
-                    {selectedSubdivision === 'Hématologie' && (
-                      <span className="text-[9px] font-black uppercase text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full">
-                        Actif
-                      </span>
+                  </div>
+
+                  <p className="text-[11px] text-slate-600 leading-relaxed font-medium mb-3 line-clamp-3">
+                    {meta.desc}
+                  </p>
+                </div>
+
+                <div className="pt-3 border-t border-slate-100 flex flex-col gap-2 mt-auto">
+                  <div className="text-[11px] font-bold text-slate-700 flex items-center justify-between">
+                    <span>{stats.qcms} QCMs • {stats.cas} Cas</span>
+                    <span className="text-slate-400 font-semibold">({stats.total} tot.)</span>
+                  </div>
+
+                  <div className="flex items-center gap-1.5 w-full">
+                    <button
+                      type="button"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        setSelectedSubdivision(sub);
+                        const firstSubCourse = courses.find((c) => c.subdivision === sub);
+                        if (firstSubCourse) {
+                          setSelectedCourse(firstSubCourse);
+                          setExpandedCourseId(firstSubCourse.id);
+                        }
+                      }}
+                      className={`flex-1 px-2.5 py-1.5 rounded-xl text-[11px] font-extrabold transition-all cursor-pointer text-center ${
+                        isSubSelected
+                          ? meta.btnActive
+                          : 'bg-white hover:bg-slate-100 text-slate-700 border border-slate-200'
+                      }`}
+                    >
+                      {isSubSelected ? '✓ Volet affiché' : `Filtrer ${meta.label}`}
+                    </button>
+
+                    {onLaunchSubdivisionPractice && stats.total > 0 && (
+                      <button
+                        type="button"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          onLaunchSubdivisionPractice(sub, 'QCM');
+                        }}
+                        className={`px-2.5 py-1.5 rounded-xl text-[11px] font-extrabold ${meta.btnPlay} shadow-xs flex items-center justify-center gap-1 cursor-pointer transition-all shrink-0`}
+                        title="Lancer l'entraînement complet sur cette subdivision"
+                      >
+                        <Play className="w-3 h-3 fill-white text-white" />
+                        <span>Série</span>
+                      </button>
                     )}
                   </div>
-                  <h3 className="text-base sm:text-lg font-black text-slate-900 tracking-tight mt-0.5">
-                    Hématologie Clinique & Biologique
-                  </h3>
                 </div>
               </div>
-              <span className="text-xs font-black text-rose-700 bg-rose-100 px-3 py-1 rounded-xl shrink-0">
-                {subdivisionStats['Hématologie']?.count || 14} Cours
-              </span>
-            </div>
-
-            <p className="text-xs text-slate-600 leading-relaxed font-medium mb-4">
-              LLC, Syndromes hémorragiques, Adénopathies & Splénomégalie, Anémies, Leucémies aiguës, Hémostase, Aplasie médullaire, PTI, Hémophilie, LMC & carences en FAP.
-            </p>
-
-            <div className="pt-3 border-t border-rose-100/90 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-              <div className="text-xs font-bold text-rose-800 flex items-center gap-2">
-                <span>{subdivisionStats['Hématologie']?.qcms || 350} QCMs</span>
-                <span>•</span>
-                <span>{subdivisionStats['Hématologie']?.cas || 70} Cas Cliniques</span>
-                <span>({subdivisionStats['Hématologie']?.total || 420} total)</span>
-              </div>
-
-              <div className="flex items-center gap-2 w-full sm:w-auto">
-                <button
-                  type="button"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setSelectedSubdivision('Hématologie');
-                    const firstHem = courses.find((c) => c.subdivision === 'Hématologie');
-                    if (firstHem) {
-                      setSelectedCourse(firstHem);
-                      setExpandedCourseId(firstHem.id);
-                    }
-                  }}
-                  className={`flex-1 sm:flex-none px-3 py-1.5 rounded-xl text-xs font-extrabold transition-all cursor-pointer ${
-                    selectedSubdivision === 'Hématologie'
-                      ? 'bg-rose-600 text-white shadow-xs'
-                      : 'bg-white hover:bg-rose-100 text-rose-700 border border-rose-200'
-                  }`}
-                >
-                  {selectedSubdivision === 'Hématologie' ? '✓ Volet affiché' : 'Filtrer l\'Hématologie'}
-                </button>
-
-                {onLaunchSubdivisionPractice && (
-                  <button
-                    type="button"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      onLaunchSubdivisionPractice('Hématologie', 'QCM');
-                    }}
-                    className="flex-1 sm:flex-none px-3 py-1.5 rounded-xl text-xs font-extrabold bg-rose-700 hover:bg-rose-800 text-white shadow-xs flex items-center justify-center gap-1 cursor-pointer transition-all"
-                  >
-                    <Play className="w-3 h-3 fill-white text-white" />
-                    <span>Lancer Série</span>
-                  </button>
-                )}
-              </div>
-            </div>
-          </div>
-
-          {/* Subdivision Card 2: Oncologie */}
-          <div
-            onClick={() => {
-              setSelectedSubdivision('Oncologie');
-              const firstOnc = courses.find((c) => c.subdivision === 'Oncologie');
-              if (firstOnc) {
-                setSelectedCourse(firstOnc);
-                setExpandedCourseId(firstOnc.id);
-              }
-            }}
-            className={`p-6 rounded-3xl border transition-all cursor-pointer relative overflow-hidden group ${
-              selectedSubdivision === 'Oncologie'
-                ? 'bg-purple-50/80 border-purple-400 shadow-md ring-2 ring-purple-200'
-                : 'bg-white hover:bg-purple-50/30 border-slate-200/80 shadow-xs hover:border-purple-200'
-            }`}
-          >
-            <div className="flex items-start justify-between gap-3 mb-3">
-              <div className="flex items-center gap-3">
-                <div className="w-12 h-12 rounded-2xl bg-purple-100 text-purple-700 flex items-center justify-center font-black text-2xl shadow-xs shrink-0">
-                  🎗️
-                </div>
-                <div>
-                  <div className="flex items-center gap-1.5">
-                    <span className="text-[10px] font-extrabold uppercase tracking-wider text-purple-600 px-2 py-0.5 rounded-full bg-purple-100/60 border border-purple-200">
-                      Volet n°2
-                    </span>
-                    {selectedSubdivision === 'Oncologie' && (
-                      <span className="text-[9px] font-black uppercase text-emerald-700 bg-emerald-100 px-2 py-0.5 rounded-full">
-                        Actif
-                      </span>
-                    )}
-                  </div>
-                  <h3 className="text-base sm:text-lg font-black text-slate-900 tracking-tight mt-0.5">
-                    Cancérologie & Oncologie Médicale
-                  </h3>
-                </div>
-              </div>
-              <span className="text-xs font-black text-purple-700 bg-purple-100 px-3 py-1 rounded-xl shrink-0">
-                {subdivisionStats['Oncologie']?.count || 10} Cours
-              </span>
-            </div>
-
-            <p className="text-xs text-slate-600 leading-relaxed font-medium mb-4">
-              Urgences oncologiques, Diagnostic histologique des lymphomes, Effets secondaires de chimio, Armes thérapeutiques, Suivi, Échelles, Bilan pré-thérapeutique, Dépistage & Carcinogénèse.
-            </p>
-
-            <div className="pt-3 border-t border-purple-100/90 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
-              <div className="text-xs font-bold text-purple-800 flex items-center gap-2">
-                <span>{subdivisionStats['Oncologie']?.qcms || 250} QCMs</span>
-                <span>•</span>
-                <span>{subdivisionStats['Oncologie']?.cas || 50} Cas Cliniques</span>
-                <span>({subdivisionStats['Oncologie']?.total || 300} total)</span>
-              </div>
-
-              <div className="flex items-center gap-2 w-full sm:w-auto">
-                <button
-                  type="button"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    setSelectedSubdivision('Oncologie');
-                    const firstOnc = courses.find((c) => c.subdivision === 'Oncologie');
-                    if (firstOnc) {
-                      setSelectedCourse(firstOnc);
-                      setExpandedCourseId(firstOnc.id);
-                    }
-                  }}
-                  className={`flex-1 sm:flex-none px-3 py-1.5 rounded-xl text-xs font-extrabold transition-all cursor-pointer ${
-                    selectedSubdivision === 'Oncologie'
-                      ? 'bg-purple-600 text-white shadow-xs'
-                      : 'bg-white hover:bg-purple-100 text-purple-700 border border-purple-200'
-                  }`}
-                >
-                  {selectedSubdivision === 'Oncologie' ? '✓ Volet affiché' : 'Filtrer l\'Oncologie'}
-                </button>
-
-                {onLaunchSubdivisionPractice && (
-                  <button
-                    type="button"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      onLaunchSubdivisionPractice('Oncologie', 'QCM');
-                    }}
-                    className="flex-1 sm:flex-none px-3 py-1.5 rounded-xl text-xs font-extrabold bg-purple-700 hover:bg-purple-800 text-white shadow-xs flex items-center justify-center gap-1 cursor-pointer transition-all"
-                  >
-                    <Play className="w-3 h-3 fill-white text-white" />
-                    <span>Lancer Série</span>
-                  </button>
-                )}
-              </div>
-            </div>
-          </div>
+            );
+          })}
         </div>
       )}
 
@@ -438,11 +537,11 @@ export const CourseHub: React.FC<CourseHubProps> = ({
 
           {/* Quick Filter Switcher Pills */}
           {hasSubdivisions && (
-            <div className="flex items-center gap-1.5 bg-slate-100/90 p-1.5 rounded-2xl border border-slate-200/70">
+            <div className="flex flex-wrap items-center gap-1.5 bg-slate-100/90 p-1.5 rounded-2xl border border-slate-200/70">
               <button
                 type="button"
                 onClick={() => setSelectedSubdivision('all')}
-                className={`flex-1 py-1.5 px-2 rounded-xl text-xs font-extrabold transition-all cursor-pointer ${
+                className={`py-1.5 px-2.5 rounded-xl text-xs font-extrabold transition-all cursor-pointer ${
                   selectedSubdivision === 'all'
                     ? 'bg-white text-slate-900 shadow-sm border border-slate-200/60'
                     : 'text-slate-600 hover:text-slate-900 hover:bg-white/40'
@@ -450,61 +549,62 @@ export const CourseHub: React.FC<CourseHubProps> = ({
               >
                 Tout ({courses.length})
               </button>
-              <button
-                type="button"
-                onClick={() => setSelectedSubdivision('Hématologie')}
-                className={`flex-1 py-1.5 px-2 rounded-xl text-xs font-extrabold transition-all flex items-center justify-center gap-1 cursor-pointer ${
-                  selectedSubdivision === 'Hématologie'
-                    ? 'bg-rose-600 text-white shadow-sm'
-                    : 'text-rose-700 hover:text-rose-900 hover:bg-rose-50'
-                }`}
-              >
-                <span>🩸 Hématologie</span>
-                <span className={`text-[10px] px-1.5 py-0.2 rounded-full font-bold ${
-                  selectedSubdivision === 'Hématologie' ? 'bg-rose-700 text-white' : 'bg-rose-100 text-rose-800'
-                }`}>
-                  {subdivisionStats['Hématologie']?.count || 14}
-                </span>
-              </button>
-              <button
-                type="button"
-                onClick={() => setSelectedSubdivision('Oncologie')}
-                className={`flex-1 py-1.5 px-2 rounded-xl text-xs font-extrabold transition-all flex items-center justify-center gap-1 cursor-pointer ${
-                  selectedSubdivision === 'Oncologie'
-                    ? 'bg-purple-600 text-white shadow-sm'
-                    : 'text-purple-700 hover:text-purple-900 hover:bg-purple-50'
-                }`}
-              >
-                <span>🎗️ Oncologie</span>
-                <span className={`text-[10px] px-1.5 py-0.2 rounded-full font-bold ${
-                  selectedSubdivision === 'Oncologie' ? 'bg-purple-700 text-white' : 'bg-purple-100 text-purple-800'
-                }`}>
-                  {subdivisionStats['Oncologie']?.count || 10}
-                </span>
-              </button>
+              {subdivisions.map((sub) => {
+                const meta = getSubdivisionMeta(sub);
+                const isSubSelected = selectedSubdivision === sub;
+                return (
+                  <button
+                    key={sub}
+                    type="button"
+                    onClick={() => {
+                      setSelectedSubdivision(sub);
+                      const firstSubCourse = courses.find((c) => c.subdivision === sub);
+                      if (firstSubCourse) {
+                        setSelectedCourse(firstSubCourse);
+                        setExpandedCourseId(firstSubCourse.id);
+                      }
+                    }}
+                    className={`py-1.5 px-2.5 rounded-xl text-xs font-extrabold transition-all flex items-center justify-center gap-1.5 cursor-pointer ${
+                      isSubSelected ? meta.pillActive : meta.pillInactive
+                    }`}
+                  >
+                    <span>
+                      {meta.icon} {meta.label}
+                    </span>
+                    <span
+                      className={`text-[10px] px-1.5 py-0.2 rounded-full font-bold ${
+                        isSubSelected ? meta.pillCountActive : meta.pillCount
+                      }`}
+                    >
+                      {subdivisionStats[sub]?.count || 0}
+                    </span>
+                  </button>
+                );
+              })}
             </div>
           )}
 
           {/* Active Filter Notice */}
-          {selectedSubdivision !== 'all' && (
-            <div className={`px-3 py-2 rounded-2xl border flex items-center justify-between text-xs animate-in fade-in duration-200 ${
-              selectedSubdivision === 'Hématologie'
-                ? 'bg-rose-50/90 border-rose-200 text-rose-900'
-                : 'bg-purple-50/90 border-purple-200 text-purple-900'
-            }`}>
-              <div className="flex items-center gap-2 font-bold">
-                <span>{selectedSubdivision === 'Hématologie' ? '🩸' : '🎗️'}</span>
-                <span>Volet {selectedSubdivision} activé ({displayedCourses.length} cours)</span>
-              </div>
-              <button
-                type="button"
-                onClick={() => setSelectedSubdivision('all')}
-                className="text-[11px] font-extrabold underline hover:opacity-80 cursor-pointer"
+          {selectedSubdivision !== 'all' && (() => {
+            const meta = getSubdivisionMeta(selectedSubdivision);
+            return (
+              <div
+                className={`px-3 py-2 rounded-2xl border flex items-center justify-between text-xs animate-in fade-in duration-200 ${meta.bannerBg}`}
               >
-                Tout réafficher
-              </button>
-            </div>
-          )}
+                <div className="flex items-center gap-2 font-bold">
+                  <span>{meta.icon}</span>
+                  <span>Volet {meta.label} activé ({displayedCourses.length} cours)</span>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setSelectedSubdivision('all')}
+                  className="text-[11px] font-extrabold underline hover:opacity-80 cursor-pointer"
+                >
+                  Tout réafficher
+                </button>
+              </div>
+            );
+          })()}
 
           <div className="space-y-2.5 max-h-[700px] overflow-y-auto pr-1 scrollbar-thin">
             {displayedCourses.map((course, idx) => {
@@ -512,34 +612,26 @@ export const CourseHub: React.FC<CourseHubProps> = ({
               const isExpanded = expandedCourseId === course.id;
 
               // Check if we need to show a subdivision divider when viewing 'all'
-              const showHematoDivider = selectedSubdivision === 'all' && idx === 0 && course.subdivision === 'Hématologie';
-              const showOncoDivider = selectedSubdivision === 'all' && course.subdivision === 'Oncologie' && displayedCourses[idx - 1]?.subdivision !== 'Oncologie';
+              const prevCourse = displayedCourses[idx - 1];
+              const showSubDivider =
+                selectedSubdivision === 'all' &&
+                Boolean(course.subdivision) &&
+                (!prevCourse || prevCourse.subdivision !== course.subdivision);
+              const courseMeta = course.subdivision ? getSubdivisionMeta(course.subdivision) : null;
 
               return (
                 <React.Fragment key={course.id}>
-                  {showHematoDivider && (
-                    <div className="pt-1 pb-1">
-                      <div className="px-3.5 py-2 rounded-2xl bg-gradient-to-r from-rose-50 to-pink-50 border border-rose-200/80 flex items-center justify-between text-xs font-black text-rose-900 shadow-2xs">
+                  {showSubDivider && courseMeta && (
+                    <div className="pt-2 pb-1">
+                      <div
+                        className={`px-3.5 py-2 rounded-2xl border flex items-center justify-between text-xs font-black shadow-2xs ${courseMeta.badgeBg}`}
+                      >
                         <div className="flex items-center gap-2">
-                          <span className="text-sm">🩸</span>
-                          <span>SUBDIVISION 1 : HÉMATOLOGIE CLINIQUE & BIOLOGIQUE</span>
+                          <span className="text-sm">{courseMeta.icon}</span>
+                          <span>SUBDIVISION : {courseMeta.label} ({courseMeta.name})</span>
                         </div>
-                        <span className="text-[10px] font-extrabold text-rose-700 bg-rose-100/80 px-2 py-0.5 rounded-lg">
-                          14 cours
-                        </span>
-                      </div>
-                    </div>
-                  )}
-
-                  {showOncoDivider && (
-                    <div className="pt-4 pb-1">
-                      <div className="px-3.5 py-2 rounded-2xl bg-gradient-to-r from-purple-50 to-indigo-50 border border-purple-200/80 flex items-center justify-between text-xs font-black text-purple-900 shadow-2xs">
-                        <div className="flex items-center gap-2">
-                          <span className="text-sm">🎗️</span>
-                          <span>SUBDIVISION 2 : CANCÉROLOGIE & ONCOLOGIE MÉDICALE</span>
-                        </div>
-                        <span className="text-[10px] font-extrabold text-purple-700 bg-purple-100/80 px-2 py-0.5 rounded-lg">
-                          10 cours
+                        <span className="text-[10px] font-extrabold px-2 py-0.5 rounded-lg bg-white/80">
+                          {subdivisionStats[course.subdivision || '']?.count || 0} cours
                         </span>
                       </div>
                     </div>
@@ -548,9 +640,9 @@ export const CourseHub: React.FC<CourseHubProps> = ({
                   <div
                     className={`rounded-2xl border transition-all overflow-hidden ${
                       isSelected
-                        ? course.subdivision === 'Oncologie'
-                          ? 'bg-white border-purple-400 shadow-md ring-2 ring-purple-100'
-                          : 'bg-white border-rose-400 shadow-md ring-2 ring-rose-100'
+                        ? courseMeta
+                          ? courseMeta.activeCardBg
+                          : 'bg-white border-indigo-400 shadow-md ring-2 ring-indigo-100'
                         : 'bg-white hover:bg-slate-50/80 border-slate-200/80'
                     }`}
                   >
@@ -563,9 +655,9 @@ export const CourseHub: React.FC<CourseHubProps> = ({
                         <span
                           className={`w-7 h-7 rounded-xl flex items-center justify-center text-xs font-black shrink-0 transition-colors ${
                             isSelected
-                              ? course.subdivision === 'Oncologie'
-                                ? 'bg-purple-600 text-white'
-                                : 'bg-rose-600 text-white'
+                              ? courseMeta
+                                ? courseMeta.btnActive
+                                : 'bg-indigo-600 text-white'
                               : 'bg-slate-100 text-slate-600'
                           }`}
                         >
@@ -573,24 +665,18 @@ export const CourseHub: React.FC<CourseHubProps> = ({
                         </span>
                         <div className="min-w-0">
                           <div className="flex items-center gap-1.5 mb-0.5">
-                            {course.subdivision && (
+                            {course.subdivision && courseMeta && (
                               <span
-                                className={`text-[9px] font-extrabold uppercase px-1.5 py-0.2 rounded-md border ${
-                                  course.subdivision === 'Oncologie'
-                                    ? 'bg-purple-50 text-purple-700 border-purple-200'
-                                    : 'bg-rose-50 text-rose-700 border-rose-200'
-                                }`}
+                                className={`text-[9px] font-extrabold uppercase px-1.5 py-0.2 rounded-md border ${courseMeta.badgeBg}`}
                               >
-                                {course.subdivision === 'Oncologie' ? '🎗️ Oncologie' : '🩸 Hématologie'}
+                                {courseMeta.icon} {courseMeta.label}
                               </span>
                             )}
                           </div>
                           <h4
                             className={`text-xs font-bold truncate transition-colors ${
                               isSelected
-                                ? course.subdivision === 'Oncologie'
-                                  ? 'text-purple-950 font-black'
-                                  : 'text-rose-950 font-black'
+                                ? 'text-slate-950 font-black'
                                 : 'text-slate-800'
                             }`}
                           >
@@ -607,9 +693,7 @@ export const CourseHub: React.FC<CourseHubProps> = ({
                       <ChevronRight
                         className={`w-4 h-4 shrink-0 transition-transform duration-200 ${
                           isExpanded
-                            ? course.subdivision === 'Oncologie'
-                              ? 'rotate-90 text-purple-600'
-                              : 'rotate-90 text-rose-600'
+                            ? 'rotate-90 text-indigo-600'
                             : 'text-slate-300'
                         }`}
                       />
@@ -730,19 +814,17 @@ export const CourseHub: React.FC<CourseHubProps> = ({
                   <span className="text-[10px] font-extrabold uppercase tracking-wider text-rose-600 px-2 py-0.5 rounded-full bg-rose-50 border border-rose-200">
                     Cours n°{selectedCourse.orderIndex} Sélectionné
                   </span>
-                  {selectedCourse.subdivision && (
-                    <span
-                      className={`text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full border ${
-                        selectedCourse.subdivision === 'Oncologie'
-                          ? 'bg-purple-50 text-purple-700 border-purple-200'
-                          : 'bg-rose-50 text-rose-700 border-rose-200'
-                      }`}
-                    >
-                      {selectedCourse.subdivision === 'Oncologie'
-                        ? '🎗️ Subdivision Cancérologie & Oncologie'
-                        : '🩸 Subdivision Hématologie Clinique'}
-                    </span>
-                  )}
+                  {selectedCourse.subdivision && (() => {
+                    const selMeta = getSubdivisionMeta(selectedCourse.subdivision);
+                    return (
+                      <span
+                        className={`text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full border flex items-center gap-1 ${selMeta.badgeBg}`}
+                      >
+                        <span>{selMeta.icon}</span>
+                        <span>Volet {selMeta.label} : {selMeta.name}</span>
+                      </span>
+                    );
+                  })()}
                 </div>
                 <h2 className="text-lg sm:text-xl font-black text-slate-900 tracking-tight mt-1.5">
                   {selectedCourse.title}

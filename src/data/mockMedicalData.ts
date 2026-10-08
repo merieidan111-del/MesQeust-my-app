@@ -31,6 +31,11 @@ import {
   ALL_HEMATOLOGY_QUESTIONS,
   ALL_HEMATOLOGY_RESOURCES,
 } from './hematoMaster';
+import {
+  GASTRO_COURSES,
+  ALL_GASTRO_QUESTIONS,
+  ALL_GASTRO_RESOURCES,
+} from './gastroMaster';
 
 export const MEDICAL_MODULES: Module[] = [
   {
@@ -61,9 +66,9 @@ export const MEDICAL_MODULES: Module[] = [
     academicYear: '4ème Année',
     icon: 'Stethoscope',
     color: 'from-amber-500 to-orange-600',
-    description: 'Cirrhose et complications, pancréatite aiguë, MICI, hémorragies digestives.',
-    totalQuestions: 20,
-    coursesCount: 4,
+    description: "Programme officiel complet (40 cours – Module intégral Hépato-Gastroentérologie) : ANAPATH (Anapath cancer gastrique, Pathologie hépatique) ; CANCÉROLOGIE (Cancer de l'estomac, Tumeurs du pancréas, Cancer du côlon, Cancer du rectum, Cancer du canal anal, GIST, Cancer de l'œsophage, CHC & Tumeurs hépatiques) ; URGENCES (Appendicite aiguë, Hernies abdominales, Lésions caustiques, Pancréatite aiguë, Péritonites aiguës, Occlusions intestinales, Ischémie mésentérique, Traumatismes abdominaux, Hémorragies digestives) ; GASTRO & HÉPATOLOGIE (Kyste hydatique, Tumeurs bénignes foie, Polypes/polyposes, Tuberculose digestive, MUGD & H. pylori, Gastrites & Biermer, RGO & hernie hiatale, Maladie de Crohn, RCH, Maladie cœliaque, Diarrhées chroniques, Colopathie fonctionnelle / SII, Lithiase biliaire, Pancréatite chronique, Hypertension portale, Cirrhose hépatique, Hépatites aiguës, Hépatites chroniques, Ictères, Hémorroïdes, Fissures/fistules anales & Diverticulose).",
+    totalQuestions: ALL_GASTRO_QUESTIONS.length,
+    coursesCount: GASTRO_COURSES.length,
     progressPercent: 0,
   },
   {
@@ -195,29 +200,8 @@ export const MEDICAL_COURSES: Course[] = [
   // All 26 Neurology & Neurosurgery courses extracted exactly from the user's files
   ...ALL_NEUROLOGY_COURSES,
 
-  // Gastroenterology Courses
-  {
-    id: 'crs-gastro-1',
-    moduleId: 'mod-gastro',
-    title: 'Cirrhose du Foie & Complications (Ascite, PBS, Encéphalopathie)',
-    orderIndex: 1,
-    qcmCount: 10,
-    casCliniqueCount: 3,
-    resumesCount: 2,
-    astucesCount: 4,
-    completedPercent: 50,
-  },
-  {
-    id: 'crs-gastro-2',
-    moduleId: 'mod-gastro',
-    title: 'Pancréatite Aiguë Médicale & Biliaire',
-    orderIndex: 2,
-    qcmCount: 8,
-    casCliniqueCount: 2,
-    resumesCount: 1,
-    astucesCount: 2,
-    completedPercent: 20,
-  },
+  // Gastroenterology Courses (Official Blida curriculum including OIA Dr Hamoudi)
+  ...GASTRO_COURSES,
 
   // Semiologie 3rd Year
   {
@@ -270,6 +254,9 @@ export const INITIAL_QUESTIONS: Question[] = [
 
   // All comprehensive Hematology & Oncology questions extracted directly from user files
   ...ALL_HEMATOLOGY_QUESTIONS,
+
+  // All comprehensive Hepatogastroenterology questions (OIA Dr Hamoudi 40 QCMs & cas cliniques + pathologies majeures)
+  ...ALL_GASTRO_QUESTIONS,
 
   // Question 1
   {
@@ -425,27 +412,6 @@ export const INITIAL_QUESTIONS: Question[] = [
     clinicalPearl: "Règle des 5 minutes : Toute convulsion continue > 5 min = État de mal épileptique débutant -> Benzodiazépine sans attendre.",
   },
 
-  // Question 8 (Gastroenterology)
-  {
-    id: 'q-gastro-01',
-    courseId: 'crs-gastro-1',
-    questionNumber: 8,
-    type: 'CasClinique',
-    module: 'Hépato-Gastroentérologie',
-    academicYear: '4ème Année',
-    difficulty: 'Avancé',
-    questionText: "Un patient de 54 ans avec cirrhose éthylique Child-Pugh C est hospitalisé pour ascite abondante, fièvre à 38.6°C et confusion modérée. La ponction d'ascite montre 450 polynucléaires neutrophiles/mm³ et 14 g/L de protides. Quels sont les deux piliers thérapeutiques immédiats recommandés pour sauver le patient du choc septique et du syndrome hépato-rénal ?",
-    options: [
-      "Diurétiques à fortes doses (Furosémide 80 mg + Spironolactone 200 mg)",
-      "Antibiothérapie probabiliste par Céfotaxime 2g x 3/j IV (ou Ceftriaxone) ET perfusion d'albumine humaine à 20% (1,5 g/kg à J1 puis 1 g/kg à J3)",
-      "Lavement évacuateur au sérum salé seul sans antibiotiques",
-      "Mise sous anti-inflammatoires non stéroïdiens (AINS) à fortes doses",
-      "Régime sans sel strict sans apport d'albumine"
-    ],
-    correctAnswers: [1],
-    explanation: "L'infection spontanée du liquide d'ascite (PNN > 250/mm³) nécessite une antibiothérapie probabiliste active sur les entérobactéries (Céfotaxime ou Ceftriaxone IV) ET impérativement une perfusion d'albumine humaine à 20% (1.5 g/kg à J1 puis 1 g/kg à J3) pour prévenir le syndrome hépato-rénal et réduire la mortalité de manière prouvée.",
-    clinicalPearl: "Infection d'ascite : PNN > 250/mm³ = Céphalosporine de 3ème génération + Albumine 20% à J1 et J3 (réduit la mortalité de 30% à 10%).",
-  }
 ];
 
 export const COURSE_RESOURCES: CourseResource[] = [
@@ -453,6 +419,7 @@ export const COURSE_RESOURCES: CourseResource[] = [
   ...ALL_INFECTIOLOGY_RESOURCES,
   ...ALL_NEUROLOGY_RESOURCES,
   ...ALL_HEMATOLOGY_RESOURCES,
+  ...ALL_GASTRO_RESOURCES,
   {
     id: 'res-cardio-1',
     courseId: 'crs-cardio-1',

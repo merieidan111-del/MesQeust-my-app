@@ -378,15 +378,30 @@ export const QCMEngine: React.FC<QCMEngineProps> = ({
 
   if (!currentQ) {
     return (
-      <div className="bg-white border border-slate-200 rounded-3xl p-12 text-center shadow-sm">
-        <VectorBrain size={64} className="mx-auto mb-4" />
-        <p className="text-slate-700 font-bold">Aucune question disponible avec ce filtre.</p>
-        <button
-          onClick={() => setSelectedType('all')}
-          className="mt-4 px-5 py-2.5 bg-indigo-600 text-white font-extrabold rounded-full text-xs hover:bg-indigo-700 shadow-sm cursor-pointer"
-        >
-          Afficher toutes les questions
-        </button>
+      <div className="bg-white border border-slate-200 rounded-3xl p-12 text-center shadow-sm max-w-lg mx-auto space-y-4">
+        <VectorBrain size={64} className="mx-auto mb-2" />
+        <h3 className="text-lg font-black text-slate-900">Aucune question disponible</h3>
+        <p className="text-slate-500 text-sm">
+          {courseName ? `Aucune question n'est encore enregistrée pour "${courseName}".` : "Aucune question ne correspond à cette sélection."}
+        </p>
+        <div className="flex items-center justify-center gap-3 pt-2">
+          {onExitSession && (
+            <button
+              type="button"
+              onClick={onExitSession}
+              className="px-5 py-2.5 bg-slate-900 text-white font-extrabold rounded-full text-xs hover:bg-slate-800 shadow-sm cursor-pointer"
+            >
+              ← Retour au module
+            </button>
+          )}
+          <button
+            type="button"
+            onClick={() => setSelectedType('all')}
+            className="px-5 py-2.5 bg-slate-100 text-slate-700 font-extrabold rounded-full text-xs hover:bg-slate-200 shadow-sm cursor-pointer"
+          >
+            Réinitialiser les filtres
+          </button>
+        </div>
       </div>
     );
   }
@@ -647,17 +662,37 @@ export const QCMEngine: React.FC<QCMEngineProps> = ({
                 Choix multiple
               </span>
             )}
-            {currentCourse?.subdivision && (
-              <span
-                className={`px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase border ${
-                  currentCourse.subdivision === 'Oncologie'
-                    ? 'bg-purple-50 text-purple-700 border-purple-200'
-                    : 'bg-rose-50 text-rose-700 border-rose-200'
-                }`}
-              >
-                {currentCourse.subdivision === 'Oncologie' ? '🎗️ Oncologie' : '🩸 Hématologie'}
-              </span>
-            )}
+            {currentCourse?.subdivision && (() => {
+              const sub = currentCourse.subdivision;
+              const lower = sub.toLowerCase();
+              let icon = '📁';
+              let badgeStyle = 'bg-sky-50 text-sky-700 border-sky-200';
+              if (lower.includes('anapath')) {
+                icon = '🔬';
+                badgeStyle = 'bg-teal-50 text-teal-800 border-teal-200';
+              } else if (lower.includes('cancer')) {
+                icon = '🎗️';
+                badgeStyle = 'bg-purple-50 text-purple-700 border-purple-200';
+              } else if (lower.includes('urgence')) {
+                icon = '🚨';
+                badgeStyle = 'bg-rose-50 text-rose-700 border-rose-200';
+              } else if (lower.includes('gastro')) {
+                icon = '🩺';
+                badgeStyle = 'bg-amber-50 text-amber-800 border-amber-200';
+              } else if (lower.includes('hémato') || lower.includes('hemato')) {
+                icon = '🩸';
+                badgeStyle = 'bg-rose-50 text-rose-700 border-rose-200';
+              } else if (lower.includes('onco')) {
+                icon = '🎗️';
+                badgeStyle = 'bg-purple-50 text-purple-700 border-purple-200';
+              }
+              return (
+                <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase border flex items-center gap-1 ${badgeStyle}`}>
+                  <span>{icon}</span>
+                  <span>{sub}</span>
+                </span>
+              );
+            })()}
             {currentCourse && (
               <span className="hidden sm:inline-block px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-slate-100 text-slate-700 truncate max-w-xs">
                 {currentCourse.title}

@@ -64,7 +64,19 @@ export default function App() {
     const acc = getCurrentSessionAccount();
     if (!acc) return null;
     const progress = getUserProgress(acc);
-    return buildUserProfile(acc, progress);
+    const profile = buildUserProfile(acc, progress);
+    try {
+      const savedCountdown = localStorage.getItem('medquest_custom_exam_countdown');
+      if (savedCountdown) {
+        const parsed = JSON.parse(savedCountdown);
+        if (parsed.customExamDate) profile.customExamDate = parsed.customExamDate;
+        if (parsed.examTitle) profile.examTitle = parsed.examTitle;
+        if (parsed.examModule) profile.examModule = parsed.examModule;
+      }
+    } catch {
+      // ignore
+    }
+    return profile;
   });
 
   const [currentTab, setCurrentTab] = useState<
@@ -337,9 +349,29 @@ export default function App() {
   };
 
   const handleUpdateExamCountdown = (newDateIso: string, newTitle: string, newModule: string) => {
-    if (!currentUserAccount) return;
     setUserProfile((prev) => {
-      if (!prev) return prev;
+      if (!prev) {
+        return {
+          userId: currentUserAccount?.id || 'guest',
+          username: currentUserAccount?.username || 'externe_med',
+          fullName: currentUserAccount?.fullName || 'Externe',
+          email: currentUserAccount?.email || 'etudiant@medquest.dz',
+          academicYear: selectedYear,
+          totalXp: 0,
+          level: 1,
+          title: 'Externe',
+          streakCount: 1,
+          streakFreezesCount: 0,
+          lastActiveDate: new Date().toISOString().split('T')[0],
+          avatarUrl: currentUserAccount?.avatarUrl || '',
+          questionsSolvedToday: 0,
+          dailyGoal: 10,
+          customExamDate: newDateIso,
+          examTitle: newTitle,
+          examModule: newModule,
+          dailyActivity: {},
+        };
+      }
       return {
         ...prev,
         customExamDate: newDateIso,
@@ -348,13 +380,28 @@ export default function App() {
       };
     });
 
-    const existingProgress = getUserProgress(currentUserAccount);
-    saveUserProgress(currentUserAccount.email, {
-      ...existingProgress,
-      customExamDate: newDateIso,
-      examTitle: newTitle,
-      examModule: newModule,
-    });
+    if (currentUserAccount) {
+      const existingProgress = getUserProgress(currentUserAccount);
+      saveUserProgress(currentUserAccount.email, {
+        ...existingProgress,
+        customExamDate: newDateIso,
+        examTitle: newTitle,
+        examModule: newModule,
+      });
+    }
+
+    try {
+      localStorage.setItem(
+        'medquest_custom_exam_countdown',
+        JSON.stringify({
+          customExamDate: newDateIso,
+          examTitle: newTitle,
+          examModule: newModule,
+        })
+      );
+    } catch {
+      // ignore
+    }
 
     showToast('Compte à rebours d\'examen mis à jour !', 'success');
   };
@@ -468,17 +515,13 @@ export default function App() {
                 key={`${activeCourse?.id || activeSubdivision || 'all'}-${practiceModeFilter}`}
                 questions={
                   activeCourse
-                    ? (() => {
-                        const matched = questions.filter((q) => q.courseId === activeCourse.id);
-                        return matched.length > 0 ? matched : questions;
-                      })()
+                    ? questions.filter((q) => q.courseId === activeCourse.id)
                     : activeSubdivision
                     ? (() => {
                         const courseIds = MEDICAL_COURSES.filter(
                           (c) => c.subdivision?.toLowerCase() === activeSubdivision.toLowerCase()
                         ).map((c) => c.id);
-                        const matched = questions.filter((q) => courseIds.includes(q.courseId));
-                        return matched.length > 0 ? matched : questions;
+                        return questions.filter((q) => courseIds.includes(q.courseId));
                       })()
                     : questions
                 }
@@ -491,7 +534,15 @@ export default function App() {
                   (activeCourse
                     ? MEDICAL_MODULES.find((m) => m.id === activeCourse.moduleId)?.title
                     : activeSubdivision
-                    ? 'Hématologie & Oncologie Médicale'
+                    ? (() => {
+                        const matched = MEDICAL_COURSES.find(
+                          (c) => c.subdivision?.toLowerCase() === activeSubdivision.toLowerCase()
+                        );
+                        return (
+                          (matched && MEDICAL_MODULES.find((m) => m.id === matched.moduleId)?.title) ||
+                          `Volet ${activeSubdivision}`
+                        );
+                      })()
                     : undefined)
                 }
                 onAwardXp={handleAwardXp}

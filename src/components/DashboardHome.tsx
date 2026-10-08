@@ -30,6 +30,9 @@ import {
   Droplets,
   Pill,
   ShieldAlert,
+  X,
+  Plus,
+  Minus,
 } from 'lucide-react';
 import { Module, UserProfile, AcademicYear } from '../types/medical';
 import {
@@ -71,19 +74,84 @@ export const DashboardHome: React.FC<DashboardHomeProps> = ({
   }>({ days: 0, hours: 0, minutes: 0, seconds: 0 });
 
   const [isEditingCountdown, setIsEditingCountdown] = useState(false);
-  const [inputDate, setInputDate] = useState(
-    userProfile.customExamDate
-      ? userProfile.customExamDate.split('T')[0]
-      : new Date(Date.now() + 18 * 86400000).toISOString().split('T')[0]
-  );
-  const [inputTitle, setInputTitle] = useState(userProfile.examTitle || 'Examen Clinique de Cardiologie');
-  const [inputModule, setInputModule] = useState(userProfile.examModule || 'Cardiologie');
+  const [isInlineEditing, setIsInlineEditing] = useState(false);
+
+  // Local YYYY-MM-DD string helper to prevent UTC day shifts
+  const getLocalDateString = (d: Date = new Date()) => {
+    const year = d.getFullYear();
+    const month = String(d.getMonth() + 1).padStart(2, '0');
+    const day = String(d.getDate()).padStart(2, '0');
+    return `${year}-${month}-${day}`;
+  };
+
+  const todayMinDate = getLocalDateString();
+
+  const [inputDate, setInputDate] = useState(() => {
+    if (userProfile.customExamDate) {
+      try {
+        const d = new Date(userProfile.customExamDate);
+        if (!isNaN(d.getTime())) return getLocalDateString(d);
+      } catch {
+        // fallback
+      }
+    }
+    const future = new Date(Date.now() + 18 * 86400000);
+    return getLocalDateString(future);
+  });
+
+  const [inputTitle, setInputTitle] = useState(userProfile.examTitle || 'Examen Clinique');
+  const [inputModule, setInputModule] = useState(userProfile.examModule || 'Hépato-Gastroentérologie');
+  const [inputDaysRemaining, setInputDaysRemaining] = useState<number>(() => {
+    const target = new Date(userProfile.customExamDate || Date.now() + 18 * 86400000).getTime();
+    const now = Date.now();
+    return Math.max(1, Math.ceil((target - now) / 86400000));
+  });
+
+  // Sync inputs whenever userProfile changes
+  useEffect(() => {
+    if (userProfile.customExamDate) {
+      try {
+        const d = new Date(userProfile.customExamDate);
+        if (!isNaN(d.getTime())) {
+          setInputDate(getLocalDateString(d));
+          const diff = Math.max(0, Math.ceil((d.getTime() - Date.now()) / 86400000));
+          setInputDaysRemaining(diff);
+        }
+      } catch {
+        // ignore
+      }
+    }
+    if (userProfile.examTitle) {
+      setInputTitle(userProfile.examTitle);
+    }
+    if (userProfile.examModule) {
+      setInputModule(userProfile.examModule);
+    }
+  }, [userProfile.customExamDate, userProfile.examTitle, userProfile.examModule]);
 
   useEffect(() => {
     const calculateTime = () => {
-      const target = new Date(userProfile.customExamDate || inputDate).getTime();
-      const now = new Date().getTime();
-      const diff = Math.max(0, target - now);
+      let targetTime: number;
+      if (userProfile.customExamDate) {
+        targetTime = new Date(userProfile.customExamDate).getTime();
+      } else {
+        const parts = inputDate.split('-');
+        if (parts.length === 3) {
+          targetTime = new Date(
+            parseInt(parts[0], 10),
+            parseInt(parts[1], 10) - 1,
+            parseInt(parts[2], 10),
+            23,
+            59,
+            59
+          ).getTime();
+        } else {
+          targetTime = Date.now() + 18 * 86400000;
+        }
+      }
+
+      const now = Date.now();
+      const diff = Math.max(0, targetTime - now);
 
       const days = Math.floor(diff / (1000 * 60 * 60 * 24));
       const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
@@ -98,10 +166,72 @@ export const DashboardHome: React.FC<DashboardHomeProps> = ({
     return () => clearInterval(interval);
   }, [userProfile.customExamDate, inputDate]);
 
-  const handleSaveCountdown = (e: React.FormEvent) => {
-    e.preventDefault();
-    onUpdateExamCountdown(inputDate, inputTitle, inputModule);
+  const handleSetPresetDays = (days: number) => {
+    const validDays = Math.max(1, Math.min(365, days));
+    setInputDaysRemaining(validDays);
+    const future = new Date(Date.now() + validDays * 86400000);
+    setInputDate(getLocalDateString(future));
+  };
+
+  const handleDateChange = (newDateStr: string) => {
+    setInputDate(newDateStr);
+    if (newDateStr) {
+      const parts = newDateStr.split('-');
+      if (parts.length === 3) {
+        const target = new Date(
+          parseInt(parts[0], 10),
+          parseInt(parts[1], 10) - 1,
+          parseInt(parts[2], 10),
+          23,
+          59,
+          59
+        ).getTime();
+        const diff = Math.max(0, Math.ceil((target - Date.now()) / 86400000));
+        setInputDaysRemaining(diff);
+      }
+    }
+  };
+
+  const handleDaysChange = (days: number) => {
+    const validDays = Math.max(1, Math.min(365, days));
+    setInputDaysRemaining(validDays);
+    const future = new Date(Date.now() + validDays * 86400000);
+    setInputDate(getLocalDateString(future));
+  };
+
+  const handleSelectModuleChange = (modName: string) => {
+    setInputModule(modName);
+    if (!inputTitle || inputTitle.startsWith('Examen Clinique') || inputTitle.startsWith('Examen de')) {
+      setInputTitle(`Examen Clinique de ${modName}`);
+    }
+  };
+
+  const handleSaveCountdown = (e?: React.FormEvent) => {
+    if (e) e.preventDefault();
+    if (!inputDate) return;
+
+    let isoString: string;
+    const parts = inputDate.split('-');
+    if (parts.length === 3) {
+      const targetDateObj = new Date(
+        parseInt(parts[0], 10),
+        parseInt(parts[1], 10) - 1,
+        parseInt(parts[2], 10),
+        23,
+        59,
+        59
+      );
+      isoString = targetDateObj.toISOString();
+    } else {
+      isoString = new Date(`${inputDate}T23:59:59`).toISOString();
+    }
+
+    const titleToSave = inputTitle.trim() || `Examen de ${inputModule}`;
+    const moduleToSave = inputModule.trim() || 'Hépato-Gastroentérologie';
+
+    onUpdateExamCountdown(isoString, titleToSave, moduleToSave);
     setIsEditingCountdown(false);
+    setIsInlineEditing(false);
   };
 
   const filteredModules = modules.filter((m) => m.academicYear === selectedYear);
@@ -311,9 +441,9 @@ export const DashboardHome: React.FC<DashboardHomeProps> = ({
           </div>
         </div>
 
-        {/* Card 2: Compte à Rebours d'Examen - Circular Progress Bar */}
+        {/* Card 2: Compte à Rebours d'Examen - Circular Progress Bar & Direct Editor */}
         {(() => {
-          const totalAllocatedDays = 30; // Total duration allocated for the current Module (30 days)
+          const totalAllocatedDays = Math.max(30, inputDaysRemaining || 30);
           const remainingDays = Math.max(0, timeLeft.days);
           const isCountdownUrgent = remainingDays <= 7;
           const countdownRatio = Math.max(0, Math.min(1, remainingDays / totalAllocatedDays));
@@ -321,13 +451,172 @@ export const DashboardHome: React.FC<DashboardHomeProps> = ({
           const countdownCircumference = 2 * Math.PI * countdownRadius;
           const countdownDashoffset = countdownCircumference - countdownRatio * countdownCircumference;
 
+          if (isInlineEditing) {
+            return (
+              <div className="p-4 sm:p-5 rounded-3xl bg-white border-2 border-indigo-400 shadow-[0_10px_35px_-5px_rgba(99,102,241,0.2)] flex flex-col justify-between space-y-2.5 animate-in fade-in zoom-in-95 duration-200">
+                {/* Header */}
+                <div className="flex items-center justify-between pb-1.5 border-b border-slate-100">
+                  <div className="flex items-center gap-1.5">
+                    <div className="w-6 h-6 rounded-lg bg-indigo-100 text-indigo-700 flex items-center justify-center font-bold">
+                      <Edit2 className="w-3.5 h-3.5" />
+                    </div>
+                    <span className="text-xs font-black text-slate-900">Régler l'Échéance</span>
+                  </div>
+                  <div className="flex items-center gap-1">
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setIsInlineEditing(false);
+                        setIsEditingCountdown(true);
+                      }}
+                      className="text-[10px] font-bold px-2 py-0.5 rounded-md bg-indigo-50 text-indigo-700 hover:bg-indigo-100 cursor-pointer"
+                      title="Ouvrir la fenêtre plein écran"
+                    >
+                      Plein écran
+                    </button>
+                    <button
+                      type="button"
+                      onClick={() => setIsInlineEditing(false)}
+                      className="w-6 h-6 rounded-full hover:bg-slate-100 text-slate-400 hover:text-slate-700 flex items-center justify-center cursor-pointer transition-colors"
+                      title="Fermer"
+                    >
+                      <X className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+                </div>
+
+                {/* Quick Presets */}
+                <div className="flex items-center gap-1 overflow-x-auto py-0.5 scrollbar-none">
+                  {[7, 14, 21, 30, 45, 60].map((d) => (
+                    <button
+                      key={d}
+                      type="button"
+                      onClick={() => handleSetPresetDays(d)}
+                      className={`px-2 py-0.5 rounded-lg text-[10px] font-black shrink-0 cursor-pointer transition-all ${
+                        inputDaysRemaining === d
+                          ? 'bg-indigo-600 text-white shadow-xs'
+                          : 'bg-slate-100 text-slate-700 hover:bg-indigo-50 hover:text-indigo-700'
+                      }`}
+                    >
+                      +{d}j
+                    </button>
+                  ))}
+                </div>
+
+                {/* Stepper Days */}
+                <div>
+                  <div className="flex items-center justify-between text-[10px] font-bold text-slate-600 mb-0.5">
+                    <span>Jours restants :</span>
+                    <span className="font-black text-indigo-600">{inputDaysRemaining} j</span>
+                  </div>
+                  <div className="flex items-center gap-1.5">
+                    <button
+                      type="button"
+                      onClick={() => handleDaysChange(inputDaysRemaining - 1)}
+                      className="w-7 h-7 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold flex items-center justify-center cursor-pointer shrink-0"
+                    >
+                      <Minus className="w-3 h-3" />
+                    </button>
+                    <input
+                      type="number"
+                      min="1"
+                      max="365"
+                      value={inputDaysRemaining}
+                      onChange={(e) => handleDaysChange(parseInt(e.target.value, 10) || 1)}
+                      className="flex-1 text-center text-xs font-black py-1 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => handleDaysChange(inputDaysRemaining + 1)}
+                      className="w-7 h-7 rounded-lg bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold flex items-center justify-center cursor-pointer shrink-0"
+                    >
+                      <Plus className="w-3 h-3" />
+                    </button>
+                  </div>
+                </div>
+
+                {/* Date Input */}
+                <div>
+                  <label className="block text-[10px] font-extrabold text-slate-600 mb-0.5">
+                    Date exacte de l'épreuve :
+                  </label>
+                  <input
+                    type="date"
+                    value={inputDate}
+                    min={todayMinDate}
+                    onChange={(e) => handleDateChange(e.target.value)}
+                    className="w-full text-xs font-bold px-2 py-1 rounded-lg bg-slate-50 border border-slate-200 text-slate-900 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                  />
+                </div>
+
+                {/* Module Select */}
+                <div>
+                  <label className="block text-[10px] font-extrabold text-slate-600 mb-0.5">
+                    Module médical :
+                  </label>
+                  <select
+                    value={inputModule}
+                    onChange={(e) => handleSelectModuleChange(e.target.value)}
+                    className="w-full text-[11px] font-bold px-2 py-1 rounded-lg bg-slate-50 border border-slate-200 text-slate-800 focus:outline-none focus:ring-1 focus:ring-indigo-500 cursor-pointer"
+                  >
+                    <option value="Hépato-Gastroentérologie">Hépato-Gastroentérologie</option>
+                    <option value="Cardiologie & Vasculaire">Cardiologie & Vasculaire</option>
+                    <option value="Pneumologie">Pneumologie</option>
+                    <option value="Neurologie & Neurochirurgie">Neurologie & Neurochirurgie</option>
+                    <option value="Hématologie & Oncologie Médicale">Hématologie & Oncologie Médicale</option>
+                    <option value="Maladies Infectieuses">Maladies Infectieuses</option>
+                    <option value="Sémiologie Médicale">Sémiologie Médicale</option>
+                    <option value="Pédiatrie">Pédiatrie</option>
+                    <option value="Gynécologie-Obstétrique">Gynécologie-Obstétrique</option>
+                    <option value="Concours Blanc Résidanat">Concours Blanc Résidanat</option>
+                  </select>
+                </div>
+
+                {/* Exam Title */}
+                <div>
+                  <label className="block text-[10px] font-extrabold text-slate-600 mb-0.5">
+                    Intitulé de l'épreuve :
+                  </label>
+                  <input
+                    type="text"
+                    value={inputTitle}
+                    onChange={(e) => setInputTitle(e.target.value)}
+                    placeholder="ex : Examen Clinique"
+                    className="w-full text-[11px] font-semibold px-2 py-1 rounded-lg bg-slate-50 border border-slate-200 text-slate-800 focus:outline-none focus:ring-1 focus:ring-indigo-500"
+                  />
+                </div>
+
+                {/* Action Buttons */}
+                <div className="flex items-center gap-1.5 pt-1.5 border-t border-slate-100">
+                  <button
+                    type="button"
+                    onClick={() => setIsInlineEditing(false)}
+                    className="flex-1 py-1 rounded-xl text-xs font-bold text-slate-600 hover:bg-slate-100 transition-colors cursor-pointer"
+                  >
+                    Annuler
+                  </button>
+                  <button
+                    type="button"
+                    onClick={() => handleSaveCountdown()}
+                    className="flex-1 py-1 rounded-xl bg-gradient-to-r from-indigo-600 to-sky-600 hover:from-indigo-700 hover:to-sky-700 text-white font-black text-xs shadow-sm flex items-center justify-center gap-1 cursor-pointer transition-all"
+                  >
+                    <CheckCircle2 className="w-3.5 h-3.5" />
+                    <span>Valider</span>
+                  </button>
+                </div>
+              </div>
+            );
+          }
+
           return (
             <div
-              className={`p-5 rounded-3xl border transition-all duration-300 flex flex-col justify-between ${
+              onClick={() => setIsInlineEditing(true)}
+              className={`p-5 rounded-3xl border transition-all duration-300 flex flex-col justify-between group cursor-pointer hover:shadow-lg hover:-translate-y-0.5 ${
                 isCountdownUrgent
-                  ? 'bg-[#FFF5F5] border-rose-200 shadow-[0_4px_20px_-4px_rgba(239,68,68,0.15)] ring-1 ring-rose-300/50'
-                  : 'bg-[#F0F7FF] border-sky-100 shadow-[0_4px_20px_-4px_rgba(14,165,233,0.05)]'
+                  ? 'bg-[#FFF5F5] border-rose-200 shadow-[0_4px_20px_-4px_rgba(239,68,68,0.15)] ring-1 ring-rose-300/50 hover:border-rose-300'
+                  : 'bg-[#F0F7FF] border-sky-100 shadow-[0_4px_20px_-4px_rgba(14,165,233,0.05)] hover:border-sky-300'
               }`}
+              title="Cliquez pour modifier directement le compte à rebours de l'examen"
             >
               <div className="flex items-center justify-between">
                 <span
@@ -347,17 +636,24 @@ export const DashboardHome: React.FC<DashboardHomeProps> = ({
                   )}
                 </span>
 
-                <button
-                  onClick={() => setIsEditingCountdown(!isEditingCountdown)}
-                  className={`text-[11px] font-bold px-2 py-0.5 rounded-full transition-colors flex items-center gap-1 cursor-pointer ${
-                    isCountdownUrgent
-                      ? 'bg-rose-100 hover:bg-rose-200 text-rose-700'
-                      : 'bg-sky-100 hover:bg-sky-200 text-sky-700'
-                  }`}
-                >
-                  <Edit2 className="w-2.5 h-2.5" />
-                  <span>Régler</span>
-                </button>
+                <div className="flex items-center gap-1">
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setIsInlineEditing(true);
+                    }}
+                    className={`text-xs font-black px-3 py-1 rounded-full transition-all flex items-center gap-1.5 shadow-xs cursor-pointer hover:scale-105 active:scale-95 ${
+                      isCountdownUrgent
+                        ? 'bg-rose-200 hover:bg-rose-300 text-rose-900 border border-rose-300'
+                        : 'bg-white hover:bg-sky-100 text-sky-900 border border-sky-200 shadow-sm'
+                    }`}
+                    title="Modifier la date et le titre de l'examen"
+                  >
+                    <Edit2 className="w-3 h-3 text-indigo-600" />
+                    <span>Modifier</span>
+                  </button>
+                </div>
               </div>
 
               {/* Circular Progress & Metrics */}
@@ -410,6 +706,9 @@ export const DashboardHome: React.FC<DashboardHomeProps> = ({
 
                 {/* Countdown Details & Allocated Duration */}
                 <div className="min-w-0 space-y-0.5">
+                  <div className="text-[10px] font-extrabold uppercase tracking-wider text-indigo-600 truncate">
+                    {userProfile.examModule || 'Module'}
+                  </div>
                   <div
                     className={`text-xs font-black truncate ${
                       isCountdownUrgent ? 'text-red-700' : 'text-slate-800'
@@ -421,33 +720,58 @@ export const DashboardHome: React.FC<DashboardHomeProps> = ({
                   <div className="text-[11px] font-semibold text-slate-500">
                     Temps actif :{' '}
                     <strong className={isCountdownUrgent ? 'text-red-600' : 'text-slate-700'}>
-                      {timeLeft.hours}h {timeLeft.minutes}m
+                      {timeLeft.hours}h {timeLeft.minutes}m {timeLeft.seconds}s
                     </strong>
                   </div>
-                  <div className="text-[11px] font-medium text-slate-500">
-                    Durée allouée :{' '}
-                    <strong className="text-slate-700">{totalAllocatedDays} jours</strong>
+                  <div className="text-[10px] font-medium text-slate-400 group-hover:text-indigo-600 transition-colors flex items-center gap-1">
+                    <Edit2 className="w-2.5 h-2.5" />
+                    <span>Cliquer pour modifier</span>
                   </div>
                 </div>
               </div>
 
               <div
-                className={`flex items-center gap-1.5 text-[11px] font-semibold pt-1 border-t ${
+                className={`flex items-center justify-between text-[11px] font-semibold pt-1 border-t ${
                   isCountdownUrgent
                     ? 'border-rose-200/70 text-red-600'
                     : 'border-sky-100 text-sky-700'
                 }`}
               >
-                <Hourglass
-                  className={`w-3 h-3 ${
-                    isCountdownUrgent ? 'text-red-500 animate-bounce' : 'text-sky-500 animate-spin'
-                  }`}
-                />
-                <span>
-                  {isCountdownUrgent
-                    ? 'Dernière semaine de révisions !'
-                    : 'Planning de révision en cours'}
-                </span>
+                <div className="flex items-center gap-1.5">
+                  <Hourglass
+                    className={`w-3 h-3 ${
+                      isCountdownUrgent ? 'text-red-500 animate-bounce' : 'text-sky-500 animate-spin'
+                    }`}
+                  />
+                  <span>
+                    {isCountdownUrgent
+                      ? 'Dernière semaine de révisions !'
+                      : 'Planning de révision en cours'}
+                  </span>
+                </div>
+                <div className="flex items-center gap-2">
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setIsInlineEditing(true);
+                    }}
+                    className="text-[10px] font-bold text-indigo-700 hover:underline cursor-pointer"
+                  >
+                    Régler
+                  </button>
+                  <button
+                    type="button"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setIsEditingCountdown(true);
+                    }}
+                    className="text-[9px] font-semibold text-slate-400 hover:text-slate-600 cursor-pointer"
+                    title="Ouvrir la fenêtre d'options complètes"
+                  >
+                    Modal
+                  </button>
+                </div>
               </div>
             </div>
           );
@@ -510,53 +834,197 @@ export const DashboardHome: React.FC<DashboardHomeProps> = ({
         </div>
       </div>
 
-      {/* Countdown Edit Modal */}
+      {/* Countdown Edit Modal with Backdrop */}
       {isEditingCountdown && (
-        <div className="p-5 rounded-3xl bg-white border border-slate-200 shadow-xl animate-in fade-in">
-          <div className="flex items-center justify-between pb-3 border-b border-slate-100 mb-4">
-            <h3 className="font-extrabold text-sm text-slate-900 flex items-center gap-2">
-              <Calendar className="w-4 h-4 text-indigo-600" />
-              <span>Paramétrer l'échéance de l'examen</span>
-            </h3>
-            <button
-              onClick={() => setIsEditingCountdown(false)}
-              className="text-xs text-slate-400 hover:text-slate-600"
-            >
-              Fermer
-            </button>
-          </div>
-
-          <form onSubmit={handleSaveCountdown} className="grid grid-cols-1 sm:grid-cols-3 gap-3">
-            <div>
-              <label className="block text-[11px] font-bold text-slate-600 mb-1">Date d'examen</label>
-              <input
-                type="date"
-                value={inputDate}
-                onChange={(e) => setInputDate(e.target.value)}
-                className="w-full text-xs font-semibold px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 focus:outline-none focus:border-indigo-500"
-                required
-              />
-            </div>
-            <div>
-              <label className="block text-[11px] font-bold text-slate-600 mb-1">Intitulé de l'épreuve</label>
-              <input
-                type="text"
-                value={inputTitle}
-                onChange={(e) => setInputTitle(e.target.value)}
-                placeholder="ex : Examen Clinique de Cardiologie"
-                className="w-full text-xs font-semibold px-3 py-2 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 focus:outline-none focus:border-indigo-500"
-                required
-              />
-            </div>
-            <div className="flex items-end gap-2">
+        <div
+          className="fixed inset-0 z-[9999] flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-in fade-in duration-200"
+          onClick={() => setIsEditingCountdown(false)}
+        >
+          <div
+            className="w-full max-w-lg bg-white rounded-3xl shadow-2xl border border-slate-100 overflow-hidden animate-in zoom-in-95 duration-200 flex flex-col max-h-[90vh]"
+            onClick={(e) => e.stopPropagation()}
+          >
+            {/* Header */}
+            <div className="p-5 sm:p-6 bg-gradient-to-r from-sky-50 via-indigo-50/50 to-white border-b border-slate-100 flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-2xl bg-indigo-600 text-white flex items-center justify-center shadow-md shadow-indigo-200 shrink-0">
+                  <Calendar className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="font-black text-slate-900 text-base sm:text-lg leading-tight">
+                    Modifier le Compte à Rebours d'Examen
+                  </h3>
+                  <p className="text-xs font-medium text-slate-500 mt-0.5">
+                    Définissez la date de votre épreuve et vos objectifs de révision
+                  </p>
+                </div>
+              </div>
               <button
-                type="submit"
-                className="w-full py-2 px-4 rounded-xl bg-indigo-600 text-white font-bold text-xs hover:bg-indigo-700 transition-colors shadow-sm cursor-pointer"
+                type="button"
+                onClick={() => setIsEditingCountdown(false)}
+                className="w-8 h-8 rounded-full bg-slate-100 hover:bg-slate-200 text-slate-500 flex items-center justify-center transition-colors cursor-pointer shrink-0"
               >
-                Enregistrer le compte à rebours
+                <X className="w-4 h-4" />
               </button>
             </div>
-          </form>
+
+            {/* Form */}
+            <form onSubmit={handleSaveCountdown} className="p-5 sm:p-6 space-y-4 overflow-y-auto">
+              {/* Presets rapides */}
+              <div>
+                <label className="block text-xs font-bold text-slate-700 mb-2 flex items-center gap-1.5">
+                  <Sparkles className="w-3.5 h-3.5 text-amber-500" />
+                  <span>Raccourcis rapides d'échéance :</span>
+                </label>
+                <div className="grid grid-cols-3 sm:grid-cols-6 gap-2">
+                  {[
+                    { label: '+7 j', days: 7 },
+                    { label: '+14 j', days: 14 },
+                    { label: '+21 j', days: 21 },
+                    { label: '+30 j', days: 30 },
+                    { label: '+45 j', days: 45 },
+                    { label: '+60 j', days: 60 },
+                  ].map((preset) => (
+                    <button
+                      key={preset.days}
+                      type="button"
+                      onClick={() => handleSetPresetDays(preset.days)}
+                      className={`py-1.5 px-2 rounded-xl text-xs font-black border transition-all cursor-pointer ${
+                        inputDaysRemaining === preset.days
+                          ? 'bg-indigo-600 border-indigo-600 text-white shadow-sm'
+                          : 'bg-slate-50 border-slate-200 text-slate-700 hover:bg-indigo-50 hover:border-indigo-200'
+                      }`}
+                    >
+                      {preset.label}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Date & Jours restants */}
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 mb-1">
+                    Date exacte de l'examen <span className="text-rose-500">*</span>
+                  </label>
+                  <input
+                    type="date"
+                    value={inputDate}
+                    min={todayMinDate}
+                    onChange={(e) => handleDateChange(e.target.value)}
+                    className="w-full text-xs font-bold px-3 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white"
+                    required
+                  />
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-slate-700 mb-1">
+                    Nombre de jours restants
+                  </label>
+                  <div className="flex items-center gap-2">
+                    <button
+                      type="button"
+                      onClick={() => handleDaysChange(inputDaysRemaining - 1)}
+                      className="w-9 h-9 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold flex items-center justify-center cursor-pointer shrink-0"
+                    >
+                      <Minus className="w-3.5 h-3.5" />
+                    </button>
+                    <input
+                      type="number"
+                      min="1"
+                      max="365"
+                      value={inputDaysRemaining}
+                      onChange={(e) => handleDaysChange(parseInt(e.target.value) || 1)}
+                      className="w-full text-center text-xs font-black py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                    />
+                    <button
+                      type="button"
+                      onClick={() => handleDaysChange(inputDaysRemaining + 1)}
+                      className="w-9 h-9 rounded-xl bg-slate-100 hover:bg-slate-200 text-slate-700 font-bold flex items-center justify-center cursor-pointer shrink-0"
+                    >
+                      <Plus className="w-3.5 h-3.5" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              {/* Module Ciblé */}
+              <div>
+                <label className="block text-xs font-bold text-slate-700 mb-1">
+                  Module médical ciblé
+                </label>
+                <select
+                  value={inputModule}
+                  onChange={(e) => handleSelectModuleChange(e.target.value)}
+                  className="w-full text-xs font-semibold px-3 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white cursor-pointer"
+                >
+                  <option value="Hépato-Gastroentérologie">Hépato-Gastroentérologie</option>
+                  <option value="Cardiologie & Vasculaire">Cardiologie & Vasculaire</option>
+                  <option value="Pneumologie">Pneumologie</option>
+                  <option value="Neurologie & Neurochirurgie">Neurologie & Neurochirurgie</option>
+                  <option value="Hématologie & Oncologie Médicale">Hématologie & Oncologie Médicale</option>
+                  <option value="Maladies Infectieuses">Maladies Infectieuses</option>
+                  <option value="Sémiologie Médicale">Sémiologie Médicale</option>
+                  <option value="Pédiatrie">Pédiatrie</option>
+                  <option value="Gynécologie-Obstétrique">Gynécologie-Obstétrique</option>
+                  <option value="Concours Blanc Résidanat">Concours Blanc Résidanat</option>
+                </select>
+              </div>
+
+              {/* Intitulé de l'épreuve */}
+              <div>
+                <label className="block text-xs font-bold text-slate-700 mb-1">
+                  Intitulé personnalisé de l'examen <span className="text-rose-500">*</span>
+                </label>
+                <input
+                  type="text"
+                  value={inputTitle}
+                  onChange={(e) => setInputTitle(e.target.value)}
+                  placeholder="ex : Examen Clinique de Gastroentérologie"
+                  className="w-full text-xs font-semibold px-3 py-2.5 rounded-xl bg-slate-50 border border-slate-200 text-slate-900 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:bg-white"
+                  required
+                />
+              </div>
+
+              {/* Live Preview Box */}
+              <div className="p-3.5 rounded-2xl bg-indigo-50/70 border border-indigo-100 flex items-center justify-between">
+                <div className="flex items-center gap-2.5 min-w-0">
+                  <div className="w-9 h-9 rounded-xl bg-indigo-600 text-white flex items-center justify-center font-black text-xs shrink-0 shadow-xs">
+                    {inputDaysRemaining}j
+                  </div>
+                  <div className="min-w-0">
+                    <div className="text-xs font-black text-indigo-950 truncate">
+                      {inputTitle || 'Examen Clinique'}
+                    </div>
+                    <div className="text-[11px] font-medium text-indigo-600 truncate">
+                      Module : {inputModule} • Échéance : {inputDate}
+                    </div>
+                  </div>
+                </div>
+                <span className="text-[10px] font-black uppercase tracking-wider px-2 py-0.5 rounded-full bg-indigo-200 text-indigo-800 shrink-0">
+                  Aperçu
+                </span>
+              </div>
+
+              {/* Action Buttons */}
+              <div className="flex items-center justify-end gap-2 pt-2 border-t border-slate-100">
+                <button
+                  type="button"
+                  onClick={() => setIsEditingCountdown(false)}
+                  className="px-4 py-2.5 rounded-xl text-xs font-bold text-slate-600 hover:bg-slate-100 transition-colors cursor-pointer"
+                >
+                  Annuler
+                </button>
+                <button
+                  type="submit"
+                  className="px-5 py-2.5 rounded-xl bg-gradient-to-r from-indigo-600 to-sky-600 text-white font-black text-xs hover:from-indigo-700 hover:to-sky-700 transition-all shadow-md shadow-indigo-200 flex items-center gap-2 cursor-pointer"
+                >
+                  <CheckCircle2 className="w-4 h-4" />
+                  <span>Enregistrer le compte à rebours</span>
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
       )}
 

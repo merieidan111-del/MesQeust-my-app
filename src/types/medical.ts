@@ -1,7 +1,7 @@
 export type AcademicYear = '3ème Année' | '4ème Année' | '5ème Année';
 
 export type QuestionType = 'QCM' | 'CasClinique' | 'Cas Clinique';
-export type ResourceType = 'Resume' | 'Astuce' | 'mindmap' | 'astuce' | 'resume';
+export type ResourceType = 'Resume' | 'Astuce' | 'mindmap' | 'astuce' | 'resume' | 'Fiche Synthèse' | 'Fiche';
 
 export interface Module {
   id: string;
@@ -42,7 +42,7 @@ export interface Question {
   clinicalCaseNumber?: number;
   module?: string;
   academicYear?: AcademicYear;
-  difficulty?: 'Standard' | 'Avancé' | 'Concours Résidanat' | 'facile' | 'moyen' | 'difficile';
+  difficulty?: 'Standard' | 'Avancé' | 'Concours Résidanat' | 'facile' | 'moyen' | 'difficile' | 'Difficile';
 }
 
 export interface CourseResource {
@@ -73,6 +73,21 @@ export interface ExamCountdownConfig {
   examDate: string; // ISO string
 }
 
+export type StreakDayStatus = 'completed' | 'skipped' | 'frozen' | 'pending' | 'upcoming';
+
+export interface StreakDayInfo {
+  dateStr: string;
+  dayLabel: string;
+  dayNumber: number;
+  fullDateLabel: string;
+  status: StreakDayStatus;
+  questionCount: number;
+  xpEarned: number;
+  isToday: boolean;
+  isPast: boolean;
+  isFuture: boolean;
+}
+
 export interface UserProfile {
   userId: string;
   username: string;
@@ -92,6 +107,8 @@ export interface UserProfile {
   examTitle: string;
   examModule: string;
   dailyActivity?: Record<string, number>;
+  streakHistory?: Record<string, StreakDayStatus>;
+  notificationsEnabled?: boolean;
 }
 
 export interface ShopItem {

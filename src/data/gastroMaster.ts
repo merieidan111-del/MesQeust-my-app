@@ -1,0 +1,286 @@
+import { Course, Question, CourseResource } from '../types/medical';
+import { GASTRO_COURSES } from './gastro/gastroCourses';
+
+// ==========================================================
+// SUBDIVISION 1: ANAPATH
+// ==========================================================
+import {
+  ANAPATH_CANCER_GASTRIQUE_QUESTIONS,
+  ANAPATH_CANCER_GASTRIQUE_RESOURCES,
+} from './gastro/anapathCancerGastrique';
+import {
+  PATHOLOGIE_HEPATIQUE_QUESTIONS,
+  PATHOLOGIE_HEPATIQUE_RESOURCES,
+} from './gastro/pathologieHepatique';
+
+// ==========================================================
+// SUBDIVISION 2: LES CANCER
+// ==========================================================
+import {
+  CANCER_ESTOMAC_QUESTIONS,
+  CANCER_ESTOMAC_RESOURCES,
+} from './gastro/cancerEstomac';
+import {
+  TUMEURS_PANCREAS_QUESTIONS,
+  TUMEURS_PANCREAS_RESOURCES,
+} from './gastro/tumeursPancreas';
+import {
+  CANCER_COLON_QUESTIONS,
+  CANCER_COLON_RESOURCES,
+} from './gastro/cancerColon';
+import {
+  CANCER_RECTUM_QUESTIONS,
+  CANCER_RECTUM_RESOURCES,
+} from './gastro/cancerRectum';
+import {
+  CANCER_CANAL_ANAL_QUESTIONS,
+  CANCER_CANAL_ANAL_RESOURCES,
+} from './gastro/cancerCanalAnal';
+import {
+  GIST_QUESTIONS,
+  GIST_RESOURCES,
+} from './gastro/gist';
+import {
+  CANCER_OESOPHAGE_QUESTIONS,
+  CANCER_OESOPHAGE_RESOURCES,
+} from './gastro/cancerOesophage';
+import {
+  CHC_TUMEURS_MALIGNES_FOIE_QUESTIONS,
+  CHC_TUMEURS_MALIGNES_FOIE_RESOURCES,
+} from './gastro/chcTumeursMalignesFoie';
+
+// ==========================================================
+// SUBDIVISION 3: Urgences
+// ==========================================================
+import {
+  APPENDICITE_AIGUE_QUESTIONS,
+  APPENDICITE_AIGUE_RESOURCES,
+} from './gastro/appendiciteAigue';
+import {
+  HERNIES_ABDOMINALES_QUESTIONS,
+  HERNIES_ABDOMINALES_RESOURCES,
+} from './gastro/herniesAbdominales';
+import {
+  LESIONS_CAUSTIQUES_QUESTIONS,
+  LESIONS_CAUSTIQUES_RESOURCES,
+} from './gastro/lesionsCaustiques';
+import {
+  PANCREATITE_AIGUE_QUESTIONS,
+  PANCREATITE_AIGUE_RESOURCES,
+} from './gastro/pancreatiteAigue';
+import {
+  PERITONITES_AIGUES_QUESTIONS,
+  PERITONITES_AIGUES_RESOURCES,
+} from './gastro/peritonitesAigues';
+import {
+  OCCLUSIONS_INTESTINALES_QUESTIONS,
+  OCCLUSIONS_INTESTINALES_RESOURCES,
+} from './gastro/occlusionsIntestinales';
+import {
+  ISCHEMIE_INTESTINALE_QUESTIONS,
+  ISCHEMIE_INTESTINALE_RESOURCES,
+} from './gastro/ischemieIntestinale';
+import {
+  TRAUMATISMES_ABDOMEN_QUESTIONS,
+  TRAUMATISMES_ABDOMEN_RESOURCES,
+} from './gastro/traumatismesAbdomen';
+import {
+  HEMORRAGIES_DIGESTIVES_QUESTIONS,
+  HEMORRAGIES_DIGESTIVES_RESOURCES,
+} from './gastro/hemorragiesDigestives';
+
+// ==========================================================
+// SUBDIVISION 4: Gastro
+// ==========================================================
+import {
+  KYSTE_HYDATIQUE_FOIE_QUESTIONS,
+  KYSTE_HYDATIQUE_FOIE_RESOURCES,
+} from './gastro/kysteHydatiqueFoie';
+import {
+  TUMEURS_BENIGNES_FOIE_QUESTIONS,
+  TUMEURS_BENIGNES_FOIE_RESOURCES,
+} from './gastro/tumeursBenignesFoie';
+import {
+  POLYPES_POLYPOSES_QUESTIONS,
+  POLYPES_POLYPOSES_RESOURCES,
+} from './gastro/polypesPolyposes';
+import {
+  TUBERCULOSE_DIGESTIVE_QUESTIONS,
+  TUBERCULOSE_DIGESTIVE_RESOURCES,
+} from './gastro/tuberculoseDigestive';
+import {
+  ULCERE_GASTRO_DUODENAL_QUESTIONS,
+  ULCERE_GASTRO_DUODENAL_RESOURCES,
+} from './gastro/ulcereGastroDuodenal';
+import {
+  GASTRITES_QUESTIONS,
+  GASTRITES_RESOURCES,
+} from './gastro/gastrites';
+import {
+  RGO_HERNIE_HIATALE_QUESTIONS,
+  RGO_HERNIE_HIATALE_RESOURCES,
+} from './gastro/rgoHernieHiatale';
+import {
+  MALADIE_CROHN_QUESTIONS,
+  MALADIE_CROHN_RESOURCES,
+} from './gastro/maladieCrohn';
+import {
+  RECTOCOLITE_HEMORRAGIQUE_QUESTIONS,
+  RECTOCOLITE_HEMORRAGIQUE_RESOURCES,
+} from './gastro/rectocoliteHemorragique';
+import {
+  MALADIE_COELIAQUE_QUESTIONS,
+  MALADIE_COELIAQUE_RESOURCES,
+} from './gastro/maladieCoeliaque';
+import {
+  DIARRHEES_CHRONIQUES_QUESTIONS,
+  DIARRHEES_CHRONIQUES_RESOURCES,
+} from './gastro/diarrheesChroniques';
+import {
+  COLOPATHIE_FONCTIONNELLE_QUESTIONS,
+  COLOPATHIE_FONCTIONNELLE_RESOURCES,
+} from './gastro/colopathieFonctionnelle';
+import {
+  LITHIASE_BILIAIRE_QUESTIONS,
+  LITHIASE_BILIAIRE_RESOURCES,
+} from './gastro/lithiaseBiliaire';
+import {
+  PANCREATITE_CHRONIQUE_QUESTIONS,
+  PANCREATITE_CHRONIQUE_RESOURCES,
+} from './gastro/pancreatiteChronique';
+import {
+  HYPERTENSION_PORTALE_QUESTIONS,
+  HYPERTENSION_PORTALE_RESOURCES,
+} from './gastro/hypertensionPortale';
+import {
+  CIRRHOSE_HEPATIQUE_QUESTIONS,
+  CIRRHOSE_HEPATIQUE_RESOURCES,
+} from './gastro/cirrhoseHepatique';
+import {
+  HEPATITES_AIGUES_QUESTIONS,
+  HEPATITES_AIGUES_RESOURCES,
+} from './gastro/hepatitesAigues';
+import {
+  HEPATITES_CHRONIQUES_QUESTIONS,
+  HEPATITES_CHRONIQUES_RESOURCES,
+} from './gastro/hepatitesChroniques';
+import {
+  ICTERES_QUESTIONS,
+  ICTERES_RESOURCES,
+} from './gastro/icteres';
+import {
+  MALADIE_HEMORROIDAIRE_QUESTIONS,
+  MALADIE_HEMORROIDAIRE_RESOURCES,
+} from './gastro/maladieHemorroidaire';
+import {
+  FISSURES_FISTULES_ANALES_QUESTIONS,
+  FISSURES_FISTULES_ANALES_RESOURCES,
+} from './gastro/fissuresFistulesAnales';
+
+export { GASTRO_COURSES };
+
+// ==========================================================
+// TOUTES LES QUESTIONS DE GASTRO (40 COURS COMPLETS)
+// ==========================================================
+export const ALL_GASTRO_QUESTIONS: Question[] = [
+  // Subdivision 1: ANAPATH
+  ...ANAPATH_CANCER_GASTRIQUE_QUESTIONS,
+  ...PATHOLOGIE_HEPATIQUE_QUESTIONS,
+
+  // Subdivision 2: LES CANCER
+  ...CANCER_ESTOMAC_QUESTIONS,
+  ...TUMEURS_PANCREAS_QUESTIONS,
+  ...CANCER_COLON_QUESTIONS,
+  ...CANCER_RECTUM_QUESTIONS,
+  ...CANCER_CANAL_ANAL_QUESTIONS,
+  ...GIST_QUESTIONS,
+  ...CANCER_OESOPHAGE_QUESTIONS,
+  ...CHC_TUMEURS_MALIGNES_FOIE_QUESTIONS,
+
+  // Subdivision 3: Urgences
+  ...APPENDICITE_AIGUE_QUESTIONS,
+  ...HERNIES_ABDOMINALES_QUESTIONS,
+  ...LESIONS_CAUSTIQUES_QUESTIONS,
+  ...PANCREATITE_AIGUE_QUESTIONS,
+  ...PERITONITES_AIGUES_QUESTIONS,
+  ...OCCLUSIONS_INTESTINALES_QUESTIONS,
+  ...ISCHEMIE_INTESTINALE_QUESTIONS,
+  ...TRAUMATISMES_ABDOMEN_QUESTIONS,
+  ...HEMORRAGIES_DIGESTIVES_QUESTIONS,
+
+  // Subdivision 4: Gastro
+  ...KYSTE_HYDATIQUE_FOIE_QUESTIONS,
+  ...TUMEURS_BENIGNES_FOIE_QUESTIONS,
+  ...POLYPES_POLYPOSES_QUESTIONS,
+  ...TUBERCULOSE_DIGESTIVE_QUESTIONS,
+  ...ULCERE_GASTRO_DUODENAL_QUESTIONS,
+  ...GASTRITES_QUESTIONS,
+  ...RGO_HERNIE_HIATALE_QUESTIONS,
+  ...MALADIE_CROHN_QUESTIONS,
+  ...RECTOCOLITE_HEMORRAGIQUE_QUESTIONS,
+  ...MALADIE_COELIAQUE_QUESTIONS,
+  ...DIARRHEES_CHRONIQUES_QUESTIONS,
+  ...COLOPATHIE_FONCTIONNELLE_QUESTIONS,
+  ...LITHIASE_BILIAIRE_QUESTIONS,
+  ...PANCREATITE_CHRONIQUE_QUESTIONS,
+  ...HYPERTENSION_PORTALE_QUESTIONS,
+  ...CIRRHOSE_HEPATIQUE_QUESTIONS,
+  ...HEPATITES_AIGUES_QUESTIONS,
+  ...HEPATITES_CHRONIQUES_QUESTIONS,
+  ...ICTERES_QUESTIONS,
+  ...MALADIE_HEMORROIDAIRE_QUESTIONS,
+  ...FISSURES_FISTULES_ANALES_QUESTIONS,
+];
+
+// ==========================================================
+// TOUTES LES RESSOURCES DE GASTRO (FICHES & ASTUCES)
+// ==========================================================
+export const ALL_GASTRO_RESOURCES: CourseResource[] = [
+  // Subdivision 1: ANAPATH
+  ...ANAPATH_CANCER_GASTRIQUE_RESOURCES,
+  ...PATHOLOGIE_HEPATIQUE_RESOURCES,
+
+  // Subdivision 2: LES CANCER
+  ...CANCER_ESTOMAC_RESOURCES,
+  ...TUMEURS_PANCREAS_RESOURCES,
+  ...CANCER_COLON_RESOURCES,
+  ...CANCER_RECTUM_RESOURCES,
+  ...CANCER_CANAL_ANAL_RESOURCES,
+  ...GIST_RESOURCES,
+  ...CANCER_OESOPHAGE_RESOURCES,
+  ...CHC_TUMEURS_MALIGNES_FOIE_RESOURCES,
+
+  // Subdivision 3: Urgences
+  ...APPENDICITE_AIGUE_RESOURCES,
+  ...HERNIES_ABDOMINALES_RESOURCES,
+  ...LESIONS_CAUSTIQUES_RESOURCES,
+  ...PANCREATITE_AIGUE_RESOURCES,
+  ...PERITONITES_AIGUES_RESOURCES,
+  ...OCCLUSIONS_INTESTINALES_RESOURCES,
+  ...ISCHEMIE_INTESTINALE_RESOURCES,
+  ...TRAUMATISMES_ABDOMEN_RESOURCES,
+  ...HEMORRAGIES_DIGESTIVES_RESOURCES,
+
+  // Subdivision 4: Gastro
+  ...KYSTE_HYDATIQUE_FOIE_RESOURCES,
+  ...TUMEURS_BENIGNES_FOIE_RESOURCES,
+  ...POLYPES_POLYPOSES_RESOURCES,
+  ...TUBERCULOSE_DIGESTIVE_RESOURCES,
+  ...ULCERE_GASTRO_DUODENAL_RESOURCES,
+  ...GASTRITES_RESOURCES,
+  ...RGO_HERNIE_HIATALE_RESOURCES,
+  ...MALADIE_CROHN_RESOURCES,
+  ...RECTOCOLITE_HEMORRAGIQUE_RESOURCES,
+  ...MALADIE_COELIAQUE_RESOURCES,
+  ...DIARRHEES_CHRONIQUES_RESOURCES,
+  ...COLOPATHIE_FONCTIONNELLE_RESOURCES,
+  ...LITHIASE_BILIAIRE_RESOURCES,
+  ...PANCREATITE_CHRONIQUE_RESOURCES,
+  ...HYPERTENSION_PORTALE_RESOURCES,
+  ...CIRRHOSE_HEPATIQUE_RESOURCES,
+  ...HEPATITES_AIGUES_RESOURCES,
+  ...HEPATITES_CHRONIQUES_RESOURCES,
+  ...ICTERES_RESOURCES,
+  ...MALADIE_HEMORROIDAIRE_RESOURCES,
+  ...FISSURES_FISTULES_ANALES_RESOURCES,
+];
