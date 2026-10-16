@@ -98,7 +98,7 @@ export const SupabaseFlutterStudio: React.FC<SupabaseFlutterStudioProps> = ({
       icon: Database,
       badge: 'Courses & QCMs',
       content: SUPABASE_SQL_SCHEMA,
-      filename: 'medquest_supabase_schema.sql',
+      filename: 'syndromed_supabase_schema.sql',
     },
     {
       id: 'dashboard',

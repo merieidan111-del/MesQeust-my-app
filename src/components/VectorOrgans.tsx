@@ -17,6 +17,8 @@ export {
   liverMascotImg,
 };
 
+export { SyndromedLogo, SyndromedWordmark, MedQuestLogo } from './SyndromedLogo';
+
 export interface OrganProps {
   className?: string;
   size?: number;

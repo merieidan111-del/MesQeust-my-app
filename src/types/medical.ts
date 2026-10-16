@@ -109,6 +109,10 @@ export interface UserProfile {
   dailyActivity?: Record<string, number>;
   streakHistory?: Record<string, StreakDayStatus>;
   notificationsEnabled?: boolean;
+  nickname?: string;
+  isAnonymous?: boolean;
+  optOutRanking?: boolean;
+  avatarId?: string;
 }
 
 export interface ShopItem {
@@ -130,6 +134,8 @@ export interface LeaderboardEntry {
   totalXp: number;
   streakCount: number;
   title: string;
-  avatarUrl: string;
+  avatarUrl?: string;
+  avatarId?: string;
+  isAnonymous?: boolean;
   isCurrentUser?: boolean;
 }

@@ -438,7 +438,7 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-[#F8FAFD] text-slate-900 flex flex-col font-sans selection:bg-indigo-500/20 selection:text-indigo-950">
+    <div className="min-h-screen bg-[#F8FAFD] text-slate-900 flex flex-col font-sans selection:bg-[#10B981]/20 selection:text-[#0F172A]">
       {/* Toast Notification Container */}
       {toastMessage && (
         <div className="fixed bottom-6 right-6 z-50 animate-in fade-in slide-in-from-bottom-5 duration-300">
@@ -604,6 +604,14 @@ export default function App() {
                     selectedYear={selectedYear}
                     onSpendXp={handleSpendXp}
                     onBuyFreeze={handleBuyFreeze}
+                    onUpdateProfile={(updated) => {
+                      if (!currentUserAccount) return;
+                      setUserProfile((prev) => {
+                        if (!prev) return prev;
+                        return { ...prev, ...updated };
+                      });
+                      if (updated.academicYear) setSelectedYear(updated.academicYear);
+                    }}
                   />
                 )}
 
@@ -696,12 +704,12 @@ export default function App() {
       <footer className="py-5 px-6 border-t border-slate-200/80 bg-white/80 backdrop-blur-sm text-center text-xs text-slate-500 mt-auto">
         <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="flex items-center gap-2 text-slate-600">
-            <div className="w-6 h-6 rounded-lg bg-indigo-50 border border-indigo-100 flex items-center justify-center text-indigo-600">
+            <div className="w-6 h-6 rounded-lg bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-600">
               <Stethoscope className="w-3.5 h-3.5" />
             </div>
-            <span className="font-bold text-slate-800">MedQuest Éducation Médicale</span>
+            <span className="font-extrabold text-[#0F172A] tracking-wider uppercase text-xs">SYNDRO<span className="italic text-[#10B981] lowercase font-black ml-0.5">med</span></span>
             <span className="text-slate-400">•</span>
-            <span>Externat & Concours de Résidanat</span>
+            <span className="italic text-slate-500">The only syndrome you’ll love having</span>
           </div>
           <div className="flex items-center gap-3 text-[11px] text-slate-500 font-medium">
             <span>24 Cours Officiels de Cardiologie</span>

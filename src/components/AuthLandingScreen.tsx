@@ -24,7 +24,8 @@ import {
   RegisteredAccount,
   getRegisteredAccounts,
 } from '../services/authSessionManager';
-import { VectorHeart } from './VectorOrgans';
+
+import { SyndromedLogo, SyndromedWordmark } from './SyndromedLogo';
 
 interface AuthLandingScreenProps {
   onAuthenticated: (account: RegisteredAccount) => void;
@@ -154,20 +155,18 @@ export const AuthLandingScreen: React.FC<AuthLandingScreenProps> = ({ onAuthenti
       {/* Top Banner Navigation */}
       <header className="w-full bg-white/80 backdrop-blur-md border-b border-slate-200/80 px-6 py-4 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-rose-100 via-indigo-50 to-blue-100 p-1 flex items-center justify-center shadow-xs">
-            <VectorHeart size={30} />
+          <div className="w-10 h-10 rounded-2xl bg-slate-50 border border-slate-200/80 p-1.5 flex items-center justify-center shadow-xs">
+            <SyndromedLogo size={28} color="#0F172A" accentColor="#10B981" />
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <span className="font-extrabold text-xl tracking-tight text-slate-900">
-                MedQuest
-              </span>
-              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-blue-50 text-[#2A75D3] border border-blue-200">
+              <SyndromedWordmark size="md" />
+              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-50 text-[#10B981] border border-emerald-200">
                 Espace Externat
               </span>
             </div>
-            <p className="text-[11px] text-slate-500 font-medium">
-              Plateforme d'Entraînement Clinique & Concours de Résidanat
+            <p className="text-[11px] text-slate-500 font-semibold italic mt-0.5">
+              The only syndrome you’ll love having
             </p>
           </div>
         </div>
@@ -531,8 +530,8 @@ export const AuthLandingScreen: React.FC<AuthLandingScreenProps> = ({ onAuthenti
       </main>
 
       {/* Footer */}
-      <footer className="w-full border-t border-slate-200/80 bg-white/50 py-3 px-6 text-center text-xs text-slate-500">
-        MedQuest Externat Médical • Sessions multi-utilisateurs isolées • Conformité programme officiel
+      <footer className="w-full border-t border-slate-200/80 bg-white/50 py-3 px-6 text-center text-xs text-slate-500 font-medium">
+        <span className="font-bold text-slate-800">Syndromed</span> • The only syndrome you’ll love having • Sessions multi-utilisateurs isolées
       </footer>
     </div>
   );

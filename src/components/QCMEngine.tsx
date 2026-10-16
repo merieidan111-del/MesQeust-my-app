@@ -31,10 +31,11 @@ import {
   BookOpen,
   Pill,
   Layers,
+  ShieldAlert,
 } from 'lucide-react';
 import { Question, QuestionType, Module, AcademicYear } from '../types/medical';
 import { MEDICAL_COURSES } from '../data/mockMedicalData';
-import { VectorHeart, VectorBrain, VectorLungs, VectorLiver } from './VectorOrgans';
+
 
 interface QCMEngineProps {
   questions: Question[];
@@ -125,10 +126,12 @@ export const QCMEngine: React.FC<QCMEngineProps> = ({
 
   const getModuleIcon = (mod: Module | undefined) => {
     const id = mod?.id || '';
-    if (id === 'mod-cardio') return <VectorHeart size={44} />;
-    if (id === 'mod-neuro' || id === 'mod-5-psy') return <VectorBrain size={44} />;
-    if (id === 'mod-pneumo') return <VectorLungs size={44} />;
-    if (id.includes('gastro')) return <VectorLiver size={44} />;
+    if (id === 'mod-cardio') return <HeartPulse className="w-7 h-7 text-rose-500" />;
+    if (id === 'mod-neuro') return <Brain className="w-7 h-7 text-indigo-500" />;
+    if (id === 'mod-5-psy') return <Brain className="w-7 h-7 text-purple-500" />;
+    if (id === 'mod-pneumo') return <Wind className="w-7 h-7 text-sky-500" />;
+    if (id.includes('gastro')) return <Stethoscope className="w-7 h-7 text-amber-500" />;
+    if (id === 'mod-infectio') return <ShieldAlert className="w-7 h-7 text-emerald-600" />;
     if (id === 'mod-5-otr') return <Bone className="w-7 h-7 text-amber-500" />;
     if (id === 'mod-5-gyn') return <HeartHandshake className="w-7 h-7 text-rose-500" />;
     if (id === 'mod-5-ped') return <Baby className="w-7 h-7 text-sky-500" />;
@@ -136,7 +139,7 @@ export const QCMEngine: React.FC<QCMEngineProps> = ({
     if (id === 'mod-5-uro-nephro') return <Droplets className="w-7 h-7 text-cyan-500" />;
     if (id === 'mod-semio3') return <BookOpen className="w-7 h-7 text-emerald-500" />;
     if (id === 'mod-pharma3') return <Pill className="w-7 h-7 text-teal-500" />;
-    return <VectorHeart size={44} />;
+    return <HeartPulse className="w-7 h-7 text-indigo-500" />;
   };
 
   useEffect(() => {
@@ -322,8 +325,8 @@ export const QCMEngine: React.FC<QCMEngineProps> = ({
 
     return (
       <div className="bg-white border border-slate-200/80 rounded-3xl p-8 sm:p-12 text-center max-w-2xl mx-auto shadow-sm animate-in zoom-in-95 duration-300">
-        <div className="w-24 h-24 rounded-3xl bg-indigo-50 border border-indigo-100 flex items-center justify-center mx-auto mb-6 shadow-xs p-2">
-          <VectorHeart size={84} />
+        <div className="w-20 h-20 rounded-3xl bg-indigo-50 border border-indigo-100 flex items-center justify-center mx-auto mb-6 shadow-xs">
+          <Award className="w-10 h-10 text-indigo-600" />
         </div>
 
         <span className="px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 font-extrabold text-xs">
@@ -379,7 +382,7 @@ export const QCMEngine: React.FC<QCMEngineProps> = ({
   if (!currentQ) {
     return (
       <div className="bg-white border border-slate-200 rounded-3xl p-12 text-center shadow-sm max-w-lg mx-auto space-y-4">
-        <VectorBrain size={64} className="mx-auto mb-2" />
+        <Brain className="w-14 h-14 text-indigo-500 mx-auto mb-2" />
         <h3 className="text-lg font-black text-slate-900">Aucune question disponible</h3>
         <p className="text-slate-500 text-sm">
           {courseName ? `Aucune question n'est encore enregistrée pour "${courseName}".` : "Aucune question ne correspond à cette sélection."}

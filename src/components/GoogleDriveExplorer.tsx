@@ -21,7 +21,7 @@ import {
   parseQCMContent,
 } from '../services/googleDriveService';
 import { Question } from '../types/medical';
-import { VectorHeart, VectorBrain } from './VectorOrgans';
+
 
 interface GoogleDriveExplorerProps {
   isGoogleConnected: boolean;

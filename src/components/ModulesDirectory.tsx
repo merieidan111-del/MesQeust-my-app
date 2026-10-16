@@ -14,14 +14,11 @@ import {
   Pill,
   Stethoscope,
   ShieldAlert,
+  HeartPulse,
+  Wind,
 } from 'lucide-react';
 import { Module, AcademicYear } from '../types/medical';
-import {
-  VectorHeart,
-  VectorBrain,
-  VectorLungs,
-  VectorLiver,
-} from './VectorOrgans';
+
 
 interface ModulesDirectoryProps {
   modules: Module[];
@@ -39,11 +36,12 @@ export const ModulesDirectory: React.FC<ModulesDirectoryProps> = ({
   const [searchQuery, setSearchQuery] = useState<string>('');
 
   const getOrganAvatar = (moduleId: string) => {
-    if (moduleId === 'mod-cardio') return <VectorHeart size={48} />;
-    if (moduleId === 'mod-neuro') return <VectorBrain size={48} />;
-    if (moduleId === 'mod-pneumo') return <VectorLungs size={48} />;
+    if (moduleId === 'mod-cardio') return <HeartPulse className="w-9 h-9 text-rose-500" />;
+    if (moduleId === 'mod-neuro') return <Brain className="w-9 h-9 text-indigo-500" />;
+    if (moduleId === 'mod-pneumo') return <Wind className="w-9 h-9 text-sky-500" />;
     if (moduleId === 'mod-infectio') return <ShieldAlert className="w-9 h-9 text-emerald-600" />;
-    if (moduleId.includes('gastro')) return <VectorLiver size={48} />;
+    if (moduleId.includes('gastro')) return <Stethoscope className="w-9 h-9 text-amber-500" />;
+    if (moduleId === 'mod-hemato') return <Activity className="w-9 h-9 text-fuchsia-500" />;
     if (moduleId === 'mod-5-otr') return <Bone className="w-9 h-9 text-amber-500" />;
     if (moduleId === 'mod-5-gyn') return <HeartHandshake className="w-9 h-9 text-rose-500" />;
     if (moduleId === 'mod-5-ped') return <Baby className="w-9 h-9 text-sky-500" />;
@@ -51,8 +49,8 @@ export const ModulesDirectory: React.FC<ModulesDirectoryProps> = ({
     if (moduleId === 'mod-5-endo') return <Activity className="w-9 h-9 text-teal-500" />;
     if (moduleId === 'mod-5-uro-nephro') return <Droplets className="w-9 h-9 text-cyan-500" />;
     if (moduleId === 'mod-pharma3') return <Pill className="w-9 h-9 text-emerald-500" />;
-    if (moduleId === 'mod-semio3') return <Stethoscope className="w-9 h-9 text-teal-500" />;
-    return <VectorHeart size={48} />;
+    if (moduleId === 'mod-semio3') return <BookOpen className="w-9 h-9 text-teal-500" />;
+    return <HeartPulse className="w-9 h-9 text-indigo-500" />;
   };
 
   const filtered = modules.filter(

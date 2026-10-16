@@ -14,10 +14,13 @@ import {
   X,
   Sparkles,
   Award,
+  HeartPulse,
+  Brain,
+  Wind,
 } from 'lucide-react';
 import { Module, Course, CourseResource } from '../types/medical';
 import { MEDICAL_COURSES, COURSE_RESOURCES } from '../data/mockMedicalData';
-import { VectorHeart, VectorBrain, VectorLungs, VectorLiver } from './VectorOrgans';
+
 
 export const getSubdivisionMeta = (subdivision: string) => {
   const s = subdivision.trim();
@@ -286,15 +289,15 @@ export const CourseHub: React.FC<CourseHubProps> = ({
   const isLiver = module.id.includes('gastro') || module.id.includes('nephro');
 
   const organMascot = isCardio ? (
-    <VectorHeart size={64} />
+    <HeartPulse className="w-12 h-12 text-rose-500" />
   ) : isNeuro ? (
-    <VectorBrain size={64} />
+    <Brain className="w-12 h-12 text-indigo-500" />
   ) : isPneumo ? (
-    <VectorLungs size={64} />
+    <Wind className="w-12 h-12 text-sky-500" />
   ) : isLiver ? (
-    <VectorLiver size={64} />
+    <Stethoscope className="w-12 h-12 text-amber-500" />
   ) : (
-    <VectorHeart size={64} />
+    <HeartPulse className="w-12 h-12 text-indigo-500" />
   );
 
   if (courses.length === 0) {

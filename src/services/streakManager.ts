@@ -116,32 +116,35 @@ export function evaluateStreakOnSessionLoad(
 
   const daysGap = getDaysDifference(lastActive, todayStr);
 
+  const streakHistory: Record<string, StreakDayStatus> = { ...(progress.streakHistory || {}) };
+  const dailyActivity: Record<string, number> = { ...(progress.dailyActivity || {}) };
+
   const updated: UserProgressData = {
     ...progress,
-    streakHistory: { ...(progress.streakHistory || {}) },
-    dailyActivity: { ...(progress.dailyActivity || {}) },
+    streakHistory,
+    dailyActivity,
   };
 
   // If already opened today
   if (daysGap === 0) {
     // Sync today's solved count from dailyActivity if available
-    updated.questionsSolvedToday = updated.dailyActivity[todayStr] || updated.questionsSolvedToday || 0;
+    updated.questionsSolvedToday = dailyActivity[todayStr] || updated.questionsSolvedToday || 0;
     return { updatedProgress: updated, daysSkipped: 0, usedFreeze: false, brokeStreak: false };
   }
 
   // It's a new day! Reset today's counter
-  updated.questionsSolvedToday = updated.dailyActivity[todayStr] || 0;
+  updated.questionsSolvedToday = dailyActivity[todayStr] || 0;
   updated.lastActiveDate = todayStr;
 
   // If opened the next day (gap == 1):
   if (daysGap === 1) {
     // Yesterday was active if completed or had questions
-    const yesterdayStatus = updated.streakHistory[lastActive];
-    if (!yesterdayStatus && (updated.dailyActivity[lastActive] || 0) === 0) {
+    const yesterdayStatus = streakHistory[lastActive];
+    if (!yesterdayStatus && (dailyActivity[lastActive] || 0) === 0) {
       // Yesterday had no activity
       if (updated.streakFreezesCount > 0) {
         updated.streakFreezesCount -= 1;
-        updated.streakHistory[lastActive] = 'frozen';
+        streakHistory[lastActive] = 'frozen';
         return {
           updatedProgress: updated,
           daysSkipped: 1,
@@ -150,7 +153,7 @@ export function evaluateStreakOnSessionLoad(
           message: '❄️ Votre série a été sauvée par un Gel de Série pour la journée d\'hier !',
         };
       } else {
-        updated.streakHistory[lastActive] = 'skipped';
+        streakHistory[lastActive] = 'skipped';
         const prevStreak = updated.streakCount;
         updated.streakCount = 0;
         return {
@@ -177,14 +180,14 @@ export function evaluateStreakOnSessionLoad(
     skippedDate.setDate(skippedDate.getDate() - (daysGap - i));
     const skippedDateStr = getLocalDateString(skippedDate);
 
-    if (updated.streakHistory[skippedDateStr] !== 'completed') {
+    if (streakHistory[skippedDateStr] !== 'completed') {
       daysSkippedCount++;
       if (updated.streakFreezesCount > 0) {
         updated.streakFreezesCount -= 1;
-        updated.streakHistory[skippedDateStr] = 'frozen';
+        streakHistory[skippedDateStr] = 'frozen';
         usedFreeze = true;
       } else {
-        updated.streakHistory[skippedDateStr] = 'skipped';
+        streakHistory[skippedDateStr] = 'skipped';
         brokeStreak = true;
       }
     }

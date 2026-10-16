@@ -2,7 +2,7 @@ import { createClient } from '@supabase/supabase-js';
 
 // User's Supabase Project Credentials
 export const SUPABASE_PROJECT_ID = 'kxfpuvkcnwqzmgxymxci';
-export const SUPABASE_PROJECT_NAME = "MedQuest's Project";
+export const SUPABASE_PROJECT_NAME = "Syndromed's Project";
 export const SUPABASE_URL =
   import.meta.env.VITE_SUPABASE_URL || 'https://kxfpuvkcnwqzmgxymxci.supabase.co';
 export const SUPABASE_ANON_KEY =
@@ -33,7 +33,7 @@ export interface ApkOrderCheckout {
 }
 
 export const APK_ORDERS_SQL_SCHEMA = `-- ========================================================
--- MedQuest - Table Supabase pour les Commandes APK (Checkout)
+-- Syndromed - Table Supabase pour les Commandes APK (Checkout)
 -- À exécuter dans votre Supabase SQL Editor :
 -- https://supabase.com/dashboard/project/kxfpuvkcnwqzmgxymxci/sql
 -- ========================================================

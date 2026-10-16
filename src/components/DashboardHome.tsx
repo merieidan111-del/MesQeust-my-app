@@ -35,14 +35,7 @@ import {
   Minus,
 } from 'lucide-react';
 import { Module, UserProfile, AcademicYear } from '../types/medical';
-import {
-  VectorHeart,
-  VectorBrain,
-  VectorLungs,
-  VectorLiver,
-  VectorOrgansGroup,
-  vectorOrgansGroupBanner,
-} from './VectorOrgans';
+
 
 interface DashboardHomeProps {
   userProfile: UserProfile;
@@ -1044,7 +1037,7 @@ export const DashboardHome: React.FC<DashboardHomeProps> = ({
               </span>
             </div>
             <h4 className="text-sm sm:text-base font-black text-slate-900 mt-1">
-              Accédez à MedQuest sur Smartphone & Tablette
+              Accédez à Syndromed sur Smartphone & Tablette
             </h4>
             <p className="text-xs text-slate-600 font-medium mt-0.5 max-w-xl">
               Révisez vos cours officiels, séries de QCMs et fiches cliniques partout avec suivi en direct de vos scores et de vos points XP.
@@ -1079,7 +1072,7 @@ export const DashboardHome: React.FC<DashboardHomeProps> = ({
             className="p-4 rounded-3xl bg-white border border-slate-200/80 hover:border-rose-300 hover:shadow-md transition-all cursor-pointer group flex flex-col items-center text-center gap-2.5"
           >
             <div className="w-12 h-12 rounded-2xl bg-rose-50 text-rose-600 flex items-center justify-center group-hover:scale-110 transition-transform">
-              <VectorHeart size={36} />
+              <BookOpen className="w-6 h-6 text-rose-600" />
             </div>
             <div>
               <h4 className="font-extrabold text-xs text-slate-900 group-hover:text-rose-600 transition-colors">
@@ -1098,7 +1091,7 @@ export const DashboardHome: React.FC<DashboardHomeProps> = ({
             className="p-4 rounded-3xl bg-white border border-slate-200/80 hover:border-sky-300 hover:shadow-md transition-all cursor-pointer group flex flex-col items-center text-center gap-2.5"
           >
             <div className="w-12 h-12 rounded-2xl bg-sky-50 text-sky-600 flex items-center justify-center group-hover:scale-110 transition-transform">
-              <VectorLungs size={36} />
+              <Stethoscope className="w-6 h-6 text-sky-600" />
             </div>
             <div>
               <h4 className="font-extrabold text-xs text-slate-900 group-hover:text-sky-600 transition-colors">
@@ -1114,7 +1107,7 @@ export const DashboardHome: React.FC<DashboardHomeProps> = ({
             className="p-4 rounded-3xl bg-white border border-slate-200/80 hover:border-emerald-300 hover:shadow-md transition-all cursor-pointer group flex flex-col items-center text-center gap-2.5"
           >
             <div className="w-12 h-12 rounded-2xl bg-emerald-50 text-emerald-600 flex items-center justify-center group-hover:scale-110 transition-transform">
-              <VectorLiver size={36} />
+              <FileText className="w-6 h-6 text-emerald-600" />
             </div>
             <div>
               <h4 className="font-extrabold text-xs text-slate-900 group-hover:text-emerald-600 transition-colors">
@@ -1130,7 +1123,7 @@ export const DashboardHome: React.FC<DashboardHomeProps> = ({
             className="p-4 rounded-3xl bg-white border border-slate-200/80 hover:border-purple-300 hover:shadow-md transition-all cursor-pointer group flex flex-col items-center text-center gap-2.5"
           >
             <div className="w-12 h-12 rounded-2xl bg-purple-50 text-purple-600 flex items-center justify-center group-hover:scale-110 transition-transform">
-              <VectorBrain size={36} />
+              <Sparkles className="w-6 h-6 text-purple-600" />
             </div>
             <div>
               <h4 className="font-extrabold text-xs text-slate-900 group-hover:text-purple-600 transition-colors">
@@ -1180,15 +1173,15 @@ export const DashboardHome: React.FC<DashboardHomeProps> = ({
             const isPharma = module.id === 'mod-pharma3';
 
             const organAvatar = isCardio ? (
-              <VectorHeart size={48} />
+              <HeartPulse className="w-9 h-9 text-rose-500" />
             ) : isNeuro ? (
-              <VectorBrain size={48} />
+              <Brain className="w-9 h-9 text-indigo-500" />
             ) : isPneumo ? (
-              <VectorLungs size={48} />
+              <Wind className="w-9 h-9 text-sky-500" />
             ) : isInfectio ? (
               <ShieldAlert className="w-9 h-9 text-emerald-600" />
             ) : isLiver ? (
-              <VectorLiver size={48} />
+              <Stethoscope className="w-9 h-9 text-amber-500" />
             ) : isOtr ? (
               <Bone className="w-9 h-9 text-amber-500" />
             ) : isGyneco ? (

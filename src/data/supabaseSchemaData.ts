@@ -225,7 +225,7 @@ class _DashboardScreenState extends ConsumerState<DashboardScreen> {
             const Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("MedQuest", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+                Text("Syndromed", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
                 Text("4ème Année d'Externat", style: TextStyle(color: Colors.white54, fontSize: 11)),
               ],
             ),
@@ -1272,7 +1272,7 @@ class _LoginRegisterScreenState extends State<LoginRegisterScreen> {
       if (success && mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
-            content: Text('Compte créé avec succès ! Bienvenue sur MedQuest.'),
+            content: Text('Compte créé avec succès ! Bienvenue sur Syndromed.'),
             backgroundColor: Color(0xFF2A75D3),
           ),
         );

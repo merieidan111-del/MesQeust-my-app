@@ -16,7 +16,8 @@ import {
   LogOut,
 } from 'lucide-react';
 import { AcademicYear, UserProfile } from '../types/medical';
-import { VectorHeart } from './VectorOrgans';
+
+import { SyndromedLogo, SyndromedWordmark } from './SyndromedLogo';
 
 interface NavbarProps {
   currentTab:
@@ -74,15 +75,13 @@ export const Navbar: React.FC<NavbarProps> = ({
             onClick={() => setCurrentTab('home')}
             className="flex items-center gap-2.5 cursor-pointer group"
           >
-            <div className="w-10 h-10 rounded-2xl bg-gradient-to-tr from-rose-100 via-indigo-50 to-purple-100 p-1 flex items-center justify-center shadow-sm group-hover:scale-105 transition-transform">
-              <VectorHeart size={32} />
+            <div className="w-10 h-10 rounded-2xl bg-slate-50 border border-slate-200/80 p-1.5 flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform">
+              <SyndromedLogo size={30} color="#0F172A" accentColor="#10B981" />
             </div>
             <div>
-              <span className="font-extrabold text-lg sm:text-xl tracking-tight bg-gradient-to-r from-indigo-600 via-purple-600 to-rose-500 bg-clip-text text-transparent">
-                MedQuest
-              </span>
-              <span className="hidden sm:block text-[10px] font-semibold text-slate-600 leading-none">
-                Externat Médical
+              <SyndromedWordmark size="md" />
+              <span className="hidden sm:block text-[10px] font-medium text-slate-500 leading-none mt-0.5">
+                The only syndrome you’ll love having
               </span>
             </div>
           </div>

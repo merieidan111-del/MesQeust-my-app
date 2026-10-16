@@ -7,8 +7,10 @@ import {
   Layers,
   X,
   Calendar,
+  BookOpen,
+  HeartPulse,
+  Activity,
 } from 'lucide-react';
-import { VectorHeart, VectorBrain, VectorLungs } from './VectorOrgans';
 
 interface YearsSidebarProps {
   selectedYear: AcademicYear;
@@ -38,7 +40,7 @@ export const YEARS_DATA: YearMeta[] = [
     subtitle: 'Sémiologie Médicale',
     focus: 'Propédeutique, examen clinique & bases fondamentales',
     badge: 'Sémiologie',
-    organMascot: <VectorLungs size={46} />,
+    organMascot: <BookOpen className="w-8 h-8 text-amber-600" />,
     bgPastel: 'from-amber-50/80 to-orange-50/40',
     activeBorder: 'border-amber-400 bg-amber-50/70 shadow-sm shadow-amber-200/50',
     badgeColor: 'bg-amber-100 text-amber-800 border-amber-200',
@@ -49,7 +51,7 @@ export const YEARS_DATA: YearMeta[] = [
     subtitle: 'Pathologies & Spécialités',
     focus: 'Cardiologie (24 cours • 720 QCMs), Neuro, Pneumo, Néphro, Hépato',
     badge: 'Programme Majeur',
-    organMascot: <VectorHeart size={46} />,
+    organMascot: <HeartPulse className="w-8 h-8 text-rose-600" />,
     bgPastel: 'from-rose-50/90 to-indigo-50/50',
     activeBorder: 'border-rose-400 bg-rose-50/80 shadow-md shadow-rose-200/60 ring-2 ring-rose-200/50',
     badgeColor: 'bg-rose-100 text-rose-800 border-rose-200',
@@ -61,7 +63,7 @@ export const YEARS_DATA: YearMeta[] = [
     subtitle: 'Spécialités Cliniques & Urgences',
     focus: 'OTR, Gynéco-Obstétrique, Pédiatrie, Psychiatrie, Endocrino, Uro-Néphro',
     badge: '6 Modules',
-    organMascot: <VectorBrain size={46} />,
+    organMascot: <Activity className="w-8 h-8 text-indigo-600" />,
     bgPastel: 'from-indigo-50/80 to-purple-50/40',
     activeBorder: 'border-indigo-400 bg-indigo-50/70 shadow-sm shadow-indigo-200/50',
     badgeColor: 'bg-indigo-100 text-indigo-800 border-indigo-200',

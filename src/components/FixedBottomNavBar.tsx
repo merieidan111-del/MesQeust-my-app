@@ -1,5 +1,5 @@
 import React from 'react';
-import { Home, Compass, Heart, BarChart3, User } from 'lucide-react';
+import { Heart, Calendar, BookOpenCheck, BarChart3, User } from 'lucide-react';
 
 export type BottomNavTab = 'home' | 'explore' | 'practice' | 'progress' | 'profile';
 
@@ -14,72 +14,140 @@ export const FixedBottomNavBar: React.FC<FixedBottomNavBarProps> = ({
   onTabChange,
   isMobilePreview = false,
 }) => {
-  const navItems: { id: BottomNavTab; label: string; icon: React.ElementType }[] = [
-    { id: 'home', label: 'Home', icon: Home },
-    { id: 'explore', label: 'Explore', icon: Compass },
-    { id: 'practice', label: 'Practice', icon: Heart },
-    { id: 'progress', label: 'Progress', icon: BarChart3 },
-    { id: 'profile', label: 'Profile', icon: User },
-  ];
-
   return (
-    <nav
+    <div
       className={`${
         isMobilePreview
-          ? 'sticky bottom-0 left-0 right-0'
-          : 'fixed bottom-0 left-0 right-0 xl:hidden'
-      } z-40 bg-white rounded-t-3xl border-t border-slate-200/80 shadow-[0_-4px_24px_rgba(0,0,0,0.06)] px-4 py-2 select-none`}
-      role="navigation"
-      aria-label="Mobile Bottom Navigation"
+          ? 'sticky bottom-3 left-0 right-0'
+          : 'fixed bottom-4 left-0 right-0'
+      } z-40 px-4 pointer-events-none select-none`}
     >
-      <div className="max-w-md mx-auto flex items-center justify-around">
-        {navItems.map((item) => {
-          const isActive = activeTab === item.id;
-          const Icon = item.icon;
+      {/* Light Marshmallow Pill Dock themed with the App */}
+      <nav
+        className="max-w-md mx-auto bg-white/95 backdrop-blur-md rounded-full px-3 py-1.5 shadow-[0_14px_38px_rgba(15,23,42,0.12),0_2px_10px_rgba(15,23,42,0.06),inset_0_1px_1px_rgba(255,255,255,0.9)] flex items-center justify-between border border-slate-200/90 pointer-events-auto"
+        role="navigation"
+        aria-label="Barre de navigation principale"
+      >
+        {/* 1. Home / Accueil */}
+        <button
+          type="button"
+          onClick={() => onTabChange('home')}
+          className="flex-1 py-1 flex flex-col items-center justify-center cursor-pointer group transition-transform"
+          aria-label="Home"
+        >
+          <div
+            className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${
+              activeTab === 'home'
+                ? 'bg-rose-50 text-rose-500 scale-105 shadow-2xs'
+                : 'text-slate-400 group-hover:text-slate-700 group-hover:bg-slate-100/70'
+            }`}
+          >
+            <Heart className={`w-4.5 h-4.5 ${activeTab === 'home' ? 'fill-current' : ''}`} />
+          </div>
+          <span
+            className={`text-[9.5px] mt-0.5 tracking-tight transition-colors ${
+              activeTab === 'home' ? 'text-rose-600 font-extrabold' : 'text-slate-400 font-semibold'
+            }`}
+          >
+            Home
+          </span>
+        </button>
 
-          return (
-            <button
-              key={item.id}
-              onClick={() => onTabChange(item.id)}
-              className="flex-1 py-1.5 flex flex-col items-center justify-center gap-1 transition-all cursor-pointer group"
-              aria-label={item.label}
-              aria-current={isActive ? 'page' : undefined}
-            >
-              <div
-                className={`transition-transform duration-200 ${
-                  isActive ? 'scale-110 -translate-y-0.5' : 'group-hover:scale-105'
-                }`}
-              >
-                <Icon
-                  className="w-5 h-5 transition-colors duration-200"
-                  style={{
-                    color: isActive ? '#6C5CE7' : '#8E8E93',
-                    strokeWidth: isActive ? 2.4 : 2,
-                  }}
-                />
-              </div>
+        {/* 2. Explore / Directory */}
+        <button
+          type="button"
+          onClick={() => onTabChange('explore')}
+          className="flex-1 py-1 flex flex-col items-center justify-center cursor-pointer group transition-transform"
+          aria-label="Modules"
+        >
+          <div
+            className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${
+              activeTab === 'explore'
+                ? 'bg-amber-50 text-amber-500 scale-105 shadow-2xs'
+                : 'text-slate-400 group-hover:text-slate-700 group-hover:bg-slate-100/70'
+            }`}
+          >
+            <Calendar className="w-4.5 h-4.5" />
+          </div>
+          <span
+            className={`text-[9.5px] mt-0.5 tracking-tight transition-colors ${
+              activeTab === 'explore' ? 'text-amber-600 font-extrabold' : 'text-slate-400 font-semibold'
+            }`}
+          >
+            Modules
+          </span>
+        </button>
 
-              <span
-                className={`text-[11px] tracking-tight transition-colors duration-200 ${
-                  isActive ? 'font-bold' : 'font-medium'
-                }`}
-                style={{
-                  color: isActive ? '#6C5CE7' : '#8E8E93',
-                }}
-              >
-                {item.label}
-              </span>
+        {/* 3. Center Raised Action Button (QCM Practice with BookOpenCheck Icon) */}
+        <div className="flex-shrink-0 px-2 -my-3 flex flex-col items-center">
+          <button
+            type="button"
+            onClick={() => onTabChange('practice')}
+            className={`w-12 h-12 rounded-full bg-gradient-to-tr from-[#F472B6] via-[#FB7185] to-[#FDA4AF] text-white flex items-center justify-center shadow-[0_8px_22px_rgba(244,114,182,0.45),inset_0_1.5px_2px_rgba(255,255,255,0.7)] border-[3px] border-white cursor-pointer hover:scale-110 active:scale-95 transition-all duration-200 ${
+              activeTab === 'practice'
+                ? 'ring-3 ring-rose-300 scale-105'
+                : 'hover:ring-3 hover:ring-rose-200'
+            }`}
+            title="Lancer une session QCM (+5 XP)"
+            aria-label="Lancer QCM"
+          >
+            <BookOpenCheck className="w-5.5 h-5.5 stroke-[2.4]" />
+          </button>
+          <span className="text-[9px] font-extrabold text-rose-500 mt-0.5 tracking-wide uppercase">
+            QCM
+          </span>
+        </div>
 
-              {/* Subtle active indicator dot */}
-              <div
-                className={`w-1 h-1 rounded-full transition-all duration-200 ${
-                  isActive ? 'bg-[#6C5CE7] opacity-100 scale-100' : 'opacity-0 scale-0'
-                }`}
-              />
-            </button>
-          );
-        })}
-      </div>
-    </nav>
+        {/* 4. Progress / Gamification */}
+        <button
+          type="button"
+          onClick={() => onTabChange('progress')}
+          className="flex-1 py-1 flex flex-col items-center justify-center cursor-pointer group transition-transform"
+          aria-label="Progress"
+        >
+          <div
+            className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${
+              activeTab === 'progress'
+                ? 'bg-emerald-50 text-emerald-500 scale-105 shadow-2xs'
+                : 'text-slate-400 group-hover:text-slate-700 group-hover:bg-slate-100/70'
+            }`}
+          >
+            <BarChart3 className="w-4.5 h-4.5" />
+          </div>
+          <span
+            className={`text-[9.5px] mt-0.5 tracking-tight transition-colors ${
+              activeTab === 'progress' ? 'text-emerald-600 font-extrabold' : 'text-slate-400 font-semibold'
+            }`}
+          >
+            Progress
+          </span>
+        </button>
+
+        {/* 5. Profile */}
+        <button
+          type="button"
+          onClick={() => onTabChange('profile')}
+          className="flex-1 py-1 flex flex-col items-center justify-center cursor-pointer group transition-transform"
+          aria-label="Profile"
+        >
+          <div
+            className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${
+              activeTab === 'profile'
+                ? 'bg-indigo-50 text-indigo-500 scale-105 shadow-2xs'
+                : 'text-slate-400 group-hover:text-slate-700 group-hover:bg-slate-100/70'
+            }`}
+          >
+            <User className="w-4.5 h-4.5" />
+          </div>
+          <span
+            className={`text-[9.5px] mt-0.5 tracking-tight transition-colors ${
+              activeTab === 'profile' ? 'text-indigo-600 font-extrabold' : 'text-slate-400 font-semibold'
+            }`}
+          >
+            Profile
+          </span>
+        </button>
+      </nav>
+    </div>
   );
 };

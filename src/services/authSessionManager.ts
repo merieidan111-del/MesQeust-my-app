@@ -1,4 +1,4 @@
-import { AcademicYear, UserProfile, StreakDayStatus } from '../types/medical';
+import { AcademicYear, UserProfile, StreakDayStatus, LeaderboardPrivacySettings } from '../types/medical';
 
 export interface RegisteredAccount {
   id: string;
@@ -33,6 +33,7 @@ export interface UserProgressData {
   dailyActivity?: Record<string, number>; // date "YYYY-MM-DD" -> XP earned
   streakHistory?: Record<string, StreakDayStatus>;
   notificationsEnabled?: boolean;
+  leaderboardPrivacy?: LeaderboardPrivacySettings;
 }
 
 const STORAGE_KEY_CURRENT_SESSION = 'medquest_active_session_email';
@@ -82,6 +83,7 @@ export function getFreshDefaultProgress(
     dailyActivity: {},
     streakHistory: {},
     notificationsEnabled: false,
+    leaderboardPrivacy: { mode: 'public_name', nickname: '' },
   };
 }
 
@@ -344,6 +346,7 @@ export function buildUserProfile(
     dailyActivity: progress.dailyActivity || {},
     streakHistory: progress.streakHistory || {},
     notificationsEnabled: progress.notificationsEnabled || false,
+    leaderboardPrivacy: progress.leaderboardPrivacy || { mode: 'public_name', nickname: '' },
   };
 }
 
