@@ -75,14 +75,11 @@ export const Navbar: React.FC<NavbarProps> = ({
             onClick={() => setCurrentTab('home')}
             className="flex items-center gap-2.5 cursor-pointer group"
           >
-            <div className="w-10 h-10 rounded-2xl bg-slate-50 border border-slate-200/80 p-1.5 flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform">
-              <SyndromedLogo size={30} color="#0F172A" accentColor="#10B981" />
+            <div className="w-12 h-12 rounded-2xl bg-white border border-purple-100/90 p-0.5 flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform overflow-hidden shrink-0">
+              <SyndromedLogo size={44} useImage={true} />
             </div>
             <div>
-              <SyndromedWordmark size="md" />
-              <span className="hidden sm:block text-[10px] font-medium text-slate-500 leading-none mt-0.5">
-                The only syndrome you’ll love having
-              </span>
+              <SyndromedWordmark size="md" showSlogan={true} />
             </div>
           </div>
 

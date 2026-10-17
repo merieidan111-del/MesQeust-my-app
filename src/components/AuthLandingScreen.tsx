@@ -155,18 +155,22 @@ export const AuthLandingScreen: React.FC<AuthLandingScreenProps> = ({ onAuthenti
       {/* Top Banner Navigation */}
       <header className="w-full bg-white/80 backdrop-blur-md border-b border-slate-200/80 px-6 py-4 flex items-center justify-between">
         <div className="flex items-center gap-3">
-          <div className="w-10 h-10 rounded-2xl bg-slate-50 border border-slate-200/80 p-1.5 flex items-center justify-center shadow-xs">
-            <SyndromedLogo size={28} color="#0F172A" accentColor="#10B981" />
+          <div className="w-12 h-12 rounded-2xl bg-white border border-purple-100 p-0.5 flex items-center justify-center shadow-xs overflow-hidden shrink-0">
+            <SyndromedLogo size={44} useImage={true} />
           </div>
           <div>
             <div className="flex items-center gap-2">
-              <SyndromedWordmark size="md" />
-              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-emerald-50 text-[#10B981] border border-emerald-200">
+              <SyndromedWordmark size="md" showSlogan={false} />
+              <span className="text-[10px] font-bold px-2 py-0.5 rounded-full bg-purple-50 text-[#311465] border border-purple-200">
                 Espace Externat
               </span>
             </div>
-            <p className="text-[11px] text-slate-500 font-semibold italic mt-0.5">
-              The only syndrome you’ll love having
+            <p className="text-[11px] text-purple-700/80 font-bold mt-0.5 flex items-center gap-1">
+              <span>learn</span>
+              <span className="text-[#B794F6] font-black">•</span>
+              <span>revise</span>
+              <span className="text-[#B794F6] font-black">•</span>
+              <span>become</span>
             </p>
           </div>
         </div>

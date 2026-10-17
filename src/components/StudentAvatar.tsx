@@ -1,4 +1,3 @@
-import React from 'react';
 import {
   Stethoscope,
   HeartPulse,
@@ -14,6 +13,7 @@ import {
   Flame,
   EyeOff,
 } from 'lucide-react';
+import { SyndromedMascotCat } from './SyndromedLogo';
 
 export interface AvatarPreset {
   id: string;
@@ -25,6 +25,14 @@ export interface AvatarPreset {
 }
 
 export const AVATAR_PRESETS: Record<string, AvatarPreset> = {
+  mascot: {
+    id: 'mascot',
+    name: 'Chat Médecin (Mascotte)',
+    gradient: 'from-[#311465] to-[#4A2580]',
+    iconColor: 'text-white',
+    borderColor: 'border-purple-400 ring-1 ring-purple-300/40',
+    icon: SyndromedMascotCat,
+  },
   stethoscope: {
     id: 'stethoscope',
     name: 'Stéthoscope Clinique',

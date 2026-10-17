@@ -18,135 +18,155 @@ export const FixedBottomNavBar: React.FC<FixedBottomNavBarProps> = ({
     <div
       className={`${
         isMobilePreview
-          ? 'sticky bottom-3 left-0 right-0'
-          : 'fixed bottom-4 left-0 right-0'
-      } z-40 px-4 pointer-events-none select-none`}
+          ? 'w-full'
+          : 'fixed bottom-0 left-0 right-0 z-40 xl:hidden'
+      } select-none`}
     >
-      {/* Light Marshmallow Pill Dock themed with the App */}
+      {/* Bottom Navigation Bar fitted perfectly to bottom in mobile version */}
       <nav
-        className="max-w-md mx-auto bg-white/95 backdrop-blur-md rounded-full px-3 py-1.5 shadow-[0_14px_38px_rgba(15,23,42,0.12),0_2px_10px_rgba(15,23,42,0.06),inset_0_1px_1px_rgba(255,255,255,0.9)] flex items-center justify-between border border-slate-200/90 pointer-events-auto"
+        className={`w-full bg-white/95 backdrop-blur-md border-t border-slate-200/90 flex items-center justify-between pointer-events-auto transition-all ${
+          isMobilePreview
+            ? 'px-3 py-1.5 shadow-xs'
+            : 'px-4 py-1.5 pb-[max(0.6rem,env(safe-area-inset-bottom,0.6rem))] shadow-[0_-4px_25px_rgba(15,23,42,0.08)]'
+        }`}
         role="navigation"
         aria-label="Barre de navigation principale"
       >
-        {/* 1. Home / Accueil */}
-        <button
-          type="button"
-          onClick={() => onTabChange('home')}
-          className="flex-1 py-1 flex flex-col items-center justify-center cursor-pointer group transition-transform"
-          aria-label="Home"
-        >
-          <div
-            className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${
-              activeTab === 'home'
-                ? 'bg-rose-50 text-rose-500 scale-105 shadow-2xs'
-                : 'text-slate-400 group-hover:text-slate-700 group-hover:bg-slate-100/70'
-            }`}
-          >
-            <Heart className={`w-4.5 h-4.5 ${activeTab === 'home' ? 'fill-current' : ''}`} />
-          </div>
-          <span
-            className={`text-[9.5px] mt-0.5 tracking-tight transition-colors ${
-              activeTab === 'home' ? 'text-rose-600 font-extrabold' : 'text-slate-400 font-semibold'
-            }`}
-          >
-            Home
-          </span>
-        </button>
-
-        {/* 2. Explore / Directory */}
-        <button
-          type="button"
-          onClick={() => onTabChange('explore')}
-          className="flex-1 py-1 flex flex-col items-center justify-center cursor-pointer group transition-transform"
-          aria-label="Modules"
-        >
-          <div
-            className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${
-              activeTab === 'explore'
-                ? 'bg-amber-50 text-amber-500 scale-105 shadow-2xs'
-                : 'text-slate-400 group-hover:text-slate-700 group-hover:bg-slate-100/70'
-            }`}
-          >
-            <Calendar className="w-4.5 h-4.5" />
-          </div>
-          <span
-            className={`text-[9.5px] mt-0.5 tracking-tight transition-colors ${
-              activeTab === 'explore' ? 'text-amber-600 font-extrabold' : 'text-slate-400 font-semibold'
-            }`}
-          >
-            Modules
-          </span>
-        </button>
-
-        {/* 3. Center Raised Action Button (QCM Practice with BookOpenCheck Icon) */}
-        <div className="flex-shrink-0 px-2 -my-3 flex flex-col items-center">
+        <div className="max-w-md mx-auto w-full flex items-center justify-between">
+          {/* 1. Home / Accueil */}
           <button
             type="button"
-            onClick={() => onTabChange('practice')}
-            className={`w-12 h-12 rounded-full bg-gradient-to-tr from-[#F472B6] via-[#FB7185] to-[#FDA4AF] text-white flex items-center justify-center shadow-[0_8px_22px_rgba(244,114,182,0.45),inset_0_1.5px_2px_rgba(255,255,255,0.7)] border-[3px] border-white cursor-pointer hover:scale-110 active:scale-95 transition-all duration-200 ${
-              activeTab === 'practice'
-                ? 'ring-3 ring-rose-300 scale-105'
-                : 'hover:ring-3 hover:ring-rose-200'
-            }`}
-            title="Lancer une session QCM (+5 XP)"
-            aria-label="Lancer QCM"
+            onClick={() => onTabChange('home')}
+            className="flex-1 py-1 flex flex-col items-center justify-center cursor-pointer group transition-transform"
+            aria-label="Accueil"
           >
-            <BookOpenCheck className="w-5.5 h-5.5 stroke-[2.4]" />
+            <div
+              className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${
+                activeTab === 'home'
+                  ? 'bg-purple-100/90 text-[#311465] scale-105 shadow-2xs'
+                  : 'text-slate-400 group-hover:text-slate-600 group-hover:bg-slate-100/60'
+              }`}
+            >
+              <Heart className={`w-4.5 h-4.5 ${activeTab === 'home' ? 'fill-current text-[#311465]' : ''}`} />
+            </div>
+            <span
+              className={`text-[10px] mt-0.5 tracking-tight transition-colors ${
+                activeTab === 'home'
+                  ? 'text-[#311465] font-black'
+                  : 'text-slate-400 font-medium'
+              }`}
+            >
+              Accueil
+            </span>
           </button>
-          <span className="text-[9px] font-extrabold text-rose-500 mt-0.5 tracking-wide uppercase">
-            QCM
-          </span>
+
+          {/* 2. Explore / Modules */}
+          <button
+            type="button"
+            onClick={() => onTabChange('explore')}
+            className="flex-1 py-1 flex flex-col items-center justify-center cursor-pointer group transition-transform"
+            aria-label="Modules"
+          >
+            <div
+              className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${
+                activeTab === 'explore'
+                  ? 'bg-purple-100/90 text-[#311465] scale-105 shadow-2xs'
+                  : 'text-slate-400 group-hover:text-slate-600 group-hover:bg-slate-100/60'
+              }`}
+            >
+              <Calendar className="w-4.5 h-4.5" />
+            </div>
+            <span
+              className={`text-[10px] mt-0.5 tracking-tight transition-colors ${
+                activeTab === 'explore'
+                  ? 'text-[#311465] font-black'
+                  : 'text-slate-400 font-medium'
+              }`}
+            >
+              Modules
+            </span>
+          </button>
+
+          {/* 3. Center Action Button (QCM Practice) - Purple ONLY when active */}
+          <div className="flex-shrink-0 px-2 -my-2 flex flex-col items-center">
+            <button
+              type="button"
+              onClick={() => onTabChange('practice')}
+              className={`w-11 h-11 rounded-full text-white flex items-center justify-center border-2 border-white cursor-pointer hover:scale-105 active:scale-95 transition-all duration-200 ${
+                activeTab === 'practice'
+                  ? 'bg-gradient-to-tr from-[#311465] via-[#4A2580] to-[#7E22CE] ring-3 ring-purple-300 shadow-[0_6px_18px_rgba(49,20,101,0.35)] scale-105'
+                  : 'bg-slate-700 hover:bg-slate-800 text-slate-100 shadow-sm'
+              }`}
+              title="Lancer une session QCM (+5 XP)"
+              aria-label="Lancer QCM"
+            >
+              <BookOpenCheck className="w-5 h-5 stroke-[2.3]" />
+            </button>
+            <span
+              className={`text-[9px] mt-0.5 tracking-wide uppercase transition-colors ${
+                activeTab === 'practice'
+                  ? 'text-[#311465] font-black'
+                  : 'text-slate-400 font-bold'
+              }`}
+            >
+              QCM
+            </span>
+          </div>
+
+          {/* 4. Progress / Classement & Série */}
+          <button
+            type="button"
+            onClick={() => onTabChange('progress')}
+            className="flex-1 py-1 flex flex-col items-center justify-center cursor-pointer group transition-transform"
+            aria-label="Progrès"
+          >
+            <div
+              className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${
+                activeTab === 'progress'
+                  ? 'bg-purple-100/90 text-[#311465] scale-105 shadow-2xs'
+                  : 'text-slate-400 group-hover:text-slate-600 group-hover:bg-slate-100/60'
+              }`}
+            >
+              <BarChart3 className="w-4.5 h-4.5" />
+            </div>
+            <span
+              className={`text-[10px] mt-0.5 tracking-tight transition-colors ${
+                activeTab === 'progress'
+                  ? 'text-[#311465] font-black'
+                  : 'text-slate-400 font-medium'
+              }`}
+            >
+              Progrès
+            </span>
+          </button>
+
+          {/* 5. Profile / Profil */}
+          <button
+            type="button"
+            onClick={() => onTabChange('profile')}
+            className="flex-1 py-1 flex flex-col items-center justify-center cursor-pointer group transition-transform"
+            aria-label="Profil"
+          >
+            <div
+              className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${
+                activeTab === 'profile'
+                  ? 'bg-purple-100/90 text-[#311465] scale-105 shadow-2xs'
+                  : 'text-slate-400 group-hover:text-slate-600 group-hover:bg-slate-100/60'
+              }`}
+            >
+              <User className="w-4.5 h-4.5" />
+            </div>
+            <span
+              className={`text-[10px] mt-0.5 tracking-tight transition-colors ${
+                activeTab === 'profile'
+                  ? 'text-[#311465] font-black'
+                  : 'text-slate-400 font-medium'
+              }`}
+            >
+              Profil
+            </span>
+          </button>
         </div>
-
-        {/* 4. Progress / Gamification */}
-        <button
-          type="button"
-          onClick={() => onTabChange('progress')}
-          className="flex-1 py-1 flex flex-col items-center justify-center cursor-pointer group transition-transform"
-          aria-label="Progress"
-        >
-          <div
-            className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${
-              activeTab === 'progress'
-                ? 'bg-emerald-50 text-emerald-500 scale-105 shadow-2xs'
-                : 'text-slate-400 group-hover:text-slate-700 group-hover:bg-slate-100/70'
-            }`}
-          >
-            <BarChart3 className="w-4.5 h-4.5" />
-          </div>
-          <span
-            className={`text-[9.5px] mt-0.5 tracking-tight transition-colors ${
-              activeTab === 'progress' ? 'text-emerald-600 font-extrabold' : 'text-slate-400 font-semibold'
-            }`}
-          >
-            Progress
-          </span>
-        </button>
-
-        {/* 5. Profile */}
-        <button
-          type="button"
-          onClick={() => onTabChange('profile')}
-          className="flex-1 py-1 flex flex-col items-center justify-center cursor-pointer group transition-transform"
-          aria-label="Profile"
-        >
-          <div
-            className={`w-8 h-8 rounded-full flex items-center justify-center transition-all ${
-              activeTab === 'profile'
-                ? 'bg-indigo-50 text-indigo-500 scale-105 shadow-2xs'
-                : 'text-slate-400 group-hover:text-slate-700 group-hover:bg-slate-100/70'
-            }`}
-          >
-            <User className="w-4.5 h-4.5" />
-          </div>
-          <span
-            className={`text-[9.5px] mt-0.5 tracking-tight transition-colors ${
-              activeTab === 'profile' ? 'text-indigo-600 font-extrabold' : 'text-slate-400 font-semibold'
-            }`}
-          >
-            Profile
-          </span>
-        </button>
       </nav>
     </div>
   );

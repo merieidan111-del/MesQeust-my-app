@@ -113,6 +113,12 @@ export interface UserProfile {
   isAnonymous?: boolean;
   optOutRanking?: boolean;
   avatarId?: string;
+  leaderboardPrivacy?: LeaderboardPrivacySettings;
+}
+
+export interface LeaderboardPrivacySettings {
+  mode: 'public_name' | 'nickname' | 'anonymous' | 'hidden';
+  nickname: string;
 }
 
 export interface ShopItem {
