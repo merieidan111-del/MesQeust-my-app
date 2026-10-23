@@ -113,6 +113,10 @@ export interface UserProfile {
   isAnonymous?: boolean;
   optOutRanking?: boolean;
   avatarId?: string;
+  bio?: string;
+  faculty?: string;
+  targetSpecialty?: string;
+  customAvatarDataUrl?: string;
   leaderboardPrivacy?: LeaderboardPrivacySettings;
 }
 

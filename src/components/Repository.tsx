@@ -1,447 +1,459 @@
 import React, { useState } from 'react';
 import {
-  HardDrive,
   FolderOpen,
   ExternalLink,
   Search,
-  FileText,
-  Play,
-  Sparkles,
-  Download,
-  CheckCircle,
-  AlertCircle,
-  FolderCheck,
-  Layers,
-  ArrowRight,
   BookOpen,
+  Copy,
   Check,
+  GraduationCap,
+  HeartPulse,
+  Brain,
+  Wind,
+  Stethoscope,
+  Shield,
+  Activity,
+  Baby,
+  Sparkles,
+  Layers,
+  ArrowUpRight,
 } from 'lucide-react';
-import { Question } from '../types/medical';
-import { SAMPLE_DRIVE_FILES, parseQCMContent } from '../services/googleDriveService';
 
-interface RepositoryProps {
-  onLoadQuestionsToEngine: (questions: Question[], sourceName: string) => void;
-  onSendToAISummarizer?: (text: string, title: string) => void;
-}
-
-interface RepositoryCategory {
-  id: string;
-  title: string;
-  subtitle: string;
-  folderName: string;
-  driveFolderUrl: string;
-  color: string;
-  items: {
-    id: string;
+export interface YearDriveConfig {
+  id: '3eme' | '4eme' | '5eme';
+  yearName: string;
+  yearShort: string;
+  driveUrl: string;
+  badgeColor: string;
+  borderColor: string;
+  buttonBg: string;
+  description: string;
+  subdivisions: {
     name: string;
-    type: 'PDF' | 'JSON' | 'TXT' | 'DOCX';
-    size: string;
-    questionsCount: number;
-    updatedAt: string;
-    directDriveUrl: string;
-    sampleContentKey?: string;
+    description: string;
+    icon: React.ComponentType<{ className?: string }>;
+    accentColor: string;
   }[];
 }
 
-const REPOSITORY_CATEGORIES: RepositoryCategory[] = [
+const GENERAL_DRIVE_URL =
+  'https://drive.google.com/drive/folders/1ZafUI5rcn-KQ2O-0A22kjXQFnAjaiiKG?usp=drive_link';
+
+const YEAR_DRIVES: YearDriveConfig[] = [
   {
-    id: 'repo-cardio',
-    title: 'Cardiologie & Vasculaire',
-    subtitle: 'Syndromes coronariens aigus, insuffisance cardiaque, troubles du rythme, valvulopathies & HTA.',
-    folderName: 'QCM AI GENERATED / 01_Cardiologie',
-    driveFolderUrl: 'https://drive.google.com/drive/u/0/search?q=QCM%20AI%20GENERATED%20Cardiologie',
-    color: 'from-rose-500 to-red-600',
-    items: [
+    id: '3eme',
+    yearName: '3ème Année d’Externat',
+    yearShort: '3ème Année',
+    driveUrl:
+      'https://drive.google.com/drive/folders/1WFDtAN1tiShufMYPt8qdSzp99HHfkD-T?usp=drive_link',
+    badgeColor: 'bg-amber-100 text-amber-900 border-amber-200',
+    borderColor: 'border-amber-200',
+    buttonBg: 'bg-amber-600 hover:bg-amber-700',
+    description:
+      'Dossier Google Drive dédié à la 3ème Année : Sémiologie clinique, propédeutique et bases fondamentales.',
+    subdivisions: [
       {
-        id: 'cardio-sca-01',
-        name: 'QCM AI Generated - Cardiologie Urgences & SCA.txt',
-        type: 'TXT',
-        size: '14.2 KB',
-        questionsCount: 15,
-        updatedAt: 'Récemment synchronisé',
-        directDriveUrl: 'https://drive.google.com/drive/u/0/search?q=Cardiologie%20Urgences%20SCA',
-        sampleContentKey: 'mock-drive-qcm-cardio-01',
+        name: 'Sémiologie Médicale & Propédeutique',
+        description: 'Examen clinique méthodique, anamnèse et syndromes sémiologiques.',
+        icon: Stethoscope,
+        accentColor: 'text-amber-600 bg-amber-50 border-amber-200',
       },
       {
-        id: 'cardio-ic-02',
-        name: 'QCM AI Generated - Insuffisance Cardiaque & OAP.pdf',
-        type: 'PDF',
-        size: '28.5 KB',
-        questionsCount: 20,
-        updatedAt: 'Semaine passée',
-        directDriveUrl: 'https://drive.google.com/drive/u/0/search?q=Cardiologie%20Insuffisance%20Cardiaque',
+        name: 'Sémiologie Chirurgicale & Urgences',
+        description: 'Abdomen aigu, traumatologie, plaies, brûlures et gestes techniques.',
+        icon: Activity,
+        accentColor: 'text-orange-600 bg-orange-50 border-orange-200',
       },
       {
-        id: 'cardio-rythmo-03',
-        name: 'QCM AI Generated - Troubles du Rythme & Conduction ECG.pdf',
-        type: 'PDF',
-        size: '34.1 KB',
-        questionsCount: 25,
-        updatedAt: 'Semaine passée',
-        directDriveUrl: 'https://drive.google.com/drive/u/0/search?q=Troubles%20du%20Rythme%20ECG',
+        name: 'Radiologie & Imagerie Médicale',
+        description: 'Radiographies standards, tomodensitométrie (TDM), IRM et échographie.',
+        icon: Layers,
+        accentColor: 'text-indigo-600 bg-indigo-50 border-indigo-200',
+      },
+      {
+        name: 'Pharmacologie & Thérapeutique Générale',
+        description: 'Classes pharmacologiques, pharmacocinétique et règles de prescription.',
+        icon: Sparkles,
+        accentColor: 'text-emerald-600 bg-emerald-50 border-emerald-200',
+      },
+      {
+        name: 'Anatomopathologie & Histologie',
+        description: 'Lésions élémentaires tissulaires, biopsies et orientations diagnostiques.',
+        icon: BookOpen,
+        accentColor: 'text-rose-600 bg-rose-50 border-rose-200',
       },
     ],
   },
   {
-    id: 'repo-neuro',
-    title: 'Neurologie Clinique',
-    subtitle: 'AVC ischémiques & hémorragiques, épilepsies, méningites, céphalées aiguës & neuropathies.',
-    folderName: 'QCM AI GENERATED / 02_Neurologie',
-    driveFolderUrl: 'https://drive.google.com/drive/u/0/search?q=QCM%20AI%20GENERATED%20Neurologie',
-    color: 'from-indigo-500 to-purple-600',
-    items: [
+    id: '4eme',
+    yearName: '4ème Année d’Externat',
+    yearShort: '4ème Année',
+    driveUrl:
+      'https://drive.google.com/drive/folders/1MHbeXZGsvw1IgewboZ0d6inKo17kbzJI?usp=drive_link',
+    badgeColor: 'bg-rose-100 text-rose-900 border-rose-200',
+    borderColor: 'border-rose-200',
+    buttonBg: 'bg-rose-600 hover:bg-rose-700',
+    description:
+      'Dossier Google Drive dédié à la 4ème Année : Pathologies des grands systèmes d’organes et thérapeutique.',
+    subdivisions: [
       {
-        id: 'neuro-avc-01',
-        name: 'QCM AI Generated - Neurologie AVC & Crises Épileptiques.json',
-        type: 'JSON',
-        size: '18.8 KB',
-        questionsCount: 18,
-        updatedAt: 'Récemment synchronisé',
-        directDriveUrl: 'https://drive.google.com/drive/u/0/search?q=Neurologie%20AVC%20Epilepsie',
-        sampleContentKey: 'mock-drive-qcm-neuro-02',
+        name: 'Cardiologie & Vasculaire',
+        description: 'Insuffisance cardiaque, SCA, troubles du rythme, HTA et valvulopathies.',
+        icon: HeartPulse,
+        accentColor: 'text-rose-600 bg-rose-50 border-rose-200',
       },
       {
-        id: 'neuro-cephalee-02',
-        name: 'QCM AI Generated - Céphalées Brutales & Méningites Aiguës.pdf',
-        type: 'PDF',
-        size: '22.0 KB',
-        questionsCount: 16,
-        updatedAt: 'Il y a 2 semaines',
-        directDriveUrl: 'https://drive.google.com/drive/u/0/search?q=Cephalees%20Meningites%20Aigues',
-      },
-    ],
-  },
-  {
-    id: 'repo-gastro',
-    title: 'Hépato-Gastroentérologie',
-    subtitle: 'Cirrhose et décompensations, hémorragies digestives hautes/basses, pancréatites & MICI.',
-    folderName: 'QCM AI GENERATED / 03_Gastroenterologie',
-    driveFolderUrl: 'https://drive.google.com/drive/u/0/search?q=QCM%20AI%20GENERATED%20Gastro',
-    color: 'from-amber-500 to-orange-600',
-    items: [
-      {
-        id: 'gastro-cirrhose-01',
-        name: 'QCM AI Generated - Cirrhose Hépatique & Hémorragies Digestives.txt',
-        type: 'TXT',
-        size: '16.4 KB',
-        questionsCount: 14,
-        updatedAt: 'Récemment synchronisé',
-        directDriveUrl: 'https://drive.google.com/drive/u/0/search?q=Cirrhose%20Hemorragies%20Digestives',
-        sampleContentKey: 'mock-drive-qcm-gastro-03',
+        name: 'Neurologie Clinique & Neurochirurgie',
+        description: 'AVC, épilepsie, céphalées, sclérose en plaques et neuropathies périphériques.',
+        icon: Brain,
+        accentColor: 'text-indigo-600 bg-indigo-50 border-indigo-200',
       },
       {
-        id: 'gastro-pancreatite-02',
-        name: 'QCM AI Generated - Pancréatite Aiguë & Critères Balthazar.pdf',
-        type: 'PDF',
-        size: '19.2 KB',
-        questionsCount: 12,
-        updatedAt: 'Il y a 2 semaines',
-        directDriveUrl: 'https://drive.google.com/drive/u/0/search?q=Pancreatite%20Aigue%20Balthazar',
+        name: 'Pneumologie & Phtisiologie',
+        description: 'Asthme, BPCO, pneumonies aiguës, pleurésies, tuberculose et cancer bronchique.',
+        icon: Wind,
+        accentColor: 'text-sky-600 bg-sky-50 border-sky-200',
+      },
+      {
+        name: 'Hépato-Gastroentérologie',
+        description: 'Hémorragies digestives, cirrhose hépatique, MICI, pancréatite et lithiases.',
+        icon: Stethoscope,
+        accentColor: 'text-amber-600 bg-amber-50 border-amber-200',
+      },
+      {
+        name: 'Maladies Infectieuses',
+        description: 'Antibiothérapie raisonnée, méningites, septicémies, paludisme et zoonoses.',
+        icon: Shield,
+        accentColor: 'text-emerald-600 bg-emerald-50 border-emerald-200',
+      },
+      {
+        name: 'Hématologie & Onco-hématologie',
+        description: 'Anémies, cytopénies, leucémies, lymphomes et troubles de la coagulation.',
+        icon: Activity,
+        accentColor: 'text-purple-600 bg-purple-50 border-purple-200',
       },
     ],
   },
   {
-    id: 'repo-pneumo',
-    title: 'Pneumologie & Urgences Thoraciques',
-    subtitle: 'Asthme aigu grave, exacerbation de BPCO, pneumonies franches lobaires aiguës & embolies pulmonaires.',
-    folderName: 'QCM AI GENERATED / 04_Pneumologie',
-    driveFolderUrl: 'https://drive.google.com/drive/u/0/search?q=QCM%20AI%20GENERATED%20Pneumologie',
-    color: 'from-cyan-500 to-blue-600',
-    items: [
+    id: '5eme',
+    yearName: '5ème Année d’Externat',
+    yearShort: '5ème Année',
+    driveUrl:
+      'https://drive.google.com/drive/folders/1jBQPhIbvK2kHHqx_CnU-ONOtSNV7lZM5?usp=drive_link',
+    badgeColor: 'bg-purple-100 text-purple-900 border-purple-200',
+    borderColor: 'border-purple-200',
+    buttonBg: 'bg-purple-700 hover:bg-purple-800',
+    description:
+      'Dossier Google Drive dédié à la 5ème Année : Spécialités cliniques, réanimation, mère-enfant et résidanat.',
+    subdivisions: [
       {
-        id: 'pneumo-asthme-01',
-        name: 'QCM AI Generated - Asthme Aigu Grave & BPCO Exacerbée.pdf',
-        type: 'PDF',
-        size: '26.8 KB',
-        questionsCount: 22,
-        updatedAt: 'Récemment synchronisé',
-        directDriveUrl: 'https://drive.google.com/drive/u/0/search?q=Asthme%20Aigu%20Grave%20BPCO',
+        name: 'Pédiatrie Clinique & Néonatologie',
+        description: 'Développement psychomoteur, vaccinations, détresse respiratoire et urgences pédiatriques.',
+        icon: Baby,
+        accentColor: 'text-sky-600 bg-sky-50 border-sky-200',
       },
       {
-        id: 'pneumo-ep-02',
-        name: 'QCM AI Generated - Embolie Pulmonaire & Score de Genève.pdf',
-        type: 'PDF',
-        size: '21.5 KB',
-        questionsCount: 15,
-        updatedAt: 'Il y a 3 semaines',
-        directDriveUrl: 'https://drive.google.com/drive/u/0/search?q=Embolie%20Pulmonaire%20Geneve',
-      },
-    ],
-  },
-  {
-    id: 'repo-y5',
-    title: 'Modules de 5ème Année (Pédiatrie, OTR, Gynéco)',
-    subtitle: 'Détresses respiratoires néonatales, urgences obstétricales, traumatologie et endocrinologie.',
-    folderName: 'QCM AI GENERATED / 05_Cinquieme_Annee',
-    driveFolderUrl: 'https://drive.google.com/drive/u/0/search?q=QCM%20AI%20GENERATED%205eme%20Annee',
-    color: 'from-teal-500 to-emerald-600',
-    items: [
-      {
-        id: 'ped-urg-01',
-        name: 'QCM AI Generated - Pédiatrie Fièvre & Déshydratation Aiguë.pdf',
-        type: 'PDF',
-        size: '30.1 KB',
-        questionsCount: 20,
-        updatedAt: 'Récemment synchronisé',
-        directDriveUrl: 'https://drive.google.com/drive/u/0/search?q=Pediatrie%20Fievre%20Deshydratation',
+        name: 'Gynécologie & Obstétrique',
+        description: 'Suivi de grossesse, accouchement, pathologies du post-partum et cancers gynécologiques.',
+        icon: HeartPulse,
+        accentColor: 'text-pink-600 bg-pink-50 border-pink-200',
       },
       {
-        id: 'gyneco-02',
-        name: 'QCM AI Generated - Gynécologie Hémorragies du 3ème Trimestre.pdf',
-        type: 'PDF',
-        size: '18.4 KB',
-        questionsCount: 14,
-        updatedAt: 'Il y a 1 mois',
-        directDriveUrl: 'https://drive.google.com/drive/u/0/search?q=Gynecologie%20Obstetrique%20Hemorragies',
-      },
-    ],
-  },
-  {
-    id: 'repo-annales',
-    title: 'Annales & Dossiers Transversaux Résidanat',
-    subtitle: 'Sujets types nationaux, cas cliniques multidisciplinaires et QCMs de concours classés.',
-    folderName: 'QCM AI GENERATED / 00_Annales_Transversales',
-    driveFolderUrl: 'https://drive.google.com/drive/u/0/search?q=QCM%20AI%20GENERATED%20Annales',
-    color: 'from-purple-500 to-rose-600',
-    items: [
-      {
-        id: 'annales-2025-01',
-        name: 'QCM AI Generated - Sujets Types Concours Résidanat 2025.pdf',
-        type: 'PDF',
-        size: '52.3 KB',
-        questionsCount: 40,
-        updatedAt: 'Mise à jour majeure',
-        directDriveUrl: 'https://drive.google.com/drive/u/0/search?q=Annales%20Concours%20Residanat%202025',
+        name: 'Urgences, Réanimation & Toxicologie',
+        description: 'Arrêt cardiorespiratoire, états de choc, détresses vitales et intoxications aiguës.',
+        icon: Shield,
+        accentColor: 'text-rose-600 bg-rose-50 border-rose-200',
       },
       {
-        id: 'annales-transversal-02',
-        name: 'QCM AI Generated - Dossiers Cliniques Transversaux (Urgence & Réa).pdf',
-        type: 'PDF',
-        size: '41.0 KB',
-        questionsCount: 30,
-        updatedAt: 'Il y a 2 semaines',
-        directDriveUrl: 'https://drive.google.com/drive/u/0/search?q=Dossiers%20Cliniques%20Transversaux',
+        name: 'Psychiatrie & Pédopsychiatrie',
+        description: 'Troubles de l’humeur, schizophrénie, anxiété, psychothérapies et urgences psychiatriques.',
+        icon: Brain,
+        accentColor: 'text-purple-600 bg-purple-50 border-purple-200',
+      },
+      {
+        name: 'Endocrinologie, Diabétologie & Métabolisme',
+        description: 'Diabète de type 1 et 2, dysthyroïdies, insuffisance surrénalienne et adénomes.',
+        icon: Sparkles,
+        accentColor: 'text-teal-600 bg-teal-50 border-teal-200',
+      },
+      {
+        name: 'Néphrologie & Urologie',
+        description: 'Insuffisance rénale aiguë et chronique, néphropathies glomérulaires et colique néphrétique.',
+        icon: Activity,
+        accentColor: 'text-emerald-600 bg-emerald-50 border-emerald-200',
       },
     ],
   },
 ];
 
-export const Repository: React.FC<RepositoryProps> = ({
-  onLoadQuestionsToEngine,
-}) => {
-  const [searchFilter, setSearchFilter] = useState<string>('');
-  const [loadedFileId, setLoadedFileId] = useState<string | null>(null);
+interface LibraryProps {
+  onLoadQuestionsToEngine?: (questions: any[], sourceName: string) => void;
+  onSendToAISummarizer?: (text: string, title: string) => void;
+}
 
-  const ROOT_DRIVE_URL = 'https://drive.google.com/drive/u/0/search?q=QCM%20AI%20GENERATED';
+export const Library: React.FC<LibraryProps> = () => {
+  const [selectedYearFilter, setSelectedYearFilter] = useState<'all' | '3eme' | '4eme' | '5eme'>('all');
+  const [searchQuery, setSearchQuery] = useState<string>('');
+  const [copiedLink, setCopiedLink] = useState<string | null>(null);
 
-  const handleLoadSample = (sampleKey: string | undefined, title: string) => {
-    if (!sampleKey) return;
-    const sample = SAMPLE_DRIVE_FILES.find((s) => s.file.id === sampleKey);
-    if (sample) {
-      const parsed = parseQCMContent(sample.content, title);
-      onLoadQuestionsToEngine(parsed, title);
-      setLoadedFileId(sampleKey);
-      setTimeout(() => setLoadedFileId(null), 3000);
-    }
+  const handleCopyLink = (url: string, label: string) => {
+    navigator.clipboard.writeText(url);
+    setCopiedLink(label);
+    setTimeout(() => setCopiedLink(null), 2500);
   };
 
-  const filteredCategories = REPOSITORY_CATEGORIES.map((cat) => {
-    if (!searchFilter.trim()) return cat;
-    const term = searchFilter.toLowerCase();
-    const matchingItems = cat.items.filter(
-      (item) =>
-        item.name.toLowerCase().includes(term) ||
-        cat.title.toLowerCase().includes(term)
+  const filteredYears = YEAR_DRIVES.filter((year) => {
+    if (selectedYearFilter !== 'all' && year.id !== selectedYearFilter) {
+      return false;
+    }
+    if (!searchQuery.trim()) return true;
+
+    const query = searchQuery.toLowerCase();
+    const matchesYear = year.yearName.toLowerCase().includes(query);
+    const matchesSubdivision = year.subdivisions.some(
+      (s) =>
+        s.name.toLowerCase().includes(query) ||
+        s.description.toLowerCase().includes(query)
     );
-    return {
-      ...cat,
-      items: matchingItems,
-    };
-  }).filter((cat) => cat.items.length > 0);
+    return matchesYear || matchesSubdivision;
+  });
 
   return (
     <div className="space-y-6 max-w-6xl mx-auto pb-12">
-      {/* 1. Header Card with Direct Action to Root Google Drive */}
-      <div className="p-6 sm:p-8 rounded-3xl bg-white border border-slate-200/80 shadow-xs flex flex-col md:flex-row items-start md:items-center justify-between gap-6">
-        <div className="space-y-2 max-w-2xl">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-100 text-xs font-black text-indigo-700">
-            <HardDrive className="w-3.5 h-3.5" />
-            <span>Google Drive Repository • QCM AI GENERATED</span>
+      {/* Toast feedback when copying link */}
+      {copiedLink && (
+        <div className="fixed top-20 right-6 z-50 animate-in fade-in slide-in-from-top-4 duration-300">
+          <div className="px-4 py-3 rounded-2xl shadow-xl border bg-slate-900 text-white border-purple-400/40 text-xs font-bold flex items-center gap-2.5 backdrop-blur-md">
+            <Check className="w-4 h-4 text-emerald-400 shrink-0" />
+            <span>Lien {copiedLink} copié dans le presse-papier !</span>
+          </div>
+        </div>
+      )}
+
+      {/* 1. HERO BANNER: GENERAL DRIVE (Dossier Drive Général) */}
+      <div className="p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-[#311465] via-[#4A2580] to-[#2E1065] text-white shadow-xl shadow-purple-950/20 relative overflow-hidden flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6">
+        <div className="space-y-2 max-w-2xl relative z-10">
+          <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/15 backdrop-blur-md border border-white/20 text-xs font-black text-purple-200">
+            <FolderOpen className="w-3.5 h-3.5 text-[#B794F6]" />
+            <span>Google Drive Général • Bibliothèque Officielle</span>
           </div>
 
-          <h1 className="text-2xl sm:text-3xl font-black text-slate-900 tracking-tight">
-            Repository des Ressources d'Études
+          <h1 className="text-2xl sm:text-4xl font-black tracking-tight text-white drop-shadow-sm">
+            Library
           </h1>
-          <p className="text-xs sm:text-sm text-slate-600 font-medium leading-relaxed">
-            Consultez, téléchargez et entraînez-vous directement sur les banques de QCMs générées par intelligence artificielle et organisées par module d'externat.
+          <p className="text-xs sm:text-sm text-purple-150 font-medium leading-relaxed max-w-xl text-purple-100/90">
+            Retrouvez tous vos polycopiés, fiches de révision, cours officiels et archives d’externat
+            centralisés sur votre Google Drive général et organisés par année d'études.
           </p>
         </div>
 
-        {/* Action Button: Open Root Google Drive in New Tab */}
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 shrink-0 w-full md:w-auto">
+        {/* Action Button: Direct Link to General Drive */}
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2.5 shrink-0 w-full lg:w-auto relative z-10">
           <a
-            href={ROOT_DRIVE_URL}
+            href={GENERAL_DRIVE_URL}
             target="_blank"
             rel="noopener noreferrer"
-            className="px-5 py-3 rounded-2xl bg-indigo-600 hover:bg-indigo-700 text-white font-black text-xs shadow-md shadow-indigo-600/20 hover:shadow-lg transition-all flex items-center justify-center gap-2 group cursor-pointer"
+            className="px-6 py-3.5 rounded-2xl bg-white hover:bg-purple-50 text-[#311465] font-black text-xs shadow-lg hover:shadow-xl transition-all flex items-center justify-center gap-2 group cursor-pointer active:scale-95"
+            title="Ouvrir le Google Drive général dans un nouvel onglet"
           >
-            <FolderOpen className="w-4 h-4" />
-            <span>Ouvrir Google Drive (Racine)</span>
-            <ExternalLink className="w-3.5 h-3.5 text-indigo-200 group-hover:translate-x-0.5 transition-transform" />
+            <FolderOpen className="w-4 h-4 text-purple-800" />
+            <span>Ouvrir le Drive Général</span>
+            <ExternalLink className="w-3.5 h-3.5 text-purple-600 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
           </a>
+
+          <button
+            type="button"
+            onClick={() => handleCopyLink(GENERAL_DRIVE_URL, 'Général')}
+            className="p-3.5 rounded-2xl bg-white/10 hover:bg-white/20 border border-white/20 text-white font-bold text-xs flex items-center justify-center transition-colors cursor-pointer"
+            title="Copier le lien du Drive Général"
+          >
+            <Copy className="w-4 h-4 text-purple-200" />
+          </button>
         </div>
       </div>
 
-      {/* 2. Search & Filter Bar */}
-      <div className="p-4 rounded-2xl bg-white border border-slate-200/80 shadow-xs flex items-center gap-3">
-        <div className="relative flex-1">
+      {/* 2. YEAR QUICK SELECTOR & SEARCH BAR */}
+      <div className="p-4 sm:p-5 rounded-3xl bg-white border border-slate-200/80 shadow-xs flex flex-col md:flex-row items-stretch md:items-center justify-between gap-3">
+        {/* Year Pills Filter */}
+        <div className="flex items-center gap-1.5 bg-slate-100/80 p-1 rounded-2xl border border-slate-200/60 overflow-x-auto scrollbar-none">
+          <button
+            type="button"
+            onClick={() => setSelectedYearFilter('all')}
+            className={`px-4 py-2 rounded-xl text-xs font-black transition-all cursor-pointer whitespace-nowrap ${
+              selectedYearFilter === 'all'
+                ? 'bg-white text-[#311465] shadow-xs border border-slate-200/60'
+                : 'text-slate-600 hover:text-slate-900'
+            }`}
+          >
+            Toutes les Années
+          </button>
+          <button
+            type="button"
+            onClick={() => setSelectedYearFilter('3eme')}
+            className={`px-4 py-2 rounded-xl text-xs font-black transition-all cursor-pointer whitespace-nowrap ${
+              selectedYearFilter === '3eme'
+                ? 'bg-white text-amber-800 shadow-xs border border-slate-200/60'
+                : 'text-slate-600 hover:text-slate-900'
+            }`}
+          >
+            3ème Année
+          </button>
+          <button
+            type="button"
+            onClick={() => setSelectedYearFilter('4eme')}
+            className={`px-4 py-2 rounded-xl text-xs font-black transition-all cursor-pointer whitespace-nowrap ${
+              selectedYearFilter === '4eme'
+                ? 'bg-white text-rose-800 shadow-xs border border-slate-200/60'
+                : 'text-slate-600 hover:text-slate-900'
+            }`}
+          >
+            4ème Année
+          </button>
+          <button
+            type="button"
+            onClick={() => setSelectedYearFilter('5eme')}
+            className={`px-4 py-2 rounded-xl text-xs font-black transition-all cursor-pointer whitespace-nowrap ${
+              selectedYearFilter === '5eme'
+                ? 'bg-white text-purple-800 shadow-xs border border-slate-200/60'
+                : 'text-slate-600 hover:text-slate-900'
+            }`}
+          >
+            5ème Année
+          </button>
+        </div>
+
+        {/* Search Input for Subdivisions */}
+        <div className="relative flex-1 max-w-md">
           <Search className="w-4 h-4 text-slate-400 absolute left-3.5 top-1/2 -translate-y-1/2" />
           <input
             type="text"
-            value={searchFilter}
-            onChange={(e) => setSearchFilter(e.target.value)}
-            placeholder="Rechercher une banque de QCMs, un module (Cardio, Neuro, Pédiatrie...)..."
-            className="w-full pl-10 pr-4 py-2 text-xs font-semibold text-slate-800 placeholder-slate-400 bg-slate-50 border border-slate-200/80 rounded-xl focus:outline-hidden focus:border-indigo-500 focus:bg-white transition-all"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+            placeholder="Filtrer les modules (Cardio, Neuro, Pédiatrie, Sémiologie...)..."
+            className="w-full pl-10 pr-4 py-2 text-xs font-bold text-slate-800 placeholder-slate-400 bg-slate-50 border border-slate-200/80 rounded-2xl focus:outline-none focus:border-purple-600 focus:bg-white transition-all"
           />
+          {searchQuery && (
+            <button
+              type="button"
+              onClick={() => setSearchQuery('')}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-slate-400 hover:text-slate-600"
+            >
+              ✕
+            </button>
+          )}
         </div>
-        {searchFilter && (
-          <button
-            onClick={() => setSearchFilter('')}
-            className="text-xs font-bold text-slate-500 hover:text-slate-700 px-2 py-1"
-          >
-            Effacer
-          </button>
-        )}
       </div>
 
-      {/* 3. Categorized Sections */}
+      {/* 3. YEAR SPECIFIC DRIVE BOARDS WITH SUBDIVISIONS */}
       <div className="space-y-6">
-        {filteredCategories.map((cat) => (
+        {filteredYears.map((year) => (
           <div
-            key={cat.id}
-            className="rounded-3xl bg-white border border-slate-200/80 shadow-xs overflow-hidden"
+            key={year.id}
+            className={`rounded-3xl bg-white border ${year.borderColor} shadow-xs overflow-hidden transition-all`}
           >
-            {/* Section Header */}
-            <div className="p-5 sm:p-6 border-b border-slate-100 flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-gradient-to-r from-slate-50/70 to-white">
-              <div>
-                <div className="flex items-center gap-2">
-                  <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-0.5 rounded-full bg-slate-200/70 text-slate-700">
-                    {cat.folderName}
+            {/* Year Drive Header Card */}
+            <div className="p-6 border-b border-slate-100 bg-gradient-to-r from-slate-50/80 via-white to-slate-50/50 flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+              <div className="space-y-1">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <span
+                    className={`text-[10px] font-black uppercase tracking-wider px-3 py-0.5 rounded-full border ${year.badgeColor}`}
+                  >
+                    {year.yearShort}
                   </span>
                   <span className="text-xs text-slate-400 font-semibold">•</span>
-                  <span className="text-xs text-indigo-600 font-extrabold">
-                    {cat.items.length} document(s)
+                  <span className="text-xs text-slate-600 font-bold">
+                    {year.subdivisions.length} Modules & Subdivisions
                   </span>
                 </div>
-                <h3 className="text-base sm:text-lg font-black text-slate-900 tracking-tight mt-1">
-                  {cat.title}
-                </h3>
-                <p className="text-xs text-slate-500 font-medium mt-0.5">
-                  {cat.subtitle}
+
+                <h2 className="text-lg sm:text-xl font-black text-slate-900 tracking-tight flex items-center gap-2 mt-1">
+                  <GraduationCap className="w-5 h-5 text-slate-700" />
+                  <span>{year.yearName}</span>
+                </h2>
+                <p className="text-xs text-slate-500 font-medium max-w-2xl">
+                  {year.description}
                 </p>
               </div>
 
-              {/* Action Button: Open specific category folder in Drive */}
-              <a
-                href={cat.driveFolderUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-white hover:bg-slate-50 border border-slate-200 text-slate-700 text-xs font-extrabold shadow-2xs hover:border-indigo-300 transition-all shrink-0 cursor-pointer self-start sm:self-auto"
-              >
-                <FolderOpen className="w-3.5 h-3.5 text-indigo-600" />
-                <span>Voir le dossier Drive</span>
-                <ExternalLink className="w-3 h-3 text-slate-400" />
-              </a>
+              {/* Action Buttons: Open Drive of this Year */}
+              <div className="flex items-center gap-2 shrink-0 self-stretch sm:self-auto">
+                <a
+                  href={year.driveUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`flex-1 sm:flex-none px-5 py-2.5 rounded-2xl ${year.buttonBg} text-white text-xs font-black shadow-xs hover:shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer group`}
+                  title={`Ouvrir le dossier Google Drive de ${year.yearShort}`}
+                >
+                  <FolderOpen className="w-4 h-4 text-white" />
+                  <span>Ouvrir le Drive {year.yearShort}</span>
+                  <ExternalLink className="w-3.5 h-3.5 text-white/80 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                </a>
+
+                <button
+                  type="button"
+                  onClick={() => handleCopyLink(year.driveUrl, year.yearShort)}
+                  className="p-2.5 rounded-2xl bg-white hover:bg-slate-100 border border-slate-200 text-slate-600 text-xs font-bold transition-colors cursor-pointer"
+                  title={`Copier le lien Drive de ${year.yearShort}`}
+                >
+                  <Copy className="w-4 h-4 text-slate-500" />
+                </button>
+              </div>
             </div>
 
-            {/* Document Cards List */}
-            <div className="p-4 sm:p-5 grid grid-cols-1 md:grid-cols-2 gap-3">
-              {cat.items.map((item) => (
-                <div
-                  key={item.id}
-                  className="p-4 rounded-2xl border border-slate-200/80 hover:border-indigo-300 hover:shadow-xs transition-all bg-white flex flex-col justify-between gap-3 group"
-                >
-                  <div>
-                    <div className="flex items-start justify-between gap-2 mb-2">
-                      <div className="flex items-center gap-2">
-                        <span
-                          className={`px-2 py-0.5 rounded-md text-[10px] font-black ${
-                            item.type === 'PDF'
-                              ? 'bg-rose-50 text-rose-700 border border-rose-200'
-                              : item.type === 'JSON'
-                              ? 'bg-sky-50 text-sky-700 border border-sky-200'
-                              : 'bg-emerald-50 text-emerald-700 border border-emerald-200'
-                          }`}
-                        >
-                          {item.type}
-                        </span>
-                        <span className="text-[11px] font-bold text-slate-400">
-                          {item.size}
-                        </span>
-                      </div>
+            {/* Subdivisions of this Year Grid */}
+            <div className="p-5 sm:p-6 bg-slate-50/30">
+              <div className="flex items-center justify-between mb-3 px-1">
+                <h4 className="text-xs font-black uppercase tracking-wider text-slate-500 flex items-center gap-1.5">
+                  <Layers className="w-3.5 h-3.5 text-purple-700" />
+                  Subdivisions & Modules du Cursus
+                </h4>
+                <span className="text-[11px] text-slate-400 font-medium">
+                  Rattachés au Drive {year.yearShort}
+                </span>
+              </div>
 
-                      <span className="text-[10px] font-extrabold text-indigo-700 bg-indigo-50 px-2 py-0.5 rounded-full border border-indigo-100">
-                        {item.questionsCount} QCMs
-                      </span>
-                    </div>
-
-                    <h4 className="text-xs sm:text-sm font-bold text-slate-900 group-hover:text-indigo-600 transition-colors leading-snug">
-                      {item.name}
-                    </h4>
-                    <p className="text-[10px] text-slate-400 font-medium mt-1">
-                      Statut : {item.updatedAt}
-                    </p>
-                  </div>
-
-                  {/* Actions for this Resource */}
-                  <div className="pt-3 border-t border-slate-100 flex items-center justify-between gap-2">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+                {year.subdivisions.map((sub, index) => {
+                  const Icon = sub.icon;
+                  return (
                     <a
-                      href={item.directDriveUrl}
+                      key={index}
+                      href={year.driveUrl}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1 text-xs font-bold text-slate-600 hover:text-indigo-600 transition-colors"
-                      title="Ouvrir dans Google Drive dans un nouvel onglet"
+                      className="p-4 rounded-2xl border border-slate-200/80 bg-white hover:border-purple-300 hover:shadow-xs transition-all flex flex-col justify-between gap-3 group cursor-pointer"
+                      title={`Accéder aux documents de ${sub.name} sur le Drive ${year.yearShort}`}
                     >
-                      <ExternalLink className="w-3.5 h-3.5 text-slate-400" />
-                      <span>Ouvrir sur Drive</span>
-                    </a>
+                      <div>
+                        <div className="flex items-start justify-between gap-2 mb-2">
+                          <div className={`p-2 rounded-xl border ${sub.accentColor}`}>
+                            <Icon className="w-4 h-4" />
+                          </div>
+                          <span className="inline-flex items-center gap-0.5 text-[10px] font-bold text-slate-400 group-hover:text-purple-700 transition-colors">
+                            <span>Drive</span>
+                            <ArrowUpRight className="w-3 h-3 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+                          </span>
+                        </div>
 
-                    {item.sampleContentKey ? (
-                      <button
-                        type="button"
-                        onClick={() => handleLoadSample(item.sampleContentKey, item.name)}
-                        className={`px-3 py-1.5 rounded-xl text-xs font-extrabold flex items-center gap-1.5 transition-all cursor-pointer shadow-2xs ${
-                          loadedFileId === item.sampleContentKey
-                            ? 'bg-emerald-600 text-white'
-                            : 'bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200'
-                        }`}
-                      >
-                        {loadedFileId === item.sampleContentKey ? (
-                          <>
-                            <Check className="w-3 h-3 text-white" />
-                            <span>Chargé !</span>
-                          </>
-                        ) : (
-                          <>
-                            <Play className="w-3 h-3 fill-indigo-700" />
-                            <span>S'entraîner</span>
-                          </>
-                        )}
-                      </button>
-                    ) : (
-                      <a
-                        href={item.directDriveUrl}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="px-3 py-1.5 rounded-xl text-xs font-extrabold bg-slate-100 hover:bg-slate-200 text-slate-700 border border-slate-200 flex items-center gap-1 transition-colors"
-                      >
-                        <Download className="w-3 h-3 text-slate-500" />
-                        <span>Télécharger</span>
-                      </a>
-                    )}
-                  </div>
-                </div>
-              ))}
+                        <h5 className="font-extrabold text-xs sm:text-sm text-slate-900 group-hover:text-purple-900 transition-colors leading-snug">
+                          {sub.name}
+                        </h5>
+                        <p className="text-[11px] text-slate-500 font-medium mt-1 leading-relaxed line-clamp-2">
+                          {sub.description}
+                        </p>
+                      </div>
+
+                      <div className="pt-2.5 border-t border-slate-100 flex items-center justify-between text-[10px] font-bold text-purple-700/80 group-hover:text-purple-900">
+                        <span className="flex items-center gap-1">
+                          <FolderOpen className="w-3 h-3 text-purple-600" />
+                          <span>Dossier {year.yearShort}</span>
+                        </span>
+                        <span>Consulter →</span>
+                      </div>
+                    </a>
+                  );
+                })}
+              </div>
             </div>
           </div>
         ))}
@@ -449,3 +461,6 @@ export const Repository: React.FC<RepositoryProps> = ({
     </div>
   );
 };
+
+// Backwards-compatible export alias
+export const Repository = Library;

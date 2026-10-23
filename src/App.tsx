@@ -28,6 +28,7 @@ import {
   logoutAccount,
   purgeObsoleteMockData,
   RegisteredAccount,
+  updateRegisteredAccount,
 } from './services/authSessionManager';
 import {
   AcademicYear,
@@ -604,6 +605,7 @@ export default function App() {
                     selectedYear={selectedYear}
                     onSpendXp={handleSpendXp}
                     onBuyFreeze={handleBuyFreeze}
+                    onOpenProfileModal={() => setIsAuthModalOpen(true)}
                     onUpdateProfile={(updated) => {
                       if (!currentUserAccount) return;
                       setUserProfile((prev) => {
@@ -672,19 +674,35 @@ export default function App() {
         onLogout={handleLogout}
         onUpdateProfile={(updated) => {
           if (!currentUserAccount) return;
+          updateRegisteredAccount(currentUserAccount.email, {
+            fullName: updated.fullName,
+            username: updated.username,
+            avatarUrl: updated.avatarUrl,
+            academicYear: updated.academicYear,
+            bio: updated.bio,
+            faculty: updated.faculty,
+            targetSpecialty: updated.targetSpecialty,
+            customAvatarDataUrl: updated.customAvatarDataUrl,
+          });
+
+          const existingProgress = getUserProgress(currentUserAccount);
+          saveUserProgress(currentUserAccount.email, {
+            ...existingProgress,
+            totalXp: updated.totalXp !== undefined ? updated.totalXp : existingProgress.totalXp,
+            streakCount: updated.streakCount !== undefined ? updated.streakCount : existingProgress.streakCount,
+            bio: updated.bio !== undefined ? updated.bio : existingProgress.bio,
+            faculty: updated.faculty !== undefined ? updated.faculty : existingProgress.faculty,
+            targetSpecialty: updated.targetSpecialty !== undefined ? updated.targetSpecialty : existingProgress.targetSpecialty,
+            customAvatarDataUrl: updated.customAvatarDataUrl !== undefined ? updated.customAvatarDataUrl : existingProgress.customAvatarDataUrl,
+          });
+
           setUserProfile((prev) => {
             if (!prev) return prev;
-            const merged = { ...prev, ...updated };
-            const existingProgress = getUserProgress(currentUserAccount);
-            saveUserProgress(currentUserAccount.email, {
-              ...existingProgress,
-              totalXp: merged.totalXp,
-              streakCount: merged.streakCount,
-            });
-            return merged;
+            return { ...prev, ...updated };
           });
+
           if (updated.academicYear) setSelectedYear(updated.academicYear);
-          showToast(`Profil mis à jour : @${updated.username || userProfile.username}`, 'success');
+          showToast(`Profil mis à jour : ${updated.fullName || updated.username || userProfile.fullName}`, 'success');
         }}
       />
 

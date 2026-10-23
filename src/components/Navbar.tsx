@@ -7,6 +7,7 @@ import {
   Monitor,
   BookOpen,
   HardDrive,
+  FolderOpen,
   Trophy,
   Layers,
   Home,
@@ -68,18 +69,19 @@ export const Navbar: React.FC<NavbarProps> = ({
 }) => {
   return (
     <header className="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-100 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.03)]">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 h-18 flex items-center justify-between gap-3">
+      <div className="max-w-7xl mx-auto px-2 sm:px-6 h-16 sm:h-18 flex items-center justify-between gap-1.5 sm:gap-3">
         {/* Left: Brand with cute Vector Organ + Years Sidebar Button */}
-        <div className="flex items-center gap-3">
+        <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
           <div
             onClick={() => setCurrentTab('home')}
-            className="flex items-center gap-2.5 cursor-pointer group"
+            className="flex items-center gap-1.5 sm:gap-2.5 cursor-pointer group shrink-0"
           >
-            <div className="w-12 h-12 rounded-2xl bg-white border border-purple-100/90 p-0.5 flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform overflow-hidden shrink-0">
-              <SyndromedLogo size={44} useImage={true} />
+            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-white border border-purple-100/90 p-0.5 flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform overflow-hidden shrink-0">
+              <SyndromedLogo size={38} useImage={true} />
             </div>
             <div>
-              <SyndromedWordmark size="md" showSlogan={true} />
+              <SyndromedWordmark size="sm" showSlogan={false} className="sm:hidden" />
+              <SyndromedWordmark size="md" showSlogan={true} className="hidden sm:inline-flex" />
             </div>
           </div>
 
@@ -87,11 +89,11 @@ export const Navbar: React.FC<NavbarProps> = ({
           {onToggleYearsSidebar && (
             <button
               onClick={onToggleYearsSidebar}
-              className="flex items-center gap-1.5 px-3 py-1.5 text-xs font-bold rounded-full bg-indigo-50/80 border border-indigo-100 text-indigo-700 hover:bg-indigo-100 transition-all shadow-sm ml-2 group"
-              title="Changer d'année d'études"
+              className="flex items-center gap-1 px-2 sm:px-3 py-1 sm:py-1.5 text-xs font-black rounded-full bg-indigo-50/80 border border-indigo-100 text-indigo-700 hover:bg-indigo-100 transition-all shadow-2xs ml-0.5 sm:ml-2 group shrink-0"
+              title={`Année d'études : ${selectedYear}`}
             >
-              <GraduationCap className="w-3.5 h-3.5 text-indigo-600 group-hover:rotate-12 transition-transform" />
-              <span>{selectedYear}</span>
+              <GraduationCap className="w-3.5 h-3.5 text-indigo-600 group-hover:rotate-12 transition-transform shrink-0" />
+              <span className="font-extrabold">{selectedYear.replace('ème Année', 'eme').replace(' Année', '').replace('ème', 'eme')}</span>
             </button>
           )}
         </div>
@@ -142,8 +144,8 @@ export const Navbar: React.FC<NavbarProps> = ({
                 : 'text-slate-600 hover:text-slate-900 hover:bg-white/60'
             }`}
           >
-            <HardDrive className="w-3.5 h-3.5" />
-            <span>Repository</span>
+            <FolderOpen className="w-3.5 h-3.5" />
+            <span>Library</span>
           </button>
 
           <button
@@ -155,7 +157,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             }`}
           >
             <Sparkles className="w-3.5 h-3.5" />
-            <span>IA Synthèses</span>
+            <span>DIY study</span>
           </button>
 
           <button
@@ -172,30 +174,31 @@ export const Navbar: React.FC<NavbarProps> = ({
         </nav>
 
         {/* Right: Gamification Badges, User Profile & Device Toggle */}
-        <div className="flex items-center gap-2 sm:gap-3">
+        <div className="flex items-center gap-1 sm:gap-2 shrink-0">
           {/* Daily Streak Flame Pill */}
           <div
             onClick={() => setCurrentTab('gamification')}
-            className="cursor-pointer flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-amber-50 border border-amber-200 text-amber-700 hover:bg-amber-100 transition-colors shadow-sm"
+            className="cursor-pointer flex items-center gap-1 px-2 sm:px-2.5 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-700 hover:bg-amber-100 transition-colors shadow-2xs shrink-0"
             title={`${userProfile.streakCount} jours de série active`}
           >
-            <Flame className="w-4 h-4 fill-amber-500 text-amber-500 animate-pulse" />
-            <span className="font-extrabold text-xs">{userProfile.streakCount} j</span>
+            <Flame className="w-3.5 h-3.5 fill-amber-500 text-amber-500 animate-pulse" />
+            <span className="font-black text-[11px] sm:text-xs">{userProfile.streakCount}j</span>
           </div>
 
           {/* XP Badge Pill */}
           <div
             onClick={() => setCurrentTab('gamification')}
-            className="cursor-pointer flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-indigo-50 border border-indigo-200 text-indigo-700 hover:bg-indigo-100 transition-colors shadow-sm"
+            className="cursor-pointer flex items-center gap-1 px-2 sm:px-2.5 py-1 rounded-full bg-indigo-50 border border-indigo-200 text-indigo-700 hover:bg-indigo-100 transition-colors shadow-2xs shrink-0"
+            title={`${userProfile.totalXp} XP cumulés`}
           >
-            <Award className="w-4 h-4 text-indigo-600" />
-            <span className="font-extrabold text-xs">{userProfile.totalXp} XP</span>
+            <Award className="w-3.5 h-3.5 text-indigo-600" />
+            <span className="font-black text-[11px] sm:text-xs">{userProfile.totalXp} XP</span>
           </div>
 
           {/* Device Mockup Toggle */}
           <button
             onClick={() => setIsMobilePreview(!isMobilePreview)}
-            className={`p-2 rounded-full border text-xs font-medium transition-colors hidden sm:flex items-center gap-1.5 ${
+            className={`p-1.5 sm:p-2 rounded-full border text-xs font-medium transition-colors hidden sm:flex items-center gap-1 ${
               isMobilePreview
                 ? 'bg-indigo-600 text-white border-indigo-600 shadow-sm'
                 : 'bg-white border-slate-200 text-slate-600 hover:bg-slate-50'
@@ -218,28 +221,28 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Username / Profile Button */}
           <button
             onClick={onOpenAuthModal}
-            className="flex items-center gap-2 pl-1.5 pr-3 py-1 rounded-full bg-white border border-slate-200 text-slate-700 hover:border-indigo-400 hover:shadow-sm transition-all cursor-pointer"
+            className="flex items-center gap-1.5 p-1 sm:pl-1.5 sm:pr-2.5 sm:py-1 rounded-full bg-white border border-slate-200 text-slate-700 hover:border-indigo-400 hover:shadow-2xs transition-all cursor-pointer shrink-0"
             title="Profil étudiant"
           >
             <img
               src={userProfile.avatarUrl}
               alt={userProfile.fullName}
-              className="w-7 h-7 rounded-full object-cover border border-indigo-200"
+              className="w-6 h-6 sm:w-7 sm:h-7 rounded-full object-cover border border-indigo-200"
             />
-            <span className="text-xs font-bold hidden md:inline text-slate-800">
+            <span className="text-xs font-bold hidden lg:inline text-slate-800">
               @{userProfile.username || 'externe'}
             </span>
           </button>
 
-          {/* Visible Logout Button */}
+          {/* Log out Button */}
           {onLogout && (
             <button
               onClick={onLogout}
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-rose-50 hover:bg-rose-100 border border-rose-200/80 text-rose-700 text-xs font-extrabold shadow-2xs transition-all cursor-pointer"
-              title="Déconnexion (retour à l'écran d'accueil)"
+              className="flex items-center gap-1 px-2 sm:px-2.5 py-1 rounded-full bg-rose-50 hover:bg-rose-100 border border-rose-200/80 text-rose-700 text-xs font-black shadow-2xs transition-all cursor-pointer shrink-0"
+              title="Log out (fermer la session)"
             >
-              <LogOut className="w-3.5 h-3.5 text-rose-600" />
-              <span className="hidden sm:inline">Déconnexion</span>
+              <LogOut className="w-3.5 h-3.5 text-rose-600 shrink-0" />
+              <span className="text-[11px] sm:text-xs">Log out</span>
             </button>
           )}
         </div>
@@ -277,7 +280,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             currentTab === 'repository' ? 'bg-indigo-600 text-white shadow-sm' : 'bg-white border border-slate-200 text-slate-600'
           }`}
         >
-          Repository
+          Library
         </button>
         <button
           onClick={() => setCurrentTab('ai')}
@@ -285,7 +288,7 @@ export const Navbar: React.FC<NavbarProps> = ({
             currentTab === 'ai' ? 'bg-purple-600 text-white shadow-sm' : 'bg-white border border-slate-200 text-slate-600'
           }`}
         >
-          IA Synthèse
+          DIY study
         </button>
         <button
           onClick={() => setCurrentTab('gamification')}

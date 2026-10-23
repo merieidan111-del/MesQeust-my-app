@@ -19,10 +19,15 @@ import {
   X,
   Check,
   AlertCircle,
+  User,
+  Building2,
+  GraduationCap,
+  HeartPulse,
 } from 'lucide-react';
 import { UserProfile, LeaderboardEntry, ShopItem, AcademicYear } from '../types/medical';
 import { INITIAL_LEADERBOARD, SHOP_ITEMS } from '../data/mockMedicalData';
 import { StudentAvatar, AVATAR_PRESETS } from './StudentAvatar';
+import { ClinicalProgressDiagram } from './ClinicalProgressDiagram';
 
 interface GamificationDashboardProps {
   userProfile: UserProfile;
@@ -30,6 +35,7 @@ interface GamificationDashboardProps {
   onSpendXp: (cost: number, itemName: string) => boolean;
   onBuyFreeze: () => void;
   onUpdateProfile?: (updated: Partial<UserProfile>) => void;
+  onOpenProfileModal?: () => void;
 }
 
 export const GamificationDashboard: React.FC<GamificationDashboardProps> = ({
@@ -38,6 +44,7 @@ export const GamificationDashboard: React.FC<GamificationDashboardProps> = ({
   onSpendXp,
   onBuyFreeze,
   onUpdateProfile,
+  onOpenProfileModal,
 }) => {
   const [activeTab, setActiveTab] = useState<'overview' | 'leaderboard' | 'shop'>('overview');
   const [cohortFilter, setCohortFilter] = useState<AcademicYear>(selectedYear);
@@ -338,105 +345,183 @@ export const GamificationDashboard: React.FC<GamificationDashboardProps> = ({
 
       {/* VIEW 1: OVERVIEW & STREAK */}
       {activeTab === 'overview' && (
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          {/* Main Streak Card */}
-          <div className="md:col-span-2 p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-amber-500 via-orange-500 to-amber-600 text-white shadow-xl shadow-amber-500/20 relative overflow-hidden flex flex-col justify-between min-h-[260px]">
-            <div className="absolute -right-10 -bottom-10 opacity-15">
-              <Flame className="w-64 h-64 fill-white" />
-            </div>
-
-            <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-xs font-extrabold tracking-wide mb-4 border border-white/20">
-                <Flame className="w-4 h-4 fill-amber-200 text-amber-200" />
-                <span>FLAMME QUOTIDIENNE DE RÉVISION</span>
+        <div className="space-y-6">
+          {/* User Profile Summary Card with Edit Profile shortcut */}
+          <div className="p-5 sm:p-6 rounded-3xl bg-white border border-slate-200/90 shadow-xs flex flex-col md:flex-row items-start md:items-center justify-between gap-5">
+            <div className="flex items-center gap-4 min-w-0">
+              <div className="relative shrink-0">
+                <img
+                  src={userProfile.customAvatarDataUrl || userProfile.avatarUrl}
+                  alt={userProfile.fullName}
+                  className="w-16 h-16 sm:w-18 sm:h-18 rounded-2xl object-cover border-2 border-indigo-200 shadow-2xs bg-slate-50"
+                />
+                <div
+                  className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-emerald-500 border-2 border-white flex items-center justify-center text-white text-[9px] font-black"
+                  title="Session active"
+                >
+                  ✓
+                </div>
               </div>
 
-              <div className="flex items-baseline gap-3">
-                <span className="text-5xl sm:text-7xl font-black tracking-tight drop-shadow-sm">
-                  {userProfile.streakCount}
-                </span>
-                <span className="text-xl sm:text-2xl font-bold opacity-90">
-                  {userProfile.streakCount > 1 ? 'jours consécutifs' : 'jour actif'}
-                </span>
-              </div>
+              <div className="min-w-0">
+                <div className="flex items-center gap-2 flex-wrap">
+                  <h3 className="text-lg sm:text-xl font-black text-slate-900 tracking-tight truncate">
+                    {userProfile.fullName}
+                  </h3>
+                  <span className="text-xs font-bold text-slate-400">
+                    @{userProfile.username || 'externe'}
+                  </span>
+                  <span className="px-2.5 py-0.5 rounded-full text-[10px] font-black bg-indigo-50 text-indigo-700 border border-indigo-200">
+                    {userProfile.academicYear.replace('ème Année', 'eme')}
+                  </span>
+                </div>
 
-              <p className="text-xs sm:text-sm font-medium opacity-90 mt-2 max-w-md leading-relaxed">
-                {userProfile.streakCount >= 7
-                  ? "Série exceptionnelle ! Votre régularité clinique forge une mémoire à long terme solide."
-                  : userProfile.streakCount >= 3
-                  ? 'Excellente lancée ! Résolvez votre quota quotidien pour faire grandir la flamme.'
-                  : "Commencez votre série aujourd'hui en validant au moins 10 QCMs cliniques."}
-              </p>
+                {userProfile.bio ? (
+                  <p className="text-xs text-slate-600 font-medium italic mt-1 max-w-xl line-clamp-2">
+                    « {userProfile.bio} »
+                  </p>
+                ) : (
+                  <p className="text-xs text-slate-400 font-medium mt-1">
+                    Ajoutez une bio médicale pour personnaliser votre profil de promotion.
+                  </p>
+                )}
+
+                <div className="flex items-center gap-2 text-[11px] font-bold text-slate-500 mt-2 flex-wrap">
+                  {userProfile.targetSpecialty && (
+                    <span className="flex items-center gap-1 text-purple-700 bg-purple-50 px-2.5 py-0.5 rounded-md border border-purple-200/80">
+                      <HeartPulse className="w-3 h-3 text-purple-600" />
+                      <span>Visée : {userProfile.targetSpecialty}</span>
+                    </span>
+                  )}
+                  {userProfile.faculty && (
+                    <span className="flex items-center gap-1 text-slate-600 bg-slate-100 px-2 py-0.5 rounded-md">
+                      <Building2 className="w-3 h-3 text-slate-500" />
+                      <span className="truncate max-w-[240px]">{userProfile.faculty}</span>
+                    </span>
+                  )}
+                </div>
+              </div>
             </div>
 
-            {/* Streak Week Visualizer */}
-            <div className="pt-6 border-t border-white/20 mt-6">
-              <div className="flex items-center justify-between gap-2">
-                {pastDays.map((day, idx) => (
-                  <div key={idx} className="flex-1 flex flex-col items-center gap-1.5">
-                    <div
-                      className={`w-9 h-9 sm:w-11 sm:h-11 rounded-2xl flex items-center justify-center font-black text-xs transition-transform ${
-                        day.completed
-                          ? 'bg-white text-amber-600 shadow-md scale-105'
-                          : 'bg-white/20 text-white/70 border border-white/20'
-                      }`}
-                    >
-                      {day.completed ? (
-                        <Flame className="w-5 h-5 fill-amber-500 text-amber-500" />
-                      ) : (
-                        <span className="text-[11px] font-bold">{day.count}</span>
-                      )}
+            {onOpenProfileModal && (
+              <button
+                type="button"
+                onClick={onOpenProfileModal}
+                className="px-4 py-2.5 rounded-2xl bg-indigo-50 hover:bg-indigo-100 text-indigo-700 border border-indigo-200 text-xs font-black flex items-center gap-2 transition-all shadow-2xs cursor-pointer shrink-0 self-end md:self-center"
+              >
+                <Edit3 className="w-3.5 h-3.5 text-indigo-600" />
+                <span>Modifier mon Profil</span>
+              </button>
+            )}
+          </div>
+
+          {/* Main Streak Card & Level/XP Summary Card */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* Main Streak Card */}
+            <div className="md:col-span-2 p-6 sm:p-8 rounded-3xl bg-gradient-to-br from-amber-500 via-orange-500 to-amber-600 text-white shadow-xl shadow-amber-500/20 relative overflow-hidden flex flex-col justify-between min-h-[260px]">
+              <div className="absolute -right-10 -bottom-10 opacity-15">
+                <Flame className="w-64 h-64 fill-white" />
+              </div>
+
+              <div>
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-xs font-extrabold tracking-wide mb-4 border border-white/20">
+                  <Flame className="w-4 h-4 fill-amber-200 text-amber-200" />
+                  <span>FLAMME QUOTIDIENNE DE RÉVISION</span>
+                </div>
+
+                <div className="flex items-baseline gap-3">
+                  <span className="text-5xl sm:text-7xl font-black tracking-tight drop-shadow-sm">
+                    {userProfile.streakCount}
+                  </span>
+                  <span className="text-xl sm:text-2xl font-bold opacity-90">
+                    {userProfile.streakCount > 1 ? 'jours consécutifs' : 'jour actif'}
+                  </span>
+                </div>
+
+                <p className="text-xs sm:text-sm font-medium opacity-90 mt-2 max-w-md leading-relaxed">
+                  {userProfile.streakCount >= 7
+                    ? "Série exceptionnelle ! Votre régularité clinique forge une mémoire à long terme solide."
+                    : userProfile.streakCount >= 3
+                    ? 'Excellente lancée ! Résolvez votre quota quotidien pour faire grandir la flamme.'
+                    : "Commencez votre série aujourd'hui en validant au moins 10 QCMs cliniques."}
+                </p>
+              </div>
+
+              {/* Streak Week Visualizer */}
+              <div className="pt-6 border-t border-white/20 mt-6">
+                <div className="flex items-center justify-between gap-2">
+                  {pastDays.map((day, idx) => (
+                    <div key={idx} className="flex-1 flex flex-col items-center gap-1.5">
+                      <div
+                        className={`w-9 h-9 sm:w-11 sm:h-11 rounded-2xl flex items-center justify-center font-black text-xs transition-transform ${
+                          day.completed
+                            ? 'bg-white text-amber-600 shadow-md scale-105'
+                            : 'bg-white/20 text-white/70 border border-white/20'
+                        }`}
+                      >
+                        {day.completed ? (
+                          <Flame className="w-5 h-5 fill-amber-500 text-amber-500" />
+                        ) : (
+                          <span className="text-[11px] font-bold">{day.count}</span>
+                        )}
+                      </div>
+                      <span className="text-[10px] font-bold opacity-90">{day.label}</span>
                     </div>
-                    <span className="text-[10px] font-bold opacity-90">{day.label}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+
+            {/* Level & XP Summary Card */}
+            <div className="p-6 rounded-3xl bg-white border border-slate-200/80 shadow-xs flex flex-col justify-between space-y-6">
+              <div>
+                <div className="flex items-center justify-between">
+                  <span className="text-xs font-extrabold uppercase tracking-wider text-slate-500">
+                    Progression de Grade
+                  </span>
+                  <span className="px-2.5 py-1 rounded-full text-xs font-black bg-indigo-50 text-indigo-700 border border-indigo-100">
+                    Niveau {userProfile.level}
+                  </span>
+                </div>
+
+                <h3 className="text-xl font-black text-slate-900 mt-2 tracking-tight">
+                  {userProfile.title}
+                </h3>
+
+                <div className="mt-4 space-y-2">
+                  <div className="flex items-center justify-between text-xs font-bold text-slate-600">
+                    <span>{userProfile.totalXp} XP cumulés</span>
+                    <span>{nextLevelXp} XP (Niv. {userProfile.level + 1})</span>
                   </div>
-                ))}
+                  <div className="w-full h-3 rounded-full bg-slate-100 overflow-hidden p-0.5 border border-slate-200">
+                    <div
+                      className="h-full rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 transition-all duration-500"
+                      style={{ width: `${progressPercent}%` }}
+                    />
+                  </div>
+                </div>
+              </div>
+
+              <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100 space-y-2">
+                <div className="flex items-center justify-between text-xs font-bold text-slate-700">
+                  <span className="flex items-center gap-1.5">
+                    <Shield className="w-4 h-4 text-indigo-600" />
+                    Gels de Série Disponibles
+                  </span>
+                  <span className="font-black text-indigo-700">{userProfile.streakFreezesCount}</span>
+                </div>
+                <p className="text-[11px] text-slate-500 font-medium">
+                  Protège automatiquement votre série en cas de garde chargée ou d'imprévu.
+                </p>
               </div>
             </div>
           </div>
 
-          {/* Level & XP Summary Card */}
-          <div className="p-6 rounded-3xl bg-white border border-slate-200/80 shadow-xs flex flex-col justify-between space-y-6">
-            <div>
-              <div className="flex items-center justify-between">
-                <span className="text-xs font-extrabold uppercase tracking-wider text-slate-500">
-                  Progression de Grade
-                </span>
-                <span className="px-2.5 py-1 rounded-full text-xs font-black bg-indigo-50 text-indigo-700 border border-indigo-100">
-                  Niveau {userProfile.level}
-                </span>
-              </div>
-
-              <h3 className="text-xl font-black text-slate-900 mt-2 tracking-tight">
-                {userProfile.title}
-              </h3>
-
-              <div className="mt-4 space-y-2">
-                <div className="flex items-center justify-between text-xs font-bold text-slate-600">
-                  <span>{userProfile.totalXp} XP cumulés</span>
-                  <span>{nextLevelXp} XP (Niv. {userProfile.level + 1})</span>
-                </div>
-                <div className="w-full h-3 rounded-full bg-slate-100 overflow-hidden p-0.5 border border-slate-200">
-                  <div
-                    className="h-full rounded-full bg-gradient-to-r from-indigo-500 to-purple-600 transition-all duration-500"
-                    style={{ width: `${progressPercent}%` }}
-                  />
-                </div>
-              </div>
-            </div>
-
-            <div className="p-4 rounded-2xl bg-slate-50 border border-slate-100 space-y-2">
-              <div className="flex items-center justify-between text-xs font-bold text-slate-700">
-                <span className="flex items-center gap-1.5">
-                  <Shield className="w-4 h-4 text-indigo-600" />
-                  Gels de Série Disponibles
-                </span>
-                <span className="font-black text-indigo-700">{userProfile.streakFreezesCount}</span>
-              </div>
-              <p className="text-[11px] text-slate-500 font-medium">
-                Protège automatiquement votre série en cas de garde chargée ou d'imprévu.
-              </p>
-            </div>
-          </div>
+          {/* Upgraded Clinical Progress Diagram */}
+          <ClinicalProgressDiagram
+            userProfile={userProfile}
+            selectedYear={selectedYear}
+          />
         </div>
       )}
 

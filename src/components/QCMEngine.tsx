@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import {
   Check,
   RotateCcw,
@@ -32,9 +32,21 @@ import {
   Pill,
   Layers,
   ShieldAlert,
+  GraduationCap,
 } from 'lucide-react';
 import { Question, QuestionType, Module, AcademicYear } from '../types/medical';
 import { MEDICAL_COURSES } from '../data/mockMedicalData';
+
+export interface LastSolvedQCMRecord {
+  id: string;
+  questionNumber: number;
+  module: string;
+  level: string;
+  type?: string;
+  timestamp: number;
+}
+
+const LAST_SOLVED_STORAGE_KEY = 'syndromed_last_solved_qcm';
 
 
 interface QCMEngineProps {
@@ -62,7 +74,34 @@ export const QCMEngine: React.FC<QCMEngineProps> = ({
 }) => {
   const [selectedType, setSelectedType] = useState<QuestionType | 'all'>(initialTypeFilter);
   const [selectedSubdivision, setSelectedSubdivision] = useState<string>('all');
-  const [currentIndex, setCurrentIndex] = useState<number>(0);
+  
+  // Track last solved QCM info
+  const [lastSolvedQCM, setLastSolvedQCM] = useState<LastSolvedQCMRecord | null>(() => {
+    try {
+      const raw = localStorage.getItem(LAST_SOLVED_STORAGE_KEY);
+      return raw ? JSON.parse(raw) : null;
+    } catch {
+      return null;
+    }
+  });
+  const hasInitializedFromLastSolvedRef = useRef<boolean>(false);
+
+  // Initialize with the index of the last solved QCM if available
+  const [currentIndex, setCurrentIndex] = useState<number>(() => {
+    try {
+      const raw = localStorage.getItem(LAST_SOLVED_STORAGE_KEY);
+      if (raw) {
+        const parsed: LastSolvedQCMRecord = JSON.parse(raw);
+        if (parsed?.id) {
+          const idx = questions.findIndex(
+            (q) => q.id === parsed.id || q.questionNumber === parsed.questionNumber
+          );
+          if (idx !== -1) return idx;
+        }
+      }
+    } catch {}
+    return 0;
+  });
   const [selectedOptions, setSelectedOptions] = useState<number[]>([]);
   const [hasSubmitted, setHasSubmitted] = useState<boolean>(false);
   const [bookmarkedIds, setBookmarkedIds] = useState<string[]>([]);
@@ -181,6 +220,30 @@ export const QCMEngine: React.FC<QCMEngineProps> = ({
     return list;
   }, [questions, selectedType, selectedSubdivision]);
 
+  // Requirement 1: Make the QCM that first appears is the last QCM the user solved
+  useEffect(() => {
+    if (hasInitializedFromLastSolvedRef.current) return;
+    if (!filteredQuestions || filteredQuestions.length === 0) return;
+
+    try {
+      const raw = localStorage.getItem(LAST_SOLVED_STORAGE_KEY);
+      if (raw) {
+        const parsed: LastSolvedQCMRecord = JSON.parse(raw);
+        if (parsed?.id) {
+          const idx = filteredQuestions.findIndex(
+            (q) => q.id === parsed.id || q.questionNumber === parsed.questionNumber
+          );
+          if (idx !== -1) {
+            setCurrentIndex(idx);
+            hasInitializedFromLastSolvedRef.current = true;
+            return;
+          }
+        }
+      }
+    } catch {}
+    hasInitializedFromLastSolvedRef.current = true;
+  }, [filteredQuestions]);
+
   // Handle case where filteredQuestions is empty or changes size
   useEffect(() => {
     if (currentIndex >= filteredQuestions.length && filteredQuestions.length > 0) {
@@ -189,6 +252,24 @@ export const QCMEngine: React.FC<QCMEngineProps> = ({
   }, [filteredQuestions.length, currentIndex]);
 
   const currentQ = filteredQuestions[currentIndex] || questions[0];
+
+  // Initialize default last solved record if empty so user always has persistent tracking
+  useEffect(() => {
+    if (!lastSolvedQCM && currentQ) {
+      const initialRecord: LastSolvedQCMRecord = {
+        id: currentQ.id,
+        questionNumber: currentQ.questionNumber || currentIndex + 1,
+        module: currentQ.module || currentModule?.title || 'Cardiologie & Vasculaire',
+        level: currentQ.academicYear || currentModule?.academicYear || selectedYear,
+        type: currentQ.type,
+        timestamp: Date.now(),
+      };
+      try {
+        localStorage.setItem(LAST_SOLVED_STORAGE_KEY, JSON.stringify(initialRecord));
+      } catch {}
+      setLastSolvedQCM(initialRecord);
+    }
+  }, [currentQ, currentModule, selectedYear, lastSolvedQCM, currentIndex]);
 
   const currentCourse = React.useMemo(() => {
     if (!currentQ?.courseId) return null;
@@ -270,6 +351,22 @@ export const QCMEngine: React.FC<QCMEngineProps> = ({
       ...prev,
       [currentQ.id]: isAllCorrect ? 'correct' : 'incorrect',
     }));
+
+    // Requirement 1: Persist the last solved QCM to localStorage
+    const solvedRecord: LastSolvedQCMRecord = {
+      id: currentQ.id,
+      questionNumber: currentQ.questionNumber || currentIndex + 1,
+      module: currentQ.module || currentModule?.title || 'Cardiologie & Vasculaire',
+      level: currentQ.academicYear || currentModule?.academicYear || selectedYear,
+      type: currentQ.type,
+      timestamp: Date.now(),
+    };
+    try {
+      localStorage.setItem(LAST_SOLVED_STORAGE_KEY, JSON.stringify(solvedRecord));
+    } catch (e) {
+      // ignore
+    }
+    setLastSolvedQCM(solvedRecord);
 
     if (isAllCorrect) {
       const xpEarned = currentQ.type === 'CasClinique' ? 30 : 20;
@@ -639,11 +736,69 @@ export const QCMEngine: React.FC<QCMEngineProps> = ({
         </div>
       )}
 
+      {/* Prominent Identification Banner: Level, Module & QCM Number (Requirement 1) */}
+      <div className="bg-gradient-to-r from-indigo-50/90 via-purple-50/80 to-blue-50/90 border border-indigo-100 rounded-3xl p-4 sm:p-5 shadow-xs flex flex-col md:flex-row items-start md:items-center justify-between gap-3">
+        <div className="flex items-center gap-2.5 flex-wrap">
+          {/* Last solved or active badge */}
+          {lastSolvedQCM?.id === currentQ.id ? (
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black bg-emerald-500 text-white shadow-xs animate-pulse">
+              <Sparkles className="w-3.5 h-3.5 text-white" />
+              <span>Dernier QCM résolu</span>
+            </span>
+          ) : (
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black bg-indigo-600 text-white shadow-xs">
+              <Target className="w-3.5 h-3.5 text-white" />
+              <span>QCM Actif</span>
+            </span>
+          )}
+
+          {/* Level Mention */}
+          <div className="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-extrabold bg-white border border-slate-200/90 text-slate-800 shadow-2xs">
+            <GraduationCap className="w-3.5 h-3.5 text-indigo-600 shrink-0" />
+            <span>Niveau : <span className="text-indigo-600 font-black">{currentQ.academicYear || currentModule?.academicYear || selectedYear}</span></span>
+          </div>
+
+          {/* Module Mention */}
+          <div className="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-extrabold bg-white border border-slate-200/90 text-slate-800 shadow-2xs">
+            <Layers className="w-3.5 h-3.5 text-purple-600 shrink-0" />
+            <span>Module : <span className="text-purple-700 font-black">{currentQ.module || currentModule?.title || 'Cardiologie & Vasculaire'}</span></span>
+          </div>
+
+          {/* QCM Number Mention */}
+          <div className="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-black bg-indigo-50 border border-indigo-200 text-indigo-700 shadow-2xs">
+            <CheckSquare className="w-3.5 h-3.5 text-indigo-600 shrink-0" />
+            <span>QCM n°{currentQ.questionNumber || currentIndex + 1}</span>
+          </div>
+        </div>
+
+        {/* Quick jump back to last solved QCM if user moved to another */}
+        {lastSolvedQCM && lastSolvedQCM.id !== currentQ.id && (
+          <button
+            onClick={() => {
+              const foundIdx = filteredQuestions.findIndex(
+                (q) => q.id === lastSolvedQCM.id || q.questionNumber === lastSolvedQCM.questionNumber
+              );
+              if (foundIdx !== -1) {
+                handleJumpToQuestion(foundIdx);
+              }
+            }}
+            className="text-xs font-black text-indigo-700 hover:text-indigo-900 bg-white hover:bg-indigo-50 border border-indigo-200 px-3.5 py-1.5 rounded-full transition-all flex items-center gap-1.5 shadow-2xs cursor-pointer md:ml-auto shrink-0"
+            title="Revenir directement au dernier QCM résolu"
+          >
+            <RotateCcw className="w-3.5 h-3.5 text-indigo-600" />
+            <span>Reprendre au QCM n°{lastSolvedQCM.questionNumber}</span>
+          </button>
+        )}
+      </div>
+
       {/* Main Question Card (Pure White with Soft Shadows) */}
       <div className="bg-white border border-slate-200/80 rounded-3xl p-6 sm:p-8 shadow-[0_8px_30px_rgb(0,0,0,0.03)] space-y-6">
         {/* Top Progress & Badges */}
         <div className="flex items-center justify-between gap-3">
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-2 flex-wrap">
+            <span className="px-3 py-1 rounded-full text-xs font-black bg-indigo-600 text-white shadow-2xs">
+              QCM n°{currentQ.questionNumber || currentIndex + 1}
+            </span>
             <span className="px-3 py-1 rounded-full text-xs font-extrabold bg-indigo-50 border border-indigo-200 text-indigo-700">
               Question {currentIndex + 1} sur {filteredQuestions.length}
             </span>
@@ -659,6 +814,12 @@ export const QCMEngine: React.FC<QCMEngineProps> = ({
                   <span>QCM</span>
                 </>
               )}
+            </span>
+            <span className="hidden sm:inline-flex px-2.5 py-1 rounded-full text-xs font-extrabold bg-purple-50 text-purple-700 border border-purple-200">
+              {currentQ.module || currentModule?.title || 'Cardiologie'}
+            </span>
+            <span className="hidden sm:inline-flex px-2.5 py-1 rounded-full text-xs font-extrabold bg-blue-50 text-blue-700 border border-blue-200">
+              {currentQ.academicYear || currentModule?.academicYear || selectedYear}
             </span>
             {isMulti && (
               <span className="px-2.5 py-0.5 rounded-full text-[10px] font-extrabold bg-purple-100 text-purple-700 border border-purple-200">

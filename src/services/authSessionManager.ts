@@ -9,6 +9,10 @@ export interface RegisteredAccount {
   academicYear: AcademicYear;
   createdAt: string;
   avatarUrl: string;
+  bio?: string;
+  faculty?: string;
+  targetSpecialty?: string;
+  customAvatarDataUrl?: string;
 }
 
 export interface UserProgressData {
@@ -33,6 +37,10 @@ export interface UserProgressData {
   dailyActivity?: Record<string, number>; // date "YYYY-MM-DD" -> XP earned
   streakHistory?: Record<string, StreakDayStatus>;
   notificationsEnabled?: boolean;
+  bio?: string;
+  faculty?: string;
+  targetSpecialty?: string;
+  customAvatarDataUrl?: string;
   leaderboardPrivacy?: LeaderboardPrivacySettings;
 }
 
@@ -318,6 +326,18 @@ export function logoutAccount(): void {
   setCurrentSessionEmail(null);
 }
 
+export function updateRegisteredAccount(
+  email: string,
+  updates: Partial<RegisteredAccount>
+): RegisteredAccount | null {
+  const accounts = getRegisteredAccounts();
+  const index = accounts.findIndex((a) => a.email.toLowerCase() === email.toLowerCase());
+  if (index === -1) return null;
+  accounts[index] = { ...accounts[index], ...updates };
+  saveRegisteredAccounts(accounts);
+  return accounts[index];
+}
+
 /**
  * Converts account and progress into the UserProfile interface used across UI.
  */
@@ -337,7 +357,7 @@ export function buildUserProfile(
     streakCount: progress.streakCount,
     streakFreezesCount: progress.streakFreezesCount,
     lastActiveDate: progress.lastActiveDate,
-    avatarUrl: account.avatarUrl,
+    avatarUrl: account.customAvatarDataUrl || account.avatarUrl,
     questionsSolvedToday: progress.questionsSolvedToday,
     dailyGoal: progress.dailyGoal,
     customExamDate: progress.customExamDate,
@@ -346,6 +366,10 @@ export function buildUserProfile(
     dailyActivity: progress.dailyActivity || {},
     streakHistory: progress.streakHistory || {},
     notificationsEnabled: progress.notificationsEnabled || false,
+    bio: account.bio || progress.bio || 'Externe passionné(e) par la clinique médicale.',
+    faculty: account.faculty || progress.faculty || "Faculté de Médecine d'Alger",
+    targetSpecialty: account.targetSpecialty || progress.targetSpecialty || 'Cardiologie & Vasculaire',
+    customAvatarDataUrl: account.customAvatarDataUrl || progress.customAvatarDataUrl,
     leaderboardPrivacy: progress.leaderboardPrivacy || { mode: 'public_name', nickname: '' },
   };
 }
