@@ -1,0 +1,2713 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Présentation du Siège — Révision 5<sup>e</sup> année Médecine (Algérie)</title>
+<style>
+:root{
+  --navy:#0f2a4a;
+  --navy-2:#16375e;
+  --navy-3:#1e4976;
+  --teal:#0d9488;
+  --teal-dark:#0f766e;
+  --teal-light:#ccfbf1;
+  --teal-soft:#e6fffa;
+  --slate:#475569;
+  --slate-light:#e2e8f0;
+  --bg:#eef2f7;
+  --card:#ffffff;
+  --amber:#b45309;
+  --amber-light:#fef3c7;
+  --rose:#9f1239;
+  --rose-light:#ffe4e6;
+  --border:#cbd5e1;
+  --shadow:0 4px 16px rgba(15,42,74,.08);
+  --shadow-lg:0 10px 30px rgba(15,42,74,.12);
+  --radius:16px;
+}
+
+*{box-sizing:border-box;}
+
+body{
+  margin:0;
+  padding:0;
+  background:linear-gradient(180deg,#eef2f7 0%,#e6edf5 100%);
+  font-family:'Inter','Roboto','Segoe UI',system-ui,-apple-system,sans-serif;
+  color:#1e293b;
+  line-height:1.65;
+  font-size:16px;
+  -webkit-font-smoothing:antialiased;
+}
+
+.wrapper{
+  max-width:1080px;
+  margin:0 auto;
+  padding:0 20px 80px;
+}
+
+/* ================= HEADER ================= */
+header.hero{
+  background:linear-gradient(135deg,var(--navy) 0%,var(--navy-3) 55%,var(--teal-dark) 100%);
+  color:#fff;
+  padding:56px 20px 64px;
+  position:relative;
+  overflow:hidden;
+}
+header.hero::after{
+  content:"";
+  position:absolute;
+  right:-120px;top:-120px;
+  width:380px;height:380px;
+  border-radius:50%;
+  background:rgba(255,255,255,.05);
+}
+header.hero::before{
+  content:"";
+  position:absolute;
+  left:-80px;bottom:-160px;
+  width:300px;height:300px;
+  border-radius:50%;
+  background:rgba(13,148,136,.18);
+}
+.hero-inner{
+  max-width:1080px;
+  margin:0 auto;
+  position:relative;
+  z-index:2;
+}
+.hero-tag{
+  display:inline-block;
+  background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.3);
+  padding:6px 16px;
+  border-radius:999px;
+  font-size:.78rem;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  font-weight:600;
+  margin-bottom:18px;
+}
+header.hero h1{
+  font-size:2.4rem;
+  margin:0 0 12px;
+  font-weight:800;
+  letter-spacing:-.02em;
+  line-height:1.15;
+}
+header.hero p.sub{
+  margin:0;
+  font-size:1.05rem;
+  color:#cbd9e8;
+  max-width:720px;
+}
+.hero-stats{
+  display:flex;
+  flex-wrap:wrap;
+  gap:14px;
+  margin-top:28px;
+}
+.hero-stat{
+  background:rgba(255,255,255,.1);
+  border:1px solid rgba(255,255,255,.18);
+  border-radius:12px;
+  padding:10px 18px;
+  font-size:.85rem;
+  backdrop-filter:blur(4px);
+}
+.hero-stat strong{color:#5eead4;font-size:1.05rem;}
+
+/* ================= NAV / SOMMAIRE ================= */
+.sommaire{
+  background:var(--card);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow-lg);
+  padding:22px 26px;
+  margin:-38px 0 44px;
+  position:relative;
+  z-index:5;
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  border:1px solid var(--border);
+}
+.sommaire a{
+  text-decoration:none;
+  color:var(--navy);
+  background:var(--slate-light);
+  border-radius:999px;
+  padding:7px 16px;
+  font-size:.83rem;
+  font-weight:600;
+  transition:.2s;
+  border:1px solid transparent;
+}
+.sommaire a:hover{
+  background:var(--teal);
+  color:#fff;
+  border-color:var(--teal-dark);
+  transform:translateY(-1px);
+}
+
+/* ================= SECTIONS ================= */
+section.bloc{
+  margin-bottom:54px;
+}
+.section-head{
+  display:flex;
+  align-items:center;
+  gap:14px;
+  margin-bottom:26px;
+  padding-bottom:14px;
+  border-bottom:3px solid var(--slate-light);
+}
+.section-num{
+  flex:0 0 auto;
+  width:44px;height:44px;
+  border-radius:12px;
+  background:linear-gradient(135deg,var(--navy),var(--teal));
+  color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:800;
+  font-size:1.15rem;
+  box-shadow:0 4px 12px rgba(13,148,136,.3);
+}
+.section-head h2{
+  margin:0;
+  font-size:1.5rem;
+  color:var(--navy);
+  font-weight:800;
+  letter-spacing:-.01em;
+}
+.section-head .sub{
+  font-size:.85rem;
+  color:var(--slate);
+  font-weight:500;
+  display:block;
+  margin-top:2px;
+}
+
+/* ================= LEGENDE BADGES ================= */
+.legende{
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin-bottom:24px;
+  background:#fff;
+  border:1px dashed var(--border);
+  border-radius:12px;
+  padding:14px 18px;
+  font-size:.8rem;
+  color:var(--slate);
+  align-items:center;
+}
+.legende strong{color:var(--navy);}
+
+/* ================= QCM CARDS ================= */
+.qcm{
+  background:var(--card);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow);
+  border:1px solid var(--border);
+  margin-bottom:26px;
+  overflow:hidden;
+  transition:box-shadow .25s;
+}
+.qcm:hover{box-shadow:var(--shadow-lg);}
+
+.qcm-head{
+  padding:16px 22px 0;
+}
+.qcm-meta{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  gap:10px;
+  margin-bottom:10px;
+}
+.qnum{
+  background:var(--navy);
+  color:#fff;
+  font-weight:800;
+  font-size:.8rem;
+  padding:4px 12px;
+  border-radius:8px;
+  letter-spacing:.03em;
+}
+.theme{
+  font-size:.78rem;
+  font-weight:600;
+  color:var(--teal-dark);
+  background:var(--teal-soft);
+  border:1px solid #99f6e4;
+  padding:4px 12px;
+  border-radius:8px;
+}
+.badge{
+  font-size:.7rem;
+  font-weight:800;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  padding:4px 11px;
+  border-radius:999px;
+  border:1px solid;
+}
+.b-rj{background:#e0f2fe;color:#075985;border-color:#7dd3fc;}
+.b-multi{background:var(--navy);color:#fff;border-color:var(--navy);}
+.b-simple{background:#f1f5f9;color:var(--slate);border-color:#cbd5e1;}
+.b-sauf{background:var(--amber-light);color:var(--amber);border-color:#fcd34d;}
+
+.qcm-body{
+  padding:6px 22px 20px;
+}
+.qcm-body p.stem{
+  font-weight:600;
+  color:#0f172a;
+  font-size:1rem;
+  margin:6px 0 16px;
+}
+ol.options{
+  list-style:none;
+  margin:0;
+  padding:0;
+  counter-reset:opt;
+}
+ol.options li{
+  counter-increment:opt;
+  position:relative;
+  padding:9px 14px 9px 44px;
+  margin-bottom:6px;
+  border-radius:10px;
+  background:#f8fafc;
+  border:1px solid #e9eef5;
+  font-size:.94rem;
+  transition:.15s;
+}
+ol.options li::before{
+  content:counter(opt,upper-alpha);
+  position:absolute;
+  left:12px;
+  top:50%;
+  transform:translateY(-50%);
+  width:22px;height:22px;
+  border-radius:50%;
+  background:var(--navy-2);
+  color:#fff;
+  font-size:.72rem;
+  font-weight:800;
+  display:flex;align-items:center;justify-content:center;
+}
+ol.options li:hover{
+  background:var(--teal-soft);
+  border-color:#99f6e4;
+}
+
+/* ================= CORRECTION ================= */
+details.correction{
+  margin:14px 22px 22px;
+  border-radius:12px;
+  border:1px solid #99f6e4;
+  background:linear-gradient(180deg,#f0fdfa,#ffffff);
+  overflow:hidden;
+}
+details.correction summary{
+  cursor:pointer;
+  padding:13px 18px;
+  font-weight:700;
+  color:var(--teal-dark);
+  font-size:.9rem;
+  list-style:none;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  user-select:none;
+  transition:.2s;
+}
+details.correction summary::-webkit-details-marker{display:none;}
+details.correction summary::before{
+  content:"▸";
+  font-size:1rem;
+  transition:transform .2s;
+  color:var(--teal);
+}
+details.correction[open] summary::before{transform:rotate(90deg);}
+details.correction summary:hover{background:#e6fffa;}
+
+.corr-body{
+  padding:0 20px 20px;
+  font-size:.92rem;
+  color:#334155;
+}
+.corr-answer{
+  display:inline-block;
+  background:var(--teal);
+  color:#fff;
+  font-weight:800;
+  padding:6px 16px;
+  border-radius:8px;
+  margin:4px 0 14px;
+  font-size:.88rem;
+  letter-spacing:.02em;
+}
+.corr-body p{margin:0 0 10px;}
+.corr-body ul{margin:6px 0 10px;padding-left:20px;}
+.corr-body li{margin-bottom:5px;}
+.corr-body .bad{color:var(--rose);font-weight:700;}
+.corr-body .good{color:var(--teal-dark);font-weight:700;}
+
+/* ================= CAS CLINIQUES ================= */
+.cas{
+  background:var(--card);
+  border-radius:var(--radius);
+  box-shadow:var(--shadow-lg);
+  border:1px solid var(--border);
+  margin-bottom:34px;
+  overflow:hidden;
+}
+.cas-head{
+  background:linear-gradient(120deg,var(--navy),var(--navy-3));
+  color:#fff;
+  padding:20px 26px;
+  display:flex;
+  align-items:center;
+  gap:16px;
+  flex-wrap:wrap;
+}
+.cas-num{
+  background:rgba(255,255,255,.16);
+  border:1px solid rgba(255,255,255,.3);
+  border-radius:10px;
+  padding:6px 14px;
+  font-weight:800;
+  font-size:.85rem;
+  letter-spacing:.05em;
+}
+.cas-head h3{
+  margin:0;
+  font-size:1.12rem;
+  font-weight:700;
+}
+.cas-head .lieu{
+  font-size:.78rem;
+  color:#a5c9e8;
+  margin-left:auto;
+  font-weight:600;
+}
+.vignette{
+  padding:22px 26px;
+  background:#f8fafc;
+  border-bottom:1px solid var(--border);
+  font-size:.94rem;
+  color:#1e293b;
+}
+.vignette .lbl{
+  display:inline-block;
+  font-size:.72rem;
+  font-weight:800;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  color:var(--teal-dark);
+  background:var(--teal-soft);
+  padding:3px 10px;
+  border-radius:6px;
+  margin-right:8px;
+  margin-bottom:4px;
+}
+.vignette p{margin:0 0 10px;}
+.vignette p:last-child{margin-bottom:0;}
+.cas-body{padding:22px 26px;}
+.cas-body .qcm{
+  box-shadow:none;
+  border:1px solid #e2e8f0;
+  background:#fcfdfe;
+  margin-bottom:20px;
+}
+.cas-body .qcm:last-child{margin-bottom:0;}
+
+/* ================= MAP CONCEPTUELLE ================= */
+.map-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+  gap:18px;
+  margin-bottom:26px;
+}
+.map-card{
+  background:var(--card);
+  border-radius:14px;
+  border:1px solid var(--border);
+  border-top:4px solid var(--teal);
+  padding:20px;
+  box-shadow:var(--shadow);
+}
+.map-card h4{
+  margin:0 0 12px;
+  font-size:.98rem;
+  color:var(--navy);
+  font-weight:800;
+  letter-spacing:.01em;
+}
+.map-card ul{
+  margin:0;
+  padding-left:18px;
+  font-size:.87rem;
+  color:#334155;
+}
+.map-card li{margin-bottom:7px;}
+.map-card.navy{border-top-color:var(--navy);}
+.map-card.amber{border-top-color:var(--amber);}
+.map-card.rose{border-top-color:var(--rose);}
+
+/* Types de siège */
+.types-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:16px;
+  margin-bottom:30px;
+}
+.type-box{
+  border-radius:14px;
+  padding:20px;
+  color:#fff;
+  position:relative;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+}
+.type-box .pct{
+  position:absolute;
+  right:12px;
+  top:2px;
+  font-size:3.2rem;
+  font-weight:900;
+  opacity:.16;
+  line-height:1;
+}
+.type-box h4{margin:0 0 8px;font-size:1rem;font-weight:800;}
+.type-box p{margin:0;font-size:.83rem;line-height:1.5;opacity:.95;}
+.t1{background:linear-gradient(135deg,#0d9488,#0f766e);}
+.t2{background:linear-gradient(135deg,#1e4976,#0f2a4a);}
+.t3{background:linear-gradient(135deg,#64748b,#475569);}
+
+/* Flowchart */
+.flow{
+  background:var(--card);
+  border-radius:var(--radius);
+  border:1px solid var(--border);
+  padding:26px 22px;
+  box-shadow:var(--shadow);
+  margin-bottom:26px;
+}
+.flow h4{
+  margin:0 0 20px;
+  color:var(--navy);
+  font-size:1.02rem;
+  font-weight:800;
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.flow h4::before{
+  content:"";
+  width:8px;height:22px;
+  background:var(--teal);
+  border-radius:4px;
+  display:inline-block;
+}
+.flow-row{
+  display:flex;
+  flex-wrap:wrap;
+  align-items:stretch;
+  gap:12px;
+  justify-content:center;
+}
+.node{
+  flex:1 1 170px;
+  background:#f1f5f9;
+  border:2px solid var(--border);
+  border-radius:12px;
+  padding:14px;
+  text-align:center;
+  font-size:.84rem;
+  font-weight:600;
+  color:var(--navy);
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  min-height:70px;
+}
+.node small{
+  display:block;
+  font-weight:500;
+  color:var(--slate);
+  font-size:.76rem;
+  margin-top:5px;
+}
+.node.act{background:var(--teal-soft);border-color:var(--teal);}
+.node.dec{background:var(--amber-light);border-color:#f59e0b;color:var(--amber);}
+.node.warn{background:var(--rose-light);border-color:#fb7185;color:var(--rose);}
+.node.dark{background:var(--navy);color:#fff;border-color:var(--navy);}
+.node.dark small{color:#bcd2e8;}
+.arrow{
+  align-self:center;
+  color:var(--teal);
+  font-size:1.4rem;
+  font-weight:900;
+  flex:0 0 auto;
+}
+.arrow-down{
+  text-align:center;
+  color:var(--teal);
+  font-size:1.5rem;
+  margin:10px 0;
+  line-height:1;
+}
+
+/* Table */
+.table-wrap{
+  overflow-x:auto;
+  border-radius:14px;
+  box-shadow:var(--shadow);
+  border:1px solid var(--border);
+  margin-bottom:26px;
+  background:#fff;
+}
+table{
+  width:100%;
+  border-collapse:collapse;
+  font-size:.88rem;
+  min-width:520px;
+}
+table thead th{
+  background:var(--navy);
+  color:#fff;
+  padding:13px 16px;
+  text-align:left;
+  font-weight:700;
+  font-size:.82rem;
+  letter-spacing:.03em;
+  text-transform:uppercase;
+}
+table tbody td{
+  padding:12px 16px;
+  border-bottom:1px solid #e9eef5;
+  color:#334155;
+  vertical-align:top;
+}
+table tbody tr:nth-child(even){background:#f8fafc;}
+table tbody tr:last-child td{border-bottom:none;}
+table tbody td strong{color:var(--navy);}
+.tag{
+  display:inline-block;
+  font-size:.7rem;
+  font-weight:800;
+  padding:2px 9px;
+  border-radius:6px;
+  letter-spacing:.04em;
+}
+.tag-m{background:#dbeafe;color:#1e40af;}
+.tag-f{background:#dcfce7;color:#166534;}
+.tag-o{background:#fef3c7;color:#92400e;}
+
+/* Mnémos */
+.mnemo-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:18px;
+  margin-bottom:26px;
+}
+.mnemo{
+  background:var(--card);
+  border-radius:14px;
+  border:1px solid var(--border);
+  border-left:5px solid var(--teal);
+  padding:18px 20px;
+  box-shadow:var(--shadow);
+}
+.mnemo h4{
+  margin:0 0 10px;
+  font-size:.95rem;
+  color:var(--teal-dark);
+  font-weight:800;
+}
+.mnemo .formule{
+  display:inline-block;
+  background:var(--navy);
+  color:#fff;
+  font-weight:900;
+  letter-spacing:.12em;
+  padding:6px 14px;
+  border-radius:8px;
+  margin-bottom:10px;
+  font-size:.85rem;
+}
+.mnemo p{margin:0 0 8px;font-size:.86rem;color:#334155;}
+.mnemo ul{margin:6px 0 0;padding-left:18px;font-size:.85rem;color:#334155;}
+.mnemo li{margin-bottom:5px;}
+.mnemo.amber{border-left-color:#f59e0b;}
+.mnemo.amber h4{color:var(--amber);}
+.mnemo.rose{border-left-color:var(--rose);}
+.mnemo.rose h4{color:var(--rose);}
+.mnemo.navy{border-left-color:var(--navy);}
+.mnemo.navy h4{color:var(--navy);}
+
+/* Pièges */
+.piege{
+  background:#fff;
+  border-radius:12px;
+  border:1px solid #fecdd3;
+  border-left:5px solid var(--rose);
+  padding:14px 18px;
+  margin-bottom:12px;
+  font-size:.89rem;
+  color:#334155;
+}
+.piege strong{color:var(--rose);}
+
+/* Conclusion */
+.final{
+  background:linear-gradient(135deg,var(--navy) 0%,var(--teal-dark) 100%);
+  border-radius:20px;
+  padding:44px 34px;
+  color:#fff;
+  text-align:center;
+  box-shadow:var(--shadow-lg);
+  position:relative;
+  overflow:hidden;
+}
+.final::before{
+  content:"";
+  position:absolute;
+  top:-80px;right:-80px;
+  width:260px;height:260px;
+  border-radius:50%;
+  background:rgba(255,255,255,.06);
+}
+.final h2{
+  margin:0 0 14px;
+  font-size:1.6rem;
+  font-weight:800;
+  position:relative;
+}
+.final p{
+  margin:0 auto 14px;
+  max-width:640px;
+  color:#d5e5f2;
+  font-size:.98rem;
+  position:relative;
+}
+.final .punch{
+  display:inline-block;
+  margin-top:14px;
+  background:rgba(255,255,255,.14);
+  border:1px solid rgba(255,255,255,.3);
+  padding:12px 26px;
+  border-radius:999px;
+  font-weight:700;
+  font-size:.95rem;
+  color:#5eead4;
+  position:relative;
+}
+
+footer.foot{
+  text-align:center;
+  color:var(--slate);
+  font-size:.8rem;
+  padding:34px 20px 10px;
+}
+
+/* Responsive */
+@media(max-width:640px){
+  header.hero h1{font-size:1.65rem;}
+  header.hero{padding:40px 18px 54px;}
+  .wrapper{padding:0 14px 60px;}
+  .section-head h2{font-size:1.2rem;}
+  .qcm-head,.qcm-body{padding-left:16px;padding-right:16px;}
+  details.correction{margin-left:16px;margin-right:16px;}
+  .cas-head,.vignette,.cas-body{padding-left:16px;padding-right:16px;}
+  .cas-head .lieu{margin-left:0;}
+  .flow-row{flex-direction:column;}
+  .arrow{transform:rotate(90deg);}
+  .final{padding:32px 20px;}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <span class="hero-tag">Gynécologie–Obstétrique · 5<sup>e</sup> année · Facultés de Médecine d'Algérie</span>
+    <h1>La Présentation du Siège</h1>
+    <p class="sub">Module de révision complet : diagnostic, étiologies, mécanique obstétricale, manœuvres d'extraction et conduite à tenir. Contenu aligné sur les standards pédagogiques algériens et les pièges docimologiques classiques.</p>
+    <div class="hero-stats">
+      <div class="hero-stat"><strong>25</strong> QCM exigeants</div>
+      <div class="hero-stat"><strong>5</strong> cas cliniques hospitaliers</div>
+      <div class="hero-stat"><strong>3</strong> manœuvres clés</div>
+      <div class="hero-stat"><strong>3–4 %</strong> des accouchements</div>
+    </div>
+  </div>
+</header>
+
+<div class="wrapper">
+
+  <nav class="sommaire">
+    <a href="#qcm">① Banque de 25 QCM</a>
+    <a href="#cas">② Cas cliniques</a>
+    <a href="#carte">③ Carte conceptuelle</a>
+    <a href="#mnemo">④ Mnémotechniques</a>
+    <a href="#pieges">⑤ Pièges d'examen</a>
+  </nav>
+
+  <!-- ====================================================== -->
+  <!-- ==================== 1. QCM ========================== -->
+  <!-- ====================================================== -->
+  <section class="bloc" id="qcm">
+    <div class="section-head">
+      <div class="section-num">1</div>
+      <div>
+        <h2>Banque de 25 QCM exigeants</h2>
+        <span class="sub">Questions subtilement mélangées — types RJ/RF, choix multiples et choix simples</span>
+      </div>
+    </div>
+
+    <div class="legende">
+      <strong>Légende :</strong>
+      <span class="badge b-rj">RJ / RF</span> Réponse juste ou fausse
+      <span class="badge b-multi">Choix multiple</span> 2 à 3 réponses exactes
+      <span class="badge b-simple">Choix simple</span> 1 seule bonne réponse
+      <span class="badge b-sauf">SAUF</span> Toutes exactes sauf une
+    </div>
+
+    <!-- Q1 -->
+    <div class="qcm">
+      <div class="qcm-head">
+        <div class="qcm-meta">
+          <span class="qnum">Q1</span>
+          <span class="theme">Définition &amp; Épidémiologie</span>
+          <span class="badge b-rj">Réponse fausse</span>
+        </div>
+      </div>
+      <div class="qcm-body">
+        <p class="stem">Parmi les propositions suivantes concernant la présentation du siège, choisissez la réponse <strong>fausse</strong>.</p>
+        <ol class="options">
+          <li>C'est une présentation longitudinale théoriquement eutocique.</li>
+          <li>Elle se rencontre chez 3 à 4 % des patientes.</li>
+          <li>L'extrémité pelvienne du mobile fœtal est en contact avec le détroit supérieur du bassin maternel.</li>
+          <li>L'extrémité céphalique se situe au niveau du fond utérin.</li>
+          <li>Il s'agit par définition d'une présentation transversale.</li>
+        </ol>
+      </div>
+      <details class="correction">
+        <summary>Voir la correction et l'explication détaillée</summary>
+        <div class="corr-body">
+          <span class="corr-answer">Réponse : E</span>
+          <p>La présentation du siège est, <strong>par définition, une présentation longitudinale</strong> : l'axe du fœtus est parallèle à celui de l'utérus. La présentation transversale est une entité obstétricale totalement distincte (épaule en regard du détroit supérieur).</p>
+          <p><span class="bad">Pourquoi les autres sont exactes :</span></p>
+          <ul>
+            <li><strong>A</strong> : le siège est théoriquement eutocique car la filière pelvienne peut être franchie — mais il reste potentiellement dystocique en pratique.</li>
+            <li><strong>B</strong> : incidence classique de 3 à 4 % à terme.</li>
+            <li><strong>C</strong> : définition topographique — le pôle pelvien regarde le détroit supérieur.</li>
+            <li><strong>D</strong> : corollaire de C — la tête occupe le fond utérin, d'où l'auscultation <em>en sus-ombilical</em>.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <!-- Q2 -->
+    <div class="qcm">
+      <div class="qcm-head">
+        <div class="qcm-meta">
+          <span class="qnum">Q2</span>
+          <span class="theme">Variétés de présentation du siège</span>
+          <span class="badge b-multi">Choix multiple</span>
+        </div>
+      </div>
+      <div class="qcm-body">
+        <p class="stem">Concernant les variétés de la présentation du siège, quelles propositions sont exactes ? <em>(2 à 3 réponses)</em></p>
+        <ol class="options">
+          <li>Le siège décomplété (mode des fesses) représente environ 2/3 des cas.</li>
+          <li>Dans le siège décomplété, les membres inférieurs sont en extension devant le tronc, amenant les pieds à hauteur de la tête fœtale.</li>
+          <li>Le siège complet réalise un fœtus « assis en tailleur » au-dessus du détroit supérieur.</li>
+          <li>Le siège semi-complet est la variété la plus fréquemment rencontrée.</li>
+          <li>Dans le siège complet, les membres inférieurs sont en extension devant le tronc.</li>
+        </ol>
+      </div>
+      <details class="correction">
+        <summary>Voir la correction et l'explication détaillée</summary>
+        <div class="corr-body">
+          <span class="corr-answer">Réponse : A, B, C</span>
+          <ul>
+            <li><span class="good">A</span> — Le siège décomplété (mode des fesses) est la variété dominante : environ 2/3 des sièges.</li>
+            <li><span class="good">B</span> — Définition exacte : les jambes sont tendues en avant du tronc, pieds près de la tête.</li>
+            <li><span class="good">C</span> — Le siège complet correspond à une attitude en tailleur (hanches et genoux fléchis), cuisses et jambes fléchies sur le tronc.</li>
+            <li><span class="bad">D — Faux :</span> le siège semi-complet (semi-décomplété), où un seul membre inférieur est relevé devant le tronc, est <strong>rare</strong>.</li>
+            <li><span class="bad">E — Faux :</span> c'est le siège <em>décomplété</em> qui comporte l'extension des membres inférieurs. Le siège complet est par définition <em>fléchi</em>.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <!-- Q3 -->
+    <div class="qcm">
+      <div class="qcm-head">
+        <div class="qcm-meta">
+          <span class="qnum">Q3</span>
+          <span class="theme">Diamètres fœtaux</span>
+          <span class="badge b-simple">Choix simple</span>
+        </div>
+      </div>
+      <div class="qcm-body">
+        <p class="stem">Concernant les diamètres des segments fœtaux dans la présentation du siège, quelle proposition est exacte ?</p>
+        <ol class="options">
+          <li>Le diamètre bitrochantérien mesure 12 cm.</li>
+          <li>Le diamètre biacromial mesure 9,5 cm sans aucun tassement possible.</li>
+          <li>Le diamètre bitrochantérien mesure 9,5 cm.</li>
+          <li>Le diamètre sous-occipito-frontal mesure 9,5 cm.</li>
+          <li>Le BIP constitue le plus grand diamètre de tous les segments fœtaux.</li>
+        </ol>
+      </div>
+      <details class="correction">
+        <summary>Voir la correction et l'explication détaillée</summary>
+        <div class="corr-body">
+          <span class="corr-answer">Réponse : C</span>
+          <p>Les données du cours sont : <strong>bitrochantérien = 9,5 cm</strong> ; <strong>biacromial = 12 cm, se tassant à environ 9,5 cm</strong> ; <strong>sous-occipito-frontal = 11 cm</strong> ; <strong>BIP = 9,5 cm</strong>.</p>
+          <ul>
+            <li><span class="bad">A — Faux :</span> 12 cm correspond au biacromial <em>avant tassement</em>, pas au bitrochantérien.</li>
+            <li><span class="bad">B — Faux :</span> le biacromial est précisément le diamètre qui <em>se tasse</em>, passant de 12 cm à environ 9,5 cm.</li>
+            <li><span class="bad">D — Faux :</span> le sous-occipito-frontal mesure 11 cm — c'est le plus grand diamètre engagé lors du dégagement de la tête dernière.</li>
+            <li><span class="bad">E — Faux :</span> le BIP (9,5 cm) est inférieur au sous-occipito-frontal (11 cm).</li>
+          </ul>
+          <p><em>Notion clé :</em> le volume des segments fœtaux est <strong>croissant</strong> du siège vers la tête (9,5 → 12/9,5 → 11 cm), tandis que la compressibilité <strong>diminue</strong>. C'est toute la difficulté de la progression « à rebrousse-poil ».</p>
+        </div>
+      </details>
+    </div>
+
+    <!-- Q4 -->
+    <div class="qcm">
+      <div class="qcm-head">
+        <div class="qcm-meta">
+          <span class="qnum">Q4</span>
+          <span class="theme">Étiologies utérines</span>
+          <span class="badge b-rj">Réponse juste</span>
+        </div>
+      </div>
+      <div class="qcm-body">
+        <p class="stem">Choisissez la réponse juste. Parmi les facteurs étiologiques utérins, lequel est classiquement associé au <strong>siège décomplété</strong> ?</p>
+        <ol class="options">
+          <li>La multiparité.</li>
+          <li>L'hypoplasie utérine chez une nullipare.</li>
+          <li>Le fibrome utérin déformant la cavité.</li>
+          <li>L'utérus didelphe.</li>
+          <li>La béance cervico-isthmique.</li>
+        </ol>
+      </div>
+      <details class="correction">
+        <summary>Voir la correction et l'explication détaillée</summary>
+        <div class="corr-body">
+          <span class="corr-answer">Réponse : B</span>
+          <p>Le cours précise que <strong>l'hypoplasie utérine (50 % des cas), surtout chez la nullipare, favorise le siège décomplété</strong>, alors que la <strong>multiparité</strong> favorise plutôt le <strong>siège complet</strong>.</p>
+          <ul>
+            <li><span class="bad">A — Faux :</span> la multiparité est rattachée au siège <em>complet</em> (hypotonie utérine, cavité distendue, attitude fléchie).</li>
+            <li><span class="bad">C, D — Faux :</span> fibrome et malformations utérines (didelphe, unicorne, cloisonné — 5 %) sont des causes utérines de siège en général, mais ne sont pas spécifiquement associées à la variété décomplétée.</li>
+            <li><span class="bad">E — Faux :</span> la béance cervico-isthmique est une cause d'accouchement prématuré / fausse couche tardive, non un facteur de variété de siège.</li>
+          </ul>
+          <p><strong>Astuce :</strong> « Hypoplasie → Décomplété » (H→D) ; « Multiparité → Complet » (M→C).</p>
+        </div>
+      </details>
+    </div>
+
+    <!-- Q5 -->
+    <div class="qcm">
+      <div class="qcm-head">
+        <div class="qcm-meta">
+          <span class="qnum">Q5</span>
+          <span class="theme">Étiologies ovulaires et fœtales</span>
+          <span class="badge b-multi">Choix multiple</span>
+        </div>
+      </div>
+      <div class="qcm-body">
+        <p class="stem">Concernant les étiologies de la présentation du siège, quelles propositions sont exactes ? <em>(2 à 3 réponses)</em></p>
+        <ol class="options">
+          <li>Le placenta prævia constitue un facteur ovulaire.</li>
+          <li>L'hydramnios et l'oligoamnios favorisent la présentation du siège.</li>
+          <li>Un cordon long (supérieur à 70 cm) est un facteur favorisant classique.</li>
+          <li>L'anencéphalie et l'hydrocéphalie sont des causes fœtales.</li>
+          <li>La prématurité protège de la présentation du siège.</li>
+        </ol>
+      </div>
+      <details class="correction">
+        <summary>Voir la correction et l'explication détaillée</summary>
+        <div class="corr-body">
+          <span class="corr-answer">Réponse : A, B, D</span>
+          <ul>
+            <li><span class="good">A</span> — Le placenta prævia est une cause ovulaire : l'insertion placentaire « occupe le bas » et empêche l'orientation céphalique.</li>
+            <li><span class="good">B</span> — Les anomalies du volume de liquide amniotique (hydramnios par hypermobilité, oligoamnios par défaut de rotation) favorisent le siège.</li>
+            <li><span class="good">D</span> — Les malformations fœtales (anencéphalie, hydrocéphalie) modifient l'accommodation du pôle céphalique.</li>
+            <li><span class="bad">C — Faux :</span> c'est la <strong>brièveté du cordon</strong> (cordon court) qui est retenue comme facteur étiologique, en limitant la mobilité fœtale.</li>
+            <li><span class="bad">E — Faux :</span> la prématurité est au contraire un <strong>facteur de risque majeur</strong> : la « culbute physiologique » ne s'est pas encore effectuée (elle se produit vers le 8<sup>e</sup> mois).</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <!-- Q6 -->
+    <div class="qcm">
+      <div class="qcm-head">
+        <div class="qcm-meta">
+          <span class="qnum">Q6</span>
+          <span class="theme">Diagnostic clinique — palpation &amp; auscultation</span>
+          <span class="badge b-rj">Réponse juste</span>
+        </div>
+      </div>
+      <div class="qcm-body">
+        <p class="stem">Choisissez la réponse juste concernant l'examen clinique d'une patiente porteuse d'une présentation du siège.</p>
+        <ol class="options">
+          <li>À la palpation, on perçoit un pôle dur et rond en sus-pubien.</li>
+          <li>À la palpation, on perçoit un pôle mou en sus-pubien et une tête dure et ronde au fond utérin.</li>
+          <li>L'auscultation des bruits du cœur fœtal se fait au niveau de l'hypogastre.</li>
+          <li>L'inspection retrouve un utérus à grand axe transversal.</li>
+          <li>Le toucher vaginal retrouve une présentation dure, régulière et arrondie.</li>
+        </ol>
+      </div>
+      <details class="correction">
+        <summary>Voir la correction et l'explication détaillée</summary>
+        <div class="corr-body">
+          <span class="corr-answer">Réponse : B</span>
+          <p>La sémiologie de la présentation du siège est « <strong>inversée</strong> » par rapport à la présentation céphalique : le pôle <em>podalique</em> (mou, irrégulier) est en sus-pubien, tandis que la <em>tête</em> (dure, ronde, avec saillie du plan du dos) occupe le fond utérin.</p>
+          <ul>
+            <li><span class="bad">A — Faux :</span> décrit la présentation céphalique.</li>
+            <li><span class="bad">C — Faux :</span> l'auscultation se fait <strong>en sus-ombilical</strong>, car le cœur fœtal est proche du fond utérin.</li>
+            <li><span class="bad">D — Faux :</span> l'utérus est à <strong>grand axe longitudinal</strong> (c'est une présentation longitudinale).</li>
+            <li><span class="bad">E — Faux :</span> le TV retrouve une présentation molle et irrégulière (masses fessières, pieds…). Une présentation dure et régulière évoque le crâne.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <!-- Q7 -->
+    <div class="qcm">
+      <div class="qcm-head">
+        <div class="qcm-meta">
+          <span class="qnum">Q7</span>
+          <span class="theme">Toucher vaginal</span>
+          <span class="badge b-simple">Choix simple</span>
+        </div>
+      </div>
+      <div class="qcm-body">
+        <p class="stem">Au toucher vaginal, un siège décomplété se caractérise par :</p>
+        <ol class="options">
+          <li>La perception des pieds et des malléoles.</li>
+          <li>Deux masses molles séparées par un sillon inter-fessier avec l'anus au centre.</li>
+          <li>Une masse dure et arrondie avec une fontanelle perçue au centre.</li>
+          <li>La perception du talon et des orteils.</li>
+          <li>Une sensation de vacuité pelvienne.</li>
+        </ol>
+      </div>
+      <details class="correction">
+        <summary>Voir la correction et l'explication détaillée</summary>
+        <div class="corr-body">
+          <span class="corr-answer">Réponse : B</span>
+          <p>Le siège décomplété se reconnaît au TV par <strong>deux masses molles (les fesses) séparées par le pli inter-fessier, au centre duquel on perçoit l'anus en fossette</strong>. C'est le signe distinctif de cette variété.</p>
+          <ul>
+            <li><span class="bad">A et D — Faux :</span> ces éléments correspondent au <strong>siège complet</strong> (mode des pieds), où l'on peut reconnaître talon, malléoles et orteils.</li>
+            <li><span class="bad">C — Faux :</span> masse dure + fontanelle = présentation céphalique.</li>
+            <li><span class="bad">E — Faux :</span> le siège est une présentation <em>charnue</em> et palpable ; l'absence de perception évoquerait plutôt une présentation haute non engagée.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <!-- Q8 -->
+    <div class="qcm">
+      <div class="qcm-head">
+        <div class="qcm-meta">
+          <span class="qnum">Q8</span>
+          <span class="theme">Diagnostic positif, échographie &amp; diagnostic différentiel</span>
+          <span class="badge b-multi">Choix multiple</span>
+        </div>
+      </div>
+      <div class="qcm-body">
+        <p class="stem">Concernant le diagnostic de la présentation du siège, quelles propositions sont exactes ? <em>(2 à 3 réponses)</em></p>
+        <ol class="options">
+          <li>Le diagnostic peut être évoqué au cours du 8<sup>e</sup> mois de grossesse.</li>
+          <li>L'échographie objective une présentation longitudinale avec tête en haut fléchie et siège en regard de l'excavation pelvienne.</li>
+          <li>Le diagnostic différentiel comprend la présentation de la face et la présentation du front.</li>
+          <li>La radiographie du bassin constitue l'examen de référence pour le diagnostic positif.</li>
+          <li>La douleur sous-costale rapportée par la patiente est liée à la compression exercée par le pôle podalique.</li>
+        </ol>
+      </div>
+      <details class="correction">
+        <summary>Voir la correction et l'explication détaillée</summary>
+        <div class="corr-body">
+          <span class="corr-answer">Réponse : A, B, C</span>
+          <ul>
+            <li><span class="good">A</span> — Le diagnostic au 8<sup>e</sup> mois est capital : c'est à ce terme que se décide la voie d'accouchement. Il peut aussi être fait en début de travail.</li>
+            <li><span class="good">B</span> — C'est la définition échographique du siège donnée dans le cours.</li>
+            <li><span class="good">C</span> — Le diagnostic différentiel retenu est la présentation de la face et la présentation du front (en cas de doute sur la perception d'un pôle céphalique défléchi).</li>
+            <li><span class="bad">D — Faux :</span> l'examen de référence est l'<strong>échographie</strong>, non la radiographie.</li>
+            <li><span class="bad">E — Faux :</span> la douleur sous-costale est due à la compression par le <strong>pôle céphalique</strong> (la tête étant au fond utérin), et non par le pôle podalique.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <!-- Q9 -->
+    <div class="qcm">
+      <div class="qcm-head">
+        <div class="qcm-meta">
+          <span class="qnum">Q9</span>
+          <span class="theme">Éléments du pronostic</span>
+          <span class="badge b-sauf">Toutes exactes SAUF</span>
+        </div>
+      </div>
+      <div class="qcm-body">
+        <p class="stem">Toutes les propositions suivantes constituent des éléments d'évaluation du pronostic maternel, fœtal et obstétrical devant une présentation du siège, <strong>SAUF une</strong>. Laquelle ?</p>
+        <ol class="options">
+          <li>Les biométries fœtales (poids fœtal, BIP).</li>
+          <li>La flexion de la tête fœtale.</li>
+          <li>La pelvimétrie.</li>
+          <li>Le désir de la patiente.</li>
+          <li>La longueur du cordon ombilical mesurée en anténatal.</li>
+        </ol>
+      </div>
+      <details class="correction">
+        <summary>Voir la correction et l'explication détaillée</summary>
+        <div class="corr-body">
+          <span class="corr-answer">Réponse : E</span>
+          <p>Les éléments décisionnels retenus sont : <strong>biométries fœtales (poids, BIP)</strong>, <strong>flexion de la tête</strong>, <strong>bassin / pelvimétrie</strong>, <strong>désir de la patiente</strong>, et la disponibilité d'une <strong>équipe pluridisciplinaire</strong> (obstétricien, sage-femme, pédiatre, anesthésiste-réanimateur) avec un <strong>bloc opératoire</strong> fonctionnel.</p>
+          <ul>
+            <li><span class="good">A, B, C, D</span> — Tous cités explicitement dans l'évaluation pré-thérapeutique.</li>
+            <li><span class="bad">E</span> — La longueur du cordon <em>n'est pas</em> un critère de décision de voie d'accouchement ; la notion de cordon court est seulement un facteur étiologique rétrospectif/anténatal.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <!-- Q10 -->
+    <div class="qcm">
+      <div class="qcm-head">
+        <div class="qcm-meta">
+          <span class="qnum">Q10</span>
+          <span class="theme">Indications maternelles de césarienne prophylactique</span>
+          <span class="badge b-multi">Choix multiple</span>
+        </div>
+      </div>
+      <div class="qcm-body">
+        <p class="stem">Parmi les indications <strong>maternelles</strong> de césarienne prophylactique devant une présentation du siège, quelles propositions sont exactes ? <em>(2 à 3 réponses)</em></p>
+        <ol class="options">
+          <li>Une dystocie osseuse à la pelvimétrie.</li>
+          <li>Une primipare âgée.</li>
+          <li>Un utérus cicatriciel.</li>
+          <li>Une macrosomie fœtale.</li>
+          <li>Un RCIU sévère.</li>
+        </ol>
+      </div>
+      <details class="correction">
+        <summary>Voir la correction et l'explication détaillée</summary>
+        <div class="corr-body">
+          <span class="corr-answer">Réponse : A, B, C</span>
+          <p>Les indications <strong>maternelles</strong> sont : pelvimétrie / dystocie osseuse, obstacle prævia, refus de la voie basse par la patiente, primipare âgée, utérus cicatriciel.</p>
+          <ul>
+            <li><span class="good">A, B, C</span> — Relèvent bien du versant maternel.</li>
+            <li><span class="bad">D et E — Faux :</span> la macrosomie et le RCIU sévère sont des indications <strong>fœtales</strong>. Attention à la classification !</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <!-- Q11 -->
+    <div class="qcm">
+      <div class="qcm-head">
+        <div class="qcm-meta">
+          <span class="qnum">Q11</span>
+          <span class="theme">Indications fœtales de césarienne prophylactique</span>
+          <span class="badge b-simple">Choix simple</span>
+        </div>
+      </div>
+      <div class="qcm-body">
+        <p class="stem">Parmi les propositions suivantes, laquelle constitue une indication <strong>fœtale</strong> de césarienne prophylactique devant une présentation du siège ?</p>
+        <ol class="options">
+          <li>Le placenta prævia.</li>
+          <li>La rupture prématurée des membranes de plus de 12 heures.</li>
+          <li>La primipare âgée.</li>
+          <li>Le RCIU sévère.</li>
+          <li>L'utérus cicatriciel.</li>
+        </ol>
+      </div>
+      <details class="correction">
+        <summary>Voir la correction et l'explication détaillée</summary>
+        <div class="corr-body">
+          <span class="corr-answer">Réponse : D</span>
+          <p>Les indications <strong>fœtales</strong> sont : accouchement prématuré entre 28 et 32 SA, macrosomie (poids &gt; 3800 g, BIP &gt; 98 mm), déflexion de la tête fœtale, RCIU sévère.</p>
+          <ul>
+            <li><span class="bad">A et B — Faux :</span> indications <strong>ovulaires</strong> (placenta prævia, RPM &gt; 12 h).</li>
+            <li><span class="bad">C et E — Faux :</span> indications <strong>maternelles</strong>.</li>
+            <li><span class="good">D</span> — Le RCIU sévère expose à une mauvaise tolérance de la progression et à un risque d'anoxie : césarienne prophylactique.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <!-- Q12 -->
+    <div class="qcm">
+      <div class="qcm-head">
+        <div class="qcm-meta">
+          <span class="qnum">Q12</span>
+          <span class="theme">Classification des indications de césarienne</span>
+          <span class="badge b-rj">Réponse fausse</span>
+        </div>
+      </div>
+      <div class="qcm-body">
+        <p class="stem">Concernant les indications de césarienne prophylactique devant une présentation du siège, choisissez la réponse <strong>fausse</strong>.</p>
+        <ol class="options">
+          <li>Le placenta prævia est une indication ovulaire.</li>
+          <li>Une rupture prématurée des membranes de plus de 12 h est une indication ovulaire.</li>
+          <li>La macrosomie (poids &gt; 3800 g) est une indication fœtale.</li>
+          <li>La primipare âgée est une indication fœtale.</li>
+          <li>Certaines équipes appliquent la règle « siège + autre élément = césarienne ».</li>
+        </ol>
+      </div>
+      <details class="correction">
+        <summary>Voir la correction et l'explication détaillée</summary>
+        <div class="corr-body">
+          <span class="corr-answer">Réponse : D</span>
+          <p>La <strong>primipare âgée</strong> est une indication <strong>maternelle</strong> et non fœtale. Cette erreur de classification est un piège docimologique classique.</p>
+          <ul>
+            <li><span class="good">A, B</span> — Correctes : placenta prævia et RPM &gt; 12 h sont bien des indications ovulaires.</li>
+            <li><span class="good">C</span> — Correcte : macrosomie = indication fœtale (avec BIP &gt; 98 mm).</li>
+            <li><span class="good">E</span> — Correcte : la formule « siège + autre élément = césarienne » est effectivement appliquée par certaines équipes obstétricales, illustrant la prudence croissante vis-à-vis de la voie basse.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <!-- Q13 -->
+    <div class="qcm">
+      <div class="qcm-head">
+        <div class="qcm-meta">
+          <span class="qnum">Q13</span>
+          <span class="theme">Mécanique obstétricale — notion de « rebrousse-poil »</span>
+          <span class="badge b-rj">Réponse juste</span>
+        </div>
+      </div>
+      <div class="qcm-body">
+        <p class="stem">Choisissez la réponse juste concernant la mécanique obstétricale de l'accouchement du siège.</p>
+        <ol class="options">
+          <li>La progression du fœtus s'effectue dans l'axe de ses segments, dite progression « dans le sens du poil ».</li>
+          <li>Les différents segments fœtaux peuvent s'accrocher ou se relever dans le bassin, on parle de progression « à rebrousse-poil ».</li>
+          <li>La tête est le premier segment engagé dans le détroit supérieur.</li>
+          <li>Le mobile fœtal est un bloc non solidaire, ce qui facilite la progression.</li>
+          <li>Les tractions intempestives sont recommandées pour accélérer la descente.</li>
+        </ol>
+      </div>
+      <details class="correction">
+        <summary>Voir la correction et l'explication détaillée</summary>
+        <div class="corr-body">
+          <span class="corr-answer">Réponse : B</span>
+          <p>Le concept central du cours : la progression est dite <strong>« à rebrousse-poil »</strong> car les segments fœtaux (pieds, bras, menton) peuvent <strong>s'accrocher ou se relever</strong> pendant la descente dans le bassin, avec des diamètres croissants et une compressibilité décroissante.</p>
+          <ul>
+            <li><span class="bad">A — Faux :</span> c'est exactement l'inverse ; la notion de « sens du poil » décrirait la présentation céphalique.</li>
+            <li><span class="bad">C — Faux :</span> le siège est le premier segment engagé ; la tête n'est pas encore engagée quand le siège est déjà dehors.</li>
+            <li><span class="bad">D — Faux :</span> le mobile fœtal est décrit comme un <strong>bloc homogène</strong> par solidarisation de la tête en flexion, du tronc et des membres.</li>
+            <li><span class="bad">E — Faux :</span> les tractions intempestives sont <strong>formellement à éviter</strong> : elles exposent à la déflexion de la tête et au relèvement des bras.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <!-- Q14 -->
+    <div class="qcm">
+      <div class="qcm-head">
+        <div class="qcm-meta">
+          <span class="qnum">Q14</span>
+          <span class="theme">Volume et compressibilité des segments fœtaux</span>
+          <span class="badge b-simple">Choix simple</span>
+        </div>
+      </div>
+      <div class="qcm-body">
+        <p class="stem">Concernant les diamètres des segments fœtaux lors de l'accouchement du siège, quelle proposition est exacte ?</p>
+        <ol class="options">
+          <li>Le bitrochantérien (9,5 cm) est plus grand que le biacromial.</li>
+          <li>Le biacromial mesure 12 cm et se tasse à environ 9,5 cm.</li>
+          <li>Le BIP mesure 12 cm.</li>
+          <li>Le volume des segments fœtaux est décroissant du siège vers la tête.</li>
+          <li>La compressibilité des segments fœtaux augmente au fur et à mesure de la descente.</li>
+        </ol>
+      </div>
+      <details class="correction">
+        <summary>Voir la correction et l'explication détaillée</summary>
+        <div class="corr-body">
+          <span class="corr-answer">Réponse : B</span>
+          <p>Le biacromial est le diamètre le plus large du trajet (12 cm), mais il bénéficie d'un <strong>tassement</strong> le ramenant à environ 9,5 cm, ce qui permet le franchissement du détroit.</p>
+          <ul>
+            <li><span class="bad">A — Faux :</span> 9,5 &lt; 12 : le bitrochantérien est plus petit.</li>
+            <li><span class="bad">C — Faux :</span> le BIP mesure 9,5 cm (12 cm est le biacromial pré-tassement).</li>
+            <li><span class="bad">D — Faux :</span> le volume est <strong>croissant</strong> (9,5 → 12 → 11).</li>
+            <li><span class="bad">E — Faux :</span> la compressibilité est <strong>réduite</strong> pour les segments les plus volumineux — d'où le risque d'arrêt de progression.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <!-- Q15 -->
+    <div class="qcm">
+      <div class="qcm-head">
+        <div class="qcm-meta">
+          <span class="qnum">Q15</span>
+          <span class="theme">Dégagement du siège</span>
+          <span class="badge b-multi">Choix multiple</span>
+        </div>
+      </div>
+      <div class="qcm-body">
+        <p class="stem">Concernant le dégagement du siège, quelles propositions sont exactes ? <em>(2 à 3 réponses)</em></p>
+        <ol class="options">
+          <li>Le diamètre bitrochantérien s'oriente dans un diamètre oblique du bassin.</li>
+          <li>La variété SIGA est la plus fréquente.</li>
+          <li>Une rotation de 45° amène le diamètre bitrochantérien dans le diamètre antéro-postérieur.</li>
+          <li>Le sacrum se place en antérieur lors du dégagement.</li>
+          <li>La hanche postérieure se dégage en premier.</li>
+        </ol>
+      </div>
+      <details class="correction">
+        <summary>Voir la correction et l'explication détaillée</summary>
+        <div class="corr-body">
+          <span class="corr-answer">Réponse : A, B, C</span>
+          <ul>
+            <li><span class="good">A</span> — Le bitrochantérien emprunte d'emblée un diamètre oblique du bassin.</li>
+            <li><span class="good">B</span> — Le siège gauche antérieur (SIGA) est la variété la plus fréquente.</li>
+            <li><span class="good">C</span> — La rotation de 45° amène le bitrochantérien dans le diamètre antéro-postérieur.</li>
+            <li><span class="bad">D — Faux :</span> le <strong>sacrum est en transverse</strong> (et non en antérieur) lors du dégagement.</li>
+            <li><span class="bad">E — Faux :</span> c'est la <strong>hanche antérieure</strong> qui se cale sous la symphyse pubienne, puis se dégage ; le dégagement de la hanche postérieure suit.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <!-- Q16 -->
+    <div class="qcm">
+      <div class="qcm-head">
+        <div class="qcm-meta">
+          <span class="qnum">Q16</span>
+          <span class="theme">Accouchement des épaules</span>
+          <span class="badge b-simple">Choix simple</span>
+        </div>
+      </div>
+      <div class="qcm-body">
+        <p class="stem">Lors de l'accouchement des épaules, quelle affirmation est exacte ?</p>
+        <ol class="options">
+          <li>Les épaules s'engagent avant le dégagement du siège.</li>
+          <li>Les épaules s'engagent dans un diamètre oblique différent de celui emprunté par le bitrochantérien.</li>
+          <li>Le dégagement des épaules se fait en transverse, les bras tombant l'un après l'autre.</li>
+          <li>Le dos tourne physiologiquement vers l'arrière.</li>
+          <li>Une rotation du dos en arrière est sans conséquence pour le fœtus.</li>
+        </ol>
+      </div>
+      <details class="correction">
+        <summary>Voir la correction et l'explication détaillée</summary>
+        <div class="corr-body">
+          <span class="corr-answer">Réponse : C</span>
+          <p>Quand le siège se dégage, les épaules s'engagent dans le <strong>même diamètre oblique</strong> que le bitrochantérien (restitution), le dos tourne en avant, et le <strong>dégagement se fait en transverse</strong>, les bras tombant l'un après l'autre.</p>
+          <ul>
+            <li><span class="bad">A — Faux :</span> l'engagement des épaules se produit <em>quand le siège se dégage</em>, pas avant.</li>
+            <li><span class="bad">B — Faux :</span> c'est le <strong>même</strong> diamètre oblique (restitution).</li>
+            <li><span class="bad">D — Faux :</span> le dos tourne en <strong>avant</strong>.</li>
+            <li><span class="bad">E — Faux :</span> une rotation accidentelle du dos en arrière est <strong>gravissime</strong> : elle entraîne l'accrochage du menton sur la symphyse pubienne.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <!-- Q17 -->
+    <div class="qcm">
+      <div class="qcm-head">
+        <div class="qcm-meta">
+          <span class="qnum">Q17</span>
+          <span class="theme">Accouchement de la tête</span>
+          <span class="badge b-sauf">Toutes exactes SAUF</span>
+        </div>
+      </div>
+      <div class="qcm-body">
+        <p class="stem">Toutes les propositions suivantes concernant l'accouchement de la tête sont exactes, <strong>SAUF une</strong>. Laquelle ?</p>
+        <ol class="options">
+          <li>L'engagement de la tête se fait en même temps que la descente et le dégagement des épaules.</li>
+          <li>La tête bien fléchie s'engage dans le diamètre opposé à celui emprunté par les épaules.</li>
+          <li>La tête engagée tourne en occipito-pubien et se fixe sous la symphyse pubienne.</li>
+          <li>La tête s'hyperfléchit, faisant apparaître successivement le crâne, le front puis la face.</li>
+          <li>La tête s'engage avant le dégagement du siège.</li>
+        </ol>
+      </div>
+      <details class="correction">
+        <summary>Voir la correction et l'explication détaillée</summary>
+        <div class="corr-body">
+          <span class="corr-answer">Réponse : E</span>
+          <p>Par définition, <strong>la tête dernière n'est pas encore engagée quand le siège est dehors</strong>. Le troisième temps de l'accouchement du siège est précisément le dégagement de cette tête retardataire.</p>
+          <ul>
+            <li><span class="good">A</span> — L'engagement de la tête s'effectue simultanément à la descente et au dégagement des épaules.</li>
+            <li><span class="good">B</span> — La tête fléchie emprunte le diamètre <em>opposé</em> à celui des épaules.</li>
+            <li><span class="good">C</span> — Rotation en occipito-pubien puis fixation sous la symphyse.</li>
+            <li><span class="good">D</span> — L'hyperflexion fait apparaître le crâne, puis le front, puis la face.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <!-- Q18 -->
+    <div class="qcm">
+      <div class="qcm-head">
+        <div class="qcm-meta">
+          <span class="qnum">Q18</span>
+          <span class="theme">Risques des manœuvres obstétricales</span>
+          <span class="badge b-multi">Choix multiple</span>
+        </div>
+      </div>
+      <div class="qcm-body">
+        <p class="stem">Quels sont les risques liés aux manœuvres obstétricales lors de l'accouchement du siège ? <em>(2 à 3 réponses)</em></p>
+        <ol class="options">
+          <li>La désolidarisation du mobile fœtal.</li>
+          <li>Le relèvement des bras.</li>
+          <li>La rétention de la tête dernière.</li>
+          <li>La procidence du cordon.</li>
+          <li>La rupture utérine systématique.</li>
+        </ol>
+      </div>
+      <details class="correction">
+        <summary>Voir la correction et l'explication détaillée</summary>
+        <div class="corr-body">
+          <span class="corr-answer">Réponse : A, B, C</span>
+          <p>Le cours énumère trois risques majeurs des manœuvres : <strong>désolidarisation du mobile fœtal</strong>, <strong>relèvement des bras</strong> et <strong>rétention de la tête dernière</strong>.</p>
+          <ul>
+            <li><span class="good">A, B, C</span> — Risques directement liés à la manipulation du fœtus et à la perte de la solidarisation tête–tronc–membres.</li>
+            <li><span class="bad">D — Faux :</span> la procidence du cordon est une complication de la présentation (RPM, présentation haute), non un risque propre aux manœuvres d'extraction.</li>
+            <li><span class="bad">E — Faux :</span> la rupture utérine n'est pas « systématique » ; c'est un risque exceptionnel, notamment sur utérus cicatriciel.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <!-- Q19 -->
+    <div class="qcm">
+      <div class="qcm-head">
+        <div class="qcm-meta">
+          <span class="qnum">Q19</span>
+          <span class="theme">Manœuvre de Lovset — principe</span>
+          <span class="badge b-simple">Choix simple</span>
+        </div>
+      </div>
+      <div class="qcm-body">
+        <p class="stem">Concernant la manœuvre de Lovset, quelle proposition est exacte ?</p>
+        <ol class="options">
+          <li>Elle est indiquée pour la rétention de la tête dernière.</li>
+          <li>Elle consiste en une traction axiale sur le cou du fœtus.</li>
+          <li>L'opérateur place ses pouces sur les lombes, ses paumes sur les fesses et ses doigts sur les ailes iliaques du fœtus.</li>
+          <li>Elle débute par une rotation de 180° puis se poursuit par une rotation de 90° en sens inverse.</li>
+          <li>Elle se termine toujours par la manœuvre de Kristeller.</li>
+        </ol>
+      </div>
+      <details class="correction">
+        <summary>Voir la correction et l'explication détaillée</summary>
+        <div class="corr-body">
+          <span class="corr-answer">Réponse : C</span>
+          <p>La prise de la manœuvre de Lovset est décrite précisément : <strong>pouces sur les lombes, paumes sur les fesses, doigts sur les ailes iliaques</strong>.</p>
+          <ul>
+            <li><span class="bad">A — Faux :</span> la Lovset traite le <strong>relèvement des bras</strong> ; la rétention de la tête dernière relève de la <strong>Mauriceau</strong>.</li>
+            <li><span class="bad">B — Faux :</span> aucune traction sur le cou — c'est la <em>rotation</em> qui fait progresser le bras.</li>
+            <li><span class="bad">D — Faux :</span> l'ordre est inverse : <strong>90° d'abord</strong>, puis <strong>180° en sens inverse</strong>.</li>
+            <li><span class="bad">E — Faux :</span> la Lovset se termine par la <strong>manœuvre de Mauriceau ou de Bracht</strong>, jamais par la manœuvre de Kristeller (qui est une pression fundique).</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <!-- Q20 -->
+    <div class="qcm">
+      <div class="qcm-head">
+        <div class="qcm-meta">
+          <span class="qnum">Q20</span>
+          <span class="theme">Manœuvre de Lovset — technique</span>
+          <span class="badge b-multi">Choix multiple</span>
+        </div>
+      </div>
+      <div class="qcm-body">
+        <p class="stem">Concernant la manœuvre de Lovset, quelles propositions sont exactes ? <em>(2 à 3 réponses)</em></p>
+        <ol class="options">
+          <li>Elle est indiquée en cas de relèvement des bras.</li>
+          <li>Une première rotation de 90° amène le bras antérieur sous la symphyse pubienne.</li>
+          <li>Une seconde rotation de 180° en sens inverse amène le bras postérieur en avant, le coude à la vulve.</li>
+          <li>Le fœtus est relevé vers le haut afin de dégager les bras plus facilement.</li>
+          <li>Elle se termine systématiquement par la manœuvre de McRoberts.</li>
+        </ol>
+      </div>
+      <details class="correction">
+        <summary>Voir la correction et l'explication détaillée</summary>
+        <div class="corr-body">
+          <span class="corr-answer">Réponse : A, B, C</span>
+          <p>Déroulé complet de la Lovset : après la prise (pouces sur lombes, paumes sur fesses, doigts sur ailes iliaques), <strong>rotation de 90°</strong> → bras antérieur amené sous la symphyse et dégagé, l'autre épaule passant sous le promontoire ; puis <strong>rotation de 180° en sens inverse</strong> → bras postérieur amené en avant, coude à la vulve ; enfin le fœtus est <strong>abaissé</strong> pour fixer l'occiput sous la symphyse, et la manœuvre se termine par une <strong>Mauriceau ou une Bracht</strong>.</p>
+          <ul>
+            <li><span class="good">A, B, C</span> — Conformes à la description classique.</li>
+            <li><span class="bad">D — Faux :</span> le fœtus est <strong>abaissé</strong> (et non relevé) pour fixer l'occiput sous la symphyse.</li>
+            <li><span class="bad">E — Faux :</span> la terminaison se fait par <strong>Mauriceau ou Bracht</strong> ; la McRoberts concerne la dystocie des épaules en présentation céphalique.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <!-- Q21 -->
+    <div class="qcm">
+      <div class="qcm-head">
+        <div class="qcm-meta">
+          <span class="qnum">Q21</span>
+          <span class="theme">Manœuvre de Mauriceau — indication</span>
+          <span class="badge b-rj">Réponse juste</span>
+        </div>
+      </div>
+      <div class="qcm-body">
+        <p class="stem">Choisissez la réponse juste. La manœuvre de Mauriceau est indiquée principalement en cas de :</p>
+        <ol class="options">
+          <li>Relèvement des bras.</li>
+          <li>Rétention de la tête dernière.</li>
+          <li>Procidence du cordon.</li>
+          <li>Dystocie des épaules.</li>
+          <li>Siège complet non compliqué.</li>
+        </ol>
+      </div>
+      <details class="correction">
+        <summary>Voir la correction et l'explication détaillée</summary>
+        <div class="corr-body">
+          <span class="corr-answer">Réponse : B</span>
+          <p>La <strong>manœuvre de Mauriceau</strong> est la manœuvre de référence de la <strong>rétention de la tête dernière</strong>. Ses étiologies sont la disproportion fœto-pelvienne, la déflexion de la tête et l'accrochage du menton sous la symphyse pubienne.</p>
+          <ul>
+            <li><span class="bad">A — Faux :</span> le relèvement des bras se traite par la <strong>Lovset</strong>.</li>
+            <li><span class="bad">C — Faux :</span> la procidence du cordon impose une extraction rapide / césarienne en urgence, non une manœuvre de Mauriceau.</li>
+            <li><span class="bad">D — Faux :</span> la dystocie des épaules concerne la présentation céphalique (manœuvres de McRoberts, Jacquemier…).</li>
+            <li><span class="bad">E — Faux :</span> un siège complet non compliqué ne nécessite aucune manœuvre instrumentale.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <!-- Q22 -->
+    <div class="qcm">
+      <div class="qcm-head">
+        <div class="qcm-meta">
+          <span class="qnum">Q22</span>
+          <span class="theme">Manœuvre de Mauriceau — technique</span>
+          <span class="badge b-multi">Choix multiple</span>
+        </div>
+      </div>
+      <div class="qcm-body">
+        <p class="stem">Concernant la manœuvre de Mauriceau, quelles propositions sont exactes ? <em>(2 à 3 réponses)</em></p>
+        <ol class="options">
+          <li>Les étiologies de la rétention de tête dernière incluent la disproportion fœto-pelvienne, la déflexion de la tête et l'accrochage du menton sous la symphyse.</li>
+          <li>L'index et le médius de la main ventrale sont introduits dans la bouche du fœtus jusqu'à la base de la langue.</li>
+          <li>L'autre main est placée en fourche sur les épaules, de chaque côté du cou, et exerce une traction douce dans l'axe ombilico-coccygien.</li>
+          <li>La traction doit être exercée perpendiculairement à l'axe ombilico-coccygien pour plus d'efficacité.</li>
+          <li>La tête doit être défléchie lors de son dégagement.</li>
+        </ol>
+      </div>
+      <details class="correction">
+        <summary>Voir la correction et l'explication détaillée</summary>
+        <div class="corr-body">
+          <span class="corr-answer">Réponse : A, B, C</span>
+          <p>Technique : le fœtus est installé <strong>à cheval sur l'avant-bras</strong> de l'opérateur ; index et médius de la main ventrale <strong>dans la bouche jusqu'à la base de la langue</strong> (pour obtenir la flexion) ; l'autre main en <strong>fourche sur les épaules</strong>, de part et d'autre du cou, exerçant une <strong>traction douce dans l'axe ombilico-coccygien</strong> ; la main intra-vaginale fléchit la tête et la fait descendre selon ce même axe.</p>
+          <ul>
+            <li><span class="good">A, B, C</span> — Conformes au cours.</li>
+            <li><span class="bad">D — Faux :</span> une traction <strong>hors de l'axe ombilico-coccygien</strong> est précisément ce qu'il faut éviter : elle expose aux <strong>lésions médullaires et au plexus brachial</strong>.</li>
+            <li><span class="bad">E — Faux :</span> la tête doit rester <strong>fléchie</strong> lors de son dégagement — la déflexion est un facteur d'échec et de traumatisme.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <!-- Q23 -->
+    <div class="qcm">
+      <div class="qcm-head">
+        <div class="qcm-meta">
+          <span class="qnum">Q23</span>
+          <span class="theme">Manœuvre de Bracht</span>
+          <span class="badge b-simple">Choix simple</span>
+        </div>
+      </div>
+      <div class="qcm-body">
+        <p class="stem">Concernant la manœuvre de Bracht, quelle proposition est exacte ?</p>
+        <ol class="options">
+          <li>Elle nécessite des tractions fermes et soutenues sur le tronc fœtal.</li>
+          <li>Elle consiste à saisir le siège dès l'apparition des omoplates à la vulve, pouces sur le devant des cuisses et autres doigts sur les fesses, puis à renverser progressivement l'enfant sur le ventre de la mère.</li>
+          <li>Elle s'effectue en retournant brutalement l'enfant.</li>
+          <li>Elle constitue le traitement de première intention du relèvement des bras.</li>
+          <li>Elle est formellement contre-indiquée dans le siège complet.</li>
+        </ol>
+      </div>
+      <details class="correction">
+        <summary>Voir la correction et l'explication détaillée</summary>
+        <div class="corr-body">
+          <span class="corr-answer">Réponse : B</span>
+          <p>La manœuvre de Bracht aide au dégagement de la tête : dès l'apparition des <strong>omoplates à la vulve</strong>, on saisit le siège (pouces sur le devant des cuisses, autres doigts sur les fesses) et on <strong>renverse progressivement</strong> l'enfant sur le ventre de la mère, <strong>sans aucune traction</strong>.</p>
+          <ul>
+            <li><span class="bad">A — Faux :</span> elle se réalise <strong>sans traction</strong>.</li>
+            <li><span class="bad">C — Faux :</span> elle peut être <strong>dangereuse si réalisée trop brutalement</strong> — la progressivité est la règle.</li>
+            <li><span class="bad">D — Faux :</span> le relèvement des bras relève de la <strong>Lovset</strong>.</li>
+            <li><span class="bad">E — Faux :</span> aucune contre-indication formelle n'est retenue dans le cours.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <!-- Q24 -->
+    <div class="qcm">
+      <div class="qcm-head">
+        <div class="qcm-meta">
+          <span class="qnum">Q24</span>
+          <span class="theme">Pronostic</span>
+          <span class="badge b-sauf">Toutes exactes SAUF</span>
+        </div>
+      </div>
+      <div class="qcm-body">
+        <p class="stem">Toutes les propositions suivantes concernant le pronostic de l'accouchement du siège sont exactes, <strong>SAUF une</strong>. Laquelle ?</p>
+        <ol class="options">
+          <li>La mortalité périnatale est multipliée par 3.</li>
+          <li>La morbidité périnatale est multipliée par 2.</li>
+          <li>La mortalité fœtale est estimée entre 0,3 et 3 %.</li>
+          <li>La morbidité fœtale est estimée entre 2 et 17 %.</li>
+          <li>L'accouchement par voie basse d'un siège est une situation à très faible risque, sans anxiété pour l'équipe obstétricale.</li>
+        </ol>
+      </div>
+      <details class="correction">
+        <summary>Voir la correction et l'explication détaillée</summary>
+        <div class="corr-body">
+          <span class="corr-answer">Réponse : E</span>
+          <p>Bien au contraire : l'accouchement du siège par voie vaginale est décrit comme une <strong>situation angoissante pour l'équipe obstétricale</strong>, <strong>potentiellement dystocique</strong>, avec des risques fœtaux majorés par rapport à la présentation céphalique — notamment du fait du <strong>risque d'anoxie fœtale</strong>.</p>
+          <ul>
+            <li><span class="good">A, B</span> — Mortalité périnatale ×3 et morbidité périnatale ×2.</li>
+            <li><span class="good">C, D</span> — Mortalité fœtale 0,3–3 % ; morbidité fœtale 2–17 % (lésions du fémur, de l'humérus, paralysie du plexus brachial, hémorragie méningée favorisée par les manœuvres).</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <!-- Q25 -->
+    <div class="qcm">
+      <div class="qcm-head">
+        <div class="qcm-meta">
+          <span class="qnum">Q25</span>
+          <span class="theme">Conduite à tenir globale</span>
+          <span class="badge b-rj">Réponse juste</span>
+        </div>
+      </div>
+      <div class="qcm-body">
+        <p class="stem">Choisissez la réponse juste concernant la conduite à tenir globale devant une présentation du siège.</p>
+        <ol class="options">
+          <li>Toute présentation du siège impose une césarienne systématique.</li>
+          <li>La voie basse peut être envisagée après évaluation pluridisciplinaire (obstétricien, sage-femme, pédiatre, anesthésiste-réanimateur) et disponibilité d'un bloc opératoire.</li>
+          <li>La pelvimétrie n'a aucun intérêt dans la décision.</li>
+          <li>Le siège est une présentation transversale.</li>
+          <li>L'échographie n'a pas sa place dans le diagnostic.</li>
+        </ol>
+      </div>
+      <details class="correction">
+        <summary>Voir la correction et l'explication détaillée</summary>
+        <div class="corr-body">
+          <span class="corr-answer">Réponse : B</span>
+          <p>La décision de voie d'accouchement est <strong>collégiale et individualisée</strong> : elle repose sur les éléments de pronostic maternel, fœtal et obstétrical, avec une <strong>équipe pluridisciplinaire</strong> et un <strong>bloc opératoire disponible</strong> en cas de conversion en urgence.</p>
+          <ul>
+            <li><span class="bad">A — Faux :</span> la césarienne n'est pas systématique ; la voie basse reste possible sous conditions (règle « siège + autre élément = césarienne » appliquée par certaines équipes).</li>
+            <li><span class="bad">C — Faux :</span> la pelvimétrie est un élément clé du pronostic (dystocie osseuse = indication maternelle de césarienne).</li>
+            <li><span class="bad">D — Faux :</span> le siège est une présentation <strong>longitudinale</strong>.</li>
+            <li><span class="bad">E — Faux :</span> l'échographie est l'examen de référence (présentation, biométries, flexion de la tête, placenta, liquide).</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+  </section>
+
+  <!-- ====================================================== -->
+  <!-- ================== 2. CAS CLINIQUES ================== -->
+  <!-- ====================================================== -->
+  <section class="bloc" id="cas">
+    <div class="section-head">
+      <div class="section-num">2</div>
+      <div>
+        <h2>5 cas cliniques hospitaliers algériens</h2>
+        <span class="sub">Situations réalistes de CHU, EPH et maternités de proximité</span>
+      </div>
+    </div>
+
+    <!-- CAS 1 -->
+    <div class="cas">
+      <div class="cas-head">
+        <span class="cas-num">CAS 1</span>
+        <h3>Consultation du 8<sup>e</sup> mois — découverte d'un siège</h3>
+        <span class="lieu">CHU · Consultation prénatale</span>
+      </div>
+      <div class="vignette">
+        <p><span class="lbl">Anamnèse</span> Mme B., 27 ans, G1P0, 34 SA, grossesse sans particularité, aucune notion de malformation utérine ni d'antécédent de siège. Elle rapporte une gêne intermittente sous les côtes droites, surtout en fin de journée.</p>
+        <p><span class="lbl">Examen</span> Hauteur utérine 30 cm ; utérus à grand axe longitudinal. Palpation : pôle mou et irrégulier en sus-pubien ; pôle dur et rond, avec une saillie du plan du dos, au fond utérin. Auscultation des BCF à 142 bpm, <strong>en sus-ombilical</strong>. TV : deux masses molles séparées par un sillon médian, avec un orifice central en fossette.</p>
+        <p><span class="lbl">Échographie</span> Présentation longitudinale, tête au fond utérin <strong>fléchie</strong>, siège en regard du détroit supérieur. BIP 88 mm, poids estimé 2400 g. Liquide amniotique normal, placenta fundique. Membranes intactes.</p>
+      </div>
+      <div class="cas-body">
+
+        <div class="qcm">
+          <div class="qcm-head">
+            <div class="qcm-meta">
+              <span class="qnum">C1-Q1</span>
+              <span class="theme">Diagnostic positif</span>
+              <span class="badge b-simple">Choix simple</span>
+            </div>
+          </div>
+          <div class="qcm-body">
+            <p class="stem">Quel est le diagnostic le plus probable ?</p>
+            <ol class="options">
+              <li>Présentation céphalique occipito-iliaque gauche antérieure.</li>
+              <li>Présentation du siège décomplété (mode des fesses).</li>
+              <li>Présentation du siège complet (mode des pieds).</li>
+              <li>Présentation de la face.</li>
+              <li>Présentation transversale.</li>
+            </ol>
+          </div>
+          <details class="correction">
+            <summary>Voir la correction</summary>
+            <div class="corr-body">
+              <span class="corr-answer">Réponse : B</span>
+              <p>L'ensemble des données est typique du <strong>siège décomplété</strong> : pôle mou en sus-pubien, tête dure au fond, auscultation en sus-ombilical, et surtout le TV retrouvant <strong>deux masses molles séparées par le pli inter-fessier avec l'anus au centre</strong>.</p>
+              <ul>
+                <li><span class="bad">A</span> — La présentation céphalique donnerait un pôle dur en sus-pubien et une auscultation hypogastrique.</li>
+                <li><span class="bad">C</span> — Le siège complet donnerait la perception des pieds, talons, malléoles et orteils au TV.</li>
+                <li><span class="bad">D</span> — La face se perçoit comme un pôle dur avec orbites et racine du nez.</li>
+                <li><span class="bad">E</span> — L'utérus serait à grand axe transversal, et l'échographie le confirmerait.</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+
+        <div class="qcm">
+          <div class="qcm-head">
+            <div class="qcm-meta">
+              <span class="qnum">C1-Q2</span>
+              <span class="theme">Sémiologie &amp; explication de la douleur</span>
+              <span class="badge b-multi">Choix multiple</span>
+            </div>
+          </div>
+          <div class="qcm-body">
+            <p class="stem">Quelles propositions expliquent les signes cliniques présentés ? <em>(2 à 3 réponses)</em></p>
+            <ol class="options">
+              <li>La douleur sous-costale est liée à la compression locale exercée par le pôle céphalique.</li>
+              <li>L'auscultation se fait en sus-ombilical parce que le cœur fœtal est proche du fond utérin.</li>
+              <li>Le sillon inter-fessier perçu au TV correspond au pli inter-fessier avec l'anus au centre.</li>
+              <li>La perception d'un pôle mou en sus-pubien est en faveur d'une présentation céphalique.</li>
+              <li>L'utérus est à grand axe transversal car le fœtus est en siège.</li>
+            </ol>
+          </div>
+          <details class="correction">
+            <summary>Voir la correction</summary>
+            <div class="corr-body">
+              <span class="corr-answer">Réponse : A, B, C</span>
+              <ul>
+                <li><span class="good">A</span> — Le cours mentionne explicitement la gêne/douleur sous-costale par compression du <strong>pôle céphalique</strong> situé au fond utérin.</li>
+                <li><span class="good">B</span> — Le foyer d'auscultation se déplace vers le haut avec le cœur fœtal.</li>
+                <li><span class="good">C</span> — C'est la sémiologie TV caractéristique du siège décomplété.</li>
+                <li><span class="bad">D — Faux :</span> un pôle mou en sus-pubien signe le siège ; en céphalique on perçoit un pôle dur.</li>
+                <li><span class="bad">E — Faux :</span> le siège est une présentation <strong>longitudinale</strong> : l'utérus est à grand axe longitudinal.</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+
+        <div class="qcm">
+          <div class="qcm-head">
+            <div class="qcm-meta">
+              <span class="qnum">C1-Q3</span>
+              <span class="theme">Conduite à tenir à 34 SA</span>
+              <span class="badge b-simple">Choix simple</span>
+            </div>
+          </div>
+          <div class="qcm-body">
+            <p class="stem">Quelle est la conduite à tenir la plus adaptée à ce terme de 34 SA ?</p>
+            <ol class="options">
+              <li>Programmer immédiatement une césarienne prophylactique.</li>
+              <li>Tenter une version par manœuvres externes séance tenante sans contrôle échographique.</li>
+              <li>Poursuivre la surveillance, contrôler la présentation par échographie vers 36–37 SA, et décider de la voie d'accouchement au 8<sup>e</sup> mois.</li>
+              <li>Déclencher le travail dès maintenant par ocytociques.</li>
+              <li>Rassurer sans aucune surveillance ultérieure.</li>
+            </ol>
+          </div>
+          <details class="correction">
+            <summary>Voir la correction</summary>
+            <div class="corr-body">
+              <span class="corr-answer">Réponse : C</span>
+              <p>À 34 SA, une présentation du siège peut encore se modifier (la « culbute physiologique » survient vers le 8<sup>e</sup> mois). La règle pédagogique est : <strong>le diagnostic de la présentation au 8<sup>e</sup> mois permet de décider de la voie d'accouchement</strong>. On contrôle donc la présentation à 36–37 SA.</p>
+              <ul>
+                <li><span class="bad">A</span> — Aucune indication de césarienne prophylactique ici : biométries normales, tête fléchie, bassin à évaluer, aucun autre élément.</li>
+                <li><span class="bad">B</span> — Une version par manœuvres externes nécessite une évaluation (échographie, RCF, absence de contre-indication) et n'est pas un geste de consultation précipitée à 34 SA.</li>
+                <li><span class="bad">D</span> — Aucun déclenchement n'est justifié.</li>
+                <li><span class="bad">E</span> — L'abstention totale de surveillance méconnaîtrait l'évolution possible de la présentation.</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+
+        <div class="qcm">
+          <div class="qcm-head">
+            <div class="qcm-meta">
+              <span class="qnum">C1-Q4</span>
+              <span class="theme">Facteurs étiologiques à rechercher</span>
+              <span class="badge b-multi">Choix multiple</span>
+            </div>
+          </div>
+          <div class="qcm-body">
+            <p class="stem">Quels facteurs étiologiques devez-vous rechercher chez cette patiente ? <em>(2 à 3 réponses)</em></p>
+            <ol class="options">
+              <li>Une malformation utérine (didelphe, unicorne, cloisonné).</li>
+              <li>Un fibrome utérin déformant la cavité.</li>
+              <li>Un placenta prævia.</li>
+              <li>Une multiparité.</li>
+              <li>Une macrosomie fœtale.</li>
+            </ol>
+          </div>
+          <details class="correction">
+            <summary>Voir la correction</summary>
+            <div class="corr-body">
+              <span class="corr-answer">Réponse : A, B, C</span>
+              <p>Devant un siège, il faut systématiquement rechercher les trois grands cadres étiologiques : <strong>utérin</strong> (malformations — 5 %, fibromes, hypoplasie, anomalies du bassin), <strong>ovulaire</strong> (placenta prævia, anomalies du liquide, cordon court) et <strong>fœtal</strong> (prématurité, gémellité, malformations).</p>
+              <ul>
+                <li><span class="good">A, B</span> — Causes utérines classiques.</li>
+                <li><span class="good">C</span> — Cause ovulaire ; ici le placenta est fundique, mais la recherche reste systématique.</li>
+                <li><span class="bad">D — Faux :</span> la multiparité favorise plutôt le siège <em>complet</em>, et cette patiente est primipare.</li>
+                <li><span class="bad">E — Faux :</span> la macrosomie est une indication de césarienne, non un facteur étiologique du siège ; de plus le poids estimé est de 2400 g.</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CAS 2 -->
+    <div class="cas">
+      <div class="cas-head">
+        <span class="cas-num">CAS 2</span>
+        <h3>Utérus cicatriciel et siège complet</h3>
+        <span class="lieu">EPH · Consultation de grossesse à risque</span>
+      </div>
+      <div class="vignette">
+        <p><span class="lbl">Anamnèse</span> Mme K., 34 ans, G4P3, antécédent d'une césarienne segmentaire il y a 5 ans pour souffrance fœtale aiguë. Aujourd'hui à 37 SA. Grossesse suivie, pas de diabète, pas d'HTA.</p>
+        <p><span class="lbl">Examen</span> HU 33 cm. Palpation : pôle mou en sus-pubien, tête au fond utérin. TV : perception des <strong>pieds et des malléoles</strong> ; col long, fermé, présentation haute.</p>
+        <p><span class="lbl">Échographie &amp; bilan</span> Siège <strong>complet (mode des pieds)</strong>, tête fléchie. Poids estimé 3200 g, BIP 90 mm. Placenta postérieur non prævia, LA normal. <strong>Pelvimétrie : bassin limite.</strong> Bilan préopératoire en cours.</p>
+      </div>
+      <div class="cas-body">
+
+        <div class="qcm">
+          <div class="qcm-head">
+            <div class="qcm-meta">
+              <span class="qnum">C2-Q1</span>
+              <span class="theme">Variété du siège</span>
+              <span class="badge b-simple">Choix simple</span>
+            </div>
+          </div>
+          <div class="qcm-body">
+            <p class="stem">Quelle est la variété de la présentation du siège ?</p>
+            <ol class="options">
+              <li>Siège décomplété, mode des fesses.</li>
+              <li>Siège complet, mode des pieds.</li>
+              <li>Siège semi-complet.</li>
+              <li>Siège décomplété avec procidence du cordon.</li>
+              <li>Présentation du front.</li>
+            </ol>
+          </div>
+          <details class="correction">
+            <summary>Voir la correction</summary>
+            <div class="corr-body">
+              <span class="corr-answer">Réponse : B</span>
+              <p>La perception des <strong>pieds et des malléoles</strong> au TV, avec possibilité de reconnaître talon et orteils, définit le <strong>siège complet (mode des pieds)</strong>, où le fœtus est « assis en tailleur » au-dessus du détroit supérieur.</p>
+              <ul>
+                <li><span class="bad">A</span> — Le décomplété donnerait deux masses molles avec sillon inter-fessier et anus central.</li>
+                <li><span class="bad">C</span> — Le semi-complet (rare) ne comporte qu'un seul membre inférieur relevé.</li>
+                <li><span class="bad">D</span> — Aucun élément clinique ne plaide pour une procidence (membranes intactes, présentation haute).</li>
+                <li><span class="bad">E</span> — La présentation du front est une présentation céphalique défléchie.</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+
+        <div class="qcm">
+          <div class="qcm-head">
+            <div class="qcm-meta">
+              <span class="qnum">C2-Q2</span>
+              <span class="theme">Décision de voie d'accouchement</span>
+              <span class="badge b-simple">Choix simple</span>
+            </div>
+          </div>
+          <div class="qcm-body">
+            <p class="stem">Quelle est la décision obstétricale la plus appropriée ?</p>
+            <ol class="options">
+              <li>Accouchement par voie basse avec surveillance rapprochée.</li>
+              <li>Césarienne prophylactique programmée.</li>
+              <li>Déclenchement du travail par ocytociques à 37 SA.</li>
+              <li>Attente jusqu'à 41 SA puis évaluation.</li>
+              <li>Version par manœuvres externes puis voie basse.</li>
+            </ol>
+          </div>
+          <details class="correction">
+            <summary>Voir la correction</summary>
+            <div class="corr-body">
+              <span class="corr-answer">Réponse : B</span>
+              <p>Deux indications <strong>maternelles</strong> de césarienne prophylactique sont ici réunies : <strong>utérus cicatriciel</strong> et <strong>pelvimétrie / dystocie osseuse</strong> (bassin limite). Selon la règle « <em>siège + autre élément = césarienne</em> », la césarienne programmée s'impose.</p>
+              <ul>
+                <li><span class="bad">A</span> — La voie basse sur utérus cicatriciel avec bassin limite et siège cumule les risques.</li>
+                <li><span class="bad">C</span> — Le déclenchement sur utérus cicatriciel est à haut risque de rupture utérine, a fortiori en siège.</li>
+                <li><span class="bad">D</span> — L'attente prolongée n'apporte aucun bénéfice et expose au travail spontané non planifié.</li>
+                <li><span class="bad">E</span> — La version externe est contre-indiquée (ou très discutable) sur utérus cicatriciel et bassin limite.</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+
+        <div class="qcm">
+          <div class="qcm-head">
+            <div class="qcm-meta">
+              <span class="qnum">C2-Q3</span>
+              <span class="theme">Classification des indications</span>
+              <span class="badge b-multi">Choix multiple</span>
+            </div>
+          </div>
+          <div class="qcm-body">
+            <p class="stem">Parmi les éléments suivants, lesquels constituent des indications <strong>maternelles</strong> de césarienne prophylactique ? <em>(2 à 3 réponses)</em></p>
+            <ol class="options">
+              <li>Utérus cicatriciel.</li>
+              <li>Pelvimétrie avec dystocie osseuse.</li>
+              <li>Primipare âgée.</li>
+              <li>Macrosomie fœtale supérieure à 3800 g.</li>
+              <li>Déflexion de la tête fœtale.</li>
+            </ol>
+          </div>
+          <details class="correction">
+            <summary>Voir la correction</summary>
+            <div class="corr-body">
+              <span class="corr-answer">Réponse : A, B, C</span>
+              <p>Les indications maternelles du cours sont : pelvimétrie / dystocie osseuse, obstacle prævia, refus de la voie basse, <strong>primipare âgée</strong>, <strong>utérus cicatriciel</strong>.</p>
+              <ul>
+                <li><span class="good">A, B, C</span> — Toutes maternelles.</li>
+                <li><span class="bad">D, E — Faux :</span> macrosomie (&gt; 3800 g, BIP &gt; 98 mm) et déflexion de la tête sont des indications <strong>fœtales</strong>.</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+
+        <div class="qcm">
+          <div class="qcm-head">
+            <div class="qcm-meta">
+              <span class="qnum">C2-Q4</span>
+              <span class="theme">Pronostic fœtal</span>
+              <span class="badge b-simple">Choix simple</span>
+            </div>
+          </div>
+          <div class="qcm-body">
+            <p class="stem">Parmi les complications fœtales suivantes, laquelle est spécifiquement imputable aux manœuvres obstétricales lors d'un accouchement du siège par voie basse ?</p>
+            <ol class="options">
+              <li>La paralysie du plexus brachial.</li>
+              <li>La dysplasie broncho-pulmonaire.</li>
+              <li>L'entérocolite ulcéro-nécrosante.</li>
+              <li>La persistance du canal artériel.</li>
+              <li>L'ictère physiologique.</li>
+            </ol>
+          </div>
+          <details class="correction">
+            <summary>Voir la correction</summary>
+            <div class="corr-body">
+              <span class="corr-answer">Réponse : A</span>
+              <p>Le cours cite parmi les morbidités fœtales : lésions du <strong>fémur</strong>, de l'<strong>humérus</strong>, la <strong>paralysie du plexus brachial</strong> et l'<strong>hémorragie méningée</strong>, souvent causées par les manœuvres obstétricales (tractions excessives ou hors de l'axe ombilico-coccygien).</p>
+              <ul>
+                <li><span class="bad">B, C, D</span> — Complications de la prématurité, non spécifiques des manœuvres du siège.</li>
+                <li><span class="bad">E</span> — L'ictère physiologique est banal et indépendant de la présentation.</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CAS 3 -->
+    <div class="cas">
+      <div class="cas-head">
+        <span class="cas-num">CAS 3</span>
+        <h3>Dystocie en salle d'accouchement : les bras ne passent pas</h3>
+        <span class="lieu">CHU · Salle d'accouchement</span>
+      </div>
+      <div class="vignette">
+        <p><span class="lbl">Contexte</span> Mme L., 29 ans, G2P1, 39 SA, siège décomplété, voie basse acceptée après évaluation (pelvimétrie normale, poids estimé 3100 g, tête fléchie).</p>
+        <p><span class="lbl">Évolution</span> Expulsion spontanée du siège jusqu'à l'ombilic. Mais <strong>les omoplates n'apparaissent pas à la vulve</strong> et la progression s'arrête. Le dos est resté en arrière. À l'examen, on perçoit les <strong>bras relevés au-dessus du détroit supérieur</strong>.</p>
+      </div>
+      <div class="cas-body">
+
+        <div class="qcm">
+          <div class="qcm-head">
+            <div class="qcm-meta">
+              <span class="qnum">C3-Q1</span>
+              <span class="theme">Diagnostic de la complication</span>
+              <span class="badge b-simple">Choix simple</span>
+            </div>
+          </div>
+          <div class="qcm-body">
+            <p class="stem">Quelle complication décrit-on ?</p>
+            <ol class="options">
+              <li>Rétention de la tête dernière.</li>
+              <li>Relèvement des bras.</li>
+              <li>Dystocie des épaules.</li>
+              <li>Procidence du cordon.</li>
+              <li>Rupture utérine.</li>
+            </ol>
+          </div>
+          <details class="correction">
+            <summary>Voir la correction</summary>
+            <div class="corr-body">
+              <span class="corr-answer">Réponse : B</span>
+              <p>Le <strong>relèvement des bras</strong> se caractérise par : bras relevés au-dessus du détroit supérieur, diamètre d'engagement devenu incompatible avec le bassin, arrêt de progression et <strong>absence d'apparition de la pointe des omoplates à la vulve</strong>. Il peut survenir dès que l'opérateur touche le fœtus.</p>
+              <ul>
+                <li><span class="bad">A</span> — La rétention de tête dernière concerne la tête, après dégagement des épaules.</li>
+                <li><span class="bad">C</span> — La dystocie des épaules s'observe en présentation céphalique.</li>
+                <li><span class="bad">D</span> — La procidence du cordon est un prolapsus funiculaire, sans lien ici.</li>
+                <li><span class="bad">E</span> — Aucun signe de rupture utérine (douleur en coup de poignard, anomalies du RCF, arrêt brutal).</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+
+        <div class="qcm">
+          <div class="qcm-head">
+            <div class="qcm-meta">
+              <span class="qnum">C3-Q2</span>
+              <span class="theme">Manœuvre indiquée</span>
+              <span class="badge b-simple">Choix simple</span>
+            </div>
+          </div>
+          <div class="qcm-body">
+            <p class="stem">Quelle manœuvre obstétricale réalisez-vous en priorité ?</p>
+            <ol class="options">
+              <li>Manœuvre de Mauriceau.</li>
+              <li>Manœuvre de Bracht.</li>
+              <li>Manœuvre de Lovset.</li>
+              <li>Manœuvre de Kristeller.</li>
+              <li>Manœuvre de McRoberts.</li>
+            </ol>
+          </div>
+          <details class="correction">
+            <summary>Voir la correction</summary>
+            <div class="corr-body">
+              <span class="corr-answer">Réponse : C</span>
+              <p>La <strong>manœuvre de Lovset</strong> est la manœuvre de référence du relèvement des bras.</p>
+              <ul>
+                <li><span class="bad">A</span> — La Mauriceau traite la rétention de tête dernière (temps suivant).</li>
+                <li><span class="bad">B</span> — La Bracht aide au dégagement de la tête, pas au dégagement des bras relevés.</li>
+                <li><span class="bad">D</span> — La Kristeller est une pression fundique, inutile et dangereuse ici.</li>
+                <li><span class="bad">E</span> — La McRoberts est une manœuvre de dystocie des épaules en céphalique.</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+
+        <div class="qcm">
+          <div class="qcm-head">
+            <div class="qcm-meta">
+              <span class="qnum">C3-Q3</span>
+              <span class="theme">Technique de la Lovset</span>
+              <span class="badge b-multi">Choix multiple</span>
+            </div>
+          </div>
+          <div class="qcm-body">
+            <p class="stem">Quelles propositions décrivent correctement la manœuvre de Lovset ? <em>(2 à 3 réponses)</em></p>
+            <ol class="options">
+              <li>Prise avec pouces sur les lombes, paumes sur les fesses, doigts sur les ailes iliaques.</li>
+              <li>Première rotation de 90° : le bras antérieur est amené sous la symphyse pubienne et dégagé.</li>
+              <li>Seconde rotation de 180° en sens inverse : le bras postérieur est amené en avant, coude à la vulve.</li>
+              <li>Le fœtus est relevé pour dégager les bras par le haut.</li>
+              <li>La manœuvre se termine par la manœuvre de Kristeller.</li>
+            </ol>
+          </div>
+          <details class="correction">
+            <summary>Voir la correction</summary>
+            <div class="corr-body">
+              <span class="corr-answer">Réponse : A, B, C</span>
+              <ul>
+                <li><span class="good">A, B, C</span> — Description exacte du cours.</li>
+                <li><span class="bad">D — Faux :</span> le fœtus est <strong>abaissé</strong> pour fixer l'occiput sous la symphyse pubienne.</li>
+                <li><span class="bad">E — Faux :</span> la Lovset se termine par la <strong>Mauriceau ou la Bracht</strong>.</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+
+        <div class="qcm">
+          <div class="qcm-head">
+            <div class="qcm-meta">
+              <span class="qnum">C3-Q4</span>
+              <span class="theme">Suite de la prise en charge</span>
+              <span class="badge b-simple">Choix simple</span>
+            </div>
+          </div>
+          <div class="qcm-body">
+            <p class="stem">Après le dégagement des deux bras par la manœuvre de Lovset, quelle est l'étape suivante ?</p>
+            <ol class="options">
+              <li>Attendre 30 minutes la rotation spontanée.</li>
+              <li>Abaisser le fœtus pour fixer l'occiput sous la symphyse, puis terminer par une manœuvre de Mauriceau ou de Bracht.</li>
+              <li>Réaliser immédiatement une césarienne en urgence.</li>
+              <li>Exercer une traction forte sur le tronc pour extraire la tête.</li>
+              <li>Réaliser une version par manœuvres internes.</li>
+            </ol>
+          </div>
+          <details class="correction">
+            <summary>Voir la correction</summary>
+            <div class="corr-body">
+              <span class="corr-answer">Réponse : B</span>
+              <p>La Lovset se termine <strong>systématiquement</strong> par la manœuvre de <strong>Mauriceau ou de Bracht</strong>, après avoir abaissé le fœtus pour fixer l'occiput sous la symphyse pubienne.</p>
+              <ul>
+                <li><span class="bad">A</span> — Toute attente prolongée aggrave le risque d'anoxie fœtale.</li>
+                <li><span class="bad">C</span> — La césarienne n'est pas réalisable quand le siège est déjà dégagé.</li>
+                <li><span class="bad">D</span> — Les tractions fortes sont <strong>formellement proscrites</strong> : risque de lésions médullaires et du plexus brachial.</li>
+                <li><span class="bad">E</span> — Une version par manœuvres internes n'a aucune place à ce stade.</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CAS 4 -->
+    <div class="cas">
+      <div class="cas-head">
+        <span class="cas-num">CAS 4</span>
+        <h3>Rétention de la tête dernière</h3>
+        <span class="lieu">Maternité de proximité · Urgence obstétricale</span>
+      </div>
+      <div class="vignette">
+        <p><span class="lbl">Contexte</span> Suite du travail : le siège puis les épaules se sont dégagés. Mais la <strong>tête reste haute</strong> ; le menton est accroché sous la symphyse pubienne et la tête est en <strong>déflexion</strong>. Le dos a tourné en arrière. Les BCF sont à 90 bpm et se dégradent.</p>
+      </div>
+      <div class="cas-body">
+
+        <div class="qcm">
+          <div class="qcm-head">
+            <div class="qcm-meta">
+              <span class="qnum">C4-Q1</span>
+              <span class="theme">Étiologies de la rétention de tête dernière</span>
+              <span class="badge b-multi">Choix multiple</span>
+            </div>
+          </div>
+          <div class="qcm-body">
+            <p class="stem">Quelles sont les étiologies possibles de cette rétention de tête dernière ? <em>(2 à 3 réponses)</em></p>
+            <ol class="options">
+              <li>Disproportion fœto-pelvienne.</li>
+              <li>Déflexion de la tête fœtale.</li>
+              <li>Accrochage du menton sous la symphyse pubienne.</li>
+              <li>Excès de liquide amniotique.</li>
+              <li>Brièveté du cordon.</li>
+            </ol>
+          </div>
+          <details class="correction">
+            <summary>Voir la correction</summary>
+            <div class="corr-body">
+              <span class="corr-answer">Réponse : A, B, C</span>
+              <p>Le cours énumère trois étiologies à la rétention de tête dernière : <strong>disproportion fœto-pelvienne</strong>, <strong>déflexion de la tête</strong> et <strong>accrochage du menton sous la symphyse pubienne</strong>.</p>
+              <ul>
+                <li><span class="good">A, B, C</span> — Toutes trois sont ici réunies dans le scénario.</li>
+                <li><span class="bad">D, E — Faux :</span> ce sont des facteurs étiologiques de la présentation du siège, non de la rétention de tête dernière.</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+
+        <div class="qcm">
+          <div class="qcm-head">
+            <div class="qcm-meta">
+              <span class="qnum">C4-Q2</span>
+              <span class="theme">Technique de la Mauriceau</span>
+              <span class="badge b-simple">Choix simple</span>
+            </div>
+          </div>
+          <div class="qcm-body">
+            <p class="stem">Quel geste réalisez-vous ?</p>
+            <ol class="options">
+              <li>Manœuvre de Lovset.</li>
+              <li>Manœuvre de Mauriceau.</li>
+              <li>Manœuvre de Bracht seule, sans aucun contrôle.</li>
+              <li>Pression fundique de Kristeller.</li>
+              <li>Extraction instrumentale par spatules.</li>
+            </ol>
+          </div>
+          <details class="correction">
+            <summary>Voir la correction</summary>
+            <div class="corr-body">
+              <span class="corr-answer">Réponse : B</span>
+              <p>La <strong>manœuvre de Mauriceau</strong> est indiquée : fœtus à cheval sur l'avant-bras, index et médius dans la bouche jusqu'à la base de la langue pour fléchir la tête, autre main en fourche sur les épaules, traction douce dans l'<strong>axe ombilico-coccygien</strong>.</p>
+              <ul>
+                <li><span class="bad">A</span> — La Lovset concerne les bras, déjà dégagés ici.</li>
+                <li><span class="bad">C</span> — La Bracht peut être utilisée, mais pas « seule sans contrôle » en situation de déflexion avec RCF dégradé ; la Mauriceau est ici la manœuvre de référence.</li>
+                <li><span class="bad">D</span> — La pression fundique est dangereuse et inefficace.</li>
+                <li><span class="bad">E</span> — Les spatules ne s'appliquent pas sur une tête dernière non engagée.</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+
+        <div class="qcm">
+          <div class="qcm-head">
+            <div class="qcm-meta">
+              <span class="qnum">C4-Q3</span>
+              <span class="theme">Erreurs techniques et risques</span>
+              <span class="badge b-multi">Choix multiple</span>
+            </div>
+          </div>
+          <div class="qcm-body">
+            <p class="stem">Quelles erreurs techniques devez-vous absolument éviter ? <em>(2 à 3 réponses)</em></p>
+            <ol class="options">
+              <li>Exercer une traction trop forte sur la tête.</li>
+              <li>Tracter hors de l'axe ombilico-coccygien.</li>
+              <li>Laisser la tête en déflexion lors du dégagement.</li>
+              <li>Fléchir la tête avec l'index et le médius dans la bouche.</li>
+              <li>Placer l'autre main en fourche sur les épaules.</li>
+            </ol>
+          </div>
+          <details class="correction">
+            <summary>Voir la correction</summary>
+            <div class="corr-body">
+              <span class="corr-answer">Réponse : A, B, C</span>
+              <p>Ces trois erreurs exposent à des <strong>lésions médullaires</strong> et à une <strong>paralysie du plexus brachial</strong>. La tête doit rester fléchie et la traction s'exercer dans l'axe ombilico-coccygien, avec douceur.</p>
+              <ul>
+                <li><span class="good">A, B, C</span> — Erreurs classiques à éviter.</li>
+                <li><span class="bad">D, E — Faux :</span> ce sont au contraire les <em>gestes corrects</em> de la manœuvre de Mauriceau.</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CAS 5 -->
+    <div class="cas">
+      <div class="cas-head">
+        <span class="cas-num">CAS 5</span>
+        <h3>Siège, macrosomie et diabète gestationnel</h3>
+        <span class="lieu">CHU · Consultation de grossesse à haut risque</span>
+      </div>
+      <div class="vignette">
+        <p><span class="lbl">Anamnèse</span> Mme A., 32 ans, G2P1, 39 SA, diabète gestationnel sous insuline depuis 28 SA, IMC 32. Antécédent d'accouchement par voie basse sans complication.</p>
+        <p><span class="lbl">Examen &amp; imagerie</span> HU 37 cm. Palpation : pôle mou en sus-pubien, tête au fond. TV : sillon inter-fessier, anus central (siège décomplété), présentation haute. Échographie : siège décomplété, <strong>poids estimé 3950 g</strong>, <strong>BIP 101 mm</strong>, tête en <strong>légère déflexion</strong>, LA en excès modéré. Pelvimétrie normale.</p>
+      </div>
+      <div class="cas-body">
+
+        <div class="qcm">
+          <div class="qcm-head">
+            <div class="qcm-meta">
+              <span class="qnum">C5-Q1</span>
+              <span class="theme">Indications de césarienne réunies</span>
+              <span class="badge b-multi">Choix multiple</span>
+            </div>
+          </div>
+          <div class="qcm-body">
+            <p class="stem">Quelles indications de césarienne prophylactique sont réunies chez cette patiente ? <em>(2 à 3 réponses)</em></p>
+            <ol class="options">
+              <li>Macrosomie (poids &gt; 3800 g).</li>
+              <li>BIP &gt; 98 mm.</li>
+              <li>Déflexion de la tête fœtale.</li>
+              <li>Utérus cicatriciel.</li>
+              <li>Placenta prævia.</li>
+            </ol>
+          </div>
+          <details class="correction">
+            <summary>Voir la correction</summary>
+            <div class="corr-body">
+              <span class="corr-answer">Réponse : A, B, C</span>
+              <p>Les trois critères <strong>fœtaux</strong> sont ici remplis : macrosomie (&gt; 3800 g), BIP &gt; 98 mm et déflexion de la tête.</p>
+              <ul>
+                <li><span class="good">A, B, C</span> — Indications fœtales formelles.</li>
+                <li><span class="bad">D — Faux :</span> la patiente a accouché par voie basse lors de la grossesse précédente ; pas d'utérus cicatriciel.</li>
+                <li><span class="bad">E — Faux :</span> aucun argument pour un placenta prævia.</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+
+        <div class="qcm">
+          <div class="qcm-head">
+            <div class="qcm-meta">
+              <span class="qnum">C5-Q2</span>
+              <span class="theme">Décision thérapeutique</span>
+              <span class="badge b-simple">Choix simple</span>
+            </div>
+          </div>
+          <div class="qcm-body">
+            <p class="stem">Quelle est la conduite à tenir ?</p>
+            <ol class="options">
+              <li>Voie basse avec surveillance simple.</li>
+              <li>Césarienne prophylactique programmée.</li>
+              <li>Déclenchement par ocytociques.</li>
+              <li>Version par manœuvres externes à 39 SA puis voie basse.</li>
+              <li>Attente de la mise en travail spontané à 41 SA.</li>
+            </ol>
+          </div>
+          <details class="correction">
+            <summary>Voir la correction</summary>
+            <div class="corr-body">
+              <span class="corr-answer">Réponse : B</span>
+              <p>Trois indications fœtales de césarienne prophylactique coexistent (macrosomie, BIP &gt; 98 mm, déflexion de la tête) : la règle « siège + autre élément = césarienne » s'applique pleinement.</p>
+              <ul>
+                <li><span class="bad">A</span> — Une tête défléchie et un gros fœtus exposent à la rétention de tête dernière.</li>
+                <li><span class="bad">C</span> — Le déclenchement sur siège avec macrosomie et déflexion augmente le risque de dystocie.</li>
+                <li><span class="bad">D</span> — La version externe à 39 SA sur un fœtus macrosome est aléatoire et risquée.</li>
+                <li><span class="bad">E</span> — L'attente majore le risque de macrosomie et de souffrance fœtale.</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+
+        <div class="qcm">
+          <div class="qcm-head">
+            <div class="qcm-meta">
+              <span class="qnum">C5-Q3</span>
+              <span class="theme">Risques fœtaux de la voie basse</span>
+              <span class="badge b-multi">Choix multiple</span>
+            </div>
+          </div>
+          <div class="qcm-body">
+            <p class="stem">Si la voie basse avait été retenue, quels risques fœtaux auriez-vous dû anticiper ? <em>(2 à 3 réponses)</em></p>
+            <ol class="options">
+              <li>Lésions du fémur ou de l'humérus.</li>
+              <li>Paralysie du plexus brachial.</li>
+              <li>Hémorragie méningée favorisée par les manœuvres.</li>
+              <li>Dysplasie broncho-pulmonaire.</li>
+              <li>Entérocolite ulcéro-nécrosante.</li>
+            </ol>
+          </div>
+          <details class="correction">
+            <summary>Voir la correction</summary>
+            <div class="corr-body">
+              <span class="corr-answer">Réponse : A, B, C</span>
+              <p>Le cours cite précisément ces trois types de morbidité fœtale, liés aux manœuvres obstétricales : <strong>lésions du fémur, de l'humérus, paralysie du plexus brachial, hémorragie méningée</strong>.</p>
+              <ul>
+                <li><span class="good">A, B, C</span> — Morbidités directement liées aux manœuvres.</li>
+                <li><span class="bad">D, E — Faux :</span> complications de la grande prématurité, hors contexte ici.</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+
+        <div class="qcm">
+          <div class="qcm-head">
+            <div class="qcm-meta">
+              <span class="qnum">C5-Q4</span>
+              <span class="theme">Information de la patiente &amp; pronostic</span>
+              <span class="badge b-simple">Choix simple</span>
+            </div>
+          </div>
+          <div class="qcm-body">
+            <p class="stem">Quel élément doit être expliqué à la patiente lors du conseil prénatal ?</p>
+            <ol class="options">
+              <li>La présentation du siège est une situation à risque strictement identique à celle d'une présentation céphalique.</li>
+              <li>La mortalité périnatale est multipliée par 3 et la morbidité périnatale par 2 par rapport à une présentation céphalique.</li>
+              <li>Aucune surveillance particulière n'est nécessaire après la naissance.</li>
+              <li>La césarienne prophylactique élimine tout risque néonatal.</li>
+              <li>Le siège est une présentation transversale.</li>
+            </ol>
+          </div>
+          <details class="correction">
+            <summary>Voir la correction</summary>
+            <div class="corr-body">
+              <span class="corr-answer">Réponse : B</span>
+              <p>Le cours précise : <strong>mortalité périnatale ×3</strong> et <strong>morbidité périnatale ×2</strong>, en raison du <strong>risque majoré d'anoxie fœtale</strong> — même lorsque la voie basse a été correctement évaluée.</p>
+              <ul>
+                <li><span class="bad">A</span> — Les risques sont augmentés, non identiques.</li>
+                <li><span class="bad">C</span> — La surveillance néonatale reste indispensable.</li>
+                <li><span class="bad">D</span> — La césarienne réduit les risques liés à la mécanique du siège mais n'élimine pas la morbidité néonatale (prématurité, pathologie respiratoire…).</li>
+                <li><span class="bad">E</span> — Le siège est longitudinal.</li>
+              </ul>
+            </div>
+          </details>
+        </div>
+
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ====================================================== -->
+  <!-- ============== 3. CARTE CONCEPTUELLE ================= -->
+  <!-- ====================================================== -->
+  <section class="bloc" id="carte">
+    <div class="section-head">
+      <div class="section-num">3</div>
+      <div>
+        <h2>Carte conceptuelle &amp; synthèse visuelle</h2>
+        <span class="sub">Tout le cours en un coup d'œil : définitions, étiologies, arbre décisionnel et manœuvres</span>
+      </div>
+    </div>
+
+    <!-- Types -->
+    <div class="types-grid">
+      <div class="type-box t1">
+        <span class="pct">2/3</span>
+        <h4>Siège décomplété</h4>
+        <p>« Mode des fesses ». Membres inférieurs en <strong>extension</strong> devant le tronc, pieds à hauteur de la tête. TV : deux masses molles + sillon inter-fessier + anus central. Associé à l'<strong>hypoplasie utérine / nulliparité</strong>.</p>
+      </div>
+      <div class="type-box t2">
+        <span class="pct">1/3</span>
+        <h4>Siège complet</h4>
+        <p>« Mode des pieds ». Fœtus <strong>assis en tailleur</strong> au-dessus du détroit supérieur. TV : perception des pieds, talons, malléoles, orteils. Associé à la <strong>multiparité</strong>.</p>
+      </div>
+      <div class="type-box t3">
+        <span class="pct">Rare</span>
+        <h4>Siège semi-complet</h4>
+        <p>Un <strong>seul</strong> membre inférieur est relevé devant le tronc (semi-décomplété). Variété rare.</p>
+      </div>
+    </div>
+
+    <!-- Table diamètres -->
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Segment</th>
+            <th>Diamètre</th>
+            <th>Valeur</th>
+            <th>Notion clé</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Siège</strong></td>
+            <td>Bitrochantérien</td>
+            <td><strong>9,5 cm</strong></td>
+            <td>Premier segment engagé — le plus petit</td>
+          </tr>
+          <tr>
+            <td><strong>Épaules</strong></td>
+            <td>Biacromial</td>
+            <td><strong>12 cm → 9,5 cm</strong> par tassement</td>
+            <td>Le plus large, mais compressible</td>
+          </tr>
+          <tr>
+            <td><strong>Tête</strong></td>
+            <td>Sous-occipito-frontal</td>
+            <td><strong>11 cm</strong></td>
+            <td>Segment le plus volumineux et le moins compressible</td>
+          </tr>
+          <tr>
+            <td><strong>Tête</strong></td>
+            <td>BIP</td>
+            <td><strong>9,5 cm</strong></td>
+            <td>Critère de césarienne si &gt; 98 mm</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Étiologies -->
+    <div class="map-grid">
+      <div class="map-card navy">
+        <h4>🏛️ Étiologies utérines</h4>
+        <ul>
+          <li>Malformations utérines (5 %) : didelphe, unicorne, cloisonné</li>
+          <li>Hypoplasie utérine (50 %), nulliparité → <em>siège décomplété</em></li>
+          <li>Multiparité → <em>siège complet</em></li>
+          <li>Fibromes déformant la cavité</li>
+          <li>Anomalies du bassin</li>
+        </ul>
+      </div>
+      <div class="map-card amber">
+        <h4>💧 Étiologies ovulaires</h4>
+        <ul>
+          <li>Placenta prævia</li>
+          <li>Hydramnios</li>
+          <li>Oligoamnios</li>
+          <li>Brièveté du cordon (cordon court)</li>
+        </ul>
+      </div>
+      <div class="map-card">
+        <h4>👶 Étiologies fœtales</h4>
+        <ul>
+          <li>Prématurité (culbute physiologique non effectuée au 8<sup>e</sup> mois)</li>
+          <li>Grossesse gémellaire et multiples</li>
+          <li>Malformations : anencéphalie, hydrocéphalie</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Flowchart diagnostic -->
+    <div class="flow">
+      <h4>Arbre décisionnel — du diagnostic à la voie d'accouchement</h4>
+      <div class="flow-row">
+        <div class="node dec">Suspicion clinique<small>Palpation inversée + auscultation sus-ombilicale + TV</small></div>
+        <span class="arrow">→</span>
+        <div class="node act">Échographie<small>Confirme : longitudinal, tête en haut fléchie</small></div>
+        <span class="arrow">→</span>
+        <div class="node">Diagnostic posé<small>Idéalement au 8<sup>e</sup> mois</small></div>
+      </div>
+      <div class="arrow-down">▼</div>
+      <div class="flow-row">
+        <div class="node">Évaluation du pronostic<small>Biométries (poids, BIP) · Flexion de la tête · Pelvimétrie · Désir de la patiente</small></div>
+      </div>
+      <div class="arrow-down">▼</div>
+      <div class="flow-row">
+        <div class="node act">Voie basse possible<small>Aucun élément péjoratif · Équipe complète · Bloc disponible</small></div>
+        <span class="arrow">⇄</span>
+        <div class="node warn">Césarienne prophylactique<small>« Siège + autre élément = césarienne »</small></div>
+      </div>
+    </div>
+
+    <!-- Table indications -->
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Type d'indication</th>
+            <th>Critères</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="tag tag-m">MATERNELLE</span></td>
+            <td>Pelvimétrie / dystocie osseuse · Obstacle prævia · Refus de la voie basse · <strong>Primipare âgée</strong> · <strong>Utérus cicatriciel</strong></td>
+          </tr>
+          <tr>
+            <td><span class="tag tag-f">FŒTALE</span></td>
+            <td>Prématurité 28–32 SA · Macrosomie (poids &gt; 3800 g, BIP &gt; 98 mm) · <strong>Déflexion de la tête</strong> · RCIU sévère</td>
+          </tr>
+          <tr>
+            <td><span class="tag tag-o">OVULAIRE</span></td>
+            <td>Placenta prævia · Rupture prématurée des membranes &gt; 12 h</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Mécanique en 3 temps -->
+    <div class="flow">
+      <h4>Mécanique obstétricale — les 3 temps</h4>
+      <div class="flow-row">
+        <div class="node dark">① Dégagement du siège<small>Bitrochantérien en oblique · SIGA le plus fréquent · Rotation 45° → antéro-postérieur · Sacrum en transverse · Hanche antérieure sous la symphyse · Dos en avant</small></div>
+        <span class="arrow">→</span>
+        <div class="node dark">② Dégagement des épaules<small>Engagement quand le siège se dégage · Même oblique (restitution) · Dos en avant · Dégagement en transverse · Bras tombent l'un après l'autre</small></div>
+        <span class="arrow">→</span>
+        <div class="node dark">③ Dégagement de la tête<small>Engagement simultané au dégagement des épaules · Diamètre opposé aux épaules · Rotation occipito-pubienne · Fixation sous la symphyse · Hyperflexion → crâne, front, face</small></div>
+      </div>
+      <div class="arrow-down">▼</div>
+      <div class="flow-row">
+        <div class="node warn">⚠️ Rotation accidentelle du dos en arrière<small>GRAVISSIME → accrochage du menton sur la symphyse pubienne</small></div>
+      </div>
+    </div>
+
+    <!-- Manœuvres -->
+    <div class="flow">
+      <h4>Arbre des manœuvres obstétricales</h4>
+      <div class="flow-row">
+        <div class="node">Complication ?</div>
+      </div>
+      <div class="arrow-down">▼</div>
+      <div class="flow-row">
+        <div class="node dec">Bras relevés<small>Omoplates non visibles à la vulve</small></div>
+        <span class="arrow">→</span>
+        <div class="node act"><strong>LOVSET</strong><small>Pouces sur lombes · Paumes sur fesses · Doigts sur ailes iliaques · Rotation 90° → bras antérieur · Rotation 180° inverse → bras postérieur</small></div>
+        <span class="arrow">→</span>
+        <div class="node">Fin : Mauriceau ou Bracht</div>
+      </div>
+      <div class="arrow-down">▼</div>
+      <div class="flow-row">
+        <div class="node dec">Tête dernière retenue<small>Étiologies : DFP · déflexion · menton accroché</small></div>
+        <span class="arrow">→</span>
+        <div class="node act"><strong>MAURICEAU</strong><small>Fœtus à cheval sur l'avant-bras · Index + médius dans la bouche jusqu'à la base de la langue · Autre main en fourche sur les épaules · Traction douce dans l'axe ombilico-coccygien</small></div>
+        <span class="arrow">ou</span>
+        <div class="node act"><strong>BRACHT</strong><small>Omoplates visibles · Saisir le siège (pouces sur cuisses, doigts sur fesses) · Renverser progressivement sur le ventre maternel · SANS traction</small></div>
+      </div>
+      <div class="arrow-down">▼</div>
+      <div class="flow-row">
+        <div class="node warn">❌ Tractions fortes / hors axe ombilico-coccygien<small>→ Lésions médullaires · Paralysie du plexus brachial</small></div>
+      </div>
+    </div>
+
+    <!-- Pronostic -->
+    <div class="map-grid">
+      <div class="map-card rose">
+        <h4>📊 Pronostic — chiffres clés</h4>
+        <ul>
+          <li>Mortalité périnatale : <strong>×3</strong></li>
+          <li>Morbidité périnatale : <strong>×2</strong></li>
+          <li>Mortalité fœtale : <strong>0,3–3 %</strong></li>
+          <li>Morbidité fœtale : <strong>2–17 %</strong></li>
+          <li>Mécanisme : <strong>anoxie fœtale</strong></li>
+        </ul>
+      </div>
+      <div class="map-card">
+        <h4>🤕 Morbidité fœtale</h4>
+        <ul>
+          <li>Lésions du fémur</li>
+          <li>Lésions de l'humérus</li>
+          <li>Paralysie du plexus brachial</li>
+          <li>Hémorragie méningée</li>
+        </ul>
+      </div>
+      <div class="map-card amber">
+        <h4>🤰 Morbidité maternelle</h4>
+        <ul>
+          <li>Déchirures périnéales</li>
+          <li>Risque lié aux manœuvres d'extraction</li>
+        </ul>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- ====================================================== -->
+  <!-- ============== 4. MNÉMOTECHNIQUES ==================== -->
+  <!-- ====================================================== -->
+  <section class="bloc" id="mnemo">
+    <div class="section-head">
+      <div class="section-num">4</div>
+      <div>
+        <h2>Mnémotechniques &amp; « trucs et astuces » d'examen</h2>
+        <span class="sub">Retenir vite, retenir longtemps, et reconnaître les pièges classiques</span>
+      </div>
+    </div>
+
+    <div class="mnemo-grid">
+
+      <div class="mnemo">
+        <h4>🔑 Les variétés de siège</h4>
+        <span class="formule">H → D &nbsp;|&nbsp; M → C</span>
+        <p><strong>H</strong>ypoplasie / nulliparité → siège <strong>D</strong>écomplété.<br><strong>M</strong>ultiparité → siège <strong>C</strong>omplet.</p>
+        <ul>
+          <li>Décomplété = « jambes tendues » = 2/3</li>
+          <li>Complet = « assis en tailleur » = 1/3</li>
+          <li>Semi-complet = un seul membre relevé = RARE</li>
+        </ul>
+      </div>
+
+      <div class="mnemo navy">
+        <h4>🔑 Les 3 cadres étiologiques</h4>
+        <span class="formule">U · O · F</span>
+        <p><strong>U</strong>térin — <strong>O</strong>vulaire — <strong>F</strong>œtal.</p>
+        <ul>
+          <li><strong>U</strong> : malformations, hypoplasie, fibrome, anomalies du bassin</li>
+          <li><strong>O</strong> : placenta prævia, anomalies du LA, cordon court</li>
+          <li><strong>F</strong> : prématurité, gémellité, malformations</li>
+        </ul>
+        <p style="margin-top:8px;"><em>Astuce :</em> devant tout siège, dérouler « U-O-F » comme une check-list systématique.</p>
+      </div>
+
+      <div class="mnemo amber">
+        <h4>🔑 Les indications de césarienne</h4>
+        <span class="formule">M · F · O</span>
+        <p><strong>M</strong>aternel — <strong>F</strong>œtal — <strong>O</strong>vulaire.</p>
+        <ul>
+          <li><strong>M</strong> : Pelvimétrie, Obstacle prævia, Refus, Primipare âgée, Utérus cicatriciel</li>
+          <li><strong>F</strong> : Prématurité 28–32 SA, Macrosomie (&gt;3800 g / BIP &gt;98 mm), Déflexion, RCIU sévère</li>
+          <li><strong>O</strong> : Placenta prævia, RPM &gt; 12 h</li>
+        </ul>
+      </div>
+
+      <div class="mnemo">
+        <h4>🔑 Les 3 manœuvres</h4>
+        <span class="formule">LOVSET – MAURICEAU – BRACHT</span>
+        <ul>
+          <li><strong>LOVSET = Les Bras</strong> (relèvement des bras)</li>
+          <li><strong>MAURICEAU = la Mâchoire</strong> (doigts dans la bouche → tête dernière)</li>
+          <li><strong>BRACHT = la Bascule</strong> (renverser sur le ventre, sans traction)</li>
+        </ul>
+        <p style="margin-top:8px;"><em>Ordre logique :</em> bras → tête → extraction douce.</p>
+      </div>
+
+      <div class="mnemo navy">
+        <h4>🔑 Les rotations de la Lovset</h4>
+        <span class="formule">90° → 180° (inverse)</span>
+        <p>Première rotation de <strong>90°</strong> : bras antérieur sous la symphyse.<br>Seconde rotation de <strong>180° en sens inverse</strong> : bras postérieur en avant.</p>
+        <p><strong>Fin obligatoire :</strong> abaisser le fœtus → <strong>Mauriceau ou Bracht</strong>.</p>
+      </div>
+
+      <div class="mnemo rose">
+        <h4>🔑 L'axe de la Mauriceau</h4>
+        <span class="formule">AXE OMBILICO-COCCYGIEN</span>
+        <p>Toute traction doit s'exercer dans cet axe, avec douceur. <strong>Jamais</strong> de traction forte ni perpendiculaire.</p>
+        <ul>
+          <li>Hors axe = lésions médullaires</li>
+          <li>Force excessive = paralysie du plexus brachial</li>
+          <li>La tête doit rester <strong>fléchie</strong></li>
+        </ul>
+      </div>
+
+      <div class="mnemo amber">
+        <h4>🔑 Les chiffres à retenir</h4>
+        <span class="formule">3–4 % · 9,5 · 12→9,5 · 11 · ×3/×2</span>
+        <ul>
+          <li>Incidence : <strong>3–4 %</strong> des accouchements</li>
+          <li>Bitrochantérien : <strong>9,5 cm</strong></li>
+          <li>Biacromial : <strong>12 cm</strong> → <strong>9,5 cm</strong> tassé</li>
+          <li>Sous-occipito-frontal : <strong>11 cm</strong></li>
+          <li>Mortalité périnatale <strong>×3</strong>, morbidité <strong>×2</strong></li>
+          <li>Mortalité fœtale <strong>0,3–3 %</strong>, morbidité <strong>2–17 %</strong></li>
+        </ul>
+      </div>
+
+      <div class="mnemo rose">
+        <h4>🔑 Le « triangle de sécurité » du TV</h4>
+        <span class="formule">SILLON + ANUS + MASSES MOLLES</span>
+        <p>Décomplété = <strong>2 masses molles</strong> + <strong>sillon inter-fessier</strong> + <strong>anus au centre</strong>.</p>
+        <p>Complet = <strong>pieds, talons, malléoles, orteils</strong>.</p>
+      </div>
+
+    </div>
+
+    <!-- PIEGES -->
+    <div id="pieges" style="margin-top:34px;">
+      <div class="section-head" style="border-bottom-color:#fecdd3;">
+        <div class="section-num" style="background:linear-gradient(135deg,#9f1239,#be123c);">5</div>
+        <div>
+          <h2 style="color:#9f1239;">Pièges docimologiques classiques</h2>
+          <span class="sub">Les erreurs les plus fréquentes en examen — à ne plus jamais commettre</span>
+        </div>
+      </div>
+
+      <div class="piege"><strong>Piège 1 — Confusion des indications.</strong> Primipare âgée et utérus cicatriciel sont <strong>maternels</strong> ; macrosomie, BIP &gt; 98 mm, déflexion de la tête et RCIU sévère sont <strong>fœtaux</strong> ; placenta prævia et RPM &gt; 12 h sont <strong>ovulaires</strong>. C'est le piège n°1 des QCM.</div>
+
+      <div class="piege"><strong>Piège 2 — Le sacrum.</strong> Lors du dégagement du siège, le <strong>sacrum est en TRANSVERSE</strong>, et non en antérieur. Le dos, lui, tourne vers l'avant.</div>
+
+      <div class="piege"><strong>Piège 3 — Le sens du dos.</strong> Une rotation du dos en <strong>arrière</strong> n'est jamais banale : elle est <strong>gravissime</strong> et provoque l'accrochage du menton sur la symphyse pubienne.</div>
+
+      <div class="piege"><strong>Piège 4 — Lovset vs Mauriceau.</strong> Lovset = <strong>bras</strong>. Mauriceau = <strong>tête</strong>. Ne jamais inverser. Et la Lovset se termine toujours par une Mauriceau ou une Bracht — jamais par une Kristeller ou une McRoberts.</div>
+
+      <div class="piege"><strong>Piège 5 — L'auscultation.</strong> En siège, les BCF s'auscultent <strong>en sus-ombilical</strong> (le cœur est près du fond utérin), et non en hypogastrique.</div>
+
+      <div class="piege"><strong>Piège 6 — La douleur sous-costale.</strong> Elle est due à la compression du <strong>pôle céphalique</strong> (la tête est au fond utérin), et non du pôle podalique.</div>
+
+      <div class="piege"><strong>Piège 7 — Le type de présentation.</strong> Le siège est <strong>longitudinal</strong>, pas transversal. Une présentation transversale est une entité complètement différente.</div>
+
+      <div class="piege"><strong>Piège 8 — Le cordon.</strong> C'est la <strong>brièveté</strong> du cordon qui est un facteur étiologique, pas sa longueur excessive.</div>
+
+      <div class="piege"><strong>Piège 9 — La Mauriceau et l'axe.</strong> La traction doit se faire dans l'<strong>axe ombilico-coccygien</strong>. Toute traction perpendiculaire ou trop forte expose aux lésions médullaires et au plexus brachial.</div>
+
+      <div class="piege"><strong>Piège 10 — Le pronostic.</strong> L'accouchement du siège par voie basse n'est <strong>jamais</strong> une situation à faible risque : c'est une situation potentiellement dystocique, angoissante pour l'équipe, avec un risque d'anoxie fœtale majoré.</div>
+
+      <div class="piege"><strong>Piège 11 — La Bracht.</strong> Elle se réalise <strong>sans aucune traction</strong> et doit être <strong>progressive</strong>. Une réalisation brutale est dangereuse.</div>
+
+      <div class="piege"><strong>Piège 12 — Le moment du diagnostic.</strong> Le diagnostic au <strong>8<sup>e</sup> mois</strong> est capital car c'est à ce terme que se décide la voie d'accouchement — mais il peut aussi être fait en début de travail.</div>
+
+    </div>
+
+  </section>
+
+  <!-- ====================================================== -->
+  <!-- ==================== CONCLUSION ====================== -->
+  <!-- ====================================================== -->
+  <section class="bloc">
+    <div class="final">
+      <h2>Prêt(e) pour l'examen ?</h2>
+      <p>La présentation du siège, c'est d'abord une <strong>logique</strong> : un mobile fœtal qui progresse « à rebrousse-poil », des diamètres croissants et une tête qui arrive en dernier. Maîtrisez cette logique, et les manœuvres (Lovset, Mauriceau, Bracht) deviennent une évidence plutôt qu'une liste à apprendre par cœur.</p>
+      <p>Relisez les 12 pièges, refaites les 25 QCM sans regarder les corrections, puis repassez les 5 cas cliniques. La régularité vaut mieux que le bachotage de la dernière nuit.</p>
+      <div class="punch">💪 Un siège bien compris vaut dix sièges mal redoutés — vous avez les clés, maintenant faites-les parler !</div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    Fiche de révision — Présentation du siège · Gynécologie-Obstétrique · 5<sup>e</sup> année Médecine · Algérie<br>
+    Contenu pédagogique de synthèse — à utiliser en complément du cours magistral et des recommandations locales.
+  </footer>
+
+</div>
+
+</body>
+</html>

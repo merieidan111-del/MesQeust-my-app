@@ -108,8 +108,31 @@ export default function App() {
   // AI Summarizer text pre-load state from Drive
   const [summarizerPreload, setSummarizerPreload] = useState<{ text: string; title: string } | null>(null);
 
+  // Resume target state for Continuer l'entraînement
+  const [resumeQuestionId, setResumeQuestionId] = useState<string | null>(null);
+  const [resumeQuestionIndex, setResumeQuestionIndex] = useState<number | null>(null);
+
   // Toast notification
   const [toastMessage, setToastMessage] = useState<{ text: string; type: 'success' | 'info' | 'xp' } | null>(null);
+
+  const handleContinueTraining = (
+    targetModule: Module,
+    targetCourse?: Course,
+    targetQuestionIndex: number = 0,
+    targetQuestionId?: string
+  ) => {
+    setActiveCourse(targetCourse || null);
+    setActiveSubdivision(null);
+    setActiveDrillModule(null);
+    setPracticeModeFilter('all');
+    setResumeQuestionId(targetQuestionId || null);
+    setResumeQuestionIndex(targetQuestionIndex);
+    setCurrentTab('qcm');
+    showToast(
+      `Reprise : ${targetModule.title} • ${targetCourse?.title || 'Cours'} (QCM ${targetQuestionIndex + 1})`,
+      'info'
+    );
+  };
 
   const handleBottomTabChange = (tab: BottomNavTab) => {
     if (tab === 'home') {
@@ -513,7 +536,7 @@ export default function App() {
             {/* If currentTab is 'qcm', ALWAYS render QCMEngine */}
             {currentTab === 'qcm' ? (
               <QCMEngine
-                key={`${activeCourse?.id || activeSubdivision || 'all'}-${practiceModeFilter}`}
+                key={`${activeCourse?.id || activeSubdivision || 'all'}-${practiceModeFilter}-${resumeQuestionId || resumeQuestionIndex || 0}`}
                 questions={
                   activeCourse
                     ? questions.filter((q) => q.courseId === activeCourse.id)
@@ -529,6 +552,8 @@ export default function App() {
                 modules={MEDICAL_MODULES}
                 selectedYear={selectedYear}
                 initialTypeFilter={practiceModeFilter}
+                initialQuestionId={resumeQuestionId}
+                initialQuestionIndex={resumeQuestionIndex}
                 courseName={activeCourse?.title || (activeSubdivision ? `Volet ${activeSubdivision}` : undefined)}
                 activeModuleName={
                   activeDrillModule?.title ||
@@ -549,13 +574,13 @@ export default function App() {
                 onAwardXp={handleAwardXp}
                 onQuestionCompleted={handleQuestionCompleted}
                 onExitSession={() => {
+                  setActiveCourse(null);
+                  setActiveSubdivision(null);
+                  setResumeQuestionId(null);
+                  setResumeQuestionIndex(null);
                   if (activeDrillModule) {
-                    setActiveCourse(null);
-                    setActiveSubdivision(null);
                     setCurrentTab('directory');
                   } else {
-                    setActiveCourse(null);
-                    setActiveSubdivision(null);
                     setCurrentTab('home');
                   }
                 }}
@@ -583,10 +608,13 @@ export default function App() {
                     onStartQuickPractice={() => {
                       setActiveCourse(null);
                       setPracticeModeFilter('all');
+                      setResumeQuestionId(null);
+                      setResumeQuestionIndex(null);
                       setCurrentTab('qcm');
                     }}
                     onUpdateExamCountdown={handleUpdateExamCountdown}
                     onOpenApkOrder={() => setIsApkOrderModalOpen(true)}
+                    onContinueTraining={handleContinueTraining}
                   />
                 )}
 

@@ -285,7 +285,7 @@ export function synchronizeStreakOnDayChange(
         userEmail,
         {
           type: 'streak_reminder',
-          title: `Rappel de Série : ${currentStreak} jours d'affilée ! 🔥`,
+          title: `Rappel de Série : ${currentStreak} jours d'affilée !`,
           message: msg,
           streakCount: currentStreak,
         },
@@ -311,7 +311,7 @@ export function synchronizeStreakOnDayChange(
           userEmail,
           {
             type: 'streak_freeze_used',
-            title: '❄️ Gel de Série Activé ! Flamme préservée',
+            title: 'Gel de Série Activé ! Flamme préservée',
             message: msg,
             streakCount: currentStreak,
           },
@@ -327,7 +327,7 @@ export function synchronizeStreakOnDayChange(
           userEmail,
           {
             type: 'streak_missed',
-            title: '⚠️ Série Interrompue (Jour Manqué)',
+            title: 'Série Interrompue (Jour Manqué)',
             message: msg,
             streakCount: 0,
           },

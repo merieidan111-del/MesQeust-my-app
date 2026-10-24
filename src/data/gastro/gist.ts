@@ -787,7 +787,7 @@ Repose sur trois critères fondamentaux :
     courseId: 'crs-gastro-gist',
     type: 'Astuce',
     title: 'Mnémotechniques : GIST',
-    contentMarkdown: `### 💡 Mnémotechniques Clés (GIST - Blida)
+    contentMarkdown: `### Astuce : Mnémotechniques Clés (GIST - Blida)
 
 1. **Diagnostic IHC : « KIT et DOG »**
    - **KIT** (CD117) + **DOG-1** = Meilleurs amis du diagnostic (95 %).

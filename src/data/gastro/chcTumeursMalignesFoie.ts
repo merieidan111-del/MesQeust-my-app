@@ -674,7 +674,7 @@ export const CHC_TUMEURS_MALIGNES_FOIE_RESOURCES: CourseResource[] = [
     "courseId": "crs-gastro-chc-tumeurs-malignes-foie",
     "type": "Fiche Synthèse",
     "title": "Synthèse Clinique : Carcinome Hépatocellulaire (CHC)",
-    "contentMarkdown": "### 🎯 Points Clés : Carcinome Hépatocellulaire (CHC)\n- **Terrain** : 80-90% sur foie de cirrhose (VHB, VHC, alcool, MASH/stéatohépatite métabolique). Dépistage semestriel par échographie hépatique.\n- **Diagnostic non invasif (EASL)** : Nodule >= 1 cm sur foie cirrhotique avec hyperrehaussement artériel (wash-in) et lavage au temps portal/tardif (wash-out) sur TDM ou IRM quadriphasique -> Diagnostic certain sans biopsie.\n- **Classification BCLC** :\n  - *Stade très précoce/précoce (0/A)* : nodule unique ou <= 3 nodules <= 3 cm, Child A-B, PS 0 -> Résection chirurgicale, radiofréquence percutanée ou transplantation (Milan : 1 nodule <= 5 cm ou 3 nodules <= 3 cm).\n  - *Stade intermédiaire (B)* : multinodulaire, sans thrombose ni métastase -> Chimioembolisation intra-artérielle (TACE).\n  - *Stade avancé (C)* : thrombose portale ou métastases, PS 1-2 -> Traitement systémique (Atezolizumab + Bevacizumab en 1ère ligne).\n  - *Stade terminal (D)* : Child C, PS > 2 -> Soins de support.",
+    "contentMarkdown": "### Focus : Points Clés : Carcinome Hépatocellulaire (CHC)\n- **Terrain** : 80-90% sur foie de cirrhose (VHB, VHC, alcool, MASH/stéatohépatite métabolique). Dépistage semestriel par échographie hépatique.\n- **Diagnostic non invasif (EASL)** : Nodule >= 1 cm sur foie cirrhotique avec hyperrehaussement artériel (wash-in) et lavage au temps portal/tardif (wash-out) sur TDM ou IRM quadriphasique -> Diagnostic certain sans biopsie.\n- **Classification BCLC** :\n  - *Stade très précoce/précoce (0/A)* : nodule unique ou <= 3 nodules <= 3 cm, Child A-B, PS 0 -> Résection chirurgicale, radiofréquence percutanée ou transplantation (Milan : 1 nodule <= 5 cm ou 3 nodules <= 3 cm).\n  - *Stade intermédiaire (B)* : multinodulaire, sans thrombose ni métastase -> Chimioembolisation intra-artérielle (TACE).\n  - *Stade avancé (C)* : thrombose portale ou métastases, PS 1-2 -> Traitement systémique (Atezolizumab + Bevacizumab en 1ère ligne).\n  - *Stade terminal (D)* : Child C, PS > 2 -> Soins de support.",
     "author": "Faculté de Médecine - Collège d’Hépatologie"
   },
   {
@@ -682,7 +682,7 @@ export const CHC_TUMEURS_MALIGNES_FOIE_RESOURCES: CourseResource[] = [
     "courseId": "crs-gastro-chc-tumeurs-malignes-foie",
     "type": "Astuce",
     "title": "Perles de Diagnostic & Prise en Charge du CHC",
-    "contentMarkdown": "### 💡 Pièges & Perles d'Examen\n- ⚡ **Biopsie hépatique** : non nécessaire si critères d'imagerie typiques réunis sur cirrhose. Risque d'ensemencement tumoral pariétal (seeding).\n- ⚡ **Avant Bevacizumab** : FOGD impérative pour ligaturer les varices œsophagiennes à haut risque hémorragique.\n- ⚡ **Rupture hémorragique tumorale** : hémopéritoine aigu -> geste salvateur = embolisation radiologique sélective.",
+    "contentMarkdown": "### Astuce : Pièges & Perles d'Examen\n- • **Biopsie hépatique** : non nécessaire si critères d'imagerie typiques réunis sur cirrhose. Risque d'ensemencement tumoral pariétal (seeding).\n- • **Avant Bevacizumab** : FOGD impérative pour ligaturer les varices œsophagiennes à haut risque hémorragique.\n- • **Rupture hémorragique tumorale** : hémopéritoine aigu -> geste salvateur = embolisation radiologique sélective.",
     "author": "Commission Pédagogique"
   }
 ];

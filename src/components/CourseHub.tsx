@@ -17,6 +17,11 @@ import {
   HeartPulse,
   Brain,
   Wind,
+  Microscope,
+  ShieldAlert,
+  Droplets,
+  Folder,
+  ClipboardList,
 } from 'lucide-react';
 import { Module, Course, CourseResource } from '../types/medical';
 import { MEDICAL_COURSES, COURSE_RESOURCES } from '../data/mockMedicalData';
@@ -30,7 +35,7 @@ export const getSubdivisionMeta = (subdivision: string) => {
     return {
       label: 'ANAPATH',
       name: 'Anatomopathologie Digestive',
-      icon: '🔬',
+      icon: Microscope,
       badgeBg: 'bg-teal-50 text-teal-800 border-teal-200',
       activeCardBg: 'bg-teal-50/80 border-teal-400 shadow-md ring-2 ring-teal-200',
       hoverCardBg: 'bg-white hover:bg-teal-50/30 border-slate-200/80 shadow-xs hover:border-teal-200',
@@ -50,7 +55,7 @@ export const getSubdivisionMeta = (subdivision: string) => {
     return {
       label: 'LES CANCER',
       name: 'Cancérologie & Oncologie Digestive',
-      icon: '🎗️',
+      icon: Award,
       badgeBg: 'bg-purple-50 text-purple-700 border-purple-200',
       activeCardBg: 'bg-purple-50/80 border-purple-400 shadow-md ring-2 ring-purple-200',
       hoverCardBg: 'bg-white hover:bg-purple-50/30 border-slate-200/80 shadow-xs hover:border-purple-200',
@@ -70,7 +75,7 @@ export const getSubdivisionMeta = (subdivision: string) => {
     return {
       label: 'Urgences',
       name: 'Urgences Médico-Chirurgicales',
-      icon: '🚨',
+      icon: ShieldAlert,
       badgeBg: 'bg-rose-50 text-rose-700 border-rose-200',
       activeCardBg: 'bg-rose-50/80 border-rose-400 shadow-md ring-2 ring-rose-200',
       hoverCardBg: 'bg-white hover:bg-rose-50/30 border-slate-200/80 shadow-xs hover:border-rose-200',
@@ -90,7 +95,7 @@ export const getSubdivisionMeta = (subdivision: string) => {
     return {
       label: 'Gastro',
       name: 'Gastroentérologie Médicale & Hépatologie',
-      icon: '🩺',
+      icon: Stethoscope,
       badgeBg: 'bg-amber-50 text-amber-800 border-amber-200',
       activeCardBg: 'bg-amber-50/80 border-amber-400 shadow-md ring-2 ring-amber-200',
       hoverCardBg: 'bg-white hover:bg-amber-50/30 border-slate-200/80 shadow-xs hover:border-amber-200',
@@ -110,7 +115,7 @@ export const getSubdivisionMeta = (subdivision: string) => {
     return {
       label: 'Hématologie',
       name: 'Hématologie Clinique & Biologique',
-      icon: '🩸',
+      icon: Droplets,
       badgeBg: 'bg-rose-50 text-rose-700 border-rose-200',
       activeCardBg: 'bg-rose-50/80 border-rose-400 shadow-md ring-2 ring-rose-200',
       hoverCardBg: 'bg-white hover:bg-rose-50/30 border-slate-200/80 shadow-xs hover:border-rose-200',
@@ -130,7 +135,7 @@ export const getSubdivisionMeta = (subdivision: string) => {
     return {
       label: 'Oncologie',
       name: 'Cancérologie & Oncologie Médicale',
-      icon: '🎗️',
+      icon: Award,
       badgeBg: 'bg-purple-50 text-purple-700 border-purple-200',
       activeCardBg: 'bg-purple-50/80 border-purple-400 shadow-md ring-2 ring-purple-200',
       hoverCardBg: 'bg-white hover:bg-purple-50/30 border-slate-200/80 shadow-xs hover:border-purple-200',
@@ -150,7 +155,7 @@ export const getSubdivisionMeta = (subdivision: string) => {
   return {
     label: s,
     name: s === 'Autres' ? 'Volet Complémentaire (Fichiers à venir)' : s,
-    icon: '📁',
+    icon: Folder,
     badgeBg: 'bg-sky-50 text-sky-700 border-sky-200',
     activeCardBg: 'bg-sky-50/80 border-sky-400 shadow-md ring-2 ring-sky-200',
     hoverCardBg: 'bg-white hover:bg-sky-50/30 border-slate-200/80 shadow-xs hover:border-sky-200',
@@ -383,7 +388,9 @@ export const CourseHub: React.FC<CourseHubProps> = ({
       {module.id === 'mod-gastro' && (
         <div className="p-4 rounded-3xl bg-amber-500/10 border border-amber-300 text-amber-950 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 shadow-2xs">
           <div className="flex items-center gap-3">
-            <span className="text-2xl">📋</span>
+            <div className="w-10 h-10 rounded-2xl bg-amber-200/80 text-amber-900 flex items-center justify-center shrink-0">
+              <ClipboardList className="w-5 h-5 text-amber-900" />
+            </div>
             <div>
               <div className="flex items-center gap-2">
                 <h3 className="text-xs font-black uppercase tracking-wider text-amber-900">
@@ -443,7 +450,7 @@ export const CourseHub: React.FC<CourseHubProps> = ({
                       <div
                         className={`w-11 h-11 rounded-2xl ${meta.iconBg} flex items-center justify-center font-black text-xl shadow-xs shrink-0`}
                       >
-                        {meta.icon}
+                        <meta.icon className="w-5 h-5" />
                       </div>
                       <div className="min-w-0">
                         <div className="flex items-center gap-1.5 flex-wrap">
@@ -497,7 +504,7 @@ export const CourseHub: React.FC<CourseHubProps> = ({
                           : 'bg-white hover:bg-slate-100 text-slate-700 border border-slate-200'
                       }`}
                     >
-                      {isSubSelected ? '✓ Volet affiché' : `Filtrer ${meta.label}`}
+                      {isSubSelected ? 'Volet affiché' : `Filtrer ${meta.label}`}
                     </button>
 
                     {onLaunchSubdivisionPractice && stats.total > 0 && (
@@ -571,9 +578,8 @@ export const CourseHub: React.FC<CourseHubProps> = ({
                       isSubSelected ? meta.pillActive : meta.pillInactive
                     }`}
                   >
-                    <span>
-                      {meta.icon} {meta.label}
-                    </span>
+                    <meta.icon className="w-3.5 h-3.5 shrink-0" />
+                    <span>{meta.label}</span>
                     <span
                       className={`text-[10px] px-1.5 py-0.2 rounded-full font-bold ${
                         isSubSelected ? meta.pillCountActive : meta.pillCount
@@ -595,7 +601,7 @@ export const CourseHub: React.FC<CourseHubProps> = ({
                 className={`px-3 py-2 rounded-2xl border flex items-center justify-between text-xs animate-in fade-in duration-200 ${meta.bannerBg}`}
               >
                 <div className="flex items-center gap-2 font-bold">
-                  <span>{meta.icon}</span>
+                  <meta.icon className="w-4 h-4 shrink-0" />
                   <span>Volet {meta.label} activé ({displayedCourses.length} cours)</span>
                 </div>
                 <button
@@ -630,7 +636,7 @@ export const CourseHub: React.FC<CourseHubProps> = ({
                         className={`px-3.5 py-2 rounded-2xl border flex items-center justify-between text-xs font-black shadow-2xs ${courseMeta.badgeBg}`}
                       >
                         <div className="flex items-center gap-2">
-                          <span className="text-sm">{courseMeta.icon}</span>
+                          <courseMeta.icon className="w-4 h-4 shrink-0" />
                           <span>SUBDIVISION : {courseMeta.label} ({courseMeta.name})</span>
                         </div>
                         <span className="text-[10px] font-extrabold px-2 py-0.5 rounded-lg bg-white/80">
@@ -670,9 +676,10 @@ export const CourseHub: React.FC<CourseHubProps> = ({
                           <div className="flex items-center gap-1.5 mb-0.5">
                             {course.subdivision && courseMeta && (
                               <span
-                                className={`text-[9px] font-extrabold uppercase px-1.5 py-0.2 rounded-md border ${courseMeta.badgeBg}`}
+                                className={`text-[9px] font-extrabold uppercase px-1.5 py-0.2 rounded-md border inline-flex items-center gap-1 ${courseMeta.badgeBg}`}
                               >
-                                {courseMeta.icon} {courseMeta.label}
+                                <courseMeta.icon className="w-2.5 h-2.5 shrink-0" />
+                                <span>{courseMeta.label}</span>
                               </span>
                             )}
                           </div>
@@ -821,9 +828,9 @@ export const CourseHub: React.FC<CourseHubProps> = ({
                     const selMeta = getSubdivisionMeta(selectedCourse.subdivision);
                     return (
                       <span
-                        className={`text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full border flex items-center gap-1 ${selMeta.badgeBg}`}
+                        className={`text-[10px] font-extrabold uppercase tracking-wider px-2.5 py-0.5 rounded-full border flex items-center gap-1.5 ${selMeta.badgeBg}`}
                       >
-                        <span>{selMeta.icon}</span>
+                        <selMeta.icon className="w-3 h-3 shrink-0" />
                         <span>Volet {selMeta.label} : {selMeta.name}</span>
                       </span>
                     );

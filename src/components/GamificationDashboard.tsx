@@ -356,10 +356,10 @@ export const GamificationDashboard: React.FC<GamificationDashboardProps> = ({
                   className="w-16 h-16 sm:w-18 sm:h-18 rounded-2xl object-cover border-2 border-indigo-200 shadow-2xs bg-slate-50"
                 />
                 <div
-                  className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-emerald-500 border-2 border-white flex items-center justify-center text-white text-[9px] font-black"
+                  className="absolute -bottom-1 -right-1 w-5 h-5 rounded-full bg-emerald-500 border-2 border-white flex items-center justify-center text-white"
                   title="Session active"
                 >
-                  ✓
+                  <Check className="w-3 h-3 stroke-[3]" />
                 </div>
               </div>
 

@@ -1,0 +1,2054 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Révision Avancée — Suites de Couches Normales et Pathologiques</title>
+<style>
+  :root{
+    --navy:#0f2744;
+    --navy-soft:#1a3a5c;
+    --slate:#475569;
+    --slate-light:#e2e8f0;
+    --teal:#0d9488;
+    --teal-light:#ccfbf1;
+    --teal-dark:#0f766e;
+    --rose:#e11d48;
+    --rose-light:#ffe4e6;
+    --amber:#d97706;
+    --amber-light:#fef3c7;
+    --violet:#7c3aed;
+    --violet-light:#ede9fe;
+    --bg:#f1f5f9;
+    --card:#ffffff;
+    --text:#1e293b;
+    --text-soft:#64748b;
+    --border:#cbd5e1;
+    --shadow:0 4px 16px rgba(15,39,68,.07);
+    --shadow-lg:0 10px 30px rgba(15,39,68,.12);
+    --radius:16px;
+    --radius-sm:10px;
+  }
+  *{margin:0;padding:0;box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter','Roboto','Segoe UI',system-ui,-apple-system,sans-serif;
+    background:linear-gradient(160deg,#f1f5f9 0%,#e8eef5 40%,#f1f5f9 100%);
+    color:var(--text);
+    line-height:1.65;
+    font-size:16px;
+    padding-bottom:60px;
+  }
+
+  /* ===== HEADER ===== */
+  .page-header{
+    background:linear-gradient(135deg,var(--navy) 0%,var(--navy-soft) 55%,var(--teal-dark) 130%);
+    color:#fff;
+    padding:56px 24px 48px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .page-header::before{
+    content:'';position:absolute;inset:0;
+    background:radial-gradient(circle at 15% 20%,rgba(13,148,136,.18),transparent 45%),
+               radial-gradient(circle at 85% 80%,rgba(255,255,255,.06),transparent 40%);
+  }
+  .page-header h1{
+    position:relative;
+    font-size:clamp(1.5rem,4vw,2.3rem);
+    font-weight:800;
+    letter-spacing:-.5px;
+    margin-bottom:10px;
+  }
+  .page-header .subtitle{
+    position:relative;
+    font-size:1rem;
+    opacity:.88;
+    font-weight:400;
+    max-width:680px;
+    margin:0 auto;
+  }
+  .header-badges{
+    position:relative;
+    display:flex;flex-wrap:wrap;justify-content:center;gap:10px;
+    margin-top:22px;
+  }
+  .header-badge{
+    background:rgba(255,255,255,.12);
+    border:1px solid rgba(255,255,255,.25);
+    padding:6px 16px;
+    border-radius:50px;
+    font-size:.8rem;
+    font-weight:600;
+    letter-spacing:.3px;
+    backdrop-filter:blur(4px);
+  }
+
+  /* ===== LAYOUT ===== */
+  .container{max-width:1100px;margin:0 auto;padding:0 20px;}
+  .section{margin-top:52px;}
+  .section-head{
+    display:flex;align-items:center;gap:14px;
+    margin-bottom:26px;
+    padding-bottom:14px;
+    border-bottom:3px solid var(--slate-light);
+    position:relative;
+  }
+  .section-head::after{
+    content:'';position:absolute;bottom:-3px;left:0;
+    width:90px;height:3px;background:var(--teal);border-radius:3px;
+  }
+  .section-icon{
+    width:48px;height:48px;flex-shrink:0;
+    background:linear-gradient(135deg,var(--navy),var(--teal-dark));
+    border-radius:14px;
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.4rem;color:#fff;
+    box-shadow:0 6px 14px rgba(13,148,136,.3);
+  }
+  .section-head h2{
+    font-size:clamp(1.15rem,3vw,1.5rem);
+    font-weight:800;color:var(--navy);
+    letter-spacing:-.3px;
+  }
+  .section-head p{
+    font-size:.85rem;color:var(--text-soft);font-weight:500;
+  }
+
+  /* ===== CARDS ===== */
+  .card{
+    background:var(--card);
+    border-radius:var(--radius);
+    padding:26px 28px;
+    box-shadow:var(--shadow);
+    border:1px solid var(--slate-light);
+    margin-bottom:22px;
+    transition:box-shadow .25s ease,transform .25s ease;
+  }
+  .card:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px);}
+
+  /* ===== BADGES ===== */
+  .badge{
+    display:inline-block;
+    font-size:.7rem;font-weight:700;
+    letter-spacing:.5px;
+    padding:4px 12px;
+    border-radius:50px;
+    text-transform:uppercase;
+    margin-bottom:12px;
+  }
+  .badge-rf{background:var(--rose-light);color:var(--rose);border:1px solid #fecdd3;}
+  .badge-rj{background:var(--teal-light);color:var(--teal-dark);border:1px solid #99f6e4;}
+  .badge-multi{background:var(--violet-light);color:var(--violet);border:1px solid #ddd6fe;}
+  .badge-simple{background:var(--amber-light);color:var(--amber);border:1px solid #fde68a;}
+  .badge-sauf{background:#e0f2fe;color:#0369a1;border:1px solid #bae6fd;}
+  .badge-case{background:linear-gradient(135deg,var(--navy),var(--teal-dark));color:#fff;}
+
+  .q-num{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:32px;height:32px;border-radius:9px;
+    background:var(--navy);color:#fff;
+    font-size:.85rem;font-weight:800;
+    margin-right:10px;flex-shrink:0;
+  }
+  .q-header{display:flex;align-items:flex-start;margin-bottom:14px;}
+  .q-theme{
+    font-size:.72rem;font-weight:700;
+    color:var(--teal-dark);
+    text-transform:uppercase;
+    letter-spacing:.6px;
+    margin-bottom:4px;
+  }
+  .q-text{
+    font-size:.98rem;
+    font-weight:600;
+    color:var(--navy);
+    line-height:1.55;
+  }
+  .options{list-style:none;margin-top:14px;}
+  .options li{
+    padding:9px 14px;
+    margin-bottom:7px;
+    border-radius:var(--radius-sm);
+    background:#f8fafc;
+    border:1px solid #e2e8f0;
+    font-size:.92rem;
+    color:var(--slate);
+    transition:background .2s;
+    display:flex;gap:10px;
+  }
+  .options li:hover{background:#f1f5f9;}
+  .opt-letter{
+    font-weight:800;color:var(--navy);
+    flex-shrink:0;
+  }
+
+  /* ===== CORRECTION BLOCKS ===== */
+  details.correction{
+    margin-top:16px;
+    border-radius:var(--radius-sm);
+    border:1.5px solid #bae6fd;
+    background:linear-gradient(135deg,#f0f9ff,#ecfeff);
+    overflow:hidden;
+  }
+  details.correction summary{
+    cursor:pointer;
+    padding:12px 18px;
+    font-weight:700;
+    font-size:.85rem;
+    color:#0369a1;
+    background:rgba(186,230,253,.35);
+    list-style:none;
+    display:flex;align-items:center;gap:8px;
+    user-select:none;
+  }
+  details.correction summary::-webkit-details-marker{display:none;}
+  details.correction summary::before{
+    content:'▸';font-size:1rem;transition:transform .25s;
+  }
+  details.correction[open] summary::before{transform:rotate(90deg);}
+  details.correction .corr-body{
+    padding:16px 20px 18px;
+    font-size:.9rem;
+    color:var(--slate);
+    line-height:1.7;
+  }
+  .corr-body strong{color:var(--navy);}
+  .corr-body .correct{color:var(--teal-dark);font-weight:700;}
+  .corr-body .wrong{color:var(--rose);font-weight:600;}
+  .corr-body ul{margin:8px 0 8px 18px;}
+  .corr-body li{margin-bottom:5px;}
+
+  /* ===== CLINICAL CASES ===== */
+  .case-card{
+    background:var(--card);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    border:1px solid var(--slate-light);
+    margin-bottom:28px;
+    overflow:hidden;
+  }
+  .case-top{
+    background:linear-gradient(135deg,var(--navy),var(--navy-soft));
+    color:#fff;
+    padding:18px 26px;
+    display:flex;align-items:center;gap:14px;
+  }
+  .case-top .case-icon{
+    width:40px;height:40px;border-radius:11px;
+    background:rgba(255,255,255,.15);
+    display:flex;align-items:center;justify-content:center;
+    font-size:1.2rem;
+  }
+  .case-top h3{font-size:1.05rem;font-weight:700;}
+  .case-top .case-sub{font-size:.78rem;opacity:.8;font-weight:400;}
+  .case-body{padding:22px 26px;}
+  .vignette{
+    background:#f8fafc;
+    border-left:4px solid var(--teal);
+    border-radius:0 var(--radius-sm) var(--radius-sm) 0;
+    padding:16px 20px;
+    font-size:.92rem;
+    color:var(--slate);
+    margin-bottom:20px;
+    line-height:1.7;
+  }
+  .vignette strong{color:var(--navy);}
+
+  /* ===== CONCEPT MAP ===== */
+  .concept-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:20px;
+    margin-top:10px;
+  }
+  .concept-box{
+    background:var(--card);
+    border-radius:var(--radius);
+    padding:22px;
+    box-shadow:var(--shadow);
+    border-top:5px solid var(--teal);
+    transition:transform .25s;
+  }
+  .concept-box:hover{transform:translateY(-4px);}
+  .concept-box.navy{border-top-color:var(--navy);}
+  .concept-box.rose{border-top-color:var(--rose);}
+  .concept-box.violet{border-top-color:var(--violet);}
+  .concept-box.amber{border-top-color:var(--amber);}
+  .concept-box h4{
+    font-size:.95rem;font-weight:800;color:var(--navy);
+    margin-bottom:12px;
+    display:flex;align-items:center;gap:8px;
+  }
+  .concept-box h4 .dot{
+    width:10px;height:10px;border-radius:50%;
+    background:var(--teal);flex-shrink:0;
+  }
+  .concept-box.navy h4 .dot{background:var(--navy);}
+  .concept-box.rose h4 .dot{background:var(--rose);}
+  .concept-box.violet h4 .dot{background:var(--violet);}
+  .concept-box.amber h4 .dot{background:var(--amber);}
+  .concept-box ul{list-style:none;font-size:.85rem;color:var(--slate);}
+  .concept-box li{
+    padding:5px 0 5px 18px;
+    position:relative;
+    border-bottom:1px dashed #e2e8f0;
+  }
+  .concept-box li:last-child{border-bottom:none;}
+  .concept-box li::before{
+    content:'▸';position:absolute;left:0;
+    color:var(--teal);font-weight:700;
+  }
+
+  /* Flowchart */
+  .flow{
+    display:flex;flex-direction:column;gap:0;align-items:center;
+    margin:22px 0;
+  }
+  .flow-node{
+    background:var(--card);
+    border:2px solid var(--teal);
+    border-radius:var(--radius-sm);
+    padding:12px 22px;
+    text-align:center;
+    font-size:.85rem;
+    font-weight:600;
+    color:var(--navy);
+    min-width:200px;
+    box-shadow:0 3px 10px rgba(13,148,136,.1);
+  }
+  .flow-node.navy{border-color:var(--navy);}
+  .flow-node.rose{border-color:var(--rose);}
+  .flow-node.amber{border-color:var(--amber);}
+  .flow-arrow{
+    width:2px;height:22px;
+    background:var(--teal);
+    position:relative;
+  }
+  .flow-arrow::after{
+    content:'';position:absolute;bottom:-1px;left:50%;
+    transform:translateX(-50%);
+    border-left:6px solid transparent;
+    border-right:6px solid transparent;
+    border-top:8px solid var(--teal);
+  }
+
+  /* Visual table */
+  .vtable{
+    width:100%;
+    border-collapse:separate;
+    border-spacing:0;
+    font-size:.85rem;
+    border-radius:var(--radius-sm);
+    overflow:hidden;
+    box-shadow:var(--shadow);
+    margin-top:16px;
+  }
+  .vtable thead th{
+    background:var(--navy);
+    color:#fff;
+    padding:12px 14px;
+    text-align:left;
+    font-weight:700;
+    font-size:.8rem;
+    letter-spacing:.3px;
+  }
+  .vtable tbody td{
+    padding:11px 14px;
+    border-bottom:1px solid #e2e8f0;
+    color:var(--slate);
+    vertical-align:top;
+  }
+  .vtable tbody tr:nth-child(even){background:#f8fafc;}
+  .vtable tbody tr:hover{background:#f0fdfa;}
+  .vtable tbody tr:last-child td{border-bottom:none;}
+
+  /* ===== MNEMONICS ===== */
+  .mnemonic-card{
+    background:linear-gradient(135deg,#fffbeb,#fef3c7);
+    border:1.5px solid #fde68a;
+    border-radius:var(--radius);
+    padding:22px 26px;
+    margin-bottom:18px;
+    box-shadow:0 4px 14px rgba(217,119,6,.08);
+  }
+  .mnemonic-card h4{
+    font-size:1rem;font-weight:800;color:#92400e;
+    margin-bottom:10px;
+    display:flex;align-items:center;gap:10px;
+  }
+  .mnemonic-card .mnemo-key{
+    display:inline-block;
+    background:#92400e;color:#fff;
+    padding:2px 12px;border-radius:6px;
+    font-size:.85rem;font-weight:800;
+    letter-spacing:1px;
+    margin-right:8px;
+  }
+  .mnemonic-card p, .mnemonic-card ul{
+    font-size:.88rem;color:#78350f;line-height:1.7;
+  }
+  .mnemonic-card ul{margin-left:18px;margin-top:6px;}
+  .mnemonic-card li{margin-bottom:4px;}
+
+  .trap-card{
+    background:linear-gradient(135deg,#fef2f2,#ffe4e6);
+    border:1.5px solid #fecdd3;
+    border-radius:var(--radius);
+    padding:20px 26px;
+    margin-bottom:16px;
+    box-shadow:0 4px 14px rgba(225,29,72,.07);
+  }
+  .trap-card h4{
+    font-size:.95rem;font-weight:800;color:#9f1239;
+    margin-bottom:8px;
+    display:flex;align-items:center;gap:8px;
+  }
+  .trap-card p, .trap-card ul{font-size:.87rem;color:#881337;line-height:1.7;}
+  .trap-card ul{margin-left:18px;margin-top:6px;}
+
+  /* ===== CONCLUSION ===== */
+  .conclusion-box{
+    background:linear-gradient(135deg,var(--navy) 0%,var(--teal-dark) 120%);
+    color:#fff;
+    border-radius:var(--radius);
+    padding:38px 34px;
+    text-align:center;
+    box-shadow:0 14px 40px rgba(15,39,68,.25);
+    margin-top:40px;
+    position:relative;
+    overflow:hidden;
+  }
+  .conclusion-box::before{
+    content:'';position:absolute;inset:0;
+    background:radial-gradient(circle at 80% 20%,rgba(255,255,255,.08),transparent 50%);
+  }
+  .conclusion-box h3{
+    position:relative;
+    font-size:1.3rem;font-weight:800;
+    margin-bottom:12px;
+  }
+  .conclusion-box p{
+    position:relative;
+    font-size:.95rem;
+    opacity:.92;
+    max-width:700px;
+    margin:0 auto 18px;
+    line-height:1.7;
+  }
+  .conclusion-box .motiv{
+    position:relative;
+    font-size:1.05rem;
+    font-weight:700;
+    color:#99f6e4;
+    font-style:italic;
+  }
+
+  /* ===== FOOTER ===== */
+  .page-footer{
+    text-align:center;
+    padding:34px 20px 10px;
+    font-size:.78rem;
+    color:var(--text-soft);
+  }
+
+  /* ===== RESPONSIVE ===== */
+  @media(max-width:640px){
+    .card{padding:20px 18px;}
+    .case-body{padding:18px 16px;}
+    .case-top{padding:14px 18px;}
+    .concept-grid{grid-template-columns:1fr;}
+    .section-head{flex-direction:column;align-items:flex-start;gap:8px;}
+    .section-head::after{width:60px;}
+    .vtable{font-size:.78rem;}
+    .vtable thead th,.vtable tbody td{padding:8px 10px;}
+    .page-header{padding:40px 16px 36px;}
+  }
+
+  /* Smooth scroll offset */
+  [id]{scroll-margin-top:20px;}
+</style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="page-header">
+  <h1>Suites de Couches Normales et Pathologiques</h1>
+  <p class="subtitle">Module de révision avancé — 4<sup>e</sup> année médecine<br>Banque QCM exigente · Cas cliniques algériens · Cartes conceptuelles · Mnémotechniques</p>
+  <div class="header-badges">
+    <span class="header-badge">25 QCM</span>
+    <span class="header-badge">5 Cas cliniques</span>
+    <span class="header-badge">Post-partum</span>
+    <span class="header-badge">Urgences maternelles</span>
+  </div>
+</header>
+
+<div class="container">
+
+<!-- ================= SECTION 1 : QCM ================= -->
+<section class="section" id="qcm">
+  <div class="section-head">
+    <div class="section-icon">📝</div>
+    <div>
+      <h2>Banque de 25 QCM Exigeants</h2>
+      <p>Questions subtilement mélangées — Correction détaillée sous chaque item</p>
+    </div>
+  </div>
+
+  <!-- Q1 -->
+  <div class="card">
+    <span class="badge badge-rf">Réponse Fausse (RF)</span>
+    <div class="q-header">
+      <span class="q-num">1</span>
+      <div>
+        <div class="q-theme">Involution utérine — Suites de couches normales</div>
+        <div class="q-text">Concernant l'involution utérine durant le post-partum physiologique, quelle proposition est <strong>fausse</strong> ?</div>
+      </div>
+    </div>
+    <ul class="options">
+      <li><span class="opt-letter">A.</span> Immédiatement après la délivrance, l'utérus est sous-ombilical et constitue le globe de sécurité.</li>
+      <li><span class="opt-letter">B.</span> Entre J6 et J12, le fond utérin se situe à mi-distance entre la symphyse pubienne et l'ombilic.</li>
+      <li><span class="opt-letter">C.</span> Entre J12 et la 5<sup>e</sup> semaine, l'utérus devient pelvien et rétro-pubien.</li>
+      <li><span class="opt-letter">D.</span> Après la 5<sup>e</sup> semaine, l'utérus retrouve sa forme normale.</li>
+      <li><span class="opt-letter">E.</span> L'involution utérine est uniquement due à la rétraction du myomètre, sans phénomène de nécrose ou de cicatrisation.</li>
+    </ul>
+    <details class="correction">
+      <summary>Correction & explication détaillée</summary>
+      <div class="corr-body">
+        <p><span class="correct">Réponse : E.</span></p>
+        <p>L'involution utérine n'est pas un simple phénomène mécanique de rétraction. Elle associe :</p>
+        <ul>
+          <li>Une <strong>rétraction myométriale</strong> (phénomène actif immédiat) ;</li>
+          <li>Une <strong>autolyse et nécrose cellulaire</strong> des fibres hypertrophiées ;</li>
+          <li>Une <strong>cicatrisation</strong> avec régénération de l'endomètre.</li>
+        </ul>
+        <p><span class="wrong">A, B, C, D sont exactes</span> et correspondent à la chronologie classique de l'involution utérine.</p>
+        <p><strong>Piège :</strong> Ne pas réduire l'involution utérine à la seule contraction musculaire ; le processus est complexe, actif et progressif sur plusieurs semaines.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q2 -->
+  <div class="card">
+    <span class="badge badge-sauf">Toutes exactes, SAUF</span>
+    <div class="q-header">
+      <span class="q-num">2</span>
+      <div>
+        <div class="q-theme">Lochies — Caractéristiques physiologiques</div>
+        <div class="q-text">Toutes les propositions suivantes concernant les lochies sont exactes, <strong>SAUF</strong> :</div>
+      </div>
+    </div>
+    <ul class="options">
+      <li><span class="opt-letter">A.</span> Elles sont sanglantes pendant les 2 premiers jours, faites de sang non coagulé.</li>
+      <li><span class="opt-letter">B.</span> Elles deviennent séro-sanglantes jusqu'au 8<sup>e</sup> jour, puis séreuses jusqu'au 15<sup>e</sup> jour.</li>
+      <li><span class="opt-letter">C.</span> L'écoulement redevient sanglant pendant 48 heures : c'est le petit retour de couches.</li>
+      <li><span class="opt-letter">D.</span> L'odeur est fade et l'écoulement est formé par les débris de la caduque et les exsudations des plaies cervicales et vaginales.</li>
+      <li><span class="opt-letter">E.</span> Les lochies sont normalement fétides et purulentes dès le 3<sup>e</sup> jour.</li>
+    </ul>
+    <details class="correction">
+      <summary>Correction & explication détaillée</summary>
+      <div class="corr-body">
+        <p><span class="correct">Réponse : E.</span></p>
+        <p>Les lochies physiologiques ont une <strong>odeur fade</strong>, non fétide. Une odeur fétide ou un aspect purulent doit faire évoquer une <strong>endométrite</strong> ou une infection génitale haute.</p>
+        <ul>
+          <li><strong>A :</strong> Vrai — sang non coagulé les 2 premiers jours.</li>
+          <li><strong>B :</strong> Vrai — séro-sanglantes jusqu'à J8, séreuses jusqu'à J15.</li>
+          <li><strong>C :</strong> Vrai — petit retour de couches sanglant de 48 h.</li>
+          <li><strong>D :</strong> Vrai — composition physiologique des lochies.</li>
+        </ul>
+        <p><strong>Piège classique :</strong> Confondre lochies physiologiques (fades) et lochies pathologiques (fétides, purulentes) — signe d'appel infectieux majeur.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q3 -->
+  <div class="card">
+    <span class="badge badge-multi">Choix multiples (2–3 réponses)</span>
+    <div class="q-header">
+      <span class="q-num">3</span>
+      <div>
+        <div class="q-theme">Facteurs de risque thromboembolique du post-partum</div>
+        <div class="q-text">Quels sont les facteurs favorisants des complications thromboemboliques du post-partum ? <em>(2 à 3 réponses exactes)</em></div>
+      </div>
+    </div>
+    <ul class="options">
+      <li><span class="opt-letter">A.</span> Âge supérieur à 40 ans</li>
+      <li><span class="opt-letter">B.</span> Multiparité</li>
+      <li><span class="opt-letter">C.</span> Accouchement par voie basse eutocique chez une primipare de 25 ans</li>
+      <li><span class="opt-letter">D.</span> Obésité</li>
+      <li><span class="opt-letter">E.</span> Antécédent personnel de thrombose veineuse</li>
+    </ul>
+    <details class="correction">
+      <summary>Correction & explication détaillée</summary>
+      <div class="corr-body">
+        <p><span class="correct">Réponses : A, B, D, E.</span></p>
+        <p>Le post-partum est une période d'<strong>hypercoagulabilité physiologique</strong> persistant environ 2 semaines. Les facteurs surajoutés majorent le risque :</p>
+        <ul>
+          <li><strong>A :</strong> Âge &gt; 40 ans — facteur indépendant majeur.</li>
+          <li><strong>B :</strong> Multiparité — risque cumulatif.</li>
+          <li><strong>D :</strong> Obésité — état pro-inflammatoire et pro-thrombotique.</li>
+          <li><strong>E :</strong> Antécédent thromboembolique — risque de récidive élevé.</li>
+        </ul>
+        <p><span class="wrong">C est fausse :</span> un accouchement eutocique chez une primipare jeune n'est pas un facteur de risque thromboembolique. Ce sont surtout l'accouchement <strong>dystocique</strong> ou la <strong>césarienne</strong> qui majorent le risque.</p>
+        <p><strong>Piège :</strong> Ne pas oublier les varices des membres inférieurs et l'accouchement dystocique/césarienne dans la liste des FDR.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q4 -->
+  <div class="card">
+    <span class="badge badge-rj">Réponse Juste (RJ)</span>
+    <div class="q-header">
+      <span class="q-num">4</span>
+      <div>
+        <div class="q-theme">Mamelon douloureux — Allaitement</div>
+        <div class="q-text">Concernant le mamelon douloureux du post-partum, quelle proposition est <strong>juste</strong> ?</div>
+      </div>
+    </div>
+    <ul class="options">
+      <li><span class="opt-letter">A.</span> Il survient surtout chez la multipare.</li>
+      <li><span class="opt-letter">B.</span> Il persiste habituellement plus de 10 jours sans traitement.</li>
+      <li><span class="opt-letter">C.</span> Il s'accompagne à l'examen de lésions cutanées objectives du mamelon.</li>
+      <li><span class="opt-letter">D.</span> Il apparaît après quelques tétées, prédomine chez la primipare et disparaît en 3 à 4 jours.</li>
+      <li><span class="opt-letter">E.</span> Il nécessite systématiquement un arrêt de l'allaitement.</li>
+    </ul>
+    <details class="correction">
+      <summary>Correction & explication détaillée</summary>
+      <div class="corr-body">
+        <p><span class="correct">Réponse : D.</span></p>
+        <p>Le mamelon douloureux est une entité fonctionnelle bénigne :</p>
+        <ul>
+          <li>Apparaît après quelques tétées ;</li>
+          <li>Prédomine chez la <strong>primipare</strong> (+++) ;</li>
+          <li>Disparaît spontanément en <strong>3 à 4 jours</strong> ;</li>
+          <li><strong>Aucune lésion</strong> à l'examen (c'est la différence clé avec les crevasses).</li>
+        </ul>
+        <p><span class="wrong">A :</span> Faux — c'est la primipare qui est concernée.<br>
+        <span class="wrong">B :</span> Faux — évolution spontanément favorable en quelques jours.<br>
+        <span class="wrong">C :</span> Faux — pas de lésion objectivée (sinon il s'agit de crevasses).<br>
+        <span class="wrong">E :</span> Faux — l'allaitement est poursuivi ; seul le confort est amélioré.</p>
+        <p><strong>Piège :</strong> La distinction mamelon douloureux / crevasses repose sur l'examen : absence de lésion dans le premier cas, présence de gerçures/fissures/ulcérations dans le second.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q5 -->
+  <div class="card">
+    <span class="badge badge-simple">Choix simple (1 seule bonne réponse)</span>
+    <div class="q-header">
+      <span class="q-num">5</span>
+      <div>
+        <div class="q-theme">Crevasses — Diagnostic et traitement</div>
+        <div class="q-text">Quelle proposition concernant les crevasses du mamelon est exacte ?</div>
+      </div>
+    </div>
+    <ul class="options">
+      <li><span class="opt-letter">A.</span> Elles surviennent préférentiellement chez la multipare.</li>
+      <li><span class="opt-letter">B.</span> Les lésions siègent à la base ou au sommet du mamelon et sont responsables d'une douleur vive contemporaine des tétées.</li>
+      <li><span class="opt-letter">C.</span> Le traitement curatif repose en priorité sur l'arrêt définitif de l'allaitement.</li>
+      <li><span class="opt-letter">D.</span> Elles sont indolores et de découverte fortuite.</li>
+      <li><span class="opt-letter">E.</span> Elles apparaissent tardivement, après le 15<sup>e</sup> jour du post-partum.</li>
+    </ul>
+    <details class="correction">
+      <summary>Correction & explication détaillée</summary>
+      <div class="corr-body">
+        <p><span class="correct">Réponse : B.</span></p>
+        <p>Les crevasses :</p>
+        <ul>
+          <li>Surviennent chez la <strong>primipare (+++)</strong> pendant les premiers jours de l'allaitement ;</li>
+          <li>Siègent à la <strong>base ou au sommet du mamelon</strong> : gerçures, fissures, érosions, voire ulcérations ;</li>
+          <li>Provoquent une <strong>douleur vive contemporaine des tétées</strong>, avec parfois un saignement.</li>
+        </ul>
+        <p><span class="wrong">A :</span> Faux — primipare et non multipare.<br>
+        <span class="wrong">C :</span> Faux — le traitement curatif repose sur la vidange du sein et l'application de pommades cicatrisantes à base de vitamines A et C ; l'allaitement est maintenu.<br>
+        <span class="wrong">D :</span> Faux — douleur vive, précisément contemporaine des tétées.<br>
+        <span class="wrong">E :</span> Faux — surviennent pendant les premiers jours de l'allaitement.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q6 -->
+  <div class="card">
+    <span class="badge badge-multi">Choix multiples (2–3 réponses)</span>
+    <div class="q-header">
+      <span class="q-num">6</span>
+      <div>
+        <div class="q-theme">Lymphangite mammaire — Clinique et traitement</div>
+        <div class="q-text">Concernant la lymphangite du post-partum, quelles propositions sont exactes ? <em>(2 à 3 réponses)</em></div>
+      </div>
+    </div>
+    <ul class="options">
+      <li><span class="opt-letter">A.</span> Elle apparaît classiquement entre le 5<sup>e</sup> et le 10<sup>e</sup> jour du post-partum.</li>
+      <li><span class="opt-letter">B.</span> Elle est secondaire aux crevasses et à l'engorgement mammaire.</li>
+      <li><span class="opt-letter">C.</span> Le début est brutal avec un clocher thermique à 40 °C.</li>
+      <li><span class="opt-letter">D.</span> Le traitement repose sur l'arrêt immédiat et définitif de l'allaitement.</li>
+      <li><span class="opt-letter">E.</span> Elle se manifeste par un placard rouge, chaud, étendu du mamelon jusqu'à l'aisselle avec adénite inflammatoire.</li>
+    </ul>
+    <details class="correction">
+      <summary>Correction & explication détaillée</summary>
+      <div class="corr-body">
+        <p><span class="correct">Réponses : A, B, C, E.</span></p>
+        <p>La lymphangite est une inflammation des galactophores et du revêtement cutané :</p>
+        <ul>
+          <li>Survient entre <strong>J5 et J10</strong> ;</li>
+          <li>Complique des <strong>crevasses</strong> ou un <strong>engorgement mammaire</strong> ;</li>
+          <li>Début brutal, <strong>clocher thermique à 40 °C</strong> ;</li>
+          <li>Placard rouge, chaud, étendu du mamelon à l'aisselle, avec adénite inflammatoire.</li>
+        </ul>
+        <p><span class="wrong">D est fausse :</span> le traitement repose sur les <strong>AINS</strong> (aspirine 500 mg donne de bons résultats) et le <strong>tirage artificiel du lait</strong> jusqu'à guérison. L'allaitement n'est pas arrêté définitivement.</p>
+        <p><strong>Piège :</strong> Ne pas confondre avec la mastite suppurée où, là, l'arrêt de l'allaitement est indiqué.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q7 -->
+  <div class="card">
+    <span class="badge badge-rf">Réponse Fausse (RF)</span>
+    <div class="q-header">
+      <span class="q-num">7</span>
+      <div>
+        <div class="q-theme">Mastite suppurée (galactophorite)</div>
+        <div class="q-text">Concernant la mastite suppurée du post-partum, quelle proposition est <strong>fausse</strong> ?</div>
+      </div>
+    </div>
+    <ul class="options">
+      <li><span class="opt-letter">A.</span> Elle complique une lymphangite mal traitée.</li>
+      <li><span class="opt-letter">B.</span> Elle se voit classiquement entre le 10<sup>e</sup> et le 15<sup>e</sup> jour.</li>
+      <li><span class="opt-letter">C.</span> Les germes responsables sont le staphylocoque et le streptocoque.</li>
+      <li><span class="opt-letter">D.</span> La porte d'entrée est canalaire.</li>
+      <li><span class="opt-letter">E.</span> Le traitement repose sur la poursuite de l'allaitement et une antibiothérapie orale de 5 jours.</li>
+    </ul>
+    <details class="correction">
+      <summary>Correction & explication détaillée</summary>
+      <div class="corr-body">
+        <p><span class="correct">Réponse : E.</span></p>
+        <p>Le traitement de la mastite suppurée est <strong>radicalement différent</strong> de celui de la lymphangite :</p>
+        <ul>
+          <li><strong>Arrêt de l'allaitement</strong> ;</li>
+          <li><strong>Vidange du sein</strong> ;</li>
+          <li><strong>Antibiothérapie anti-staphylococcique pendant 15 jours</strong> ;</li>
+          <li><strong>Poche de glace</strong>.</li>
+        </ul>
+        <p>L'évolution peut se faire vers l'<strong>abcédation</strong>, nécessitant un <strong>drainage chirurgical</strong>.</p>
+        <p><span class="wrong">A, B, C, D sont exactes :</span> la mastite suppurée est bien une complication de la lymphangite mal traitée, survenant entre J10 et J15, due au staphylocoque et au streptocoque, avec une porte d'entrée canalaire.</p>
+        <p><strong>Piège :</strong> Durée et voie de l'antibiothérapie (15 jours, anti-staph) + arrêt de l'allaitement — points clés à retenir.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q8 -->
+  <div class="card">
+    <span class="badge badge-sauf">Toutes exactes, SAUF</span>
+    <div class="q-header">
+      <span class="q-num">8</span>
+      <div>
+        <div class="q-theme">Surveillance du post-partum</div>
+        <div class="q-text">Toutes les propositions suivantes concernant la surveillance du post-partum sont exactes, <strong>SAUF</strong> :</div>
+      </div>
+    </div>
+    <ul class="options">
+      <li><span class="opt-letter">A.</span> Les 2 premières heures se font en salle d'accouchement avec surveillance de la TA, la FC, la T°, le globe utérin de sécurité et le saignement.</li>
+      <li><span class="opt-letter">B.</span> Dans l'heure qui suit l'accouchement, il faut préconiser l'allaitement maternel.</li>
+      <li><span class="opt-letter">C.</span> Dans les 8 heures après l'accouchement, il faut faire lever la patiente et vérifier si elle a uriné.</li>
+      <li><span class="opt-letter">D.</span> Dans les jours qui suivent, il faut examiner les seins, le périnée et les membres inférieurs.</li>
+      <li><span class="opt-letter">E.</span> La surveillance des 2 premières heures se limite à la prise de la température toutes les 4 heures.</li>
+    </ul>
+    <details class="correction">
+      <summary>Correction & explication détaillée</summary>
+      <div class="corr-body">
+        <p><span class="correct">Réponse : E.</span></p>
+        <p>La surveillance des 2 premières heures en salle d'accouchement est <strong>rapprochée et pluriparamétrique</strong> :</p>
+        <ul>
+          <li>TA, FC, T° ;</li>
+          <li>Palpation du <strong>globe utérin de sécurité</strong> ;</li>
+          <li>Surveillance du <strong>saignement</strong> (risque d'hémorragie de la délivrance).</li>
+        </ul>
+        <p>Une simple prise de température toutes les 4 heures est <strong>insuffisante</strong> et dangereuse : c'est la période de risque maximal d'hémorragie.</p>
+        <p><span class="wrong">A, B, C, D sont exactes :</span> elles correspondent aux recommandations classiques de surveillance et de prise en charge précoce du post-partum.</p>
+        <p><strong>Piège :</strong> Ne pas sous-estimer la surveillance des 2 premières heures — c'est la période la plus critique.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q9 -->
+  <div class="card">
+    <span class="badge badge-simple">Choix simple (1 seule bonne réponse)</span>
+    <div class="q-header">
+      <span class="q-num">9</span>
+      <div>
+        <div class="q-theme">Engorgement mammaire</div>
+        <div class="q-text">Quelle proposition concernant l'engorgement mammaire du post-partum est exacte ?</div>
+      </div>
+    </div>
+    <ul class="options">
+      <li><span class="opt-letter">A.</span> Il correspond à la persistance des phénomènes inflammatoires de la montée laiteuse au-delà de 2 à 3 jours.</li>
+      <li><span class="opt-letter">B.</span> Il concerne moins de 1 % des accouchées.</li>
+      <li><span class="opt-letter">C.</span> Il est définitif et nécessite un arrêt immédiat de l'allaitement.</li>
+      <li><span class="opt-letter">D.</span> Il ne s'accompagne d'aucune douleur.</li>
+      <li><span class="opt-letter">E.</span> Le traitement de première intention est chirurgical.</li>
+    </ul>
+    <details class="correction">
+      <summary>Correction & explication détaillée</summary>
+      <div class="corr-body">
+        <p><span class="correct">Réponse : A.</span></p>
+        <p>L'engorgement mammaire correspond à la <strong>persistance des phénomènes inflammatoires de la montée laiteuse au-delà de 2 à 3 jours</strong>. Il concerne environ <strong>15 % des cas</strong>.</p>
+        <ul>
+          <li>Seins <strong>durs, douloureux</strong>, rendant les tétées difficiles ;</li>
+          <li>État <strong>transitoire</strong> ;</li>
+          <li>Si persistance : <strong>massage sous douche chaude</strong> ou <strong>poche de glace</strong> + <strong>ocytocique</strong> (2 UI IM avant la tétée, répété 2 à 3 fois pendant 3 à 4 jours).</li>
+        </ul>
+        <p><span class="wrong">B :</span> Faux — 15 % des cas.<br>
+        <span class="wrong">C :</span> Faux — transitoire, allaitement maintenu.<br>
+        <span class="wrong">D :</span> Faux — seins durs et douloureux.<br>
+        <span class="wrong">E :</span> Faux — traitement médical (massage, glace, ocytocique), pas chirurgical.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q10 -->
+  <div class="card">
+    <span class="badge badge-multi">Choix multiples (2–3 réponses)</span>
+    <div class="q-header">
+      <span class="q-num">10</span>
+      <div>
+        <div class="q-theme">Complications hémorragiques précoces du post-partum</div>
+        <div class="q-text">Quelles sont les complications hémorragiques précoces du post-partum ? <em>(2 à 3 réponses)</em></div>
+      </div>
+    </div>
+    <ul class="options">
+      <li><span class="opt-letter">A.</span> Inertie utérine</li>
+      <li><span class="opt-letter">B.</span> Rétention placentaire</li>
+      <li><span class="opt-letter">C.</span> Retour de couches hémorragique</li>
+      <li><span class="opt-letter">D.</span> Endométrite hémorragique</li>
+      <li><span class="opt-letter">E.</span> Aménorrhée du post-partum</li>
+    </ul>
+    <details class="correction">
+      <summary>Correction & explication détaillée</summary>
+      <div class="corr-body">
+        <p><span class="correct">Réponses : A, B, D.</span></p>
+        <p>Les complications hémorragiques précoces comprennent :</p>
+        <ul>
+          <li><strong>A — Inertie utérine :</strong> absence de contraction utérine efficace, cause majeure d'hémorragie de la délivrance.</li>
+          <li><strong>B — Rétention placentaire :</strong> rétention de cotylédons ou de fragments placentaires.</li>
+          <li><strong>D — Endométrite hémorragique :</strong> associe un syndrome infectieux et une hémorragie.</li>
+        </ul>
+        <p>Le traitement des hémorragies précoces repose sur la <strong>révision utérine</strong> et les <strong>utérotoniques</strong>.</p>
+        <p><span class="wrong">C :</span> Faux — le retour de couches hémorragique est une complication <strong>tardive</strong>.<br>
+        <span class="wrong">E :</span> Faux — l'aménorrhée du post-partum n'est pas une complication hémorragique.</p>
+        <p><strong>Piège :</strong> Bien distinguer précoces (inertie, rétention, endométrite hémorragique) et tardives (retour de couches hémorragique).</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q11 -->
+  <div class="card">
+    <span class="badge badge-simple">Choix simple (1 seule bonne réponse)</span>
+    <div class="q-header">
+      <span class="q-num">11</span>
+      <div>
+        <div class="q-theme">Thrombose veineuse profonde — Signe de Homans</div>
+        <div class="q-text">Quel est le signe clinique caractéristique de la thrombose veineuse profonde des membres inférieurs du post-partum ?</div>
+      </div>
+    </div>
+    <ul class="options">
+      <li><span class="opt-letter">A.</span> Signe de Babinski</li>
+      <li><span class="opt-letter">B.</span> Signe de Homans (dorsiflexion du pied douloureuse)</li>
+      <li><span class="opt-letter">C.</span> Signe de Murphy</li>
+      <li><span class="opt-letter">D.</span> Signe de Blumberg</li>
+      <li><span class="opt-letter">E.</span> Signe de Trousseau</li>
+    </ul>
+    <details class="correction">
+      <summary>Correction & explication détaillée</summary>
+      <div class="corr-body">
+        <p><span class="correct">Réponse : B.</span></p>
+        <p>Le <strong>signe de Homans</strong> est positif lorsque la <strong>dorsiflexion du pied est douloureuse</strong>. Il oriente vers une thrombose veineuse profonde (TVP).</p>
+        <p>L'examen bilatéral et comparatif retrouve également :</p>
+        <ul>
+          <li>Un discret œdème ;</li>
+          <li>Une chaleur du mollet ;</li>
+          <li>Une douleur unilatérale du mollet, du pli de l'aine ou une sensation de jambe lourde.</li>
+        </ul>
+        <p>Le diagnostic est confirmé par l'<strong>écho-doppler des membres inférieurs</strong>.</p>
+        <p><span class="wrong">A :</span> Babinski — signe neurologique (voie pyramidale).<br>
+        <span class="wrong">C :</span> Murphy — signe biliaire.<br>
+        <span class="wrong">D :</span> Blumberg — signe d'irritation péritonéale.<br>
+        <span class="wrong">E :</span> Trousseau — signe de tétanie (hypocalcémie).</p>
+        <p><strong>Piège :</strong> Ne pas confondre les signes cliniques ; Homans est spécifique de la TVP.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q12 -->
+  <div class="card">
+    <span class="badge badge-rf">Réponse Fausse (RF)</span>
+    <div class="q-header">
+      <span class="q-num">12</span>
+      <div>
+        <div class="q-theme">Phlébite pelvienne</div>
+        <div class="q-text">Concernant la phlébite pelvienne du post-partum, quelle proposition est <strong>fausse</strong> ?</div>
+      </div>
+    </div>
+    <ul class="options">
+      <li><span class="opt-letter">A.</span> Elle complique une endométrite.</li>
+      <li><span class="opt-letter">B.</span> Son diagnostic est difficile.</li>
+      <li><span class="opt-letter">C.</span> Elle est évoquée devant une endométrite rebelle au traitement avec douleur pelvienne importante et signes urinaires et rectaux.</li>
+      <li><span class="opt-letter">D.</span> Au toucher vaginal, on palpe un cordon dur et douloureux le long de la paroi pelvienne.</li>
+      <li><span class="opt-letter">E.</span> Le traitement repose sur les AINS seuls.</li>
+    </ul>
+    <details class="correction">
+      <summary>Correction & explication détaillée</summary>
+      <div class="corr-body">
+        <p><span class="correct">Réponse : E.</span></p>
+        <p>Le traitement de la phlébite pelvienne repose sur :</p>
+        <ul>
+          <li><strong>Une anticoagulation</strong> ;</li>
+          <li><strong>Une antibiothérapie</strong> (car elle complique une endométrite).</li>
+        </ul>
+        <p>Les AINS seuls sont insuffisants et ne traitent pas le thrombus ni l'infection sous-jacente.</p>
+        <p><span class="wrong">A, B, C, D sont exactes :</span> la phlébite pelvienne complique une endométrite, de diagnostic difficile, évoquée devant une endométrite rebelle avec douleur pelvienne et signes urinaires/rectaux ; le toucher vaginal retrouve un cordon dur et douloureux le long de la paroi pelvienne.</p>
+        <p><strong>Piège :</strong> Ne pas oublier l'antibiothérapie associée à l'anticoagulation dans la phlébite pelvienne.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q13 -->
+  <div class="card">
+    <span class="badge badge-multi">Choix multiples (2–3 réponses)</span>
+    <div class="q-header">
+      <span class="q-num">13</span>
+      <div>
+        <div class="q-theme">Syndrome de Sheehan</div>
+        <div class="q-text">Concernant le syndrome de Sheehan, quelles propositions sont exactes ? <em>(2 à 3 réponses)</em></div>
+      </div>
+    </div>
+    <ul class="options">
+      <li><span class="opt-letter">A.</span> Il est secondaire à une nécrose de l'antéhypophyse.</li>
+      <li><span class="opt-letter">B.</span> Il survient dans un contexte de choc hémorragique.</li>
+      <li><span class="opt-letter">C.</span> Il se manifeste principalement par une absence de montée laiteuse et une aménorrhée.</li>
+      <li><span class="opt-letter">D.</span> Il est dû à un adénome à prolactine.</li>
+      <li><span class="opt-letter">E.</span> Il s'accompagne d'une hyperprolactinémie constante.</li>
+    </ul>
+    <details class="correction">
+      <summary>Correction & explication détaillée</summary>
+      <div class="corr-body">
+        <p><span class="correct">Réponses : A, B, C.</span></p>
+        <p>Le syndrome de Sheehan est une complication rare mais grave du post-partum :</p>
+        <ul>
+          <li>Secondaire à une <strong>nécrose de l'antéhypophyse</strong> ;</li>
+          <li>Survient dans un contexte de <strong>choc hémorragique</strong> (hypotension prolongée) ;</li>
+          <li>Se manifeste par une <strong>absence de montée laiteuse</strong> et une <strong>aménorrhée</strong> (insuffisance antéhypophysaire).</li>
+        </ul>
+        <p><span class="wrong">D :</span> Faux — l'adénome à prolactine est une cause d'hyperprolactinémie, pas de syndrome de Sheehan.<br>
+        <span class="wrong">E :</span> Faux — dans le syndrome de Sheehan, il y a une insuffisance hypophysaire globale, donc pas d'hyperprolactinémie constante ; la prolactine est basse.</p>
+        <p><strong>Piège :</strong> Ne pas confondre syndrome de Sheehan (nécrose hypophysaire post-hémorragique) et hyperprolactinémie (adénome à prolactine) — deux causes distinctes d'aménorrhée anovulatoire.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q14 -->
+  <div class="card">
+    <span class="badge badge-simple">Choix simple (1 seule bonne réponse)</span>
+    <div class="q-header">
+      <span class="q-num">14</span>
+      <div>
+        <div class="q-theme">Post-partum blues</div>
+        <div class="q-text">Quelle proposition concernant le post-partum blues est exacte ?</div>
+      </div>
+    </div>
+    <ul class="options">
+      <li><span class="opt-letter">A.</span> Il survient au 15<sup>e</sup> jour du post-partum.</li>
+      <li><span class="opt-letter">B.</span> Il se manifeste par une bouffée délirante et des tendances suicidaires.</li>
+      <li><span class="opt-letter">C.</span> Il apparaît le 3<sup>e</sup> jour et associe asthénie, crises de larmes et irritabilité.</li>
+      <li><span class="opt-letter">D.</span> Il nécessite un traitement neuroleptique systématique.</li>
+      <li><span class="opt-letter">E.</span> Il évolue vers la chronicité dans la majorité des cas.</li>
+    </ul>
+    <details class="correction">
+      <summary>Correction & explication détaillée</summary>
+      <div class="corr-body">
+        <p><span class="correct">Réponse : C.</span></p>
+        <p>Le post-partum blues :</p>
+        <ul>
+          <li>Survient au <strong>3<sup>e</sup> jour</strong> du post-partum ;</li>
+          <li>Se manifeste par une <strong>asthénie</strong>, des <strong>crises de larmes</strong>, une <strong>irritabilité</strong> ;</li>
+          <li>Disparaît en quelques jours <strong>sans séquelles</strong> ;</li>
+          <li>Le traitement consiste simplement à <strong>rassurer la maman</strong>.</li>
+        </ul>
+        <p><span class="wrong">A :</span> Faux — J3, pas J15.<br>
+        <span class="wrong">B :</span> Faux — bouffée délirante et tendances suicidaires = psychose puerpérale.<br>
+        <span class="wrong">D :</span> Faux — pas de neuroleptiques ; simple réassurance.<br>
+        <span class="wrong">E :</span> Faux — évolution favorable en quelques jours.</p>
+        <p><strong>Piège :</strong> Distinguer blues (J3, bénin, réassurance), psychose puerpérale (J15, grave, neuroleptiques) et dépression puerpérale (1 mois, mélancolie, psychothérapie).</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q15 -->
+  <div class="card">
+    <span class="badge badge-sauf">Toutes exactes, SAUF</span>
+    <div class="q-header">
+      <span class="q-num">15</span>
+      <div>
+        <div class="q-theme">Aménorrhée du post-partum</div>
+        <div class="q-text">Toutes les propositions suivantes concernant l'aménorrhée du post-partum sont exactes, <strong>SAUF</strong> :</div>
+      </div>
+    </div>
+    <ul class="options">
+      <li><span class="opt-letter">A.</span> C'est l'absence de règles au-delà de 3 mois chez la femme qui n'allaite pas.</li>
+      <li><span class="opt-letter">B.</span> C'est l'absence de règles au-delà de 5 mois chez la femme qui allaite.</li>
+      <li><span class="opt-letter">C.</span> Elle peut être en rapport avec des synéchies utérines, où l'ovulation est présente.</li>
+      <li><span class="opt-letter">D.</span> Elle peut être anovulatoire par hyperprolactinémie ou syndrome de Sheehan.</li>
+      <li><span class="opt-letter">E.</span> Elle est toujours d'origine utérine mécanique.</li>
+    </ul>
+    <details class="correction">
+      <summary>Correction & explication détaillée</summary>
+      <div class="corr-body">
+        <p><span class="correct">Réponse : E.</span></p>
+        <p>L'aménorrhée du post-partum n'est <strong>pas toujours d'origine utérine mécanique</strong>. Elle peut être :</p>
+        <ul>
+          <li><strong>Synéchies utérines</strong> (complication traumatique) — ici l'ovulation est présente ;</li>
+          <li><strong>Anovulatoire</strong> par hyperprolactinémie (adénome à prolactine) ;</li>
+          <li><strong>Anovulatoire</strong> par syndrome de Sheehan (nécrose de l'antéhypophyse après choc hémorragique).</li>
+        </ul>
+        <p><span class="wrong">A, B, C, D sont exactes :</span> elles correspondent aux définitions et étiologies classiques.</p>
+        <p><strong>Piège :</strong> Ne pas réduire l'aménorrhée du post-partum à une cause mécanique unique ; penser aux causes endocriniennes (hyperprolactinémie, Sheehan).</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q16 -->
+  <div class="card">
+    <span class="badge badge-multi">Choix multiples (2–3 réponses)</span>
+    <div class="q-header">
+      <span class="q-num">16</span>
+      <div>
+        <div class="q-theme">Germes des infections puerpérales</div>
+        <div class="q-text">Quels sont les germes responsables des infections puerpérales ? <em>(2 à 3 réponses)</em></div>
+      </div>
+    </div>
+    <ul class="options">
+      <li><span class="opt-letter">A.</span> Streptocoque B hémolytique</li>
+      <li><span class="opt-letter">B.</span> Colibacille</li>
+      <li><span class="opt-letter">C.</span> Staphylocoque</li>
+      <li><span class="opt-letter">D.</span> Bacilles Gram négatifs (BGN)</li>
+      <li><span class="opt-letter">E.</span> <em>Mycobacterium tuberculosis</em></li>
+    </ul>
+    <details class="correction">
+      <summary>Correction & explication détaillée</summary>
+      <div class="corr-body">
+        <p><span class="correct">Réponses : A, B, C, D.</span></p>
+        <p>Les germes responsables des infections puerpérales sont :</p>
+        <ul>
+          <li><strong>Streptocoque B hémolytique</strong> ;</li>
+          <li><strong>Colibacille</strong> ;</li>
+          <li><strong>Staphylocoque</strong> ;</li>
+          <li><strong>Bacilles Gram négatifs (BGN)</strong>.</li>
+        </ul>
+        <p>Il s'agit souvent d'<strong>infections polymicrobiennes</strong>. La porte d'entrée est surtout <strong>ascendante</strong> (voie vaginale, plaie placentaire ou cervicale).</p>
+        <p><span class="wrong">E :</span> Faux — <em>Mycobacterium tuberculosis</em> n'est pas un germe classique d'infection puerpérale aiguë.</p>
+        <p><strong>Piège :</strong> Retenir le caractère souvent <strong>multiple</strong> des germes et la voie <strong>ascendante</strong> comme porte d'entrée principale.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q17 -->
+  <div class="card">
+    <span class="badge badge-multi">Choix multiples (2–3 réponses)</span>
+    <div class="q-header">
+      <span class="q-num">17</span>
+      <div>
+        <div class="q-theme">Prise en charge dans le post-partum</div>
+        <div class="q-text">Quelles sont les mesures recommandées dans la prise en charge du post-partum ? <em>(2 à 3 réponses)</em></div>
+      </div>
+    </div>
+    <ul class="options">
+      <li><span class="opt-letter">A.</span> Antibiothérapie préventive, lever précoce et anticoagulation préventive.</li>
+      <li><span class="opt-letter">B.</span> Hygiène du mamelon après chaque tétée.</li>
+      <li><span class="opt-letter">C.</span> Toilette du périnée et séchage à chaque selle, avec ablation du fil au 10<sup>e</sup> jour.</li>
+      <li><span class="opt-letter">D.</span> Alimentation riche en fibres et liquides abondants pour éviter la constipation.</li>
+      <li><span class="opt-letter">E.</span> Arrêt systématique de l'allaitement pendant 1 mois.</li>
+    </ul>
+    <details class="correction">
+      <summary>Correction & explication détaillée</summary>
+      <div class="corr-body">
+        <p><span class="correct">Réponses : A, B, C, D.</span></p>
+        <p>La prise en charge du post-partum comprend :</p>
+        <ul>
+          <li><strong>A :</strong> Antibiothérapie préventive, lever précoce, anticoagulation préventive ;</li>
+          <li><strong>B :</strong> Hygiène du mamelon après chaque tétée ;</li>
+          <li><strong>C :</strong> Toilette périnéale et séchage à chaque selle, ablation du fil au 10<sup>e</sup> jour ;</li>
+          <li><strong>D :</strong> Alimentation riche en fibres et liquides abondants pour éviter la constipation.</li>
+        </ul>
+        <p>On ajoute : une contraception recommandée durant le post-partum, et un traitement martial pour corriger une anémie.</p>
+        <p><span class="wrong">E :</span> Faux — l'allaitement est au contraire encouragé (sauf contre-indication spécifique).</p>
+        <p><strong>Piège :</strong> Ne pas oublier l'anticoagulation préventive et le traitement martial.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q18 -->
+  <div class="card">
+    <span class="badge badge-rf">Réponse Fausse (RF)</span>
+    <div class="q-header">
+      <span class="q-num">18</span>
+      <div>
+        <div class="q-theme">Embolie pulmonaire du post-partum</div>
+        <div class="q-text">Concernant l'embolie pulmonaire du post-partum, quelle proposition est <strong>fausse</strong> ?</div>
+      </div>
+    </div>
+    <ul class="options">
+      <li><span class="opt-letter">A.</span> Elle peut être inaugurale ou secondaire à des thromboses.</li>
+      <li><span class="opt-letter">B.</span> Cliniquement, on retrouve une dyspnée à type de tachypnée, une toux, une douleur basi-thoracique, une cyanose et une hémoptysie.</li>
+      <li><span class="opt-letter">C.</span> Le traitement reste prophylactique.</li>
+      <li><span class="opt-letter">D.</span> Elle constitue une urgence vitale.</li>
+      <li><span class="opt-letter">E.</span> Son traitement curatif repose sur les AINS à forte dose.</li>
+    </ul>
+    <details class="correction">
+      <summary>Correction & explication détaillée</summary>
+      <div class="corr-body">
+        <p><span class="correct">Réponse : E.</span></p>
+        <p>L'embolie pulmonaire est une <strong>urgence vitale</strong> ; son traitement curatif repose sur l'<strong>anticoagulation</strong> (héparine), et non sur les AINS. Le traitement reste avant tout <strong>prophylactique</strong> (anticoagulation préventive chez les patientes à risque).</p>
+        <p><span class="wrong">A, B, C, D sont exactes :</span> l'embolie pulmonaire peut être inaugurale ou secondaire à des thromboses ; la clinique associe dyspnée, tachypnée, toux, douleur basi-thoracique, cyanose, hémoptysie ; le traitement reste prophylactique ; c'est une urgence vitale.</p>
+        <p><strong>Piège :</strong> Ne pas proposer les AINS dans l'embolie pulmonaire — traitement = anticoagulation.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q19 -->
+  <div class="card">
+    <span class="badge badge-simple">Choix simple (1 seule bonne réponse)</span>
+    <div class="q-header">
+      <span class="q-num">19</span>
+      <div>
+        <div class="q-theme">Psychose puerpérale</div>
+        <div class="q-text">Quelle proposition concernant la psychose puerpérale est exacte ?</div>
+      </div>
+    </div>
+    <ul class="options">
+      <li><span class="opt-letter">A.</span> Elle survient au 3<sup>e</sup> jour du post-partum.</li>
+      <li><span class="opt-letter">B.</span> Elle se manifeste par une asthénie et des crises de larmes isolées.</li>
+      <li><span class="opt-letter">C.</span> Elle survient après 15 jours, avec un début brutal par une bouffée délirante et des tendances suicidaires.</li>
+      <li><span class="opt-letter">D.</span> Le traitement repose sur la simple réassurance.</li>
+      <li><span class="opt-letter">E.</span> Le pronostic est constamment défavorable.</li>
+    </ul>
+    <details class="correction">
+      <summary>Correction & explication détaillée</summary>
+      <div class="corr-body">
+        <p><span class="correct">Réponse : C.</span></p>
+        <p>La psychose puerpérale :</p>
+        <ul>
+          <li>Survient <strong>après 15 jours</strong> du post-partum ;</li>
+          <li>Début <strong>brutal</strong> par une <strong>bouffée délirante</strong> et des <strong>tendances suicidaires</strong> ;</li>
+          <li>Traitement : <strong>neuroleptiques</strong>, <strong>antidépresseurs</strong> ;</li>
+          <li>Pronostic <strong>favorable</strong>.</li>
+        </ul>
+        <p><span class="wrong">A :</span> Faux — J3 = post-partum blues.<br>
+        <span class="wrong">B :</span> Faux — asthénie et crises de larmes = blues.<br>
+        <span class="wrong">D :</span> Faux — réassurance = blues ; psychose = neuroleptiques/antidépresseurs.<br>
+        <span class="wrong">E :</span> Faux — pronostic favorable.</p>
+        <p><strong>Piège :</strong> La psychose puerpérale est une urgence psychiatrique nécessitant une prise en charge spécialisée.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q20 -->
+  <div class="card">
+    <span class="badge badge-multi">Choix multiples (2–3 réponses)</span>
+    <div class="q-header">
+      <span class="q-num">20</span>
+      <div>
+        <div class="q-theme">Utérus normal du post-partum</div>
+        <div class="q-text">Quelles propositions concernant l'utérus normal du post-partum sont exactes ? <em>(2 à 3 réponses)</em></div>
+      </div>
+    </div>
+    <ul class="options">
+      <li><span class="opt-letter">A.</span> Immédiatement après la délivrance, il est sous-ombilical : c'est le globe de sécurité.</li>
+      <li><span class="opt-letter">B.</span> Entre J6 et J12, il est à mi-distance entre la symphyse pubienne et l'ombilic.</li>
+      <li><span class="opt-letter">C.</span> Entre J12 et la 5<sup>e</sup> semaine, il est pelvien et rétro-pubien.</li>
+      <li><span class="opt-letter">D.</span> Après la 5<sup>e</sup> semaine, il atteint sa forme normale.</li>
+      <li><span class="opt-letter">E.</span> Le col reste béant et congestif sans jamais régresser.</li>
+    </ul>
+    <details class="correction">
+      <summary>Correction & explication détaillée</summary>
+      <div class="corr-body">
+        <p><span class="correct">Réponses : A, B, C, D.</span></p>
+        <p>L'involution utérine physiologique suit cette chronologie :</p>
+        <ul>
+          <li><strong>A :</strong> Post-délivrance — utérus sous-ombilical, globe de sécurité ;</li>
+          <li><strong>B :</strong> J6–J12 — mi-distance symphyse-ombilic ;</li>
+          <li><strong>C :</strong> J12–S5 — pelvien et rétro-pubien ;</li>
+          <li><strong>D :</strong> Après S5 — forme normale.</li>
+        </ul>
+        <p><span class="wrong">E est fausse :</span> le col est initialement béant et congestif, mais il <strong>régresse rapidement</strong> et retrouve sa longueur et sa consistance normales après une semaine, en gardant une déchirure physiologique commissurale.</p>
+        <p><strong>Piège :</strong> Ne pas oublier la déchirure commissurale physiologique du col.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q21 -->
+  <div class="card">
+    <span class="badge badge-rj">Réponse Juste (RJ)</span>
+    <div class="q-header">
+      <span class="q-num">21</span>
+      <div>
+        <div class="q-theme">Petit retour de couches</div>
+        <div class="q-text">Concernant le petit retour de couches, quelle proposition est <strong>juste</strong> ?</div>
+      </div>
+    </div>
+    <ul class="options">
+      <li><span class="opt-letter">A.</span> Il correspond à l'écoulement redevient sanglant pendant 48 heures.</li>
+      <li><span class="opt-letter">B.</span> Il survient immédiatement après l'accouchement.</li>
+      <li><span class="opt-letter">C.</span> Il est fait de lochies séreuses.</li>
+      <li><span class="opt-letter">D.</span> Il dure 15 jours.</li>
+      <li><span class="opt-letter">E.</span> Il est toujours pathologique et nécessite une exploration.</li>
+    </ul>
+    <details class="correction">
+      <summary>Correction & explication détaillée</summary>
+      <div class="corr-body">
+        <p><span class="correct">Réponse : A.</span></p>
+        <p>Le petit retour de couches correspond au moment où l'écoulement <strong>redevient sanglant pendant 48 heures</strong>, après la phase de lochies séreuses. Il est physiologique.</p>
+        <p><span class="wrong">B :</span> Faux — il survient après la phase de lochies séreuses (vers J15).<br>
+        <span class="wrong">C :</span> Faux — il est sanglant.<br>
+        <span class="wrong">D :</span> Faux — 48 heures.<br>
+        <span class="wrong">E :</span> Faux — physiologique.</p>
+        <p><strong>Piège :</strong> Ne pas confondre petit retour de couches (physiologique, 48 h) et retour de couches hémorragique (pathologique, tardif).</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q22 -->
+  <div class="card">
+    <span class="badge badge-simple">Choix simple (1 seule bonne réponse)</span>
+    <div class="q-header">
+      <span class="q-num">22</span>
+      <div>
+        <div class="q-theme">Endométrite hémorragique</div>
+        <div class="q-text">Quelle proposition concernant l'endométrite hémorragique du post-partum est exacte ?</div>
+      </div>
+    </div>
+    <ul class="options">
+      <li><span class="opt-letter">A.</span> Elle associe un syndrome infectieux et une hémorragie.</li>
+      <li><span class="opt-letter">B.</span> Elle est exclusivement tardive.</li>
+      <li><span class="opt-letter">C.</span> Elle ne nécessite aucun traitement spécifique.</li>
+      <li><span class="opt-letter">D.</span> Elle est due à un adénome à prolactine.</li>
+      <li><span class="opt-letter">E.</span> Elle se manifeste uniquement par une aménorrhée.</li>
+    </ul>
+    <details class="correction">
+      <summary>Correction & explication détaillée</summary>
+      <div class="corr-body">
+        <p><span class="correct">Réponse : A.</span></p>
+        <p>L'endométrite hémorragique associe un <strong>syndrome infectieux</strong> et une <strong>hémorragie</strong>. C'est une complication <strong>précoce</strong> du post-partum.</p>
+        <p><span class="wrong">B :</span> Faux — complication précoce.<br>
+        <span class="wrong">C :</span> Faux — nécessite une prise en charge (révision utérine, utérotoniques, antibiothérapie).<br>
+        <span class="wrong">D :</span> Faux — l'adénome à prolactine est une cause d'aménorrhée anovulatoire.<br>
+        <span class="wrong">E :</span> Faux — syndrome infectieux + hémorragie.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q23 -->
+  <div class="card">
+    <span class="badge badge-rf">Réponse Fausse (RF)</span>
+    <div class="q-header">
+      <span class="q-num">23</span>
+      <div>
+        <div class="q-theme">Dépression puerpérale</div>
+        <div class="q-text">Concernant la dépression puerpérale, quelle proposition est <strong>fausse</strong> ?</div>
+      </div>
+    </div>
+    <ul class="options">
+      <li><span class="opt-letter">A.</span> Elle survient après 1 mois.</li>
+      <li><span class="opt-letter">B.</span> Elle est caractérisée par une forte mélancolie.</li>
+      <li><span class="opt-letter">C.</span> Elle se voit sur un terrain particulier (mères célibataires).</li>
+      <li><span class="opt-letter">D.</span> Le traitement repose sur la psychothérapie.</li>
+      <li><span class="opt-letter">E.</span> Le traitement repose sur les neuroleptiques en première intention.</li>
+    </ul>
+    <details class="correction">
+      <summary>Correction & explication détaillée</summary>
+      <div class="corr-body">
+        <p><span class="correct">Réponse : E.</span></p>
+        <p>Le traitement de la dépression puerpérale repose sur la <strong>psychothérapie</strong>. Les neuroleptiques sont réservés à la psychose puerpérale.</p>
+        <p><span class="wrong">A, B, C, D sont exactes :</span> la dépression puerpérale survient après 1 mois, se caractérise par une forte mélancolie, se voit sur un terrain particulier (mères célibataires), et se traite par psychothérapie.</p>
+        <p><strong>Piège :</strong> Bien distinguer les trois entités psychiatriques du post-partum et leurs traitements respectifs.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q24 -->
+  <div class="card">
+    <span class="badge badge-multi">Choix multiples (2–3 réponses)</span>
+    <div class="q-header">
+      <span class="q-num">24</span>
+      <div>
+        <div class="q-theme">Traitement de la mastite suppurée</div>
+        <div class="q-text">Quelles sont les modalités thérapeutiques de la mastite suppurée ? <em>(2 à 3 réponses)</em></div>
+      </div>
+    </div>
+    <ul class="options">
+      <li><span class="opt-letter">A.</span> Arrêt de l'allaitement avec vidange du sein</li>
+      <li><span class="opt-letter">B.</span> Antibiothérapie anti-staphylococcique pendant 15 jours</li>
+      <li><span class="opt-letter">C.</span> Poche de glace</li>
+      <li><span class="opt-letter">D.</span> AINS seuls</li>
+      <li><span class="opt-letter">E.</span> Drainage chirurgical en cas d'abcédation</li>
+    </ul>
+    <details class="correction">
+      <summary>Correction & explication détaillée</summary>
+      <div class="corr-body">
+        <p><span class="correct">Réponses : A, B, C, E.</span></p>
+        <p>Le traitement de la mastite suppurée comprend :</p>
+        <ul>
+          <li><strong>A :</strong> Arrêt de l'allaitement avec vidange du sein ;</li>
+          <li><strong>B :</strong> Antibiothérapie anti-staphylococcique pendant 15 jours ;</li>
+          <li><strong>C :</strong> Poche de glace ;</li>
+          <li><strong>E :</strong> Drainage chirurgical en cas d'abcédation.</li>
+        </ul>
+        <p><span class="wrong">D :</span> Faux — les AINS seuls sont insuffisants ; ils sont utilisés dans la lymphangite, pas dans la mastite suppurée.</p>
+        <p><strong>Piège :</strong> Ne pas confondre traitement de la lymphangite (AINS, aspirine, tirage du lait) et de la mastite suppurée (arrêt allaitement, antibiotiques 15 jours, glace, drainage si abcès).</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q25 -->
+  <div class="card">
+    <span class="badge badge-simple">Choix simple (1 seule bonne réponse)</span>
+    <div class="q-header">
+      <span class="q-num">25</span>
+      <div>
+        <div class="q-theme">Thrombose veineuse profonde — Prise en charge</div>
+        <div class="q-text">Quelle est la prise en charge de première intention d'une thrombose veineuse profonde du post-partum ?</div>
+      </div>
+    </div>
+    <ul class="options">
+      <li><span class="opt-letter">A.</span> Anticoagulation, contention veineuse et surveillance du bilan d'hémostase</li>
+      <li><span class="opt-letter">B.</span> AINS seuls</li>
+      <li><span class="opt-letter">C.</span> Arrêt de l'allaitement et antibiotiques</li>
+      <li><span class="opt-letter">D.</span> Drainage chirurgical</li>
+      <li><span class="opt-letter">E.</span> Simple surveillance clinique</li>
+    </ul>
+    <details class="correction">
+      <summary>Correction & explication détaillée</summary>
+      <div class="corr-body">
+        <p><span class="correct">Réponse : A.</span></p>
+        <p>Le traitement de la TVP du post-partum repose sur :</p>
+        <ul>
+          <li><strong>Anticoagulation</strong> (héparine) ;</li>
+          <li><strong>Contention veineuse</strong> ;</li>
+          <li><strong>Surveillance du bilan d'hémostase</strong>.</li>
+        </ul>
+        <p>Le diagnostic est confirmé par l'<strong>écho-doppler des membres inférieurs</strong>.</p>
+        <p><span class="wrong">B :</span> Faux — les AINS sont utilisés dans la thrombose veineuse superficielle, pas dans la TVP.<br>
+        <span class="wrong">C :</span> Faux — pas d'antibiotiques dans la TVP.<br>
+        <span class="wrong">D :</span> Faux — pas de drainage chirurgical.<br>
+        <span class="wrong">E :</span> Faux — risque d'embolie pulmonaire, traitement anticoagulant urgent.</p>
+        <p><strong>Piège :</strong> Ne pas confondre TVS (AINS + contention) et TVP (anticoagulation + contention + bilan d'hémostase).</p>
+      </div>
+    </details>
+  </div>
+
+</section>
+
+<!-- ================= SECTION 2 : CAS CLINIQUES ================= -->
+<section class="section" id="cas">
+  <div class="section-head">
+    <div class="section-icon">🏥</div>
+    <div>
+      <h2>5 Cas Cliniques Hospitaliers Algériens</h2>
+      <p>Scénarios réalistes — CHU, EPH — Diagnostic, examens et prise en charge</p>
+    </div>
+  </div>
+
+  <!-- CAS 1 -->
+  <div class="case-card">
+    <div class="case-top">
+      <div class="case-icon">🩺</div>
+      <div>
+        <h3>Cas n°1 — Femme de 28 ans, J6 du post-partum</h3>
+        <div class="case-sub">Motif : fièvre et sein douloureux — CHU, service de gynécologie-obstétrique</div>
+      </div>
+    </div>
+    <div class="case-body">
+      <div class="vignette">
+        <strong>Vignette clinique :</strong> Mme B., 28 ans, primipare, accouchement par voie basse il y a 6 jours. Allaitement maternel exclusif. Elle consulte pour une fièvre brutale à 40 °C apparue ce matin, associée à un sein droit rouge, chaud, tendu, avec une douleur irradiant jusqu'à l'aisselle. À l'examen : placard rouge, chaud, étendu du mamelon jusqu'à l'aisselle droite, avec adénite inflammatoire axillaire. Présence de crevasses au niveau du mamelon droit. L'état général est conservé par ailleurs, TA 110/70 mmHg, FC 96/min.
+      </div>
+
+      <div class="card" style="margin-bottom:0;box-shadow:none;border:1px solid #e2e8f0;">
+        <span class="badge badge-case">QCM clinique</span>
+
+        <div style="margin-bottom:20px;">
+          <div class="q-header">
+            <span class="q-num">C1</span>
+            <div>
+              <div class="q-theme">Diagnostic le plus probable</div>
+              <div class="q-text">Quel est le diagnostic le plus probable ?</div>
+            </div>
+          </div>
+          <ul class="options">
+            <li><span class="opt-letter">A.</span> Mastite suppurée</li>
+            <li><span class="opt-letter">B.</span> Lymphangite mammaire</li>
+            <li><span class="opt-letter">C.</span> Engorgement mammaire simple</li>
+            <li><span class="opt-letter">D.</span> Abcès du sein</li>
+            <li><span class="opt-letter">E.</span> Cancer inflammatoire du sein</li>
+          </ul>
+          <details class="correction">
+            <summary>Correction</summary>
+            <div class="corr-body">
+              <p><span class="correct">Réponse : B.</span> Le tableau associe un début brutal avec clocher thermique à 40 °C, un placard rouge chaud étendu du mamelon à l'aisselle avec adénite inflammatoire, survenant à J6, dans un contexte de crevasses. C'est la présentation typique de la lymphangite.</p>
+              <p><span class="wrong">A :</span> La mastite suppurée survient plus tard (J10–J15), avec fièvre modérée 38–38,5 °C et écoulement purulent.<br>
+              <span class="wrong">C :</span> L'engorgement mammaire est bilatéral, sans placard rouge ni fièvre à 40 °C.<br>
+              <span class="wrong">D :</span> L'abcès se manifeste par une collection fluctuante, généralement après une mastite mal traitée.<br>
+              <span class="wrong">E :</span> Le cancer inflammatoire est chronique, non fébrile à 40 °C, sans contexte d'allaitement récent.</p>
+            </div>
+          </details>
+        </div>
+
+        <div style="margin-bottom:20px;">
+          <div class="q-header">
+            <span class="q-num">C2</span>
+            <div>
+              <div class="q-theme">Traitement de première intention</div>
+              <div class="q-text">Quel est le traitement de première intention ?</div>
+            </div>
+          </div>
+          <ul class="options">
+            <li><span class="opt-letter">A.</span> Arrêt de l'allaitement et antibiothérapie anti-staphylococcique 15 jours</li>
+            <li><span class="opt-letter">B.</span> AINS (aspirine 500 mg) et tirage artificiel du lait jusqu'à guérison</li>
+            <li><span class="opt-letter">C.</span> Drainage chirurgical immédiat</li>
+            <li><span class="opt-letter">D.</span> Antibiothérapie orale de 5 jours</li>
+            <li><span class="opt-letter">E.</span> Aucun traitement, simple surveillance</li>
+          </ul>
+          <details class="correction">
+            <summary>Correction</summary>
+            <div class="corr-body">
+              <p><span class="correct">Réponse : B.</span> Le traitement de la lymphangite repose sur les AINS (aspirine 500 mg donne de bons résultats) et le tirage artificiel du lait jusqu'à guérison. L'allaitement est maintenu.</p>
+              <p><span class="wrong">A :</span> Ce traitement est celui de la mastite suppurée.<br>
+              <span class="wrong">C :</span> Le drainage chirurgical est réservé à l'abcédation.<br>
+              <span class="wrong">D :</span> L'antibiothérapie n'est pas le traitement de première intention de la lymphangite.<br>
+              <span class="wrong">E :</span> L'évolution peut se faire vers la mastite suppurée si non traitée.</p>
+            </div>
+          </details>
+        </div>
+
+        <div>
+          <div class="q-header">
+            <span class="q-num">C3</span>
+            <div>
+              <div class="q-theme">Évolution et complication</div>
+              <div class="q-text">Si la lymphangite n'est pas traitée correctement, quelle complication peut survenir ?</div>
+            </div>
+          </div>
+          <ul class="options">
+            <li><span class="opt-letter">A.</span> Mastite suppurée (galactophorite)</li>
+            <li><span class="opt-letter">B.</span> Endométrite</li>
+            <li><span class="opt-letter">C.</span> Thrombose veineuse profonde</li>
+            <li><span class="opt-letter">D.</span> Psychose puerpérale</li>
+            <li><span class="opt-letter">E.</span> Syndrome de Sheehan</li>
+          </ul>
+          <details class="correction">
+            <summary>Correction</summary>
+            <div class="corr-body">
+              <p><span class="correct">Réponse : A.</span> La mastite suppurée (galactophorite) est la complication d'une lymphangite mal traitée, survenant entre J10 et J15, due au staphylocoque et au streptocoque, avec une porte d'entrée canalaire.</p>
+              <p><span class="wrong">B, C, D, E :</span> Ces complications ne sont pas directement liées à l'évolution d'une lymphangite mammaire.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CAS 2 -->
+  <div class="case-card">
+    <div class="case-top">
+      <div class="case-icon">🦵</div>
+      <div>
+        <h3>Cas n°2 — Femme de 34 ans, J12 du post-partum</h3>
+        <div class="case-sub">Motif : douleur unilatérale du mollet — EPH, consultation post-natale</div>
+      </div>
+    </div>
+    <div class="case-body">
+      <div class="vignette">
+        <strong>Vignette clinique :</strong> Mme K., 34 ans, 3<sup>e</sup> pare, 3<sup>e</sup> geste, accouchement dystocique il y a 12 jours. Antécédents de varices des membres inférieurs. Elle consulte pour une douleur unilatérale du mollet gauche apparue progressivement depuis 48 heures, avec sensation de jambe lourde. À l'examen : discrète œdème du mollet gauche, chaleur locale, douleur à la palpation, signe de Homans positif. Fièvre modérée à 38 °C. L'écho-doppler des membres inférieurs confirme le diagnostic.
+      </div>
+
+      <div class="card" style="margin-bottom:0;box-shadow:none;border:1px solid #e2e8f0;">
+        <span class="badge badge-case">QCM clinique</span>
+
+        <div style="margin-bottom:20px;">
+          <div class="q-header">
+            <span class="q-num">C4</span>
+            <div>
+              <div class="q-theme">Diagnostic</div>
+              <div class="q-text">Quel est le diagnostic le plus probable ?</div>
+            </div>
+          </div>
+          <ul class="options">
+            <li><span class="opt-letter">A.</span> Thrombose veineuse superficielle</li>
+            <li><span class="opt-letter">B.</span> Thrombose veineuse profonde du membre inférieur gauche</li>
+            <li><span class="opt-letter">C.</span> Lymphangite</li>
+            <li><span class="opt-letter">D.</span> Phlébite pelvienne</li>
+            <li><span class="opt-letter">E.</span> Embolie pulmonaire</li>
+          </ul>
+          <details class="correction">
+            <summary>Correction</summary>
+            <div class="corr-body">
+              <p><span class="correct">Réponse : B.</span> Le tableau associe un début progressif, une fièvre modérée à 38 °C inconstante, une douleur unilatérale du mollet, une sensation de jambe lourde, un discret œdème, une chaleur du mollet, un signe de Homans positif. L'écho-doppler confirme la TVP.</p>
+              <p><span class="wrong">A :</span> La TVS se présente comme un cordon induré et douloureux sur le trajet d'une veine superficielle.<br>
+              <span class="wrong">C :</span> La lymphangite est mammaire.<br>
+              <span class="wrong">D :</span> La phlébite pelvienne complique une endométrite avec douleur pelvienne et signes urinaires/rectaux.<br>
+              <span class="wrong">E :</span> L'embolie pulmonaire se manifeste par une dyspnée, une toux, une douleur basi-thoracique, une cyanose, une hémoptysie.</p>
+            </div>
+          </details>
+        </div>
+
+        <div style="margin-bottom:20px;">
+          <div class="q-header">
+            <span class="q-num">C5</span>
+            <div>
+              <div class="q-theme">Facteurs de risque</div>
+              <div class="q-text">Parmi les antécédents de cette patiente, quel est le facteur de risque thromboembolique majeur ?</div>
+            </div>
+          </div>
+          <ul class="options">
+            <li><span class="opt-letter">A.</span> Primiparité</li>
+            <li><span class="opt-letter">B.</span> Accouchement dystocique</li>
+            <li><span class="opt-letter">C.</span> Jeune âge</li>
+            <li><span class="opt-letter">D.</span> Absence d'antécédent thromboembolique</li>
+            <li><span class="opt-letter">E.</span> Absence d'obésité</li>
+          </ul>
+          <details class="correction">
+            <summary>Correction</summary>
+            <div class="corr-body">
+              <p><span class="correct">Réponse : B.</span> L'accouchement dystocique (ou par césarienne) est un facteur de risque thromboembolique majeur du post-partum. S'y ajoutent ici la multiparité et les varices des membres inférieurs.</p>
+              <p><span class="wrong">A, C, D, E :</span> Ne sont pas des facteurs de risque thromboembolique ; la primiparité et le jeune âge sont même plutôt rassurants.</p>
+            </div>
+          </details>
+        </div>
+
+        <div>
+          <div class="q-header">
+            <span class="q-num">C6</span>
+            <div>
+              <div class="q-theme">Traitement</div>
+              <div class="q-text">Quel est le traitement adapté ?</div>
+            </div>
+          </div>
+          <ul class="options">
+            <li><span class="opt-letter">A.</span> Anticoagulation, contention veineuse et surveillance du bilan d'hémostase</li>
+            <li><span class="opt-letter">B.</span> AINS seuls</li>
+            <li><span class="opt-letter">C.</span> Antibiotiques seuls</li>
+            <li><span class="opt-letter">D.</span> Drainage chirurgical</li>
+            <li><span class="opt-letter">E.</span> Poche de glace</li>
+          </ul>
+          <details class="correction">
+            <summary>Correction</summary>
+            <div class="corr-body">
+              <p><span class="correct">Réponse : A.</span> Le traitement de la TVP repose sur l'anticoagulation, la contention veineuse et la surveillance du bilan d'hémostase.</p>
+              <p><span class="wrong">B :</span> Les AINS sont réservés à la thrombose veineuse superficielle.<br>
+              <span class="wrong">C :</span> Pas d'antibiotiques dans la TVP.<br>
+              <span class="wrong">D :</span> Pas de drainage chirurgical.<br>
+              <span class="wrong">E :</span> La poche de glace n'est pas le traitement de la TVP.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CAS 3 -->
+  <div class="case-card">
+    <div class="case-top">
+      <div class="case-icon">🧠</div>
+      <div>
+        <h3>Cas n°3 — Femme de 24 ans, J3 du post-partum</h3>
+        <div class="case-sub">Motif : troubles de l'humeur — CHU, maternité</div>
+      </div>
+    </div>
+    <div class="case-body">
+      <div class="vignette">
+        <strong>Vignette clinique :</strong> Mme L., 24 ans, primipare, accouchement par voie basse il y a 3 jours. Allaitement maternel. Depuis ce matin, elle présente une asthénie marquée, des crises de larmes répétées, une irritabilité, sans troubles du cours de la pensée ni délire. L'examen somatique est normal. La patiente est consciente de son état et demande de l'aide.
+      </div>
+
+      <div class="card" style="margin-bottom:0;box-shadow:none;border:1px solid #e2e8f0;">
+        <span class="badge badge-case">QCM clinique</span>
+
+        <div style="margin-bottom:20px;">
+          <div class="q-header">
+            <span class="q-num">C7</span>
+            <div>
+              <div class="q-theme">Diagnostic psychiatrique</div>
+              <div class="q-text">Quel est le diagnostic le plus probable ?</div>
+            </div>
+          </div>
+          <ul class="options">
+            <li><span class="opt-letter">A.</span> Psychose puerpérale</li>
+            <li><span class="opt-letter">B.</span> Dépression puerpérale</li>
+            <li><span class="opt-letter">C.</span> Post-partum blues</li>
+            <li><span class="opt-letter">D.</span> Schizophrénie</li>
+            <li><span class="opt-letter">E.</span> Trouble bipolaire</li>
+          </ul>
+          <details class="correction">
+            <summary>Correction</summary>
+            <div class="corr-body">
+              <p><span class="correct">Réponse : C.</span> Le tableau associe asthénie, crises de larmes, irritabilité, survenant au 3<sup>e</sup> jour du post-partum, sans délire ni trouble du cours de la pensée. C'est le post-partum blues.</p>
+              <p><span class="wrong">A :</span> La psychose puerpérale survient après 15 jours, avec bouffée délirante et tendances suicidaires.<br>
+              <span class="wrong">B :</span> La dépression puerpérale survient après 1 mois, avec forte mélancolie.<br>
+              <span class="wrong">D, E :</span> Pas d'argument pour une schizophrénie ou un trouble bipolaire.</p>
+            </div>
+          </details>
+        </div>
+
+        <div>
+          <div class="q-header">
+            <span class="q-num">C8</span>
+            <div>
+              <div class="q-theme">Prise en charge</div>
+              <div class="q-text">Quelle est la prise en charge adaptée ?</div>
+            </div>
+          </div>
+          <ul class="options">
+            <li><span class="opt-letter">A.</span> Neuroleptiques et antidépresseurs</li>
+            <li><span class="opt-letter">B.</span> Rassurer la maman</li>
+            <li><span class="opt-letter">C.</span> Psychothérapie exclusive</li>
+            <li><span class="opt-letter">D.</span> Hospitalisation en psychiatrie</li>
+            <li><span class="opt-letter">E.</span> Arrêt de l'allaitement</li>
+          </ul>
+          <details class="correction">
+            <summary>Correction</summary>
+            <div class="corr-body">
+              <p><span class="correct">Réponse : B.</span> Le traitement du post-partum blues consiste à rassurer la maman. L'évolution est spontanément favorable en quelques jours, sans séquelles.</p>
+              <p><span class="wrong">A :</span> Neuroleptiques et antidépresseurs = psychose puerpérale.<br>
+              <span class="wrong">C :</span> Psychothérapie = dépression puerpérale.<br>
+              <span class="wrong">D :</span> Pas d'indication d'hospitalisation.<br>
+              <span class="wrong">E :</span> Pas d'arrêt de l'allaitement.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CAS 4 -->
+  <div class="case-card">
+    <div class="case-top">
+      <div class="case-icon">🩸</div>
+      <div>
+        <h3>Cas n°4 — Femme de 31 ans, 6 semaines après l'accouchement</h3>
+        <div class="case-sub">Motif : hémorragie génitale brutale — EPH, urgences gynécologiques</div>
+      </div>
+    </div>
+    <div class="case-body">
+      <div class="vignette">
+        <strong>Vignette clinique :</strong> Mme M., 31 ans, 2<sup>e</sup> pare, accouchement par voie basse il y a 6 semaines. Allaitement artificiel. Elle consulte aux urgences pour une hémorragie génitale brutale survenue ce matin, sans douleur. L'examen clinique est pauvre : pas de fièvre, pas de douleur pelvienne, pas de masse palpable. L'échographie pelvienne ne retrouve pas de rétention. Le bilan biologique est sans particularité.
+      </div>
+
+      <div class="card" style="margin-bottom:0;box-shadow:none;border:1px solid #e2e8f0;">
+        <span class="badge badge-case">QCM clinique</span>
+
+        <div style="margin-bottom:20px;">
+          <div class="q-header">
+            <span class="q-num">C9</span>
+            <div>
+              <div class="q-theme">Diagnostic</div>
+              <div class="q-text">Quel est le diagnostic le plus probable ?</div>
+            </div>
+          </div>
+          <ul class="options">
+            <li><span class="opt-letter">A.</span> Endométrite hémorragique</li>
+            <li><span class="opt-letter">B.</span> Retour de couches hémorragique</li>
+            <li><span class="opt-letter">C.</span> Rétention placentaire</li>
+            <li><span class="opt-letter">D.</span> Inertie utérine</li>
+            <li><span class="opt-letter">E.</span> Syndrome de Sheehan</li>
+          </ul>
+          <details class="correction">
+            <summary>Correction</summary>
+            <div class="corr-body">
+              <p><span class="correct">Réponse : B.</span> Le retour de couches hémorragique est une hémorragie brutale, tardive, survenant plusieurs semaines après l'accouchement, avec un examen clinique et paraclinique pauvre. C'est le cas ici (6 semaines après l'accouchement).</p>
+              <p><span class="wrong">A :</span> L'endométrite hémorragique associe un syndrome infectieux et une hémorragie, et est précoce.<br>
+              <span class="wrong">C :</span> Pas de rétention à l'échographie.<br>
+              <span class="wrong">D :</span> L'inertie utérine est précoce (post-délivrance).<br>
+              <span class="wrong">E :</span> Le syndrome de Sheehan se manifeste par une absence de montée laiteuse et une aménorrhée.</p>
+            </div>
+          </details>
+        </div>
+
+        <div>
+          <div class="q-header">
+            <span class="q-num">C10</span>
+            <div>
+              <div class="q-theme">Traitement</div>
+              <div class="q-text">Quel est le traitement de première intention ?</div>
+            </div>
+          </div>
+          <ul class="options">
+            <li><span class="opt-letter">A.</span> Œstrogènes en l'absence de contre-indications</li>
+            <li><span class="opt-letter">B.</span> Utérotoniques</li>
+            <li><span class="opt-letter">C.</span> Antibiothérapie</li>
+            <li><span class="opt-letter">D.</span> Révision utérine</li>
+            <li><span class="opt-letter">E.</span> Anticoagulation</li>
+          </ul>
+          <details class="correction">
+            <summary>Correction</summary>
+            <div class="corr-body">
+              <p><span class="correct">Réponse : A.</span> Le traitement du retour de couches hémorragique repose sur l'administration des œstrogènes en l'absence de contre-indications.</p>
+              <p><span class="wrong">B :</span> Les utérotoniques sont utilisés dans les hémorragies précoces (inertie utérine).<br>
+              <span class="wrong">C :</span> Pas d'antibiothérapie en l'absence de syndrome infectieux.<br>
+              <span class="wrong">D :</span> La révision utérine est indiquée en cas de rétention.<br>
+              <span class="wrong">E :</span> L'anticoagulation est indiquée dans les complications thromboemboliques.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CAS 5 -->
+  <div class="case-card">
+    <div class="case-top">
+      <div class="case-icon">🧬</div>
+      <div>
+        <h3>Cas n°5 — Femme de 38 ans, 3 mois après l'accouchement</h3>
+        <div class="case-sub">Motif : aménorrhée et absence de montée laiteuse — CHU, endocrinologie</div>
+      </div>
+    </div>
+    <div class="case-body">
+      <div class="vignette">
+        <strong>Vignette clinique :</strong> Mme H., 38 ans, 4<sup>e</sup> pare, a accouché il y a 3 mois dans un contexte de choc hémorragique sévère ayant nécessité une transfusion. Elle n'allaite pas. Elle consulte pour une absence de retour de couches et une absence de montée laiteuse depuis l'accouchement. À l'examen : patiente asthénique, peau pâle et sèche, TA 90/60 mmHg, FC 88/min. Le bilan hormonal retrouve une insuffisance antéhypophysaire globale.
+      </div>
+
+      <div class="card" style="margin-bottom:0;box-shadow:none;border:1px solid #e2e8f0;">
+        <span class="badge badge-case">QCM clinique</span>
+
+        <div style="margin-bottom:20px;">
+          <div class="q-header">
+            <span class="q-num">C11</span>
+            <div>
+              <div class="q-theme">Diagnostic</div>
+              <div class="q-text">Quel est le diagnostic le plus probable ?</div>
+            </div>
+          </div>
+          <ul class="options">
+            <li><span class="opt-letter">A.</span> Syndrome de Sheehan</li>
+            <li><span class="opt-letter">B.</span> Hyperprolactinémie</li>
+            <li><span class="opt-letter">C.</span> Synéchies utérines</li>
+            <li><span class="opt-letter">D.</span> Aménorrhée physiologique du post-partum</li>
+            <li><span class="opt-letter">E.</span> Grossesse débutante</li>
+          </ul>
+          <details class="correction">
+            <summary>Correction</summary>
+            <div class="corr-body">
+              <p><span class="correct">Réponse : A.</span> Le syndrome de Sheehan est secondaire à une nécrose de l'antéhypophyse dans un contexte de choc hémorragique. Il se manifeste par une absence de montée laiteuse et une aménorrhée, avec insuffisance antéhypophysaire globale.</p>
+              <p><span class="wrong">B :</span> L'hyperprolactinémie est due à un adénome à prolactine, avec prolactine élevée.<br>
+              <span class="wrong">C :</span> Les synéchies utérines sont une complication traumatique, avec ovulation présente.<br>
+              <span class="wrong">D :</span> L'aménorrhée physiologique du post-partum ne dépasse pas 3 mois chez la femme qui n'allaite pas.<br>
+              <span class="wrong">E :</span> Pas d'argument pour une grossesse.</p>
+            </div>
+          </details>
+        </div>
+
+        <div>
+          <div class="q-header">
+            <span class="q-num">C12</span>
+            <div>
+              <div class="q-theme">Mécanisme physiopathologique</div>
+              <div class="q-text">Quel est le mécanisme physiopathologique principal ?</div>
+            </div>
+          </div>
+          <ul class="options">
+            <li><span class="opt-letter">A.</span> Nécrose de l'antéhypophyse</li>
+            <li><span class="opt-letter">B.</span> Nécrose de la post-hypophyse</li>
+            <li><span class="opt-letter">C.</span> Hyperplasie hypophysaire</li>
+            <li><span class="opt-letter">D.</span> Adénome à prolactine</li>
+            <li><span class="opt-letter">E.</span> Insuffisance ovarienne primitive</li>
+          </ul>
+          <details class="correction">
+            <summary>Correction</summary>
+            <div class="corr-body">
+              <p><span class="correct">Réponse : A.</span> Le syndrome de Sheehan est dû à une nécrose de l'antéhypophyse, secondaire à un choc hémorragique avec hypotension prolongée.</p>
+              <p><span class="wrong">B :</span> La post-hypophyse n'est pas concernée.<br>
+              <span class="wrong">C :</span> Pas d'hyperplasie.<br>
+              <span class="wrong">D :</span> L'adénome à prolactine est une autre cause d'aménorrhée.<br>
+              <span class="wrong">E :</span> L'atteinte est hypophysaire, pas ovarienne primitive.</p>
+            </div>
+          </details>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ================= SECTION 3 : CARTE CONCEPTUELLE ================= -->
+<section class="section" id="carte">
+  <div class="section-head">
+    <div class="section-icon">🗺️</div>
+    <div>
+      <h2>Carte Conceptuelle & Synthèse Visuelle</h2>
+      <p>Structures HTML/CSS — Arbres décisionnels, tableaux comparatifs, cartes contrastées</p>
+    </div>
+  </div>
+
+  <!-- Concept grid -->
+  <div class="concept-grid">
+    <div class="concept-box navy">
+      <h4><span class="dot"></span>Définition & Périodes</h4>
+      <ul>
+        <li>Post-partum : accouchement → retour de couches</li>
+        <li>Durée : environ 6 semaines</li>
+        <li>Post-partum immédiat : accouchement → J7</li>
+        <li>Post-partum tardif : J7 → retour de couches</li>
+      </ul>
+    </div>
+    <div class="concept-box rose">
+      <h4><span class="dot"></span>4 Risques Majeurs</h4>
+      <ul>
+        <li>Hémorragique</li>
+        <li>Infectieux</li>
+        <li>Thromboembolique</li>
+        <li>Psychiatrique</li>
+      </ul>
+    </div>
+    <div class="concept-box">
+      <h4><span class="dot"></span>Involution Utérine</h4>
+      <ul>
+        <li>Post-délivrance : sous-ombilical (globe de sécurité)</li>
+        <li>J6–J12 : mi-distance symphyse-ombilic</li>
+        <li>J12–S5 : pelvien, rétro-pubien</li>
+        <li>Après S5 : forme normale</li>
+      </ul>
+    </div>
+    <div class="concept-box amber">
+      <h4><span class="dot"></span>Lochies</h4>
+      <ul>
+        <li>J0–J2 : sanglantes (sang non coagulé)</li>
+        <li>J2–J8 : séro-sanglantes</li>
+        <li>J8–J15 : séreuses</li>
+        <li>Puis 48 h sanglantes = petit retour de couches</li>
+        <li>Odeur fade — sinon infection</li>
+      </ul>
+    </div>
+    <div class="concept-box violet">
+      <h4><span class="dot"></span>Allaitement — Pathologies</h4>
+      <ul>
+        <li>Mamelon douloureux : primipare, pas de lésion, 3–4 j</li>
+        <li>Crevasses : lésions, douleur vive aux tétées</li>
+        <li>Engorgement : 15 %, seins durs, transitoire</li>
+        <li>Lymphangite : J5–J10, 40 °C, placard rouge</li>
+        <li>Mastite : J10–J15, staph/strepto, abcès possible</li>
+      </ul>
+    </div>
+    <div class="concept-box rose">
+      <h4><span class="dot"></span>Thromboemboliques</h4>
+      <ul>
+        <li>Hypercoagulabilité physiologique 2 semaines</li>
+        <li>TVS : cordon induré, AINS + contention</li>
+        <li>TVP : Homans +, écho-doppler, anticoagulation</li>
+        <li>Phlébite pelvienne : endométrite rebelle</li>
+        <li>EP : dyspnée, hémoptysie — urgence vitale</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Flowchart hémorragies -->
+  <h3 style="margin:34px 0 10px;color:var(--navy);font-size:1.05rem;">🔹 Arbre décisionnel — Complications hémorragiques du post-partum</h3>
+  <div class="flow">
+    <div class="flow-node navy">Hémorragie du post-partum</div>
+    <div class="flow-arrow"></div>
+    <div class="flow-node">Précoce (post-délivrance – J7)</div>
+    <div class="flow-arrow"></div>
+    <div class="flow-node amber">Inertie utérine · Rétention placentaire · Endométrite hémorragique</div>
+    <div class="flow-arrow"></div>
+    <div class="flow-node rose">Traitement : révision utérine + utérotoniques</div>
+    <div class="flow-arrow"></div>
+    <div class="flow-node">Tardive (au-delà de J7)</div>
+    <div class="flow-arrow"></div>
+    <div class="flow-node amber">Retour de couches hémorragique</div>
+    <div class="flow-arrow"></div>
+    <div class="flow-node rose">Traitement : œstrogènes (si pas de CI)</div>
+  </div>
+
+  <!-- Tableau comparatif -->
+  <h3 style="margin:34px 0 10px;color:var(--navy);font-size:1.05rem;">🔹 Tableau comparatif — Pathologies mammaires de l'allaitement</h3>
+  <div style="overflow-x:auto;">
+    <table class="vtable">
+      <thead>
+        <tr>
+          <th>Entité</th>
+          <th>Délai</th>
+          <th>Clinique</th>
+          <th>Traitement</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Mamelon douloureux</strong></td>
+          <td>Premiers jours</td>
+          <td>Douleur, <strong>pas de lésion</strong>, primipare</td>
+          <td>Réassurance, hygiène</td>
+        </tr>
+        <tr>
+          <td><strong>Crevasses</strong></td>
+          <td>Premiers jours</td>
+          <td>Gerçures, fissures, ulcérations, douleur vive aux tétées</td>
+          <td>Vidange du sein, pommades vitamines A et C</td>
+        </tr>
+        <tr>
+          <td><strong>Engorgement</strong></td>
+          <td>&gt; 2–3 jours après montée laiteuse</td>
+          <td>Seins durs, douloureux, tétées difficiles</td>
+          <td>Massage sous douche chaude / glace + ocytocique (2 UI IM)</td>
+        </tr>
+        <tr>
+          <td><strong>Lymphangite</strong></td>
+          <td>J5–J10</td>
+          <td>Clocher 40 °C, placard rouge chaud, adénite</td>
+          <td>AINS (aspirine 500 mg), tirage du lait</td>
+        </tr>
+        <tr>
+          <td><strong>Mastite suppurée</strong></td>
+          <td>J10–J15</td>
+          <td>Sein dur rouge chaud, écoulement purulent, fièvre 38–38,5 °C</td>
+          <td>Arrêt allaitement, ATB anti-staph 15 j, glace, drainage si abcès</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- Tableau psychiatrique -->
+  <h3 style="margin:34px 0 10px;color:var(--navy);font-size:1.05rem;">🔹 Tableau comparatif — Troubles psychiatriques du post-partum</h3>
+  <div style="overflow-x:auto;">
+    <table class="vtable">
+      <thead>
+        <tr>
+          <th>Entité</th>
+          <th>Délai</th>
+          <th>Clinique</th>
+          <th>Traitement</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Post-partum blues</strong></td>
+          <td>J3</td>
+          <td>Asthénie, crises de larmes, irritabilité</td>
+          <td>Rassurer la maman</td>
+        </tr>
+        <tr>
+          <td><strong>Psychose puerpérale</strong></td>
+          <td>Après 15 jours</td>
+          <td>Bouffée délirante, tendances suicidaires</td>
+          <td>Neuroleptiques, antidépresseurs</td>
+        </tr>
+        <tr>
+          <td><strong>Dépression puerpérale</strong></td>
+          <td>Après 1 mois</td>
+          <td>Forte mélancolie, terrain particulier</td>
+          <td>Psychothérapie</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</section>
+
+<!-- ================= SECTION 4 : MNÉMOTECHNIQUES ================= -->
+<section class="section" id="mnemo">
+  <div class="section-head">
+    <div class="section-icon">🧠</div>
+    <div>
+      <h2>Mnémotechniques & Trucs d'Examen</h2>
+      <p>Retenir l'essentiel — Pièges docimologiques classiques</p>
+    </div>
+  </div>
+
+  <div class="mnemonic-card">
+    <h4><span class="mnemo-key">HIT-P</span> Les 4 risques du post-partum</h4>
+    <p><strong>H</strong>émorragique — <strong>I</strong>nfectieux — <strong>T</strong>hromboembolique — <strong>P</strong>sychiatrique.</p>
+    <p>💡 <em>Astuce :</em> « HIT-P » comme un « hit » à ne pas manquer en salle d'accouchement.</p>
+  </div>
+
+  <div class="mnemonic-card">
+    <h4><span class="mnemo-key">SOMBRE</span> L'involution utérine</h4>
+    <ul>
+      <li><strong>S</strong>ous-ombilical (post-délivrance) — globe de sécurité</li>
+      <li><strong>O</strong>mbilic-symphyse (J6–J12) — mi-distance</li>
+      <li><strong>M</strong>i-chemin pelvien (J12–S5) — rétro-pubien</li>
+      <li><strong>B</strong>ase normale (après S5) — forme normale</li>
+    </ul>
+    <p>💡 <em>Astuce :</em> « SOMBRE » descend progressivement de l'ombilic vers le pelvis.</p>
+  </div>
+
+  <div class="mnemonic-card">
+    <h4><span class="mnemo-key">SSS</span> Les lochies</h4>
+    <ul>
+      <li><strong>S</strong>anglantes : J0–J2</li>
+      <li><strong>S</strong>éro-sanglantes : J2–J8</li>
+      <li><strong>S</strong>éreuses : J8–J15</li>
+    </ul>
+    <p>💡 <em>Astuce :</em> « SSS » = Sang → Sérosité → Séreux. Puis 48 h sanglantes = petit retour de couches.</p>
+  </div>
+
+  <div class="mnemonic-card">
+    <h4><span class="mnemo-key">MEC-LM</span> Les pathologies de l'allaitement</h4>
+    <ul>
+      <li><strong>M</strong>amelon douloureux (pas de lésion, primipare, 3–4 j)</li>
+      <li><strong>E</strong>ngorgement (15 %, transitoire, glace + ocytocique)</li>
+      <li><strong>C</strong>revasses (lésions, douleur vive, vitamines A & C)</li>
+      <li><strong>L</strong>ymphangite (J5–J10, 40 °C, AINS)</li>
+      <li><strong>M</strong>astite suppurée (J10–J15, staph, ATB 15 j + arrêt allaitement)</li>
+    </ul>
+    <p>💡 <em>Astuce :</em> « MEC-LM » dans l'ordre chronologique d'apparition.</p>
+  </div>
+
+  <div class="mnemonic-card">
+    <h4><span class="mnemo-key">B-S-D</span> Les 3 troubles psychiatriques</h4>
+    <ul>
+      <li><strong>B</strong>lues : J3, réassurance</li>
+      <li><strong>S</strong>pychose (psychose) : J15, neuroleptiques</li>
+      <li><strong>D</strong>épression : 1 mois, psychothérapie</li>
+    </ul>
+    <p>💡 <em>Astuce :</em> « B-S-D » = du plus précoce et bénin au plus tardif et sévère.</p>
+  </div>
+
+  <div class="mnemonic-card">
+    <h4><span class="mnemo-key">H-A-C</span> La TVP</h4>
+    <ul>
+      <li><strong>H</strong>omans positif (dorsiflexion douloureuse)</li>
+      <li><strong>A</strong>nticoagulation</li>
+      <li><strong>C</strong>ontention veineuse + surveillance bilan d'hémostase</li>
+    </ul>
+    <p>💡 <em>Astuce :</em> « H-A-C » = Homans → Anticoagulation → Contention.</p>
+  </div>
+
+  <div class="trap-card">
+    <h4>⚠️ Pièges docimologiques classiques</h4>
+    <ul>
+      <li><strong>Lymphangite vs Mastite suppurée :</strong> lymphangite = AINS + tirage du lait ; mastite = arrêt allaitement + ATB 15 j + glace. Ne pas inverser !</li>
+      <li><strong>Mamelon douloureux vs Crevasses :</strong> mamelon douloureux = pas de lésion ; crevasses = lésions visibles.</li>
+      <li><strong>TVS vs TVP :</strong> TVS = AINS + contention ; TVP = anticoagulation + contention.</li>
+      <li><strong>Précoce vs Tardif :</strong> hémorragie précoce = inertie/rétention/endométrite hémorragique ; tardive = retour de couches hémorragique.</li>
+      <li><strong>Aménorrhée :</strong> synéchies utérines = ovulation présente ; Sheehan = nécrose antéhypophyse ; hyperprolactinémie = adénome à prolactine.</li>
+      <li><strong>Psychose puerpérale :</strong> survient après 15 jours, pas à J3 (blues).</li>
+      <li><strong>Phlébite pelvienne :</strong> traitement = anticoagulation + antibiothérapie (pas AINS seuls).</li>
+    </ul>
+  </div>
+
+</section>
+
+<!-- ================= SECTION 5 : CONCLUSION ================= -->
+<section class="section" id="conclusion">
+  <div class="conclusion-box">
+    <h3>🎯 Conclusion — À retenir absolument</h3>
+    <p>Le post-partum est une période à <strong>risque élevé de complications</strong>, pouvant être à l'origine d'une mortalité et morbidité maternelles. Une <strong>surveillance attentive</strong> et une <strong>prise en charge adéquate</strong> de la post-accouchée sont nécessaires pour prévenir ces complications. Les 4 axes majeurs sont : hémorragique, infectieux, thromboembolique et psychiatrique.</p>
+    <p class="motiv">« Chaque surveillance post-partum est un acte de prévention qui peut sauver une vie. »</p>
+  </div>
+</section>
+
+</div>
+
+<!-- ================= FOOTER ================= -->
+<footer class="page-footer">
+  <p>Module de révision — Suites de Couches Normales et Pathologiques · 4<sup>e</sup> année médecine · Faculté de Médecine d'Alger</p>
+  <p style="margin-top:6px;">Contenu pédagogique à usage éducatif — Dr MOKRANI</p>
+</footer>
+
+</body>
+</html>

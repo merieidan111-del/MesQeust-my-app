@@ -816,7 +816,7 @@ export const CANCER_RECTUM_RESOURCES: CourseResource[] = [
     courseId: 'crs-gastro-cancer-rectum',
     type: 'Resume',
     title: "Mind Map & Stratégie Thérapeutique : Cancer du Rectum (Pr A. Anou, CHU Douera)",
-    contentMarkdown: `## 🧠 Mind Map & Synthèse : Cancer du Rectum
+    contentMarkdown: `## Mind Map & Synthèse : Cancer du Rectum
 **Basé sur le cours du Pr A. Anou (CHU Douera) - Faculté de Médecine**
 
 ### 1. Épidémiologie & Étiologie
@@ -873,7 +873,7 @@ Cancer du Rectum Confirmé
     courseId: 'crs-gastro-cancer-rectum',
     type: 'Astuce',
     title: "Mnémoniques & Règles d'Or : Cancer du Rectum",
-    contentMarkdown: `### 🧩 Mnémoniques & Astuces de Révision (CHU Douera)
+    contentMarkdown: `### Mnémoniques & Astuces de Révision (CHU Douera)
 
 1. **Critères IRM Pelvienne (« DISTANCED »)** :
    - **D** : Distance à la marge anale

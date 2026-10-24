@@ -728,7 +728,7 @@ export const KYSTE_HYDATIQUE_FOIE_RESOURCES: CourseResource[] = [
     courseId: 'crs-gastro-kyste-hydatique-foie',
     type: 'Astuce',
     title: 'Mnémotechniques : Kyste Hydatique du Foie',
-    contentMarkdown: `### 💡 Mnémotechniques d'Examen (KHF - Algérie)
+    contentMarkdown: `### Astuce : Mnémotechniques d'Examen (KHF - Algérie)
 
 1. **Classification de Gharbi : « U.D.N.P.C »**
    - **Type I** : **U**nivésiculaire liquidien pur

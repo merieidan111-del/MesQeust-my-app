@@ -556,7 +556,7 @@ CONDITIONS TECHNIQUES                   MARQUEURS DE LIGNÉE                    
     courseId: 'crs-hemato-16',
     type: 'astuce',
     title: "Astuces & Pièges aux Concours : Immunohistochimie des Lymphomes",
-    contentMarkdown: `### 🎯 Pièges Cruciaux pour le Concours
+    contentMarkdown: `### Focus : Pièges Cruciaux pour le Concours
 
 1. **Ponction cytologique vs Biopsie** :
    - TOUJOURS proscrire la ponction à l'aiguille fine pour affirmer un lymphome initial ! Il faut une **biopsie chirurgicale complète d'un ganglion**.
@@ -967,7 +967,7 @@ export const HEMATO_LESSON_17_QUESTIONS: Question[] = [
       "E) Un rachitisme hypophosphatémique"
     ],
     correctAnswers: [0],
-    explanation: "L'Asparaginase dégrade la L-asparagine indispensable aux synthèses protéiques hépatiques. Elle entraîne un effondrement des protéines de coagulation et des inhibiteurs (antithrombine III ➔ thromboses graves), une hypofibrinogénémie et un risque élevé de pancréatite aiguë toxique.",
+    explanation: "L'Asparaginase dégrade la L-asparagine indispensable aux synthèses protéiques hépatiques. Elle entraîne un effondrement des protéines de coagulation et des inhibiteurs (antithrombine III -> thromboses graves), une hypofibrinogénémie et un risque élevé de pancréatite aiguë toxique.",
     difficulty: 'moyen'
   },
   {
@@ -1109,8 +1109,8 @@ export const HEMATO_LESSON_17_RESOURCES: CourseResource[] = [
 HÉMATOLOGIQUES      DIGESTIVES (NVIC)        CARDIOTOXICITÉS         NÉPHRO / UROLOGIQUES   IMMUNOTHÉRAPIE (irAE)
 - Nadir J7-J14      - Aiguës (<24h) :        - Anthracyclines :      - Cisplatine :         - Anti-PD1 / CTLA-4
 - Neutropénie féb.    Sétrons (5-HT3)          Cardiomyopathie dose-   Nécrose tubulaire      (Auto-immunité)
-  ➔ Antibiothérapie - Retardées (>24h) :       dépendante irréversible (Hyperhydratation !) - Colite, Hypophysite,
-  dans l'heure !      Anti-NK1 (Aprépitant)    ➔ Dexrazoxane         - Ifosfamide / Endo :    Pneumopathie
+  -> Antibiothérapie - Retardées (>24h) :       dépendante irréversible (Hyperhydratation !) - Colite, Hypophysite,
+  dans l'heure !      Anti-NK1 (Aprépitant)    -> Dexrazoxane         - Ifosfamide / Endo :    Pneumopathie
 - G-CSF si risque   - Anticipées :           - 5-FU : Spasme coronaire Cystite hémorragique - **Corticoïdes 1-2 mg/kg**
   > 20%               Benzodiazépines        - Trastuzumab : Type II   (MESNA systématique !)   + Arrêt temporaire
 \`\`\`
@@ -1128,7 +1128,7 @@ HÉMATOLOGIQUES      DIGESTIVES (NVIC)        CARDIOTOXICITÉS         NÉPHRO /
     courseId: 'crs-hemato-17',
     type: 'astuce',
     title: "Astuces & Pièges aux Concours : Toxicités Spécifiques des Anticancéreux",
-    contentMarkdown: `### 🎯 Pièges Cruciaux pour le Concours
+    contentMarkdown: `### Focus : Pièges Cruciaux pour le Concours
 
 1. **Anthracyclines vs Trastuzumab** :
    - Anthracyclines : Dose-dépendante, nécrose myocytaire, **irréversible** (Type I).
@@ -1401,7 +1401,7 @@ export const HEMATO_LESSON_18_QUESTIONS: Question[] = [
       "E) La recherche du virus VIH"
     ],
     correctAnswers: [0],
-    explanation: "En oncologie thoracique moderne, le profilage moléculaire complet (NGS et immunohistochimie) est indispensable avant tout traitement métastatique : la présence d'une mutation activatrice (EGFR ➔ Osimertinib ; ALK ➔ Alectinib/Brigatinib ; ROS1 ➔ Crizotinib) permet un traitement ciblé oral bien plus efficace et moins toxique que la chimiothérapie.",
+    explanation: "En oncologie thoracique moderne, le profilage moléculaire complet (NGS et immunohistochimie) est indispensable avant tout traitement métastatique : la présence d'une mutation activatrice (EGFR -> Osimertinib ; ALK -> Alectinib/Brigatinib ; ROS1 -> Crizotinib) permet un traitement ciblé oral bien plus efficace et moins toxique que la chimiothérapie.",
     difficulty: 'facile'
   },
   {
@@ -1698,7 +1698,7 @@ CHIRURGIE ONCOLOGIQUE   RADIOTHÉRAPIE           CHIMIOTHÉRAPIE          THÉRA
     courseId: 'crs-hemato-18',
     type: 'astuce',
     title: "Astuces & Pièges aux Concours : Pharmacologie Anticancéreuse",
-    contentMarkdown: `### 🎯 Pièges Cruciaux pour le Concours
+    contentMarkdown: `### Focus : Pièges Cruciaux pour le Concours
 
 1. **R0 vs R1 vs R2** :
    - R0 = Marges microscopiques saines.

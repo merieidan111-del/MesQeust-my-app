@@ -551,7 +551,7 @@ RYTHME DU SUIVI                      MARQUEURS TUMORAUX                  TOXICIT
     courseId: 'crs-hemato-19',
     type: 'astuce',
     title: "Astuces & Pièges aux Concours : Surveillance Post-Thérapeutique",
-    contentMarkdown: `### 🎯 Pièges Cruciaux pour le Concours
+    contentMarkdown: `### Focus : Pièges Cruciaux pour le Concours
 
 1. **Imagerie dans le cancer du sein asymptomatique** :
    - Le SEUL examen systématique annuel recommandé est la **mammographie bilatérale** (+/- échographie). Les scanners TAP, scintigraphies et TEP-scan systématiques sont formellement PROSCRITS en l'absence de symptômes.
@@ -560,7 +560,7 @@ RYTHME DU SUIVI                      MARQUEURS TUMORAUX                  TOXICIT
 3. **Ascension isolée d'un marqueur tumoral** :
    - Une élévation continue de l'ACE ou du CA 125 doit faire déclencher un bilan d'imagerie complet même chez un patient asymptomatique.
 4. **Second cancer après Hodgkin jeune** :
-   - Toujours penser au **cancer du sein radio-induit** chez la jeune femme ayant reçu une irradiation médiastinale ➔ Dépistage par **IRM mammaire annuelle**.
+   - Toujours penser au **cancer du sein radio-induit** chez la jeune femme ayant reçu une irradiation médiastinale -> Dépistage par **IRM mammaire annuelle**.
 5. **Prévention du 'Gros Bras'** :
    - Pas de perfusion, pas de prise de sang, pas de tensiomètre du côté opéré !`,
     authorOrSource: 'Dr. LAIDANI.M'
@@ -1100,7 +1100,7 @@ export const HEMATO_LESSON_20_RESOURCES: CourseResource[] = [
          ▼                  ▼                       ▼                       ▼                  ▼
 CLASSIFICATION TNM      PERFORMANCE STATUS      CRITÈRES RECIST 1.1     GRADES HISTOLOGIQUES   ONCOGÉRIATRIE
 - **T** : Tumeur (T0-4) - **ECOG / OMS (0 à 4)** - **RC** : Disparition  - Sein : SBR /         - **Score G8** (≤ 14 =
-- **N** : Ganglions     * 0 : Normal               complète               Elston-Ellis (1 à 3)    fragile ➔ EGA)
+- **N** : Ganglions     * 0 : Normal               complète               Elston-Ellis (1 à 3)    fragile -> EGA)
   régionaux (N0-3)      * 1 : Restreint effort   - **RP** : Baisse ≥ 30% - Prostate : Gleason /  - Prévention de la
 - **M** : Métastases    * 2 : Alité < 50%        - **PD** : Hausse ≥ 20%   ISUP (1 à 5)           perte d'autonomie
 - Préfixes : c (clin),  * 3 : Alité > 50%        - **SD** : Stabilité    - Mélanome : Breslow   - Adaptation des
@@ -1119,7 +1119,7 @@ CLASSIFICATION TNM      PERFORMANCE STATUS      CRITÈRES RECIST 1.1     GRADES 
     courseId: 'crs-hemato-20',
     type: 'astuce',
     title: "Astuces & Pièges aux Concours : Échelles Oncologiques",
-    contentMarkdown: `### 🎯 Pièges Cruciaux pour le Concours
+    contentMarkdown: `### Focus : Pièges Cruciaux pour le Concours
 
 1. **Ganglions dans RECIST 1.1** :
    - On mesure le **PETIT AXE** du ganglion (pas le grand axe) ! Ganglion normalisé = petit axe < 10 mm.
@@ -1128,7 +1128,7 @@ CLASSIFICATION TNM      PERFORMANCE STATUS      CRITÈRES RECIST 1.1     GRADES 
 3. **ECOG 2 vs ECOG 3** :
    - La frontière est le seuil de **50% du temps de veille alité ou au fauteuil**. Moins de 50% = ECOG 2 ; Plus de 50% = ECOG 3.
 4. **Score G8 en oncogériatrie** :
-   - Seuil pathologique : **Score G8 ≤ 14/17** ➔ Déclenche l'Évaluation Gériatrique Approfondie (EGA).
+   - Seuil pathologique : **Score G8 ≤ 14/17** -> Déclenche l'Évaluation Gériatrique Approfondie (EGA).
 5. **Pseudo-progression sous Immunothérapie** :
    - Ne pas arrêter prématurément un anti-PD-1 sur une première progression radiologique si le patient va bien cliniquement ! Recontrôler à 4-8 semaines (iRECIST).`,
     authorOrSource: 'Dr. LAIDANI.M'
@@ -1669,10 +1669,10 @@ export const HEMATO_LESSON_21_RESOURCES: CourseResource[] = [
 EXTENSION TUMORALE     OPÉRABILITÉ DU TERRAIN    ÉVALUATION NUTRITIONNELLE  SÉCURITÉ PHARMACO    PRÉSERVATION & SOINS
 - Scanner TAP injecté  - Cardio : ETT (FEVG      - Dénutrition sévère :     - **Déficit en DPD** - CECOS : Sperme/Ovocyte
 - TEP-TDM au 18-FDG      si Anthracyclines/        * Perte poids > 10% en     (Uracilémie >16ng)   avant chimio cytotoxique
-- IRM selon organe       Trastuzumab ≥ 50%)        6 mois ou > 5% en 1 mois   ➔ 5-FU toxique !   - Stomato : Dents saines
+- IRM selon organe       Trastuzumab ≥ 50%)        6 mois ou > 5% en 1 mois   -> 5-FU toxique !   - Stomato : Dents saines
   (Cerveau, Rectum)    - Respiratoire : EFR      * IMC < 18,5 (< 21 si >70) - Sérologie VHB        avant biphosphonates
 - Biopsies avec          (VEMS-ppo > 30-40%,     * Albumine < 30 g/L          (AgHBs, Ac antiHBc)  (anti-ostéonécrose !)
-  histologie et NGS      VO2 max > 15-20)        ➔ Rennutrition 7-14j       ➔ Entecavir si profil - Consultation d'annonce
+  histologie et NGS      VO2 max > 15-20)        -> Rennutrition 7-14j       -> Entecavir si profil - Consultation d'annonce
                          - Oncogériatrie : G8      avant chirurgie !          à risque sous anti-CD20  en 4 temps
 \`\`\`
 
@@ -1686,7 +1686,7 @@ EXTENSION TUMORALE     OPÉRABILITÉ DU TERRAIN    ÉVALUATION NUTRITIONNELLE  S
     courseId: 'crs-hemato-21',
     type: 'astuce',
     title: "Astuces & Pièges aux Concours : Bilan Pré-Thérapeutique",
-    contentMarkdown: `### 🎯 Pièges Cruciaux pour le Concours
+    contentMarkdown: `### Focus : Pièges Cruciaux pour le Concours
 
 1. **Uracilémie & DPD** :
    - Dépistage obligatoire avant TOUTE administration de **5-FU** ou **Capécitabine**. Uracilémie ≥ 16 ng/mL = réduction de dose d'au moins 50% !
@@ -1695,7 +1695,7 @@ EXTENSION TUMORALE     OPÉRABILITÉ DU TERRAIN    ÉVALUATION NUTRITIONNELLE  S
 3. **FEVG avant Anthracyclines** :
    - FEVG initiale obligatoire (doit être ≥ 50%).
 4. **VHB et Rituximab** :
-   - Même si Ag HBs négatif, si les **Ac anti-HBc sont positifs**, le patient risque une réactivation foudroyante mortelle ➔ **Entecavir prophylactique obligatoire**.
+   - Même si Ag HBs négatif, si les **Ac anti-HBc sont positifs**, le patient risque une réactivation foudroyante mortelle -> **Entecavir prophylactique obligatoire**.
 5. **CECOS** :
    - Préservation de la fertilité à proposer systématiquement à tout patient jeune avant tout traitement gonadotoxique.`,
     authorOrSource: 'Dr. LAIDANI.M'

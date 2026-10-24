@@ -669,7 +669,7 @@ export const HEPATITES_CHRONIQUES_RESOURCES: CourseResource[] = [
     "courseId": "crs-gastro-hepatites-chroniques",
     "type": "Fiche Synthèse",
     "title": "Synthèse Clinique : Hépatites Chroniques",
-    "contentMarkdown": "### 🎯 Points Clés : Hépatites Chroniques\n- **Définition** : Atteinte nécrotico-inflammatoire hépatique persistant > 6 mois.\n- **Score METAVIR** : Activité A0-A3, Fibrose F0-F4 (F4 = cirrhose).\n- **VHB** : Entécavir ou Ténofovir au long cours si réplication active.\n- **VHC** : Antiviraux d'action directe (Sofosbuvir/Velpatasvir 12 sem) -> guérison virologique > 95%.\n- **Hépatite auto-immune (HAI)** : Femme, IgG polyclonales, AAN + AML (anti-actine), traitement : Prednisone + Azathioprine.\n- **Cholangite biliaire primitive (CBP)** : Femme, prurit, cholestase, Ac anti-mitochondries M2 (95%), traitement : AUDC (13-15 mg/kg/j).\n- **Hémochromatose génétique** : CST > 45%, mutation HFE C282Y homozygote, traitement : saignées (cible Ferritine < 50 µg/L).",
+    "contentMarkdown": "### Focus : Points Clés : Hépatites Chroniques\n- **Définition** : Atteinte nécrotico-inflammatoire hépatique persistant > 6 mois.\n- **Score METAVIR** : Activité A0-A3, Fibrose F0-F4 (F4 = cirrhose).\n- **VHB** : Entécavir ou Ténofovir au long cours si réplication active.\n- **VHC** : Antiviraux d'action directe (Sofosbuvir/Velpatasvir 12 sem) -> guérison virologique > 95%.\n- **Hépatite auto-immune (HAI)** : Femme, IgG polyclonales, AAN + AML (anti-actine), traitement : Prednisone + Azathioprine.\n- **Cholangite biliaire primitive (CBP)** : Femme, prurit, cholestase, Ac anti-mitochondries M2 (95%), traitement : AUDC (13-15 mg/kg/j).\n- **Hémochromatose génétique** : CST > 45%, mutation HFE C282Y homozygote, traitement : saignées (cible Ferritine < 50 µg/L).",
     "author": "Collège National des Enseignants d’Hépatologie"
   },
   {
@@ -677,7 +677,7 @@ export const HEPATITES_CHRONIQUES_RESOURCES: CourseResource[] = [
     "courseId": "crs-gastro-hepatites-chroniques",
     "type": "Astuce",
     "title": "Tableau Récapitulatif : Auto-anticorps Hépatiques",
-    "contentMarkdown": "### 💡 Auto-anticorps clés en hépatologie :\n- **HAI type 1** : AAN (nucléaires) + AML (muscle lisse / anti-actine).\n- **HAI type 2** : Anti-LKM1 (enfant/adolescent).\n- **CBP** : Anti-mitochondries M2 (> 95%).\n- **CSP** : p-ANCA (associé à la RCH).",
+    "contentMarkdown": "### Astuce : Auto-anticorps clés en hépatologie :\n- **HAI type 1** : AAN (nucléaires) + AML (muscle lisse / anti-actine).\n- **HAI type 2** : Anti-LKM1 (enfant/adolescent).\n- **CBP** : Anti-mitochondries M2 (> 95%).\n- **CSP** : p-ANCA (associé à la RCH).",
     "author": "Faculté de Médecine"
   }
 ];

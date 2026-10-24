@@ -909,7 +909,7 @@ export const TUBERCULOSE_DIGESTIVE_RESOURCES: CourseResource[] = [
     courseId: 'crs-gastro-tuberculose-digestive',
     type: 'Astuce',
     title: 'Mnémotechniques : Tuberculose Abdominale',
-    contentMarkdown: `### 💡 Mnémotechniques d'Examen (Dr Rechach)
+    contentMarkdown: `### Astuce : Mnémotechniques d'Examen (Dr Rechach)
 
 1. **Protocole Thérapeutique : « R.H.Z.E »**
    - **2 mois** de Quadrithérapie : **R**ifampicine + **H**émisuccinate d'Isoniazide + **Z**yrazinamide (Pyrazinamide) + **E**thambutol

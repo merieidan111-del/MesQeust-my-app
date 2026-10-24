@@ -668,7 +668,7 @@ export const CIRRHOSE_HEPATIQUE_RESOURCES: CourseResource[] = [
     "courseId": "crs-gastro-cirrhose-hepatique",
     "type": "Fiche Synthèse",
     "title": "Synthèse Clinique : Cirrhose Hépatique & Décompensations",
-    "contentMarkdown": "### 🎯 Points Clés : Cirrhose Hépatique\n- **Définition histologique** : fibrose annulaire + nodules de régénération + perte d'architecture lobulaire.\n- **Score de Child-Pugh** : Bilirubine, Albumine, TP/INR, Ascite, Encéphalopathie (Classe A 5-6, B 7-9, C 10-15).\n- **Complications majeures** :\n  1. Rupture de VO (urgence : vasoactif + antibiothérapie + ligature).\n  2. Ascite & Infection spontanée (PNN > 250/mm³ -> C3G + albumine).\n  3. Encéphalopathie hépatique (Lactulose + traitement du facteur déclenchant).\n  4. Syndrome hépato-rénal (Terlipressine + albumine).\n  5. Dépistage du CHC semestriel par échographie.",
+    "contentMarkdown": "### Focus : Points Clés : Cirrhose Hépatique\n- **Définition histologique** : fibrose annulaire + nodules de régénération + perte d'architecture lobulaire.\n- **Score de Child-Pugh** : Bilirubine, Albumine, TP/INR, Ascite, Encéphalopathie (Classe A 5-6, B 7-9, C 10-15).\n- **Complications majeures** :\n  1. Rupture de VO (urgence : vasoactif + antibiothérapie + ligature).\n  2. Ascite & Infection spontanée (PNN > 250/mm³ -> C3G + albumine).\n  3. Encéphalopathie hépatique (Lactulose + traitement du facteur déclenchant).\n  4. Syndrome hépato-rénal (Terlipressine + albumine).\n  5. Dépistage du CHC semestriel par échographie.",
     "author": "Collège National des Enseignants d’Hépatologie"
   },
   {
@@ -676,7 +676,7 @@ export const CIRRHOSE_HEPATIQUE_RESOURCES: CourseResource[] = [
     "courseId": "crs-gastro-cirrhose-hepatique",
     "type": "Astuce",
     "title": "Mnémoniques & Règles : Cirrhose",
-    "contentMarkdown": "### 💡 Facteur V de la coagulation :\n- Le Facteur V n'est PAS vitamine K-dépendant.\n- Si TP bas avec Facteur V bas = Insuffisance hépatocellulaire.\n- Si TP bas avec Facteur V normal = Carence en vitamine K.",
+    "contentMarkdown": "### Astuce : Facteur V de la coagulation :\n- Le Facteur V n'est PAS vitamine K-dépendant.\n- Si TP bas avec Facteur V bas = Insuffisance hépatocellulaire.\n- Si TP bas avec Facteur V normal = Carence en vitamine K.",
     "author": "Faculté de Médecine"
   }
 ];

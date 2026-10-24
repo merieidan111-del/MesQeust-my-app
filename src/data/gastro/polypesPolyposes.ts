@@ -879,7 +879,7 @@ export const POLYPES_POLYPOSES_RESOURCES: CourseResource[] = [
     courseId: 'crs-gastro-polypes-polyposes',
     type: 'Astuce',
     title: 'Mnémotechniques : Polypes & Polyposes',
-    contentMarkdown: `### 💡 Mnémotechniques d'Examen (Dr Bakhti Farouk)
+    contentMarkdown: `### Astuce : Mnémotechniques d'Examen (Dr Bakhti Farouk)
 
 1. **Séquence Fearon & Vogelstein : « A.K. 18. P53 »**
    - **A** : **A**PC (initiation)

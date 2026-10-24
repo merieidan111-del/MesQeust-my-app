@@ -1486,7 +1486,7 @@ export const PNEUMO_LESSON_7_RESOURCES: CourseResource[] = [
   - *« HBPM = Hors surveillance, Bonne efficacité, Manipulation simple »*.
 
 ---
-*Allez, courage futurs toubibs ! L’EP, c’est comme un compétiteur sournois : il se cache, mais avec une bonne stratégie, vous le démasquerez à tous les coups. À vos stéthos, vos scanners mentaux et… vos annales ! La réussite est au bout de la veine (cave, bien sûr 😉)*
+*Allez, courage futurs toubibs ! L’EP, c’est comme un compétiteur sournois : il se cache, mais avec une bonne stratégie, vous le démasquerez à tous les coups. À vos stéthos, vos scanners mentaux et… vos annales ! La réussite est au bout de la veine (cave, bien sûr )*
 
 **BY:LAIDANI.M**`,
     authorOrSource: 'BY:LAIDANI.M',

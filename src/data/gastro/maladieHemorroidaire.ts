@@ -669,7 +669,7 @@ export const MALADIE_HEMORROIDAIRE_RESOURCES: CourseResource[] = [
     "courseId": "crs-gastro-maladie-hemorroidaire",
     "type": "Fiche Synthèse",
     "title": "Synthèse Clinique : Maladie Hémorroïdaire",
-    "contentMarkdown": "### 🎯 Points Clés : Maladie Hémorroïdaire\n- **Nature** : Plexus fibro-vasculaires normaux sous-muqueux. Maladie = symptômes.\n- **Signes cardinaux** : Rectorragies indolores de sang rouge en fin de selle, prolapsus (stades I à IV de Goligher).\n- **Règle absolue** : Rectorragie > 45-50 ans ou avec FDR = COLOSCOPIE TOTALE systématique.\n- **Thrombose hémorroïdaire externe** : Nodule bleuâtre ferme très douloureux sans fièvre -> Excision sous AL si vue < 72h.\n- **Traitement instrumental des hémorroïdes internes** : Ligature élastique sus-pectinée (indolore, très efficace).\n- **Chirurgie radicale** : Hémorroïdectomie ouverte tripolaire de Milligan-Morgan (stades III-IV ou échecs).",
+    "contentMarkdown": "### Focus : Points Clés : Maladie Hémorroïdaire\n- **Nature** : Plexus fibro-vasculaires normaux sous-muqueux. Maladie = symptômes.\n- **Signes cardinaux** : Rectorragies indolores de sang rouge en fin de selle, prolapsus (stades I à IV de Goligher).\n- **Règle absolue** : Rectorragie > 45-50 ans ou avec FDR = COLOSCOPIE TOTALE systématique.\n- **Thrombose hémorroïdaire externe** : Nodule bleuâtre ferme très douloureux sans fièvre -> Excision sous AL si vue < 72h.\n- **Traitement instrumental des hémorroïdes internes** : Ligature élastique sus-pectinée (indolore, très efficace).\n- **Chirurgie radicale** : Hémorroïdectomie ouverte tripolaire de Milligan-Morgan (stades III-IV ou échecs).",
     "author": "Société Nationale Française de Colo-Proctologie"
   },
   {
@@ -677,7 +677,7 @@ export const MALADIE_HEMORROIDAIRE_RESOURCES: CourseResource[] = [
     "courseId": "crs-gastro-maladie-hemorroidaire",
     "type": "Astuce",
     "title": "Mnémoniques & Repères : Hémorroïdes",
-    "contentMarkdown": "### 💡 Repères anatomiques des 3 paquets cardinaux :\n- 3h : latéral gauche.\n- 7h : postéro-droit.\n- 11h : antéro-droit.\n\n*Toujours ligaturer > 1 cm au-dessus de la ligne pectinée pour éviter la douleur somatique !*",
+    "contentMarkdown": "### Astuce : Repères anatomiques des 3 paquets cardinaux :\n- 3h : latéral gauche.\n- 7h : postéro-droit.\n- 11h : antéro-droit.\n\n*Toujours ligaturer > 1 cm au-dessus de la ligne pectinée pour éviter la douleur somatique !*",
     "author": "Faculté de Médecine"
   }
 ];

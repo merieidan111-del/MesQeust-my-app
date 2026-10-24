@@ -150,7 +150,7 @@ export function evaluateStreakOnSessionLoad(
           daysSkipped: 1,
           usedFreeze: true,
           brokeStreak: false,
-          message: '❄️ Votre série a été sauvée par un Gel de Série pour la journée d\'hier !',
+          message: 'Votre série a été sauvée par un Gel de Série pour la journée d\'hier !',
         };
       } else {
         streakHistory[lastActive] = 'skipped';
@@ -162,7 +162,7 @@ export function evaluateStreakOnSessionLoad(
           usedFreeze: false,
           brokeStreak: prevStreak > 0,
           message: prevStreak > 0
-            ? `⚠️ Journée d'hier manquée : votre série de ${prevStreak} jours a été grisée et réinitialisée. Entraînez-vous aujourd'hui pour la relancer !`
+            ? `Journée d'hier manquée : votre série de ${prevStreak} jours a été grisée et réinitialisée. Entraînez-vous aujourd'hui pour la relancer !`
             : undefined,
         };
       }
@@ -198,9 +198,9 @@ export function evaluateStreakOnSessionLoad(
   }
 
   const message = brokeStreak
-    ? `⚠️ ${daysSkippedCount} jour(s) manqué(s) : vos journées ont été grisées. Entraînez-vous aujourd'hui pour relancer une nouvelle série !`
+    ? `${daysSkippedCount} jour(s) manqué(s) : vos journées ont été grisées. Entraînez-vous aujourd'hui pour relancer une nouvelle série !`
     : usedFreeze
-    ? `❄️ Gel de Série utilisé pour protéger votre série pendant vos jours d'absence !`
+    ? `Gel de Série utilisé pour protéger votre série pendant vos jours d'absence !`
     : undefined;
 
   return {

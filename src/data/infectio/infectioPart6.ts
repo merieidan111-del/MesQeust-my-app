@@ -484,16 +484,16 @@ export const INFECTIO_LESSON_16_RESOURCES: CourseResource[] = [
 # ASTUCES & PIÈGES AU CONCOURS (RÉSUMÉ MÉNINGITES PURULENTES)
 *Par Dr. LAIDANI.M - Spécialité Médicale Algérie*
 
-### ⚠️ PIÈGE N°1 : La fausse bonne idée du scanner cérébral systématique
+### Piège : PIÈGE N°1 : La fausse bonne idée du scanner cérébral systématique
 - **Règle absolue** : La majorité des méningites purulentes N'ONT PAS BESOIN de scanner avant la PL !
 - Faire un scanner retarde l'antibiothérapie de plusieurs heures et aggrave considérablement la mortalité.
 - **Seules indications du scanner préalable** : Déficit moteur focal, coma profond (Glasgow ≤ 11), crises convulsives récentes, instabilité pupillaire.
 
-### ⚠️ PIÈGE N°2 : La Listeria et le piège des C3G
+### Piège : PIÈGE N°2 : La Listeria et le piège des C3G
 - Les C3G sont inefficaces à 100% sur Listeria monocytogenes (résistance naturelle liée aux PBP).
 - Si le sujet est âgé, diabétique ou enceinte : **PENSEZ TOUJOURS À AJOUTER L'AMOXICILLINE**.
 
-### ⚠️ PIÈGE N°3 : Le purpura fulminans au QCM
+### Piège : PIÈGE N°3 : Le purpura fulminans au QCM
 - QCM classique : « Que faites-vous en premier ? A. PL, B. Scanner, C. Ceftriaxone IV/IM ».
 - **Réponse obligatoire** : C3G immédiate, même au domicile ou en cabinet de ville avant l'évacuation !
 `
@@ -985,19 +985,19 @@ export const INFECTIO_LESSON_17_RESOURCES: CourseResource[] = [
 # ASTUCES & PIÈGES AU CONCOURS (BRUCELLOSE)
 *Par Dr. LAIDANI.M - Faculté de Médecine*
 
-### 💡 L'astuce mnémonique de la Brucellose : « LES 4 S »
+### Astuce : L'astuce mnémonique de la Brucellose : « LES 4 S »
 - **S**ueur nocturne (odeur caractéristique de paille mouillée)
 - **S**pondylodiscite (Pedro Pons, lombaire)
 - **S**acro-iliite (unilatérale)
 - **S**ix semaines de traitement (durée minimale absolue de la bithérapie)
 
-### ⚠️ PIÈGE N°1 : La durée du traitement
+### Piège : PIÈGE N°1 : La durée du traitement
 - Tout traitement inférieur à 6 semaines (ex: 15 ou 21 jours) est sanctionné d'un taux de rechute supérieur à 40%. La réponse au QCM doit TOUJOURS comporter 6 semaines pour la forme aiguë et 3 à 6 mois pour la spondylodiscite.
 
-### ⚠️ PIÈGE N°2 : La monothérapie
+### Piège : PIÈGE N°2 : La monothérapie
 - La monothérapie est FORMELLEMENT PROSCRITE dans la brucellose. Elle expose à l'échec et aux rechutes. Toujours prescrire une BITHÉRAPIE synergique intracellulaire.
 
-### ⚠️ PIÈGE N°3 : Le phénomène de prozone au sérodiagnostic de Wright
+### Piège : PIÈGE N°3 : Le phénomène de prozone au sérodiagnostic de Wright
 - Si forte suspicion clinique mais Wright négatif à 1/20 ou 1/40 : faire diluer le sérum au-delà de 1/320 pour lever l'inhibition par excès d'anticorps.
 `
   }

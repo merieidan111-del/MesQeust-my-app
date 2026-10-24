@@ -1051,7 +1051,7 @@ class _RetentionTrajectoryChartState extends State<RetentionTrajectoryChart> {
                 child: _buildMetricTile(
                   title: 'RETENTION',
                   value: '91.2%',
-                  delta: '✓',
+                  delta: 'OK',
                   deltaColor: const Color(0xFF059669),
                   subText: 'Optimal Tier',
                   icon: Icons.verified_user_rounded,
@@ -2452,7 +2452,7 @@ class _SmartFlashcardDeckWidgetState extends State<SmartFlashcardDeckWidget>
               border: Border.all(color: const Color(0xFFA7F3D0)),
             ),
             child: Text(
-              '💡 Mnemonic: \${widget.mnemonic}',
+              '[Astuce] Mnemonic: \${widget.mnemonic}',
               style: const TextStyle(
                 fontSize: 11,
                 fontWeight: FontWeight.w700,

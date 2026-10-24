@@ -669,7 +669,7 @@ export const ICTERES_RESOURCES: CourseResource[] = [
     "courseId": "crs-gastro-icteres",
     "type": "Fiche Synthèse",
     "title": "Synthèse Clinique : Démarche Diagnostique devant un Ictère",
-    "contentMarkdown": "### 🎯 Points Clés : Ictères de l'Adulte\n- **1ère étape** : Bilirubine fractionnée :\n  - *Bilirubine non conjuguée (libre)* :\n    - Hémolyse : Haptoglobine basse, LDH élevées, réticulocytes élevés.\n    - Maladie de Gilbert : bilan hépatique et hémogramme normaux, favorisé par le jeûne.\n  - *Bilirubine conjuguée (directe)* -> Échographie abdominale :\n    - Voies biliaires dilatées (obstacle mécanique extra-hépatique) : lithiase VBP, cancer tête pancréas (Courvoisier-Terrier), ampullome, cholangiocarcinome.\n    - Voies biliaires fines (cholestase intra-hépatique) : hépatite aiguë/médicamenteuse, cirrhose, CBP, CSP, granulomatoses.",
+    "contentMarkdown": "### Focus : Points Clés : Ictères de l'Adulte\n- **1ère étape** : Bilirubine fractionnée :\n  - *Bilirubine non conjuguée (libre)* :\n    - Hémolyse : Haptoglobine basse, LDH élevées, réticulocytes élevés.\n    - Maladie de Gilbert : bilan hépatique et hémogramme normaux, favorisé par le jeûne.\n  - *Bilirubine conjuguée (directe)* -> Échographie abdominale :\n    - Voies biliaires dilatées (obstacle mécanique extra-hépatique) : lithiase VBP, cancer tête pancréas (Courvoisier-Terrier), ampullome, cholangiocarcinome.\n    - Voies biliaires fines (cholestase intra-hépatique) : hépatite aiguë/médicamenteuse, cirrhose, CBP, CSP, granulomatoses.",
     "author": "Collège National des Enseignants d’Hépatologie"
   },
   {
@@ -677,7 +677,7 @@ export const ICTERES_RESOURCES: CourseResource[] = [
     "courseId": "crs-gastro-icteres",
     "type": "Astuce",
     "title": "Loi de Courvoisier-Terrier vs Lithiase",
-    "contentMarkdown": "### 💡 Comparaison sémiologique clé :\n- **Lithiase de la VBP** : Douleur brutale -> Ictère fluctuant -> Vésicule rétractée NON palpable.\n- **Cancer de la tête du pancréas** : Ictère progressif nu indolore -> Prurit -> Vésicule distendue palpable (Courvoisier-Terrier).",
+    "contentMarkdown": "### Astuce : Comparaison sémiologique clé :\n- **Lithiase de la VBP** : Douleur brutale -> Ictère fluctuant -> Vésicule rétractée NON palpable.\n- **Cancer de la tête du pancréas** : Ictère progressif nu indolore -> Prurit -> Vésicule distendue palpable (Courvoisier-Terrier).",
     "author": "Faculté de Médecine"
   }
 ];

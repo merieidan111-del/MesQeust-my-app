@@ -789,7 +789,7 @@ export const PATHOLOGIE_HEPATIQUE_RESOURCES: CourseResource[] = [
     courseId: 'crs-gastro-pathologie-hepatique',
     type: 'Resume',
     title: "Carte Mentale : Pathologie Hépatique (Dr GUERMI, CHU Blida)",
-    contentMarkdown: `## 🧠 Carte Mentale : Pathologie Hépatique
+    contentMarkdown: `## Carte Mentale : Pathologie Hépatique
 **Dr GUERMI – CHU Blida**
 
 ### 1. Moyens d'Étude & Lésions Élémentaires
@@ -820,7 +820,7 @@ export const PATHOLOGIE_HEPATIQUE_RESOURCES: CourseResource[] = [
     courseId: 'crs-gastro-pathologie-hepatique',
     type: 'Astuce',
     title: "Mnémotechniques : Pathologie Hépatique",
-    contentMarkdown: `### 💡 Astuces & Mnémotechniques Clés (Dr GUERMI)
+    contentMarkdown: `### Astuce : Astuces & Mnémotechniques Clés (Dr GUERMI)
 
 1. **Score METAVIR (« A comme Attaque, F comme Fibrose »)** :
    - A0 à A3 : Activité inflammatoire

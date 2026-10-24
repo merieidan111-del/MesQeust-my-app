@@ -1,0 +1,2420 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dépistage des Grossesses à Haut Risque — Révision 4ème année</title>
+<style>
+    :root{
+        --navy:#0b2545;
+        --navy-2:#13315c;
+        --navy-3:#1b4079;
+        --slate:#475569;
+        --slate-light:#e2e8f0;
+        --slate-bg:#f1f5f9;
+        --teal:#0d9488;
+        --teal-dark:#0f766e;
+        --teal-light:#ccfbf1;
+        --amber:#b45309;
+        --amber-light:#fef3c7;
+        --rose:#be123c;
+        --rose-light:#ffe4e6;
+        --violet:#6d28d9;
+        --violet-light:#ede9fe;
+        --bg:#f4f7fb;
+        --white:#ffffff;
+        --radius:16px;
+        --radius-sm:10px;
+        --shadow:0 10px 30px -14px rgba(11,37,69,.30);
+        --shadow-sm:0 4px 14px -6px rgba(11,37,69,.20);
+        --font:'Inter','Roboto','Segoe UI',system-ui,-apple-system,sans-serif;
+    }
+
+    *{box-sizing:border-box;margin:0;padding:0;}
+
+    html{scroll-behavior:smooth;}
+
+    body{
+        font-family:var(--font);
+        background:var(--bg);
+        color:var(--navy);
+        line-height:1.65;
+        font-size:16px;
+        -webkit-font-smoothing:antialiased;
+    }
+
+    /* ============ HEADER ============ */
+    header.hero{
+        background:linear-gradient(135deg,var(--navy) 0%,var(--navy-3) 55%,var(--teal-dark) 100%);
+        color:#fff;
+        padding:56px 24px 64px;
+        position:relative;
+        overflow:hidden;
+    }
+    header.hero::after{
+        content:"";
+        position:absolute;
+        right:-120px;top:-120px;
+        width:380px;height:380px;
+        border-radius:50%;
+        background:radial-gradient(circle,rgba(13,148,136,.45),transparent 70%);
+    }
+    header.hero::before{
+        content:"";
+        position:absolute;
+        left:-100px;bottom:-140px;
+        width:320px;height:320px;
+        border-radius:50%;
+        background:radial-gradient(circle,rgba(255,255,255,.10),transparent 70%);
+    }
+    .hero-inner{max-width:1080px;margin:0 auto;position:relative;z-index:2;}
+    .hero-kicker{
+        display:inline-block;
+        background:rgba(255,255,255,.15);
+        border:1px solid rgba(255,255,255,.30);
+        padding:6px 16px;
+        border-radius:999px;
+        font-size:.78rem;
+        letter-spacing:.09em;
+        text-transform:uppercase;
+        font-weight:600;
+        margin-bottom:18px;
+    }
+    header.hero h1{
+        font-size:clamp(1.7rem,4vw,2.7rem);
+        line-height:1.18;
+        font-weight:800;
+        letter-spacing:-.02em;
+        margin-bottom:14px;
+    }
+    header.hero h1 span{color:#5eead4;}
+    header.hero p.sub{
+        font-size:1.02rem;
+        max-width:720px;
+        color:#cbd5e1;
+    }
+    .hero-tags{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px;}
+    .hero-tags span{
+        background:rgba(255,255,255,.12);
+        border:1px solid rgba(255,255,255,.22);
+        padding:6px 14px;
+        border-radius:999px;
+        font-size:.8rem;
+        font-weight:500;
+    }
+
+    /* ============ NAV ============ */
+    nav.sticky-nav{
+        position:sticky;
+        top:0;
+        z-index:100;
+        background:rgba(255,255,255,.92);
+        backdrop-filter:blur(12px);
+        border-bottom:1px solid var(--slate-light);
+        box-shadow:0 4px 20px -12px rgba(11,37,69,.35);
+    }
+    .nav-inner{
+        max-width:1080px;
+        margin:0 auto;
+        display:flex;
+        gap:6px;
+        overflow-x:auto;
+        padding:10px 18px;
+        scrollbar-width:none;
+    }
+    .nav-inner::-webkit-scrollbar{display:none;}
+    .nav-inner a{
+        white-space:nowrap;
+        text-decoration:none;
+        color:var(--slate);
+        font-size:.85rem;
+        font-weight:600;
+        padding:8px 14px;
+        border-radius:999px;
+        transition:.2s;
+    }
+    .nav-inner a:hover{background:var(--teal-light);color:var(--teal-dark);}
+
+    /* ============ LAYOUT ============ */
+    main{max-width:1080px;margin:0 auto;padding:0 20px 80px;}
+
+    section.block{margin-top:64px;}
+
+    .section-head{
+        display:flex;
+        align-items:flex-start;
+        gap:16px;
+        margin-bottom:28px;
+    }
+    .section-num{
+        flex:0 0 auto;
+        width:52px;height:52px;
+        border-radius:14px;
+        background:linear-gradient(135deg,var(--teal),var(--teal-dark));
+        color:#fff;
+        display:flex;align-items:center;justify-content:center;
+        font-size:1.35rem;font-weight:800;
+        box-shadow:var(--shadow-sm);
+    }
+    .section-head h2{
+        font-size:clamp(1.3rem,2.6vw,1.75rem);
+        font-weight:800;
+        letter-spacing:-.02em;
+        color:var(--navy);
+        line-height:1.25;
+    }
+    .section-head p{
+        color:var(--slate);
+        font-size:.93rem;
+        margin-top:4px;
+    }
+
+    /* ============ CARDS QCM ============ */
+    .qcm-card{
+        background:var(--white);
+        border-radius:var(--radius);
+        box-shadow:var(--shadow);
+        border:1px solid #e6edf6;
+        padding:26px 26px 22px;
+        margin-bottom:26px;
+        position:relative;
+        transition:transform .18s ease, box-shadow .18s ease;
+    }
+    .qcm-card:hover{
+        transform:translateY(-2px);
+        box-shadow:0 18px 40px -18px rgba(11,37,69,.38);
+    }
+    .qcm-top{
+        display:flex;
+        flex-wrap:wrap;
+        align-items:center;
+        gap:8px;
+        margin-bottom:14px;
+    }
+    .q-number{
+        font-size:.78rem;
+        font-weight:800;
+        letter-spacing:.08em;
+        color:var(--teal-dark);
+        background:var(--teal-light);
+        padding:4px 12px;
+        border-radius:999px;
+        text-transform:uppercase;
+    }
+    .badge{
+        display:inline-block;
+        font-size:.72rem;
+        font-weight:700;
+        letter-spacing:.05em;
+        padding:4px 12px;
+        border-radius:999px;
+        text-transform:uppercase;
+    }
+    .badge-theme{background:#e0ecff;color:#1e3a8a;}
+    .badge-rj{background:#dcfce7;color:#15803d;}
+    .badge-rf{background:var(--rose-light);color:var(--rose);}
+    .badge-multi{background:var(--violet-light);color:var(--violet);}
+    .badge-simple{background:var(--amber-light);color:var(--amber);}
+    .badge-answer{background:var(--teal);color:#fff;font-size:.8rem;padding:6px 16px;}
+
+    .qcm-stem{
+        font-size:1.02rem;
+        font-weight:600;
+        color:var(--navy);
+        margin-bottom:16px;
+        line-height:1.55;
+    }
+
+    ul.options{list-style:none;display:flex;flex-direction:column;gap:8px;}
+    ul.options li{
+        display:flex;
+        gap:12px;
+        align-items:flex-start;
+        padding:10px 14px;
+        border-radius:var(--radius-sm);
+        background:var(--slate-bg);
+        border:1px solid transparent;
+        font-size:.94rem;
+        transition:.15s;
+    }
+    ul.options li:hover{background:#e8f0fa;border-color:#cddff5;}
+    ul.options li .opt{
+        flex:0 0 auto;
+        width:26px;height:26px;
+        border-radius:8px;
+        background:var(--navy);
+        color:#fff;
+        font-weight:800;
+        font-size:.78rem;
+        display:flex;align-items:center;justify-content:center;
+        margin-top:1px;
+    }
+
+    /* ============ CORRECTIONS ============ */
+    details.correction{
+        margin-top:18px;
+        border-radius:var(--radius-sm);
+        border:1px solid #d7e6f5;
+        background:linear-gradient(180deg,#f8fbff,#eef6fd);
+        overflow:hidden;
+    }
+    details.correction summary{
+        cursor:pointer;
+        list-style:none;
+        padding:13px 18px;
+        font-weight:700;
+        font-size:.88rem;
+        color:var(--navy-3);
+        display:flex;
+        align-items:center;
+        gap:10px;
+        user-select:none;
+        transition:.2s;
+    }
+    details.correction summary::-webkit-details-marker{display:none;}
+    details.correction summary::before{
+        content:"▸";
+        color:var(--teal);
+        font-size:1rem;
+        transition:transform .2s;
+    }
+    details.correction[open] summary::before{transform:rotate(90deg);}
+    details.correction summary:hover{background:#e6f2fd;}
+    .correction-body{
+        padding:4px 20px 20px;
+        font-size:.92rem;
+        color:var(--slate);
+    }
+    .correction-body p{margin-bottom:10px;}
+    .correction-body strong{color:var(--navy);}
+    .correction-body .why{
+        background:#fff;
+        border-left:4px solid var(--teal);
+        padding:10px 14px;
+        border-radius:8px;
+        margin-bottom:10px;
+    }
+    .correction-body .why.bad{border-left-color:var(--rose);}
+    .correction-body .why.good{border-left-color:#16a34a;}
+    .correction-body ul{padding-left:20px;margin-bottom:10px;}
+    .correction-body li{margin-bottom:6px;}
+
+    /* ============ CAS CLINIQUES ============ */
+    .case-card{
+        background:var(--white);
+        border-radius:var(--radius);
+        box-shadow:var(--shadow);
+        border:1px solid #e6edf6;
+        margin-bottom:34px;
+        overflow:hidden;
+    }
+    .case-header{
+        background:linear-gradient(135deg,var(--navy-2),var(--navy-3));
+        color:#fff;
+        padding:20px 26px;
+        display:flex;
+        align-items:center;
+        gap:14px;
+        flex-wrap:wrap;
+    }
+    .case-header .case-tag{
+        background:rgba(255,255,255,.16);
+        border:1px solid rgba(255,255,255,.28);
+        padding:5px 14px;
+        border-radius:999px;
+        font-size:.74rem;
+        font-weight:700;
+        letter-spacing:.06em;
+        text-transform:uppercase;
+    }
+    .case-header h3{font-size:1.12rem;font-weight:700;letter-spacing:-.01em;}
+    .case-vignette{
+        padding:24px 26px;
+        background:#fbfdff;
+        border-bottom:1px dashed #dbe7f3;
+        font-size:.95rem;
+        color:#334155;
+    }
+    .case-vignette .v-label{
+        display:inline-block;
+        background:var(--teal-light);
+        color:var(--teal-dark);
+        font-size:.7rem;
+        font-weight:800;
+        letter-spacing:.08em;
+        padding:3px 10px;
+        border-radius:6px;
+        text-transform:uppercase;
+        margin-bottom:10px;
+    }
+    .case-vignette p{margin-bottom:8px;}
+    .case-vignette ul{padding-left:20px;margin-bottom:8px;}
+    .case-vignette li{margin-bottom:4px;}
+    .case-questions{padding:8px 26px 26px;}
+    .case-q{
+        padding:18px 0;
+        border-bottom:1px solid #eef3f9;
+    }
+    .case-q:last-child{border-bottom:none;padding-bottom:0;}
+
+    /* ============ CONCEPT MAP ============ */
+    .map-grid{display:grid;gap:20px;}
+    .map-hub{
+        background:linear-gradient(135deg,var(--navy),var(--teal-dark));
+        color:#fff;
+        border-radius:var(--radius);
+        padding:26px;
+        text-align:center;
+        box-shadow:var(--shadow);
+    }
+    .map-hub h3{font-size:1.25rem;font-weight:800;margin-bottom:6px;letter-spacing:-.01em;}
+    .map-hub p{font-size:.9rem;color:#cbd5e1;}
+
+    .map-branches{
+        display:grid;
+        grid-template-columns:repeat(auto-fit,minmax(230px,1fr));
+        gap:16px;
+        margin-top:20px;
+    }
+    .branch{
+        background:var(--white);
+        border-radius:var(--radius);
+        padding:20px;
+        box-shadow:var(--shadow-sm);
+        border-top:5px solid var(--teal);
+    }
+    .branch:nth-child(2){border-top-color:#2563eb;}
+    .branch:nth-child(3){border-top-color:var(--amber);}
+    .branch:nth-child(4){border-top-color:var(--violet);}
+    .branch h4{
+        font-size:.95rem;
+        font-weight:800;
+        color:var(--navy);
+        margin-bottom:10px;
+        display:flex;align-items:center;gap:8px;
+    }
+    .branch h4 .dot{
+        width:10px;height:10px;border-radius:50%;
+        background:var(--teal);flex:0 0 auto;
+    }
+    .branch:nth-child(2) h4 .dot{background:#2563eb;}
+    .branch:nth-child(3) h4 .dot{background:var(--amber);}
+    .branch:nth-child(4) h4 .dot{background:var(--violet);}
+    .branch ul{list-style:none;font-size:.86rem;color:var(--slate);}
+    .branch li{
+        padding:6px 0 6px 18px;
+        position:relative;
+        border-bottom:1px dashed #eef2f7;
+    }
+    .branch li:last-child{border-bottom:none;}
+    .branch li::before{
+        content:"›";
+        position:absolute;left:0;top:5px;
+        color:var(--teal);font-weight:800;
+    }
+
+    /* Flowchart */
+    .flow{
+        background:var(--white);
+        border-radius:var(--radius);
+        padding:26px;
+        box-shadow:var(--shadow-sm);
+        margin-top:22px;
+    }
+    .flow h4{
+        font-size:1rem;font-weight:800;color:var(--navy);
+        margin-bottom:18px;display:flex;align-items:center;gap:10px;
+    }
+    .flow h4 .pill{
+        background:var(--navy);color:#fff;font-size:.68rem;
+        padding:3px 10px;border-radius:999px;letter-spacing:.07em;
+    }
+    .flow-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px;}
+    .flow-node{
+        background:var(--slate-bg);
+        border:2px solid #d8e3ef;
+        border-radius:12px;
+        padding:12px 16px;
+        font-size:.84rem;
+        font-weight:600;
+        color:var(--navy);
+        flex:1 1 150px;
+        text-align:center;
+    }
+    .flow-node.accent{background:var(--teal-light);border-color:var(--teal);color:var(--teal-dark);}
+    .flow-node.warn{background:var(--rose-light);border-color:#fda4af;color:var(--rose);}
+    .flow-node.amber{background:var(--amber-light);border-color:#fcd34d;color:var(--amber);}
+    .flow-arrow{font-size:1.3rem;color:var(--teal);font-weight:800;}
+
+    .flow-col{display:flex;flex-direction:column;gap:10px;margin-bottom:14px;}
+    .flow-col .flow-node{flex:none;}
+
+    /* Table */
+    .table-wrap{overflow-x:auto;margin-top:22px;border-radius:var(--radius);box-shadow:var(--shadow-sm);}
+    table.styled{
+        width:100%;border-collapse:collapse;background:#fff;font-size:.88rem;min-width:560px;
+    }
+    table.styled thead th{
+        background:var(--navy);color:#fff;text-align:left;
+        padding:13px 16px;font-weight:700;font-size:.8rem;
+        letter-spacing:.04em;text-transform:uppercase;
+    }
+    table.styled td{padding:12px 16px;border-bottom:1px solid #eef2f7;color:var(--slate);vertical-align:top;}
+    table.styled tbody tr:nth-child(even){background:#fafcff;}
+    table.styled tbody tr:hover{background:#eef6fd;}
+    table.styled td strong{color:var(--navy);}
+
+    /* ============ MNEMOTECHNIQUES ============ */
+    .mnemo-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:18px;}
+    .mnemo-card{
+        background:var(--white);
+        border-radius:var(--radius);
+        padding:22px;
+        box-shadow:var(--shadow-sm);
+        border-left:6px solid var(--amber);
+        transition:.18s;
+    }
+    .mnemo-card:hover{transform:translateY(-3px);box-shadow:var(--shadow);}
+    .mnemo-card.teal{border-left-color:var(--teal);}
+    .mnemo-card.rose{border-left-color:var(--rose);}
+    .mnemo-card.violet{border-left-color:var(--violet);}
+    .mnemo-card .mnemo-title{
+        font-weight:800;font-size:.95rem;color:var(--navy);
+        margin-bottom:8px;display:flex;align-items:center;gap:8px;
+    }
+    .mnemo-card .mnemo-key{
+        display:inline-block;
+        background:var(--amber-light);
+        color:var(--amber);
+        font-weight:800;
+        padding:3px 10px;
+        border-radius:6px;
+        font-size:.82rem;
+        margin-bottom:8px;
+    }
+    .mnemo-card.teal .mnemo-key{background:var(--teal-light);color:var(--teal-dark);}
+    .mnemo-card.rose .mnemo-key{background:var(--rose-light);color:var(--rose);}
+    .mnemo-card.violet .mnemo-key{background:var(--violet-light);color:var(--violet);}
+    .mnemo-card p{font-size:.88rem;color:var(--slate);}
+    .mnemo-card p + p{margin-top:8px;}
+
+    .trap-box{
+        background:linear-gradient(135deg,#fff7ed,#fffbeb);
+        border:1px solid #fed7aa;
+        border-radius:var(--radius);
+        padding:24px;
+        margin-top:24px;
+    }
+    .trap-box h4{color:var(--amber);font-size:1rem;font-weight:800;margin-bottom:14px;display:flex;gap:8px;align-items:center;}
+    .trap-box ul{list-style:none;display:grid;gap:10px;}
+    .trap-box li{
+        background:#fff;
+        border-radius:var(--radius-sm);
+        padding:12px 16px;
+        font-size:.88rem;
+        color:var(--slate);
+        border-left:4px solid #f59e0b;
+        box-shadow:0 2px 8px -4px rgba(0,0,0,.08);
+    }
+    .trap-box li strong{color:var(--navy);}
+
+    /* ============ FOOTER ============ */
+    footer{
+        background:linear-gradient(135deg,var(--navy),var(--teal-dark));
+        color:#fff;
+        padding:48px 24px 40px;
+        text-align:center;
+        margin-top:70px;
+    }
+    footer .motiv{
+        font-size:1.15rem;
+        font-weight:700;
+        max-width:720px;
+        margin:0 auto 12px;
+        line-height:1.5;
+    }
+    footer p.small{color:#cbd5e1;font-size:.85rem;}
+
+    /* ============ RESPONSIVE ============ */
+    @media(max-width:640px){
+        .qcm-card{padding:20px 18px;}
+        .case-vignette,.case-questions{padding-left:18px;padding-right:18px;}
+        .section-head{gap:12px;}
+        .section-num{width:44px;height:44px;font-size:1.1rem;}
+        .flow-arrow{transform:rotate(90deg);}
+        .flow-row{flex-direction:column;align-items:stretch;}
+        .flow-arrow{text-align:center;}
+    }
+</style>
+</head>
+<body>
+
+<header class="hero">
+    <div class="hero-inner">
+        <span class="hero-kicker">Gynécologie–Obstétrique · 4ᵉ année · Faculté de Médecine</span>
+        <h1>Dépistage des Grossesses<br><span>à Haut Risque (GHR)</span></h1>
+        <p class="sub">Banque de 25 QCM exigeants, 5 cas cliniques hospitaliers algériens, carte conceptuelle et mnémotechniques — d'après le cours du Dr Brahmi (Maître-assistant en Gynécologie-Obstétrique).</p>
+        <div class="hero-tags">
+            <span>1/3 des grossesses</span>
+            <span>Problème de santé publique</span>
+            <span>HTA · Anémie · Infection urinaire · Diabète · Cardiopathie</span>
+        </div>
+    </div>
+</header>
+
+<nav class="sticky-nav">
+    <div class="nav-inner">
+        <a href="#qcm">① QCM</a>
+        <a href="#cas">② Cas cliniques</a>
+        <a href="#carte">③ Carte conceptuelle</a>
+        <a href="#mnemo">④ Mnémotechniques</a>
+    </div>
+</nav>
+
+<main>
+
+<!-- ============================================================ -->
+<!-- SECTION 1 : QCM -->
+<!-- ============================================================ -->
+<section class="block" id="qcm">
+    <div class="section-head">
+        <div class="section-num">1</div>
+        <div>
+            <h2>Banque de 25 QCM exigeants</h2>
+            <p>Types mélangés : réponse juste / fausse, choix multiples (2–3 réponses) et choix simple. Correction détaillée sous chaque question.</p>
+        </div>
+    </div>
+
+    <!-- Q1 -->
+    <article class="qcm-card">
+        <div class="qcm-top">
+            <span class="q-number">Question 1</span>
+            <span class="badge badge-theme">Définition &amp; épidémiologie</span>
+            <span class="badge badge-rf">Réponse fausse</span>
+        </div>
+        <p class="qcm-stem">Concernant la grossesse à haut risque (GHR), toutes les propositions suivantes sont exactes, <strong>SAUF une</strong>. Laquelle ?</p>
+        <ul class="options">
+            <li><span class="opt">A</span> La GHR représente environ un tiers des grossesses.</li>
+            <li><span class="opt">B</span> Elle constitue un véritable problème de santé publique.</li>
+            <li><span class="opt">C</span> Elle se définit par un risque accru de mortalité et/ou de morbidité maternelle, fœtale et néonatale.</li>
+            <li><span class="opt">D</span> Le dépistage de la GHR n'a pas d'intérêt démontré sur la morbi-mortalité materno-fœtale.</li>
+            <li><span class="opt">E</span> Les facteurs de risque peuvent être liés au terrain, aux antécédents, à une pathologie générale ou à la grossesse actuelle.</li>
+        </ul>
+        <details class="correction">
+            <summary>🔎 Voir la correction &amp; l'explication détaillée</summary>
+            <div class="correction-body">
+                <span class="badge badge-answer">Réponse : D</span>
+                <div class="why good" style="margin-top:12px;">
+                    <strong>Pourquoi D est faux :</strong> tout l'édifice du cours repose sur l'inverse — « le dépistage tend à diminuer la morbi-mortalité materno-fœtale ». C'est la <em>raison d'être</em> du dépistage : identifier tôt les facteurs de risque pour orienter la surveillance et la prise en charge vers une maternité de niveau adapté. Affirmer l'absence d'intérêt revient à nier la stratégie de « maternité sans risques ».
+                </div>
+                <div class="why">
+                    <strong>Pourquoi A, B, C et E sont exactes :</strong> la GHR concerne effectivement ≈ 1/3 des grossesses (A) ; elle est qualifiée de problème de santé publique par sa fréquence et son coût (B) ; sa définition associe risque de mortalité et de morbidité sur les trois compartiments maternel, fœtal et néonatal (C) ; et la classification des facteurs de risque en 4 axes (terrain / antécédents / pathologie générale / grossesse actuelle) est la charpente du cours (E).
+                </div>
+                <p><strong>Piège docimologique :</strong> les items « n'a pas d'intérêt », « est inutile », « n'est pas recommandé » sont des distracteurs classiques dans les questions de dépistage. Le dépistage est <em>toujours</em> présenté comme bénéfique dans ce chapitre.</p>
+            </div>
+        </details>
+    </article>
+
+    <!-- Q2 -->
+    <article class="qcm-card">
+        <div class="qcm-top">
+            <span class="q-number">Question 2</span>
+            <span class="badge badge-theme">Facteurs liés au terrain</span>
+            <span class="badge badge-multi">Choix multiples</span>
+        </div>
+        <p class="qcm-stem">Parmi les facteurs suivants, lesquels sont des facteurs de risque <strong>liés au terrain</strong> ? <em>(2 à 3 réponses exactes)</em></p>
+        <ul class="options">
+            <li><span class="opt">A</span> Âge maternel &gt; 40 ans</li>
+            <li><span class="opt">B</span> Taille &lt; 150 cm</li>
+            <li><span class="opt">C</span> Multiparité</li>
+            <li><span class="opt">D</span> IMC strictement normal</li>
+            <li><span class="opt">E</span> Absence d'intoxication tabagique</li>
+        </ul>
+        <details class="correction">
+            <summary>🔎 Voir la correction &amp; l'explication détaillée</summary>
+            <div class="correction-body">
+                <span class="badge badge-answer">Réponses : A, B, C</span>
+                <div class="why good" style="margin-top:12px;">
+                    <strong>A, B, C :</strong> le terrain regroupe les caractéristiques propres à la patiente, indépendantes de la grossesse en cours. L'âge aux deux extrêmes (&gt; 40 ans et &lt; 18 ans), la petite taille (&lt; 150 cm, par le risque de bassin rétréci et de dystocie osseuse) et les parités extrêmes (primipare ou multipare) en font partie.
+                </div>
+                <div class="why bad">
+                    <strong>D — IMC normal :</strong> ce n'est pas un facteur de risque mais un facteur <em>protecteur</em>. Le facteur de risque est un <em>écart de ± 20 %</em> par rapport aux normes pondérales antérieures, c'est-à-dire la dénutrition comme l'obésité.
+                </div>
+                <div class="why bad">
+                    <strong>E — Absence de tabac :</strong> le tabac est un facteur de risque majeur (RCIU, prématurité, HRP). Son <em>absence</em> est donc favorable et ne peut pas constituer un facteur de risque.
+                </div>
+                <p><strong>Raisonnement clé :</strong> dans un QCM de facteurs de risque, vérifiez toujours si l'item décrit une situation <em>pathologique ou extrême</em> (facteur de risque) ou une situation <em>normale</em> (facteur protecteur).</p>
+            </div>
+        </details>
+    </article>
+
+    <!-- Q3 -->
+    <article class="qcm-card">
+        <div class="qcm-top">
+            <span class="q-number">Question 3</span>
+            <span class="badge badge-theme">HTA et grossesse — seuils</span>
+            <span class="badge badge-simple">Choix simple</span>
+        </div>
+        <p class="qcm-stem">Quel seuil tensionnel définit une hypertension artérielle chez la femme enceinte ?</p>
+        <ul class="options">
+            <li><span class="opt">A</span> PAS ≥ 130 mmHg ou PAD ≥ 85 mmHg</li>
+            <li><span class="opt">B</span> PAS ≥ 140 mmHg ou PAD ≥ 90 mmHg</li>
+            <li><span class="opt">C</span> PAS ≥ 150 mmHg ou PAD ≥ 95 mmHg</li>
+            <li><span class="opt">D</span> PAS ≥ 160 mmHg ou PAD ≥ 100 mmHg</li>
+            <li><span class="opt">E</span> PAS ≥ 160 mmHg ou PAD ≥ 110 mmHg</li>
+        </ul>
+        <details class="correction">
+            <summary>🔎 Voir la correction &amp; l'explication détaillée</summary>
+            <div class="correction-body">
+                <span class="badge badge-answer">Réponse : B</span>
+                <div class="why good" style="margin-top:12px;">
+                    <strong>140 / 90 mmHg</strong> est le seuil <em>diagnostique</em> de l'HTA gravidique. Il faut retenir qu'il s'agit d'un « OU » : une seule des deux valeurs suffit.
+                </div>
+                <div class="why bad">
+                    <strong>E — 160 / 110 mmHg :</strong> ce sont les seuils de <em>gravité</em>, pas de diagnostic. Les confondre est l'erreur la plus fréquente : on ne dit pas qu'une femme est hypertensive seulement à partir de 160/110, on dit qu'elle est une <em>hypertensive grave</em> à partir de 160/110.
+                </div>
+                <div class="why bad">
+                    <strong>A, C, D :</strong> valeurs intermédiaires inventées, sans correspondance dans les recommandations du cours.
+                </div>
+            </div>
+        </details>
+    </article>
+
+    <!-- Q4 -->
+    <article class="qcm-card">
+        <div class="qcm-top">
+            <span class="q-number">Question 4</span>
+            <span class="badge badge-theme">Anémie gravidique — définition</span>
+            <span class="badge badge-rj">Réponse juste</span>
+        </div>
+        <p class="qcm-stem">Concernant la définition biologique de l'anémie au cours de la grossesse, quelle proposition est <strong>juste</strong> ?</p>
+        <ul class="options">
+            <li><span class="opt">A</span> Hb &lt; 11 g/dL au 1ᵉʳ trimestre, &lt; 10,5 g/dL au 2ᵉ trimestre, &lt; 11 g/dL au 3ᵉ trimestre</li>
+            <li><span class="opt">B</span> Hb &lt; 12 g/dL à tous les trimestres</li>
+            <li><span class="opt">C</span> Hb &lt; 10 g/dL au 1ᵉʳ trimestre</li>
+            <li><span class="opt">D</span> Hb &lt; 10,5 g/dL au 3ᵉ trimestre uniquement</li>
+            <li><span class="opt">E</span> Hb &lt; 13 g/dL au 2ᵉ trimestre</li>
+        </ul>
+        <details class="correction">
+            <summary>🔎 Voir la correction &amp; l'explication détaillée</summary>
+            <div class="correction-body">
+                <span class="badge badge-answer">Réponse : A</span>
+                <div class="why good" style="margin-top:12px;">
+                    <strong>A :</strong> les seuils suivent la courbe physiologique de l'hémodilution gravidique. Au 1ᵉʳ trimestre, la volémie n'a pas encore beaucoup augmenté → seuil à <strong>11 g/dL</strong>. Au 2ᵉ trimestre, l'hémodilution est maximale (le plasma augmente plus que la masse érythrocytaire) → seuil abaissé à <strong>10,5 g/dL</strong>. Au 3ᵉ trimestre, le seuil remonte à <strong>11 g/dL</strong>.
+                </div>
+                <div class="why bad">
+                    <strong>B, C, D, E :</strong> seuils non conformes. Attention à une erreur de transcription fréquente dans les polycopiés : le cours écrit parfois « g/l » alors qu'il s'agit de <strong>g/dL</strong> (grammes par décilitre). Une Hb à 11 g/L serait une anémie gravissime, incompatible avec la vie.
+                </div>
+                <p><strong>Astuce mémoire :</strong> « <strong>11 – 10,5 – 11</strong> » : le creux du 2ᵉ trimestre correspond au pic d'hémodilution.</p>
+            </div>
+        </details>
+    </article>
+
+    <!-- Q5 -->
+    <article class="qcm-card">
+        <div class="qcm-top">
+            <span class="q-number">Question 5</span>
+            <span class="badge badge-theme">Infection urinaire — complications</span>
+            <span class="badge badge-multi">Choix multiples</span>
+        </div>
+        <p class="qcm-stem">Quelles sont les complications <strong>fœtales</strong> possibles d'une infection urinaire gravidique ? <em>(2 à 3 réponses exactes)</em></p>
+        <ul class="options">
+            <li><span class="opt">A</span> Accouchement prématuré</li>
+            <li><span class="opt">B</span> Mort périnatale</li>
+            <li><span class="opt">C</span> Hypotrophie fœtale</li>
+            <li><span class="opt">D</span> Maladie thromboembolique</li>
+            <li><span class="opt">E</span> Iso-immunisation Rhésus</li>
+        </ul>
+        <details class="correction">
+            <summary>🔎 Voir la correction &amp; l'explication détaillée</summary>
+            <div class="correction-body">
+                <span class="badge badge-answer">Réponses : A, B, C</span>
+                <div class="why good" style="margin-top:12px;">
+                    <strong>A, B, C :</strong> le retentissement fœtal de l'infection urinaire est triple dans le cours : accouchement prématuré (≈ 20 %), mort périnatale et hypotrophie — cette dernière étant surtout le fait des infections urinaires <em>chroniques asymptomatiques</em>, qui passent inaperçues et entretiennent une inflammation chronique placentaire. À cela s'ajoute l'infection néonatale in utero par voie hématogène ou lors de l'accouchement par contage direct.
+                </div>
+                <div class="why bad">
+                    <strong>D — Maladie thromboembolique :</strong> complication maternelle liée à l'état d'hypercoagulabilité gravidique, pas une conséquence directe de l'infection urinaire.
+                </div>
+                <div class="why bad">
+                    <strong>E — Iso-immunisation Rhésus :</strong> complication immuno-hématologique liée à un conflit fœto-maternel, sans lien avec l'infection urinaire.
+                </div>
+                <p><strong>Distinguer systématiquement</strong> dans ce chapitre : les complications <em>maternelles</em> (septicémie, pyélonéphrite gravido-toxique exceptionnelle) et les complications <em>fœtales</em> (prématurité, mort périnatale, infection néonatale, hypotrophie).</p>
+            </div>
+        </details>
+    </article>
+
+    <!-- Q6 -->
+    <article class="qcm-card">
+        <div class="qcm-top">
+            <span class="q-number">Question 6</span>
+            <span class="badge badge-theme">Diabète et grossesse — dépistage</span>
+            <span class="badge badge-simple">Choix simple (SAUF)</span>
+        </div>
+        <p class="qcm-stem">Toutes les propositions suivantes concernant le dépistage du diabète gestationnel sont exactes, <strong>SAUF une</strong> :</p>
+        <ul class="options">
+            <li><span class="opt">A</span> Le dépistage ciblé repose sur l'âge maternel ≥ 35 ans, le surpoids et l'antécédent familial de diabète.</li>
+            <li><span class="opt">B</span> Les antécédents obstétricaux (diabète gestationnel, MIU, macrosomie, hydramnios) justifient un dépistage.</li>
+            <li><span class="opt">C</span> L'insulinorésistance est maximale à partir de 24 SA.</li>
+            <li><span class="opt">D</span> Chez une patiente à risque, une glycémie à jeun est réalisée dès la première consultation prénatale.</li>
+            <li><span class="opt">E</span> Le dépistage systématique repose sur le dosage de l'HbA1c à 12 SA chez toutes les femmes enceintes.</li>
+        </ul>
+        <details class="correction">
+            <summary>🔎 Voir la correction &amp; l'explication détaillée</summary>
+            <div class="correction-body">
+                <span class="badge badge-answer">Réponse : E (proposition fausse)</span>
+                <div class="why bad" style="margin-top:12px;">
+                    <strong>E :</strong> l'HbA1c n'est pas l'outil de dépistage du diabète gestationnel dans ce cours. Le dépistage repose sur la <strong>glycémie à jeun</strong> (1ᵉʳ trimestre chez les patientes à risque) puis sur l'<strong>HGPO</strong> entre 24 et 28 SA. L'HbA1c reflète l'équilibre glycémique des 3 derniers mois et n'est pas recommandée pour le diagnostic du DG.
+                </div>
+                <div class="why good">
+                    <strong>A, B, C, D sont exactes :</strong> les facteurs de risque retenus sont l'âge ≥ 35 ans, le surpoids, l'antécédent familial de diabète et l'antécédent obstétrical (DG, MIU, macrosomie, hydramnios). L'insulinorésistance atteint son maximum à partir de 24 SA, ce qui justifie la fenêtre de dépistage 24–28 SA ; mais chez les patientes à risque, la glycémie à jeun se fait dès la 1ʳᵉ consultation prénatale.
+                </div>
+                <p><strong>Logique physiopathologique à retenir :</strong> les hormones placentaires (hPL, progestérone, cortisol) sont insulinorésistantes et leur sécrétion croît avec le terme → dépistage tardif ciblé sur la période d'insulinorésistance maximale.</p>
+            </div>
+        </details>
+    </article>
+
+    <!-- Q7 -->
+    <article class="qcm-card">
+        <div class="qcm-top">
+            <span class="q-number">Question 7</span>
+            <span class="badge badge-theme">Pré-éclampsie</span>
+            <span class="badge badge-rf">Réponse fausse</span>
+        </div>
+        <p class="qcm-stem">Concernant la pré-éclampsie, quelle proposition est <strong>fausse</strong> ?</p>
+        <ul class="options">
+            <li><span class="opt">A</span> Elle associe une HTA, une protéinurie &gt; 0,3 g/24 h et des œdèmes.</li>
+            <li><span class="opt">B</span> Elle survient après 20 SA.</li>
+            <li><span class="opt">C</span> Elle peut être révélée par des phosphènes et des acouphènes.</li>
+            <li><span class="opt">D</span> Une PAS ≥ 160 mmHg constitue un signe de gravité.</li>
+            <li><span class="opt">E</span> Elle est définie par une HTA isolée apparaissant après 20 SA chez une femme jusque-là normotendue.</li>
+        </ul>
+        <details class="correction">
+            <summary>🔎 Voir la correction &amp; l'explication détaillée</summary>
+            <div class="correction-body">
+                <span class="badge badge-answer">Réponse : E</span>
+                <div class="why bad" style="margin-top:12px;">
+                    <strong>E :</strong> la description correspond à l'<strong>HTA gravidique</strong> (ou HTA induite par la grossesse), c'est-à-dire une HTA <em>isolée</em>, sans protéinurie ni œdème, apparaissant après 20 SA. La pré-éclampsie, elle, est une HTA <em>avec</em> protéinurie significative et/ou œdèmes.
+                </div>
+                <div class="why good">
+                    <strong>A, B, C, D sont exactes :</strong> la triade classique est HTA + protéinurie &gt; 0,3 g/24 h + œdèmes après 20 SA (A). Le seuil des 20 SA sépare les HTA chroniques des HTA gravidiques/pré-éclampsies (B). Les signes fonctionnels visuels (phosphènes) et auditifs (acouphènes) sont des signes d'appel de gravité (C). Et PAS ≥ 160 ou PAD ≥ 110 mmHg figure parmi les signes de gravité (D).
+                </div>
+                <p><strong>Tableau de synthèse :</strong> HTA gravidique = HTA seule ; Pré-éclampsie = HTA + protéinurie ; HTA chronique = préexistante ou avant 20 SA ou persistant après l'accouchement.</p>
+            </div>
+        </details>
+    </article>
+
+    <!-- Q8 -->
+    <article class="qcm-card">
+        <div class="qcm-top">
+            <span class="q-number">Question 8</span>
+            <span class="badge badge-theme">Facteurs liés aux antécédents</span>
+            <span class="badge badge-multi">Choix multiples</span>
+        </div>
+        <p class="qcm-stem">Parmi les antécédents suivants, lesquels constituent un facteur de risque de grossesse à haut risque ? <em>(2 à 3 réponses exactes)</em></p>
+        <ul class="options">
+            <li><span class="opt">A</span> Utérus cicatriciel</li>
+            <li><span class="opt">B</span> Antécédent d'éclampsie</li>
+            <li><span class="opt">C</span> Antécédent de RCIU</li>
+            <li><span class="opt">D</span> Primiparité à 25 ans sans complication</li>
+            <li><span class="opt">E</span> Groupe sanguin O</li>
+        </ul>
+        <details class="correction">
+            <summary>🔎 Voir la correction &amp; l'explication détaillée</summary>
+            <div class="correction-body">
+                <span class="badge badge-answer">Réponses : A, B, C</span>
+                <div class="why good" style="margin-top:12px;">
+                    <strong>A, B, C :</strong> l'utérus cicatriciel expose au risque de rupture utérine et impose une surveillance de la cicatrice ; l'antécédent d'éclampsie est un facteur de récidive majeur (la pré-éclampsie récidive dans 20 à 30 % des cas) ; l'antécédent de RCIU traduit une insuffisance placentaire chronique potentiellement récidivante.
+                </div>
+                <div class="why bad">
+                    <strong>D — Primiparité à 25 ans sans complication :</strong> la primiparité est listée comme facteur lié au terrain, mais isolée chez une femme jeune sans antécédent pathologique, elle ne suffit pas à faire basculer la grossesse en GHR. L'énoncé « sans complication » est le signal d'alarme docimologique : c'est un distracteur.
+                </div>
+                <div class="why bad">
+                    <strong>E — Groupe sanguin O :</strong> seule compte l'iso-immunisation Rhésus (avec phénotype et RAI), pas le groupe O en tant que tel.
+                </div>
+                <p><strong>Liste complète des ATCD du cours :</strong> stérilité, iso-immunisation, oligoamnios, hydramnios, prématurité, utérus cicatriciel, malformation fœtale, RCIU, retard psychomoteur, mortalité périnatale, éclampsie, HRP, accouchement dystocique.</p>
+            </div>
+        </details>
+    </article>
+
+    <!-- Q9 -->
+    <article class="qcm-card">
+        <div class="qcm-top">
+            <span class="q-number">Question 9</span>
+            <span class="badge badge-theme">Anémie ferriprive — biologie</span>
+            <span class="badge badge-simple">Choix simple</span>
+        </div>
+        <p class="qcm-stem">Quelle est la caractéristique biologique typique de l'anémie ferriprive gravidique ?</p>
+        <ul class="options">
+            <li><span class="opt">A</span> Macrocytaire avec VGM &gt; 100 µ³</li>
+            <li><span class="opt">B</span> Microcytaire (VGM &lt; 80 µ³) et arégénérative</li>
+            <li><span class="opt">C</span> Normocytaire avec réticulocytes élevés</li>
+            <li><span class="opt">D</span> Hyperchrome avec ferritine élevée</li>
+            <li><span class="opt">E</span> Régénérative avec réticulocytes &gt; 150 000/mm³</li>
+        </ul>
+        <details class="correction">
+            <summary>🔎 Voir la correction &amp; l'explication détaillée</summary>
+            <div class="correction-body">
+                <span class="badge badge-answer">Réponse : B</span>
+                <div class="why good" style="margin-top:12px;">
+                    <strong>B :</strong> le fer est indispensable à la synthèse de l'hème. Sa carence entraîne des globules rouges de petite taille (microcytose, VGM &lt; 80 µ³) et peu chargés en hémoglobine (hypochromie). La moelle, privée de fer, ne peut pas augmenter sa production : l'anémie est <strong>arégénérative</strong> (réticulocytes &lt; 50 000/mm³). La ferritine effondrée (&lt; 12 µg/L) confirme la carence martiale.
+                </div>
+                <div class="why bad">
+                    <strong>A :</strong> la macrocytose oriente vers une carence en B12 ou en folates, pas vers une carence martiale.
+                </div>
+                <div class="why bad">
+                    <strong>C et E :</strong> une anémie régénérative évoque une hémorragie aiguë ou une hémolyse — la moelle répond normalement, ce qui n'est pas le cas dans la carence martiale.
+                </div>
+                <div class="why bad">
+                    <strong>D :</strong> dans l'anémie ferriprive, la ferritine est <em>basse</em>, pas élevée.
+                </div>
+                <p><strong>Nuance importante :</strong> en cas d'anémie <em>récente</em>, la numération peut être normocytaire (80 &lt; VGM &lt; 100) avant que la microcytose ne s'installe. Le VGM n'est pas un critère absolu de présentation précoce.</p>
+            </div>
+        </details>
+    </article>
+
+    <!-- Q10 -->
+    <article class="qcm-card">
+        <div class="qcm-top">
+            <span class="q-number">Question 10</span>
+            <span class="badge badge-theme">Qui dépiste ?</span>
+            <span class="badge badge-rj">Réponse juste</span>
+        </div>
+        <p class="qcm-stem">Concernant les acteurs et le cadre du dépistage de la GHR, quelle proposition est <strong>juste</strong> ?</p>
+        <ul class="options">
+            <li><span class="opt">A</span> Le dépistage est exclusivement réservé au médecin spécialiste.</li>
+            <li><span class="opt">B</span> Il nécessite un cadre institutionnel qui oriente, contrôle et évalue.</li>
+            <li><span class="opt">C</span> La sage-femme ne participe pas au dépistage.</li>
+            <li><span class="opt">D</span> Les infrastructures hiérarchisées ne sont pas indispensables.</li>
+            <li><span class="opt">E</span> Le dépistage ne concerne que les grossesses pathologiques déjà déclarées.</li>
+        </ul>
+        <details class="correction">
+            <summary>🔎 Voir la correction &amp; l'explication détaillée</summary>
+            <div class="correction-body">
+                <span class="badge badge-answer">Réponse : B</span>
+                <div class="why good" style="margin-top:12px;">
+                    <strong>B :</strong> le cours insiste sur la nécessité d'un <em>cadre institutionnel</em> qui oriente, contrôle et évalue, dans le cadre de la stratégie de prise en charge des grossesses pour une « maternité sans risques », avec des infrastructures et équipements adéquats et hiérarchisés.
+                </div>
+                <div class="why bad">
+                    <strong>A et C :</strong> le dépistage est l'affaire de <em>tous</em> : médecin spécialiste, médecin généraliste et sage-femme. C'est une démarche de réseau, pas un acte réservé.
+                </div>
+                <div class="why bad">
+                    <strong>D :</strong> la hiérarchisation des infrastructures (niveaux de maternité) est justement ce qui permet d'orienter les GHR vers le plateau technique adapté.
+                </div>
+                <div class="why bad">
+                    <strong>E :</strong> le dépistage s'applique à <em>toutes</em> les grossesses, dès la première consultation, justement pour identifier celles qui sont à risque.
+                </div>
+            </div>
+        </details>
+    </article>
+
+    <!-- Q11 -->
+    <article class="qcm-card">
+        <div class="qcm-top">
+            <span class="q-number">Question 11</span>
+            <span class="badge badge-theme">HTA — signes de gravité</span>
+            <span class="badge badge-multi">Choix multiples</span>
+        </div>
+        <p class="qcm-stem">Quels sont les signes de gravité d'une HTA gravidique ? <em>(2 à 3 réponses exactes)</em></p>
+        <ul class="options">
+            <li><span class="opt">A</span> Troubles visuels (phosphènes) et auditifs (acouphènes)</li>
+            <li><span class="opt">B</span> Oligurie</li>
+            <li><span class="opt">C</span> PAS ≥ 160 mmHg ou PAD ≥ 110 mmHg</li>
+            <li><span class="opt">D</span> Œdèmes des chevilles isolés au 3ᵉ trimestre</li>
+            <li><span class="opt">E</span> Prise de poids progressive et régulière</li>
+        </ul>
+        <details class="correction">
+            <summary>🔎 Voir la correction &amp; l'explication détaillée</summary>
+            <div class="correction-body">
+                <span class="badge badge-answer">Réponses : A, B, C</span>
+                <div class="why good" style="margin-top:12px;">
+                    <strong>A :</strong> les phosphènes et acouphènes traduisent l'œdème cérébral et le vasospasme ; ils annoncent l'éclampsie.<br>
+                    <strong>B :</strong> l'oligurie signe l'atteinte rénale (insuffisance rénale fonctionnelle puis organique) et fait partie des signes de gravité.<br>
+                    <strong>C :</strong> les seuils 160/110 mmHg définissent l'HTA sévère, avec un risque élevé d'AVC et d'éclampsie.
+                </div>
+                <div class="why bad">
+                    <strong>D — Œdèmes des chevilles isolés :</strong> œdèmes physiologiques très fréquents en fin de grossesse, non spécifiques. Ce sont les <em>œdèmes massifs</em> ou la prise de poids <em>brutale</em> qui sont des signes de gravité.
+                </div>
+                <div class="why bad">
+                    <strong>E — Prise de poids progressive :</strong> c'est la prise de poids <em>récente et brutale</em> qui alerte, pas une évolution régulière.
+                </div>
+                <p><strong>Autres signes de gravité du cours :</strong> ATCD d'éclampsie/HRP/MIU, céphalées, ROT vifs, douleurs épigastriques, diminution des MAF, HU inférieure à la normale pour l'âge gestationnel (suspicion de RCIU), protéinurie massive.</p>
+            </div>
+        </details>
+    </article>
+
+    <!-- Q12 -->
+    <article class="qcm-card">
+        <div class="qcm-top">
+            <span class="q-number">Question 12</span>
+            <span class="badge badge-theme">Infection urinaire — traitement</span>
+            <span class="badge badge-simple">Choix simple (SAUF)</span>
+        </div>
+        <p class="qcm-stem">Toutes les propositions suivantes concernant le traitement de l'infection urinaire gravidique sont exactes, <strong>SAUF une</strong> :</p>
+        <ul class="options">
+            <li><span class="opt">A</span> En cas de cystite, des conseils hygiéno-diététiques sont associés à une antibiothérapie.</li>
+            <li><span class="opt">B</span> Un ECBU de contrôle est réalisé 48 h après la fin du traitement, puis mensuellement jusqu'à la fin de la grossesse.</li>
+            <li><span class="opt">C</span> En cas de pyélonéphrite, un repos strict en décubitus latéral gauche est recommandé.</li>
+            <li><span class="opt">D</span> L'antibiothérapie de la pyélonéphrite est administrée par voie parentérale après prélèvements bactériologiques.</li>
+            <li><span class="opt">E</span> En cas de pyélonéphrite, la tocolyse est formellement contre-indiquée, même en cas de MAP.</li>
+        </ul>
+        <details class="correction">
+            <summary>🔎 Voir la correction &amp; l'explication détaillée</summary>
+            <div class="correction-body">
+                <span class="badge badge-answer">Réponse : E (proposition fausse)</span>
+                <div class="why bad" style="margin-top:12px;">
+                    <strong>E :</strong> la tocolyse n'est pas contre-indiquée — elle est au contraire <em>prévue</em> en cas de menace d'accouchement prématuré (MAP) associée, car l'infection urinaire est une cause majeure de prématurité. Le cours mentionne explicitement « si MAP → tocolyse ».
+                </div>
+                <div class="why good">
+                    <strong>A, B, C, D sont exactes :</strong> la prise en charge d'une cystite/bactériurie asymptomatique associe mesures hygiéno-diététiques (boissons abondantes, mictions fréquentes, hygiène périnéale) et antibiothérapie (A) ; l'ECBU de contrôle se fait à 48 h puis mensuellement (B) ; la pyélonéphrite impose un repos strict en décubitus latéral gauche — position qui améliore le retour veineux rénal et la perfusion placentaire (C) ; l'antibiothérapie est parentérale après prélèvements bactériologiques (D).
+                </div>
+                <p><strong>À retenir :</strong> le décubitus latéral gauche est un geste « double bénéfice » : il décompresse la veine cave et améliore le drainage rénal.</p>
+            </div>
+        </details>
+    </article>
+
+    <!-- Q13 -->
+    <article class="qcm-card">
+        <div class="qcm-top">
+            <span class="q-number">Question 13</span>
+            <span class="badge badge-theme">Diabète gestationnel — diagnostic</span>
+            <span class="badge badge-rf">Réponse fausse</span>
+        </div>
+        <p class="qcm-stem">Concernant le diagnostic du diabète gestationnel, quelle proposition est <strong>fausse</strong> ?</p>
+        <ul class="options">
+            <li><span class="opt">A</span> Au 1ᵉʳ trimestre, une glycémie à jeun ≥ 0,92 g/L chez une patiente à risque fait poser le diagnostic de diabète gestationnel.</li>
+            <li><span class="opt">B</span> Au 1ᵉʳ trimestre, une glycémie à jeun ≥ 1,26 g/L évoque un diabète de type 2.</li>
+            <li><span class="opt">C</span> L'HGPO est réalisée entre 24 et 28 SA si la glycémie à jeun du 1ᵉʳ trimestre était normale.</li>
+            <li><span class="opt">D</span> Le diabète gestationnel est retenu si au moins <strong>deux</strong> valeurs de l'HGPO sont anormales.</li>
+            <li><span class="opt">E</span> Les seuils de l'HGPO sont : à jeun ≥ 0,92 g/L, à 1 h ≥ 1,80 g/L, à 2 h ≥ 1,53 g/L.</li>
+        </ul>
+        <details class="correction">
+            <summary>🔎 Voir la correction &amp; l'explication détaillée</summary>
+            <div class="correction-body">
+                <span class="badge badge-answer">Réponse : D</span>
+                <div class="why bad" style="margin-top:12px;">
+                    <strong>D :</strong> le cours est formel — le diagnostic est posé si <strong>au moins UNE valeur</strong> parmi les 3 mesures est anormale. Exiger deux valeurs anormales est une erreur classique (confusion avec les critères de l'IADPSG/OMS qui retiennent une seule valeur).
+                </div>
+                <div class="why good">
+                    <strong>A, B, C, E sont exactes :</strong> au T1, ≥ 0,92 g/L = DG (A) et ≥ 1,26 g/L = diabète de type 2 préexistant (B) ; si la glycémie à jeun du T1 est normale, l'HGPO se fait entre 24 et 28 SA (C) ; les trois seuils de l'HGPO sont 0,92 / 1,80 / 1,53 g/L (E).
+                </div>
+                <p><strong>Piège majeur du chapitre :</strong> ne pas confondre les deux seuils du T1 — <strong>0,92</strong> = DG, <strong>1,26</strong> = diabète de type 2. Un écart de 0,34 g/L qui change complètement la prise en charge.</p>
+            </div>
+        </details>
+    </article>
+
+    <!-- Q14 -->
+    <article class="qcm-card">
+        <div class="qcm-top">
+            <span class="q-number">Question 14</span>
+            <span class="badge badge-theme">Échographie et surveillance</span>
+            <span class="badge badge-multi">Choix multiples</span>
+        </div>
+        <p class="qcm-stem">Concernant l'échographie au cours de la grossesse, quelles propositions sont exactes ? <em>(2 à 3 réponses exactes)</em></p>
+        <ul class="options">
+            <li><span class="opt">A</span> L'échographie du 1ᵉʳ trimestre permet la datation de la grossesse.</li>
+            <li><span class="opt">B</span> L'échographie du 2ᵉ trimestre évalue la morphologie et l'anatomie fœtale.</li>
+            <li><span class="opt">C</span> L'échographie du 3ᵉ trimestre évalue les biométries, la présentation et le placement placentaire.</li>
+            <li><span class="opt">D</span> L'échographie du 1ᵉʳ trimestre évalue systématiquement la biométrie fœtale complète.</li>
+            <li><span class="opt">E</span> L'échographie du 2ᵉ trimestre sert uniquement à déterminer le sexe fœtal.</li>
+        </ul>
+        <details class="correction">
+            <summary>🔎 Voir la correction &amp; l'explication détaillée</summary>
+            <div class="correction-body">
+                <span class="badge badge-answer">Réponses : A, B, C</span>
+                <div class="why good" style="margin-top:12px;">
+                    <strong>A :</strong> au 1ᵉʳ trimestre, l'objectif principal est la <em>datation</em> (longueur cranio-caudale), qui conditionne toute la surveillance ultérieure.<br>
+                    <strong>B :</strong> au 2ᵉ trimestre, l'échographie morphologique examine l'anatomie fœtale à la recherche de malformations.<br>
+                    <strong>C :</strong> au 3ᵉ trimestre, on évalue la croissance (biométries), la présentation et la localisation placentaire — éléments décisifs pour la voie d'accouchement, en particulier devant un placenta praevia.
+                </div>
+                <div class="why bad">
+                    <strong>D :</strong> la biométrie complète n'est pas l'objectif du 1ᵉʳ trimestre ; c'est la datation qui prime.
+                </div>
+                <div class="why bad">
+                    <strong>E :</strong> réduire l'échographie du 2ᵉ trimestre au sexe fœtal est une caricature ; l'enjeu est le dépistage des malformations.
+                </div>
+            </div>
+        </details>
+    </article>
+
+    <!-- Q15 -->
+    <article class="qcm-card">
+        <div class="qcm-top">
+            <span class="q-number">Question 15</span>
+            <span class="badge badge-theme">Anémie ferriprive — traitement</span>
+            <span class="badge badge-simple">Choix simple</span>
+        </div>
+        <p class="qcm-stem">Quelle est la posologie du fer par voie orale dans le traitement de l'anémie ferriprive gravidique ?</p>
+        <ul class="options">
+            <li><span class="opt">A</span> 50 à 100 mg/j</li>
+            <li><span class="opt">B</span> 150 à 200 mg/j</li>
+            <li><span class="opt">C</span> 300 à 400 mg/j</li>
+            <li><span class="opt">D</span> 10 à 20 mg/j</li>
+            <li><span class="opt">E</span> 500 mg/j</li>
+        </ul>
+        <details class="correction">
+            <summary>🔎 Voir la correction &amp; l'explication détaillée</summary>
+            <div class="correction-body">
+                <span class="badge badge-answer">Réponse : B</span>
+                <div class="why good" style="margin-top:12px;">
+                    <strong>150 à 200 mg/j de fer élément par voie orale</strong>, traitement poursuivi <strong>3 mois après la correction de l'anémie</strong> afin de reconstituer les réserves en fer (et non simplement de normaliser l'hémoglobine). Le but du traitement est double : corriger l'anémie <em>et</em> rétablir les réserves.
+                </div>
+                <div class="why bad">
+                    <strong>A :</strong> dose insuffisante pour une anémie déclarée (elle correspondrait à une supplémentation préventive).<br>
+                    <strong>C :</strong> dose excessive, mal tolérée sur le plan digestif.<br>
+                    <strong>D :</strong> dose dérisoire.<br>
+                    <strong>E :</strong> dose sans rapport avec la pratique.
+                </div>
+                <p><strong>À ne pas oublier :</strong> une éducation nutritionnelle accompagne toujours le traitement martial, et le traitement dépend de la sévérité de l'anémie et de l'examen clinique.</p>
+            </div>
+        </details>
+    </article>
+
+    <!-- Q16 -->
+    <article class="qcm-card">
+        <div class="qcm-top">
+            <span class="q-number">Question 16</span>
+            <span class="badge badge-theme">GHR — épidémiologie</span>
+            <span class="badge badge-simple">Choix simple</span>
+        </div>
+        <p class="qcm-stem">Quelle proportion des grossesses la GHR représente-t-elle ?</p>
+        <ul class="options">
+            <li><span class="opt">A</span> 1/10</li>
+            <li><span class="opt">B</span> 1/5</li>
+            <li><span class="opt">C</span> 1/3</li>
+            <li><span class="opt">D</span> 1/2</li>
+            <li><span class="opt">E</span> 2/3</li>
+        </ul>
+        <details class="correction">
+            <summary>🔎 Voir la correction &amp; l'explication détaillée</summary>
+            <div class="correction-body">
+                <span class="badge badge-answer">Réponse : C</span>
+                <div class="why good" style="margin-top:12px;">
+                    <strong>1/3 des grossesses</strong> — chiffre à connaître par cœur, car il justifie le qualificatif de « problème de santé publique » : un tiers des grossesses représente un volume considérable de surveillance et de ressources.
+                </div>
+                <div class="why bad">
+                    <strong>A, B, D, E :</strong> valeurs fantaisistes. Retenez que la GHR est <em>fréquente</em> (pas une exception) mais pas majoritaire : 1/3 se situe entre les deux.
+                </div>
+            </div>
+        </details>
+    </article>
+
+    <!-- Q17 -->
+    <article class="qcm-card">
+        <div class="qcm-top">
+            <span class="q-number">Question 17</span>
+            <span class="badge badge-theme">Facteurs liés à la grossesse actuelle</span>
+            <span class="badge badge-multi">Choix multiples</span>
+        </div>
+        <p class="qcm-stem">Parmi les facteurs suivants liés à la grossesse actuelle, lesquels sont des facteurs de risque de GHR ? <em>(2 à 3 réponses exactes)</em></p>
+        <ul class="options">
+            <li><span class="opt">A</span> Grossesse multiple</li>
+            <li><span class="opt">B</span> Placenta praevia</li>
+            <li><span class="opt">C</span> Présentation anormale ou dystocique</li>
+            <li><span class="opt">D</span> Prise de poids strictement normale et adaptée au terme</li>
+            <li><span class="opt">E</span> Grossesse à terme de 39 SA sans complication</li>
+        </ul>
+        <details class="correction">
+            <summary>🔎 Voir la correction &amp; l'explication détaillée</summary>
+            <div class="correction-body">
+                <span class="badge badge-answer">Réponses : A, B, C</span>
+                <div class="why good" style="margin-top:12px;">
+                    <strong>A :</strong> la grossesse multiple majore tous les risques : prématurité, RCIU, HTA, hémorragie du post-partum.<br>
+                    <strong>B :</strong> le placenta praevia expose au risque hémorragique majeur et impose une césarienne programmée.<br>
+                    <strong>C :</strong> une présentation anormale ou dystocique annonce une dystocie mécanique et un recours instrumental/césarienne.
+                </div>
+                <div class="why bad">
+                    <strong>D et E :</strong> ce sont des situations normales, sans facteur de risque. Le cours retient au contraire la prise de poids <em>insuffisante ou excessive</em> et la <em>grossesse prolongée</em>.
+                </div>
+                <p><strong>Liste du cours :</strong> prise de poids insuffisante ou excessive, grossesse multiple, placenta praevia, présentation anormale ou dystocique, grossesse prolongée, nécessité d'une AG au cours de la grossesse, prématurité, survenue d'un accident émotionnel.</p>
+            </div>
+        </details>
+    </article>
+
+    <!-- Q18 -->
+    <article class="qcm-card">
+        <div class="qcm-top">
+            <span class="q-number">Question 18</span>
+            <span class="badge badge-theme">HTA chronique</span>
+            <span class="badge badge-simple">Choix simple</span>
+        </div>
+        <p class="qcm-stem">Quelle définition correspond à l'HTA chronique gravidique ?</p>
+        <ul class="options">
+            <li><span class="opt">A</span> HTA apparaissant après 20 SA chez une femme jusque-là normotendue</li>
+            <li><span class="opt">B</span> HTA préexistante ou diagnostiquée avant 20 SA, ou persistant après l'accouchement</li>
+            <li><span class="opt">C</span> HTA + protéinurie &gt; 0,3 g/24 h + œdèmes après 20 SA</li>
+            <li><span class="opt">D</span> HTA isolée du post-partum immédiat</li>
+            <li><span class="opt">E</span> HTA apparaissant uniquement pendant le travail</li>
+        </ul>
+        <details class="correction">
+            <summary>🔎 Voir la correction &amp; l'explication détaillée</summary>
+            <div class="correction-body">
+                <span class="badge badge-answer">Réponse : B</span>
+                <div class="why good" style="margin-top:12px;">
+                    <strong>B :</strong> trois situations définissent l'HTA chronique : (1) HTA préexistante à la grossesse, (2) HTA diagnostiquée avant 20 SA, (3) HTA constatée pendant la grossesse et ne disparaissant pas après l'accouchement. Le critère commun est l'<em>absence de réversibilité gravidique</em>.
+                </div>
+                <div class="why bad">
+                    <strong>A :</strong> c'est l'HTA gravidique.<br>
+                    <strong>C :</strong> c'est la pré-éclampsie.<br>
+                    <strong>D et E :</strong> définitions inventées, sans correspondance.
+                </div>
+                <p><strong>Point clé :</strong> ce qui distingue l'HTA chronique de l'HTA gravidique, c'est la <em>persistance après l'accouchement</em> ou l'ancienneté (&lt; 20 SA).</p>
+            </div>
+        </details>
+    </article>
+
+    <!-- Q19 -->
+    <article class="qcm-card">
+        <div class="qcm-top">
+            <span class="q-number">Question 19</span>
+            <span class="badge badge-theme">Anémie — retentissement &amp; traitement</span>
+            <span class="badge badge-rf">Réponse fausse</span>
+        </div>
+        <p class="qcm-stem">Concernant le retentissement et le traitement de l'anémie ferriprive gravidique, quelle proposition est <strong>fausse</strong> ?</p>
+        <ul class="options">
+            <li><span class="opt">A</span> Le retentissement maternel est dominé par le risque d'hémorragie de la délivrance.</li>
+            <li><span class="opt">B</span> Le retentissement fœtal inclut prématurité, RCIU et augmentation de la mortalité périnatale.</li>
+            <li><span class="opt">C</span> Une anémie est dite sévère lorsque l'Hb &lt; 7 g/dL.</li>
+            <li><span class="opt">D</span> Le traitement martial oral est poursuivi 3 mois après correction de l'anémie.</li>
+            <li><span class="opt">E</span> Le traitement martial oral est arrêté dès la normalisation de l'hémoglobine.</li>
+        </ul>
+        <details class="correction">
+            <summary>🔎 Voir la correction &amp; l'explication détaillée</summary>
+            <div class="correction-body">
+                <span class="badge badge-answer">Réponse : E</span>
+                <div class="why bad" style="margin-top:12px;">
+                    <strong>E :</strong> arrêter le fer dès que l'Hb se normalise est une erreur thérapeutique classique : l'hémoglobine se corrige avant les réserves. Il faut poursuivre <strong>3 mois après la correction</strong> pour reconstituer les réserves en fer (ferritine).
+                </div>
+                <div class="why good">
+                    <strong>A, B, C, D sont exactes :</strong> le retentissement maternel est dominé par l'hémorragie de la délivrance (A) ; le retentissement fœtal associe prématurité, RCIU/hypotrophie et augmentation de la mortalité périnatale (B) ; le seuil OMS de sévérité est Hb &lt; 7 g/dL (C) ; le traitement est poursuivi 3 mois après correction (D).
+                </div>
+                <p><strong>Métaphore utile :</strong> l'hémoglobine est le « compte courant » du fer, la ferritine est le « livret d'épargne ». On ne vide pas le compte courant en croyant avoir rempli l'épargne.</p>
+            </div>
+        </details>
+    </article>
+
+    <!-- Q20 -->
+    <article class="qcm-card">
+        <div class="qcm-top">
+            <span class="q-number">Question 20</span>
+            <span class="badge badge-theme">Cardiopathies et grossesse</span>
+            <span class="badge badge-multi">Choix multiples</span>
+        </div>
+        <p class="qcm-stem">Concernant les cardiopathies et la grossesse, quelles propositions sont exactes ? <em>(2 à 3 réponses exactes)</em></p>
+        <ul class="options">
+            <li><span class="opt">A</span> La grossesse entraîne des modifications hémodynamiques qui s'accentuent lors de l'accouchement.</li>
+            <li><span class="opt">B</span> Une cardiopathie sous-jacente peut se décompenser pendant la grossesse.</li>
+            <li><span class="opt">C</span> La prise en charge doit être multidisciplinaire, débutant avant la grossesse et se poursuivant en post-partum.</li>
+            <li><span class="opt">D</span> La grossesse améliore spontanément toute cardiopathie.</li>
+            <li><span class="opt">E</span> La cardiopathie contre-indique systématiquement toute grossesse.</li>
+        </ul>
+        <details class="correction">
+            <summary>🔎 Voir la correction &amp; l'explication détaillée</summary>
+            <div class="correction-body">
+                <span class="badge badge-answer">Réponses : A, B, C</span>
+                <div class="why good" style="margin-top:12px;">
+                    <strong>A :</strong> la grossesse augmente la volémie, le débit cardiaque et la fréquence cardiaque ; ces modifications culminent au travail et à l'accouchement (poussées de débit, variations brutales de la pression intra-abdominale).<br>
+                    <strong>B :</strong> c'est précisément ce qui rend la cardiopathie dangereuse : une cardiopathie jusque-là compensée peut se décompenser (œdème pulmonaire, troubles du rythme).<br>
+                    <strong>C :</strong> la prise en charge est multidisciplinaire (obstétricien, cardiologue, anesthésiste, néonatologue) et doit débuter <em>avant</em> la grossesse (consultation préconceptionnelle) et se poursuivre en post-partum.
+                </div>
+                <div class="why bad">
+                    <strong>D :</strong> la grossesse n'améliore aucune cardiopathie ; elle est un test d'effort naturel qui révèle ou aggrave l'insuffisance cardiaque.<br>
+                    <strong>E :</strong> la contre-indication n'est pas systématique ; elle dépend du type et de la sévérité de la cardiopathie (certaines cardiopathies à haut risque comme le syndrome d'Eisenmenger le sont, mais pas toutes).
+                </div>
+            </div>
+        </details>
+    </article>
+
+    <!-- Q21 -->
+    <article class="qcm-card">
+        <div class="qcm-top">
+            <span class="q-number">Question 21</span>
+            <span class="badge badge-theme">Diabète gestationnel — définition</span>
+            <span class="badge badge-simple">Choix simple (SAUF)</span>
+        </div>
+        <p class="qcm-stem">Toutes les propositions suivantes concernant le diabète gestationnel sont exactes, <strong>SAUF une</strong> :</p>
+        <ul class="options">
+            <li><span class="opt">A</span> C'est un trouble de la tolérance glucidique de sévérité variable.</li>
+            <li><span class="opt">B</span> Il débute ou est diagnostiqué pour la première fois pendant la grossesse.</li>
+            <li><span class="opt">C</span> Sa prévalence varie de 1 à 14 % de la totalité des grossesses.</li>
+            <li><span class="opt">D</span> L'insuline reste le traitement de 1ᵉʳ choix lorsqu'un traitement hypoglycémiant s'avère nécessaire.</li>
+            <li><span class="opt">E</span> Les hypoglycémiants oraux constituent le traitement de première intention.</li>
+        </ul>
+        <details class="correction">
+            <summary>🔎 Voir la correction &amp; l'explication détaillée</summary>
+            <div class="correction-body">
+                <span class="badge badge-answer">Réponse : E (proposition fausse)</span>
+                <div class="why bad" style="margin-top:12px;">
+                    <strong>E :</strong> les hypoglycémiants oraux sont <em>en principe contre-indiqués</em> pendant la grossesse (risque de passage transplacentaire et d'hypoglycémie néonatale). L'<strong>insuline</strong> est le traitement de référence lorsqu'un traitement médicamenteux est nécessaire.
+                </div>
+                <div class="why good">
+                    <strong>A, B, C, D sont exactes :</strong> ce sont les éléments de définition du cours — trouble de la tolérance glucidique de sévérité variable (A), débutant ou diagnostiqué pour la première fois pendant la grossesse (B), prévalence 1 à 14 % (C), insuline en 1ʳᵉ intention (D).
+                </div>
+                <p><strong>Nuance :</strong> la définition précise « quel que soit le traitement et l'évolution dans le post-partum » — autrement dit, le diagnostic de DG ne préjuge pas de la persistance du diabète après l'accouchement, d'où la nécessité d'un contrôle post-partum.</p>
+            </div>
+        </details>
+    </article>
+
+    <!-- Q22 -->
+    <article class="qcm-card">
+        <div class="qcm-top">
+            <span class="q-number">Question 22</span>
+            <span class="badge badge-theme">Modalités du dépistage — chronologie</span>
+            <span class="badge badge-rj">Réponse juste</span>
+        </div>
+        <p class="qcm-stem">Concernant les modalités du dépistage de la GHR, quelle proposition est <strong>juste</strong> ?</p>
+        <ul class="options">
+            <li><span class="opt">A</span> Le dépistage commence uniquement au 3ᵉ trimestre.</li>
+            <li><span class="opt">B</span> Le dépistage commence lors de la 1ʳᵉ consultation et se poursuit tout au long de la grossesse.</li>
+            <li><span class="opt">C</span> Le dépistage se limite à un seul examen clinique.</li>
+            <li><span class="opt">D</span> L'interrogatoire minutieux n'a pas sa place dans le dépistage.</li>
+            <li><span class="opt">E</span> La recherche des facteurs de risque n'est utile qu'en cas de symptômes.</li>
+        </ul>
+        <details class="correction">
+            <summary>🔎 Voir la correction &amp; l'explication détaillée</summary>
+            <div class="correction-body">
+                <span class="badge badge-answer">Réponse : B</span>
+                <div class="why good" style="margin-top:12px;">
+                    <strong>B :</strong> le dépistage est un processus <em>continu</em> qui démarre à la première consultation prénatale et se poursuit à chaque consultation. C'est la condition d'une prise en charge précoce — « l'issue de la grossesse dépend de la précocité et du nombre de consultations ».
+                </div>
+                <div class="why bad">
+                    <strong>A :</strong> un dépistage au 3ᵉ trimestre serait trop tardif pour prévenir la plupart des complications.<br>
+                    <strong>C :</strong> le dépistage combine interrogatoire, examen clinique général et obstétrical, et examens complémentaires.<br>
+                    <strong>D :</strong> l'interrogatoire minutieux est la première étape — c'est lui qui identifie les FDR.<br>
+                    <strong>E :</strong> le dépistage est <em>systématique</em>, pas conditionné par des symptômes.
+                </div>
+            </div>
+        </details>
+    </article>
+
+    <!-- Q23 -->
+    <article class="qcm-card">
+        <div class="qcm-top">
+            <span class="q-number">Question 23</span>
+            <span class="badge badge-theme">Pyélonéphrite gravidique</span>
+            <span class="badge badge-simple">Choix simple</span>
+        </div>
+        <p class="qcm-stem">Quelle est la première mesure thérapeutique en cas de pyélonéphrite gravidique ?</p>
+        <ul class="options">
+            <li><span class="opt">A</span> Repos strict en décubitus latéral gauche</li>
+            <li><span class="opt">B</span> Ambulatoire avec antibiotiques oraux d'emblée</li>
+            <li><span class="opt">C</span> Chirurgie urologique immédiate</li>
+            <li><span class="opt">D</span> Diurétiques seuls</li>
+            <li><span class="opt">E</span> Aucun traitement avant l'accouchement</li>
+        </ul>
+        <details class="correction">
+            <summary>🔎 Voir la correction &amp; l'explication détaillée</summary>
+            <div class="correction-body">
+                <span class="badge badge-answer">Réponse : A</span>
+                <div class="why good" style="margin-top:12px;">
+                    <strong>A :</strong> le repos strict en décubitus latéral gauche fait partie du traitement de première ligne. Il améliore la perfusion rénale et le drainage des voies urinaires, tout en préservant la perfusion placentaire. Il s'y associe une antibiothérapie parentérale après prélèvements, des antalgiques/antipyrétiques, une hydratation abondante et une tocolyse si MAP.
+                </div>
+                <div class="why bad">
+                    <strong>B :</strong> la pyélonéphrite est une infection grave : elle nécessite une antibiothérapie <em>parentérale</em> et une hospitalisation, pas un traitement oral ambulatoire d'emblée.<br>
+                    <strong>C :</strong> la chirurgie n'est pas le traitement de première intention (elle se discute en cas d'obstacle ou d'abcès).<br>
+                    <strong>D :</strong> les diurétiques n'ont pas leur place.<br>
+                    <strong>E :</strong> l'abstention thérapeutique exposerait au sepsis maternel et fœtal.
+                </div>
+            </div>
+        </details>
+    </article>
+
+    <!-- Q24 -->
+    <article class="qcm-card">
+        <div class="qcm-top">
+            <span class="q-number">Question 24</span>
+            <span class="badge badge-theme">Bilan complémentaire du 1ᵉʳ trimestre</span>
+            <span class="badge badge-multi">Choix multiples</span>
+        </div>
+        <p class="qcm-stem">Quels examens font partie du bilan biologique initial de la grossesse ? <em>(2 à 3 réponses exactes)</em></p>
+        <ul class="options">
+            <li><span class="opt">A</span> Groupage sanguin-Rhésus, phénotype et RAI</li>
+            <li><span class="opt">B</span> Glycémie à jeun</li>
+            <li><span class="opt">C</span> Sérologies toxoplasmose et rubéole</li>
+            <li><span class="opt">D</span> Scanner abdominal systématique</li>
+            <li><span class="opt">E</span> Biopsie hépatique</li>
+        </ul>
+        <details class="correction">
+            <summary>🔎 Voir la correction &amp; l'explication détaillée</summary>
+            <div class="correction-body">
+                <span class="badge badge-answer">Réponses : A, B, C</span>
+                <div class="why good" style="margin-top:12px;">
+                    <strong>A :</strong> indispensable pour la prévention de l'iso-immunisation Rhésus et la sécurité transfusionnelle.<br>
+                    <strong>B :</strong> dépistage du diabète (et du diabète gestationnel chez les patientes à risque).<br>
+                    <strong>C :</strong> dépistage des sérologies à risque de fœtopathie (toxoplasmose, rubéole) — avec l'albuminurie à la bandelette et la FNS, ces examens complètent le bilan biologique du cours.
+                </div>
+                <div class="why bad">
+                    <strong>D et E :</strong> examens invasifs ou irradiants, sans aucune place dans le bilan systématique de la grossesse.
+                </div>
+                <p><strong>Bilan complet du cours :</strong> groupage-Rhésus, phénotype, RAI ; FNS ; glycémie à jeun ; albuminurie (bandelette urinaire) ; sérologies toxoplasmose et rubéole — et échographie aux trois trimestres.</p>
+            </div>
+        </details>
+    </article>
+
+    <!-- Q25 -->
+    <article class="qcm-card">
+        <div class="qcm-top">
+            <span class="q-number">Question 25</span>
+            <span class="badge badge-theme">Anémie sévère — seuil OMS</span>
+            <span class="badge badge-simple">Choix simple</span>
+        </div>
+        <p class="qcm-stem">Selon l'OMS, à partir de quel taux d'hémoglobine une anémie ferriprive est-elle considérée comme sévère ?</p>
+        <ul class="options">
+            <li><span class="opt">A</span> &lt; 11 g/dL</li>
+            <li><span class="opt">B</span> &lt; 10,5 g/dL</li>
+            <li><span class="opt">C</span> &lt; 9 g/dL</li>
+            <li><span class="opt">D</span> &lt; 7 g/dL</li>
+            <li><span class="opt">E</span> &lt; 5 g/dL</li>
+        </ul>
+        <details class="correction">
+            <summary>🔎 Voir la correction &amp; l'explication détaillée</summary>
+            <div class="correction-body">
+                <span class="badge badge-answer">Réponse : D</span>
+                <div class="why good" style="margin-top:12px;">
+                    <strong>D :</strong> le seuil OMS de l'anémie sévère est <strong>Hb &lt; 7 g/dL</strong>. En dessous, le retentissement materno-fœtal devient majeur et une transfusion peut être discutée, notamment en cas de proximité de l'accouchement (risque hémorragique).
+                </div>
+                <div class="why bad">
+                    <strong>A et B :</strong> ce sont les seuils <em>définitionnels</em> de l'anémie selon le trimestre (11 / 10,5 / 11), pas de sévérité.<br>
+                    <strong>C et E :</strong> valeurs non retenues par le cours.
+                </div>
+                <p><strong>Hiérarchie à mémoriser :</strong> anémie (selon trimestre) → anémie sévère (&lt; 7 g/dL) → menace transfusionnelle.</p>
+            </div>
+        </details>
+    </article>
+
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 2 : CAS CLINIQUES -->
+<!-- ============================================================ -->
+<section class="block" id="cas">
+    <div class="section-head">
+        <div class="section-num">2</div>
+        <div>
+            <h2>5 cas cliniques hospitaliers algériens</h2>
+            <p>Situations réalistes de consultation prénatale, d'urgence obstétricale et de suivi en maternité — CHU, EPH et structures de proximité.</p>
+        </div>
+    </div>
+
+    <!-- CAS 1 -->
+    <article class="case-card">
+        <div class="case-header">
+            <span class="case-tag">Cas n°1 · EPH</span>
+            <h3>Première consultation prénatale chez une adolescente rurale</h3>
+        </div>
+        <div class="case-vignette">
+            <span class="v-label">Vignette clinique</span>
+            <p><strong>Mme B., 17 ans</strong>, primigeste, consulte pour sa première consultation prénatale à l'EPH de sa commune, à <strong>12 SA</strong>.</p>
+            <ul>
+                <li>Originaire d'une zone rurale située à 60 km du CHU, analphabète, mariée depuis 6 mois.</li>
+                <li>Tabagique : 10 cigarettes/jour depuis 3 ans.</li>
+                <li>Taille : 148 cm ; poids actuel : 46 kg (poids antérieur 45 kg).</li>
+                <li>Niveau socio-économique défavorisé, accès aux soins limité.</li>
+                <li>Examen : TA 110/70 mmHg, pas d'œdème, hauteur utérine correspondant à 12 SA, BCF présents.</li>
+                <li>Aucun antécédent médical ou chirurgical notable.</li>
+            </ul>
+        </div>
+        <div class="case-questions">
+
+            <div class="case-q">
+                <p class="qcm-stem"><strong>C1-Q1.</strong> Parmi les éléments suivants de l'interrogatoire et de l'examen, lesquels constituent un facteur de risque de GHR ? <em>(2 à 3 réponses)</em></p>
+                <ul class="options">
+                    <li><span class="opt">A</span> Âge de 17 ans</li>
+                    <li><span class="opt">B</span> Taille de 148 cm</li>
+                    <li><span class="opt">C</span> Tabagisme actif</li>
+                    <li><span class="opt">D</span> Primigestité</li>
+                    <li><span class="opt">E</span> TA à 110/70 mmHg</li>
+                </ul>
+                <details class="correction">
+                    <summary>🔎 Correction</summary>
+                    <div class="correction-body">
+                        <span class="badge badge-answer">Réponses : A, B, C</span>
+                        <div class="why good" style="margin-top:10px;">
+                            <strong>A :</strong> l'âge &lt; 18 ans fait partie des âges extrêmes, avec un risque accru de prématurité, de RCIU, de dystocie et de troubles socio-psychologiques.<br>
+                            <strong>B :</strong> la taille &lt; 150 cm évoque un bassin potentiellement rétréci, source de dystocie osseuse.<br>
+                            <strong>C :</strong> le tabac est un facteur de risque majeur (RCIU, prématurité, HRP), explicitement noté « tabac +++ » dans le cours.
+                        </div>
+                        <div class="why bad">
+                            <strong>D :</strong> la primigestité <em>seule</em> n'est pas suffisante pour classer la grossesse en GHR ; la primiparité est un élément du terrain mais ne constitue pas à elle seule un facteur de risque majeur dans ce contexte.<br>
+                            <strong>E :</strong> une TA à 110/70 mmHg est strictement normale.
+                        </div>
+                        <p><strong>À ajouter dans la réflexion :</strong> les facteurs socio-économiques défavorables (accès moindre aux soins) et l'éloignement géographique sont également des éléments de terrain à intégrer dans l'évaluation du risque.</p>
+                    </div>
+                </details>
+            </div>
+
+            <div class="case-q">
+                <p class="qcm-stem"><strong>C1-Q2.</strong> Quel bilan complémentaire prescrivez-vous lors de cette première consultation ? <em>(2 à 3 réponses)</em></p>
+                <ul class="options">
+                    <li><span class="opt">A</span> Groupage sanguin-Rhésus, phénotype, RAI</li>
+                    <li><span class="opt">B</span> FNS, glycémie à jeun, albuminurie à la bandelette</li>
+                    <li><span class="opt">C</span> Sérologies toxoplasmose et rubéole, échographie de datation</li>
+                    <li><span class="opt">D</span> IRM cérébrale fœtale</li>
+                    <li><span class="opt">E</span> Amniocentèse systématique</li>
+                </ul>
+                <details class="correction">
+                    <summary>🔎 Correction</summary>
+                    <div class="correction-body">
+                        <span class="badge badge-answer">Réponses : A, B, C</span>
+                        <div class="why good" style="margin-top:10px;">
+                            <strong>A :</strong> indispensable pour anticiper la prophylaxie anti-D et sécuriser une éventuelle transfusion.<br>
+                            <strong>B :</strong> dépistage de l'anémie, du diabète et de la protéinurie.<br>
+                            <strong>C :</strong> sérologies à risque de fœtopathie et échographie de datation, qui conditionne toute la surveillance ultérieure.
+                        </div>
+                        <div class="why bad">
+                            <strong>D et E :</strong> examens invasifs ou de seconde intention, sans indication dans ce contexte.
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+            <div class="case-q">
+                <p class="qcm-stem"><strong>C1-Q3.</strong> Concernant le suivi de cette grossesse, quelle proposition est <strong>juste</strong> ?</p>
+                <ul class="options">
+                    <li><span class="opt">A</span> Le dépistage peut être espacé à une consultation par trimestre en raison de l'éloignement.</li>
+                    <li><span class="opt">B</span> L'issue de la grossesse dépend de la précocité et du nombre de consultations.</li>
+                    <li><span class="opt">C</span> Le dépistage des facteurs de risque est inutile chez une primigeste.</li>
+                    <li><span class="opt">D</span> La patiente doit être orientée d'emblée vers le CHU pour toutes les consultations.</li>
+                    <li><span class="opt">E</span> Aucun bilan biologique n'est nécessaire avant 24 SA.</li>
+                </ul>
+                <details class="correction">
+                    <summary>🔎 Correction</summary>
+                    <div class="correction-body">
+                        <span class="badge badge-answer">Réponse : B</span>
+                        <div class="why good" style="margin-top:10px;">
+                            <strong>B :</strong> c'est une phrase-clé du cours — « l'issue de la grossesse et de l'accouchement dépend de la précocité et du nombre de consultations ». Cette patiente cumule plusieurs facteurs de risque ; un suivi rapproché est indispensable.
+                        </div>
+                        <div class="why bad">
+                            <strong>A :</strong> l'éloignement ne justifie pas d'espacer la surveillance ; il faut au contraire organiser une continuité de soins (réseau, maternité de proximité).<br>
+                            <strong>C :</strong> la primigestité n'immunise pas contre les facteurs de risque.<br>
+                            <strong>D :</strong> la stratégie est la <em>hiérarchisation</em> : la patiente doit être orientée vers la structure la plus adaptée à son niveau de risque, pas systématiquement vers le CHU.<br>
+                            <strong>E :</strong> le bilan biologique est réalisé dès la première consultation.
+                        </div>
+                        <p><strong>Enjeu de santé publique :</strong> cette situation illustre la nécessité d'un cadre institutionnel qui oriente, contrôle et évalue (réseau périnatal, niveaux de maternité).</p>
+                    </div>
+                </details>
+            </div>
+
+            <div class="case-q">
+                <p class="qcm-stem"><strong>C1-Q4.</strong> Quelle affirmation concernant l'échographie chez cette patiente est exacte ?</p>
+                <ul class="options">
+                    <li><span class="opt">A</span> L'échographie du 1ᵉʳ trimestre a pour objectif principal la datation de la grossesse.</li>
+                    <li><span class="opt">B</span> L'échographie du 1ᵉʳ trimestre doit obligatoirement évaluer la biométrie fœtale complète.</li>
+                    <li><span class="opt">C</span> L'échographie morphologique se fait au 1ᵉʳ trimestre.</li>
+                    <li><span class="opt">D</span> L'échographie du 3ᵉ trimestre est inutile chez une primigeste.</li>
+                    <li><span class="opt">E</span> Une seule échographie suffit pour toute la grossesse.</li>
+                </ul>
+                <details class="correction">
+                    <summary>🔎 Correction</summary>
+                    <div class="correction-body">
+                        <span class="badge badge-answer">Réponse : A</span>
+                        <div class="why good" style="margin-top:10px;">
+                            <strong>A :</strong> la datation précise est l'objectif majeur du 1ᵉʳ trimestre ; elle conditionne l'interprétation de la croissance, la surveillance de la prématurité et le terme de référence.
+                        </div>
+                        <div class="why bad">
+                            <strong>B :</strong> la biométrie complète n'est pas l'objectif du T1.<br>
+                            <strong>C :</strong> la morphologie relève du 2ᵉ trimestre.<br>
+                            <strong>D :</strong> le T3 évalue biométries, présentation et placement placentaire — essentiel chez toute patiente.<br>
+                            <strong>E :</strong> trois échographies sont recommandées (T1, T2, T3).
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+        </div>
+    </article>
+
+    <!-- CAS 2 -->
+    <article class="case-card">
+        <div class="case-header">
+            <span class="case-tag">Cas n°2 · Urgences maternité CHU</span>
+            <h3>Céphalées et troubles visuels à 28 SA</h3>
+        </div>
+        <div class="case-vignette">
+            <span class="v-label">Vignette clinique</span>
+            <p><strong>Mme K., 38 ans</strong>, G3P2, admise aux urgences de la maternité à <strong>28 SA</strong> pour céphalées intenses et troubles visuels.</p>
+            <ul>
+                <li>Depuis 48 h : céphalées frontales rebelles, phosphènes, acouphènes.</li>
+                <li>Notion de prise de poids rapide depuis 1 semaine.</li>
+                <li>Examen : TA 168/112 mmHg ; œdèmes des membres inférieurs importants ; ROT vifs et diffus ; douleur épigastrique.</li>
+                <li>Bandelette urinaire : protéinurie ++ (3 croix).</li>
+                <li>Hauteur utérine inférieure à celle attendue pour 28 SA ; perception des mouvements fœtaux diminuée.</li>
+            </ul>
+        </div>
+        <div class="case-questions">
+
+            <div class="case-q">
+                <p class="qcm-stem"><strong>C2-Q1.</strong> Quel est le diagnostic le plus probable ?</p>
+                <ul class="options">
+                    <li><span class="opt">A</span> HTA gravidique simple</li>
+                    <li><span class="opt">B</span> HTA chronique</li>
+                    <li><span class="opt">C</span> Pré-éclampsie sévère</li>
+                    <li><span class="opt">D</span> Éclampsie</li>
+                    <li><span class="opt">E</span> HTA blanche de consultation</li>
+                </ul>
+                <details class="correction">
+                    <summary>🔎 Correction</summary>
+                    <div class="correction-body">
+                        <span class="badge badge-answer">Réponse : C</span>
+                        <div class="why good" style="margin-top:10px;">
+                            <strong>C :</strong> la triade HTA + protéinurie + œdèmes après 20 SA définit la pré-éclampsie. La présence de signes de gravité (céphalées, phosphènes, acouphènes, ROT vifs, douleur épigastrique, PAS ≥ 160 / PAD ≥ 110, prise de poids brutale, RCIU suspecté, diminution des MAF) la classe en <strong>pré-éclampsie sévère</strong>.
+                        </div>
+                        <div class="why bad">
+                            <strong>A :</strong> l'HTA gravidique est isolée, sans protéinurie ni œdème.<br>
+                            <strong>B :</strong> pas d'antécédent d'HTA et apparition après 20 SA → ce n'est pas chronique.<br>
+                            <strong>D :</strong> l'éclampsie est définie par la survenue de <em>convulsions</em>, absentes ici. La patiente est à haut risque d'éclampsie.<br>
+                            <strong>E :</strong> l'HTA blanche est une HTA de consultation normale en ambulatoire ; ici les signes cliniques et biologiques sont patents.
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+            <div class="case-q">
+                <p class="qcm-stem"><strong>C2-Q2.</strong> Quels éléments chez cette patiente constituent des signes de gravité ? <em>(2 à 3 réponses)</em></p>
+                <ul class="options">
+                    <li><span class="opt">A</span> Phosphènes et acouphènes</li>
+                    <li><span class="opt">B</span> ROT vifs et douleur épigastrique</li>
+                    <li><span class="opt">C</span> PAS ≥ 160 mmHg et PAD ≥ 110 mmHg</li>
+                    <li><span class="opt">D</span> Prise en charge en ambulatoire possible</li>
+                    <li><span class="opt">E</span> Absence de protéinurie massive</li>
+                </ul>
+                <details class="correction">
+                    <summary>🔎 Correction</summary>
+                    <div class="correction-body">
+                        <span class="badge badge-answer">Réponses : A, B, C</span>
+                        <div class="why good" style="margin-top:10px;">
+                            <strong>A :</strong> les troubles visuels et auditifs traduisent l'atteinte cérébrale et précèdent souvent l'éclampsie.<br>
+                            <strong>B :</strong> les ROT vifs et la douleur épigastrique (irritation hépatique) sont des signes classiques de gravité.<br>
+                            <strong>C :</strong> les seuils 160/110 mmHg constituent l'HTA sévère.
+                        </div>
+                        <div class="why bad">
+                            <strong>D :</strong> la prise en charge d'une pré-éclampsie sévère est hospitalière.<br>
+                            <strong>E :</strong> l'absence de protéinurie <em>massive</em> ne protège pas ; la protéinurie est déjà présente (3 croix) et la gravité est clinique.
+                        </div>
+                        <p><strong>Autres signes de gravité du cours :</strong> œdèmes massifs, oligurie, HU &lt; normale pour l'âge gestationnel, ATCD d'éclampsie/HRP/MIU.</p>
+                    </div>
+                </details>
+            </div>
+
+            <div class="case-q">
+                <p class="qcm-stem"><strong>C2-Q3.</strong> Quels examens complémentaires sont prioritaires pour évaluer la sévérité ? <em>(2 à 3 réponses)</em></p>
+                <ul class="options">
+                    <li><span class="opt">A</span> Protéinurie des 24 h</li>
+                    <li><span class="opt">B</span> NFS-plaquettes, bilan hépatique, créatinine, uricémie</li>
+                    <li><span class="opt">C</span> Échographie obstétricale avec doppler et surveillance du RCF</li>
+                    <li><span class="opt">D</span> Radiographie du thorax systématique</li>
+                    <li><span class="opt">E</span> Sérologie VIH seule</li>
+                </ul>
+                <details class="correction">
+                    <summary>🔎 Correction</summary>
+                    <div class="correction-body">
+                        <span class="badge badge-answer">Réponses : A, B, C</span>
+                        <div class="why good" style="margin-top:10px;">
+                            <strong>A :</strong> la quantification de la protéinurie précise l'atteinte rénale.<br>
+                            <strong>B :</strong> recherche de complications hématologiques (thrombopénie), hépatiques (cytolyse, HELLP) et rénales.<br>
+                            <strong>C :</strong> évaluation de la croissance fœtale (RCIU), du bien-être fœtal et du retentissement placentaire.
+                        </div>
+                        <div class="why bad">
+                            <strong>D et E :</strong> examens non prioritaires dans cette situation (la radiographie thoracique se discute seulement en cas de suspicion d'œdème pulmonaire).
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+            <div class="case-q">
+                <p class="qcm-stem"><strong>C2-Q4.</strong> Quelle attitude thérapeutique initiale est la plus appropriée ?</p>
+                <ul class="options">
+                    <li><span class="opt">A</span> Hospitalisation, contrôle tensionnel, surveillance materno-fœtale et maturation pulmonaire fœtale</li>
+                    <li><span class="opt">B</span> Retour à domicile avec automesure tensionnelle</li>
+                    <li><span class="opt">C</span> Césarienne immédiate systématique</li>
+                    <li><span class="opt">D</span> Abstention thérapeutique jusqu'à 37 SA</li>
+                    <li><span class="opt">E</span> Diurétiques seuls</li>
+                </ul>
+                <details class="correction">
+                    <summary>🔎 Correction</summary>
+                    <div class="correction-body">
+                        <span class="badge badge-answer">Réponse : A</span>
+                        <div class="why good" style="margin-top:10px;">
+                            <strong>A :</strong> la prise en charge d'une pré-éclampsie sévère repose sur l'hospitalisation, le contrôle tensionnel (antihypertenseurs), la prévention de l'éclampsie (sulfate de magnésium selon protocole) et la surveillance materno-fœtale rapprochée. À 28 SA, la maturation pulmonaire fœtale par corticoïdes est essentielle si une extraction doit être envisagée.
+                        </div>
+                        <div class="why bad">
+                            <strong>B :</strong> danger vital maternel et fœtal.<br>
+                            <strong>C :</strong> la césarienne n'est pas systématique à 28 SA ; la décision dépend de la sévérité, du bien-être fœtal et de l'évolution.<br>
+                            <strong>D :</strong> l'abstention est inacceptable devant une pré-éclampsie sévère.<br>
+                            <strong>E :</strong> les diurétiques ne traitent pas la pré-éclampsie et peuvent aggraver l'hypovolémie.
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+            <div class="case-q">
+                <p class="qcm-stem"><strong>C2-Q5.</strong> Concernant l'HTA chronique, quelle proposition est exacte ?</p>
+                <ul class="options">
+                    <li><span class="opt">A</span> Elle est diagnostiquée après 20 SA chez une femme normotendue</li>
+                    <li><span class="opt">B</span> Elle est préexistante, diagnostiquée avant 20 SA, ou persiste après l'accouchement</li>
+                    <li><span class="opt">C</span> Elle s'accompagne toujours d'une protéinurie</li>
+                    <li><span class="opt">D</span> Elle se définit par une PAS ≥ 160 mmHg uniquement</li>
+                    <li><span class="opt">E</span> Elle ne présente aucun risque fœtal</li>
+                </ul>
+                <details class="correction">
+                    <summary>🔎 Correction</summary>
+                    <div class="correction-body">
+                        <span class="badge badge-answer">Réponse : B</span>
+                        <div class="why good" style="margin-top:10px;">
+                            <strong>B :</strong> définition exacte de l'HTA chronique (préexistante, avant 20 SA, ou persistant en post-partum).
+                        </div>
+                        <div class="why bad">
+                            <strong>A :</strong> c'est l'HTA gravidique.<br>
+                            <strong>C :</strong> la protéinurie signe la pré-éclampsie surajoutée, pas l'HTA chronique elle-même.<br>
+                            <strong>D :</strong> le seuil diagnostique est 140/90.<br>
+                            <strong>E :</strong> l'HTA chronique expose à la pré-éclampsie surajoutée, au RCIU et à la prématurité.
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+        </div>
+    </article>
+
+    <!-- CAS 3 -->
+    <article class="case-card">
+        <div class="case-header">
+            <span class="case-tag">Cas n°3 · Consultation prénatale</span>
+            <h3>Asthénie et pâleur à 16 SA</h3>
+        </div>
+        <div class="case-vignette">
+            <span class="v-label">Vignette clinique</span>
+            <p><strong>Mme A., 29 ans</strong>, G2P1, consulte à <strong>16 SA</strong> pour asthénie intense et essoufflement à l'effort.</p>
+            <ul>
+                <li>Grossesse précédente il y a 11 mois, allaitement prolongé de 10 mois.</li>
+                <li>Examen : pâleur cutanéo-muqueuse marquée, tachycardie à 104/min, souffle systolique fonctionnel, TA 105/65 mmHg.</li>
+                <li>Biologie : Hb 8,2 g/dL ; VGM 72 µ³ ; CCMH 28 % ; réticulocytes 30 000/mm³ ; ferritine 8 µg/L.</li>
+                <li>Pas de saignement extériorisé ; pas de trouble digestif.</li>
+            </ul>
+        </div>
+        <div class="case-questions">
+
+            <div class="case-q">
+                <p class="qcm-stem"><strong>C3-Q1.</strong> Quel type d'anémie présente cette patiente ?</p>
+                <ul class="options">
+                    <li><span class="opt">A</span> Anémie macrocytaire régénérative</li>
+                    <li><span class="opt">B</span> Anémie microcytaire arégénérative ferriprive</li>
+                    <li><span class="opt">C</span> Anémie normocytaire régénérative</li>
+                    <li><span class="opt">D</span> Anémie hémolytique</li>
+                    <li><span class="opt">E</span> Anémie mégaloblastique</li>
+                </ul>
+                <details class="correction">
+                    <summary>🔎 Correction</summary>
+                    <div class="correction-body">
+                        <span class="badge badge-answer">Réponse : B</span>
+                        <div class="why good" style="margin-top:10px;">
+                            <strong>B :</strong> VGM &lt; 80 µ³ (microcytose) + réticulocytes &lt; 50 000/mm³ (arégénérative) + ferritine effondrée (8 µg/L, seuil &lt; 12) = anémie ferriprive caractéristique. La carence en fer bloque la synthèse de l'hème et empêche la réponse médullaire.
+                        </div>
+                        <div class="why bad">
+                            <strong>A et E :</strong> macrocytose = carence B12/folates.<br>
+                            <strong>C et D :</strong> la régénération (réticulocytes élevés) évoque une hémorragie aiguë ou une hémolyse, ici absentes.
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+            <div class="case-q">
+                <p class="qcm-stem"><strong>C3-Q2.</strong> Quels facteurs de risque de carence martiale retrouve-t-on chez cette patiente ? <em>(2 à 3 réponses)</em></p>
+                <ul class="options">
+                    <li><span class="opt">A</span> Grossesses rapprochées</li>
+                    <li><span class="opt">B</span> Allaitement prolongé</li>
+                    <li><span class="opt">C</span> Antécédent d'anémie ferriprive</li>
+                    <li><span class="opt">D</span> Groupe sanguin AB</li>
+                    <li><span class="opt">E</span> Taille de 165 cm</li>
+                </ul>
+                <details class="correction">
+                    <summary>🔎 Correction</summary>
+                    <div class="correction-body">
+                        <span class="badge badge-answer">Réponses : A, B, C</span>
+                        <div class="why good" style="margin-top:10px;">
+                            <strong>A :</strong> les grossesses rapprochées épuisent les réserves martiales.<br>
+                            <strong>B :</strong> l'allaitement prolongé mobilise le fer maternel.<br>
+                            <strong>C :</strong> un antécédent d'anémie ferriprive est un facteur de récidive.
+                        </div>
+                        <div class="why bad">
+                            <strong>D et E :</strong> sans lien avec la carence martiale.
+                        </div>
+                        <p><strong>Autres facteurs du cours :</strong> saignements antérieurs à la grossesse, âges extrêmes (&lt; 18 ans ou &gt; 40 ans), mauvaise situation socio-économique, contexte hémorragique pendant la grossesse.</p>
+                    </div>
+                </details>
+            </div>
+
+            <div class="case-q">
+                <p class="qcm-stem"><strong>C3-Q3.</strong> Quelles sont les répercussions possibles de cette anémie ? <em>(2 à 3 réponses)</em></p>
+                <ul class="options">
+                    <li><span class="opt">A</span> Hémorragie de la délivrance</li>
+                    <li><span class="opt">B</span> Prématurité et RCIU</li>
+                    <li><span class="opt">C</span> Augmentation de la mortalité périnatale</li>
+                    <li><span class="opt">D</span> Placenta praevia</li>
+                    <li><span class="opt">E</span> Iso-immunisation Rhésus</li>
+                </ul>
+                <details class="correction">
+                    <summary>🔎 Correction</summary>
+                    <div class="correction-body">
+                        <span class="badge badge-answer">Réponses : A, B, C</span>
+                        <div class="why good" style="margin-top:10px;">
+                            <strong>A :</strong> retentissement maternel dominé par le risque hémorragique de la délivrance (utérus moins bien tolérant l'hémorragie).<br>
+                            <strong>B :</strong> le retentissement fœtal associe prématurité, RCIU et hypotrophie.<br>
+                            <strong>C :</strong> l'anémie maternelle augmente la mortalité périnatale.
+                        </div>
+                        <div class="why bad">
+                            <strong>D et E :</strong> complications sans lien physiopathologique avec la carence martiale (placenta praevia = insertion placentaire ; iso-immunisation = conflit immuno-hématologique).
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+            <div class="case-q">
+                <p class="qcm-stem"><strong>C3-Q4.</strong> Quelle est la prise en charge thérapeutique correcte ?</p>
+                <ul class="options">
+                    <li><span class="opt">A</span> Fer oral 150 à 200 mg/j, poursuivi 3 mois après correction, avec éducation nutritionnelle</li>
+                    <li><span class="opt">B</span> Transfusion sanguine systématique immédiate</li>
+                    <li><span class="opt">C</span> Arrêt du fer dès que l'Hb atteint 11 g/dL</li>
+                    <li><span class="opt">D</span> Acide folique seul</li>
+                    <li><span class="opt">E</span> Aucun traitement, surveillance simple</li>
+                </ul>
+                <details class="correction">
+                    <summary>🔎 Correction</summary>
+                    <div class="correction-body">
+                        <span class="badge badge-answer">Réponse : A</span>
+                        <div class="why good" style="margin-top:10px;">
+                            <strong>A :</strong> traitement martial oral à 150–200 mg/j, poursuivi 3 mois après correction pour reconstituer les réserves, associé à une éducation nutritionnelle.
+                        </div>
+                        <div class="why bad">
+                            <strong>B :</strong> la transfusion n'est pas systématique ici (Hb 8,2 g/dL, pas de signe de décompensation) ; elle se discute en cas d'anémie sévère ou de proximité de l'accouchement.<br>
+                            <strong>C :</strong> erreur classique — il faut poursuivre pour remplir les réserves.<br>
+                            <strong>D :</strong> l'acide folique ne traite pas la carence martiale.<br>
+                            <strong>E :</strong> l'abstention expose aux complications.
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+            <div class="case-q">
+                <p class="qcm-stem"><strong>C3-Q5.</strong> À partir de quel taux d'hémoglobine parle-t-on d'anémie sévère selon l'OMS ?</p>
+                <ul class="options">
+                    <li><span class="opt">A</span> &lt; 10,5 g/dL</li>
+                    <li><span class="opt">B</span> &lt; 9 g/dL</li>
+                    <li><span class="opt">C</span> &lt; 7 g/dL</li>
+                    <li><span class="opt">D</span> &lt; 11 g/dL</li>
+                    <li><span class="opt">E</span> &lt; 6 g/dL</li>
+                </ul>
+                <details class="correction">
+                    <summary>🔎 Correction</summary>
+                    <div class="correction-body">
+                        <span class="badge badge-answer">Réponse : C</span>
+                        <div class="why good" style="margin-top:10px;">
+                            <strong>C :</strong> le seuil OMS de l'anémie sévère est Hb &lt; 7 g/dL. Cette patiente (8,2 g/dL) est donc en anémie modérée mais doit être traitée énergiquement pour éviter la dégradation.
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+        </div>
+    </article>
+
+    <!-- CAS 4 -->
+    <article class="case-card">
+        <div class="case-header">
+            <span class="case-tag">Cas n°4 · Urgences EPH</span>
+            <h3>Fièvre et douleur lombaire à 22 SA</h3>
+        </div>
+        <div class="case-vignette">
+            <span class="v-label">Vignette clinique</span>
+            <p><strong>Mme H., 31 ans</strong>, G2P1, consulte aux urgences à <strong>22 SA</strong> pour fièvre et douleur lombaire droite.</p>
+            <ul>
+                <li>Depuis 24 h : fièvre à 39,2 °C, frissons, douleur lombaire droite, brûlures mictionnelles, pollakiurie.</li>
+                <li>Examen : TA 100/60 mmHg, température 39,2 °C, douleur à l'ébranlement lombaire droit, fosse lombaire sensible.</li>
+                <li>Bandelette urinaire : nitrites positifs, leucocytes positifs.</li>
+                <li>ECBU en cours ; hémocultures prélevées.</li>
+                <li>Utérus souple, pas de contraction, BCF présents à 148/min.</li>
+            </ul>
+        </div>
+        <div class="case-questions">
+
+            <div class="case-q">
+                <p class="qcm-stem"><strong>C4-Q1.</strong> Quel est le diagnostic le plus probable ?</p>
+                <ul class="options">
+                    <li><span class="opt">A</span> Cystite aiguë simple</li>
+                    <li><span class="opt">B</span> Bactériurie asymptomatique</li>
+                    <li><span class="opt">C</span> Pyélonéphrite aiguë droite</li>
+                    <li><span class="opt">D</span> Colique néphrétique</li>
+                    <li><span class="opt">E</span> Appendicite aiguë</li>
+                </ul>
+                <details class="correction">
+                    <summary>🔎 Correction</summary>
+                    <div class="correction-body">
+                        <span class="badge badge-answer">Réponse : C</span>
+                        <div class="why good" style="margin-top:10px;">
+                            <strong>C :</strong> l'association fièvre élevée + frissons + douleur lombaire + signe de l'ébranlement lombaire + syndrome urinaire bas (brûlures, pollakiurie) + BU positive est typique d'une pyélonéphrite aiguë, la forme la plus grave des infections urinaires gravidiques.
+                        </div>
+                        <div class="why bad">
+                            <strong>A :</strong> la cystite n'associe pas de fièvre élevée ni de douleur lombaire.<br>
+                            <strong>B :</strong> la bactériurie asymptomatique est… asymptomatique.<br>
+                            <strong>D :</strong> la colique néphrétique donne une douleur lombaire intense mais pas de fièvre élevée (sauf complication).<br>
+                            <strong>E :</strong> l'appendicite donne une douleur de la fosse iliaque droite, pas de syndrome urinaire.
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+            <div class="case-q">
+                <p class="qcm-stem"><strong>C4-Q2.</strong> Quel examen confirme le diagnostic ?</p>
+                <ul class="options">
+                    <li><span class="opt">A</span> ECBU avec antibiogramme</li>
+                    <li><span class="opt">B</span> Hémogramme seul</li>
+                    <li><span class="opt">C</span> Échographie rénale seule</li>
+                    <li><span class="opt">D</span> Cystoscopie</li>
+                    <li><span class="opt">E</span> Bandelette urinaire seule</li>
+                </ul>
+                <details class="correction">
+                    <summary>🔎 Correction</summary>
+                    <div class="correction-body">
+                        <span class="badge badge-answer">Réponse : A</span>
+                        <div class="why good" style="margin-top:10px;">
+                            <strong>A :</strong> l'ECBU avec antibiogramme confirme l'infection urinaire, identifie le germe (le plus souvent <em>E. coli</em>) et guide l'antibiothérapie. Il est indispensable avant de débuter les antibiotiques.
+                        </div>
+                        <div class="why bad">
+                            <strong>B :</strong> l'hémogramme oriente (hyperleucocytose) mais ne confirme pas.<br>
+                            <strong>C :</strong> l'échographie rénale recherche un obstacle, elle ne confirme pas l'infection.<br>
+                            <strong>D :</strong> examen invasif, sans indication.<br>
+                            <strong>E :</strong> la BU est un test de dépistage, pas de confirmation.
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+            <div class="case-q">
+                <p class="qcm-stem"><strong>C4-Q3.</strong> Quelles mesures font partie de la prise en charge ? <em>(2 à 3 réponses)</em></p>
+                <ul class="options">
+                    <li><span class="opt">A</span> Hospitalisation et repos strict en décubitus latéral gauche</li>
+                    <li><span class="opt">B</span> Antibiothérapie parentérale après prélèvements bactériologiques</li>
+                    <li><span class="opt">C</span> Antalgiques, antipyrétiques et hydratation abondante</li>
+                    <li><span class="opt">D</span> Diurétiques pour « laver » les voies urinaires</li>
+                    <li><span class="opt">E</span> Césarienne immédiate</li>
+                </ul>
+                <details class="correction">
+                    <summary>🔎 Correction</summary>
+                    <div class="correction-body">
+                        <span class="badge badge-answer">Réponses : A, B, C</span>
+                        <div class="why good" style="margin-top:10px;">
+                            <strong>A :</strong> le repos strict en décubitus latéral gauche améliore le drainage rénal et la perfusion placentaire.<br>
+                            <strong>B :</strong> l'antibiothérapie parentérale est la règle après prélèvements.<br>
+                            <strong>C :</strong> traitement symptomatique et hydratation.
+                        </div>
+                        <div class="why bad">
+                            <strong>D :</strong> les diurétiques n'ont pas leur place, ils peuvent aggraver la déshydratation.<br>
+                            <strong>E :</strong> la césarienne n'est pas indiquée en urgence ; une tocolyse est même prévue en cas de MAP.
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+            <div class="case-q">
+                <p class="qcm-stem"><strong>C4-Q4.</strong> Quelles sont les complications fœtales possibles de cette infection ? <em>(2 à 3 réponses)</em></p>
+                <ul class="options">
+                    <li><span class="opt">A</span> Accouchement prématuré</li>
+                    <li><span class="opt">B</span> Infection néonatale</li>
+                    <li><span class="opt">C</span> Hypotrophie fœtale</li>
+                    <li><span class="opt">D</span> Iso-immunisation Rhésus</li>
+                    <li><span class="opt">E</span> Maladie thromboembolique</li>
+                </ul>
+                <details class="correction">
+                    <summary>🔎 Correction</summary>
+                    <div class="correction-body">
+                        <span class="badge badge-answer">Réponses : A, B, C</span>
+                        <div class="why good" style="margin-top:10px;">
+                            <strong>A :</strong> l'infection urinaire est une cause majeure de prématurité (≈ 20 %).<br>
+                            <strong>B :</strong> infection néonatale in utero par voie hématogène ou lors de l'accouchement par contage direct.<br>
+                            <strong>C :</strong> hypotrophie, surtout en cas d'infection chronique asymptomatique.
+                        </div>
+                        <div class="why bad">
+                            <strong>D et E :</strong> complications sans lien avec l'infection urinaire.
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+            <div class="case-q">
+                <p class="qcm-stem"><strong>C4-Q5.</strong> Quelle proposition concernant la surveillance est <strong>fausse</strong> ?</p>
+                <ul class="options">
+                    <li><span class="opt">A</span> Un ECBU de contrôle est réalisé 48 h après la fin du traitement.</li>
+                    <li><span class="opt">B</span> Une surveillance mensuelle par ECBU est recommandée jusqu'à la fin de la grossesse.</li>
+                    <li><span class="opt">C</span> La pyélonéphrite gravido-toxique est une complication exceptionnelle.</li>
+                    <li><span class="opt">D</span> En cas de MAP associée, la tocolyse est formellement contre-indiquée.</li>
+                    <li><span class="opt">E</span> La septicémie est une complication maternelle possible.</li>
+                </ul>
+                <details class="correction">
+                    <summary>🔎 Correction</summary>
+                    <div class="correction-body">
+                        <span class="badge badge-answer">Réponse : D (proposition fausse)</span>
+                        <div class="why bad" style="margin-top:10px;">
+                            <strong>D :</strong> la tocolyse n'est pas contre-indiquée, elle est au contraire indiquée en cas de MAP associée. C'est une erreur de raisonnement fréquente.
+                        </div>
+                        <div class="why good">
+                            <strong>A, B, C, E sont exactes :</strong> ECBU à 48 h puis mensuel (A, B) ; la pyélonéphrite gravido-toxique (AEG grave + collapsus oligo-anurique + ictère) est exceptionnelle (C) ; la septicémie est une complication maternelle (E).
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+        </div>
+    </article>
+
+    <!-- CAS 5 -->
+    <article class="case-card">
+        <div class="case-header">
+            <span class="case-tag">Cas n°5 · Consultation spécialisée</span>
+            <h3>Dépistage du diabète gestationnel à 26 SA</h3>
+        </div>
+        <div class="case-vignette">
+            <span class="v-label">Vignette clinique</span>
+            <p><strong>Mme S., 36 ans</strong>, G4P3, consulte à <strong>26 SA</strong> pour suivi de grossesse.</p>
+            <ul>
+                <li>Antécédent de macrosomie fœtale (nouveau-né de 4,3 kg) lors de la grossesse précédente.</li>
+                <li>IMC préconceptionnel : 31 kg/m².</li>
+                <li>Mère diabétique de type 2.</li>
+                <li>Glycémie à jeun au 1ᵉʳ trimestre : 0,88 g/L.</li>
+                <li>Pas de symptôme évocateur (pas de polyuro-polydipsie).</li>
+            </ul>
+        </div>
+        <div class="case-questions">
+
+            <div class="case-q">
+                <p class="qcm-stem"><strong>C5-Q1.</strong> Quels éléments justifient un dépistage du diabète gestationnel chez cette patiente ? <em>(2 à 3 réponses)</em></p>
+                <ul class="options">
+                    <li><span class="opt">A</span> Âge maternel ≥ 35 ans</li>
+                    <li><span class="opt">B</span> Surpoids/obésité</li>
+                    <li><span class="opt">C</span> Antécédent de macrosomie</li>
+                    <li><span class="opt">D</span> Antécédent familial de diabète</li>
+                    <li><span class="opt">E</span> Parité de 4</li>
+                </ul>
+                <details class="correction">
+                    <summary>🔎 Correction</summary>
+                    <div class="correction-body">
+                        <span class="badge badge-answer">Réponses : A, B, C, D (les 4 sont des FDR)</span>
+                        <div class="why good" style="margin-top:10px;">
+                            <strong>A :</strong> âge ≥ 35 ans.<br>
+                            <strong>B :</strong> IMC 31 → surpoids/obésité.<br>
+                            <strong>C :</strong> antécédent obstétrical de macrosomie (avec hydramnios et MIU) → facteur de risque majeur.<br>
+                            <strong>D :</strong> antécédent familial de diabète.
+                        </div>
+                        <div class="why bad">
+                            <strong>E :</strong> la parité élevée n'est pas un facteur de risque de diabète gestationnel dans la liste du cours.
+                        </div>
+                        <p><strong>Liste des FDR de DG :</strong> âge ≥ 35 ans, surpoids, antécédent familial de diabète, antécédent obstétrical (DG, MIU, macrosomie, hydramnios).</p>
+                    </div>
+                </details>
+            </div>
+
+            <div class="case-q">
+                <p class="qcm-stem"><strong>C5-Q2.</strong> Quel examen réalisez-vous à 26 SA ?</p>
+                <ul class="options">
+                    <li><span class="opt">A</span> HGPO (hyperglycémie provoquée orale)</li>
+                    <li><span class="opt">B</span> HbA1c</li>
+                    <li><span class="opt">C</span> Glycémie post-prandiale uniquement</li>
+                    <li><span class="opt">D</span> Glycosurie sur les urines du matin</li>
+                    <li><span class="opt">E</span> Aucun examen, la glycémie du T1 était normale</li>
+                </ul>
+                <details class="correction">
+                    <summary>🔎 Correction</summary>
+                    <div class="correction-body">
+                        <span class="badge badge-answer">Réponse : A</span>
+                        <div class="why good" style="margin-top:10px;">
+                            <strong>A :</strong> entre 24 et 28 SA, l'<strong>HGPO</strong> est l'examen de référence. La glycémie du T1 était normale (&lt; 0,92 g/L), ce qui ne dispense pas de l'HGPO chez une patiente à risque.
+                        </div>
+                        <div class="why bad">
+                            <strong>B :</strong> l'HbA1c n'est pas l'outil de dépistage du DG.<br>
+                            <strong>C et D :</strong> insuffisants et non recommandés pour le diagnostic.<br>
+                            <strong>E :</strong> erreur majeure : une glycémie normale au T1 n'exclut pas un DG ultérieur, car l'insulinorésistance augmente avec le terme.
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+            <div class="case-q">
+                <p class="qcm-stem"><strong>C5-Q3.</strong> L'HGPO donne les résultats suivants : à jeun 0,95 g/L ; à 1 h 1,85 g/L ; à 2 h 1,60 g/L. Quelle est votre conclusion ?</p>
+                <ul class="options">
+                    <li><span class="opt">A</span> HGPO normale</li>
+                    <li><span class="opt">B</span> Diabète gestationnel</li>
+                    <li><span class="opt">C</span> Diabète de type 2 préexistant</li>
+                    <li><span class="opt">D</span> Intolérance au glucose simple sans DG</li>
+                    <li><span class="opt">E</span> Examen non interprétable</li>
+                </ul>
+                <details class="correction">
+                    <summary>🔎 Correction</summary>
+                    <div class="correction-body">
+                        <span class="badge badge-answer">Réponse : B</span>
+                        <div class="why good" style="margin-top:10px;">
+                            <strong>B :</strong> les seuils de l'HGPO sont 0,92 / 1,80 / 1,53 g/L. Ici <strong>les 3 valeurs sont anormales</strong> — et une seule valeur anormale suffit à poser le diagnostic de diabète gestationnel.
+                        </div>
+                        <div class="why bad">
+                            <strong>A :</strong> faux, plusieurs valeurs dépassent les seuils.<br>
+                            <strong>C :</strong> le diabète de type 2 se diagnostique au T1 sur une glycémie ≥ 1,26 g/L ; ce n'est pas le cas ici.<br>
+                            <strong>D :</strong> l'intolérance au glucose n'est pas le diagnostic retenu dans le cadre de la grossesse.<br>
+                            <strong>E :</strong> l'examen est parfaitement interprétable.
+                        </div>
+                        <p><strong>Piège :</strong> ne pas exiger deux valeurs anormales. Une seule suffit.</p>
+                    </div>
+                </details>
+            </div>
+
+            <div class="case-q">
+                <p class="qcm-stem"><strong>C5-Q4.</strong> Quelle proposition thérapeutique est exacte si le régime seul ne suffit pas ?</p>
+                <ul class="options">
+                    <li><span class="opt">A</span> Insuline en première intention</li>
+                    <li><span class="opt">B</span> Sulfamides hypoglycémiants en première intention</li>
+                    <li><span class="opt">C</span> Metformine en première intention</li>
+                    <li><span class="opt">D</span> Arrêt de toute surveillance glycémique</li>
+                    <li><span class="opt">E</span> Attendre l'accouchement sans traitement</li>
+                </ul>
+                <details class="correction">
+                    <summary>🔎 Correction</summary>
+                    <div class="correction-body">
+                        <span class="badge badge-answer">Réponse : A</span>
+                        <div class="why good" style="margin-top:10px;">
+                            <strong>A :</strong> lorsqu'un traitement hypoglycémiant est nécessaire pendant la grossesse, l'<strong>insuline reste le 1ᵉʳ choix</strong> ; les hypoglycémiants oraux sont en principe contre-indiqués.
+                        </div>
+                        <div class="why bad">
+                            <strong>B et C :</strong> hypoglycémiants oraux contre-indiqués (passage transplacentaire, risque d'hypoglycémie néonatale).<br>
+                            <strong>D et E :</strong> la surveillance glycémique est indispensable et le traitement ne peut être différé.
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+            <div class="case-q">
+                <p class="qcm-stem"><strong>C5-Q5.</strong> Concernant le diabète préexistant à la grossesse, quelle proposition est exacte ?</p>
+                <ul class="options">
+                    <li><span class="opt">A</span> Il n'entraîne aucun risque pour la grossesse</li>
+                    <li><span class="opt">B</span> Il nécessite une prise en charge pluridisciplinaire</li>
+                    <li><span class="opt">C</span> Le contrôle glycémique avant la conception est inutile</li>
+                    <li><span class="opt">D</span> Les hypoglycémiants oraux sont le traitement de référence</li>
+                    <li><span class="opt">E</span> Il ne concerne que le diabète de type 2</li>
+                </ul>
+                <details class="correction">
+                    <summary>🔎 Correction</summary>
+                    <div class="correction-body">
+                        <span class="badge badge-answer">Réponse : B</span>
+                        <div class="why good" style="margin-top:10px;">
+                            <strong>B :</strong> le diabète préexistant (type 1 ou type 2) entraîne des risques graves pour la femme, la grossesse et l'enfant, et nécessite une prise en charge pluridisciplinaire.
+                        </div>
+                        <div class="why bad">
+                            <strong>A :</strong> faux, les risques sont majeurs (malformations, macrosomie, prématurité, pré-éclampsie).<br>
+                            <strong>C :</strong> le contrôle glycémique préconceptionnel diminue le risque de complications.<br>
+                            <strong>D :</strong> l'insuline est le traitement de choix.<br>
+                            <strong>E :</strong> concerne les types 1 et 2.
+                        </div>
+                    </div>
+                </details>
+            </div>
+
+        </div>
+    </article>
+
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 3 : CARTE CONCEPTUELLE -->
+<!-- ============================================================ -->
+<section class="block" id="carte">
+    <div class="section-head">
+        <div class="section-num">3</div>
+        <div>
+            <h2>Carte conceptuelle &amp; synthèse visuelle</h2>
+            <p>Vue d'ensemble de la GHR : facteurs de risque, acteurs, outils et algorithmes décisionnels.</p>
+        </div>
+    </div>
+
+    <div class="map-grid">
+
+        <div class="map-hub">
+            <h3>GROSSESSE À HAUT RISQUE</h3>
+            <p>≈ 1/3 des grossesses · Problème de santé publique · Risque accru de morbi-mortalité maternelle, fœtale et néonatale</p>
+        </div>
+
+        <div class="map-branches">
+            <div class="branch">
+                <h4><span class="dot"></span>① Facteurs de risque</h4>
+                <ul>
+                    <li><strong>Terrain :</strong> âge &gt; 40 ou &lt; 18 ans, parité, taille &lt; 150 cm, poids ± 20 %, précarité, tabac</li>
+                    <li><strong>ATCD :</strong> stérilité, iso-immunisation, oligo/hydramnios, prématurité, utérus cicatriciel, malformation, RCIU, éclampsie, HRP, dystocie</li>
+                    <li><strong>Pathologie générale :</strong> HTA, diabète, cardiopathie, anémie, infections, maladies de système</li>
+                    <li><strong>Grossesse actuelle :</strong> poids ±, grossesse multiple, placenta praevia, présentation anormale, grossesse prolongée, prématurité, AG, choc émotionnel</li>
+                </ul>
+            </div>
+            <div class="branch">
+                <h4><span class="dot"></span>② Qui dépiste ?</h4>
+                <ul>
+                    <li>Cadre institutionnel : oriente, contrôle, évalue</li>
+                    <li>Stratégie « maternité sans risques »</li>
+                    <li>Infrastructures hiérarchisées</li>
+                    <li>Médecin spécialiste</li>
+                    <li>Médecin généraliste</li>
+                    <li>Sage-femme</li>
+                </ul>
+            </div>
+            <div class="branch">
+                <h4><span class="dot"></span>③ Comment dépister ?</h4>
+                <ul>
+                    <li>Interrogatoire minutieux → FDR</li>
+                    <li>Signes fonctionnels : HTA, saignements, pertes, douleurs, MAF</li>
+                    <li>Examen : TA, poids, HU, CU, BCF, speculum, TV si signes d'appel</li>
+                    <li>Biologie : groupe-Rh, RAI, FNS, glycémie, albuminurie, toxo/rubéole</li>
+                    <li>Échographie : T1 datation · T2 morphologie · T3 biométries/présentation/placenta</li>
+                </ul>
+            </div>
+            <div class="branch">
+                <h4><span class="dot"></span>④ Pathologies cibles</h4>
+                <ul>
+                    <li><strong>HTA :</strong> gravidique, chronique, pré-éclampsie</li>
+                    <li><strong>Anémie :</strong> ferriprive microcytaire arégénérative</li>
+                    <li><strong>Infection urinaire :</strong> bactériurie, cystite, pyélonéphrite</li>
+                    <li><strong>Diabète :</strong> préexistant et gestationnel</li>
+                    <li><strong>Cardiopathies :</strong> décompensation gravidique</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- FLOWCHART HTA -->
+        <div class="flow">
+            <h4>Algorithme décisionnel — <span class="pill">HTA &amp; GROSSESSE</span></h4>
+            <div class="flow-col">
+                <div class="flow-node accent">HTA gravidique : PAS ≥ 140 ou PAD ≥ 90 mmHg</div>
+            </div>
+            <div class="flow-row" style="margin-bottom:14px;">
+                <div class="flow-node">HTA apparue <strong>après 20 SA</strong> ?</div>
+                <span class="flow-arrow">→</span>
+                <div class="flow-node">Protéinurie &gt; 0,3 g/24 h et/ou œdèmes ?</div>
+            </div>
+            <div class="flow-row">
+                <div class="flow-node" style="background:#e0ecff;border-color:#93c5fd;">NON → HTA gravidique</div>
+                <span class="flow-arrow">|</span>
+                <div class="flow-node warn">OUI → PRÉ-ÉCLAMPSIE</div>
+                <span class="flow-arrow">|</span>
+                <div class="flow-node amber">Signes de gravité ?<br><small>phosphènes, acouphènes, céphalées, ROT vifs, épigastralgie, oligurie, 160/110, œdèmes massifs, RCIU</small></div>
+            </div>
+            <div class="flow-row" style="margin-top:14px;">
+                <div class="flow-node" style="background:#fee2e2;border-color:#fca5a5;color:#991b1b;">PRÉ-ÉCLAMPSIE SÉVÈRE → hospitalisation + contrôle TA + surveillance materno-fœtale</div>
+            </div>
+            <div class="flow-row" style="margin-top:14px;">
+                <div class="flow-node">HTA <strong>avant 20 SA</strong> ou préexistante ou persistant après l'accouchement</div>
+                <span class="flow-arrow">→</span>
+                <div class="flow-node accent">HTA CHRONIQUE</div>
+            </div>
+        </div>
+
+        <!-- TABLE DIABÈTE -->
+        <div class="flow">
+            <h4>Algorithme — <span class="pill">DIABÈTE &amp; GROSSESSE</span></h4>
+            <div class="table-wrap">
+                <table class="styled">
+                    <thead>
+                        <tr>
+                            <th>Étape</th>
+                            <th>Examen</th>
+                            <th>Seuil</th>
+                            <th>Conclusion</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>1ᵉʳ trimestre</strong><br><small>patiente à risque</small></td>
+                            <td>Glycémie à jeun</td>
+                            <td>≥ 1,26 g/L</td>
+                            <td><strong>Diabète de type 2</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>1ᵉʳ trimestre</strong></td>
+                            <td>Glycémie à jeun</td>
+                            <td>≥ 0,92 g/L</td>
+                            <td><strong>Diabète gestationnel</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>24–28 SA</strong></td>
+                            <td>HGPO</td>
+                            <td>À jeun ≥ 0,92 · 1 h ≥ 1,80 · 2 h ≥ 1,53 g/L</td>
+                            <td><strong>DG si ≥ 1 valeur anormale</strong></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Traitement</strong></td>
+                            <td>Régime ± insuline</td>
+                            <td>—</td>
+                            <td>Insuline 1ᵉʳ choix · hypoglycémiants oraux contre-indiqués</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- TABLE ANÉMIE -->
+        <div class="flow">
+            <h4>Repères — <span class="pill">ANÉMIE</span></h4>
+            <div class="table-wrap">
+                <table class="styled">
+                    <thead>
+                        <tr><th>Paramètre</th><th>Valeur</th><th>Interprétation</th></tr>
+                    </thead>
+                    <tbody>
+                        <tr><td><strong>Hb T1</strong></td><td>&lt; 11 g/dL</td><td>Anémie du 1ᵉʳ trimestre</td></tr>
+                        <tr><td><strong>Hb T2</strong></td><td>&lt; 10,5 g/dL</td><td>Anémie du 2ᵉ trimestre (pic d'hémodilution)</td></tr>
+                        <tr><td><strong>Hb T3</strong></td><td>&lt; 11 g/dL</td><td>Anémie du 3ᵉ trimestre</td></tr>
+                        <tr><td><strong>Ferritine</strong></td><td>&lt; 12 µg/L</td><td>Carence martiale</td></tr>
+                        <tr><td><strong>VGM</strong></td><td>&lt; 80 µ³</td><td>Microcytose</td></tr>
+                        <tr><td><strong>Réticulocytes</strong></td><td>&lt; 50 000/mm³</td><td>Arégénérative</td></tr>
+                        <tr><td><strong>Anémie sévère (OMS)</strong></td><td>&lt; 7 g/dL</td><td>Risque transfusionnel</td></tr>
+                        <tr><td><strong>Fer oral</strong></td><td>150–200 mg/j</td><td>Poursuivi 3 mois après correction</td></tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- FLOW INFECTION URINAIRE -->
+        <div class="flow">
+            <h4>Algorithme — <span class="pill">INFECTION URINAIRE</span></h4>
+            <div class="flow-row" style="margin-bottom:12px;">
+                <div class="flow-node">Bandelette urinaire + ECBU</div>
+                <span class="flow-arrow">→</span>
+                <div class="flow-node">Symptômes ?</div>
+            </div>
+            <div class="flow-row">
+                <div class="flow-node" style="background:#e0ecff;border-color:#93c5fd;">Asymptomatique → <strong>Bactériurie asymptomatique</strong></div>
+                <span class="flow-arrow">|</span>
+                <div class="flow-node" style="background:#fef9c3;border-color:#fde047;">Signes urinaires bas → <strong>Cystite</strong></div>
+                <span class="flow-arrow">|</span>
+                <div class="flow-node warn">Fièvre + douleur lombaire → <strong>Pyélonéphrite</strong></div>
+            </div>
+            <div class="flow-row" style="margin-top:14px;">
+                <div class="flow-node accent">Traitement : ATB + ECBU à 48 h puis mensuel</div>
+                <span class="flow-arrow">→</span>
+                <div class="flow-node amber">Pyélonéphrite : hospitalisation + repos DLG + ATB parentérale + tocolyse si MAP</div>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ============================================================ -->
+<!-- SECTION 4 : MNÉMOTECHNIQUES -->
+<!-- ============================================================ -->
+<section class="block" id="mnemo">
+    <div class="section-head">
+        <div class="section-num">4</div>
+        <div>
+            <h2>Mnémotechniques &amp; « trucs et astuces » d'examen</h2>
+            <p>Retenir durablement, éviter les pièges docimologiques classiques et gagner des points le jour J.</p>
+        </div>
+    </div>
+
+    <div class="mnemo-grid">
+
+        <div class="mnemo-card teal">
+            <div class="mnemo-title">🧠 Les 4 axes de la GHR</div>
+            <span class="mnemo-key">« TAPis-G »</span>
+            <p><strong>T</strong>errain · <strong>A</strong>ntécédents · <strong>P</strong>athologie générale · <strong>G</strong>rossesse actuelle</p>
+            <p>Le « tapis » sur lequel repose la GHR : 4 axes, aucun oubli possible. Chaque fois qu'on vous demande un facteur de risque, dites-vous : « sur quel tapis suis-je en train de marcher ? »</p>
+        </div>
+
+        <div class="mnemo-card rose">
+            <div class="mnemo-title">🩸 Anémie : les 3 seuils</div>
+            <span class="mnemo-key">« 11 – 10,5 – 11 »</span>
+            <p>Le creux du 2ᵉ trimestre suit le pic d'hémodilution gravidique.</p>
+            <p>Astuce : <em>« Onze, dix et demi, onze : la grossesse fait le yoyo dans la numération »</em>. Et toujours en <strong>g/dL</strong>, jamais en g/L !</p>
+        </div>
+
+        <div class="mnemo-card">
+            <div class="mnemo-title">🍬 Diabète : le duo du T1</div>
+            <span class="mnemo-key">« 0,92 = Gestationnel · 1,26 = Type 2 »</span>
+            <p>Deux chiffres à ne jamais intervertir : <strong>0,92</strong> g/L → diabète gestationnel ; <strong>1,26</strong> g/L → diabète de type 2 préexistant.</p>
+            <p><em>Moyen mnémotechnique :</em> le petit chiffre (0,92) va avec le petit mot (G = gestationnel), le grand chiffre (1,26) avec le « gros » diagnostic (type 2).</p>
+        </div>
+
+        <div class="mnemo-card violet">
+            <div class="mnemo-title">🧪 HGPO : les 3 chiffres</div>
+            <span class="mnemo-key">« 92 – 180 – 153 »</span>
+            <p>À jeun 0,92 · 1 h 1,80 · 2 h 1,53 g/L.</p>
+            <p><strong>Une seule valeur anormale suffit</strong> : retenez « <em>un seul suffit</em> » — c'est le piège le plus fréquent quand on a l'habitude d'autres référentiels qui exigent deux valeurs.</p>
+        </div>
+
+        <div class="mnemo-card teal">
+            <div class="mnemo-title">⚖️ HTA : diagnostic vs gravité</div>
+            <span class="mnemo-key">« 140/90 pour DIRE · 160/110 pour CRAINDRE »</span>
+            <p>140/90 = on pose le diagnostic. 160/110 = on craint la complication (AVC, éclampsie, HRP).</p>
+            <p>La pré-éclampsie = HTA + protéinurie + œdèmes <em>après 20 SA</em>. Sans protéinurie → HTA gravidique simple.</p>
+        </div>
+
+        <div class="mnemo-card rose">
+            <div class="mnemo-title">🧬 Diabète : qui est à risque ?</div>
+            <span class="mnemo-key">« 35 – Poids – Famille – Obstétrique »</span>
+            <p><strong>35</strong> ans et plus · <strong>P</strong>oids (surpoids) · <strong>F</strong>amille (antécédent familial de diabète) · <strong>O</strong>bstétrique (DG, MIU, macrosomie, hydramnios).</p>
+            <p>Et la fenêtre de dépistage : <strong>24–28 SA</strong>, quand l'insulinorésistance est maximale.</p>
+        </div>
+
+        <div class="mnemo-card">
+            <div class="mnemo-title">💧 Infection urinaire : le trio</div>
+            <span class="mnemo-key">« BAC – CYS – PNA »</span>
+            <p><strong>BA</strong>ctériurie asymptomatique → <strong>CYS</strong>tite → <strong>PNA</strong> (pyélonéphrite).</p>
+            <p>Trois tableaux, une même logique : traiter tôt pour éviter l'escalade. Et n'oubliez jamais le <strong>décubitus latéral gauche</strong> dans la PNA.</p>
+        </div>
+
+        <div class="mnemo-card violet">
+            <div class="mnemo-title">🫀 Cardiopathie : « test d'effort naturel »</div>
+            <span class="mnemo-key">« La grossesse révèle »</span>
+            <p>La grossesse est un test d'effort naturel : les modifications hémodynamiques (volémie, débit cardiaque) culminent à l'accouchement et peuvent décompenser une cardiopathie ignorée.</p>
+            <p>D'où : prise en charge <strong>multidisciplinaire</strong>, débutée <em>avant</strong> la grossesse et poursuivie en <strong>post-partum</strong>.</p>
+        </div>
+
+        <div class="mnemo-card teal">
+            <div class="mnemo-title">📅 Échographie : les 3 temps</div>
+            <span class="mnemo-key">« DAT – MORPHO – BIOM »</span>
+            <p><strong>DAT</strong>ation au T1 · <strong>MORPHO</strong>logie au T2 · <strong>BIOM</strong>étries + présentation + placenta au T3.</p>
+            <p>Moyen simple : « <em>1 je date, 2 je regarde, 3 je mesure</em> ».</p>
+        </div>
+
+        <div class="mnemo-card">
+            <div class="mnemo-title">🚬 Terrain : les extrêmes</div>
+            <span class="mnemo-key">« 18 – 40 – 150 – 20 % »</span>
+            <p>&lt; 18 ans ou &gt; 40 ans · taille &lt; 150 cm · écart de poids ± 20 %.</p>
+            <p>Et n'oubliez pas le <strong>tabac +++</strong> et la <strong>précarité</strong> (accès moindre aux soins).</p>
+        </div>
+
+    </div>
+
+    <div class="trap-box">
+        <h4>⚠️ Les 8 pièges docimologiques les plus fréquents</h4>
+        <ul>
+            <li><strong>Piège n°1 — g/dL vs g/L.</strong> Une Hb à 11 g/L serait incompatible avec la vie. Les seuils d'anémie sont toujours en <strong>g/dL</strong>, même si le polycopié écrit parfois « g/l ».</li>
+            <li><strong>Piège n°2 — 140/90 vs 160/110.</strong> 140/90 = seuil diagnostique ; 160/110 = seuil de gravité. Confondre les deux = question perdue.</li>
+            <li><strong>Piège n°3 — HGPO : une ou deux valeurs ?</strong> Une seule valeur anormale suffit à poser le diagnostic de diabète gestationnel.</li>
+            <li><strong>Piège n°4 — T1 : 0,92 vs 1,26.</strong> 0,92 → DG ; 1,26 → diabète de type 2.</li>
+            <li><strong>Piège n°5 — Pré-éclampsie vs HTA gravidique.</strong> Sans protéinurie ni œdèmes, ce n'est pas une pré-éclampsie.</li>
+            <li><strong>Piège n°6 — Tocolyse et pyélonéphrite.</strong> La tocolyse n'est <em>pas</em> contre-indiquée ; elle est indiquée en cas de MAP.</li>
+            <li><strong>Piège n°7 — Arrêt du fer.</strong> On ne l'arrête pas quand l'Hb se normalise : on poursuit 3 mois après la correction.</li>
+            <li><strong>Piège n°8 — « SAUF » et « toujours ».</strong> Les items absolus (« toujours », « jamais », « uniquement », « aucun risque ») sont très souvent les propositions fausses. Lisez deux fois la consigne.</li>
+        </ul>
+    </div>
+
+    <div class="trap-box" style="background:linear-gradient(135deg,#ecfdf5,#f0fdfa);border-color:#99f6e4;">
+        <h4 style="color:var(--teal-dark);">✅ Stratégie de réponse en 3 temps</h4>
+        <ul>
+            <li style="border-left-color:var(--teal);"><strong>1. Identifier le thème</strong> (HTA ? anémie ? diabète ? infection ? terrain ?) — cela active immédiatement la bonne « armoire à chiffres » dans votre mémoire.</li>
+            <li style="border-left-color:var(--teal);"><strong>2. Repérer les mots-clés</strong> : « SAUF », « fausse », « juste », « 2 à 3 réponses ». Un QCM de 4ᵉ année se perd souvent sur la consigne, pas sur le savoir.</li>
+            <li style="border-left-color:var(--teal);"><strong>3. Éliminer les extrêmes et les valeurs inventées</strong> : dans ce chapitre, les seuils précis (0,92 / 1,26 / 140 / 90 / 160 / 110 / 7 / 11 / 10,5) reviennent sans cesse. Les valeurs intermédiaires fantaisistes sont des distracteurs.</li>
+        </ul>
+    </div>
+
+</section>
+
+</main>
+
+<footer>
+    <p class="motiv">💪 Vous venez de réviser l'un des chapitres les plus « rentables » de la gynécologie-obstétrique : chaque chiffre appris ici vous rapportera des points, et surtout — un jour — sauvera une mère et son enfant.</p>
+    <p class="small">Dépistage des Grossesses à Haut Risque · Dr Brahmi · Faculté de Médecine · Révision 4ᵉ année</p>
+</footer>
+
+</body>
+</html>

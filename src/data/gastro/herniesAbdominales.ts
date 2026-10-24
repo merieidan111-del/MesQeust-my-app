@@ -808,7 +808,7 @@ export const HERNIES_ABDOMINALES_RESOURCES: CourseResource[] = [
     courseId: 'crs-gastro-hernies-abdominales',
     type: 'Astuce',
     title: 'Mnémotechniques : Hernies de la Paroi',
-    contentMarkdown: `### 💡 Mnémotechniques d'Examen (Dr Bounab)
+    contentMarkdown: `### Astuce : Mnémotechniques d'Examen (Dr Bounab)
 
 1. **Ligne de Malgaigne : « I.A.C »**
    - **I**nguinale = **A**u-dessus de l'arcade

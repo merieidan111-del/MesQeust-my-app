@@ -559,7 +559,7 @@ Endothél.  + vWF              (Facteur VII)   (XII, XI, IX, VIII)         │  
     courseId: 'crs-hemato-7',
     type: 'astuce',
     title: "Astuces & Pièges aux Concours : Bilan d'Hémostase",
-    contentMarkdown: `### 🎯 Pièges Classiques aux Concours (Résidanat)
+    contentMarkdown: `### Focus : Pièges Classiques aux Concours (Résidanat)
 
 1. **TP bas isolé** :
    - Penser à un déficit en **Facteur VII** congénital ou carence très débutante en vitamine K (demi-vie du FVII = 4 à 6 heures).
@@ -1132,7 +1132,7 @@ CYTOPÉNIE PÉRIPHÉRIQUE                                            CYTOPÉNIE 
     courseId: 'crs-hemato-8',
     type: 'astuce',
     title: "Astuces & Pièges aux Concours : Aplasie & Cytopénies",
-    contentMarkdown: `### 🎯 Pièges Cruciaux pour le Concours
+    contentMarkdown: `### Focus : Pièges Cruciaux pour le Concours
 
 1. **La Fausse Thrombopénie à l'EDTA** :
    - Réflexe absolu : vérifier le frottis et redoser sur tube citraté avant de s'affoler !
@@ -1705,7 +1705,7 @@ DIAGNOSTIC & CYTOLOGIE                   SCORE DE MATUTES (≥ 4/5)             
     courseId: 'crs-hemato-9',
     type: 'astuce',
     title: "Astuces & Pièges aux Concours : LLC",
-    contentMarkdown: `### 🎯 Pièges Classiques aux Concours
+    contentMarkdown: `### Focus : Pièges Classiques aux Concours
 
 1. **Stade C de Binet** :
    - Une anémie ou thrombopénie auto-immune (AHAI ou PTI) ne fait PAS passer un patient en stade C de Binet ! Le stade C est strictement d'origine médullaire centrale (infiltration).

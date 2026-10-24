@@ -1,0 +1,1229 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Révision GEU - 5ème Année Médecine</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Roboto+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #1A365D;
+            --slate: #4A5568;
+            --teal: #319795;
+            --teal-light: #E6FFFA;
+            --bg-color: #F7FAFC;
+            --card-bg: #FFFFFF;
+            --border-color: #E2E8F0;
+            --danger: #E53E3E;
+            --warning: #DD6B20;
+            --success: #38A169;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--slate);
+            line-height: 1.6;
+            padding: 2rem 1rem;
+        }
+
+        h1, h2, h3 {
+            color: var(--navy);
+            font-weight: 700;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* Header */
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            padding: 2rem;
+            background: linear-gradient(135deg, var(--navy) 0%, #2B6CB0 100%);
+            border-radius: 16px;
+            color: white;
+            box-shadow: 0 10px 25px rgba(26, 54, 93, 0.2);
+        }
+
+        .header h1 {
+            color: white;
+            font-size: 2.2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .header p {
+            color: #E2E8F0;
+            font-size: 1.1rem;
+        }
+
+        /* Section Titles */
+        .section-title {
+            display: flex;
+            align-items: center;
+            font-size: 1.5rem;
+            margin: 3rem 0 1.5rem 0;
+            padding-bottom: 0.5rem;
+            border-bottom: 3px solid var(--teal);
+        }
+
+        .section-title span {
+            background-color: var(--teal);
+            color: white;
+            padding: 0.2rem 0.8rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            margin-right: 1rem;
+        }
+
+        /* Cards */
+        .card {
+            background: var(--card-bg);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            border: 1px solid var(--border-color);
+            transition: transform 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Badges */
+        .badge {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .badge-theme { background: var(--teal-light); color: var(--teal); }
+        .badge-rj { background: #EBF8FF; color: #2B6CB0; }
+        .badge-rf { background: #FFF5F5; color: var(--danger); }
+        .badge-multi { background: #FAF5FF; color: #6B46C1; }
+        .badge-simple { background: #F0FFF4; color: var(--success); }
+
+        /* Question Text */
+        .question-text {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--navy);
+            margin-bottom: 1rem;
+        }
+
+        /* Options */
+        .options {
+            list-style: none;
+            margin-bottom: 1rem;
+        }
+
+        .options li {
+            padding: 0.5rem 0;
+            border-bottom: 1px dashed var(--border-color);
+        }
+
+        .options li:last-child {
+            border-bottom: none;
+        }
+
+        /* Collapsible Corrections */
+        details {
+            background: var(--bg-color);
+            border-left: 4px solid var(--teal);
+            border-radius: 0 8px 8px 0;
+            padding: 1rem;
+            margin-top: 1rem;
+            cursor: pointer;
+        }
+
+        summary {
+            font-weight: 600;
+            color: var(--teal);
+            outline: none;
+            display: flex;
+            align-items: center;
+        }
+
+        summary::before {
+            content: "▶";
+            font-size: 0.8rem;
+            margin-right: 0.5rem;
+            transition: transform 0.3s ease;
+        }
+
+        details[open] summary::before {
+            transform: rotate(90deg);
+        }
+
+        .correction-content {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid var(--border-color);
+            font-size: 0.95rem;
+            color: var(--slate);
+            cursor: default;
+        }
+
+        .correct-answer {
+            font-weight: 700;
+            color: var(--success);
+            margin-bottom: 0.5rem;
+        }
+
+        /* Clinical Cases */
+        .case-vignette {
+            background: #F8FAFC;
+            border-left: 4px solid var(--navy);
+            padding: 1rem;
+            border-radius: 4px;
+            margin-bottom: 1.5rem;
+            font-style: italic;
+        }
+
+        /* Concept Map / Visuals */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .visual-box {
+            background: var(--navy);
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+
+        .visual-arrow {
+            text-align: center;
+            font-size: 1.5rem;
+            color: var(--teal);
+            margin: 0.5rem 0;
+        }
+
+        .flowchart {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 1rem;
+            background: var(--bg-color);
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+        }
+
+        .flow-node {
+            background: white;
+            border: 2px solid var(--teal);
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            font-weight: 600;
+            color: var(--navy);
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        .flow-node.decision {
+            border-radius: 8px;
+            border-color: var(--warning);
+            background: #FFFAF0;
+        }
+
+        /* Mnemonics */
+        .mnemonic-box {
+            background: linear-gradient(to right, #EDF2F7, #E2E8F0);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border-left: 5px solid var(--warning);
+        }
+
+        .mnemonic-acronym {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--navy);
+            letter-spacing: 2px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+            .header h1 { font-size: 1.5rem; }
+        }
+
+        /* Footer */
+        .footer {
+            text-align: center;
+            margin-top: 4rem;
+            padding: 2rem;
+            background: var(--navy);
+            color: white;
+            border-radius: 12px;
+        }
+        .footer p { font-size: 1.1rem; font-weight: 300; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+
+    <!-- HEADER -->
+    <header class="header">
+        <h1>Module de Gynécologie-Obstétrique</h1>
+        <p>La Grossesse Extra-Utérine (GEU) — Révision Exhaustive & Cas Cliniques</p>
+    </header>
+
+    <!-- SECTION 1: QCM -->
+    <h2 class="section-title"><span>Partie 1</span> Banque de 25 QCM Exigeants</h2>
+
+    <!-- Q1 -->
+    <div class="card">
+        <span class="badge badge-theme">Épidémiologie</span>
+        <span class="badge badge-simple">Choix Simple</span>
+        <div class="question-text">Concernant l'épidémiologie de la grossesse extra-utérine (GEU) :</div>
+        <ul class="options">
+            <li>A) Elle représente environ 10% de l'ensemble des grossesses.</li>
+            <li>B) En Algérie, on estime environ 1 GEU pour 80 naissances.</li>
+            <li>C) La fréquence a diminué de moitié ces 15 dernières années.</li>
+            <li>D) Elle est responsable de moins de 2% des décès maternels totaux.</li>
+            <li>E) Elle survient exclusivement chez les patientes âgées de plus de 35 ans.</li>
+        </ul>
+        <details>
+            <summary>Voir la correction & l'explication</summary>
+            <div class="correction-content">
+                <div class="correct-answer">Réponse exacte : B</div>
+                <p><strong>Explication :</strong> Selon les données du cours, la fréquence en Algérie est d'environ 1 GEU pour 80 naissances. <br>
+                <em>Pourquoi les autres sont fausses ?</em><br>
+                A) La GEU représente environ 2% des grossesses, pas 10%.<br>
+                C) La fréquence a été multipliée par 2 en 15 ans, en parallèle de l'augmentation du tabagisme et des IST.<br>
+                D) La GEU est responsable de près de 10% des décès maternels totaux (et non 2%).<br>
+                E) Le risque est maximal entre 25 et 35 ans, et aucune tranche d'âge n'est strictement exclue.</p>
+            </div>
+        </details>
+    </div>
+
+    <!-- Q2 -->
+    <div class="card">
+        <span class="badge badge-theme">Physiopathologie</span>
+        <span class="badge badge-multi">Choix Multiples</span>
+        <div class="question-text">Parmi les mécanismes physiopathologiques responsables d'une GEU, quelles sont les propositions exactes ?</div>
+        <ul class="options">
+            <li>A) Un retard de captation ovulaire est impliqué dans 60 à 80% des cas.</li>
+            <li>B) L'altération de la motricité tubaire peut être d'origine hormonale ou infectieuse.</li>
+            <li>C) La théorie d'IFFY évoque un reflux de l'embryon de la cavité utérine vers la trompe.</li>
+            <li>D) La fécondation se fait normalement dans le tiers interne de la trompe.</li>
+            <li>E) La déciliation de la muqueuse tubaire fait partie des causes de retard de migration.</li>
+        </ul>
+        <details>
+            <summary>Voir la correction & l'explication</summary>
+            <div class="correction-content">
+                <div class="correct-answer">Réponses exactes : B, C, E</div>
+                <p><strong>Explication :</strong><br>
+                B) Vrai : Les causes hormonales, mécaniques ou infectieuses (salpingite) altèrent la motricité.<br>
+                C) Vrai : La théorie d'IFFY (reflux tubaire) explique notamment les GEU après AMP.<br>
+                E) Vrai : L'infection entraîne des adhérences, une déciliation et un épaississement de la paroi tubaire.<br>
+                <em>Pourquoi les autres sont fausses ?</em><br>
+                A) Le retard de migration est impliqué dans 60 à 80% des cas. Le retard de captation ovulaire ne représente que 10 à 20% des cas.<br>
+                D) La fécondation se produit physiologiquement dans le <strong>tiers externe</strong> (ampoule) de la trompe, et non le tiers interne.</p>
+            </div>
+        </details>
+    </div>
+
+    <!-- Q3 -->
+    <div class="card">
+        <span class="badge badge-theme">Facteurs de risque</span>
+        <span class="badge badge-rf">Réponse Fausse (RF)</span>
+        <div class="question-text">Concernant les facteurs de risque de la GEU, choisissez la proposition FAUSSE :</div>
+        <ul class="options">
+            <li>A) Le tabagisme est le 2ème grand facteur de risque après les altérations tubaires.</li>
+            <li>B) La chlamydia trachomatis est le germe infectieux le plus fréquemment incriminé.</li>
+            <li>C) La pilule du lendemain (oestroprogestative ou progestative) est un facteur de risque.</li>
+            <li>D) Les antécédents de chirurgie pelvienne (ex: appendicectomie) augmentent le risque.</li>
+            <li>E) Le dispositif intra-utérin (DIU) prévient de manière absolue la survenue d'une GEU.</li>
+        </ul>
+        <details>
+            <summary>Voir la correction & l'explication</summary>
+            <div class="correction-content">
+                <div class="correct-answer">Réponse fausse : E</div>
+                <p><strong>Explication :</strong> Le DIU ne prévient pas totalement la grossesse. En cas d'échec du DIU, la grossesse a une probabilité beaucoup plus élevée d'être extra-utérine. Le DIU est d'ailleurs listé dans les facteurs de risque du cours.<br>
+                <em>Les autres propositions sont vraies :</em> Le tabagisme est bien le 2ème facteur, la Chlamydia est le germe le plus fréquent, la pilule du lendemain et les antécédents chirurgicaux sont des facteurs de risque reconnus.</p>
+            </div>
+        </details>
+    </div>
+
+    <!-- Q4 -->
+    <div class="card">
+        <span class="badge badge-theme">Anatomopathologie</span>
+        <span class="badge badge-simple">Choix Simple</span>
+        <div class="question-text">Quelle est la localisation anatomique de la GEU qui présente le plus haut risque de rupture hémorragique massive et précoce ?</div>
+        <ul class="options">
+            <li>A) La portion ampullaire</li>
+            <li>B) La portion pavillonnaire (infundibulaire)</li>
+            <li>C) La portion isthmique</li>
+            <li>D) La portion interstitielle (cornuale)</li>
+            <li>E) La localisation ovarienne</li>
+        </ul>
+        <details>
+            <summary>Voir la correction & l'explication</summary>
+            <div class="correction-content">
+                <div class="correct-answer">Réponse exacte : D</div>
+                <p><strong>Explication :</strong> Les GEU interstitielles ou cornuales représentent seulement 2% des cas, mais elles sont redoutables. La rupture est la règle et se produit dans une zone très vascularisée, entraînant les formes les plus hémorragiques.<br>
+                <em>Pourquoi les autres sont fausses ?</em><br>
+                A) La localisation ampullaire (65%) a une zone large et extensible, les signes cliniques sont tardifs.<br>
+                B) La localisation pavillonnaire ne distend pas la trompe et le risque de rupture est quasi nul.<br>
+                C) L'isthmique (25%) est certes précoce mais la rupture de la portion interstitielle est plus hémorragique.<br>
+                E) La localisation ovarienne est rare et ne présente pas le même profil hémorragique.</p>
+            </div>
+        </details>
+    </div>
+
+    <!-- Q5 -->
+    <div class="card">
+        <span class="badge badge-theme">Clinique (GEU non rompue)</span>
+        <span class="badge badge-rj">Réponse Juste (RJ)</span>
+        <div class="question-text">Parmi les signes cliniques suivants, lequel est le plus fréquemment retrouvé dans une GEU non rompue ?</div>
+        <ul class="options">
+            <li>A) Une hyperthermie à 38.5°C</li>
+            <li>B) Des métrorragies de couleur brune, peu abondantes</li>
+            <li>C) Un état de choc hémodynamique</li>
+            <li>D) Une défense abdominale généralisée</li>
+            <li>E) Un cri de Douglas au toucher vaginal</li>
+        </ul>
+        <details>
+            <summary>Voir la correction & l'explication</summary>
+            <div class="correction-content">
+                <div class="correct-answer">Réponse exacte : B</div>
+                <p><strong>Explication :</strong> Les métrorragies sont présentes dans environ 70% des cas. Elles sont classiquement de couleur brune noirâtre, peu abondantes et récidivantes.<br>
+                <em>Pourquoi les autres sont fausses ?</em><br>
+                A) La fièvre n'est pas typique (elle orienterait vers une forme pseudo-salpingitique).<br>
+                C) L'état de choc survient dans la forme rompue.<br>
+                D) La défense abdominale est un signe de rupture avec hémopéritoine.<br>
+                E) Le cri de Douglas est un signe de GEU rompue avec volumineux hémopéritoine. La douleur pelvienne est le symptôme le plus fréquent (90%), mais parmi les choix proposés, seules les métrorragies correspondent à la forme non compliquée.</p>
+            </div>
+        </details>
+    </div>
+
+    <!-- Q6 -->
+    <div class="card">
+        <span class="badge badge-theme">Clinique (Formes trompeuses)</span>
+        <span class="badge badge-multi">Choix Multiples</span>
+        <div class="question-text">Concernant la forme pseudo-salpingitique de la GEU :</div>
+        <ul class="options">
+            <li>A) Elle associe une douleur pelvienne et une hyperthermie modérée (souvent ≤ 38°C).</li>
+            <li>B) Elle se caractérise par une masse latéro-utérine fixée et très douloureuse.</li>
+            <li>C) Elle s'accompagne typiquement d'une hyperleucocytose majeure (> 20000).</li>
+            <li>D) Elle est souvent bilatérale, ce qui aide au diagnostic différentiel.</li>
+            <li>E) Elle peut mimer une salpingite aiguë, d'où la nécessité d'un dosage de β-HCG.</li>
+        </ul>
+        <details>
+            <summary>Voir la correction & l'explication</summary>
+            <div class="correction-content">
+                <div class="correct-answer">Réponses exactes : A, B, E</div>
+                <p><strong>Explication :</strong><br>
+                A) Vrai : La forme pseudo-salpingitique peut donner une fièvre modérée (38°C) avec hyperleucocytose.<br>
+                B) Vrai : L'examen retrouve une masse latéro-utérine fixée et douloureuse.<br>
+                E) Vrai : C'est un piège classique, il faut doser les β-HCG devant toute suspicion de salpingite chez une femme en âge de procréer.<br>
+                <em>Pourquoi les autres sont fausses ?</em><br>
+                C) L'hyperleucocytose existe mais n'est pas "majeure" typiquement, et l'absence de fièvre élevée/tableau septique franc oriente vers la GEU.<br>
+                D) La GEU est typiquement <strong>unilatérale</strong>, ce qui permet de la distinguer des salpingites souvent bilatérales.</p>
+            </div>
+        </details>
+    </div>
+
+    <!-- Q7 -->
+    <div class="card">
+        <span class="badge badge-theme">Clinique (GEU rompue)</span>
+        <span class="badge badge-simple">Choix Simple</span>
+        <div class="question-text">Une patiente de 30 ans consulte aux urgences pour une douleur pelvienne brutale en coup de poignard, irradiant à tout l'abdomen, avec pâleur et tachycardie. Quel est le diagnostic le plus probable ?</div>
+        <ul class="options">
+            <li>A) GEU non rompue avec avortement tubo-abdominal</li>
+            <li>B) GEU rompue avec hémopéritoine massif</li>
+            <li>C) Hématocèle chronique</li>
+            <li>D) Kyste ovarien fissuré</li>
+            <li>E) Salpingite aiguë bilatérale</li>
+        </ul>
+        <details>
+            <summary>Voir la correction & l'explication</summary>
+            <div class="correction-content">
+                <div class="correct-answer">Réponse exacte : B</div>
+                <p><strong>Explication :</strong> Le tableau clinique décrit est celui d'une rupture cataclysmique avec inondation péritonéale. La douleur brutale "en coup de poignard" et les signes de choc (pâleur, tachycardie) sont caractéristiques.<br>
+                <em>Pourquoi les autres sont fausses ?</em><br>
+                A) L'avortement tubo-abdominal donne des signes d'anémie et de résorption, mais pas un choc brutal immédiat.<br>
+                C) L'hématocèle chronique donne une douleur accentuée à la marche/défécation, pas un choc aigu.<br>
+                D) Le kyste fissuré peut donner une douleur brutale mais l'état de choc est moins fréquent que dans la GEU rompue.<br>
+                E) La salpingite donne une douleur progressive et de la fièvre.</p>
+            </div>
+        </details>
+    </div>
+
+    <!-- Q8 -->
+    <div class="card">
+        <span class="badge badge-theme">Bilan paraclinique (β-HCG)</span>
+        <span class="badge badge-rj">Réponse Juste (RJ)</span>
+        <div class="question-text">Quel est l'élément le plus important pour le diagnostic d'une GEU lors du dosage des β-HCG ?</div>
+        <ul class="options">
+            <li>A) La valeur absolue du taux sérique</li>
+            <li>B) La cinétique (dédoublement ou non en 48h)</li>
+            <li>C) La positivité des β-HCG urinaires</li>
+            <li>D) Le taux de progestérone associé</li>
+            <li>E) La négativité des β-HCG sériques</li>
+        </ul>
+        <details>
+            <summary>Voir la correction & l'explication</summary>
+            <div class="correction-content">
+                <div class="correct-answer">Réponse exacte : B</div>
+                <p><strong>Explication :</strong> C'est la cinétique qui a un intérêt diagnostique majeur. Un dédoublement normal à 48h évoque une GIU. Une cinétique perturbée (diminution ou élévation de moins de 50%) évoque une GEU.<br>
+                <em>Pourquoi les autres sont fausses ?</em><br>
+                A) La valeur absolue est utile pour corriger avec l'échographie, mais c'est la cinétique qui prime.<br>
+                C) Les β-HCG urinaires ne sont pas utilisés pour le suivi.<br>
+                D) La progestérone aide mais n'est pas l'élément principal.<br>
+                E) Un β-HCG négatif exclut la grossesse (et donc la GEU), mais ce n'est pas l'élément "diagnostique" d'une GEU déjà suspectée.</p>
+            </div>
+        </details>
+    </div>
+
+    <!-- Q9 -->
+    <div class="card">
+        <span class="badge badge-theme">Bilan paraclinique (Échographie)</span>
+        <span class="badge badge-multi">Choix Multiples</span>
+        <div class="question-text">Concernant l'échographie pelvienne dans le diagnostic de la GEU :</div>
+        <ul class="options">
+            <li>A) La visualisation d'un sac gestationnel intra-utérin permet d'exclure formellement une GEU hétérotopique.</li>
+            <li>B) Le "pseudo-sac" est centré dans la cavité utérine et dépourvu de couronne trophoblastique.</li>
+            <li>C) L'absence de sac gestationnel intra-utérin pour un taux de β-HCG ≥ 1500 UI/ml doit faire évoquer le diagnostic.</li>
+            <li>D) Le signe direct est la visualisation d'un sac ectopique avec une activité cardiaque.</li>
+            <li>E) La voie sus-pubienne est plus performante que la voie endo-vaginale pour le diagnostic précoce.</li>
+        </ul>
+        <details>
+            <summary>Voir la correction & l'explication</summary>
+            <div class="correction-content">
+                <div class="correct-answer">Réponses exactes : B, C, D</div>
+                <p><strong>Explication :</strong><br>
+                B) Vrai : Le pseudo-sac est souvent un caillot de sang, sans couronne trophoblastique.<br>
+                C) Vrai : C'est le signe indirect principal (vacuité utérine).<br>
+                D) Vrai : C'est le seul signe direct formel de GEU.<br>
+                <em>Pourquoi les autres sont fausses ?</em><br>
+                A) La GEU hétérotopique associe une GEU ET une GIU. La présence d'un sac intra-utérin n'exclut pas une GEU concomitante.<br>
+                E) La voie endo-vaginale est plus performante (visible dès 5 SA et un taux ≥ 1000 UI/ml), contrairement à la voie sus-pubienne (5-6 SA, ≥ 1500 UI/ml).</p>
+            </div>
+        </details>
+    </div>
+
+    <!-- Q10 -->
+    <div class="card">
+        <span class="badge badge-theme">Cœlioscopie</span>
+        <span class="badge badge-rf">Réponse Fausse (RF)</span>
+        <div class="question-text">Concernant la cœlioscopie dans la prise en charge de la GEU, choisissez la proposition FAUSSE :</div>
+        <ul class="options">
+            <li>A) Elle permet de confirmer le diagnostic en visualisant un hématosalpinx.</li>
+            <li>B) Elle permet d'effectuer un geste thérapeutique dans le même temps.</li>
+            <li>C) L'évaluation de la trompe controlatérale doit être systématique.</li>
+            <li>D) Elle est indispensable et doit être réalisée avant tout dosage de β-HCG.</li>
+            <li>E) Elle peut aider à évaluer le pronostic de fertilité ultérieure.</li>
+        </ul>
+        <details>
+            <summary>Voir la correction & l'explication</summary>
+            <div class="correction-content">
+                <div class="correct-answer">Réponse fausse : D</div>
+                <p><strong>Explication :</strong> La cœlioscopie est un examen invasif. Elle n'est pas indispensable pour poser le diagnostic (le couple β-HCG/Échographie est la base) et ne doit certainement pas précéder les dosages biologiques. Elle est indiquée en cas de doute diagnostique ou pour le traitement chirurgical.<br>
+                <em>Les autres propositions sont vraies :</em> Elle confirme le diagnostic, permet le geste thérapeutique, évalue la trompe controlatérale (obligatoire avant tout geste) et aide au pronostic.</p>
+            </div>
+        </details>
+    </div>
+
+    <!-- Q11 -->
+    <div class="card">
+        <span class="badge badge-theme">Diagnostic différentiel</span>
+        <span class="badge badge-simple">Choix Simple</span>
+        <div class="question-text">Devant des métrorragies du premier trimestre, lequel des diagnostics suivants est le moins probable dans le cadre du diagnostic différentiel d'une GEU ?</div>
+        <ul class="options">
+            <li>A) Menace d'avortement</li>
+            <li>B) Mole hydatiforme</li>
+            <li>C) Fibrome utérin en nécrobiose</li>
+            <li>D) Avortement en cours</li>
+            <li>E) Kyste de l'ovaire</li>
+        </ul>
+        <details>
+            <summary>Voir la correction & l'explication</summary>
+            <div class="correction-content">
+                <div class="correct-answer">Réponse exacte : C</div>
+                <p><strong>Explication :</strong> Le diagnostic différentiel des métrorragies inclut la menace d'avortement, l'avortement en cours et la mole hydatiforme. Le kyste de l'ovaire est un diagnostic différentiel devant une masse annexielle.<br>
+                <em>Pourquoi C est le moins probable ?</em> Le fibrome utérin en nécrobiose peut donner des douleurs et des saignements, mais il n'est pas listé parmi les principaux diagnostics différentiels de la GEU dans le cours, contrairement aux trois autres. Il s'agit plus d'une pathologie utérine organique. (N.B: la question cherche le moins probable parmi les choix proposés).</p>
+            </div>
+        </details>
+    </div>
+
+    <!-- Q12 -->
+    <div class="card">
+        <span class="badge badge-theme">Évolution</span>
+        <span class="badge badge-multi">Choix Multiples</span>
+        <div class="question-text">Quelles sont les évolutions possibles d'une GEU non traitée ?</div>
+        <ul class="options">
+            <li>A) Régression spontanée</li>
+            <li>B) Rupture tubaire</li>
+            <li>C) Constitution d'un hématosalpinx</li>
+            <li>D) Transformation en grossesse intra-utérine</li>
+            <li>E) Avortement tubo-abdominal ou hématocèle</li>
+        </ul>
+        <details>
+            <summary>Voir la correction & l'explication</summary>
+            <div class="correction-content">
+                <div class="correct-answer">Réponses exactes : A, B, C, E</div>
+                <p><strong>Explication :</strong><br>
+                A) Vrai : La régression spontanée est possible (notamment si les β-HCG diminuent).<br>
+                B) Vrai : La rupture tubaire est une complication majeure.<br>
+                C) Vrai : L'hématosalpinx est une évolution possible.<br>
+                E) Vrai : L'avortement tubo-abdominal et l'hématocèle (GEU chronique) sont des évolutions possibles.<br>
+                <em>Pourquoi D est fausse ?</em> Une GEU ne peut pas se transformer en grossesse intra-utérine. L'implantation est déjà fixée.</p>
+            </div>
+        </details>
+    </div>
+
+    <!-- Q13 -->
+    <div class="card">
+        <span class="badge badge-theme">Traitement (Abstention)</span>
+        <span class="badge badge-rj">Réponse Juste (RJ)</span>
+        <div class="question-text">Quelle est la condition indispensable pour opter pour une abstention thérapeutique dans la prise en charge d'une GEU ?</div>
+        <ul class="options">
+            <li>A) Patiente symptomatique avec douleurs pelviennes intenses</li>
+            <li>B) Taux de β-HCG décroissant et patiente asymptomatique</li>
+            <li>C) Hématosalpinx de 5 cm</li>
+            <li>D) Activité cardiaque embryonnaire visible à l'échographie</li>
+            <li>E) Hémopéritoine de 200 ml</li>
+        </ul>
+        <details>
+            <summary>Voir la correction & l'explication</summary>
+            <div class="correction-content">
+                <div class="correct-answer">Réponse exacte : B</div>
+                <p><strong>Explication :</strong> L'abstention thérapeutique est le traitement de référence pour les GEU asymptomatiques avec un taux de β-HCG décroissant. Une surveillance rapprochée des β-HCG toutes les 48h est nécessaire jusqu'à négativation.<br>
+                <em>Pourquoi les autres sont fausses ?</em><br>
+                A, C, D, E : La présence de symptômes, d'un hématosalpinx important (> 3 cm), d'une activité cardiaque ou d'un hémopéritoine significatif contre-indiquent l'abstention.</p>
+            </div>
+        </details>
+    </div>
+
+    <!-- Q14 -->
+    <div class="card">
+        <span class="badge badge-theme">Traitement médical (Méthotrexate)</span>
+        <span class="badge badge-simple">Choix Simple</span>
+        <div class="question-text">Quel est le seuil maximal de β-HCG généralement accepté pour l'indication de première intention du Méthotrexate dans la GEU ?</div>
+        <ul class="options">
+            <li>A) 1000 UI/l</li>
+            <li>B) 3000 UI/l</li>
+            <li>C) 5000 UI/l</li>
+            <li>D) 10000 UI/l</li>
+            <li>E) 20000 UI/l</li>
+        </ul>
+        <details>
+            <summary>Voir la correction & l'explication</summary>
+            <div class="correction-content">
+                <div class="correct-answer">Réponse exacte : C</div>
+                <p><strong>Explication :</strong> Le traitement médical par Méthotrexate (MTX) est indiqué en première intention si le taux de β-HCG est inférieur à 5000 UI/l, si l'état hémodynamique est stable, si l'hématosalpinx est < 3 cm et en l'absence d'activité cardiaque.<br>
+                <em>Pourquoi les autres sont fausses ?</em> Au-delà de 5000 UI/l, le risque d'échec du traitement médical est trop élevé, et la chirurgie est privilégiée.</p>
+            </div>
+        </details>
+    </div>
+
+    <!-- Q15 -->
+    <div class="card">
+        <span class="badge badge-theme">Traitement chirurgical</span>
+        <span class="badge badge-rf">Réponse Fausse (RF)</span>
+        <div class="question-text">Concernant la chirurgie dans la GEU, quelle est la proposition FAUSSE ?</div>
+        <ul class="options">
+            <li>A) La cœlioscopie est le gold standard car elle est diagnostique et thérapeutique.</li>
+            <li>B) La salpingectomie est indiquée en cas de récidive homolatérale de GEU.</li>
+            <li>C) La salpingotomie est contre-indiquée chez la patiente jeune désirant une grossesse.</li>
+            <li>D) La cœlioscopie réduit le taux d'adhérences par rapport à la laparotomie.</li>
+            <li>E) L'expression tubaire est réservée aux GEU pavillonnaires.</li>
+        </ul>
+        <details>
+            <summary>Voir la correction & l'explication</summary>
+            <div class="correction-content">
+                <div class="correct-answer">Réponse fausse : C</div>
+                <p><strong>Explication :</strong> La salpingotomie est justement une chirurgie conservatrice indiquée chez la patiente jeune désirant une grossesse, à condition que la trompe soit perméable et saine.<br>
+                <em>Les autres sont vraies :</em> La cœlioscopie est le gold standard (moins de morbidité, moins d'adhérences), la salpingectomie est indiquée en cas de récidive ou de saignement incontrôlable, et l'expression tubaire est utilisée pour les GEU pavillonnaires.</p>
+            </div>
+        </details>
+    </div>
+
+    <!-- Q16 -->
+    <div class="card">
+        <span class="badge badge-theme">Score de Fernandez</span>
+        <span class="badge badge-multi">Choix Multiples</span>
+        <div class="question-text">Le score de Fernandez permet d'orienter la thérapeutique. Quels éléments font partie de ce score ?</div>
+        <ul class="options">
+            <li>A) La douleur (spontanée ou provoquée)</li>
+            <li>B) L'âge de la patiente</li>
+            <li>C) Le taux de β-HCG</li>
+            <li>D) La taille de l'hématosalpinx</li>
+            <li>E) L'importance de l'hémopéritoine</li>
+        </ul>
+        <details>
+            <summary>Voir la correction & l'explication</summary>
+            <div class="correction-content">
+                <div class="correct-answer">Réponses exactes : A, C, D, E</div>
+                <p><strong>Explication :</strong> Le score de Fernandez prend en compte : la douleur (provoquée/spontanée), l'aménorrhée (<7 sem ou <6 sem), le taux d'HCG, le taux de progestérone, la taille de l'hématosalpinx et l'importance de l'hémopéritoine.<br>
+                <em>Pourquoi B est fausse ?</em> L'âge n'est pas un critère du score de Fernandez.</p>
+            </div>
+        </details>
+    </div>
+
+    <!-- Q17 -->
+    <div class="card">
+        <span class="badge badge-theme">Traitement médical (Contre-indications)</span>
+        <span class="badge badge-simple">Choix Simple</span>
+        <div class="question-text">Le Méthotrexate est contre-indiqué en cas de :</div>
+        <ul class="options">
+            <li>A) Taux de β-HCG à 4000 UI/l</li>
+            <li>B) Hématosalpinx de 2 cm</li>
+            <li>C) Anomalie du bilan hépatique ou rénal</li>
+            <li>D) Absence d'activité cardiaque</li>
+            <li>E) Hémopéritoine minime</li>
+        </ul>
+        <details>
+            <summary>Voir la correction & l'explication</summary>
+            <div class="correction-content">
+                <div class="correct-answer">Réponse exacte : C</div>
+                <p><strong>Explication :</strong> Le Méthotrexate est un agent cytotoxique et hépatotoxique. Il est formellement contre-indiqué en cas de perturbation biologique : leucopénie < 2000, thrombopénie < 100000, anémie, ou anomalies du bilan hépatique/rénal.<br>
+                <em>Pourquoi les autres sont fausses ?</em> Un β-HCG à 4000, un hématosalpinx à 2 cm, l'absence d'activité cardiaque et un hémopéritoine minime sont justement des critères d'indication du traitement médical.</p>
+            </div>
+        </details>
+    </div>
+
+    <!-- Q18 -->
+    <div class="card">
+        <span class="badge badge-theme">Prévention</span>
+        <span class="badge badge-rj">Réponse Juste (RJ)</span>
+        <div class="question-text">Quelle mesure fait partie de la prévention primaire de la GEU ?</div>
+        <ul class="options">
+            <li>A) Le dépistage précoce des patientes à risque</li>
+            <li>B) Le diagnostic précoce de la GEU</li>
+            <li>C) Le traitement efficace et rapide des infections génitales</li>
+            <li>D) La vigilance lors des chirurgies abdomino-pelviennes</li>
+            <li>E) La sélection des indications de la plastie tubaire</li>
+        </ul>
+        <details>
+            <summary>Voir la correction & l'explication</summary>
+            <div class="correction-content">
+                <div class="correct-answer">Réponse exacte : C</div>
+                <p><strong>Explication :</strong> La prévention primaire vise à éviter la survenue de la maladie. Le traitement des infections génitales (notamment à Chlamydia) et le dépistage des IST en font partie.<br>
+                <em>Pourquoi les autres sont fausses ?</em> A, B, D, E font partie de la prévention <strong>secondaire</strong> (dépistage et diagnostic précoce pour limiter les complications).</p>
+            </div>
+        </details>
+    </div>
+
+    <!-- Q19 -->
+    <div class="card">
+        <span class="badge badge-theme">Pronostic</span>
+        <span class="badge badge-multi">Choix Multiples</span>
+        <div class="question-text">Concernant le pronostic de la GEU :</div>
+        <ul class="options">
+            <li>A) La mortalité par GEU reste la 1ère cause de mortalité maternelle au 1er trimestre.</li>
+            <li>B) Le pronostic de fertilité est meilleur après un traitement radical.</li>
+            <li>C) Une GEU peut compromettre l'avenir obstétrical (stérilité, récidive).</li>
+            <li>D) Le traitement conservateur offre un meilleur pronostic de fertilité que le traitement radical.</li>
+            <li>E) La GEU est une urgence gynécologique exclusivement diagnostique, pas thérapeutique.</li>
+        </ul>
+        <details>
+            <summary>Voir la correction & l'explication</summary>
+            <div class="correction-content">
+                <div class="correct-answer">Réponses exactes : A, C, D</div>
+                <p><strong>Explication :</strong><br>
+                A) Vrai : C'est la 1ère cause de mortalité maternelle au premier trimestre.<br>
+                C) Vrai : Elle peut entraîner une stérilité ou des récidives.<br>
+                D) Vrai : Le traitement conservateur (ou médical) préserve mieux la fertilité que la salpingectomie.<br>
+                <em>Pourquoi les autres sont fausses ?</em><br>
+                B) C'est l'inverse : le pronostic de fertilité est altéré en cas de traitement radical.<br>
+                E) La GEU est une urgence à la fois diagnostique ET thérapeutique.</p>
+            </div>
+        </details>
+    </div>
+
+    <!-- Q20 -->
+    <div class="card">
+        <span class="badge badge-theme">Clinique (Hématocèle)</span>
+        <span class="badge badge-simple">Choix Simple</span>
+        <div class="question-text">Une hématocèle (GEU chronique) se manifeste cliniquement par :</div>
+        <ul class="options">
+            <li>A) Un choc hypovolémique immédiat</li>
+            <li>B) Une douleur pelvienne accentuée à la marche, à la défécation ou à la miction</li>
+            <li>C) Des métrorragies abondantes de sang rouge vif</li>
+            <li>D) Un utérus augmenté de volume et mou</li>
+            <li>E) Une absence totale de signes cliniques</li>
+        </ul>
+        <details>
+            <summary>Voir la correction & l'explication</summary>
+            <div class="correction-content">
+                <div class="correct-answer">Réponse exacte : B</div>
+                <p><strong>Explication :</strong> L'hématocèle est une collection sanguine intra-péritonéale. Cliniquement, elle se manifeste par une douleur pelvienne accentuée à la marche, à la défécation ou à la miction (signes de compression).<br>
+                <em>Pourquoi les autres sont fausses ?</em><br>
+                A) C'est une forme chronique, pas une rupture cataclysmique.<br>
+                C) Les métrorragies sont généralement peu abondantes.<br>
+                D) Au TV, on retrouve une masse sensible et volumineuse, le col est plaqué contre la symphyse, l'utérus n'est pas forcément augmenté.<br>
+                E) Il y a des signes de compression et de douleur.</p>
+            </div>
+        </details>
+    </div>
+
+    <!-- Q21 -->
+    <div class="card">
+        <span class="badge badge-theme">Échographie</span>
+        <span class="badge badge-rf">Réponse Fausse (RF)</span>
+        <div class="question-text">Concernant les signes échographiques, quelle proposition est FAUSSE ?</div>
+        <ul class="options">
+            <li>A) Le pseudo-sac est souvent un caillot de sang dans la cavité utérine.</li>
+            <li>B) La vacuité utérine avec β-HCG ≥ 1500 UI/ml est très évocatrice de GEU.</li>
+            <li>C) Le signe direct est la visualisation d'un sac ectopique avec activité cardiaque.</li>
+            <li>D) Le pseudo-sac possède une couronne trophoblastique bien visible.</li>
+            <li>E) La voie endo-vaginale permet de visualiser un sac plus précocement que la voie sus-pubienne.</li>
+        </ul>
+        <details>
+            <summary>Voir la correction & l'explication</summary>
+            <div class="correction-content">
+                <div class="correct-answer">Réponse fausse : D</div>
+                <p><strong>Explication :</strong> Le pseudo-sac est dépourvu de couronne trophoblastique (il s'agit souvent de sang ou de sécrétions), contrairement à un véritable sac gestationnel intra-utérin qui possède une double couronne trophoblastique.<br>
+                <em>Les autres propositions sont vraies :</em> Le pseudo-sac est centré dans la cavité, la vacuité utérine est un signe indirect majeur, le signe direct est le sac ectopique avec activité cardiaque, et la voie vaginale est plus précoce.</p>
+            </div>
+        </details>
+    </div>
+
+    <!-- Q22 -->
+    <div class="card">
+        <span class="badge badge-theme">Prise en charge (Chirurgie)</span>
+        <span class="badge badge-simple">Choix Simple</span>
+        <div class="question-text">Parmi les contre-indications de la cœlioscopie dans la GEU, on retrouve :</div>
+        <ul class="options">
+            <li>A) Un hématosalpinx de 2 cm</li>
+            <li>B) Une instabilité hémodynamique avec hémopéritoine important</li>
+            <li>C) Un désir de grossesse ultérieur</li>
+            <li>D) Une GEU isthmique</li>
+            <li>E) Un taux de β-HCG à 2000 UI/l</li>
+        </ul>
+        <details>
+            <summary>Voir la correction & l'explication</summary>
+            <div class="correction-content">
+                <div class="correct-answer">Réponse exacte : B</div>
+                <p><strong>Explication :</strong> La cœlioscopie augmente la pression intra-abdominale. En cas d'hémopéritoine important avec instabilité hémodynamique (choc), la laparotomie est préférée pour évacuer rapidement le sang et faire l'hémostase.<br>
+                <em>Pourquoi les autres sont fausses ?</em> Un petit hématosalpinx, un désir de grossesse, une GEU isthmique et un taux de 2000 sont des situations où la cœlioscopie est parfaitement indiquée.</p>
+            </div>
+        </details>
+    </div>
+
+    <!-- Q23 -->
+    <div class="card">
+        <span class="badge badge-theme">Traitement chirurgical</span>
+        <span class="badge badge-multi">Choix Multiples</span>
+        <div class="question-text">Quelles sont les indications de la chirurgie radicale (salpingectomie) ?</div>
+        <ul class="options">
+            <li>A) Patiente ne désirant plus de grossesse</li>
+            <li>B) Récidive homolatérale d'une GEU</li>
+            <li>C) GEU sur trompe pathologique connue</li>
+            <li>D) Saignement incontrôlable lors de la chirurgie</li>
+            <li>E) Patiente jeune avec trompe controlatérale saine</li>
+        </ul>
+        <details>
+            <summary>Voir la correction & l'explication</summary>
+            <div class="correction-content">
+                <div class="correct-answer">Réponses exactes : A, B, C, D</div>
+                <p><strong>Explication :</strong> La chirurgie radicale (salpingectomie) est indiquée si la patiente ne désire plus de grossesse, en cas de récidive homolatérale, sur trompe pathologique, ou face à un saignement incontrôlable.<br>
+                <em>Pourquoi E est fausse ?</em> Chez une patiente jeune avec une trompe controlatérale saine, on privilégie la chirurgie conservatrice (salpingotomie) pour préserver la fertilité.</p>
+            </div>
+        </details>
+    </div>
+
+    <!-- Q24 -->
+    <div class="card">
+        <span class="badge badge-theme">Physiopathologie (Rappel)</span>
+        <span class="badge badge-rj">Réponse Juste (RJ)</span>
+        <div class="question-text">Le transport de l'ovocyte vers la trompe est assuré par plusieurs mécanismes. Lequel est le rôle majeur de l'infundibulum ?</div>
+        <ul class="options">
+            <li>A) La sécrétion d'hormones</li>
+            <li>B) La captation de l'ovocyte</li>
+            <li>C) La fécondation de l'ovocyte</li>
+            <li>D) La nidation de l'œuf</li>
+            <li>E) La formation du corps jaune</li>
+        </ul>
+        <details>
+            <summary>Voir la correction & l'explication</summary>
+            <div class="correction-content">
+                <div class="correct-answer">Réponse exacte : B</div>
+                <p><strong>Explication :</strong> L'infundibulum (ou pavillon) a pour rôle majeur la captation de l'ovocyte au moment de l'ovulation, grâce aux contractions des fibres musculaires lisses situées dans les ligaments lombo-ovarien, utéro-ovarien et le mésovarium.<br>
+                <em>Pourquoi les autres sont fausses ?</em> La fécondation a lieu dans le tiers externe (ampoule), la nidation dans l'utérus, le corps jaune se forme dans l'ovaire.</p>
+            </div>
+        </details>
+    </div>
+
+    <!-- Q25 -->
+    <div class="card">
+        <span class="badge badge-theme">Anatomopathologie</span>
+        <span class="badge badge-simple">Choix Simple (SAUF)</span>
+        <div class="question-text">Toutes les propositions suivantes concernant les localisations de la GEU sont exactes, SAUF :</div>
+        <ul class="options">
+            <li>A) La localisation ampullaire représente environ 65% des cas.</li>
+            <li>B) La localisation isthmique donne des signes cliniques précoces.</li>
+            <li>C) La localisation pavillonnaire expose à un risque élevé de rupture tubaire.</li>
+            <li>D) La localisation interstitielle est la plus hémorragique.</li>
+            <li>E) La grossesse cervicale est rare et de mauvais pronostic.</li>
+        </ul>
+        <details>
+            <summary>Voir la correction & l'explication</summary>
+            <div class="correction-content">
+                <div class="correct-answer">Réponse fausse : C</div>
+                <p><strong>Explication :</strong> Dans la localisation pavillonnaire (ou infundibulaire), la GEU ne distend pas la trompe et le risque de rupture n'existe pas. Elle expose à un risque d'avortement tubo-abdominal.<br>
+                <em>Les autres propositions sont vraies :</em> L'ampullaire est la plus fréquente (65%), l'isthmique donne des signes précoces (espace restreint), l'interstitielle est la plus hémorragique, et la cervicale est rare et grave.</p>
+            </div>
+        </details>
+    </div>
+
+    <!-- SECTION 2: CAS CLINIQUES -->
+    <h2 class="section-title"><span>Partie 2</span> 5 Cas Cliniques Hospitaliers Algériens</h2>
+
+    <!-- Cas Clinique 1 -->
+    <div class="card">
+        <span class="badge badge-theme">Cas Clinique N°1</span>
+        <div class="case-vignette">
+            <strong>Contexte :</strong> Urgences du CHU de Douéra.<br>
+            Mme B., 28 ans, G2P1, consulte pour des douleurs pelviennes atypiques et des métrorragies brunâtres depuis 3 jours. Dernières règles il y a 6 semaines. Antécédent d'infection à Chlamydia traitée il y a 2 ans. <br>
+            <strong>Examen clinique :</strong> Constantes normales (TA 120/80, FC 85). Abdomen souple. Au spéculum : col violacé, métrorragies noirâtres. Au TV : utérus de taille normale, sensibilité du cul-de-sac latéral droit avec une petite masse molle indépendante de l'utérus.<br>
+            <strong>Biologie :</strong> β-HCG sérique à 1800 UI/l.
+        </div>
+        
+        <p class="question-text">Q1. Quel est votre diagnostic le plus probable ?</p>
+        <ul class="options">
+            <li>A) Menace d'avortement</li>
+            <li>B) GEU non rompue de localisation ampullaire probable</li>
+            <li>C) GEU rompue avec hémopéritoine</li>
+            <li>D) Salpingite aiguë droite</li>
+            <li>E) Kyste ovarien compliqué</li>
+        </ul>
+        <details>
+            <summary>Voir la correction</summary>
+            <div class="correction-content">
+                <div class="correct-answer">Réponse : B</div>
+                <p>Le tableau associe la triade classique : douleur, métrorragies et retard de règles. L'examen retrouve une masse latéro-utérine et une sensibilité du cul-de-sac, sans signes de choc (constantes normales), ce qui oriente vers une GEU non rompue. L'antécédent de Chlamydia est un facteur de risque.</p>
+            </div>
+        </details>
+
+        <p class="question-text">Q2. Quel est l'examen paraclinique de première intention à réaliser en urgence ?</p>
+        <ul class="options">
+            <li>A) Cœlioscopie exploratrice</li>
+            <li>B) Échographie pelvienne par voie endo-vaginale</li>
+            <li>C) IRM pelvienne</li>
+            <li>D) Hystérosalpingographie</li>
+            <li>E) Ponction du Douglas</li>
+        </ul>
+        <details>
+            <summary>Voir la correction</summary>
+            <div class="correction-content">
+                <div class="correct-answer">Réponse : B</div>
+                <p>L'échographie pelvienne (idéalement endo-vaginale) couplée au dosage des β-HCG est indispensable. Elle permettra de vérifier la vacuité utérine et potentiellement de visualiser un sac ectopique. La cœlioscopie n'est pas de première intention si le diagnostic est déjà fortement suspecté et la patiente stable.</p>
+            </div>
+        </details>
+
+        <p class="question-text">Q3. L'échographie confirme une vacuité utérine. Le taux de β-HCG monte à 2500 UI/l à 48h. Quel traitement proposez-vous ?</p>
+        <ul class="options">
+            <li>A) Abstention thérapeutique avec surveillance</li>
+            <li>B) Traitement médical par Méthotrexate en 1ère intention</li>
+            <li>C) Cœlioscopie avec salpingectomie</li>
+            <li>D) Laparotomie avec salpingotomie</li>
+            <li>E) Traitement par progestérone</li>
+        </ul>
+        <details>
+            <summary>Voir la correction</summary>
+            <div class="correction-content">
+                <div class="correct-answer">Réponse : B</div>
+                <p>La patiente est stable, le β-HCG est < 5000 UI/l (2500), et l'hématosalpinx semble petit. Le traitement médical par Méthotrexate est indiqué en première intention (Score de Fernandez ≤ 13). L'abstention n'est pas possible car les β-HCG montent.</p>
+            </div>
+        </details>
+    </div>
+
+    <!-- Cas Clinique 2 -->
+    <div class="card">
+        <span class="badge badge-theme">Cas Clinique N°2</span>
+        <div class="case-vignette">
+            <strong>Contexte :</strong> EPH de Rouiba.<br>
+            Mme K., 34 ans, G4P3, consulte pour une douleur pelvienne brutale en coup de poignard survenue il y a 1 heure, irradiant à l'épaule droite. <br>
+            <strong>Examen clinique :</strong> Patiente pâle, sueurs froides. TA 80/50 mmHg, FC 120 bpm. Abdomen : défense généralisée. Au TV : cri de Douglas.
+        </div>
+        
+        <p class="question-text">Q1. Quel est le diagnostic le plus probable ?</p>
+        <ul class="options">
+            <li>A) GEU rompue avec hémopéritoine</li>
+            <li>B) Rupture d'un kyste ovarien</li>
+            <li>C) Appendicite aiguë</li>
+            <li>D) GEU interstitielle non rompue</li>
+            <li>E) Salpingite aiguë</li>
+        </ul>
+        <details>
+            <summary>Voir la correction</summary>
+            <div class="correction-content">
+                <div class="correct-answer">Réponse : A</div>
+                <p>La triade : douleur brutale, signes de choc hypovolémique et cri de Douglas signe une GEU rompue avec hémopéritoine massif. La douleur irradiant à l'épaule (signe de Laffont) est typique de l'irritation diaphragmatique par le sang.</p>
+            </div>
+        </details>
+
+        <p class="question-text">Q2. Quelle est la prise en charge immédiate ?</p>
+        <ul class="options">
+            <li>A) Dosage des β-HCG en urgence avant tout geste</li>
+            <li>B) Remplissage vasculaire et laparotomie en urgence</li>
+            <li>C) Cœlioscopie exploratrice après stabilisation</li>
+            <li>D) Traitement par Méthotrexate</li>
+            <li>E) Échographie pelvienne en urgence</li>
+        </ul>
+        <details>
+            <summary>Voir la correction</summary>
+            <div class="correction-content">
+                <div class="correct-answer">Réponse : B</div>
+                <p>Il s'agit d'une urgence vitale (choc hypovolémique). La règle est : "Tout état de choc hémorragique chez une femme en période d'activité génitale est une GEU rompue jusqu'à preuve du contraire". Le traitement est chirurgical immédiat (laparotomie pour évacuation rapide et hémostase), après avoir débuté le remplissage vasculaire. La cœlioscopie est contre-indiquée ici à cause de l'instabilité.</p>
+            </div>
+        </details>
+    </div>
+
+    <!-- Cas Clinique 3 -->
+    <div class="card">
+        <span class="badge badge-theme">Cas Clinique N°3</span>
+        <div class="case-vignette">
+            <strong>Contexte :</strong> Consultation de gynécologie (CHU).<br>
+            Mme S., 32 ans, consulte pour suivi de grossesse après FIV (AMP). Elle est à 7 SA. Elle se plaint de douleurs pelviennes modérées. <br>
+            <strong>Échographie :</strong> Visualisation d'un sac gestationnel intra-utérin avec activité cardiaque. Cependant, à droite, on note une masse latéro-utérine de 2 cm.
+        </div>
+        
+        <p class="question-text">Q1. Quel diagnostic devez-vous suspecter ?</p>
+        <ul class="options">
+            <li>A) Grossesse môlaire</li>
+            <li>B) GEU hétérotopique</li>
+            <li>C) Menace d'avortement</li>
+            <li>D) Kyste du corps jaune</li>
+            <li>E) Grossesse gémellaire intra-utérine</li>
+        </ul>
+        <details>
+            <summary>Voir la correction</summary>
+            <div class="correction-content">
+                <div class="correct-answer">Réponse : B</div>
+                <p>La GEU hétérotopique est l'association d'une GEU et d'une GIU. Le risque est majoré par les techniques d'AMP (théorie du reflux tubaire d'IFFY). La présence d'un sac intra-utérin n'exclut donc pas formellement une GEU.</p>
+            </div>
+        </details>
+
+        <p class="question-text">Q2. Quels sont les facteurs de risque chez cette patiente ?</p>
+        <ul class="options">
+            <li>A) L'AMP (FIV)</li>
+            <li>B) L'âge de 32 ans</li>
+            <li>C) La grossesse intra-utérine</li>
+            <li>D) La parité</li>
+            <li>E) Aucun facteur de risque</li>
+        </ul>
+        <details>
+            <summary>Voir la correction</summary>
+            <div class="correction-content">
+                <div class="correct-answer">Réponse : A</div>
+                <p>L'assistance médicale à la procréation (AMP) est un facteur de risque majeur de GEU (notamment par le mécanisme de reflux tubaire après transfert embryonnaire).</p>
+            </div>
+        </details>
+    </div>
+
+    <!-- Cas Clinique 4 -->
+    <div class="card">
+        <span class="badge badge-theme">Cas Clinique N°4</span>
+        <div class="case-vignette">
+            <strong>Contexte :</strong> Urgences Gynécologiques.<br>
+            Mme L., 25 ans, G1P0, consulte pour des métrorragies brunes et une douleur pelvienne modérée évoluant depuis 1 semaine. Dernières règles il y a 8 semaines. <br>
+            <strong>Examen :</strong> Pas de fièvre, TA 110/70. TV : masse latéro-utérine sensible. <br>
+            <strong>Biologie :</strong> β-HCG = 800 UI/l. Progestérone = 4 ng/ml. <br>
+            <strong>Échographie :</strong> Utérus vide, hématosalpinx de 2 cm. Hémopéritoine minime (< 50 ml). Pas d'activité cardiaque.
+        </div>
+        
+        <p class="question-text">Q1. Quel est le score de Fernandez approximatif de cette patiente ?</p>
+        <ul class="options">
+            <li>A) Score = 3 (faible)</li>
+            <li>B) Score = 12 (modéré)</li>
+            <li>C) Score = 15 (élevé)</li>
+            <li>D) Score = 20 (très élevé)</li>
+            <li>E) Le score ne peut pas être calculé</li>
+        </ul>
+        <details>
+            <summary>Voir la correction</summary>
+            <div class="correction-content">
+                <div class="correct-answer">Réponse : B</div>
+                <p>La patiente a des critères de gravité modérée (douleur provoquée, β-HCG à 800, progestérone basse, hématosalpinx de 2 cm, hémopéritoine minime). Le score se situe entre 11 et 13, orientant vers un traitement médical.</p>
+            </div>
+        </details>
+
+        <p class="question-text">Q2. Quelle est la meilleure attitude thérapeutique ?</p>
+        <ul class="options">
+            <li>A) Abstention thérapeutique</li>
+            <li>B) Traitement médical par Méthotrexate</li>
+            <li>C) Salpingectomie par cœlioscopie</li>
+            <li>D) Salpingotomie par laparotomie</li>
+            <li>E) Hystérectomie</li>
+        </ul>
+        <details>
+            <summary>Voir la correction</summary>
+            <div class="correction-content">
+                <div class="correct-answer">Réponse : B</div>
+                <p>Avec un score de Fernandez entre 11 et 13, un β-HCG < 5000 UI/l, un hématosalpinx < 3 cm et l'absence d'activité cardiaque, le traitement médical par Méthotrexate est le traitement de choix.</p>
+            </div>
+        </details>
+    </div>
+
+    <!-- Cas Clinique 5 -->
+    <div class="card">
+        <span class="badge badge-theme">Cas Clinique N°5</span>
+        <div class="case-vignette">
+            <strong>Contexte :</strong> Consultation externe.<br>
+            Mme M., 35 ans, consulte pour une douleur pelvienne chronique accentuée à la défécation, avec des signes de compression. Elle a eu un épisode de douleur aiguë il y a 3 semaines qui s'est estompé. <br>
+            <strong>Examen :</strong> Au TV, le col est plaqué contre la symphyse pubienne par une masse sensible, volumineuse et mal limitée. La patiente présente un sub-ictère.
+        </div>
+        
+        <p class="question-text">Q1. Quel diagnostic évoquez-vous en priorité ?</p>
+        <ul class="options">
+            <li>A) GEU rompue</li>
+            <li>B) Hématocèle (GEU chronique)</li>
+            <li>C) Avortement tubo-abdominal</li>
+            <li>D) Kyste ovarien</li>
+            <li>E) Endométriose</li>
+        </ul>
+        <details>
+            <summary>Voir la correction</summary>
+            <div class="correction-content">
+                <div class="correct-answer">Réponse : B</div>
+                <p>L'hématocèle est une collection sanguine intra-péritonéale qui succède à un hémopéritoine. Cliniquement, elle donne des douleurs à la marche/défécation, des signes de compression, et au TV, un col plaqué contre la symphyse par une masse mal limitée. Le sub-ictère est lié à la résorption sanguine.</p>
+            </div>
+        </details>
+
+        <p class="question-text">Q2. Quels sont les signes cliniques de résorption sanguine que l'on peut retrouver dans cette forme ?</p>
+        <ul class="options">
+            <li>A) Fièvre à 40°C et frissons</li>
+            <li>B) Sub-ictère et fébricule</li>
+            <li>C) Hyperleucocytose majeure</li>
+            <li>D) Anémie hémolytique aiguë</li>
+            <li>E) Éruption cutanée</li>
+        </ul>
+        <details>
+            <summary>Voir la correction</summary>
+            <div class="correction-content">
+                <div class="correct-answer">Réponse : B</div>
+                <p>La résorption sanguine peut entraîner un sub-ictère (par dégradation de l'hémoglobine) et une fébricule (réaction inflammatoire à la dégradation du sang).</p>
+            </div>
+        </details>
+    </div>
+
+    <!-- SECTION 3: CARTE CONCEPTUELLE -->
+    <h2 class="section-title"><span>Partie 3</span> Carte Conceptuelle & Synthèse Visuelle</h2>
+    
+    <div class="grid-2">
+        <!-- Algorithme de prise en charge -->
+        <div class="card">
+            <h3>Algorithme de Prise en Charge</h3>
+            <div class="flowchart">
+                <div class="flow-node">Suspicion Clinique de GEU</div>
+                <div class="visual-arrow">⬇</div>
+                <div class="flow-node">β-HCG + Échographie Pelvienne</div>
+                <div class="visual-arrow">⬇</div>
+                <div class="flow-node decision">Patiente Instable ?</div>
+                <div class="visual-arrow">⬇</div>
+                <div style="display: flex; gap: 1rem; width: 100%;">
+                    <div style="flex: 1; text-align: center;">
+                        <div class="flow-node" style="border-color: var(--danger);">OUI</div>
+                        <div class="visual-arrow">⬇</div>
+                        <div class="flow-node" style="font-size: 0.9rem;">Laparotomie / Cœlioscopie (Salpingectomie)</div>
+                    </div>
+                    <div style="flex: 1; text-align: center;">
+                        <div class="flow-node" style="border-color: var(--success);">NON</div>
+                        <div class="visual-arrow">⬇</div>
+                        <div class="flow-node decision" style="font-size: 0.9rem;">Score de Fernandez ≤ 13 ?</div>
+                        <div class="visual-arrow">⬇</div>
+                        <div class="flow-node" style="font-size: 0.9rem;">OUI : Méthotrexate<br>NON : Chirurgie</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Localisations et risques -->
+        <div class="card">
+            <h3>Localisations & Risques</h3>
+            <div style="margin-bottom: 1rem;">
+                <strong>Ampullaire (65%)</strong>
+                <div style="background: #E2E8F0; border-radius: 4px; height: 10px; width: 100%;"><div style="background: var(--teal); height: 10px; width: 65%; border-radius: 4px;"></div></div>
+                <small>Signes tardifs, zone extensible.</small>
+            </div>
+            <div style="margin-bottom: 1rem;">
+                <strong>Isthmique (25%)</strong>
+                <div style="background: #E2E8F0; border-radius: 4px; height: 10px; width: 100%;"><div style="background: var(--warning); height: 10px; width: 25%; border-radius: 4px;"></div></div>
+                <small>Signes précoces, rupture rapide.</small>
+            </div>
+            <div style="margin-bottom: 1rem;">
+                <strong>Infundibulaire (13%)</strong>
+                <div style="background: #E2E8F0; border-radius: 4px; height: 10px; width: 100%;"><div style="background: #4A5568; height: 10px; width: 13%; border-radius: 4px;"></div></div>
+                <small>Pas de rupture, avortement tubo-abdominal.</small>
+            </div>
+            <div>
+                <strong>Interstitielle (2%)</strong>
+                <div style="background: #E2E8F0; border-radius: 4px; height: 10px; width: 100%;"><div style="background: var(--danger); height: 10px; width: 2%; border-radius: 4px;"></div></div>
+                <small>Très hémorragique, rupture redoutable.</small>
+            </div>
+        </div>
+    </div>
+
+    <!-- SECTION 4: MNÉMOTECHNIQUES -->
+    <h2 class="section-title"><span>Partie 4</span> Mnémotechniques & Trucs d'Examen</h2>
+
+    <div class="mnemonic-box">
+        <div class="mnemonic-acronym">D - M - R</div>
+        <p><strong>La Triade Clinique de la GEU :</strong><br>
+        <strong>D</strong>ouleur pelvienne (90%)<br>
+        <strong>M</strong>étrorragies brunes (70%)<br>
+        <strong>R</strong>etard de règles (70%)</p>
+    </div>
+
+    <div class="mnemonic-box">
+        <div class="mnemonic-acronym">T - I - S - A - N</div>
+        <p><strong>Facteurs de Risque Majeurs :</strong><br>
+        <strong>T</strong>abac (2ème cause)<br>
+        <strong>I</strong>nfections (Chlamydia, Salpingite)<br>
+        <strong>S</strong>urgery (Antécédents de chirurgie tubaire/pelvienne)<br>
+        <strong>A</strong>MP (FIV, etc.)<br>
+        <strong>N</strong>idation altérée (Endométriose, DIU, pilule du lendemain)</p>
+    </div>
+
+    <div class="card">
+        <h3>⚠️ Pièges Classiques d'Examen (Docimologie)</h3>
+        <ul>
+            <li style="margin-bottom: 0.5rem;"><strong>Le Pseudo-Sac :</strong> Ne pas le confondre avec un vrai sac gestationnel. Le pseudo-sac est <em>centré</em> dans la cavité et <em>sans couronne trophoblastique</em>.</li>
+            <li style="margin-bottom: 0.5rem;"><strong>Les β-HCG :</strong> C'est la <strong>cinétique</strong> qui prime sur le taux absolu pour le diagnostic précoce.</li>
+            <li style="margin-bottom: 0.5rem;"><strong>La Cœlioscopie :</strong> C'est le Gold Standard, mais elle est <strong>contre-indiquée</strong> en cas d'instabilité hémodynamique (choc). Il faut faire une laparotomie.</li>
+            <li style="margin-bottom: 0.5rem;"><strong>Méthotrexate :</strong> Attention aux contre-indications (insuffisance rénale/hépatique, anomalies de la numération). Ne pas oublier le seuil des 5000 UI/l.</li>
+            <li><strong>L'AMP :</strong> Penser systématiquement à la GEU hétérotopique (GEU + GIU) chez les patientes enceintes après FIV.</li>
+        </ul>
+    </div>
+
+    <!-- SECTION 5: CONCLUSION -->
+    <div class="footer">
+        <h2 style="color: white; margin-bottom: 1rem;">Prêt pour l'Examen ?</h2>
+        <p>La GEU est une urgence gynécologique absolue. Gardez toujours en tête la triade clinique et le couple β-HCG/Échographie. <br><br>
+        <em>« Chaque douleur pelvienne chez une femme en âge de procréer est une GEU jusqu'à preuve du contraire. »</em> <br><br>
+        <strong>Bon courage, docteur ! Vous allez brillamment réussir. 🩺✨</strong></p>
+    </div>
+
+</div>
+
+</body>
+</html>

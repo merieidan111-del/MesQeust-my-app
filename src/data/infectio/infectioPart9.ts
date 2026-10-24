@@ -478,15 +478,15 @@ export const INFECTIO_LESSON_22_RESOURCES: CourseResource[] = [
 # ASTUCES & PIÈGES AU CONCOURS (MÉNINGITES À LIQUIDE CLAIR)
 *Par Dr. LAIDANI.M - Neurologie & Infectiologie*
 
-### ⚠️ PIÈGE N°1 : Encéphalite herpétique et résultat de la PCR
+### Piège : PIÈGE N°1 : Encéphalite herpétique et résultat de la PCR
 - Question récurrente : « Un patient présente une encéphalite fébrile avec crises temporales. Vous suspectez HSV. Que faites-vous ? »
 - **Réponse obligatoire** : Débuter l'Aciclovir IV immédiatement. Ne JAMAIS attendre le résultat de la PCR pour traiter.
 
-### ⚠️ PIÈGE N°2 : La distinction Normoglycorachie vs Hypoglycorachie
+### Piège : PIÈGE N°2 : La distinction Normoglycorachie vs Hypoglycorachie
 - Méningite virale à Entérovirus = Glycorachie normale.
 - Méningite tuberculeuse = Glycorachie effondrée + Hyperprotéinorachie massive (> 2-3 g/L) + Voile de fibrine.
 
-### ⚠️ PIÈGE N°3 : Le syndrome de Mollaret
+### Piège : PIÈGE N°3 : Le syndrome de Mollaret
 - Épisodes répétés de méningite à liquide clair = HSV-2 latent réactivé.
 `
   }
@@ -897,7 +897,7 @@ export const INFECTIO_LESSON_23_RESOURCES: CourseResource[] = [
 # CLÉS DIAGNOSTIQUES & RÉFLEXES DE CONCOURS (INFECTIOLOGIE PRATIQUE)
 *Par Dr. LAIDANI.M - Faculté de Médecine d'Alger*
 
-### 💡 Association de Mots-Clés Incontournables :
+### Astuce : Association de Mots-Clés Incontournables :
 - « Tuphos + Pouls dissocié + Taches rosées » -> **Fièvre Typhoïde**
 - « Trismus sans fièvre + Faciès sardonique » -> **Tétanos**
 - « Conserve avariée + Mydriase aréactive + Afebrilité » -> **Botulisme**

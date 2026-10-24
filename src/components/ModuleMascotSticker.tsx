@@ -110,35 +110,35 @@ export const ModuleMascotSticker: React.FC<ModuleMascotStickerProps> = ({
 
   const impressionMeta = {
     triumphant: {
-      title: 'Major de Promo ! 🏆',
+      title: 'Major de Promo !',
       sub: 'Excellence clinique remarquable !',
       badgeColor: 'bg-amber-500 text-white shadow-amber-300/50',
       halo: 'rgba(245, 158, 11, 0.25)',
       sparkles: true,
     },
     proud: {
-      title: 'Solide & Validé ! ⭐',
+      title: 'Solide & Validé !',
       sub: 'Notions clés parfaitement acquises !',
       badgeColor: 'bg-emerald-600 text-white shadow-emerald-300/50',
       halo: 'rgba(16, 185, 129, 0.22)',
       sparkles: true,
     },
     determined: {
-      title: 'Esprit de Garde ! 💪',
+      title: 'Esprit de Garde !',
       sub: 'Persévérance : chaque erreur forge le médecin !',
       badgeColor: 'bg-indigo-600 text-white shadow-indigo-300/50',
       halo: 'rgba(99, 102, 241, 0.2)',
       sparkles: false,
     },
     streak_fire: {
-      title: 'Série Préservée ! 🔥',
+      title: 'Série Préservée !',
       sub: 'Flamme quotidienne allumée avec succès !',
       badgeColor: 'bg-orange-600 text-white shadow-orange-300/50',
       halo: 'rgba(234, 88, 12, 0.3)',
       sparkles: true,
     },
     studious: {
-      title: 'Validation Clinique 📖',
+      title: 'Validation Clinique',
       sub: 'Révision active & rigoureuse',
       badgeColor: 'bg-slate-800 text-white shadow-slate-300/50',
       halo: 'rgba(56, 189, 248, 0.18)',

@@ -669,7 +669,7 @@ export const FISSURES_FISTULES_ANALES_RESOURCES: CourseResource[] = [
     "courseId": "crs-gastro-fissures-fistules-anales",
     "type": "Fiche Synthèse",
     "title": "Synthèse Clinique : Fissures & Fistules Anales",
-    "contentMarkdown": "### 🎯 Points Clés : Proctologie Suppurative & Ulcérative\n- **Fissure anale** :\n  - Siège : commissure postérieure à 6h (> 85%).\n  - Douleur en 3 temps : défécation -> rémission brève -> spasme prolongé.\n  - Triade chronique : ulcère à fond blanc + marisque sentinelle + papille hypertrophique.\n  - Traitement : laxatifs osmotiques + antalgiques + topiques (fissurectomie si échec).\n- **Abcès et Fistules anales** :\n  - Origine : infection cryptoglandulaire (cryptes de Morgagni / ligne pectinée).\n  - Abcès collecté = drainage chirurgical d'urgence (les ATB seuls ne suffisent pas !).\n  - Règle de Goodsall : orifice externe postérieur = trajet curviligne vers 6h.\n  - Fistules complexes/hautes = drainage par séton (préserver le sphincter).\n  - Si lésions multiples/atypiques -> rechercher Maladie de Crohn.",
+    "contentMarkdown": "### Focus : Points Clés : Proctologie Suppurative & Ulcérative\n- **Fissure anale** :\n  - Siège : commissure postérieure à 6h (> 85%).\n  - Douleur en 3 temps : défécation -> rémission brève -> spasme prolongé.\n  - Triade chronique : ulcère à fond blanc + marisque sentinelle + papille hypertrophique.\n  - Traitement : laxatifs osmotiques + antalgiques + topiques (fissurectomie si échec).\n- **Abcès et Fistules anales** :\n  - Origine : infection cryptoglandulaire (cryptes de Morgagni / ligne pectinée).\n  - Abcès collecté = drainage chirurgical d'urgence (les ATB seuls ne suffisent pas !).\n  - Règle de Goodsall : orifice externe postérieur = trajet curviligne vers 6h.\n  - Fistules complexes/hautes = drainage par séton (préserver le sphincter).\n  - Si lésions multiples/atypiques -> rechercher Maladie de Crohn.",
     "author": "Société Nationale Française de Colo-Proctologie"
   },
   {
@@ -677,7 +677,7 @@ export const FISSURES_FISTULES_ANALES_RESOURCES: CourseResource[] = [
     "courseId": "crs-gastro-fissures-fistules-anales",
     "type": "Astuce",
     "title": "Règles Sémio en Proctologie",
-    "contentMarkdown": "### 💡 2 règles d'or proctologiques :\n1. **Fissure anale aiguë** : Ne jamais forcer le toucher rectal lors de l'accès aigu douloureux (l'inspection douce suffit).\n2. **Abcès de l'anus** : UBI PUS, IBI EVACUA -> L'incision chirurgicale est le seul traitement de l'abcès collecté.",
+    "contentMarkdown": "### Astuce : 2 règles d'or proctologiques :\n1. **Fissure anale aiguë** : Ne jamais forcer le toucher rectal lors de l'accès aigu douloureux (l'inspection douce suffit).\n2. **Abcès de l'anus** : UBI PUS, IBI EVACUA -> L'incision chirurgicale est le seul traitement de l'abcès collecté.",
     "author": "Faculté de Médecine"
   }
 ];

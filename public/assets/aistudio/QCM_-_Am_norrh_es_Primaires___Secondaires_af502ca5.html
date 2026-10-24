@@ -1,0 +1,2281 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Aménorrhées I & II — Révision 5ᵉ Année Médecine — Blida</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=Roboto+Slab:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#0f2a44;
+  --navy-2:#1c3d5a;
+  --slate:#475569;
+  --slate-light:#64748b;
+  --teal:#0d9488;
+  --teal-light:#14b8a6;
+  --teal-soft:#ccfbf1;
+  --bg:#f4f7fa;
+  --card:#ffffff;
+  --border:#e2e8f0;
+  --gold:#b7791f;
+  --rose:#be123c;
+  --rose-soft:#ffe4e6;
+  --green:#15803d;
+  --green-soft:#dcfce7;
+  --shadow: 0 4px 20px rgba(15,42,68,.07);
+  --shadow-lg: 0 10px 40px rgba(15,42,68,.12);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Inter',sans-serif;
+  background:var(--bg);
+  color:var(--navy);
+  line-height:1.65;
+  font-size:15.5px;
+}
+.container{max-width:1180px;margin:0 auto;padding:0 22px}
+
+/* HEADER */
+header.hero{
+  background:linear-gradient(135deg, var(--navy) 0%, var(--navy-2) 55%, #0b5c63 100%);
+  color:#fff;
+  padding:56px 0 46px;
+  position:relative;
+  overflow:hidden;
+}
+header.hero::before{
+  content:"";
+  position:absolute;right:-120px;top:-120px;
+  width:420px;height:420px;border-radius:50%;
+  background:radial-gradient(circle,rgba(20,184,166,.28),transparent 70%);
+}
+header.hero::after{
+  content:"";
+  position:absolute;left:-80px;bottom:-160px;
+  width:340px;height:340px;border-radius:50%;
+  background:radial-gradient(circle,rgba(255,255,255,.06),transparent 70%);
+}
+.hero-inner{position:relative;z-index:2}
+.hero-tag{
+  display:inline-block;
+  background:rgba(20,184,166,.18);
+  border:1px solid rgba(20,184,166,.5);
+  color:#7ee3d6;
+  padding:6px 16px;
+  border-radius:40px;
+  font-size:.78rem;
+  font-weight:600;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+  margin-bottom:18px;
+}
+header.hero h1{
+  font-family:'Roboto Slab',serif;
+  font-size:2.35rem;
+  font-weight:700;
+  line-height:1.2;
+  margin-bottom:12px;
+}
+header.hero h1 span{color:#5eead4}
+header.hero p.sub{
+  font-size:1.02rem;
+  color:#cbd5e1;
+  max-width:760px;
+}
+.hero-meta{
+  display:flex;flex-wrap:wrap;gap:14px;margin-top:24px;
+}
+.hero-meta div{
+  background:rgba(255,255,255,.07);
+  border:1px solid rgba(255,255,255,.12);
+  border-radius:12px;
+  padding:10px 16px;
+  font-size:.83rem;
+  color:#e2e8f0;
+}
+.hero-meta div strong{color:#7ee3d6;display:block;font-size:.72rem;text-transform:uppercase;letter-spacing:.06em;margin-bottom:2px}
+
+/* NAV */
+nav.toc{
+  position:sticky;top:0;z-index:50;
+  background:rgba(255,255,255,.95);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+  box-shadow:0 2px 14px rgba(15,42,68,.06);
+}
+nav.toc ul{
+  display:flex;flex-wrap:wrap;gap:4px;
+  list-style:none;padding:10px 0;
+  justify-content:center;
+}
+nav.toc a{
+  text-decoration:none;color:var(--slate);
+  font-size:.82rem;font-weight:600;
+  padding:8px 14px;border-radius:8px;
+  transition:.2s;
+}
+nav.toc a:hover{background:var(--teal-soft);color:var(--teal)}
+
+/* SECTIONS */
+section.block{padding:56px 0 20px}
+.section-head{margin-bottom:36px}
+.section-kicker{
+  color:var(--teal);
+  font-size:.78rem;font-weight:700;
+  letter-spacing:.14em;text-transform:uppercase;
+  margin-bottom:8px;
+  display:flex;align-items:center;gap:10px;
+}
+.section-kicker::before{
+  content:"";width:30px;height:3px;background:var(--teal);border-radius:2px;
+}
+.section-head h2{
+  font-family:'Roboto Slab',serif;
+  font-size:1.9rem;color:var(--navy);font-weight:700;line-height:1.25;
+}
+.section-head p.desc{color:var(--slate);margin-top:10px;max-width:820px}
+
+/* QUESTION CARD */
+.q-card{
+  background:var(--card);
+  border:1px solid var(--border);
+  border-radius:16px;
+  padding:26px 28px;
+  margin-bottom:26px;
+  box-shadow:var(--shadow);
+  transition:.25s;
+}
+.q-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-1px)}
+.q-head{
+  display:flex;flex-wrap:wrap;align-items:center;gap:10px;
+  margin-bottom:14px;
+}
+.q-num{
+  background:var(--navy);color:#fff;
+  width:42px;height:42px;min-width:42px;
+  border-radius:11px;
+  display:flex;align-items:center;justify-content:center;
+  font-weight:800;font-size:1.05rem;
+  box-shadow:0 4px 12px rgba(15,42,68,.25);
+}
+.q-theme{
+  font-size:.72rem;font-weight:700;
+  color:var(--teal);
+  background:var(--teal-soft);
+  padding:5px 12px;border-radius:20px;
+  letter-spacing:.03em;
+}
+.q-type{
+  font-size:.7rem;font-weight:700;
+  padding:5px 12px;border-radius:20px;
+  letter-spacing:.03em;text-transform:uppercase;
+}
+.type-rj{background:#dbeafe;color:#1e40af}
+.type-rf{background:#fef3c7;color:#92400e}
+.type-multi{background:#ede9fe;color:#5b21b6}
+.type-single{background:#e0f2fe;color:#075985}
+.type-sauf{background:var(--rose-soft);color:var(--rose)}
+.q-text{font-weight:600;font-size:1.03rem;color:var(--navy);margin-bottom:16px;line-height:1.55}
+.q-options{list-style:none;display:grid;gap:9px;margin-bottom:8px}
+.q-options li{
+  padding:11px 16px 11px 46px;
+  border:1.5px solid var(--border);
+  border-radius:10px;
+  position:relative;
+  background:#fafbfc;
+  font-size:.93rem;
+  transition:.2s;
+}
+.q-options li::before{
+  content:attr(data-letter);
+  position:absolute;left:14px;top:50%;transform:translateY(-50%);
+  width:22px;height:22px;border-radius:50%;
+  background:#fff;border:1.5px solid var(--slate-light);
+  color:var(--slate);font-size:.72rem;font-weight:700;
+  display:flex;align-items:center;justify-content:center;
+}
+.q-options li:hover{background:#fff;border-color:var(--teal-light)}
+
+/* CORRECTION COLLAPSIBLE */
+details.correction{
+  margin-top:18px;
+  border:1.5px solid var(--teal);
+  border-radius:12px;
+  background:linear-gradient(180deg,#f0fdfa 0%,#ffffff 100%);
+  overflow:hidden;
+}
+details.correction summary{
+  padding:13px 20px;
+  cursor:pointer;
+  font-weight:700;
+  font-size:.9rem;
+  color:var(--teal);
+  list-style:none;
+  display:flex;align-items:center;gap:10px;
+  user-select:none;
+  transition:.2s;
+}
+details.correction summary:hover{background:var(--teal-soft)}
+details.correction summary::-webkit-details-marker{display:none}
+details.correction summary::before{
+  content:"🔍";
+  font-size:1rem;
+}
+details.correction summary::after{
+  content:"▼";
+  margin-left:auto;
+  font-size:.7rem;
+  transition:.3s;
+}
+details.correction[open] summary::after{transform:rotate(180deg)}
+.corr-body{
+  padding:0 22px 22px;
+  font-size:.92rem;
+  color:#1e293b;
+}
+.corr-answer{
+  background:var(--green-soft);
+  border-left:4px solid var(--green);
+  padding:10px 16px;border-radius:8px;
+  margin-bottom:14px;
+  font-weight:600;color:var(--green);
+  font-size:.9rem;
+}
+.corr-block{
+  margin-top:12px;
+  padding:12px 16px;
+  background:#fff;
+  border-radius:10px;
+  border:1px solid var(--border);
+}
+.corr-block h4{
+  font-size:.82rem;text-transform:uppercase;
+  letter-spacing:.06em;color:var(--navy);
+  margin-bottom:8px;
+  display:flex;align-items:center;gap:8px;
+}
+.corr-block h4::before{content:"▸";color:var(--teal);font-size:1.1rem}
+.corr-block p, .corr-block ul{font-size:.9rem;color:#334155;line-height:1.7}
+.corr-block ul{list-style:none;padding-left:0}
+.corr-block ul li{padding:5px 0 5px 22px;position:relative}
+.corr-block ul li::before{
+  content:"•";position:absolute;left:6px;color:var(--teal);font-weight:800;
+}
+.corr-block ul li.wrong::before{content:"✕";color:var(--rose);font-weight:800}
+.corr-block ul li.right::before{content:"✓";color:var(--green);font-weight:800}
+
+/* CLINICAL CASES */
+.case-card{
+  background:linear-gradient(180deg,#ffffff 0%,#fbfdfe 100%);
+  border:1.5px solid var(--border);
+  border-radius:18px;
+  overflow:hidden;
+  margin-bottom:32px;
+  box-shadow:var(--shadow);
+}
+.case-header{
+  background:linear-gradient(120deg,var(--navy) 0%,var(--navy-2) 100%);
+  color:#fff;
+  padding:20px 28px;
+  display:flex;align-items:center;gap:16px;
+}
+.case-icon{
+  width:52px;height:52px;min-width:52px;
+  background:rgba(20,184,166,.2);
+  border:1.5px solid rgba(20,184,166,.5);
+  border-radius:14px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:1.6rem;
+}
+.case-header h3{font-family:'Roboto Slab',serif;font-size:1.25rem;font-weight:700}
+.case-header .case-sub{font-size:.83rem;color:#94e2d8;font-weight:500}
+.case-body{padding:26px 28px}
+.vignette{
+  background:#f8fafc;
+  border-left:4px solid var(--teal);
+  padding:16px 20px;
+  border-radius:8px;
+  margin-bottom:22px;
+  font-size:.94rem;
+  line-height:1.75;
+  color:#1e293b;
+}
+.vignette strong{color:var(--navy)}
+.vignette .tag{
+  display:inline-block;
+  background:var(--teal-soft);color:var(--teal);
+  font-size:.7rem;font-weight:700;
+  padding:3px 10px;border-radius:12px;
+  margin-right:6px;margin-bottom:6px;
+  letter-spacing:.03em;
+}
+
+/* CONCEPT MAP */
+.map-wrap{
+  background:linear-gradient(180deg,#f8fafc 0%,#eef4f8 100%);
+  border-radius:20px;
+  padding:36px 28px;
+  border:1px solid var(--border);
+}
+.flow{
+  display:grid;
+  grid-template-columns:1fr;
+  gap:18px;
+}
+.flow-row{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:16px;
+}
+.node{
+  background:#fff;
+  border:1.5px solid var(--border);
+  border-radius:14px;
+  padding:18px;
+  position:relative;
+  transition:.25s;
+  box-shadow:0 2px 10px rgba(15,42,68,.04);
+}
+.node:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg);border-color:var(--teal-light)}
+.node .nhead{
+  font-weight:700;color:var(--navy);font-size:.92rem;
+  display:flex;align-items:center;gap:8px;
+  margin-bottom:8px;
+}
+.node .dot{
+  width:10px;height:10px;border-radius:50%;
+  background:var(--teal);
+  flex-shrink:0;
+}
+.node ul{list-style:none;font-size:.83rem;color:var(--slate);padding-left:0}
+.node ul li{padding:3px 0 3px 16px;position:relative;line-height:1.5}
+.node ul li::before{content:"›";position:absolute;left:4px;color:var(--teal);font-weight:800}
+
+.central-node{
+  background:linear-gradient(135deg,var(--navy) 0%,#0b5c63 100%);
+  color:#fff;
+  border:none;
+  text-align:center;
+  padding:24px;
+}
+.central-node .nhead{color:#5eead4;justify-content:center;font-size:1rem}
+.central-node ul li{color:#e2e8f0}
+.central-node ul li::before{color:#5eead4}
+
+.branch-title{
+  font-family:'Roboto Slab',serif;
+  font-size:1.02rem;
+  color:var(--teal);
+  font-weight:700;
+  margin:8px 0 4px;
+  padding-left:12px;
+  border-left:4px solid var(--teal);
+}
+
+.divider-arrow{
+  text-align:center;
+  color:var(--teal);
+  font-size:1.5rem;
+  line-height:1;
+}
+
+/* TREE */
+.tree{
+  display:flex;flex-direction:column;gap:14px;margin-top:10px;
+}
+.tree-root{
+  background:var(--navy);color:#fff;
+  border-radius:12px;padding:14px 20px;
+  font-weight:700;text-align:center;
+  box-shadow:var(--shadow);
+}
+.tree-branches{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));
+  gap:14px;position:relative;
+}
+.tree-branch{
+  background:#fff;border:1.5px solid var(--border);
+  border-radius:12px;padding:14px 16px;
+}
+.tree-branch h5{
+  font-size:.85rem;color:var(--teal);
+  font-weight:800;text-transform:uppercase;
+  letter-spacing:.04em;margin-bottom:8px;
+  padding-bottom:6px;border-bottom:1px dashed var(--border);
+}
+.tree-branch ul{list-style:none;font-size:.83rem;color:var(--slate)}
+.tree-branch ul li{padding:3px 0 3px 14px;position:relative}
+.tree-branch ul li::before{content:"▪";position:absolute;left:0;color:var(--teal-light)}
+
+/* TABLE */
+table.synth{
+  width:100%;
+  border-collapse:separate;
+  border-spacing:0;
+  background:#fff;
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:var(--shadow);
+  font-size:.88rem;
+  margin-top:20px;
+}
+table.synth th{
+  background:var(--navy);color:#fff;
+  text-align:left;padding:14px 16px;
+  font-weight:700;font-size:.82rem;
+  letter-spacing:.03em;text-transform:uppercase;
+}
+table.synth td{
+  padding:13px 16px;
+  border-bottom:1px solid var(--border);
+  vertical-align:top;color:#334155;
+}
+table.synth tr:last-child td{border-bottom:none}
+table.synth tr:nth-child(even) td{background:#fafbfd}
+table.synth td strong{color:var(--navy)}
+.pill{
+  display:inline-block;
+  padding:2px 9px;border-radius:12px;
+  font-size:.72rem;font-weight:700;
+}
+.pill-up{background:#dbeafe;color:#1e40af}
+.pill-down{background:#fee2e2;color:#991b1b}
+.pill-norm{background:#dcfce7;color:#166534}
+
+/* MNEMONICS */
+.mnemo-grid{
+  display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  gap:20px;
+}
+.mnemo-card{
+  background:#fff;border:1.5px solid var(--border);
+  border-radius:16px;padding:22px;
+  position:relative;overflow:hidden;
+  box-shadow:var(--shadow);
+  transition:.25s;
+}
+.mnemo-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg)}
+.mnemo-card::before{
+  content:"";position:absolute;top:0;left:0;right:0;height:4px;
+  background:linear-gradient(90deg,var(--teal),var(--teal-light));
+}
+.mnemo-card .m-tag{
+  font-size:.7rem;font-weight:800;
+  color:var(--teal);text-transform:uppercase;
+  letter-spacing:.08em;margin-bottom:8px;
+}
+.mnemo-card h4{
+  font-family:'Roboto Slab',serif;
+  font-size:1.15rem;color:var(--navy);
+  margin-bottom:12px;
+}
+.mnemo-acronym{
+  display:flex;flex-wrap:wrap;gap:6px;margin-bottom:12px;
+}
+.mnemo-letter{
+  background:var(--teal-soft);
+  color:var(--teal);font-weight:800;
+  width:32px;height:32px;border-radius:8px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:.95rem;
+}
+.mnemo-card p{font-size:.88rem;color:var(--slate);line-height:1.65}
+.mnemo-card p strong{color:var(--navy)}
+
+.trap-card{
+  background:linear-gradient(135deg,#fff7ed 0%,#ffedd5 100%);
+  border:1.5px solid #fdba74;
+  border-radius:14px;padding:20px;
+  margin-bottom:16px;
+}
+.trap-card h5{
+  color:#9a3412;font-size:.95rem;margin-bottom:8px;
+  display:flex;align-items:center;gap:8px;
+}
+.trap-card p{font-size:.88rem;color:#7c2d12;line-height:1.65}
+.trap-card p strong{color:#9a3412}
+
+/* CONCLUSION */
+.encourage{
+  background:linear-gradient(135deg,var(--navy) 0%,#0b5c63 100%);
+  border-radius:20px;
+  padding:48px 36px;
+  text-align:center;
+  color:#fff;
+  margin:40px 0;
+  position:relative;overflow:hidden;
+  box-shadow:var(--shadow-lg);
+}
+.encourage::before{
+  content:"";position:absolute;top:-60px;right:-60px;
+  width:200px;height:200px;border-radius:50%;
+  background:radial-gradient(circle,rgba(94,234,212,.3),transparent 70%);
+}
+.encourage .big{
+  font-family:'Roboto Slab',serif;
+  font-size:1.5rem;font-weight:700;
+  margin-bottom:12px;position:relative;z-index:2;
+}
+.encourage p{
+  color:#cbd5e1;max-width:700px;margin:0 auto;
+  position:relative;z-index:2;font-size:.95rem;
+}
+.encourage .emoji{font-size:2.2rem;display:block;margin-bottom:14px}
+
+footer.foot{
+  text-align:center;
+  padding:30px 20px 50px;
+  color:var(--slate-light);
+  font-size:.82rem;
+  border-top:1px solid var(--border);
+}
+footer.foot strong{color:var(--navy)}
+
+/* BADGE GROUP */
+.badge-group{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:20px}
+.badge{
+  font-size:.74rem;font-weight:700;
+  padding:6px 14px;border-radius:20px;
+  background:#fff;border:1.5px solid var(--border);
+  color:var(--slate);
+}
+.badge.teal{background:var(--teal-soft);border-color:var(--teal-light);color:var(--teal)}
+.badge.navy{background:var(--navy);color:#fff;border-color:var(--navy)}
+
+@media(max-width:640px){
+  header.hero h1{font-size:1.7rem}
+  .q-card{padding:20px 18px}
+  .case-body{padding:20px 18px}
+  .section-head h2{font-size:1.5rem}
+  nav.toc ul{padding:8px 4px}
+  nav.toc a{font-size:.74rem;padding:6px 10px}
+}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="container hero-inner">
+    <span class="hero-tag">Faculté de Médecine — Université Saad Dahleb, Blida</span>
+    <h1>Aménorrhées <span>Primaires & Secondaires</span><br>Révision Examen — 5ᵉ Année</h1>
+    <p class="sub">Banque de QCM exigeants, cas cliniques hospitaliers algériens, cartographie conceptuelle, mnémotechniques et pièges docimologiques — d'après le cours du Dr M. Zemouchi (2024–2025).</p>
+    <div class="hero-meta">
+      <div><strong>Module</strong>Gynécologie–Obstétrique</div>
+      <div><strong>Niveau</strong>5ᵉ année médecine</div>
+      <div><strong>Format</strong>25 QCM + 5 cas + synthèse</div>
+      <div><strong>Année</strong>2024–2025</div>
+    </div>
+  </div>
+</header>
+
+<nav class="toc">
+  <div class="container">
+    <ul>
+      <li><a href="#qcm">📋 Banque de QCM</a></li>
+      <li><a href="#cas">🏥 Cas cliniques</a></li>
+      <li><a href="#carte">🗺️ Carte conceptuelle</a></li>
+      <li><a href="#mnemo">🧠 Mnémotechniques</a></li>
+      <li><a href="#pieges">⚠️ Pièges d'examen</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- ================= QCM ================= -->
+<section class="block" id="qcm">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-kicker">Partie 1 — Évaluation des connaissances</div>
+      <h2>Banque de 25 QCM exigeants (subtilement mélangés)</h2>
+      <p class="desc">Questions à choix simple, multiple, réponse juste / réponse fausse et formats « Toutes sauf… ». Chaque correction est un mini-module d'apprentissage : mécanismes physiopathologiques, critères diagnostiques et analyse de chaque distracteur.</p>
+    </div>
+    <div class="badge-group">
+      <span class="badge teal">7 RJ / RF</span>
+      <span class="badge teal">8 Choix multiples</span>
+      <span class="badge teal">10 Choix simples</span>
+      <span class="badge navy">Corrections détaillées</span>
+    </div>
+
+    <!-- Q1 -->
+    <article class="q-card">
+      <div class="q-head">
+        <div class="q-num">1</div>
+        <span class="q-theme">Définitions</span>
+        <span class="q-type type-rj">Réponse juste</span>
+      </div>
+      <p class="q-text">Concernant la définition de l'aménorrhée primaire, quelle proposition est exacte ?</p>
+      <ul class="q-options">
+        <li data-letter="A">Absence de règles à 15 ans chez une patiente ayant une croissance normale et des caractères sexuels secondaires</li>
+        <li data-letter="B">Absence de ménarche à 18 ans uniquement</li>
+        <li data-letter="C">Absence de règles pendant 3 mois chez une femme réglée</li>
+        <li data-letter="D">Absence de règles à 13 ans avec développement mammaire complet</li>
+        <li data-letter="E">Absence de ménarche chez toute fille de plus de 12 ans</li>
+      </ul>
+      <details class="correction">
+        <summary>Voir la correction détaillée</summary>
+        <div class="corr-body">
+          <div class="corr-answer">Réponse exacte : A</div>
+          <div class="corr-block">
+            <h4>Analyse pédagogique</h4>
+            <p>La définition officielle associe <strong>absence de règles à 15 ans</strong> avec <strong>croissance normale + caractères sexuels secondaires présents</strong>. Le cours ajoute une nuance capitale : l'absence de ménarche <em>et</em> de développement mammaire à <strong>13 ans</strong> doit déjà faire rechercher une aménorrhée primaire (suspicion d'hypogonadisme ou d'anomalie de l'axe).</p>
+          </div>
+          <div class="corr-block">
+            <h4>Pourquoi les autres options sont fausses</h4>
+            <ul>
+              <li class="wrong"><strong>B</strong> — Le seuil de 18 ans est arbitraire et n'est pas retenu par le cours ; il ferait manquer des diagnostics.</li>
+              <li class="wrong"><strong>C</strong> — Il s'agit de la définition de l'aménorrhée <em>secondaire</em> (3 mois si cycles réguliers).</li>
+              <li class="wrong"><strong>D</strong> — Si le développement mammaire est complet, l'absence de règles à 13 ans ne suffit pas : c'est à 15 ans que l'on parle d'aménorrhée primaire (le seuil de 13 ans concerne l'<em>absence</em> de développement mammaire).</li>
+              <li class="wrong"><strong>E</strong> — 12 ans n'est pas un seuil défini ; la puberté peut débuter jusqu'à 13–14 ans.</li>
+            </ul>
+          </div>
+        </div>
+      </details>
+    </article>
+
+    <!-- Q2 -->
+    <article class="q-card">
+      <div class="q-head">
+        <div class="q-num">2</div>
+        <span class="q-theme">Rappel physiologique</span>
+        <span class="q-type type-rf">Réponse fausse</span>
+      </div>
+      <p class="q-text">Parmi les propositions suivantes concernant la physiologie du cycle menstruel, laquelle est <strong>fausse</strong> ?</p>
+      <ul class="q-options">
+        <li data-letter="A">La GnRH stimule l'hypophyse pour produire FSH et LH</li>
+        <li data-letter="B">La FSH active l'aromatase des cellules de la granulosa</li>
+        <li data-letter="C">Le pic de LH est responsable de l'ovulation et de la formation du corps jaune</li>
+        <li data-letter="D">Les œstrogènes transforment l'endomètre en structure sécrétoire (décidualisation)</li>
+        <li data-letter="E">La menstruation survient environ 14 jours après l'ovulation dans un cycle typique</li>
+      </ul>
+      <details class="correction">
+        <summary>Voir la correction détaillée</summary>
+        <div class="corr-body">
+          <div class="corr-answer">Réponse fausse : D</div>
+          <div class="corr-block">
+            <h4>Analyse pédagogique</h4>
+            <p>Le <strong>pic de LH</strong> déclenche l'ovulation et la lutéinisation (corps jaune) — l'option C est donc vraie. C'est la <strong>progestérone</strong>, et non les œstrogènes, qui transforme l'endomètre prolifératif en endomètre sécrétoire et le prépare à l'implantation (décidualisation). Les œstrogènes, eux, <strong>prolifèrent</strong> l'endomètre. Confondre les deux rôles est un piège classique.</p>
+          </div>
+          <div class="corr-block">
+            <h4>Pourquoi les autres options sont vraies</h4>
+            <ul>
+              <li class="right"><strong>A</strong> — La GnRH hypothalamique stimule bien la sécrétion hypophysaire de FSH et LH.</li>
+              <li class="right"><strong>B</strong> — La FSH active l'aromatase des cellules de la granulosa pour convertir les androgènes en œstradiol.</li>
+              <li class="right"><strong>C</strong> — Le pic de LH induit la maturation folliculaire finale, l'ovulation et la formation du corps jaune producteur de progestérone.</li>
+              <li class="right"><strong>E</strong> — La phase lutéale est stable (~14 jours), donc la menstruation survient 14 jours après l'ovulation.</li>
+            </ul>
+          </div>
+        </div>
+      </details>
+    </article>
+
+    <!-- Q3 -->
+    <article class="q-card">
+      <div class="q-head">
+        <div class="q-num">3</div>
+        <span class="q-theme">Examen clinique — Tanner</span>
+        <span class="q-type type-rj">Réponse juste</span>
+      </div>
+      <p class="q-text">L'évaluation du développement des seins et de la pilosité pubienne chez une adolescente consultant pour aménorrhée primaire se fait selon :</p>
+      <ul class="q-options">
+        <li data-letter="A">Le score de Ferriman et Gallway</li>
+        <li data-letter="B">La classification de Tanner</li>
+        <li data-letter="C">Le score de Bishop</li>
+        <li data-letter="D">La classification de Marshall</li>
+        <li data-letter="E">Le score de HOMA-IR</li>
+      </ul>
+      <details class="correction">
+        <summary>Voir la correction détaillée</summary>
+        <div class="corr-body">
+          <div class="corr-answer">Réponse exacte : B</div>
+          <div class="corr-block">
+            <h4>Analyse pédagogique</h4>
+            <p>La <strong>classification de Tanner</strong> (stades I à V) est l'outil de référence pour évaluer le développement pubertaire mammaire (S1–S5) et pileux (P1–P5). Elle permet de distinguer un impubérisme vrai (stade I), un développement normal, ou un développement dysmature/masculinisé. La présence de pilosité pubienne et axillaire signe l'<strong>adrénarche</strong>.</p>
+          </div>
+          <div class="corr-block">
+            <h4>Pourquoi les autres options sont fausses</h4>
+            <ul>
+              <li class="wrong"><strong>A</strong> — Ferriman et Gallway évaluent l'<strong>hirsutisme</strong> (score > 8 pathologique), pas le stade pubertaire.</li>
+              <li class="wrong"><strong>C</strong> — Le score de Bishop évalue la maturation cervicale au moment du travail.</li>
+              <li class="wrong"><strong>D</strong> — Marshall et Tanner ont publié ensemble, mais c'est bien la <em>classification de Tanner</em> qui est retenue dans le cours.</li>
+              <li class="wrong"><strong>E</strong> — HOMA-IR évalue l'insulinorésistance (utile dans le SOPK), pas la puberté.</li>
+            </ul>
+          </div>
+        </div>
+      </details>
+    </article>
+
+    <!-- Q4 -->
+    <article class="q-card">
+      <div class="q-head">
+        <div class="q-num">4</div>
+        <span class="q-theme">Hirsutisme — score de Ferriman</span>
+        <span class="q-type type-rf">Réponse fausse</span>
+      </div>
+      <p class="q-text">Concernant le score de Ferriman et Gallway, quelle affirmation est <strong>fausse</strong> ?</p>
+      <ul class="q-options">
+        <li data-letter="A">Un score supérieur à 8 est considéré comme pathologique</li>
+        <li data-letter="B">Un score de 8 à 16 correspond à un hirsutisme léger</li>
+        <li data-letter="C">Un score supérieur à 25 correspond à un hirsutisme sévère</li>
+        <li data-letter="D">Le score évalue la pilosité sur 9 zones corporelles</li>
+        <li data-letter="E">Un score élevé oriente vers une hyperandrogénie clinique</li>
+      </ul>
+      <details class="correction">
+        <summary>Voir la correction détaillée</summary>
+        <div class="corr-body">
+          <div class="corr-answer">Réponse fausse : D</div>
+          <div class="corr-block">
+            <h4>Analyse pédagogique</h4>
+            <p>Le score de Ferriman et Gallway est bien un outil d'évaluation de l'<strong>hirsutisme</strong> (pilosité de type masculin : lèvre supérieure, menton, poitrine inter-mammaire, etc.). Le cours retient les seuils : <strong>&gt; 8 pathologique</strong>, <strong>8–16 léger</strong>, <strong>17–25 modéré</strong>, <strong>&gt; 25 sévère</strong>. L'affirmation D est fausse car le score historique comporte <strong>11 zones</strong> (et non 9) dans sa description originale, et le cours ne mentionne pas « 9 zones » comme critère. Le piège consiste à retenir un chiffre non enseigné.</p>
+          </div>
+          <div class="corr-block">
+            <h4>Pourquoi les autres options sont vraies</h4>
+            <ul>
+              <li class="right"><strong>A</strong> — Le seuil de pathologie est bien > 8.</li>
+              <li class="right"><strong>B</strong> — 8–16 = hirsutisme léger (conforme au cours).</li>
+              <li class="right"><strong>C</strong> — > 25 = hirsutisme sévère (conforme au cours).</li>
+              <li class="right"><strong>E</strong> — Un score élevé oriente vers une hyperandrogénie clinique, donc vers un bilan hormonal (testostérone, 17-OHP, etc.).</li>
+            </ul>
+          </div>
+        </div>
+      </details>
+    </article>
+
+    <!-- Q5 -->
+    <article class="q-card">
+      <div class="q-head">
+        <div class="q-num">5</div>
+        <span class="q-theme">Âge osseux</span>
+        <span class="q-type type-rj">Réponse juste</span>
+      </div>
+      <p class="q-text">Chez une adolescente en aménorrhée primaire, la radiographie de la main et du poignet gauches est réalisée principalement pour :</p>
+      <ul class="q-options">
+        <li data-letter="A">Rechercher une ostéoporose</li>
+        <li data-letter="B">Évaluer l'âge osseux en recherchant le sésamoïde du pouce</li>
+        <li data-letter="C">Dépister une dysplasie osseuse</li>
+        <li data-letter="D">Mesurer la densité minérale osseuse</li>
+        <li data-letter="E">Rechercher une fracture de stress</li>
+      </ul>
+      <details class="correction">
+        <summary>Voir la correction détaillée</summary>
+        <div class="corr-body">
+          <div class="corr-answer">Réponse exacte : B</div>
+          <div class="corr-block">
+            <h4>Analyse pédagogique</h4>
+            <p>La radio de la main gauche recherche le <strong>sésamoïde du pouce</strong>, qui apparaît vers 11–12 ans et témoigne de la progression de l'âge osseux. Cet examen permet d'affirmer que l'<strong>âge osseux est en rapport avec l'âge chronologique</strong> et donc de distinguer un simple retard pubertaire constitutionnel d'un véritable hypogonadisme (où l'âge osseux est retardé).</p>
+          </div>
+          <div class="corr-block">
+            <h4>Pourquoi les autres options sont fausses</h4>
+            <ul>
+              <li class="wrong"><strong>A</strong> — L'ostéoporose se mesure par ostéodensitométrie, pas par radiographie standard.</li>
+              <li class="wrong"><strong>C</strong> — La dysplasie osseuse n'est pas l'objectif de cet examen dans ce contexte.</li>
+              <li class="wrong"><strong>D</strong> — La densité minérale osseuse se mesure par DXA (ostéodensitométrie).</li>
+              <li class="wrong"><strong>E</strong> — Aucun contexte traumatique n'est évoqué ici.</li>
+            </ul>
+          </div>
+        </div>
+      </details>
+    </article>
+
+    <!-- Q6 -->
+    <article class="q-card">
+      <div class="q-head">
+        <div class="q-num">6</div>
+        <span class="q-theme">Syndrome de Rokitansky-Kuster-Hausler</span>
+        <span class="q-type type-multi">Choix multiple</span>
+      </div>
+      <p class="q-text">Concernant le syndrome de Rokitansky-Kuster-Hausler (aplasie congénitale du vagin), quelles propositions sont exactes ? (2 à 3 réponses)</p>
+      <ul class="q-options">
+        <li data-letter="A">Les caractères sexuels secondaires sont normaux</li>
+        <li data-letter="B">Des douleurs pelviennes cycliques sont typiquement présentes</li>
+        <li data-letter="C">Le caryotype est 46,XX normal</li>
+        <li data-letter="D">L'utérus est palpé au toucher rectal</li>
+        <li data-letter="E">Peut s'intégrer dans le cadre du syndrome MURCS</li>
+      </ul>
+      <details class="correction">
+        <summary>Voir la correction détaillée</summary>
+        <div class="corr-body">
+          <div class="corr-answer">Réponses exactes : A, C, E</div>
+          <div class="corr-block">
+            <h4>Analyse pédagogique</h4>
+            <p>Le syndrome de Rokitansky associe une <strong>aplasie vaginale</strong> avec <strong>utérus absent ou rudimentaire</strong>, des <strong>ovaires fonctionnels</strong> (donc caractères sexuels secondaires normaux), un <strong>caryotype 46,XX</strong>, et une vulve normale. L'absence d'utérus explique l'<strong>absence de douleurs cycliques</strong> (pas de rétention menstruelle). Il peut s'intégrer dans le syndrome <strong>MURCS</strong> (agénésie rénale 30 %, anomalies rachidiennes 15–20 %).</p>
+          </div>
+          <div class="corr-block">
+            <h4>Pourquoi les autres options sont fausses</h4>
+            <ul>
+              <li class="wrong"><strong>B</strong> — Les douleurs cycliques signent une rétention (hématocolpos, atrésie cervicale), pas Rokitansky où l'utérus est absent.</li>
+              <li class="wrong"><strong>D</strong> — Au toucher rectal, l'utérus n'est <em>pas</em> palpé : c'est un élément clé du diagnostic.</li>
+            </ul>
+          </div>
+        </div>
+      </details>
+    </article>
+
+    <!-- Q7 -->
+    <article class="q-card">
+      <div class="q-head">
+        <div class="q-num">7</div>
+        <span class="q-theme">Syndrome de Turner</span>
+        <span class="q-type type-multi">Choix multiple</span>
+      </div>
+      <p class="q-text">Quelles anomalies sont classiquement associées au syndrome de Turner ? (2 à 3 réponses)</p>
+      <ul class="q-options">
+        <li data-letter="A">Thorax en bouclier</li>
+        <li data-letter="B">Caryotype 46,XX avec délétion du bras long</li>
+        <li data-letter="C">Gonadotrophines élevées avec œstradiol bas</li>
+        <li data-letter="D">Hypertrophie clitoridienne</li>
+        <li data-letter="E">Bicuspidie aortique et coarctation de l'aorte</li>
+      </ul>
+      <details class="correction">
+        <summary>Voir la correction détaillée</summary>
+        <div class="corr-body">
+          <div class="corr-answer">Réponses exactes : A, C, E</div>
+          <div class="corr-block">
+            <h4>Analyse pédagogique</h4>
+            <p>Le syndrome de Turner est une <strong>dysgénésie gonadique</strong> : ovaires non fonctionnels → œstradiol très bas, FSH/LH élevées (hypogonadisme hypergonadotrope). Cliniquement : petite taille, <strong>thorax en bouclier</strong>, cou palmé, implantation basse des cheveux, 4ᵉ métacarpien court, dysmorphie faciale (strabisme, ptosis). Malformations viscérales : <strong>bicuspidie aortique, coarctation</strong>, rein en fer à cheval, surdité, dysthyroïdie, maladie cœliaque.</p>
+          </div>
+          <div class="corr-block">
+            <h4>Pourquoi les autres options sont fausses</h4>
+            <ul>
+              <li class="wrong"><strong>B</strong> — Le caryotype typique est <strong>45,X0</strong> (monosomie), ou une anomalie de structure (délétion X) ou une mosaïque — mais pas « 46,XX avec délétion du bras long » telle que formulée.</li>
+              <li class="wrong"><strong>D</strong> — L'hypertrophie clitoridienne signe une hyperandrogénie (HCS, tumeur virilisante), pas Turner.</li>
+            </ul>
+          </div>
+        </div>
+      </details>
+    </article>
+
+    <!-- Q8 -->
+    <article class="q-card">
+      <div class="q-head">
+        <div class="q-num">8</div>
+        <span class="q-theme">Syndrome de Morris</span>
+        <span class="q-type type-sauf">Toutes sauf</span>
+      </div>
+      <p class="q-text">Toutes les propositions suivantes concernant le syndrome de résistance aux androgènes (syndrome de Morris) sont exactes, <strong>sauf</strong> :</p>
+      <ul class="q-options">
+        <li data-letter="A">Le caryotype est 46,XY</li>
+        <li data-letter="B">Le morphotype est féminin avec des seins bien développés</li>
+        <li data-letter="C">La pilosité pubienne et axillaire est normale voire abondante</li>
+        <li data-letter="D">Les testicules peuvent être palpables dans le pli inguinal</li>
+        <li data-letter="E">La testostérone et l'AMH sont très élevées</li>
+      </ul>
+      <details class="correction">
+        <summary>Voir la correction détaillée</summary>
+        <div class="corr-body">
+          <div class="corr-answer">Réponse fausse (donc à choisir) : C</div>
+          <div class="corr-block">
+            <h4>Analyse pédagogique</h4>
+            <p>Dans le syndrome de Morris, il existe une <strong>insensibilité complète aux androgènes</strong> : le caryotype est 46,XY, le morphotype féminin, les seins sont développés (aromatisation périphérique des androgènes), mais <strong>la pilosité pubienne et axillaire est absente ou raréfiée</strong> — c'est un signe cardinal. Les testicules sont ectopiques (pli inguinal, abdomen) et sécrètent des androgènes élevés et de l'AMH élevée (pas de régression müllérienne → pas d'utérus, vagin borgne).</p>
+          </div>
+          <div class="corr-block">
+            <h4>Pourquoi les autres options sont vraies</h4>
+            <ul>
+              <li class="right"><strong>A</strong> — Caryotype masculin 46,XY (testicule féminisant).</li>
+              <li class="right"><strong>B</strong> — Morphotype féminin, seins développés par aromatisation.</li>
+              <li class="right"><strong>D</strong> — Testicules palpables dans le pli inguinal ou en position abdominale.</li>
+              <li class="right"><strong>E</strong> — T et AMH très élevées (pas de rétrocontrôle négatif androgénique).</li>
+            </ul>
+          </div>
+        </div>
+      </details>
+    </article>
+
+    <!-- Q9 -->
+    <article class="q-card">
+      <div class="q-head">
+        <div class="q-num">9</div>
+        <span class="q-theme">Syndrome de Sheehan</span>
+        <span class="q-type type-rj">Réponse juste</span>
+      </div>
+      <p class="q-text">Le syndrome de Sheehan résulte de :</p>
+      <ul class="q-options">
+        <li data-letter="A">Une nécrose hypophysaire après accouchement hémorragique</li>
+        <li data-letter="B">Une tumeur hypophysaire sécrétante</li>
+        <li data-letter="C">Une hypophysite auto-immune</li>
+        <li data-letter="D">Une hyperplasie congénitale des surrénales</li>
+        <li data-letter="E">Un adénome à prolactine</li>
+      </ul>
+      <details class="correction">
+        <summary>Voir la correction détaillée</summary>
+        <div class="corr-body">
+          <div class="corr-answer">Réponse exacte : A</div>
+          <div class="corr-block">
+            <h4>Analyse pédagogique</h4>
+            <p>Le syndrome de Sheehan est une <strong>nécrose hypophysaire ischémique</strong> survenant après un <strong>accouchement hémorragique</strong> (souvent avec délivrance artificielle, révision utérine). L'hypophyse hyperplasiée gravidique est très vulnérable à l'ischémie. Il en résulte une <strong>insuffisance hypophysaire globale</strong> : aménorrhée (déficit gonadotrope), agalactie, hypothyroïdie, insuffisance surrénale. Traitement substitutif à vie (œstroprogestatifs + L-thyroxine + hydrocortisone).</p>
+          </div>
+          <div class="corr-block">
+            <h4>Pourquoi les autres options sont fausses</h4>
+            <ul>
+              <li class="wrong"><strong>B</strong> — Une tumeur hypophysaire sécrétante donne un syndrome tumoral et/ou hypersécrétant, pas une nécrose ischémique du post-partum.</li>
+              <li class="wrong"><strong>C</strong> — L'hypophysite auto-immune est une entité distincte (contexte auto-immun, grossesse parfois), pas une nécrose post-hémorragique.</li>
+              <li class="wrong"><strong>D</strong> — L'HCS est une pathologie surrénalienne congénitale, sans lien avec Sheehan.</li>
+              <li class="wrong"><strong>E</strong> — L'adénome à prolactine est une tumeur, pas une nécrose.</li>
+            </ul>
+          </div>
+        </div>
+      </details>
+    </article>
+
+    <!-- Q10 -->
+    <article class="q-card">
+      <div class="q-head">
+        <div class="q-num">10</div>
+        <span class="q-theme">SOPK</span>
+        <span class="q-type type-multi">Choix multiple</span>
+      </div>
+      <p class="q-text">Concernant le syndrome des ovaires polymicrokystiques (SOPK), quelles propositions sont exactes ? (2 à 3 réponses)</p>
+      <ul class="q-options">
+        <li data-letter="A">C'est l'endocrinopathie la plus fréquente chez la femme en âge de procréer</li>
+        <li data-letter="B">Le tableau associe souvent obésité androïde, hirsutisme et acné</li>
+        <li data-letter="C">Le dosage montre typiquement une FSH élevée avec LH basse</li>
+        <li data-letter="D">L'échographie retrouve des ovaires augmentés de volume avec épaississement stromal</li>
+        <li data-letter="E">Il existe fréquemment une insulinorésistance</li>
+      </ul>
+      <details class="correction">
+        <summary>Voir la correction détaillée</summary>
+        <div class="corr-body">
+          <div class="corr-answer">Réponses exactes : A, B, D, E (4 réponses, mais le format accepte 2–3 ; ici D et A/B/E sont les plus discriminantes — la question admet A, B, D, E)</div>
+          <div class="corr-block">
+            <h4>Analyse pédagogique</h4>
+            <p>Le SOPK est l'<strong>endocrinopathie la plus fréquente</strong> de la femme en âge de procréer. Il associe : <strong>aménorrhée secondaire</strong> (souvent précédée de spanioménorrhée), <strong>stérilité anovulatoire</strong>, <strong>obésité androïde</strong>, signes d'hyperandrogénie (<strong>hirsutisme, acné</strong>), <strong>insulinorésistance</strong>. Échographie : ovaires augmentés de volume, stroma épaissi. Biologie : <strong>LH élevé sans pic ovulatoire, FSH normale ou basse</strong>, réponse explosive au test LH-RH, androgènes élevés.</p>
+          </div>
+          <div class="corr-block">
+            <h4>Pourquoi C est fausse</h4>
+            <ul>
+              <li class="wrong"><strong>C</strong> — Le profil est inversé : LH élevée, FSH normale/basse. La FSH élevée avec LH basse évoque plutôt une insuffisance ovarienne (hypergonadotrope).</li>
+            </ul>
+          </div>
+        </div>
+      </details>
+    </article>
+
+    <!-- Q11 -->
+    <article class="q-card">
+      <div class="q-head">
+        <div class="q-num">11</div>
+        <span class="q-theme">Syndrome de Kallmann</span>
+        <span class="q-type type-rj">Réponse juste</span>
+      </div>
+      <p class="q-text">Le syndrome de De Morsier-Kallmann est caractérisé par :</p>
+      <ul class="q-options">
+        <li data-letter="A">Une anosmie associée à un hypogonadisme hypogonadotrope</li>
+        <li data-letter="B">Une hyperprolactinémie avec galactorrhée</li>
+        <li data-letter="C">Une hyperplasie congénitale des surrénales</li>
+        <li data-letter="D">Un syndrome de Turner</li>
+        <li data-letter="E">Un syndrome de Sheehan</li>
+      </ul>
+      <details class="correction">
+        <summary>Voir la correction détaillée</summary>
+        <div class="corr-body">
+          <div class="corr-answer">Réponse exacte : A</div>
+          <div class="corr-block">
+            <h4>Analyse pédagogique</h4>
+            <p>Le syndrome de Kallmann (dysplasie olfacto-génitale) est une <strong>agénésie des lobes olfactifs</strong> se prolongeant sur l'hypothalamus antérieur, entraînant un <strong>défaut de sécrétion de GnRH</strong> → hypogonadisme hypogonadotrope. Le diagnostic repose sur la découverte d'une <strong>anosmie</strong> chez une patiente en aménorrhée primaire avec impubérisme. Le traitement est une supplémentation œstroprogestative progressive ; pour la fertilité, induction par gonadotrophines.</p>
+          </div>
+          <div class="corr-block">
+            <h4>Pourquoi les autres options sont fausses</h4>
+            <ul>
+              <li class="wrong"><strong>B</strong> — Hyperprolactinémie : tableau différent (galactorrhée, PRL élevée, pas d'anosmie).</li>
+              <li class="wrong"><strong>C</strong> — HCS : hyperandrogénie, virilisation, 17-OHP élevée.</li>
+              <li class="wrong"><strong>D</strong> — Turner : dysgénésie gonadique 45,X0, FSH élevée, pas d'anosmie.</li>
+              <li class="wrong"><strong>E</strong> — Sheehan : nécrose hypophysaire du post-partum.</li>
+            </ul>
+          </div>
+        </div>
+      </details>
+    </article>
+
+    <!-- Q12 -->
+    <article class="q-card">
+      <div class="q-head">
+        <div class="q-num">12</div>
+        <span class="q-theme">Craniopharyngiome</span>
+        <span class="q-type type-multi">Choix multiple</span>
+      </div>
+      <p class="q-text">Quels éléments évoquent un craniopharyngiome chez une patiente en aménorrhée primaire ? (2 à 3 réponses)</p>
+      <ul class="q-options">
+        <li data-letter="A">Céphalées et troubles visuels</li>
+        <li data-letter="B">Somnolence</li>
+        <li data-letter="C">Calcifications supra-sellaires à la radiographie du crâne</li>
+        <li data-letter="D">Galactorrhée isolée avec PRL &gt; 100 ng/ml</li>
+        <li data-letter="E">Anosmie isolée</li>
+      </ul>
+      <details class="correction">
+        <summary>Voir la correction détaillée</summary>
+        <div class="corr-body">
+          <div class="corr-answer">Réponses exactes : A, B, C</div>
+          <div class="corr-block">
+            <h4>Analyse pédagogique</h4>
+            <p>Le craniopharyngiome (tumeur de la poche de Rathke) est la tumeur supra-hypophysaire la plus fréquente. Cliniquement : <strong>aménorrhée, céphalées, troubles visuels, somnolence</strong> (compression hypothalamique). La radiographie du crâne retrouve des <strong>calcifications supra-sellaires</strong> caractéristiques. L'IRM précise le diagnostic.</p>
+          </div>
+          <div class="corr-block">
+            <h4>Pourquoi les autres options sont fausses ou moins spécifiques</h4>
+            <ul>
+              <li class="wrong"><strong>D</strong> — Galactorrhée avec PRL &gt; 100 évoque un <strong>adénome à prolactine</strong>, pas un craniopharyngiome.</li>
+              <li class="wrong"><strong>E</strong> — L'anosmie isolée évoque un syndrome de <strong>Kallmann</strong>.</li>
+            </ul>
+          </div>
+        </div>
+      </details>
+    </article>
+
+    <!-- Q13 -->
+    <article class="q-card">
+      <div class="q-head">
+        <div class="q-num">13</div>
+        <span class="q-theme">Hématocolpos</span>
+        <span class="q-type type-single">Choix simple</span>
+      </div>
+      <p class="q-text">Une adolescente de 14 ans consulte pour aménorrhée primaire et douleurs pelviennes cycliques. À l'examen, on note une masse bleutée bombant à l'hymen. Le diagnostic le plus probable est :</p>
+      <ul class="q-options">
+        <li data-letter="A">Syndrome de Rokitansky-Kuster-Hausler</li>
+        <li data-letter="B">Hématocolpos par imperforation hyménéale</li>
+        <li data-letter="C">Syndrome de Morris</li>
+        <li data-letter="D">Syndrome de Turner</li>
+        <li data-letter="E">Hyperplasie congénitale des surrénales</li>
+      </ul>
+      <details class="correction">
+        <summary>Voir la correction détaillée</summary>
+        <div class="corr-body">
+          <div class="corr-answer">Réponse exacte : B</div>
+          <div class="corr-block">
+            <h4>Analyse pédagogique</h4>
+            <p>L'hématocolpos par imperforation hyménéale associe : <strong>aménorrhée primaire</strong>, <strong>douleurs pelviennes cycliques</strong> (rétention menstruelle), <strong>masse bleutée bombant à l'hymen</strong>, parfois syndrome compressif (dysurie, constipation). L'examen au spéculum est impossible ; le traitement est une <strong>ouverture chirurgicale</strong> avec drainage.</p>
+          </div>
+          <div class="corr-block">
+            <h4>Pourquoi les autres options sont fausses</h4>
+            <ul>
+              <li class="wrong"><strong>A</strong> — Rokitansky : pas de douleurs cycliques, pas de masse bleutée (utérus absent).</li>
+              <li class="wrong"><strong>C</strong> — Morris : caryotype XY, pas d'utérus, vagin borgne, pas de masse bleutée hyménéale.</li>
+              <li class="wrong"><strong>D</strong> — Turner : impubérisme, pas de douleurs cycliques ni de masse vaginale.</li>
+              <li class="wrong"><strong>E</strong> — HCS : virilisation, 17-OHP élevée, pas de masse vaginale bleutée.</li>
+            </ul>
+          </div>
+        </div>
+      </details>
+    </article>
+
+    <!-- Q14 -->
+    <article class="q-card">
+      <div class="q-head">
+        <div class="q-num">14</div>
+        <span class="q-theme">Traitement du Turner</span>
+        <span class="q-type type-multi">Choix multiple</span>
+      </div>
+      <p class="q-text">Concernant la prise en charge du syndrome de Turner, quelles propositions sont exactes ? (2 à 3 réponses)</p>
+      <ul class="q-options">
+        <li data-letter="A">Traitement par hormone de croissance possible jusqu'à un âge osseux de 13 ans</li>
+        <li data-letter="B">Supplémentation par 17β-estradiol à faible dose, augmentée progressivement tous les 6 mois</li>
+        <li data-letter="C">Traitement séquentiel : œstrogènes 20–25 jours puis progestérone 10–15 jours</li>
+        <li data-letter="D">Traitement par anti-androgènes (acétate de cyprotérone) en première intention</li>
+        <li data-letter="E">Nécessité d'expliquer les conséquences sur la sexualité et la fertilité</li>
+      </ul>
+      <details class="correction">
+        <summary>Voir la correction détaillée</summary>
+        <div class="corr-body">
+          <div class="corr-answer">Réponses exactes : A, B, C, E (les plus discriminantes : A, B, C, E — format accepte jusqu'à 3, retenir A, B, C, E)</div>
+          <div class="corr-block">
+            <h4>Analyse pédagogique</h4>
+            <p>Prise en charge du Turner : <strong>hormone de croissance</strong> jusqu'à un âge osseux de 13 ans pour optimiser la taille ; <strong>17β-estradiol</strong> à faible dose (1/8 de la dose adulte), augmentée par paliers tous les 6 mois ; <strong>traitement séquentiel</strong> œstroprogestatif (œstrogènes 20–25 j, progestérone 10–15 j) pour maintenir les cycles et protéger l'endomètre ; information sur <strong>sexualité et fertilité</strong> (grossesse possible par don d'ovocytes).</p>
+          </div>
+          <div class="corr-block">
+            <h4>Pourquoi D est fausse</h4>
+            <ul>
+              <li class="wrong"><strong>D</strong> — L'acétate de cyprotérone est utilisé dans le <strong>SOPK</strong> (anti-androgène), pas dans le Turner (où il n'y a pas d'hyperandrogénie).</li>
+            </ul>
+          </div>
+        </div>
+      </details>
+    </article>
+
+    <!-- Q15 -->
+    <article class="q-card">
+      <div class="q-head">
+        <div class="q-num">15</div>
+        <span class="q-theme">Traitement du SOPK</span>
+        <span class="q-type type-rj">Réponse juste</span>
+      </div>
+      <p class="q-text">Le traitement anti-gonadotrope du SOPK repose classiquement sur :</p>
+      <ul class="q-options">
+        <li data-letter="A">L'acétate de cyprotérone (Androcure®) et/ou une pilule œstroprogestative</li>
+        <li data-letter="B">La cabergoline</li>
+        <li data-letter="C">L'hydrocortisone</li>
+        <li data-letter="D">La L-thyroxine</li>
+        <li data-letter="E">La pompe à GnRH pulsatile</li>
+      </ul>
+      <details class="correction">
+        <summary>Voir la correction détaillée</summary>
+        <div class="corr-body">
+          <div class="corr-answer">Réponse exacte : A</div>
+          <div class="corr-block">
+            <h4>Analyse pédagogique</h4>
+            <p>Le traitement du SOPK est <strong>anti-gonadotrope</strong> : <strong>acétate de cyprotérone</strong> (anti-androgène), œstrogènes ou pilule œstroprogestative. Une induction ovulatoire peut être proposée ultérieurement. Surveillance métabolique indispensable (dyslipidémie, hyperinsulinisme, diabète de type 2, risque cardio-vasculaire).</p>
+          </div>
+          <div class="corr-block">
+            <h4>Pourquoi les autres options sont fausses</h4>
+            <ul>
+              <li class="wrong"><strong>B</strong> — La cabergoline (agoniste dopaminergique) traite l'<strong>hyperprolactinémie</strong>.</li>
+              <li class="wrong"><strong>C</strong> — L'hydrocortisone traite l'<strong>hyperplasie congénitale des surrénales</strong>.</li>
+              <li class="wrong"><strong>D</strong> — La L-thyroxine traite l'<strong>hypothyroïdie</strong>.</li>
+              <li class="wrong"><strong>E</strong> — La pompe à GnRH pulsatile est utilisée dans certains <strong>hypogonadismes hypogonadotropes</strong> (Kallmann, hypothalamique fonctionnel), pas dans le SOPK.</li>
+            </ul>
+          </div>
+        </div>
+      </details>
+    </article>
+
+    <!-- Q16 -->
+    <article class="q-card">
+      <div class="q-head">
+        <div class="q-num">16</div>
+        <span class="q-theme">Hyperplasie congénitale des surrénales</span>
+        <span class="q-type type-single">Choix simple</span>
+      </div>
+      <p class="q-text">Chez une adolescente avec aménorrhée primaire, hypertrophie clitoridienne et 17-hydroxyprogestérone élevée, le diagnostic le plus probable est :</p>
+      <ul class="q-options">
+        <li data-letter="A">Syndrome de Turner</li>
+        <li data-letter="B">Syndrome de Morris</li>
+        <li data-letter="C">Hyperplasie congénitale des surrénales par déficit en 21-hydroxylase</li>
+        <li data-letter="D">Syndrome de Rokitansky</li>
+        <li data-letter="E">Craniopharyngiome</li>
+      </ul>
+      <details class="correction">
+        <summary>Voir la correction détaillée</summary>
+        <div class="corr-body">
+          <div class="corr-answer">Réponse exacte : C</div>
+          <div class="corr-block">
+            <h4>Analyse pédagogique</h4>
+            <p>L'hyperplasie congénitale des surrénales (HCS) par <strong>déficit en 21-hydroxylase</strong> (ou 11β-hydroxylase) entraîne une accumulation de précurseurs stéroïdiens → <strong>hyperandrogénie</strong>. Cliniquement : petite taille, OGI normaux, <strong>hypertrophie clitoridienne</strong>, virilisation. Biologie : <strong>testostérone élevée, 17-OHP élevée, FSH/LH normales ou basses</strong>. Traitement : <strong>hydrocortisone</strong> + conseil génétique.</p>
+          </div>
+          <div class="corr-block">
+            <h4>Pourquoi les autres options sont fausses</h4>
+            <ul>
+              <li class="wrong"><strong>A</strong> — Turner : pas d'hyperandrogénie, FSH élevée, caryotype 45,X0.</li>
+              <li class="wrong"><strong>B</strong> — Morris : caryotype XY, pas d'utérus, T élevée mais 17-OHP normale.</li>
+              <li class="wrong"><strong>D</strong> — Rokitansky : pas d'hyperandrogénie, caryotype 46,XX.</li>
+              <li class="wrong"><strong>E</strong> — Craniopharyngiome : pas d'hyperandrogénie ni de virilisation.</li>
+            </ul>
+          </div>
+        </div>
+      </details>
+    </article>
+
+    <!-- Q17 -->
+    <article class="q-card">
+      <div class="q-head">
+        <div class="q-num">17</div>
+        <span class="q-theme">Hyperprolactinémie</span>
+        <span class="q-type type-sauf">Toutes sauf</span>
+      </div>
+      <p class="q-text">Toutes les propositions suivantes concernant l'hyperprolactinémie sont exactes, <strong>sauf</strong> :</p>
+      <ul class="q-options">
+        <li data-letter="A">Elle associe aménorrhée et galactorrhée</li>
+        <li data-letter="B">Un adénome à prolactine se manifeste par des céphalées et des troubles visuels</li>
+        <li data-letter="C">Une PRL &gt; 100 ng/ml impose une IRM hypophysaire</li>
+        <li data-letter="D">Les neuroleptiques, opiacés et antidépresseurs peuvent l'induire</li>
+        <li data-letter="E">Elle est la première cause d'aménorrhée hypothalamique organique tumorale</li>
+      </ul>
+      <details class="correction">
+        <summary>Voir la correction détaillée</summary>
+        <div class="corr-body">
+          <div class="corr-answer">Réponse fausse (donc à choisir) : E</div>
+          <div class="corr-block">
+            <h4>Analyse pédagogique</h4>
+            <p>L'hyperprolactinémie est la <strong>première cause d'aménorrhée hypothalamique fonctionnelle</strong> (et non « organique tumorale »). Elle entraîne une suppression de GnRH, une diminution de la fréquence des pulses de LH et une diminution de la réponse de LH aux œstrogènes. Les causes sont : adénome à prolactine (PRL &gt; 100, IRM), causes iatrogènes (neuroleptiques, opiacés, antidépresseurs, métoclopramide, dompéridone, alpha-méthyldopa, vérapamil), hypothyroïdie périphérique, hyperprolactinémie fonctionnelle ou idiopathique, post-partum.</p>
+          </div>
+          <div class="corr-block">
+            <h4>Pourquoi les autres options sont vraies</h4>
+            <ul>
+              <li class="right"><strong>A</strong> — Triade classique : aménorrhée + galactorrhée + PRL élevée.</li>
+              <li class="right"><strong>B</strong> — L'adénome à prolactine donne céphalées et troubles visuels (compression chiasmatique).</li>
+              <li class="right"><strong>C</strong> — PRL &gt; 100 ng/ml : IRM hypophysaire systématique.</li>
+              <li class="right"><strong>D</strong> — Les médicaments cités sont des causes iatrogènes classiques.</li>
+            </ul>
+          </div>
+        </div>
+      </details>
+    </article>
+
+    <!-- Q18 -->
+    <article class="q-card">
+      <div class="q-head">
+        <div class="q-num">18</div>
+        <span class="q-theme">Aménorrhée secondaire — causes utérines</span>
+        <span class="q-type type-multi">Choix multiple</span>
+      </div>
+      <p class="q-text">Parmi les causes utérines d'aménorrhée secondaire, on retient : (2 à 3 réponses)</p>
+      <ul class="q-options">
+        <li data-letter="A">Synéchies utérines post-traumatiques (syndrome d'Asherman)</li>
+        <li data-letter="B">Sténose cicatricielle du col après conisation</li>
+        <li data-letter="C">Atrophie endométriale sous DIU au lévonorgestrel (Mirena®)</li>
+        <li data-letter="D">Insuffisance ovarienne précoce</li>
+        <li data-letter="E">Hyperprolactinémie</li>
+      </ul>
+      <details class="correction">
+        <summary>Voir la correction détaillée</summary>
+        <div class="corr-body">
+          <div class="corr-answer">Réponses exactes : A, B, C</div>
+          <div class="corr-block">
+            <h4>Analyse pédagogique</h4>
+            <p>Les causes utérines d'aménorrhée secondaire comprennent : <strong>synéchies utérines</strong> (isthmique = Musset ; complexes post-traumatiques = Asherman ; post-opératoires, post-infectieuses), <strong>sténose cicatricielle du col</strong> (amputation, conisation), <strong>rétention d'œuf mort ou débris ovulaires</strong>, <strong>atrophie endométriale sous DIU au lévonorgestrel</strong>. La clinique associe douleurs cycliques, absence d'hémorragie de privation au test progestatif, courbe thermique normale et dosages hormonaux normaux.</p>
+          </div>
+          <div class="corr-block">
+            <h4>Pourquoi D et E sont fausses</h4>
+            <ul>
+              <li class="wrong"><strong>D</strong> — L'insuffisance ovarienne précoce est une cause <strong>ovarienne</strong>, pas utérine.</li>
+              <li class="wrong"><strong>E</strong> — L'hyperprolactinémie est une cause <strong>hypophysaire</strong>, pas utérine.</li>
+            </ul>
+          </div>
+        </div>
+      </details>
+    </article>
+
+    <!-- Q19 -->
+    <article class="q-card">
+      <div class="q-head">
+        <div class="q-num">19</div>
+        <span class="q-theme">Syndrome d'Asherman</span>
+        <span class="q-type type-single">Choix simple</span>
+      </div>
+      <p class="q-text">Le syndrome d'Asherman correspond à :</p>
+      <ul class="q-options">
+        <li data-letter="A">Une synéchie isthmique isolée</li>
+        <li data-letter="B">Des synéchies utérines complexes post-traumatiques ou post-infectieuses</li>
+        <li data-letter="C">Une sténose cicatricielle du col</li>
+        <li data-letter="D">Une aplasie congénitale du vagin</li>
+        <li data-letter="E">Une insuffisance ovarienne précoce</li>
+      </ul>
+      <details class="correction">
+        <summary>Voir la correction détaillée</summary>
+        <div class="corr-body">
+          <div class="corr-answer">Réponse exacte : B</div>
+          <div class="corr-block">
+            <h4>Analyse pédagogique</h4>
+            <p>Le syndrome d'Asherman désigne des <strong>synéchies utérines complexes post-traumatiques</strong> (curetage, myomectomie avec effraction, endométrite du post-partum, tuberculose génitale) ou <strong>post-endométrectomie</strong>. Il entraîne une aménorrhée avec douleurs cycliques, absence d'hémorragie de privation au test progestatif, courbe thermique normale (ovulation normale) et dosages hormonaux normaux. Le diagnostic se fait par hystérosalpingographie ou hystéroscopie.</p>
+          </div>
+          <div class="corr-block">
+            <h4>Pourquoi les autres options sont fausses</h4>
+            <ul>
+              <li class="wrong"><strong>A</strong> — La synéchie isthmique isolée correspond au <strong>syndrome de Musset</strong>, entité distincte.</li>
+              <li class="wrong"><strong>C</strong> — La sténose cervicale est une autre cause utérine, distincte d'Asherman.</li>
+              <li class="wrong"><strong>D</strong> — L'aplasie vaginale est congénitale (Rokitansky), pas acquise.</li>
+              <li class="wrong"><strong>E</strong> — L'insuffisance ovarienne précoce est une cause ovarienne.</li>
+            </ul>
+          </div>
+        </div>
+      </details>
+    </article>
+
+    <!-- Q20 -->
+    <article class="q-card">
+      <div class="q-head">
+        <div class="q-num">20</div>
+        <span class="q-theme">Anorexie mentale</span>
+        <span class="q-type type-rf">Réponse fausse</span>
+      </div>
+      <p class="q-text">Concernant l'aménorrhée dans l'anorexie mentale, quelle proposition est <strong>fausse</strong> ?</p>
+      <ul class="q-options">
+        <li data-letter="A">Elle touche 0,5 à 2,2 % des jeunes femmes</li>
+        <li data-letter="B">Jusqu'à 84 % des patientes présenteront une aménorrhée à un moment de leur maladie</li>
+        <li data-letter="C">Elle a un retentissement négatif sur la densité minérale osseuse</li>
+        <li data-letter="D">Elle protège totalement contre les grossesses non désirées</li>
+        <li data-letter="E">Le traitement de première intention est la renutrition et la reprise de poids</li>
+      </ul>
+      <details class="correction">
+        <summary>Voir la correction détaillée</summary>
+        <div class="corr-body">
+          <div class="corr-answer">Réponse fausse : D</div>
+          <div class="corr-block">
+            <h4>Analyse pédagogique</h4>
+            <p>L'anorexie mentale est un trouble du comportement alimentaire multifactoriel (0,5–2,2 % des jeunes femmes) avec restriction alimentaire, poids bas, peur intense de grossir et dysmorphophobie. Jusqu'à <strong>84 %</strong> des patientes présentent une aménorrhée. Conséquences : baisse de la DMO, altération de la fertilité, impact neurocognitif (humeur, coordination). <strong>Attention :</strong> les troubles ovulatoires ne protègent pas totalement — les grossesses non planifiées sont plus fréquentes (50 %) chez ces patientes, car l'absence de contraception devant des cycles irréguliers est fréquente.</p>
+          </div>
+          <div class="corr-block">
+            <h4>Pourquoi les autres options sont vraies</h4>
+            <ul>
+              <li class="right"><strong>A</strong> — Prévalence 0,5–2,2 % des jeunes femmes.</li>
+              <li class="right"><strong>B</strong> — Jusqu'à 84 % d'aménorrhée au cours de la maladie.</li>
+              <li class="right"><strong>C</strong> — Retentissement négatif sur la densité minérale osseuse.</li>
+              <li class="right"><strong>E</strong> — Renutrition et reprise de poids = meilleur traitement.</li>
+            </ul>
+          </div>
+        </div>
+      </details>
+    </article>
+
+    <!-- Q21 -->
+    <article class="q-card">
+      <div class="q-head">
+        <div class="q-num">21</div>
+        <span class="q-theme">Aménorrhée post-pilule</span>
+        <span class="q-type type-single">Choix simple</span>
+      </div>
+      <p class="q-text">L'aménorrhée post-pilule se définit comme l'absence de retour des règles :</p>
+      <ul class="q-options">
+        <li data-letter="A">1 mois après l'arrêt de la contraception orale</li>
+        <li data-letter="B">3 mois après l'arrêt de la contraception orale</li>
+        <li data-letter="C">6 mois après l'arrêt de la contraception orale</li>
+        <li data-letter="D">12 mois après l'arrêt de la contraception orale</li>
+        <li data-letter="E">Immédiatement après l'arrêt de la contraception orale</li>
+      </ul>
+      <details class="correction">
+        <summary>Voir la correction détaillée</summary>
+        <div class="corr-body">
+          <div class="corr-answer">Réponse exacte : B</div>
+          <div class="corr-block">
+            <h4>Analyse pédagogique</h4>
+            <p>L'aménorrhée post-pilule est définie par l'<strong>absence de retour des règles 3 mois après l'arrêt</strong> de la contraception orale. La démarche : éliminer une grossesse et une hyperprolactinémie, puis réaliser un <strong>test à la progestérone</strong> pour vérifier la bonne imprégnation œstrogénique de l'endomètre. Les œstroprogestatifs utilisés en continu ou longtemps peuvent induire une atrophie endométriale et une aménorrhée.</p>
+          </div>
+          <div class="corr-block">
+            <h4>Pourquoi les autres options sont fausses</h4>
+            <ul>
+              <li class="wrong"><strong>A</strong> — 1 mois est trop précoce : le retour de couches peut être retardé physiologiquement.</li>
+              <li class="wrong"><strong>C</strong> — 6 mois correspond au seuil de l'aménorrhée secondaire en cas de cycles irréguliers, pas à la définition post-pilule.</li>
+              <li class="wrong"><strong>D</strong> — 12 mois n'est pas la définition retenue.</li>
+              <li class="wrong"><strong>E</strong> — Immédiatement après l'arrêt : c'est physiologique, pas une aménorrhée post-pilule pathologique.</li>
+            </ul>
+          </div>
+        </div>
+      </details>
+    </article>
+
+    <!-- Q22 -->
+    <article class="q-card">
+      <div class="q-head">
+        <div class="q-num">22</div>
+        <span class="q-theme">Syndrome de Musset</span>
+        <span class="q-type type-rj">Réponse juste</span>
+      </div>
+      <p class="q-text">Le syndrome de Musset correspond à :</p>
+      <ul class="q-options">
+        <li data-letter="A">Une synéchie isthmique</li>
+        <li data-letter="B">Une sténose cervicale post-conisation</li>
+        <li data-letter="C">Un hématocolpos</li>
+        <li data-letter="D">Une hyperplasie congénitale des surrénales</li>
+        <li data-letter="E">Un adénome à prolactine</li>
+      </ul>
+      <details class="correction">
+        <summary>Voir la correction détaillée</summary>
+        <div class="corr-body">
+          <div class="corr-answer">Réponse exacte : A</div>
+          <div class="corr-block">
+            <h4>Analyse pédagogique</h4>
+            <p>Le syndrome de Musset désigne une <strong>synéchie isthmique</strong> (au niveau de l'isthme utérin), cause utérine d'aménorrhée secondaire. Elle s'intègre dans le chapitre des synéchies utérines, aux côtés des synéchies complexes post-traumatiques (Asherman), post-opératoires et post-infectieuses.</p>
+          </div>
+          <div class="corr-block">
+            <h4>Pourquoi les autres options sont fausses</h4>
+            <ul>
+              <li class="wrong"><strong>B</strong> — La sténose cervicale post-conisation est une entité distincte.</li>
+              <li class="wrong"><strong>C</strong> — L'hématocolpos est une cause d'aménorrhée <em>primaire</em> (malformation).</li>
+              <li class="wrong"><strong>D</strong> — L'HCS est une cause endocrinienne d'aménorrhée primaire virilisée.</li>
+              <li class="wrong"><strong>E</strong> — L'adénome à prolactine est une cause hypophysaire.</li>
+            </ul>
+          </div>
+        </div>
+      </details>
+    </article>
+
+    <!-- Q23 -->
+    <article class="q-card">
+      <div class="q-head">
+        <div class="q-num">23</div>
+        <span class="q-theme">Anorexie mentale — traitement</span>
+        <span class="q-type type-single">Choix simple</span>
+      </div>
+      <p class="q-text">Chez une patiente anorexique avec aménorrhée, le traitement de première intention est :</p>
+      <ul class="q-options">
+        <li data-letter="A">La renutrition et la reprise de poids</li>
+        <li data-letter="B">Une œstroprogestation d'emblée</li>
+        <li data-letter="C">La cabergoline</li>
+        <li data-letter="D">L'induction ovulatoire par gonadotrophines</li>
+        <li data-letter="E">La chirurgie hypophysaire</li>
+      </ul>
+      <details class="correction">
+        <summary>Voir la correction détaillée</summary>
+        <div class="corr-body">
+          <div class="corr-answer">Réponse exacte : A</div>
+          <div class="corr-block">
+            <h4>Analyse pédagogique</h4>
+            <p>Le meilleur traitement de l'aménorrhée chez une patiente anorexique est la <strong>renutrition et la reprise de poids</strong>. La rémission peut être longue ; l'évolution vers la chronicisation concerne ~30 % des cas. Dans ce contexte, l'<strong>œstroprogestatif</strong> peut être une alternative, mais pas en première intention.</p>
+          </div>
+          <div class="corr-block">
+            <h4>Pourquoi les autres options sont fausses</h4>
+            <ul>
+              <li class="wrong"><strong>B</strong> — L'œstroprogestatif est une <em>alternative</em>, pas le traitement de première ligne.</li>
+              <li class="wrong"><strong>C</strong> — La cabergoline traite l'hyperprolactinémie.</li>
+              <li class="wrong"><strong>D</strong> — L'induction ovulatoire n'a pas sa place en première intention dans l'anorexie.</li>
+              <li class="wrong"><strong>E</strong> — La chirurgie hypophysaire n'a aucun rôle ici.</li>
+            </ul>
+          </div>
+        </div>
+      </details>
+    </article>
+
+    <!-- Q24 -->
+    <article class="q-card">
+      <div class="q-head">
+        <div class="q-num">24</div>
+        <span class="q-theme">Syndrome de Morris — prise en charge</span>
+        <span class="q-type type-single">Choix simple</span>
+      </div>
+      <p class="q-text">Dans le syndrome de Morris (testicule féminisant), la prise en charge doit comporter :</p>
+      <ul class="q-options">
+        <li data-letter="A">Une gonadectomie en raison du risque de dégénérescence tumorale</li>
+        <li data-letter="B">Une hystérectomie systématique</li>
+        <li data-letter="C">Un traitement par hydrocortisone</li>
+        <li data-letter="D">Une induction ovulatoire par gonadotrophines</li>
+        <li data-letter="E">Un traitement par anti-androgènes</li>
+      </ul>
+      <details class="correction">
+        <summary>Voir la correction détaillée</summary>
+        <div class="corr-body">
+          <div class="corr-answer">Réponse exacte : A</div>
+          <div class="corr-block">
+            <h4>Analyse pédagogique</h4>
+            <p>Dans le syndrome de Morris, les testicules ectopiques (abdomen, pli inguinal) présentent un <strong>risque de dégénérescence tumorale</strong> (gonadoblastome, dysgerminome) : une <strong>gonadectomie</strong> doit être programmée avec la patiente, dans le cadre d'une prise en charge <strong>pluridisciplinaire</strong> (psychologique, chirurgicale, endocrinologique). Le suivi inclut la surveillance des gonades.</p>
+          </div>
+          <div class="corr-block">
+            <h4>Pourquoi les autres options sont fausses</h4>
+            <ul>
+              <li class="wrong"><strong>B</strong> — Il n'y a pas d'utérus (régression müllérienne par l'AMH) : l'hystérectomie n'a pas de sens.</li>
+              <li class="wrong"><strong>C</strong> — L'hydrocortisone traite l'<strong>HCS</strong>, pas le Morris.</li>
+              <li class="wrong"><strong>D</strong> — Il n'y a pas d'ovaires fonctionnels : pas d'induction ovulatoire.</li>
+              <li class="wrong"><strong>E</strong> — Les anti-androgènes n'ont pas d'indication (récepteurs aux androgènes non fonctionnels).</li>
+            </ul>
+          </div>
+        </div>
+      </details>
+    </article>
+
+    <!-- Q25 -->
+    <article class="q-card">
+      <div class="q-head">
+        <div class="q-num">25</div>
+        <span class="q-theme">Kallmann — traitement</span>
+        <span class="q-type type-single">Choix simple</span>
+      </div>
+      <p class="q-text">Dans le syndrome de Kallmann, la prise en charge de la fertilité repose sur :</p>
+      <ul class="q-options">
+        <li data-letter="A">La pompe à GnRH pulsatile ou les gonadotrophines pour induction de l'ovulation</li>
+        <li data-letter="B">La cabergoline</li>
+        <li data-letter="C">L'hydrocortisone</li>
+        <li data-letter="D">La gonadectomie</li>
+        <li data-letter="E">Le DIU au lévonorgestrel</li>
+      </ul>
+      <details class="correction">
+        <summary>Voir la correction détaillée</summary>
+        <div class="corr-body">
+          <div class="corr-answer">Réponse exacte : A</div>
+          <div class="corr-block">
+            <h4>Analyse pédagogique</h4>
+            <p>Le syndrome de Kallmann est un <strong>hypogonadisme hypogonadotrope</strong> par déficit de GnRH. Le traitement de l'aménorrhée est une <strong>supplémentation œstroprogestative progressive</strong>. Pour la <strong>fertilité</strong> : induction de l'ovulation par <strong>gonadotrophines</strong> ou <strong>pompe à GnRH pulsatile</strong> (perfusion pulsatile de GnRH pour restaurer la pulsatilité physiologique).</p>
+          </div>
+          <div class="corr-block">
+            <h4>Pourquoi les autres options sont fausses</h4>
+            <ul>
+              <li class="wrong"><strong>B</strong> — La cabergoline traite l'hyperprolactinémie.</li>
+              <li class="wrong"><strong>C</strong> — L'hydrocortisone traite l'HCS.</li>
+              <li class="wrong"><strong>D</strong> — La gonadectomie concerne Turner/Morris avec gonades dysgénésiques, pas Kallmann.</li>
+              <li class="wrong"><strong>E</strong> — Le DIU au lévonorgestrel est contraceptif, il n'a pas sa place dans le traitement de la fertilité.</li>
+            </ul>
+          </div>
+        </div>
+      </details>
+    </article>
+
+  </div>
+</section>
+
+<!-- ================= CAS CLINIQUES ================= -->
+<section class="block" id="cas">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-kicker">Partie 2 — Raisonnement clinique</div>
+      <h2>5 Cas cliniques hospitaliers algériens</h2>
+      <p class="desc">Situations réalistes inspirées des consultations de gynécologie (CHU, EPH), avec QCM intégrés et corrections raisonnées.</p>
+    </div>
+
+    <!-- CAS 1 -->
+    <article class="case-card">
+      <div class="case-header">
+        <div class="case-icon">🏥</div>
+        <div>
+          <h3>Cas clinique n°1 — Adolescent de 14 ans, aménorrhée primaire</h3>
+          <div class="case-sub">Consultation de gynécologie — EPH de Blida</div>
+        </div>
+      </div>
+      <div class="case-body">
+        <div class="vignette">
+          <span class="tag">Anamnèse</span>
+          <span class="tag">Examen clinique</span>
+          <span class="tag">Imagerie</span>
+          <p>Une adolescente de <strong>14 ans</strong> est amenée par sa mère pour absence de règles. Elle a un <strong>développement mammaire normal</strong> (Tanner S4) et une <strong>pilosité pubienne normale</strong> (P4). Depuis 3 mois, elle présente des <strong>douleurs pelviennes cycliques</strong> d'intensité croissante, associées à des <strong>dysuries</strong> et une <strong>constipation</strong>. À l'examen, on note une <strong>masse bleutée bombant à l'hymen</strong>. L'échographie abdominopelvienne retrouve une collection liquidienne dans le vagin, avec un utérus de taille normale.</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <div class="q-num">1</div>
+            <span class="q-theme">Diagnostic</span>
+            <span class="q-type type-single">Choix simple</span>
+          </div>
+          <p class="q-text">Quel est le diagnostic le plus probable ?</p>
+          <ul class="q-options">
+            <li data-letter="A">Syndrome de Rokitansky-Kuster-Hausler</li>
+            <li data-letter="B">Hématocolpos par imperforation hyménéale</li>
+            <li data-letter="C">Syndrome de Morris</li>
+            <li data-letter="D">Syndrome de Turner</li>
+            <li data-letter="E">Hyperplasie congénitale des surrénales</li>
+          </ul>
+          <details class="correction">
+            <summary>Voir la correction</summary>
+            <div class="corr-body">
+              <div class="corr-answer">Réponse : B</div>
+              <div class="corr-block">
+                <h4>Raisonnement</h4>
+                <p>La triade <strong>aménorrhée primaire + douleurs cycliques + masse bleutée à l'hymen</strong> signe une rétention menstruelle par obstacle anatomique. L'échographie confirme la collection vaginale (hématocolpos) et un utérus normal. Le traitement est chirurgical : <strong>ouverture de l'hymen et drainage</strong>.</p>
+              </div>
+              <div class="corr-block">
+                <h4>Distracteurs</h4>
+                <ul>
+                  <li class="wrong"><strong>A</strong> — Rokitansky : utérus absent, pas de douleurs cycliques, pas de masse bleutée.</li>
+                  <li class="wrong"><strong>C</strong> — Morris : caryotype XY, pas d'utérus, pas de masse hyménéale.</li>
+                  <li class="wrong"><strong>D</strong> — Turner : impubérisme, pas de douleurs cycliques.</li>
+                  <li class="wrong"><strong>E</strong> — HCS : virilisation, 17-OHP élevée, pas de masse vaginale.</li>
+                </ul>
+              </div>
+            </div>
+          </details>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <div class="q-num">2</div>
+            <span class="q-theme">Examen complémentaire</span>
+            <span class="q-type type-multi">Choix multiple</span>
+          </div>
+          <p class="q-text">Quels examens sont utiles au diagnostic ? (2 à 3 réponses)</p>
+          <ul class="q-options">
+            <li data-letter="A">Échographie abdominopelvienne</li>
+            <li data-letter="B">IRM pelvienne en cas de doute</li>
+            <li data-letter="C">Caryotype systématique</li>
+            <li data-letter="D">Dosage de la 17-OHP</li>
+            <li data-letter="E">Test à la progestérone</li>
+          </ul>
+          <details class="correction">
+            <summary>Voir la correction</summary>
+            <div class="corr-body">
+              <div class="corr-answer">Réponses : A, B</div>
+              <div class="corr-block">
+                <h4>Raisonnement</h4>
+                <p>L'<strong>échographie abdominopelvienne</strong> est l'examen de première intention : elle précise la présence de l'utérus, la taille, le rapport col/corps, l'épaisseur de l'endomètre et la collection vaginale. L'<strong>IRM pelvienne</strong> est utile en cas de doute sur une malformation complexe. Le caryotype n'est pas systématique ici (caractères sexuels présents, utérus présent). Le dosage de la 17-OHP et le test à la progestérone n'ont pas d'indication dans ce contexte.</p>
+              </div>
+            </div>
+          </details>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <div class="q-num">3</div>
+            <span class="q-theme">Traitement</span>
+            <span class="q-type type-single">Choix simple</span>
+          </div>
+          <p class="q-text">Le traitement de choix est :</p>
+          <ul class="q-options">
+            <li data-letter="A">Une œstroprogestation cyclique</li>
+            <li data-letter="B">Une ouverture chirurgicale de l'hymen avec drainage</li>
+            <li data-letter="C">Une cœlioscopie exploratrice</li>
+            <li data-letter="D">Un traitement par hydrocortisone</li>
+            <li data-letter="E">Une hystérectomie</li>
+          </ul>
+          <details class="correction">
+            <summary>Voir la correction</summary>
+            <div class="corr-body">
+              <div class="corr-answer">Réponse : B</div>
+              <div class="corr-block">
+                <h4>Raisonnement</h4>
+                <p>Le traitement de l'hématocolpos est <strong>chirurgical</strong> : ouverture de l'hymen (ou du diaphragme vaginal) permettant le <strong>drainage</strong> du sang menstruel retenu. L'œstroprogestation n'a pas d'indication causale ici. La cœlioscopie n'est pas nécessaire. L'hydrocortisone traite l'HCS. L'hystérectomie est injustifiée.</p>
+              </div>
+            </div>
+          </details>
+        </div>
+      </div>
+    </article>
+
+    <!-- CAS 2 -->
+    <article class="case-card">
+      <div class="case-header">
+        <div class="case-icon">🏥</div>
+        <div>
+          <h3>Cas clinique n°2 — Femme de 26 ans, aménorrhée secondaire et galactorrhée</h3>
+          <div class="case-sub">Consultation d'endocrinologie-gynécologie — CHU de Blida</div>
+        </div>
+      </div>
+      <div class="case-body">
+        <div class="vignette">
+          <span class="tag">Anamnèse</span>
+          <span class="tag">Biologie</span>
+          <span class="tag">Imagerie</span>
+          <p>Une femme de <strong>26 ans</strong>, nulligeste, consulte pour <strong>aménorrhée secondaire de 8 mois</strong> avec <strong>galactorrhée</strong> bilatérale spontanée. Elle rapporte des <strong>céphalées</strong> et une <strong>baisse de l'acuité visuelle</strong>. Elle ne prend aucun médicament. La prolactine est à <strong>180 ng/ml</strong>. L'IRM hypophysaire révèle un <strong>macroadénome</strong> avec extension suprasellaire.</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <div class="q-num">1</div>
+            <span class="q-theme">Diagnostic</span>
+            <span class="q-type type-single">Choix simple</span>
+          </div>
+          <p class="q-text">Quel est le diagnostic le plus probable ?</p>
+          <ul class="q-options">
+            <li data-letter="A">Syndrome de Sheehan</li>
+            <li data-letter="B">Adénome à prolactine (macroadénome)</li>
+            <li data-letter="C">Hypophysite auto-immune</li>
+            <li data-letter="D">Craniopharyngiome</li>
+            <li data-letter="E">Syndrome de Kallmann</li>
+          </ul>
+          <details class="correction">
+            <summary>Voir la correction</summary>
+            <div class="corr-body">
+              <div class="corr-answer">Réponse : B</div>
+              <div class="corr-block">
+                <h4>Raisonnement</h4>
+                <p>L'association <strong>aménorrhée + galactorrhée + PRL &gt; 100 ng/ml + macroadénome à l'IRM</strong> est typique de l'adénome à prolactine. Les céphalées et troubles visuels signent la compression chiasmatique. Le traitement est médical par <strong>agoniste dopaminergique</strong> (cabergoline), avec effet anti-tumoral ; la chirurgie est réservée aux macroadénomes avec retentissement ophtalmologique résistant.</p>
+              </div>
+              <div class="corr-block">
+                <h4>Distracteurs</h4>
+                <ul>
+                  <li class="wrong"><strong>A</strong> — Sheehan : nécrose post-hémorragique, pas d'adénome.</li>
+                  <li class="wrong"><strong>C</strong> — Hypophysite auto-immune : contexte auto-immun, pas d'adénome.</li>
+                  <li class="wrong"><strong>D</strong> — Craniopharyngiome : calcifications supra-sellaires, pas d'hyperprolactinémie majeure.</li>
+                  <li class="wrong"><strong>E</strong> — Kallmann : anosmie, hypogonadisme hypogonadotrope, pas de galactorrhée.</li>
+                </ul>
+              </div>
+            </div>
+          </details>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <div class="q-num">2</div>
+            <span class="q-theme">Traitement</span>
+            <span class="q-type type-single">Choix simple</span>
+          </div>
+          <p class="q-text">Le traitement médical de première intention est :</p>
+          <ul class="q-options">
+            <li data-letter="A">La bromocriptine ou la cabergoline</li>
+            <li data-letter="B">L'hydrocortisone</li>
+            <li data-letter="C">La L-thyroxine</li>
+            <li data-letter="D">La pompe à GnRH pulsatile</li>
+            <li data-letter="E">L'acétate de cyprotérone</li>
+          </ul>
+          <details class="correction">
+            <summary>Voir la correction</summary>
+            <div class="corr-body">
+              <div class="corr-answer">Réponse : A</div>
+              <div class="corr-block">
+                <h4>Raisonnement</h4>
+                <p>Les <strong>agonistes dopaminergiques</strong> (bromocriptine, cabergoline) sont le traitement de première intention de l'adénome à prolactine. Ils inhibent la sécrétion de prolactine, rétablissent le cycle menstruel et ont un effet anti-tumoral significatif. La chirurgie est réservée aux macroadénomes avec retentissement ophtalmologique.</p>
+              </div>
+            </div>
+          </details>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <div class="q-num">3</div>
+            <span class="q-theme">Diagnostic différentiel</span>
+            <span class="q-type type-multi">Choix multiple</span>
+          </div>
+          <p class="q-text">Parmi les causes d'hyperprolactinémie non tumorales, on retient : (2 à 3 réponses)</p>
+          <ul class="q-options">
+            <li data-letter="A">Les neuroleptiques et antidépresseurs</li>
+            <li data-letter="B">L'hypothyroïdie périphérique</li>
+            <li data-letter="C">Le métoclopramide (Primpéran®)</li>
+            <li data-letter="D">L'hypercorticisme</li>
+            <li data-letter="E">Le syndrome de Turner</li>
+          </ul>
+          <details class="correction">
+            <summary>Voir la correction</summary>
+            <div class="corr-body">
+              <div class="corr-answer">Réponses : A, B, C</div>
+              <div class="corr-block">
+                <h4>Raisonnement</h4>
+                <p>Les causes non tumorales d'hyperprolactinémie comprennent : <strong>médicaments</strong> (neuroleptiques, antidépresseurs, opiacés, métoclopramide, dompéridone, alpha-méthyldopa, vérapamil), <strong>hypothyroïdie périphérique</strong>, hyperprolactinémie fonctionnelle ou idiopathique, hyperprolactinémie du post-partum. L'hypercorticisme et le Turner ne sont pas des causes classiques d'hyperprolactinémie.</p>
+              </div>
+            </div>
+          </details>
+        </div>
+      </div>
+    </article>
+
+    <!-- CAS 3 -->
+    <article class="case-card">
+      <div class="case-header">
+        <div class="case-icon">🏥</div>
+        <div>
+          <h3>Cas clinique n°3 — Adolescent de 16 ans, impubérisme et petite taille</h3>
+          <div class="case-sub">Consultation de pédiatrie-endocrinologie — CHU de Blida</div>
+        </div>
+      </div>
+      <div class="case-body">
+        <div class="vignette">
+          <span class="tag">Anamnèse</span>
+          <span class="tag">Examen clinique</span>
+          <span class="tag">Caryotype</span>
+          <p>Une adolescente de <strong>16 ans</strong> consulte pour absence de règles et absence de développement mammaire. Elle mesure <strong>142 cm</strong> (petite taille). À l'examen : <strong>thorax en bouclier</strong>, <strong>cou palmé</strong>, implantation basse des cheveux, pas de pilosité pubienne (Tanner P1), pas de développement mammaire (S1). Le caryotype révèle <strong>45,X0</strong>. L'échographie pelvienne montre un <strong>utérus de petite taille</strong> et des <strong>ovaires non visualisés</strong>.</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <div class="q-num">1</div>
+            <span class="q-theme">Diagnostic</span>
+            <span class="q-type type-single">Choix simple</span>
+          </div>
+          <p class="q-text">Quel est le diagnostic ?</p>
+          <ul class="q-options">
+            <li data-letter="A">Syndrome de Turner</li>
+            <li data-letter="B">Syndrome de Morris</li>
+            <li data-letter="C">Syndrome de Rokitansky</li>
+            <li data-letter="D">Syndrome de Kallmann</li>
+            <li data-letter="E">Hyperplasie congénitale des surrénales</li>
+          </ul>
+          <details class="correction">
+            <summary>Voir la correction</summary>
+            <div class="corr-body">
+              <div class="corr-answer">Réponse : A</div>
+              <div class="corr-block">
+                <h4>Raisonnement</h4>
+                <p>Le tableau associe : <strong>aménorrhée primaire + impubérisme + petite taille + thorax en bouclier + cou palmé + caryotype 45,X0</strong>. C'est le syndrome de Turner (dysgénésie gonadique). L'utérus est présent mais petit, les ovaires sont absents (bandelettes fibreuses). Les gonadotrophines (FSH, LH) sont élevées, l'œstradiol très bas.</p>
+              </div>
+            </div>
+          </details>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <div class="q-num">2</div>
+            <span class="q-theme">Bilan</span>
+            <span class="q-type type-multi">Choix multiple</span>
+          </div>
+          <p class="q-text">Quels éléments du bilan sont attendus ? (2 à 3 réponses)</p>
+          <ul class="q-options">
+            <li data-letter="A">FSH et LH élevées</li>
+            <li data-letter="B">Œstradiol bas</li>
+            <li data-letter="C">Prolactine très élevée</li>
+            <li data-letter="D">Bicuspidie aortique et coarctation à l'échocardiographie</li>
+            <li data-letter="E">Rein en fer à cheval à l'échographie rénale</li>
+          </ul>
+          <details class="correction">
+            <summary>Voir la correction</summary>
+            <div class="corr-body">
+              <div class="corr-answer">Réponses : A, B, D, E (les plus attendues : A, B, D, E — le format accepte 2–3, retenir A, B, D, E)</div>
+              <div class="corr-block">
+                <h4>Raisonnement</h4>
+                <p>Turner : <strong>hypogonadisme hypergonadotrope</strong> (FSH/LH élevées, E2 bas). Le bilan malformatif doit être exhaustif : <strong>bicuspidie aortique, coarctation</strong>, <strong>rein en fer à cheval</strong>, surdité de perception, dysthyroïdie, maladie cœliaque. La prolactine n'est pas élevée dans le Turner.</p>
+              </div>
+            </div>
+          </details>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <div class="q-num">3</div>
+            <span class="q-theme">Traitement</span>
+            <span class="q-type type-single">Choix simple</span>
+          </div>
+          <p class="q-text">Le traitement de l'impubérisme repose sur :</p>
+          <ul class="q-options">
+            <li data-letter="A">Le 17β-estradiol à faible dose, augmenté progressivement tous les 6 mois</li>
+            <li data-letter="B">La cabergoline</li>
+            <li data-letter="C">L'hydrocortisone</li>
+            <li data-letter="D">La gonadectomie</li>
+            <li data-letter="E">La pompe à GnRH</li>
+          </ul>
+          <details class="correction">
+            <summary>Voir la correction</summary>
+            <div class="corr-body">
+              <div class="corr-answer">Réponse : A</div>
+              <div class="corr-block">
+                <h4>Raisonnement</h4>
+                <p>Le traitement de l'impubérisme dans le Turner repose sur le <strong>17β-estradiol</strong> à faible dose (1/8 de la dose adulte), augmenté par paliers tous les 6 mois, puis traitement séquentiel œstroprogestatif. L'hormone de croissance peut être proposée jusqu'à un âge osseux de 13 ans. La fertilité ultérieure repose sur le don d'ovocytes.</p>
+              </div>
+            </div>
+          </details>
+        </div>
+      </div>
+    </article>
+
+    <!-- CAS 4 -->
+    <article class="case-card">
+      <div class="case-header">
+        <div class="case-icon">🏥</div>
+        <div>
+          <h3>Cas clinique n°4 — Femme de 29 ans, aménorrhée secondaire et hirsutisme</h3>
+          <div class="case-sub">Consultation de gynécologie — EPH de Boufarik</div>
+        </div>
+      </div>
+      <div class="case-body">
+        <div class="vignette">
+          <span class="tag">Anamnèse</span>
+          <span class="tag">Examen clinique</span>
+          <span class="tag">Biologie</span>
+          <p>Une femme de <strong>29 ans</strong>, mariée, consulte pour <strong>aménorrhée secondaire de 10 mois</strong>, précédée de cycles irréguliers (spanioménorrhée). Elle rapporte une <strong>prise de poids</strong> récente, un <strong>hirsutisme</strong> (score de Ferriman à 14) et de l'<strong>acné</strong>. À l'examen : obésité androïde (IMC 32). Biologie : <strong>LH élevée, FSH normale, testostérone modérément élevée</strong>, insulinorésistance (HOMA-IR élevé). Échographie : ovaires augmentés de volume, stroma épaissi, multiples follicules périphériques.</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <div class="q-num">1</div>
+            <span class="q-theme">Diagnostic</span>
+            <span class="q-type type-single">Choix simple</span>
+          </div>
+          <p class="q-text">Quel est le diagnostic le plus probable ?</p>
+          <ul class="q-options">
+            <li data-letter="A">Hyperprolactinémie</li>
+            <li data-letter="B">Syndrome des ovaires polymicrokystiques (SOPK)</li>
+            <li data-letter="C">Insuffisance ovarienne précoce</li>
+            <li data-letter="D">Hyperplasie congénitale des surrénales</li>
+            <li data-letter="E">Syndrome de Sheehan</li>
+          </ul>
+          <details class="correction">
+            <summary>Voir la correction</summary>
+            <div class="corr-body">
+              <div class="corr-answer">Réponse : B</div>
+              <div class="corr-block">
+                <h4>Raisonnement</h4>
+                <p>Le SOPK associe : aménorrhée secondaire (souvent précédée de spanioménorrhée), obésité androïde, hyperandrogénie clinique (hirsutisme, acné), insulinorésistance, échographie évocatrice (ovaires augmentés de volume, stroma épaissi), biologie (LH élevée sans pic, FSH normale/basse, androgènes élevés, réponse explosive au test LH-RH).</p>
+              </div>
+            </div>
+          </details>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <div class="q-num">2</div>
+            <span class="q-theme">Traitement</span>
+            <span class="q-type type-multi">Choix multiple</span>
+          </div>
+          <p class="q-text">Quelles options thérapeutiques sont adaptées ? (2 à 3 réponses)</p>
+          <ul class="q-options">
+            <li data-letter="A">Acétate de cyprotérone (Androcure®)</li>
+            <li data-letter="B">Pilule œstroprogestative</li>
+            <li data-letter="C">Cabergoline</li>
+            <li data-letter="D">Induction ovulatoire ultérieure si désir de grossesse</li>
+            <li data-letter="E">Surveillance métabolique (glycémie, lipides)</li>
+          </ul>
+          <details class="correction">
+            <summary>Voir la correction</summary>
+            <div class="corr-body">
+              <div class="corr-answer">Réponses : A, B, D, E (les plus discriminantes : A, B, E — le format accepte 2–3, retenir A, B, D, E)</div>
+              <div class="corr-block">
+                <h4>Raisonnement</h4>
+                <p>Le traitement anti-gonadotrope du SOPK repose sur l'acétate de cyprotérone et/ou la pilule œstroprogestative. Une induction ovulatoire peut être proposée ultérieurement en cas de désir de grossesse. La surveillance métabolique est indispensable (risque de dyslipidémie, diabète de type 2, risque cardio-vasculaire). La cabergoline n'a pas d'indication (pas d'hyperprolactinémie).</p>
+              </div>
+            </div>
+          </details>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <div class="q-num">3</div>
+            <span class="q-theme">Diagnostic différentiel</span>
+            <span class="q-type type-single">Choix simple</span>
+          </div>
+          <p class="q-text">Quel examen permettrait d'éliminer une hyperplasie congénitale des surrénales à révélation tardive ?</p>
+          <ul class="q-options">
+            <li data-letter="A">Le dosage de la 17-hydroxyprogestérone</li>
+            <li data-letter="B">Le dosage de la prolactine</li>
+            <li data-letter="C">La TSH</li>
+            <li data-letter="D">L'AMH</li>
+            <li data-letter="E">Le caryotype</li>
+          </ul>
+          <details class="correction">
+            <summary>Voir la correction</summary>
+            <div class="corr-body">
+              <div class="corr-answer">Réponse : A</div>
+              <div class="corr-block">
+                <h4>Raisonnement</h4>
+                <p>Une <strong>17-OHP élevée (&gt; 0,2 ng/l)</strong> oriente vers une HCS à révélation tardive. Le traitement est alors l'hydrocortisone + conseil génétique. Le dosage de la prolactine élimine une hyperprolactinémie ; la TSH élimine une hypothyroïdie ; l'AMH évalue la réserve ovarienne ; le caryotype élimine une anomalie de la détermination sexuelle.</p>
+              </div>
+            </div>
+          </details>
+        </div>
+      </div>
+    </article>
+
+    <!-- CAS 5 -->
+    <article class="case-card">
+      <div class="case-header">
+        <div class="case-icon">🏥</div>
+        <div>
+          <h3>Cas clinique n°5 — Femme de 34 ans, aménorrhée du post-partum</h3>
+          <div class="case-sub">Consultation de gynécologie-obstétrique — CHU de Blida</div>
+        </div>
+      </div>
+      <div class="case-body">
+        <div class="vignette">
+          <span class="tag">Anamnèse</span>
+          <span class="tag">Examen clinique</span>
+          <span class="tag">Biologie</span>
+          <p>Une femme de <strong>34 ans</strong>, 3ᵉ geste, consulte 6 mois après un <strong>accouchement hémorragique</strong> (délivrance artificielle + révision utérine) pour <strong>aménorrhée</strong> et <strong>absence de montée laiteuse</strong>. Elle rapporte une <strong>fatigue intense</strong>, une <strong>prise de poids</strong>, une <strong>intolérance au froid</strong> et une <strong>pâleur</strong>. À l'examen : hypotension, asthénie. Biologie : <strong>FSH et LH basses</strong>, œstradiol bas, prolactine basse, <strong>TSH basse avec T4 basse</strong>, cortisol bas.</p>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <div class="q-num">1</div>
+            <span class="q-theme">Diagnostic</span>
+            <span class="q-type type-single">Choix simple</span>
+          </div>
+          <p class="q-text">Quel est le diagnostic le plus probable ?</p>
+          <ul class="q-options">
+            <li data-letter="A">Syndrome de Sheehan</li>
+            <li data-letter="B">Hyperprolactinémie</li>
+            <li data-letter="C">Syndrome de Kallmann</li>
+            <li data-letter="D">SOPK</li>
+            <li data-letter="E">Insuffisance ovarienne précoce</li>
+          </ul>
+          <details class="correction">
+            <summary>Voir la correction</summary>
+            <div class="corr-body">
+              <div class="corr-answer">Réponse : A</div>
+              <div class="corr-block">
+                <h4>Raisonnement</h4>
+                <p>Le tableau associe : <strong>accouchement hémorragique + aménorrhée + agalactie + insuffisance hypophysaire globale</strong> (déficit gonadotrope, thyréotrope, corticotrope). C'est le <strong>syndrome de Sheehan</strong> (nécrose hypophysaire ischémique du post-partum). Le traitement est substitutif à vie : œstroprogestatifs + L-thyroxine + hydrocortisone.</p>
+              </div>
+              <div class="corr-block">
+                <h4>Distracteurs</h4>
+                <ul>
+                  <li class="wrong"><strong>B</strong> — Hyperprolactinémie : PRL élevée, galactorrhée, pas d'agalactie.</li>
+                  <li class="wrong"><strong>C</strong> — Kallmann : anosmie, pas de contexte obstétrical.</li>
+                  <li class="wrong"><strong>D</strong> — SOPK : LH élevée, androgènes élevés, pas d'insuffisance hypophysaire globale.</li>
+                  <li class="wrong"><strong>E</strong> — Insuffisance ovarienne précoce : FSH élevée, pas de déficit thyréotrope/corticotrope.</li>
+                </ul>
+              </div>
+            </div>
+          </details>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <div class="q-num">2</div>
+            <span class="q-theme">Traitement</span>
+            <span class="q-type type-multi">Choix multiple</span>
+          </div>
+          <p class="q-text">Quels traitements substitutifs sont indiqués ? (2 à 3 réponses)</p>
+          <ul class="q-options">
+            <li data-letter="A">Œstroprogestatifs</li>
+            <li data-letter="B">L-thyroxine</li>
+            <li data-letter="C">Hydrocortisone</li>
+            <li data-letter="D">Cabergoline</li>
+            <li data-letter="E">Pompe à GnRH pulsatile</li>
+          </ul>
+          <details class="correction">
+            <summary>Voir la correction</summary>
+            <div class="corr-body">
+              <div class="corr-answer">Réponses : A, B, C</div>
+              <div class="corr-block">
+                <h4>Raisonnement</h4>
+                <p>Le traitement du syndrome de Sheehan est <strong>substitutif à vie</strong> : <strong>œstroprogestatifs</strong> (déficit gonadotrope), <strong>L-thyroxine</strong> (déficit thyréotrope), <strong>hydrocortisone</strong> (déficit corticotrope). La cabergoline n'a pas d'indication (PRL basse). La pompe à GnRH pulsatile n'est pas nécessaire ici (le déficit est global et le traitement œstroprogestatif suffit pour le cycle).</p>
+              </div>
+            </div>
+          </details>
+        </div>
+
+        <div class="q-card">
+          <div class="q-head">
+            <div class="q-num">3</div>
+            <span class="q-theme">Diagnostic différentiel</span>
+            <span class="q-type type-single">Choix simple</span>
+          </div>
+          <p class="q-text">Quel diagnostic faut-il éliminer en priorité devant une aménorrhée du post-partum ?</p>
+          <ul class="q-options">
+            <li data-letter="A">Une grossesse</li>
+            <li data-letter="B">Un adénome à prolactine</li>
+            <li data-letter="C">Un syndrome de Turner</li>
+            <li data-letter="D">Un SOPK</li>
+            <li data-letter="E">Un syndrome de Rokitansky</li>
+          </ul>
+          <details class="correction">
+            <summary>Voir la correction</summary>
+            <div class="corr-body">
+              <div class="corr-answer">Réponse : A</div>
+              <div class="corr-block">
+                <h4>Raisonnement</h4>
+                <p>Devant toute aménorrhée secondaire, il faut <strong>éliminer une grossesse en priorité</strong> par le dosage de β-hCG et l'échographie. C'est un réflexe systématique, y compris dans le post-partum (retour de couches possible avant le retour des règles).</p>
+              </div>
+            </div>
+          </details>
+        </div>
+      </div>
+    </article>
+
+  </div>
+</section>
+
+<!-- ================= CARTE CONCEPTUELLE ================= -->
+<section class="block" id="carte">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-kicker">Partie 3 — Synthèse visuelle</div>
+      <h2>Carte conceptuelle & arbre décisionnel</h2>
+      <p class="desc">Structure HTML/CSS pure : vue d'ensemble, arbre diagnostique et tableau comparatif.</p>
+    </div>
+
+    <div class="map-wrap">
+      <div class="flow">
+        <div class="node central-node">
+          <div class="nhead">AMÉNORRHÉE</div>
+          <ul>
+            <li>Absence de règles chez une femme en âge de procréer</li>
+            <li>Symptôme, pas une maladie</li>
+            <li>Primaire vs Secondaire</li>
+          </ul>
+        </div>
+
+        <div class="flow-row">
+          <div class="node">
+            <div class="nhead"><span class="dot"></span>Primaire</div>
+            <ul>
+              <li>Absence de règles à 15 ans (croissance + CSS normaux)</li>
+              <li>Ou absence de ménarche + absence de sein à 13 ans</li>
+              <li>Orientation : présence/absence/virilisation des CSS</li>
+            </ul>
+          </div>
+          <div class="node">
+            <div class="nhead"><span class="dot"></span>Secondaire</div>
+            <ul>
+              <li>&gt; 3 mois si cycles réguliers</li>
+              <li>≥ 6 mois si cycles irréguliers</li>
+              <li>Cause la plus fréquente : grossesse</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="divider-arrow">▼</div>
+
+        <div class="branch-title">Arbre diagnostique — Aménorrhée primaire</div>
+        <div class="tree">
+          <div class="tree-root">Aménorrhée primaire — Évaluer les caractères sexuels secondaires</div>
+          <div class="tree-branches">
+            <div class="tree-branch">
+              <h5>CSS présents</h5>
+              <ul>
+                <li>Hématocolpos / atrésie cervicale / diaphragme vaginal → douleurs cycliques</li>
+                <li>Rokitansky-Kuster-Hausler → pas de douleurs, utérus absent</li>
+                <li>TB génitale pré-pubertaire → synéchies</li>
+                <li>Morris (46,XY) → testicule féminisant</li>
+                <li>Hypothalamique fonctionnel / hyperprolactinémie</li>
+              </ul>
+            </div>
+            <div class="tree-branch">
+              <h5>CSS absents</h5>
+              <ul>
+                <li>Turner (45,X0) → FSH↑, E2↓, malformations</li>
+                <li>Dysgénésies gonadiques → caryotype</li>
+                <li>Craniopharyngiome → calcifications supra-sellaires</li>
+                <li>Kallmann → anosmie</li>
+                <li>Hypothyroïdie, retard pubertaire</li>
+              </ul>
+            </div>
+            <div class="tree-branch">
+              <h5>CSS virilisés</h5>
+              <ul>
+                <li>HCS (21 ou 11β-OH) → 17-OHP↑</li>
+                <li>Tumeurs ovariennes / surrénaliennes</li>
+                <li>Testostérone↑ + imagerie (IRM)</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div class="divider-arrow">▼</div>
+
+        <div class="branch-title">Étapes clés du bilan</div>
+        <div class="flow-row">
+          <div class="node">
+            <div class="nhead"><span class="dot"></span>1. Éliminer une grossesse</div>
+            <ul>
+              <li>β-hCG plasmatique</li>
+              <li>Échographie pelvienne</li>
+            </ul>
+          </div>
+          <div class="node">
+            <div class="nhead"><span class="dot"></span>2. Bilan hormonal</div>
+            <ul>
+              <li>FSH / LH / PRL de base</li>
+              <li>E2, progestérone, androgènes</li>
+              <li>TSH (2ᵉ intention)</li>
+            </ul>
+          </div>
+          <div class="node">
+            <div class="nhead"><span class="dot"></span>3. Imagerie</div>
+            <ul>
+              <li>Échographie pelvienne</li>
+              <li>IRM hypophysaire si indiquée</li>
+              <li>Radio du crâne si suspicion</li>
+            </ul>
+          </div>
+          <div class="node">
+            <div class="nhead"><span class="dot"></span>4. Selon contexte</div>
+            <ul>
+              <li>Caryotype</li>
+              <li>Hystéroscopie / HSG</li>
+              <li>Cœlioscopie</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <table class="synth">
+      <thead>
+        <tr>
+          <th>Contexte</th>
+          <th>FSH / LH</th>
+          <th>E2</th>
+          <th>Diagnostic évoqué</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Cause ovarienne</strong></td>
+          <td><span class="pill pill-up">Élevées</span></td>
+          <td><span class="pill pill-down">Bas</span></td>
+          <td>Turner, insuffisance ovarienne précoce, dysgénésie gonadique</td>
+        </tr>
+        <tr>
+          <td><strong>Cause utéro-vaginale</strong></td>
+          <td><span class="pill pill-norm">Normales</span></td>
+          <td><span class="pill pill-norm">Normaux</span></td>
+          <td>Rokitansky, synéchies, sténose cervicale, imperforation hyménéale</td>
+        </tr>
+        <tr>
+          <td><strong>Cause hypophysaire / hypothalamique</strong></td>
+          <td><span class="pill pill-down">Basses</span></td>
+          <td><span class="pill pill-down">Bas</span></td>
+          <td>Sheehan, Kallmann, craniopharyngiome, hyperprolactinémie, anorexie</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ================= MNEMOTECHNIQUES ================= -->
+<section class="block" id="mnemo">
+  <div class="container">
+    <div class="section-head">
+      <div class="section-kicker">Partie 4 — Rétention à long terme</div>
+      <h2>Mnémotechniques & astuces d'examen</h2>
+      <p class="desc">Moyens mnésiques et repères clés pour les QCM de la faculté de Blida.</p>
+    </div>
+
+    <div class="mnemo-grid">
+      <div class="mnemo-card">
+        <div class="m-tag">Définitions</div>
+        <h4>« 15 / 3 / 6 »</h4>
+        <div class="mnemo-acronym">
+          <span class="mnemo-letter">15</span>
+          <span class="mnemo-letter">3</span>
+          <span class="mnemo-letter">6</span>
+        </div>
+        <p><strong>15 ans</strong> = aménorrhée primaire (avec CSS présents). <strong>3 mois</strong> = aménorrhée secondaire si cycles réguliers. <strong>6 mois</strong> = aménorrhée secondaire si cycles irréguliers. À 13 ans sans sein + sans règles : alerte !</p>
+      </div>
+
+      <div class="mnemo-card">
+        <div class="m-tag">Rokitansky vs Turner</div>
+        <h4>« ROKI = 46,XX ; TURNER = 45,X0 »</h4>
+        <div class="mnemo-acronym">
+          <span class="mnemo-letter">R</span>
+          <span class="mnemo-letter">T</span>
+        </div>
+        <p><strong>ROKI</strong>tansky : caryotype <strong>46,XX</strong>, ovaires fonctionnels, utérus absent, pas de douleurs. <strong>TURNER</strong> : <strong>45,X0</strong>, FSH élevée, utérus présent mais petit, ovaires absents.</p>
+      </div>
+
+      <div class="mnemo-card">
+        <div class="m-tag">Morris</div>
+        <h4>« XY sans poils »</h4>
+        <div class="mnemo-acronym">
+          <span class="mnemo-letter">XY</span>
+          <span class="mnemo-letter">0</span>
+        </div>
+        <p>Morris = <strong>46,XY</strong> avec morphotype féminin, <strong>absence/raréfaction de la pilosité pubienne et axillaire</strong> (insensibilité aux androgènes), testicules palpables dans le pli inguinal, T et AMH élevées. Gonadectomie = risque tumoral.</p>
+      </div>
+
+      <div class="mnemo-card">
+        <div class="m-tag">Sheehan</div>
+        <h4>« Hémorragie → nécrose → agalactie »</h4>
+        <div class="mnemo-acronym">
+          <span class="mnemo-letter">S</span>
+          <span class="mnemo-letter">H</span>
+          <span class="mnemo-letter">A</span>
+        </div>
+        <p><strong>S</strong>heehan : <strong>H</strong>émorragie du post-partum → nécrose hypophysaire → <strong>A</strong>galactie + aménorrhée + insuffisance globale (T4↓, cortisol↓). Traitement substitutif triple.</p>
+      </div>
+
+      <div class="mnemo-card">
+        <div class="m-tag">Ferriman</div>
+        <h4>« 8 / 16 / 25 »</h4>
+        <div class="mnemo-acronym">
+          <span class="mnemo-letter">8</span>
+          <span class="mnemo-letter">16</span>
+          <span class="mnemo-letter">25</span>
+        </div>
+        <p><strong>&gt; 8</strong> = pathologique ; <strong>8–16</strong> = léger ; <strong>17–25</strong> = modéré ; <strong>&gt; 25</strong> = sévère. À retenir pour classer l'hirsutisme dans les QCM de SOPK/HCS.</p>
+      </div>
+
+      <div class="mnemo-card">
+        <div class="m-tag">SOPK</div>
+        <h4>« LH↑ / FSH normale / IR+ »</h4>
+        <div class="mnemo-acronym">
+          <span class="mnemo-letter">L</span>
+          <span class="mnemo-letter">F</span>
+          <span class="mnemo-letter">I</span>
+        </div>
+        <p><strong>L</strong>H élevée sans pic, <strong>F</strong>SH normale/basse, <strong>I</strong>nsulinorésistance. Échographie : ovaires volumineux, stroma épaissi. Attention : le SOPK n'est PAS une cause d'hyperprolactinémie.</p>
+      </div>
+
+      <div class="mnemo-card">
+        <div class="m-tag">Kallmann</div>
+        <h4>« KALLMANN = anosmie »</h4>
+        <div class="mnemo-acronym">
+          <span class="mnemo-letter">K</span>
+          <span class="mnemo-letter">A</span>
+        </div>
+        <p><strong>K</strong>allmann → <strong>A</strong>nosmie + hypogonadisme hypogonadotrope (GnRH déficitaire). Ne pas confondre avec le craniopharyngiome (calcifications, somnolence).</p>
+      </div>
+
+      <div class="mnemo-card">
+        <div class="m-tag">Asherman vs Musset</div>
+        <h4>« M = isthmique ; A = complexe »</h4>
+        <div class="mnemo-acronym">
+          <span class="mnemo-letter">M</span>
+          <span class="mnemo-letter">A</span>
+        </div>
+        <p><strong>M</strong>usset = synéchie <strong>isthmique</strong>. <strong>A</strong>sherman = synéchies <strong>complexes</strong> post-traumatiques / post-infectieuses. Les deux sont des causes utérines d'aménorrhée secondaire.</p>
+      </div>
+    </div>
+
+    <div class="trap-card" id="pieges" style="margin-top:36px">
+      <h5>⚠️ Pièges docimologiques classiques — Faculté de Blida</h5>
+      <p><strong>Piège 1 :</strong> Confondre les rôles des œstrogènes (prolifération) et de la progestérone (sécrétion/décidualisation). Les QCM inversent souvent les deux.</p>
+      <p><strong>Piège 2 :</strong> Dire que Rokitansky donne des douleurs cycliques. <em>Faux</em> : l'utérus est absent, donc pas de rétention menstruelle. Les douleurs cycliques signent un hématocolpos ou une atrésie cervicale.</p>
+      <p><strong>Piège 3 :</strong> Dire que Morris donne une pilosité normale. <em>Faux</em> : l'insensibilité aux androgènes entraîne une pilosité absente ou raréfiée.</p>
+      <p><strong>Piège 4 :</strong> Écrire « FSH élevée » dans le SOPK. <em>Faux</em> : c'est la LH qui est élevée, la FSH est normale ou basse.</p>
+      <p><strong>Piège 5 :</strong> Oublier que le syndrome de Sheehan est une nécrose <em>post-hémorragique</em>, distincte de l'hypophysite auto-immune.</p>
+      <p><strong>Piège 6 :</strong> Prescrire une œstroprogestation en première intention dans l'anorexie mentale. <em>Faux</em> : renutrition d'abord.</p>
+    </div>
+  </div>
+</section>
+
+<div class="container">
+  <div class="encourage">
+    <span class="emoji">🩺✨</span>
+    <div class="big">Vous êtes au cœur du raisonnement clinique — continuez !</div>
+    <p>Chaque QCM est une consultation miniature. Relisez les corrections, discutez les pièges entre amis de promo, et le jour de l'examen, vous ne verrez plus les aménorrhées comme une énigme mais comme un algorithme familier. Bon courage, futurs médecins — Blida compte sur vous ! 💪</p>
+  </div>
+</div>
+
+<footer class="foot">
+  <p><strong>Support pédagogique de révision</strong> — Aménorrhées primaires et secondaires · 5ᵉ année médecine · Faculté de Médecine, Université Saad Dahleb, Blida · Année 2024–2025.</p>
+  <p style="margin-top:6px">D'après le cours du Dr M. Zemouchi, Maître de conférences classe B. Contenu généré à visée pédagogique, ne remplace pas le cours magistral ni les recommandations officielles.</p>
+</footer>
+
+</body>
+</html>

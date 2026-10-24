@@ -1,0 +1,1769 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MAP – Révision 5e Année Médecine | Algérie</title>
+<style>
+  :root{
+    --navy:#0f2744;
+    --navy-2:#1a3a5c;
+    --teal:#0d8a8f;
+    --teal-2:#14a3a8;
+    --slate:#475569;
+    --slate-2:#64748b;
+    --bg:#f4f7fb;
+    --card:#ffffff;
+    --border:#e2e8f0;
+    --ok:#0f9d58;
+    --warn:#d97706;
+    --danger:#c0392b;
+    --violet:#6d4aff;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter','Segoe UI',Roboto,system-ui,-apple-system,sans-serif;
+    background:var(--bg);
+    color:var(--slate);
+    line-height:1.6;
+    font-size:15.5px;
+    -webkit-font-smoothing:antialiased;
+  }
+  /* ---------- HEADER ---------- */
+  header.hero{
+    background:linear-gradient(135deg,var(--navy) 0%,var(--navy-2) 60%,var(--teal) 130%);
+    color:#fff;
+    padding:48px 24px 60px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  header.hero::after{
+    content:"";
+    position:absolute;inset:0;
+    background:radial-gradient(circle at 20% 20%,rgba(13,138,143,.35),transparent 55%),
+               radial-gradient(circle at 80% 80%,rgba(255,255,255,.08),transparent 60%);
+    pointer-events:none;
+  }
+  header.hero .kicker{
+    display:inline-block;
+    background:rgba(255,255,255,.14);
+    padding:6px 16px;
+    border-radius:999px;
+    font-size:.82rem;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    font-weight:600;
+    margin-bottom:16px;
+    border:1px solid rgba(255,255,255,.25);
+  }
+  header.hero h1{
+    font-size:clamp(1.7rem,3.4vw,2.6rem);
+    font-weight:800;
+    letter-spacing:.4px;
+    margin-bottom:10px;
+  }
+  header.hero p{
+    max-width:820px;margin:0 auto;
+    color:#dbe7f3;font-size:1.02rem;
+  }
+  /* ---------- NAV ---------- */
+  nav.toc{
+    background:#fff;
+    border-bottom:1px solid var(--border);
+    position:sticky;top:0;z-index:50;
+    box-shadow:0 2px 10px rgba(15,39,68,.05);
+  }
+  nav.toc ul{
+    display:flex;flex-wrap:wrap;justify-content:center;
+    list-style:none;gap:6px;padding:12px 16px;max-width:1200px;margin:0 auto;
+  }
+  nav.toc a{
+    text-decoration:none;color:var(--navy);
+    font-weight:600;font-size:.85rem;
+    padding:8px 14px;border-radius:999px;
+    transition:.2s;
+    border:1px solid transparent;
+  }
+  nav.toc a:hover{background:var(--teal);color:#fff;}
+  /* ---------- MAIN ---------- */
+  main{max-width:1120px;margin:0 auto;padding:36px 20px 60px;}
+  section{margin-bottom:60px;scroll-margin-top:80px;}
+  .section-title{
+    display:flex;align-items:center;gap:14px;
+    margin-bottom:8px;
+  }
+  .section-title .num{
+    background:var(--navy);color:#fff;
+    width:44px;height:44px;border-radius:12px;
+    display:flex;align-items:center;justify-content:center;
+    font-weight:800;font-size:1.05rem;
+    flex-shrink:0;
+  }
+  .section-title h2{
+    color:var(--navy);font-size:1.55rem;font-weight:800;
+    letter-spacing:.2px;
+  }
+  .section-sub{
+    color:var(--slate-2);font-size:.95rem;margin-bottom:22px;
+    padding-left:58px;
+  }
+  /* ---------- QCM CARD ---------- */
+  .qcm-card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:22px 24px;
+    margin-bottom:18px;
+    box-shadow:0 2px 12px rgba(15,39,68,.04);
+    transition:.25s;
+  }
+  .qcm-card:hover{box-shadow:0 6px 20px rgba(15,39,68,.08);transform:translateY(-1px);}
+  .qcm-head{
+    display:flex;flex-wrap:wrap;align-items:center;gap:8px;
+    margin-bottom:14px;
+  }
+  .qcm-num{
+    background:linear-gradient(135deg,var(--navy),var(--navy-2));
+    color:#fff;font-weight:800;
+    padding:5px 12px;border-radius:9px;
+    font-size:.82rem;letter-spacing:.4px;
+  }
+  .badge{
+    padding:4px 10px;border-radius:999px;
+    font-size:.72rem;font-weight:700;
+    letter-spacing:.06em;text-transform:uppercase;
+  }
+  .badge.rj{background:#e0f2fe;color:#0c4a6e;border:1px solid #bae6fd;}
+  .badge.rf{background:#fee2e2;color:#991b1b;border:1px solid #fecaca;}
+  .badge.multi{background:#ede9fe;color:#5b21b6;border:1px solid #ddd6fe;}
+  .badge.simple{background:#dcfce7;color:#166534;border:1px solid #bbf7d0;}
+  .theme{
+    margin-left:auto;
+    font-size:.78rem;color:var(--slate-2);
+    font-style:italic;
+    background:#f1f5f9;padding:4px 10px;border-radius:999px;
+  }
+  .question{font-weight:600;color:var(--navy);margin-bottom:14px;font-size:1rem;}
+  ul.options{list-style:none;display:grid;gap:6px;}
+  ul.options li{
+    display:flex;align-items:flex-start;gap:10px;
+    padding:9px 12px;border-radius:10px;
+    background:#f8fafc;border:1px solid #eef2f7;
+    transition:.2s;font-size:.94rem;
+  }
+  ul.options li:hover{background:#f1f8f9;border-color:#b9e3e5;}
+  .opt-letter{
+    display:inline-flex;align-items:center;justify-content:center;
+    width:24px;height:24px;border-radius:7px;
+    background:var(--navy);color:#fff;
+    font-size:.75rem;font-weight:800;flex-shrink:0;
+  }
+  details.correction{
+    margin-top:16px;border-radius:12px;
+    border:1px solid #c7e9ea;
+    background:linear-gradient(180deg,#f0fbfb,#faffff);
+    overflow:hidden;
+  }
+  details.correction summary{
+    cursor:pointer;padding:12px 18px;
+    font-weight:700;color:var(--teal);
+    list-style:none;user-select:none;
+    display:flex;align-items:center;gap:8px;
+    font-size:.9rem;
+  }
+  details.correction summary::-webkit-details-marker{display:none;}
+  details.correction summary::before{
+    content:"▶";font-size:.7rem;transition:.2s;
+    display:inline-block;color:var(--teal);
+  }
+  details.correction[open] summary::before{transform:rotate(90deg);}
+  .correction-content{padding:0 18px 18px;font-size:.92rem;color:#334155;}
+  .answer-line{
+    display:inline-block;
+    background:var(--teal);color:#fff;
+    padding:5px 12px;border-radius:8px;
+    font-weight:700;font-size:.85rem;
+    margin-bottom:10px;
+    letter-spacing:.02em;
+  }
+  .answer-line.false{background:var(--danger);}
+  .correction-content p{margin-bottom:8px;}
+  .correction-content strong{color:var(--navy);}
+  .correction-content ul{margin:8px 0 8px 20px;}
+  .correction-content ul li{margin-bottom:4px;font-size:.9rem;}
+  /* ---------- CLINICAL CASE ---------- */
+  .case-card{
+    background:#fff;
+    border-radius:18px;
+    border:1px solid var(--border);
+    overflow:hidden;
+    margin-bottom:26px;
+    box-shadow:0 4px 16px rgba(15,39,68,.05);
+  }
+  .case-head{
+    background:linear-gradient(120deg,var(--navy),var(--navy-2));
+    color:#fff;padding:20px 26px;
+    display:flex;flex-wrap:wrap;align-items:center;gap:14px;
+  }
+  .case-head .case-num{
+    background:var(--teal);padding:6px 14px;border-radius:10px;
+    font-weight:800;font-size:.9rem;letter-spacing:.4px;
+  }
+  .case-head h3{font-size:1.15rem;font-weight:700;letter-spacing:.2px;}
+  .case-head .loc{
+    margin-left:auto;font-size:.78rem;color:#bcd7e5;
+    background:rgba(255,255,255,.1);padding:5px 12px;border-radius:999px;
+  }
+  .vignette{
+    padding:20px 26px;background:#fbfdff;
+    border-bottom:1px dashed #dbe5ee;
+    font-size:.93rem;
+    color:#334155;
+  }
+  .vignette p{margin-bottom:8px;}
+  .vignette .v-label{
+    display:inline-block;font-weight:700;color:var(--teal);
+    margin-right:4px;
+  }
+  .case-body{padding:8px 26px 26px;}
+  .case-body .qcm-card{
+    box-shadow:none;
+    border:1px solid #e6eef6;
+    margin-top:18px;
+  }
+  /* ---------- CONCEPT MAP ---------- */
+  .cm-grid{
+    display:grid;
+    gap:18px;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    margin-bottom:22px;
+  }
+  .cm-card{
+    background:#fff;border:1px solid var(--border);
+    border-radius:14px;padding:18px 20px;
+    border-top:5px solid var(--teal);
+    box-shadow:0 2px 10px rgba(15,39,68,.04);
+  }
+  .cm-card.navy{border-top-color:var(--navy);}
+  .cm-card.warn{border-top-color:var(--warn);}
+  .cm-card.violet{border-top-color:var(--violet);}
+  .cm-card h4{
+    color:var(--navy);font-size:1rem;font-weight:800;
+    margin-bottom:10px;letter-spacing:.2px;
+  }
+  .cm-card ul{list-style:none;}
+  .cm-card ul li{
+    padding:5px 0 5px 22px;position:relative;
+    font-size:.9rem;color:#334155;
+  }
+  .cm-card ul li::before{
+    content:"▸";position:absolute;left:4px;color:var(--teal);font-weight:800;
+  }
+  .flow{
+    background:#fff;border:1px solid var(--border);
+    border-radius:16px;padding:24px;
+    box-shadow:0 2px 12px rgba(15,39,68,.05);
+    margin-bottom:18px;
+  }
+  .flow h4{
+    color:var(--navy);font-size:1.05rem;font-weight:800;
+    margin-bottom:16px;text-align:center;
+    letter-spacing:.3px;
+  }
+  .flow-steps{
+    display:flex;flex-wrap:wrap;gap:12px;justify-content:center;align-items:stretch;
+  }
+  .flow-step{
+    flex:1 1 180px;
+    background:linear-gradient(180deg,#f8fafc,#eef6f7);
+    border:1px solid #d6e7eb;border-radius:12px;
+    padding:14px 16px;text-align:center;
+    position:relative;font-size:.88rem;
+    color:#1e293b;
+  }
+  .flow-step .step-label{
+    display:inline-block;
+    background:var(--navy);color:#fff;
+    font-size:.7rem;font-weight:800;
+    padding:3px 10px;border-radius:999px;
+    margin-bottom:8px;letter-spacing:.06em;
+    text-transform:uppercase;
+  }
+  .flow-step.teal .step-label{background:var(--teal);}
+  .flow-step.warn .step-label{background:var(--warn);}
+  .flow-step.danger .step-label{background:var(--danger);}
+  .flow-step.ok .step-label{background:var(--ok);}
+  .flow-step strong{display:block;color:var(--navy);margin-bottom:4px;}
+  .table-cm{
+    width:100%;border-collapse:collapse;font-size:.86rem;
+    background:#fff;border-radius:12px;overflow:hidden;
+    box-shadow:0 2px 10px rgba(15,39,68,.04);
+  }
+  .table-cm th{
+    background:var(--navy);color:#fff;
+    padding:10px 12px;text-align:left;font-weight:700;
+    font-size:.82rem;letter-spacing:.03em;
+  }
+  .table-cm td{
+    padding:10px 12px;border-bottom:1px solid #eef2f7;
+    vertical-align:top;color:#334155;
+  }
+  .table-cm tr:last-child td{border-bottom:none;}
+  .table-cm tr:nth-child(even) td{background:#f8fbfd;}
+  /* ---------- MNEMO ---------- */
+  .mnemo-grid{
+    display:grid;gap:16px;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+  }
+  .mnemo-card{
+    background:#fff;border-radius:14px;
+    padding:20px 22px;border:1px solid var(--border);
+    border-left:6px solid var(--violet);
+    box-shadow:0 2px 10px rgba(15,39,68,.04);
+  }
+  .mnemo-card.teal{border-left-color:var(--teal);}
+  .mnemo-card.warn{border-left-color:var(--warn);}
+  .mnemo-card.navy{border-left-color:var(--navy);}
+  .mnemo-card.ok{border-left-color:var(--ok);}
+  .mnemo-card h5{
+    color:var(--navy);font-size:.98rem;font-weight:800;
+    margin-bottom:10px;letter-spacing:.2px;
+  }
+  .mnemo-word{
+    display:inline-block;
+    background:linear-gradient(135deg,var(--violet),#8b6dff);
+    color:#fff;padding:6px 16px;border-radius:10px;
+    font-weight:800;letter-spacing:.15em;margin-bottom:10px;
+    font-size:.95rem;
+  }
+  .mnemo-word.teal{background:linear-gradient(135deg,var(--teal),var(--teal-2));}
+  .mnemo-word.navy{background:linear-gradient(135deg,var(--navy),var(--navy-2));}
+  .mnemo-word.warn{background:linear-gradient(135deg,var(--warn),#f59e0b);}
+  .mnemo-card ul{list-style:none;font-size:.9rem;}
+  .mnemo-card ul li{padding:4px 0 4px 20px;position:relative;color:#334155;}
+  .mnemo-card ul li::before{
+    content:"●";position:absolute;left:2px;color:var(--violet);font-size:.6rem;top:11px;
+  }
+  .mnemo-card.teal ul li::before{color:var(--teal);}
+  .mnemo-card.warn ul li::before{color:var(--warn);}
+  .mnemo-card.navy ul li::before{color:var(--navy);}
+  .trap-card{
+    background:linear-gradient(135deg,#fff7ed,#fffbeb);
+    border:1px solid #fed7aa;border-left:6px solid var(--warn);
+    border-radius:14px;padding:18px 22px;
+    margin-top:18px;
+  }
+  .trap-card h5{color:#92400e;font-weight:800;margin-bottom:10px;font-size:.98rem;}
+  .trap-card ul{list-style:none;font-size:.9rem;}
+  .trap-card ul li{padding:6px 0 6px 24px;position:relative;color:#4b3418;}
+  .trap-card ul li::before{
+    content:"⚠";position:absolute;left:2px;top:6px;color:var(--warn);font-size:.9rem;
+  }
+  /* ---------- CONCLUSION ---------- */
+  .conclusion{
+    background:linear-gradient(135deg,var(--navy),var(--teal));
+    color:#fff;border-radius:20px;
+    padding:36px 30px;text-align:center;
+    box-shadow:0 10px 30px rgba(13,138,143,.2);
+    margin-top:40px;
+  }
+  .conclusion h3{
+    font-size:1.35rem;font-weight:800;margin-bottom:12px;letter-spacing:.3px;
+  }
+  .conclusion p{
+    max-width:720px;margin:0 auto 14px;color:#e0f2f1;font-size:.98rem;
+  }
+  .conclusion .motiv{
+    display:inline-block;background:rgba(255,255,255,.15);
+    padding:10px 22px;border-radius:999px;
+    font-weight:600;margin-top:8px;
+    border:1px solid rgba(255,255,255,.25);
+    font-size:.92rem;
+  }
+  footer{
+    text-align:center;padding:20px;color:#94a3b8;font-size:.82rem;
+  }
+  @media (max-width:640px){
+    .theme{margin-left:0;}
+    .case-head .loc{margin-left:0;}
+    main{padding:24px 14px 40px;}
+    .qcm-card{padding:18px;}
+    .vignette,.case-body,.case-head{padding-left:18px;padding-right:18px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="hero">
+  <span class="kicker">Faculté de Médecine · 5<sup>e</sup> Année · Algérie</span>
+  <h1>Menace d'Accouchement Prématuré (MAP)</h1>
+  <p>Révision structurée et exigeante : QCM à haute valeur docimologique, cas cliniques hospitaliers algériens, carte conceptuelle, mnémotechniques et pièges d'examen.</p>
+</header>
+
+<!-- ================= NAV ================= -->
+<nav class="toc">
+  <ul>
+    <li><a href="#qcm">① Banque de 25 QCM</a></li>
+    <li><a href="#cas">② Cas cliniques</a></li>
+    <li><a href="#concept">③ Carte conceptuelle</a></li>
+    <li><a href="#mnemo">④ Mnémotechniques</a></li>
+    <li><a href="#conclusion">⑤ Motivation</a></li>
+  </ul>
+</nav>
+
+<main>
+
+<!-- ================= SECTION 1 : QCM ================= -->
+<section id="qcm">
+  <div class="section-title">
+    <div class="num">01</div>
+    <h2>Banque de 25 QCM exigeants</h2>
+  </div>
+  <p class="section-sub">Questions mélangées (RJ/RF, choix multiples, choix simple avec « SAUF »). Corrections détaillées avec analyse de chaque distracteur.</p>
+
+  <!-- Q1 -->
+  <div class="qcm-card">
+    <div class="qcm-head">
+      <span class="qcm-num">Q1</span>
+      <span class="badge rf">Réponse fausse</span>
+      <span class="theme">Définition & épidémiologie</span>
+    </div>
+    <p class="question">Parmi les propositions suivantes concernant l'accouchement prématuré, laquelle est <strong>FAUSSE</strong> ?</p>
+    <ul class="options">
+      <li><span class="opt-letter">A</span> Toute naissance se produisant entre 22 et 37 semaines d'aménorrhée révolues</li>
+      <li><span class="opt-letter">B</span> Il touche environ 7 % des naissances</li>
+      <li><span class="opt-letter">C</span> Sa fréquence tend à augmenter</li>
+      <li><span class="opt-letter">D</span> La prématurité spontanée représente 70 à 80 % des cas</li>
+      <li><span class="opt-letter">E</span> La prématurité induite représente 70 à 80 % des cas</li>
+    </ul>
+    <details class="correction">
+      <summary>Voir la correction et l'analyse</summary>
+      <div class="correction-content">
+        <span class="answer-line false">Réponse : E (proposition fausse)</span>
+        <p><strong>A, B, C, D sont exactes.</strong> La définition retenue est bien 22–37 SA révolues ; la prévalence ≈ 7 % et en augmentation ; la prématurité <em>spontanée</em> (précédée d'une MAP) représente 70–80 %.</p>
+        <p><strong>Pourquoi E est fausse :</strong> la prématurité <em>induite</em> (extraction pour pathologie materno-fœtale) ne représente que <strong>20 à 30 %</strong>. Confondre les deux pourcentages est un piège classique : retenir « 70–80 % = spontanée ».</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q2 -->
+  <div class="qcm-card">
+    <div class="qcm-head">
+      <span class="qcm-num">Q2</span>
+      <span class="badge rj">Réponse juste</span>
+      <span class="theme">Mécanisme / physiopathologie</span>
+    </div>
+    <p class="question">La prématurité spontanée est habituellement précédée par :</p>
+    <ul class="options">
+      <li><span class="opt-letter">A</span> Une rupture prématurée des membranes dans 100 % des cas</li>
+      <li><span class="opt-letter">B</span> Une menace d'accouchement prématuré (MAP)</li>
+      <li><span class="opt-letter">C</span> Une prééclampsie sévère</li>
+      <li><span class="opt-letter">D</span> Un hématome rétroplacentaire</li>
+      <li><span class="opt-letter">E</span> Un diabète gestationnel déséquilibré</li>
+    </ul>
+    <details class="correction">
+      <summary>Voir la correction et l'analyse</summary>
+      <div class="correction-content">
+        <span class="answer-line">Réponse : B</span>
+        <p>La prématurité spontanée est <strong>précédée par une MAP</strong> (contractions + modifications cervicales) — c'est le concept clé qui justifie la surveillance prénatale ciblée.</p>
+        <p><strong>Distracteurs :</strong> A — la RPM n'est qu'une étiologie parmi d'autres ; C, D, E — ces pathologies relèvent de la prématurité <em>induite</em> (extraction thérapeutique), pas du mécanisme spontané.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q3 -->
+  <div class="qcm-card">
+    <div class="qcm-head">
+      <span class="qcm-num">Q3</span>
+      <span class="badge multi">Choix multiples</span>
+      <span class="theme">Facteurs de risque</span>
+    </div>
+    <p class="question">Parmi les facteurs de risque d'accouchement prématuré liés aux <strong>antécédents de la patiente</strong>, on retient (2 à 3 réponses) :</p>
+    <ul class="options">
+      <li><span class="opt-letter">A</span> Antécédents d'avortements à répétition</li>
+      <li><span class="opt-letter">B</span> PMA / grossesses multiples</li>
+      <li><span class="opt-letter">C</span> Tabagisme</li>
+      <li><span class="opt-letter">D</span> Multiparité</li>
+      <li><span class="opt-letter">E</span> Diabète gestationnel</li>
+    </ul>
+    <details class="correction">
+      <summary>Voir la correction et l'analyse</summary>
+      <div class="correction-content">
+        <span class="answer-line">Réponses : A, B, D</span>
+        <p><strong>A, B, D</strong> appartiennent au groupe « antécédents de la patiente » : ATCD d'avortements à répétition et d'AP, PMA (grossesses multiples), multiparité, délai court entre grossesses.</p>
+        <p><strong>C</strong> (tabagisme) relève du groupe <em>socio-économique et mode de vie</em>. <strong>E</strong> (diabète gestationnel) relève du groupe <em>pathologie pendant la grossesse</em>. Cette classification en trois groupes est très souvent testée en QCM.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q4 -->
+  <div class="qcm-card">
+    <div class="qcm-head">
+      <span class="qcm-num">Q4</span>
+      <span class="badge simple">Choix simple</span>
+      <span class="theme">Échographie du col</span>
+    </div>
+    <p class="question">Concernant les critères échographiques du col de l'utérus, quel élément n'est <strong>PAS</strong> un facteur de risque d'accouchement prématuré ?</p>
+    <ul class="options">
+      <li><span class="opt-letter">A</span> Ouverture de l'orifice interne du col de plus de 10 mm</li>
+      <li><span class="opt-letter">B</span> Protrusion de la poche des eaux dans l'endocol</li>
+      <li><span class="opt-letter">C</span> Longueur du col inférieure à 30 mm</li>
+      <li><span class="opt-letter">D</span> Longueur du col supérieure à 40 mm</li>
+      <li><span class="opt-letter">E</span> Modification de la consistance et de la position du col</li>
+    </ul>
+    <details class="correction">
+      <summary>Voir la correction et l'analyse</summary>
+      <div class="correction-content">
+        <span class="answer-line">Réponse : D</span>
+        <p>Les critères échographiques de risque sont : <strong>ouverture de l'orifice interne &gt; 10 mm</strong>, <strong>protrusion / funneling</strong>, <strong>longueur &lt; 30 mm</strong>. Un col long (&gt; 40 mm) est au contraire <em>rassurant</em>.</p>
+        <p><strong>A, B, C, E</strong> sont des signaux d'alerte reconnus. L'échographie endovaginale (vessie vide) est reproductible et objective.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q5 -->
+  <div class="qcm-card">
+    <div class="qcm-head">
+      <span class="qcm-num">Q5</span>
+      <span class="badge rf">Réponse fausse</span>
+      <span class="theme">Tocolyse – inhibiteurs calciques</span>
+    </div>
+    <p class="question">Concernant les inhibiteurs calciques en tocolyse, quelle proposition est <strong>FAUSSE</strong> ?</p>
+    <ul class="options">
+      <li><span class="opt-letter">A</span> Utilisés en première intention</li>
+      <li><span class="opt-letter">B</span> Remplacent actuellement les bêta-mimétiques</li>
+      <li><span class="opt-letter">C</span> Aussi efficaces que les bêta-mimétiques</li>
+      <li><span class="opt-letter">D</span> Plus d'effets secondaires que les bêta-mimétiques</li>
+      <li><span class="opt-letter">E</span> La nifédipine est le chef de file (Adalate<sup>®</sup>)</li>
+    </ul>
+    <details class="correction">
+      <summary>Voir la correction et l'analyse</summary>
+      <div class="correction-content">
+        <span class="answer-line false">Réponse : D (fausse)</span>
+        <p>Les inhibiteurs calciques ont <strong>moins</strong> d'effets secondaires que les bêta-mimétiques (céphalées les premiers jours, pas de contre-indication formelle). C'est précisément pourquoi ils sont devenus la <strong>1<sup>re</sup> intention</strong>.</p>
+        <p><strong>D est donc fausse.</strong> A, B, C, E sont exactes : nifédipine orale 20 mg / 8h pendant 48h (Adalate<sup>®</sup>) ou IV (Loxen<sup>®</sup>).</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q6 -->
+  <div class="qcm-card">
+    <div class="qcm-head">
+      <span class="qcm-num">Q6</span>
+      <span class="badge simple">Choix simple</span>
+      <span class="theme">Corticothérapie anténatale</span>
+    </div>
+    <p class="question">La corticothérapie anténatale présente des bénéfices nets surtout avant :</p>
+    <ul class="options">
+      <li><span class="opt-letter">A</span> 28 SA</li>
+      <li><span class="opt-letter">B</span> 32 SA</li>
+      <li><span class="opt-letter">C</span> 34 SA</li>
+      <li><span class="opt-letter">D</span> 36 SA</li>
+      <li><span class="opt-letter">E</span> 37 SA</li>
+    </ul>
+    <details class="correction">
+      <summary>Voir la correction et l'analyse</summary>
+      <div class="correction-content">
+        <span class="answer-line">Réponse : C</span>
+        <p>Les bénéfices sont <strong>nets avant 34 SA</strong> : réduction de la mortalité néonatale, de la maladie des membranes hyalines (MMH), de l'hémorragie intraventriculaire et de l'entérocolite ulcéro-nécrosante.</p>
+        <p>Une 2<sup>e</sup> cure peut être discutée si la patiente redevient symptomatique avant 34 SA, avec un intervalle &gt; 10 jours. Après 34 SA, le bénéfice devient marginal.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q7 -->
+  <div class="qcm-card">
+    <div class="qcm-head">
+      <span class="qcm-num">Q7</span>
+      <span class="badge multi">Choix multiples</span>
+      <span class="theme">Contre-indications à la tocolyse</span>
+    </div>
+    <p class="question">Parmi les situations suivantes, lesquelles constituent une <strong>contre-indication formelle</strong> à la tocolyse (2 à 3 réponses) ?</p>
+    <ul class="options">
+      <li><span class="opt-letter">A</span> Hémorragie grave</li>
+      <li><span class="opt-letter">B</span> Hématome rétroplacentaire (HRP)</li>
+      <li><span class="opt-letter">C</span> Chorio-amniotite</li>
+      <li><span class="opt-letter">D</span> MAP à 33 SA avec membranes intactes</li>
+      <li><span class="opt-letter">E</span> Diabète gestationnel équilibré</li>
+    </ul>
+    <details class="correction">
+      <summary>Voir la correction et l'analyse</summary>
+      <div class="correction-content">
+        <span class="answer-line">Réponses : A, B, C</span>
+        <p>Contre-indications absolues : <strong>hémorragie grave, HRP, souffrance fœtale aiguë ou chronique, chorio-amniotite, mort fœtale in utero, malformation fœtale non viable</strong>.</p>
+        <p><strong>D</strong> est au contraire l'indication type de la tocolyse (avant 35 SA, membranes intactes). <strong>E</strong> n'est pas une contre-indication : c'est le <em>bêta-mimétique</em> qui est contre-indiqué en cas de diabète décompensé, pas la tocolyse en général.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q8 -->
+  <div class="qcm-card">
+    <div class="qcm-head">
+      <span class="qcm-num">Q8</span>
+      <span class="badge simple">Choix simple « SAUF »</span>
+      <span class="theme">Score de menace</span>
+    </div>
+    <p class="question">Le score pronostique de menace d'accouchement prématuré évalue tous les paramètres suivants, <strong>SAUF</strong> :</p>
+    <ul class="options">
+      <li><span class="opt-letter">A</span> Position du col</li>
+      <li><span class="opt-letter">B</span> Dilatation du col</li>
+      <li><span class="opt-letter">C</span> Longueur du col</li>
+      <li><span class="opt-letter">D</span> Consistance du col</li>
+      <li><span class="opt-letter">E</span> Poids maternel</li>
+    </ul>
+    <details class="correction">
+      <summary>Voir la correction et l'analyse</summary>
+      <div class="correction-content">
+        <span class="answer-line">Réponse : E</span>
+        <p>Le score de menace (0–3 par item) évalue : <strong>position, dilatation, longueur, consistance du col, station de la présentation, segment inférieur, contractions utérines, état de la poche des eaux</strong>.</p>
+        <p>Le <strong>poids maternel</strong> n'y figure pas — c'est un facteur de risque général (faible poids / carence nutritionnelle), pas un item du score.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q9 -->
+  <div class="qcm-card">
+    <div class="qcm-head">
+      <span class="qcm-num">Q9</span>
+      <span class="badge rj">Réponse juste</span>
+      <span class="theme">Béance cervico-isthmique</span>
+    </div>
+    <p class="question">Concernant la béance cervico-isthmique, quelle proposition est <strong>JUSTE</strong> ?</p>
+    <ul class="options">
+      <li><span class="opt-letter">A</span> Le diagnostic se fait uniquement pendant la grossesse</li>
+      <li><span class="opt-letter">B</span> Elle est confirmée hors grossesse par le passage de la bougie de Hégar n° 8 sans ressaut</li>
+      <li><span class="opt-letter">C</span> Le traitement repose sur un cerclage « à chaud » en urgence</li>
+      <li><span class="opt-letter">D</span> Elle est toujours d'origine congénitale</li>
+      <li><span class="opt-letter">E</span> Elle ne récidive jamais après un premier épisode</li>
+    </ul>
+    <details class="correction">
+      <summary>Voir la correction et l'analyse</summary>
+      <div class="correction-content">
+        <span class="answer-line">Réponse : B</span>
+        <p>La confirmation se fait <strong>hors grossesse</strong> par calibrage (Hégar n° 8 passant sans ressaut) ou HSG montrant un élargissement du défilé cervico-isthmique (&gt; 8 mm).</p>
+        <p><strong>A</strong> : au contraire, il faut la dépister hors grossesse. <strong>C</strong> : le traitement est le <em>cerclage à froid</em> vers 14 SA, pas à chaud. <strong>D</strong> : la béance peut être congénitale <em>ou</em> traumatique (curetage, conisation, amputation, déchirures). <strong>E</strong> : le risque de récidive justifie le cerclage prophylactique.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q10 -->
+  <div class="qcm-card">
+    <div class="qcm-head">
+      <span class="qcm-num">Q10</span>
+      <span class="badge multi">Choix multiples</span>
+      <span class="theme">Bêta-mimétiques</span>
+    </div>
+    <p class="question">Quels sont les effets secondaires classiques des bêta-mimétiques (2 à 3 réponses) ?</p>
+    <ul class="options">
+      <li><span class="opt-letter">A</span> Tachycardie maternelle et fœtale</li>
+      <li><span class="opt-letter">B</span> Hypokaliémie</li>
+      <li><span class="opt-letter">C</span> Hyperglycémie</li>
+      <li><span class="opt-letter">D</span> Bradycardie</li>
+      <li><span class="opt-letter">E</span> Hypoglycémie</li>
+    </ul>
+    <details class="correction">
+      <summary>Voir la correction et l'analyse</summary>
+      <div class="correction-content">
+        <span class="answer-line">Réponses : A, B, C</span>
+        <p>Effets secondaires : <strong>tachycardie maternelle/fœtale, palpitations, hypotension, hyperglycémie, hypokaliémie, OAP</strong> (surtout grossesses multiples).</p>
+        <p><strong>D et E</strong> sont l'inverse de la réalité. Ces effets expliquent pourquoi les bêta-mimétiques sont <em>délaissés</em> au profit des inhibiteurs calciques.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q11 -->
+  <div class="qcm-card">
+    <div class="qcm-head">
+      <span class="qcm-num">Q11</span>
+      <span class="badge simple">Choix simple</span>
+      <span class="theme">Antibiothérapie</span>
+    </div>
+    <p class="question">Concernant l'antibiothérapie dans la prise en charge de la MAP :</p>
+    <ul class="options">
+      <li><span class="opt-letter">A</span> Elle est systématique à membranes intactes</li>
+      <li><span class="opt-letter">B</span> Elle est systématique et prolongée en cas de RPM</li>
+      <li><span class="opt-letter">C</span> En cas de RPM, une antibioprophylaxie courte (48 h) est recommandée</li>
+      <li><span class="opt-letter">D</span> Elle est formellement contre-indiquée en cas de RPM</li>
+      <li><span class="opt-letter">E</span> Aucun traitement n'est recommandé en cas de portage de streptocoque B</li>
+    </ul>
+    <details class="correction">
+      <summary>Voir la correction et l'analyse</summary>
+      <div class="correction-content">
+        <span class="answer-line">Réponse : C</span>
+        <p>En cas de <strong>RPM</strong>, une antibioprophylaxie <strong>courte (48 h)</strong> est recommandée par la majorité des équipes. À membranes intactes, <strong>pas d'ATB systématique</strong>.</p>
+        <p>Il faut en revanche traiter spécifiquement les infections cervico-vaginales (vaginose, trichomonose) et, en cas de portage de <em>Streptococcus B</em>, administrer de l'ampicilline <strong>en perpartum</strong> pour prévenir l'infection néonatale. A, B, D, E sont donc fausses.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q12 -->
+  <div class="qcm-card">
+    <div class="qcm-head">
+      <span class="qcm-num">Q12</span>
+      <span class="badge rf">Réponse fausse</span>
+      <span class="theme">Corticothérapie</span>
+    </div>
+    <p class="question">Quelle proposition concernant la corticothérapie anténatale est <strong>FAUSSE</strong> ?</p>
+    <ul class="options">
+      <li><span class="opt-letter">A</span> Elle accélère la maturité pulmonaire fœtale</li>
+      <li><span class="opt-letter">B</span> Elle réduit la mortalité néonatale</li>
+      <li><span class="opt-letter">C</span> Elle réduit le risque de maladie des membranes hyalines</li>
+      <li><span class="opt-letter">D</span> Elle repose sur la bétaméthasone 12 mg/jour pendant 2 jours</li>
+      <li><span class="opt-letter">E</span> Elle est contre-indiquée chez la diabétique</li>
+    </ul>
+    <details class="correction">
+      <summary>Voir la correction et l'analyse</summary>
+      <div class="correction-content">
+        <span class="answer-line false">Réponse : E (fausse)</span>
+        <p>Il n'existe <strong>pas de contre-indication absolue</strong> à la corticothérapie anténatale. Chez la diabétique, il faut simplement renforcer la surveillance glycémique (la corticothérapie hyperglycémiante).</p>
+        <p>A, B, C, D sont exactes : accélération de la maturation pulmonaire, réduction de la mortalité, de la MMH, de l'hémorragie intraventriculaire et de l'entérocolite. Bétaméthasone 12 mg/j × 2 j (ou dexaméthasone équivalente), <strong>cure unique</strong> recommandée.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q13 -->
+  <div class="qcm-card">
+    <div class="qcm-head">
+      <span class="qcm-num">Q13</span>
+      <span class="badge multi">Choix multiples</span>
+      <span class="theme">Étiologies maternelles</span>
+    </div>
+    <p class="question">Parmi les étiologies <strong>maternelles</strong> d'accouchement prématuré, on cite (2 à 3 réponses) :</p>
+    <ul class="options">
+      <li><span class="opt-letter">A</span> Infections urinaires hautes ou basses</li>
+      <li><span class="opt-letter">B</span> Prééclampsie sévère</li>
+      <li><span class="opt-letter">C</span> Incompatibilité rhésus</li>
+      <li><span class="opt-letter">D</span> Utérus cloisonné</li>
+      <li><span class="opt-letter">E</span> Tabagisme</li>
+    </ul>
+    <details class="correction">
+      <summary>Voir la correction et l'analyse</summary>
+      <div class="correction-content">
+        <span class="answer-line">Réponses : A, B, C</span>
+        <p>Les causes <strong>maternelles générales</strong> incluent : infections (systémiques, urinaires, cervico-vaginales — elles augmentent la synthèse des prostaglandines), prééclampsie sévère, incompatibilité rhésus, diabète, cardiopathies.</p>
+        <p><strong>D</strong> est une cause <em>utérine</em> (malformation congénitale). <strong>E</strong> est un facteur <em>socio-économique / mode de vie</em>. Cette distinction par grandes catégories est fréquemment demandée.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q14 -->
+  <div class="qcm-card">
+    <div class="qcm-head">
+      <span class="qcm-num">Q14</span>
+      <span class="badge simple">Choix simple</span>
+      <span class="theme">Malformations utérines</span>
+    </div>
+    <p class="question">Quelle est la malformation utérine congénitale la plus fréquemment responsable de prématurité ?</p>
+    <ul class="options">
+      <li><span class="opt-letter">A</span> Utérus unicorne</li>
+      <li><span class="opt-letter">B</span> Utérus bicorne</li>
+      <li><span class="opt-letter">C</span> Utérus cloisonné</li>
+      <li><span class="opt-letter">D</span> Utérus hypoplasique</li>
+      <li><span class="opt-letter">E</span> Utérus didelphe</li>
+    </ul>
+    <details class="correction">
+      <summary>Voir la correction et l'analyse</summary>
+      <div class="correction-content">
+        <span class="answer-line">Réponse : C</span>
+        <p>L'<strong>utérus cloisonné</strong> représente environ <strong>50 %</strong> des malformations utérines et est responsable d'avortements précoces, d'accouchements prématurés et d'avortements tardifs. Le risque de prématurité global des malformations utérines varie de <strong>25 à 50 %</strong>.</p>
+        <p>La découverte d'un utérus cloisonné impose une <strong>cure chirurgicale par hystéroscopie opératoire</strong> sous contrôle échographique. La recherche d'une malformation urinaire associée est systématique (sauf pour l'utérus cloisonné).</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q15 -->
+  <div class="qcm-card">
+    <div class="qcm-head">
+      <span class="qcm-num">Q15</span>
+      <span class="badge rj">Réponse juste</span>
+      <span class="theme">Voie d'accouchement</span>
+    </div>
+    <p class="question">Pour un fœtus en présentation céphalique, &gt; 32 SA et &gt; 1500 g, la voie d'accouchement recommandée est :</p>
+    <ul class="options">
+      <li><span class="opt-letter">A</span> Césarienne systématique</li>
+      <li><span class="opt-letter">B</span> Accouchement par voie basse</li>
+      <li><span class="opt-letter">C</span> Césarienne uniquement si dystocie</li>
+      <li><span class="opt-letter">D</span> Extraction par forceps systématique</li>
+      <li><span class="opt-letter">E</span> Extraction par ventouse</li>
+    </ul>
+    <details class="correction">
+      <summary>Voir la correction et l'analyse</summary>
+      <div class="correction-content">
+        <span class="answer-line">Réponse : B</span>
+        <p>La règle du cours : <strong>&gt; 32 SA et &gt; 1500 g en présentation céphalique → voie basse</strong>. En revanche, entre <strong>28–32 SA (800–1500 g)</strong>, la voie basse est privilégiée <em>sauf présentation dystocique</em> (→ césarienne).</p>
+        <p><strong>D et E :</strong> la ventouse est <strong>contre-indiquée</strong> chez le prématuré (risque hémorragique cérébral), tandis que le forceps est d'utilisation large. La décision dépend du terme, du poids estimé et de la présentation.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q16 -->
+  <div class="qcm-card">
+    <div class="qcm-head">
+      <span class="qcm-num">Q16</span>
+      <span class="badge multi">Choix multiples</span>
+      <span class="theme">Grossesses multiples</span>
+    </div>
+    <p class="question">Concernant les grossesses multiples (2 à 3 réponses) :</p>
+    <ul class="options">
+      <li><span class="opt-letter">A</span> Elles sont responsables de 40 % des accouchements prématurés</li>
+      <li><span class="opt-letter">B</span> Le risque de prématurité en cas de gémellité est de 40 %</li>
+      <li><span class="opt-letter">C</span> En cas de triplés, le risque approche 100 % avec un âge critique de 33 SA</li>
+      <li><span class="opt-letter">D</span> L'âge gestationnel critique en cas de gémellité est 28 SA</li>
+      <li><span class="opt-letter">E</span> Elles ne constituent pas un facteur de risque de MAP</li>
+    </ul>
+    <details class="correction">
+      <summary>Voir la correction et l'analyse</summary>
+      <div class="correction-content">
+        <span class="answer-line">Réponses : A, B, C</span>
+        <p>Les grossesses multiples expliquent <strong>40 % des AP</strong> par distension utérine, placenta bas inséré et RPM. Le risque de prématurité est de <strong>40 % en cas de gémellité</strong>, proche de <strong>100 % en cas de triplés</strong> (âge critique ≈ 33 SA).</p>
+        <p><strong>D</strong> : le seuil critique des triplés est 33 SA, pas 28 SA. <strong>E</strong> : c'est au contraire un facteur majeur — d'où la nécessité d'une bonne gestion des inducteurs de l'ovulation.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q17 -->
+  <div class="qcm-card">
+    <div class="qcm-head">
+      <span class="qcm-num">Q17</span>
+      <span class="badge simple">Choix simple</span>
+      <span class="theme">Diagnostic positif MAP</span>
+    </div>
+    <p class="question">Le seuil pathologique des contractions utérines dans la MAP est :</p>
+    <ul class="options">
+      <li><span class="opt-letter">A</span> Au moins 1 contraction toutes les 10 minutes</li>
+      <li><span class="opt-letter">B</span> Au moins 1 contraction toutes les 30 minutes</li>
+      <li><span class="opt-letter">C</span> Au moins 4 contractions par heure</li>
+      <li><span class="opt-letter">D</span> Au moins 2 contractions toutes les 10 minutes</li>
+      <li><span class="opt-letter">E</span> Au moins 5 contractions par heure</li>
+    </ul>
+    <details class="correction">
+      <summary>Voir la correction et l'analyse</summary>
+      <div class="correction-content">
+        <span class="answer-line">Réponse : A</span>
+        <p>On considère comme pathologique l'existence d'<strong>au moins 1 contraction utérine toutes les 10 minutes</strong>, à condition qu'elles soient intenses, douloureuses et régulières, retrouvées à l'interrogatoire, à la palpation et à la tocographie.</p>
+        <p>Les autres seuils sont soit trop laxistes (B, C, E), soit trop stricts (D). À ces contractions s'associent les métrorragies brunâtres et/ou un écoulement liquidien (RPM).</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q18 -->
+  <div class="qcm-card">
+    <div class="qcm-head">
+      <span class="qcm-num">Q18</span>
+      <span class="badge rf">Réponse fausse</span>
+      <span class="theme">Échographie endovaginale du col</span>
+    </div>
+    <p class="question">Concernant l'échographie endovaginale du col, quelle proposition est <strong>FAUSSE</strong> ?</p>
+    <ul class="options">
+      <li><span class="opt-letter">A</span> Elle est réalisée à vessie vide</li>
+      <li><span class="opt-letter">B</span> Elle présente une bonne reproductibilité par rapport au toucher vaginal</li>
+      <li><span class="opt-letter">C</span> Elle permet des mesures objectives et précises</li>
+      <li><span class="opt-letter">D</span> Une longueur &lt; 30 mm est un critère de risque</li>
+      <li><span class="opt-letter">E</span> Elle est réalisée à vessie pleine</li>
+    </ul>
+    <details class="correction">
+      <summary>Voir la correction et l'analyse</summary>
+      <div class="correction-content">
+        <span class="answer-line false">Réponse : E (fausse)</span>
+        <p>L'échographie endovaginale du col se fait <strong>à vessie vide</strong>. La vessie pleine modifie la longueur cervicale et fausse la mesure.</p>
+        <p>A, B, C, D sont exactes : bonne reproductibilité, mesures objectives, longueur &lt; 30 mm = risque, ouverture de l'orifice interne &gt; 10 mm, protrusion de la poche des eaux.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q19 -->
+  <div class="qcm-card">
+    <div class="qcm-head">
+      <span class="qcm-num">Q19</span>
+      <span class="badge multi">Choix multiples</span>
+      <span class="theme">Bilan initial de la mère</span>
+    </div>
+    <p class="question">Parmi les examens suivants, lesquels font partie du <strong>bilan initial de la mère</strong> devant une MAP (2 à 3 réponses) ?</p>
+    <ul class="options">
+      <li><span class="opt-letter">A</span> NFS et CRP</li>
+      <li><span class="opt-letter">B</span> ECBU</li>
+      <li><span class="opt-letter">C</span> Prélèvement bactériologique endocervical et vaginal</li>
+      <li><span class="opt-letter">D</span> IRM pelvienne systématique</li>
+      <li><span class="opt-letter">E</span> Fond d'œil systématique</li>
+    </ul>
+    <details class="correction">
+      <summary>Voir la correction et l'analyse</summary>
+      <div class="correction-content">
+        <span class="answer-line">Réponses : A, B, C</span>
+        <p>Le bilan maternel comporte : <strong>NFS-CRP, ECBU, prélèvement bactériologique endocervical et vaginal, recherche de RPM, dépistage du diabète gestationnel (GP75)</strong>.</p>
+        <p><strong>D et E</strong> ne font pas partie du bilan systématique de MAP. On y ajoute un bilan fœtal (RCF, échographie obstétricale : nombre de fœtus, biométrie, morphologie, LA, placenta).</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q20 -->
+  <div class="qcm-card">
+    <div class="qcm-head">
+      <span class="qcm-num">Q20</span>
+      <span class="badge simple">Choix simple « SAUF »</span>
+      <span class="theme">Facteurs de risque</span>
+    </div>
+    <p class="question">Tous les facteurs suivants favorisent l'accouchement prématuré, <strong>SAUF</strong> :</p>
+    <ul class="options">
+      <li><span class="opt-letter">A</span> Multiparité</li>
+      <li><span class="opt-letter">B</span> Tabagisme</li>
+      <li><span class="opt-letter">C</span> Bas niveau socio-économique</li>
+      <li><span class="opt-letter">D</span> Suivi prénatal régulier</li>
+      <li><span class="opt-letter">E</span> Diabète préexistant à la grossesse</li>
+    </ul>
+    <details class="correction">
+      <summary>Voir la correction et l'analyse</summary>
+      <div class="correction-content">
+        <span class="answer-line">Réponse : D</span>
+        <p>Le <strong>suivi prénatal régulier est un facteur protecteur</strong> : il permet de repérer les patientes à risque et d'instaurer une prévention. C'est l'un des piliers de la prévention de la prématurité.</p>
+        <p>A, B, C, E sont tous des facteurs de risque reconnus (antécédents, mode de vie, socio-économique, pathologie de la grossesse).</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q21 -->
+  <div class="qcm-card">
+    <div class="qcm-head">
+      <span class="qcm-num">Q21</span>
+      <span class="badge simple">Choix simple</span>
+      <span class="theme">Pronostic néonatal</span>
+    </div>
+    <p class="question">Concernant la mortalité néonatale liée à la prématurité :</p>
+    <ul class="options">
+      <li><span class="opt-letter">A</span> Elle est de 22 % à 30 SA</li>
+      <li><span class="opt-letter">B</span> Elle est de 50 % à 32 SA</li>
+      <li><span class="opt-letter">C</span> Elle est de 30 % au-delà de 32 SA</li>
+      <li><span class="opt-letter">D</span> Elle est inférieure à 5 % à 28 SA</li>
+      <li><span class="opt-letter">E</span> Elle n'est pas liée à l'âge gestationnel</li>
+    </ul>
+    <details class="correction">
+      <summary>Voir la correction et l'analyse</summary>
+      <div class="correction-content">
+        <span class="answer-line">Réponse : A</span>
+        <p>La mortalité néonatale est de <strong>22 % à 30 SA</strong> et de <strong>8 % au-delà de 32 SA</strong>. Elle est liée à la détresse respiratoire, à l'hémorragie cérébrale et au choc septique.</p>
+        <p>Les autres propositions sont fausses : B (50 % à 32 SA est surestimé), C (30 % au-delà de 32 SA est surestimé), D (faux, la mortalité est bien plus élevée à 28 SA), E (l'âge gestationnel est au contraire <strong>le</strong> critère pronostique prédominant).</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q22 -->
+  <div class="qcm-card">
+    <div class="qcm-head">
+      <span class="qcm-num">Q22</span>
+      <span class="badge multi">Choix multiples</span>
+      <span class="theme">Prévention</span>
+    </div>
+    <p class="question">Parmi les mesures de prévention de la prématurité (2 à 3 réponses) :</p>
+    <ul class="options">
+      <li><span class="opt-letter">A</span> Dépistage des facteurs de risque de prématurité</li>
+      <li><span class="opt-letter">B</span> Cerclage du col en cas de béance cervico-isthmique</li>
+      <li><span class="opt-letter">C</span> Cure chirurgicale de la cloison utérine</li>
+      <li><span class="opt-letter">D</span> Tabagisme maternel</li>
+      <li><span class="opt-letter">E</span> Absence de suivi prénatal</li>
+    </ul>
+    <details class="correction">
+      <summary>Voir la correction et l'analyse</summary>
+      <div class="correction-content">
+        <span class="answer-line">Réponses : A, B, C</span>
+        <p>La prévention repose sur : dépistage des facteurs de risque, suivi prénatal régulier, <strong>cerclage</strong> si béance, <strong>cure de cloison utérine</strong>, prise en charge adéquate des MAP avec corticothérapie, dépistage et traitement des infections cervico-vaginales et urinaires, bonne gestion des inducteurs de l'ovulation, accès facile aux filières spécialisées.</p>
+        <p><strong>D</strong> (tabagisme) et <strong>E</strong> (absence de suivi) sont des facteurs de risque, pas des mesures de prévention.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q23 -->
+  <div class="qcm-card">
+    <div class="qcm-head">
+      <span class="qcm-num">Q23</span>
+      <span class="badge simple">Choix simple « SAUF »</span>
+      <span class="theme">Atosiban</span>
+    </div>
+    <p class="question">Concernant l'atosiban, toutes les propositions suivantes sont exactes, <strong>SAUF</strong> :</p>
+    <ul class="options">
+      <li><span class="opt-letter">A</span> C'est un antagoniste de l'ocytocine</li>
+      <li><span class="opt-letter">B</span> Il est administré par voie intraveineuse pendant 48 heures</li>
+      <li><span class="opt-letter">C</span> Il n'a pas de contre-indication sauf l'hypersensibilité au produit</li>
+      <li><span class="opt-letter">D</span> Les effets indésirables sont peu fréquents (tachycardie, douleurs thoraciques)</li>
+      <li><span class="opt-letter">E</span> Il est formellement contre-indiqué en cas d'HTA sévère</li>
+    </ul>
+    <details class="correction">
+      <summary>Voir la correction et l'analyse</summary>
+      <div class="correction-content">
+        <span class="answer-line">Réponse : E (exception)</span>
+        <p>L'<strong>atosiban (Tractocile<sup>®</sup>)</strong> est un antagoniste de l'ocytocine administré par voie IV pendant 48 h, avec peu d'effets indésirables et <strong>pas de contre-indication hormis l'hypersensibilité</strong>.</p>
+        <p><strong>E est fausse :</strong> l'HTA sévère est une contre-indication des <em>bêta-mimétiques</em>, pas de l'atosiban. C'est justement l'un de ses avantages. Ne pas confondre les profils de contre-indications des deux familles.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q24 -->
+  <div class="qcm-card">
+    <div class="qcm-head">
+      <span class="qcm-num">Q24</span>
+      <span class="badge simple">Choix simple</span>
+      <span class="theme">AINS tocolytiques</span>
+    </div>
+    <p class="question">Concernant les AINS utilisés comme tocolytiques :</p>
+    <ul class="options">
+      <li><span class="opt-letter">A</span> Ils sont prescrits en première intention</li>
+      <li><span class="opt-letter">B</span> Ils inhibent la synthèse des prostaglandines</li>
+      <li><span class="opt-letter">C</span> Ils n'ont aucun effet indésirable</li>
+      <li><span class="opt-letter">D</span> Ils sont recommandés en cas d'oligoamnios</li>
+      <li><span class="opt-letter">E</span> Ils sont recommandés en cas de fermeture prématurée du canal artériel</li>
+    </ul>
+    <details class="correction">
+      <summary>Voir la correction et l'analyse</summary>
+      <div class="correction-content">
+        <span class="answer-line">Réponse : B</span>
+        <p>Les AINS inhibent la synthèse des prostaglandines. Ils ne sont <strong>jamais prescrits en 1<sup>re</sup> intention</strong>. Leurs effets indésirables incluent : ulcère gastroduodénal, réaction allergique, <strong>fermeture prématurée du canal artériel</strong>, <strong>oligoamnios</strong>.</p>
+        <p><strong>D et E</strong> sont donc l'inverse : ces situations sont des <em>effets indésirables</em> des AINS, pas des indications.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q25 -->
+  <div class="qcm-card">
+    <div class="qcm-head">
+      <span class="qcm-num">Q25</span>
+      <span class="badge multi">Choix multiples</span>
+      <span class="theme">Accouchement du prématuré</span>
+    </div>
+    <p class="question">Lors de l'accouchement par voie basse d'un prématuré (2 à 3 réponses) :</p>
+    <ul class="options">
+      <li><span class="opt-letter">A</span> Le monitorage obstétrical doit être continu (RCF + tocographie)</li>
+      <li><span class="opt-letter">B</span> L'analgésie péridurale est recommandée</li>
+      <li><span class="opt-letter">C</span> La ventouse est contre-indiquée</li>
+      <li><span class="opt-letter">D</span> La femme doit rester en décubitus dorsal strict</li>
+      <li><span class="opt-letter">E</span> Les ocytociques à forte dose sont recommandés</li>
+    </ul>
+    <details class="correction">
+      <summary>Voir la correction et l'analyse</summary>
+      <div class="correction-content">
+        <span class="answer-line">Réponses : A, B, C</span>
+        <p>En cas de voie basse : <strong>monitorage continu</strong>, <strong>péridurale recommandée</strong>, décubitus latéral gauche (pas dorsal strict), perfusion de G5 %, bonne oxygénation, respect des membranes, correction rapide des anomalies de contractions, <strong>ventouse contre-indiquée</strong> (forceps d'utilisation large), épisiotomie systématique, pédiatre présent en salle.</p>
+        <p><strong>D</strong> : le décubitus latéral gauche est la position recommandée. <strong>E</strong> : les drogues déprimant les centres respiratoires du nouveau-né (dont les ocytociques à forte dose) sont à éviter.</p>
+      </div>
+    </details>
+  </div>
+
+</section>
+
+<!-- ================= SECTION 2 : CAS CLINIQUES ================= -->
+<section id="cas">
+  <div class="section-title">
+    <div class="num">02</div>
+    <h2>5 Cas cliniques hospitaliers algériens</h2>
+  </div>
+  <p class="section-sub">Mises en situation réalistes (CHU, EPH) avec QCM intégrés et corrections détaillées.</p>
+
+  <!-- CAS 1 -->
+  <div class="case-card">
+    <div class="case-head">
+      <span class="case-num">Cas 1</span>
+      <h3>MAP sur grossesse singleton avec antécédent d'AP</h3>
+      <span class="loc">CHU Bab El Oued · Urgences gynéco-obstétricales</span>
+    </div>
+    <div class="vignette">
+      <p><span class="v-label">Mme B., 27 ans</span>, G2P1, à <strong>32 SA</strong>, consulte pour contractions utérines douloureuses toutes les 7 minutes depuis 3 heures. <strong>ATCD :</strong> accouchement prématuré à 34 SA il y a 2 ans.</p>
+      <p><strong>Examen :</strong> TA 12/7, pas de métrorragies, pas de fuite liquidienne. TV : col postérieur, court (1 cm), ouvert à 2 cm, mou, présentation céphalique mobile.</p>
+    </div>
+    <div class="case-body">
+
+      <div class="qcm-card">
+        <div class="qcm-head">
+          <span class="qcm-num">C1-Q1</span>
+          <span class="badge simple">Choix simple</span>
+          <span class="theme">Diagnostic</span>
+        </div>
+        <p class="question">Quel est le diagnostic le plus probable ?</p>
+        <ul class="options">
+          <li><span class="opt-letter">A</span> Menace d'accouchement prématuré</li>
+          <li><span class="opt-letter">B</span> Hématome rétroplacentaire</li>
+          <li><span class="opt-letter">C</span> Rupture prématurée des membranes</li>
+          <li><span class="opt-letter">D</span> Chorio-amniotite</li>
+          <li><span class="opt-letter">E</span> Accouchement prématuré inévitable</li>
+        </ul>
+        <details class="correction">
+          <summary>Voir la correction</summary>
+          <div class="correction-content">
+            <span class="answer-line">Réponse : A</span>
+            <p>Contractions &gt; 1/10 min + modifications cervicales (col court, ouvert à 2 cm) + terme &lt; 37 SA = <strong>MAP</strong>. Il n'y a ni métrorragies (≠ HRP), ni fuite (≠ RPM), ni fièvre (≠ chorioamniotite), et pas encore de dilatation complète (≠ AP inévitable).</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="qcm-card">
+        <div class="qcm-head">
+          <span class="qcm-num">C1-Q2</span>
+          <span class="badge multi">Choix multiples</span>
+          <span class="theme">Bilan initial</span>
+        </div>
+        <p class="question">Quels examens font partie du bilan initial ? (2 à 3 réponses)</p>
+        <ul class="options">
+          <li><span class="opt-letter">A</span> NFS, CRP</li>
+          <li><span class="opt-letter">B</span> ECBU et prélèvement cervico-vaginal</li>
+          <li><span class="opt-letter">C</span> Échographie obstétricale + RCF</li>
+          <li><span class="opt-letter">D</span> IRM pelvienne en urgence</li>
+          <li><span class="opt-letter">E</span> Amniocentèse diagnostique</li>
+        </ul>
+        <details class="correction">
+          <summary>Voir la correction</summary>
+          <div class="correction-content">
+            <span class="answer-line">Réponses : A, B, C</span>
+            <p>Le bilan de MAP comporte : NFS-CRP, ECBU, prélèvements bactériologiques, recherche de RPM, dépistage du diabète gestationnel, et côté fœtal : RCF + échographie obstétricale (nombre de fœtus, biométrie, morphologie, LA, placenta).</p>
+            <p>L'IRM pelvienne et l'amniocentèse ne sont pas des examens de première ligne dans ce contexte.</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="qcm-card">
+        <div class="qcm-head">
+          <span class="qcm-num">C1-Q3</span>
+          <span class="badge simple">Choix simple</span>
+          <span class="theme">Traitement</span>
+        </div>
+        <p class="question">Quelle est la conduite thérapeutique la plus adaptée ?</p>
+        <ul class="options">
+          <li><span class="opt-letter">A</span> Repos seul, pas de traitement médicamenteux</li>
+          <li><span class="opt-letter">B</span> Hospitalisation + tocolyse par inhibiteur calcique + corticothérapie</li>
+          <li><span class="opt-letter">C</span> Césarienne en urgence</li>
+          <li><span class="opt-letter">D</span> Bêta-mimétiques en première intention</li>
+          <li><span class="opt-letter">E</span> Antibiotiques systématiques</li>
+        </ul>
+        <details class="correction">
+          <summary>Voir la correction</summary>
+          <div class="correction-content">
+            <span class="answer-line">Réponse : B</span>
+            <p>À 32 SA (&lt; 35 SA) avec MAP, la tocolyse est indiquée : <strong>inhibiteur calcique de première intention</strong> (nifédipine orale 20 mg/8h × 48h ou Loxen<sup>®</sup> IV si sévère), associée à la <strong>corticothérapie anténatale</strong> (bétaméthasone 12 mg/j × 2 j) pour la maturation pulmonaire.</p>
+            <p><strong>A</strong> : le repos seul est réservé aux MAP après 35 SA. <strong>C</strong> : pas d'indication ici. <strong>D</strong> : les bêta-mimétiques sont délaissés. <strong>E</strong> : pas d'ATB systématique à membranes intactes.</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="qcm-card">
+        <div class="qcm-head">
+          <span class="qcm-num">C1-Q4</span>
+          <span class="badge simple">Choix simple</span>
+          <span class="theme">Échographie du col</span>
+        </div>
+        <p class="question">Quel critère échographique endovaginal est le plus en faveur d'un risque élevé d'AP ?</p>
+        <ul class="options">
+          <li><span class="opt-letter">A</span> Longueur cervicale &gt; 40 mm</li>
+          <li><span class="opt-letter">B</span> Longueur cervicale &lt; 30 mm avec funneling</li>
+          <li><span class="opt-letter">C</span> Col postérieur</li>
+          <li><span class="opt-letter">D</span> Présentation céphalique</li>
+          <li><span class="opt-letter">E</span> Placenta fundique</li>
+        </ul>
+        <details class="correction">
+          <summary>Voir la correction</summary>
+          <div class="correction-content">
+            <span class="answer-line">Réponse : B</span>
+            <p>Les critères de risque : <strong>longueur &lt; 30 mm</strong>, ouverture de l'orifice interne &gt; 10 mm, <strong>protrusion de la poche des eaux (funneling)</strong>. L'association col court + funneling est particulièrement péjorative.</p>
+            <p>Un col long, une présentation céphalique et un placenta fundique ne sont pas des critères de risque.</p>
+          </div>
+        </details>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CAS 2 -->
+  <div class="case-card">
+    <div class="case-head">
+      <span class="case-num">Cas 2</span>
+      <h3>Béance cervico-isthmique et avortements tardifs à répétition</h3>
+      <span class="loc">EPH · Consultation de gynécologie-obstétrique</span>
+    </div>
+    <div class="vignette">
+      <p><span class="v-label">Mme K., 33 ans</span>, G4P1, à <strong>18 SA</strong>, consulte pour pesanteur pelvienne et écoulement vaginal clair.</p>
+      <p><strong>ATCD :</strong> 2 avortements tardifs à 18 SA et 20 SA, avec expulsion rapide d'un fœtus vivant, peu ou pas de contractions. <strong>TV :</strong> col ouvert à 3 cm, membranes à plat.</p>
+    </div>
+    <div class="case-body">
+
+      <div class="qcm-card">
+        <div class="qcm-head">
+          <span class="qcm-num">C2-Q1</span>
+          <span class="badge simple">Choix simple</span>
+          <span class="theme">Diagnostic</span>
+        </div>
+        <p class="question">Quel est le diagnostic le plus probable ?</p>
+        <ul class="options">
+          <li><span class="opt-letter">A</span> MAP sur grossesse singleton</li>
+          <li><span class="opt-letter">B</span> Béance cervico-isthmique</li>
+          <li><span class="opt-letter">C</span> HRP</li>
+          <li><span class="opt-letter">D</span> Placenta praevia</li>
+          <li><span class="opt-letter">E</span> Rupture utérine</li>
+        </ul>
+        <details class="correction">
+          <summary>Voir la correction</summary>
+          <div class="correction-content">
+            <span class="answer-line">Réponse : B</span>
+            <p>L'ATCD d'<strong>avortements tardifs (14–22 SA)</strong> avec expulsion facile et rapide d'un fœtus vivant, peu ou pas de contractions, associé à une ouverture cervicale indolore, est caractéristique de la <strong>béance cervico-isthmique</strong>.</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="qcm-card">
+        <div class="qcm-head">
+          <span class="qcm-num">C2-Q2</span>
+          <span class="badge simple">Choix simple</span>
+          <span class="theme">Confirmation hors grossesse</span>
+        </div>
+        <p class="question">Comment confirmer le diagnostic en dehors de la grossesse ?</p>
+        <ul class="options">
+          <li><span class="opt-letter">A</span> Échographie abdominale</li>
+          <li><span class="opt-letter">B</span> Bougie de Hégar n° 8 passant sans ressaut ou HSG montrant un défilé &gt; 8 mm</li>
+          <li><span class="opt-letter">C</span> Frottis cervico-vaginal</li>
+          <li><span class="opt-letter">D</span> IRM pelvienne</li>
+          <li><span class="opt-letter">E</span> Cœlioscopie</li>
+        </ul>
+        <details class="correction">
+          <summary>Voir la correction</summary>
+          <div class="correction-content">
+            <span class="answer-line">Réponse : B</span>
+            <p>La confirmation se fait hors grossesse par <strong>calibrage du col</strong> (Hégar n° 8 passant sans ressaut) ou par <strong>HSG</strong> objectivant un élargissement du défilé cervico-isthmique &gt; 8 mm.</p>
+            <p>Les béances dites <em>fonctionnelles</em> ne se révèlent que pendant la grossesse (mesure échographique endovaginale de l'orifice interne).</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="qcm-card">
+        <div class="qcm-head">
+          <span class="qcm-num">C2-Q3</span>
+          <span class="badge multi">Choix multiples</span>
+          <span class="theme">Prise en charge</span>
+        </div>
+        <p class="question">Quelles sont les mesures thérapeutiques adaptées ? (2 à 3 réponses)</p>
+        <ul class="options">
+          <li><span class="opt-letter">A</span> Cerclage à froid vers 14 SA lors d'une grossesse ultérieure</li>
+          <li><span class="opt-letter">B</span> Repos et surveillance</li>
+          <li><span class="opt-letter">C</span> Recherche et traitement d'une malformation utérine associée</li>
+          <li><span class="opt-letter">D</span> Hystérectomie prophylactique</li>
+          <li><span class="opt-letter">E</span> Cerclage à chaud en urgence à 18 SA avec membranes à plat</li>
+        </ul>
+        <details class="correction">
+          <summary>Voir la correction</summary>
+          <div class="correction-content">
+            <span class="answer-line">Réponses : A, B, C</span>
+            <p>Le <strong>cerclage à froid vers 14 SA</strong> est le traitement de référence et prévient la récidive de l'avortement et de la prématurité. Le repos et la surveillance sont associés.</p>
+            <p>Il faut rechercher une malformation utérine associée (la béance peut être congénitale, associée à des malformations utérines) et une cause traumatique (curetage, conisation, amputation, déchirure).</p>
+            <p><strong>D</strong> : disproportionné. <strong>E</strong> : le cerclage à chaud avec membranes à plat est très risqué (rupture des membranes, chorioamniotite) — ce n'est pas la stratégie recommandée.</p>
+          </div>
+        </details>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CAS 3 -->
+  <div class="case-card">
+    <div class="case-head">
+      <span class="case-num">Cas 3</span>
+      <h3>Grossesse gémellaire + MAP + RPM à 30 SA</h3>
+      <span class="loc">Maternité niveau III · CHU d'Oran</span>
+    </div>
+    <div class="vignette">
+      <p><span class="v-label">Mme T., 30 ans</span>, G2P1, grossesse gémellaire bichoriale biamniotique, à <strong>30 SA</strong>. Admise pour RPM depuis 6 h et contractions utérines.</p>
+      <p><strong>TV :</strong> col ouvert à 3 cm, long de 0,5 cm. <strong>Écho :</strong> biométrie concordante, LA en quantité normale dans les deux sacs. <strong>Pas de fièvre</strong>, RCF normaux.</p>
+    </div>
+    <div class="case-body">
+
+      <div class="qcm-card">
+        <div class="qcm-head">
+          <span class="qcm-num">C3-Q1</span>
+          <span class="badge multi">Choix multiples</span>
+          <span class="theme">Étiologies</span>
+        </div>
+        <p class="question">Quelles étiologies peuvent expliquer la MAP dans ce contexte ? (2 à 3 réponses)</p>
+        <ul class="options">
+          <li><span class="opt-letter">A</span> Surdistension utérine liée à la gémellité</li>
+          <li><span class="opt-letter">B</span> Rupture prématurée des membranes</li>
+          <li><span class="opt-letter">C</span> Placenta bas inséré (fréquent dans les grossesses multiples)</li>
+          <li><span class="opt-letter">D</span> Insuffisance rénale aiguë maternelle</li>
+          <li><span class="opt-letter">E</span> Malformation utérine de type utérus cloisonné</li>
+        </ul>
+        <details class="correction">
+          <summary>Voir la correction</summary>
+          <div class="correction-content">
+            <span class="answer-line">Réponses : A, B, C</span>
+            <p>Dans les grossesses multiples : <strong>surdistension utérine</strong>, <strong>placenta bas inséré</strong> et <strong>RPM</strong> sont les mécanismes classiques. La gémellité est responsable d'environ 40 % des AP.</p>
+            <p>D et E ne sont pas les mécanismes en cause ici.</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="qcm-card">
+        <div class="qcm-head">
+          <span class="qcm-num">C3-Q2</span>
+          <span class="badge simple">Choix simple</span>
+          <span class="theme">Antibiothérapie</span>
+        </div>
+        <p class="question">Quelle est l'attitude antibiotique recommandée ?</p>
+        <ul class="options">
+          <li><span class="opt-letter">A</span> Aucune antibiothérapie</li>
+          <li><span class="opt-letter">B</span> Antibiothérapie prophylactique courte de 48 h</li>
+          <li><span class="opt-letter">C</span> Antibiothérapie prolongée jusqu'à l'accouchement</li>
+          <li><span class="opt-letter">D</span> Antibiothérapie uniquement si fièvre</li>
+          <li><span class="opt-letter">E</span> Antibiothérapie locale intravaginale seule</li>
+        </ul>
+        <details class="correction">
+          <summary>Voir la correction</summary>
+          <div class="correction-content">
+            <span class="answer-line">Réponse : B</span>
+            <p>En cas de RPM, la majorité des équipes recommande une <strong>antibioprophylaxie courte de 48 h</strong>, pour réduire le risque de chorioamniotite et d'infection néonatale. En cas de portage de <em>Streptococcus B</em>, ampicilline en perpartum.</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="qcm-card">
+        <div class="qcm-head">
+          <span class="qcm-num">C3-Q3</span>
+          <span class="badge simple">Choix simple</span>
+          <span class="theme">Tocolyse & corticothérapie</span>
+        </div>
+        <p class="question">Concernant la tocolyse et la corticothérapie :</p>
+        <ul class="options">
+          <li><span class="opt-letter">A</span> Tocolyse et corticothérapie sont indiquées</li>
+          <li><span class="opt-letter">B</span> La tocolyse est contre-indiquée en cas de RPM</li>
+          <li><span class="opt-letter">C</span> La corticothérapie est inutile à 30 SA</li>
+          <li><span class="opt-letter">D</span> Aucune des deux n'est indiquée</li>
+          <li><span class="opt-letter">E</span> Seule la corticothérapie est indiquée</li>
+        </ul>
+        <details class="correction">
+          <summary>Voir la correction</summary>
+          <div class="correction-content">
+            <span class="answer-line">Réponse : A</span>
+            <p>À 30 SA (&lt; 34 SA), la <strong>corticothérapie anténatale</strong> est pleinement indiquée (bénéfices nets avant 34 SA). La <strong>tocolyse</strong> est également indiquée en l'absence de contre-indication — elle vise à prolonger la grossesse le temps de la maturation pulmonaire (48 h).</p>
+            <p>La RPM n'est pas une contre-indication absolue à la tocolyse tant qu'il n'y a pas de chorioamniotite. La chorioamniotite, en revanche, l'est.</p>
+          </div>
+        </details>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CAS 4 -->
+  <div class="case-card">
+    <div class="case-head">
+      <span class="case-num">Cas 4</span>
+      <h3>Prééclampsie sévère à 31 SA : prématurité induite</h3>
+      <span class="loc">CHU · Réanimation maternelle</span>
+    </div>
+    <div class="vignette">
+      <p><span class="v-label">Mme S., 35 ans</span>, G1P0, à <strong>31 SA</strong>, admise pour céphalées, barre épigastrique et troubles visuels.</p>
+      <p><strong>Examen :</strong> TA 160/110 mmHg, protéinurie 3+, plaquettes 80 000/mm³, ASAT × 2, hémolyse débutante. RCF : variabilité réduite.</p>
+    </div>
+    <div class="case-body">
+
+      <div class="qcm-card">
+        <div class="qcm-head">
+          <span class="qcm-num">C4-Q1</span>
+          <span class="badge simple">Choix simple</span>
+          <span class="theme">Diagnostic</span>
+        </div>
+        <p class="question">Quel est le diagnostic ?</p>
+        <ul class="options">
+          <li><span class="opt-letter">A</span> Prééclampsie non sévère</li>
+          <li><span class="opt-letter">B</span> Prééclampsie sévère avec HELLP syndrome débutant</li>
+          <li><span class="opt-letter">C</span> HTA chronique</li>
+          <li><span class="opt-letter">D</span> Éclampsie</li>
+          <li><span class="opt-letter">E</span> MAP isolée</li>
+        </ul>
+        <details class="correction">
+          <summary>Voir la correction</summary>
+          <div class="correction-content">
+            <span class="answer-line">Réponse : B</span>
+            <p>Prééclampsie sévère : TA ≥ 160/110 + protéinurie + signes neurologiques (céphalées, troubles visuels) + barre épigastrique + cytolyse + thrombopénie + hémolyse → tableau de <strong>HELLP syndrome débutant</strong>.</p>
+            <p>L'éclampsie correspondrait à des convulsions (absentes ici). L'HTA chronique précède la grossesse. La MAP isolée ne rend pas compte du tableau.</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="qcm-card">
+        <div class="qcm-head">
+          <span class="qcm-num">C4-Q2</span>
+          <span class="badge simple">Choix simple</span>
+          <span class="theme">Conduite à tenir</span>
+        </div>
+        <p class="question">Quelle est la conduite à tenir ?</p>
+        <ul class="options">
+          <li><span class="opt-letter">A</span> Tocolyse et corticothérapie puis attente à domicile</li>
+          <li><span class="opt-letter">B</span> Extraction fœtale (césarienne) après stabilisation maternelle et corticothérapie</li>
+          <li><span class="opt-letter">C</span> Repos strict jusqu'à 37 SA</li>
+          <li><span class="opt-letter">D</span> Traitement antihypertenseur seul et poursuite de la grossesse</li>
+          <li><span class="opt-letter">E</span> Cerclage cervical</li>
+        </ul>
+        <details class="correction">
+          <summary>Voir la correction</summary>
+          <div class="correction-content">
+            <span class="answer-line">Réponse : B</span>
+            <p>Dans la prééclampsie sévère avec HELLP, l'objectif est de <strong>faire régresser la pathologie hypertensive</strong> et d'éviter ses complications : <strong>extraction fœtale</strong> après stabilisation maternelle (antihypertenseurs, sulfate de magnésium) et corticothérapie pour maturation pulmonaire (si possible 48 h).</p>
+            <p>La tocolyse et l'attente à domicile exposent à l'éclampsie et au HELLP. Le cerclage n'a aucune place ici.</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="qcm-card">
+        <div class="qcm-head">
+          <span class="qcm-num">C4-Q3</span>
+          <span class="badge simple">Choix simple</span>
+          <span class="theme">Tocolyse</span>
+        </div>
+        <p class="question">La tocolyse est-elle indiquée dans ce contexte ?</p>
+        <ul class="options">
+          <li><span class="opt-letter">A</span> Oui, en première intention par inhibiteur calcique</li>
+          <li><span class="opt-letter">B</span> Non, elle est contre-indiquée (souffrance fœtale et pathologie maternelle grave)</li>
+          <li><span class="opt-letter">C</span> Oui, par bêta-mimétiques</li>
+          <li><span class="opt-letter">D</span> Oui, mais uniquement par atosiban</li>
+          <li><span class="opt-letter">E</span> Oui, quel que soit le terme</li>
+        </ul>
+        <details class="correction">
+          <summary>Voir la correction</summary>
+          <div class="correction-content">
+            <span class="answer-line">Réponse : B</span>
+            <p>La tocolyse est <strong>contre-indiquée</strong> en cas de souffrance fœtale aiguë ou chronique, d'hémorragie grave, d'HRP, de chorioamniotite, de mort fœtale in utero et de malformation non viable. Ici : <strong>prééclampsie sévère + RCF altéré</strong> → extraction.</p>
+          </div>
+        </details>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CAS 5 -->
+  <div class="case-card">
+    <div class="case-head">
+      <span class="case-num">Cas 5</span>
+      <h3>RPM + chorio-amniotite à 33 SA</h3>
+      <span class="loc">Maternité · CHU de Constantine</span>
+    </div>
+    <div class="vignette">
+      <p><span class="v-label">Mme A., 24 ans</span>, G3P2, à <strong>33 SA</strong>, RPM depuis 48 h. Admise pour fièvre 38,5 °C, tachycardie fœtale à 180 bpm, liquide fétide, hyperleucocytose à 18 000/mm³, CRP à 120 mg/L.</p>
+    </div>
+    <div class="case-body">
+
+      <div class="qcm-card">
+        <div class="qcm-head">
+          <span class="qcm-num">C5-Q1</span>
+          <span class="badge simple">Choix simple</span>
+          <span class="theme">Diagnostic</span>
+        </div>
+        <p class="question">Quel est le diagnostic ?</p>
+        <ul class="options">
+          <li><span class="opt-letter">A</span> MAP simple</li>
+          <li><span class="opt-letter">B</span> Chorio-amniotite</li>
+          <li><span class="opt-letter">C</span> HRP</li>
+          <li><span class="opt-letter">D</span> Placenta praevia hémorragique</li>
+          <li><span class="opt-letter">E</span> Endométrite</li>
+        </ul>
+        <details class="correction">
+          <summary>Voir la correction</summary>
+          <div class="correction-content">
+            <span class="answer-line">Réponse : B</span>
+            <p>Fièvre + RPM + liquide fétide + tachycardie fœtale + hyperleucocytose + CRP élevée = <strong>chorio-amniotite</strong>. La chorio-amniotite est suivie d'accouchement prématuré dans près de 100 % des cas.</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="qcm-card">
+        <div class="qcm-head">
+          <span class="qcm-num">C5-Q2</span>
+          <span class="badge simple">Choix simple</span>
+          <span class="theme">Tocolyse</span>
+        </div>
+        <p class="question">La tocolyse est-elle indiquée ?</p>
+        <ul class="options">
+          <li><span class="opt-letter">A</span> Oui, toujours</li>
+          <li><span class="opt-letter">B</span> Non, contre-indiquée</li>
+          <li><span class="opt-letter">C</span> Oui, mais uniquement par atosiban</li>
+          <li><span class="opt-letter">D</span> Oui, après antibiothérapie</li>
+          <li><span class="opt-letter">E</span> Oui, si le col est fermé</li>
+        </ul>
+        <details class="correction">
+          <summary>Voir la correction</summary>
+          <div class="correction-content">
+            <span class="answer-line">Réponse : B</span>
+            <p>La <strong>chorio-amniotite est une contre-indication absolue à la tocolyse</strong> : le risque infectieux materno-fœtal prime sur le bénéfice de la prolongation de grossesse. L'accouchement doit être envisagé.</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="qcm-card">
+        <div class="qcm-head">
+          <span class="qcm-num">C5-Q3</span>
+          <span class="badge multi">Choix multiples</span>
+          <span class="theme">Prise en charge</span>
+        </div>
+        <p class="question">Quelles mesures font partie de la prise en charge ? (2 à 3 réponses)</p>
+        <ul class="options">
+          <li><span class="opt-letter">A</span> Antibiothérapie IV à large spectre</li>
+          <li><span class="opt-letter">B</span> Extraction fœtale et surveillance rapprochée</li>
+          <li><span class="opt-letter">C</span> Corticothérapie anténatale si possible</li>
+          <li><span class="opt-letter">D</span> Tocolyse par inhibiteur calcique</li>
+          <li><span class="opt-letter">E</span> Repos strict et simple surveillance à domicile</li>
+        </ul>
+        <details class="correction">
+          <summary>Voir la correction</summary>
+          <div class="correction-content">
+            <span class="answer-line">Réponses : A, B, C</span>
+            <p>Prise en charge : <strong>antibiothérapie IV à large spectre</strong>, <strong>extraction fœtale</strong> (voie basse ou césarienne selon les conditions), <strong>corticothérapie anténatale</strong> si elle peut être administrée à temps (33 SA &lt; 34 SA), transfert en maternité de niveau adapté et présence du pédiatre.</p>
+            <p><strong>D</strong> : la tocolyse est contre-indiquée en cas de chorio-amniotite. <strong>E</strong> : danger vital, hospitalisation obligatoire.</p>
+          </div>
+        </details>
+      </div>
+
+    </div>
+  </div>
+
+</section>
+
+<!-- ================= SECTION 3 : CONCEPT MAP ================= -->
+<section id="concept">
+  <div class="section-title">
+    <div class="num">03</div>
+    <h2>Carte conceptuelle & synthèse visuelle</h2>
+  </div>
+  <p class="section-sub">Vue synthétique de la MAP : définition, mécanismes, diagnostic et arbre décisionnel.</p>
+
+  <div class="cm-grid">
+
+    <div class="cm-card navy">
+      <h4>Définition</h4>
+      <ul>
+        <li>Naissance entre <strong>22 et 37 SA révolues</strong></li>
+        <li>≈ 7 % des naissances (en augmentation)</li>
+        <li><strong>Spontanée</strong> : 70–80 %</li>
+        <li><strong>Induite</strong> : 20–30 %</li>
+        <li>Précédée d'une <strong>MAP</strong> dans la forme spontanée</li>
+      </ul>
+    </div>
+
+    <div class="cm-card">
+      <h4>Facteurs de risque</h4>
+      <ul>
+        <li><strong>ATCD :</strong> avortements à répétition, AP, PMA, multiparité, intervalle court</li>
+        <li><strong>Pathologie :</strong> syndromes vasculo-rénaux, diabète, placenta praevia</li>
+        <li><strong>Socio-éco :</strong> bas niveau, stress, faible poids, tabac, accès aux soins</li>
+      </ul>
+    </div>
+
+    <div class="cm-card warn">
+      <h4>Étiologies</h4>
+      <ul>
+        <li><strong>Maternelles :</strong> infections, prééclampsie sévère, Rh, diabète, cardiopathies</li>
+        <li><strong>Utérines :</strong> synéchies, fibromes, malformations (utérus cloisonné ≈ 50 %), béance cervico-isthmique</li>
+        <li><strong>Ovulaires :</strong> grossesses multiples (40 %), hydramnios, chorio-amniotite, RPM, malformations fœtales, placenta praevia</li>
+        <li><strong>Idiopathique :</strong> 40 %</li>
+      </ul>
+    </div>
+
+    <div class="cm-card violet">
+      <h4>Diagnostic positif</h4>
+      <ul>
+        <li>CU ≥ 1 / 10 min, intenses, régulières</li>
+        <li>Métrorragies brunâtres peu abondantes</li>
+        <li>Écoulement liquidien (RPM)</li>
+        <li>Modifications cervicales + score de menace</li>
+        <li><strong>Écho endovaginale :</strong> col &lt; 30 mm, ouverture &gt; 10 mm, funneling</li>
+      </ul>
+    </div>
+
+  </div>
+
+  <!-- Diagnostic différentiel -->
+  <div class="flow">
+    <h4>Diagnostic différentiel à évoquer systématiquement</h4>
+    <div class="flow-steps">
+      <div class="flow-step danger"><span class="step-label">Urgence</span><strong>HRP</strong>Métrorragies + douleurs + état maternel</div>
+      <div class="flow-step"><span class="step-label">Gynéco</span><strong>Fibrome / kyste</strong> compliqués de la grossesse</div>
+      <div class="flow-step"><span class="step-label">Chirurgical</span><strong>Appendicite / cholécystite</strong> à rechercher</div>
+      <div class="flow-step"><span class="step-label">Médical</span><strong>Causes médicales</strong> à ne pas méconnaître</div>
+    </div>
+  </div>
+
+  <!-- Algorithme thérapeutique -->
+  <div class="flow">
+    <h4>Arbre décisionnel thérapeutique devant une MAP</h4>
+    <div class="flow-steps">
+      <div class="flow-step"><span class="step-label">Étape 1</span><strong>Hospitalisation</strong>Bilan materno-fœtal + recherche étiologique</div>
+      <div class="flow-step teal"><span class="step-label">Étape 2</span><strong>Terme &lt; 35 SA ?</strong>Si oui → tocolyse 48 h (inhibiteur calcique 1<sup>re</sup> intention)</div>
+      <div class="flow-step warn"><span class="step-label">Étape 3</span><strong>Corticothérapie</strong>Bétaméthasone 12 mg/j × 2 j (surtout &lt; 34 SA)</div>
+      <div class="flow-step ok"><span class="step-label">Étape 4</span><strong>Traitement étiologique</strong>Infection, diabète, RPM (ATB 48 h), etc.</div>
+      <div class="flow-step danger"><span class="step-label">Échec</span><strong>Accouchement</strong>Préparation : niveau adapté, pédiatre, RCF continu</div>
+    </div>
+  </div>
+
+  <!-- Contre-indications tocolyse -->
+  <div class="flow">
+    <h4>Contre-indications à la tocolyse (à retenir absolument)</h4>
+    <div class="flow-steps">
+      <div class="flow-step danger"><span class="step-label">Maternel</span><strong>Hémorragie grave</strong>HRP</div>
+      <div class="flow-step danger"><span class="step-label">Fœtal</span><strong>Souffrance fœtale</strong>aiguë ou chronique</div>
+      <div class="flow-step danger"><span class="step-label">Infectieux</span><strong>Chorio-amniotite</strong>Fièvre + RPM</div>
+      <div class="flow-step danger"><span class="step-label">Extrême</span><strong>MFIU / malformation non viable</strong>Prise en charge adaptée</div>
+    </div>
+  </div>
+
+  <!-- Tableau pronostic -->
+  <h4 style="color:var(--navy);font-size:1.05rem;margin:24px 0 12px;font-weight:800;">Pronostic néonatal selon l'âge gestationnel</h4>
+  <table class="table-cm">
+    <thead>
+      <tr>
+        <th>Âge gestationnel</th>
+        <th>Mortalité néonatale</th>
+        <th>Séquelles / handicaps</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>≤ 30 SA</td>
+        <td>≈ 22 %</td>
+        <td>20 à 60 % (avant 32 SA)</td>
+      </tr>
+      <tr>
+        <td>&gt; 32 SA</td>
+        <td>≈ 8 %</td>
+        <td>&lt; 5 %</td>
+      </tr>
+      <tr>
+        <td>Critère pronostique</td>
+        <td colspan="2"><strong>L'âge gestationnel est le critère pronostique prédominant</strong></td>
+      </tr>
+    </tbody>
+  </table>
+
+</section>
+
+<!-- ================= SECTION 4 : MNÉMOTECHNIQUES ================= -->
+<section id="mnemo">
+  <div class="section-title">
+    <div class="num">04</div>
+    <h2>Mnémotechniques & pièges d'examen</h2>
+  </div>
+  <p class="section-sub">Astuces de rétention et pièges docimologiques fréquents en 5<sup>e</sup> année.</p>
+
+  <div class="mnemo-grid">
+
+    <div class="mnemo-card navy">
+      <h5>Définition & épidémiologie</h5>
+      <span class="mnemo-word navy">22 – 37 – 7 – 70/30</span>
+      <ul>
+        <li><strong>22–37</strong> SA révolues</li>
+        <li><strong>7</strong> % des naissances</li>
+        <li><strong>70–80 %</strong> spontanée</li>
+        <li><strong>20–30 %</strong> induite</li>
+      </ul>
+    </div>
+
+    <div class="mnemo-card teal">
+      <h5>Facteurs de risque (3 groupes)</h5>
+      <span class="mnemo-word teal">A.P.S.</span>
+      <ul>
+        <li><strong>A</strong>ntécédents de la patiente</li>
+        <li><strong>P</strong>athologie pendant la grossesse</li>
+        <li><strong>S</strong>ocio-économique & mode de vie</li>
+      </ul>
+    </div>
+
+    <div class="mnemo-card">
+      <h5>Étiologies</h5>
+      <span class="mnemo-word">M.U.O.</span>
+      <ul>
+        <li><strong>M</strong>aternelles (infections, prééclampsie, Rh, diabète, cardiopathies)</li>
+        <li><strong>U</strong>térines (malformations, fibromes, synéchies, béance)</li>
+        <li><strong>O</strong>vulaires (grossesses multiples, hydramnios, RPM, chorioamniotite)</li>
+      </ul>
+    </div>
+
+    <div class="mnemo-card teal">
+      <h5>Tocolyse de 1<sup>re</sup> intention</h5>
+      <span class="mnemo-word teal">C.A.A.</span>
+      <ul>
+        <li><strong>C</strong>alcium (inhibiteurs calciques : nifédipine)</li>
+        <li><strong>A</strong>tosiban (antagoniste ocytocine)</li>
+        <li><strong>A</strong>INS (jamais en 1<sup>re</sup> intention)</li>
+        <li>Bêta-mimétiques : <strong>délaissés</strong></li>
+      </ul>
+    </div>
+
+    <div class="mnemo-card warn">
+      <h5>Corticothérapie</h5>
+      <span class="mnemo-word warn">12 × 2 avant 34</span>
+      <ul>
+        <li>Bétaméthasone <strong>12 mg/j × 2 jours</strong></li>
+        <li>Bénéfices nets avant <strong>34 SA</strong></li>
+        <li>Cure unique ; 2<sup>e</sup> cure si symptômes &gt; 10 j d'intervalle</li>
+      </ul>
+    </div>
+
+    <div class="mnemo-card ok">
+      <h5>Contre-indications à la tocolyse</h5>
+      <span class="mnemo-word warn">H.H.C. + S.M.</span>
+      <ul>
+        <li><strong>H</strong>émorragie grave</li>
+        <li><strong>H</strong>RP</li>
+        <li><strong>C</strong>horio-amniotite</li>
+        <li><strong>S</strong>ouffrance fœtale</li>
+        <li><strong>M</strong>FIU / malformation non viable</li>
+      </ul>
+    </div>
+
+    <div class="mnemo-card navy">
+      <h5>Voie d'accouchement</h5>
+      <span class="mnemo-word navy">32 – 1500 – Céphalique</span>
+      <ul>
+        <li>&gt; <strong>32 SA</strong> et &gt; <strong>1500 g</strong>, présentation céphalique → <strong>voie basse</strong></li>
+        <li>28–32 SA : voie basse sauf présentation dystocique</li>
+        <li><strong>Ventouse contre-indiquée</strong> / forceps OK</li>
+      </ul>
+    </div>
+
+    <div class="mnemo-card">
+      <h5>Piège classique : ATB</h5>
+      <span class="mnemo-word">RPM = 48 h</span>
+      <ul>
+        <li>Membranes intactes → <strong>pas d'ATB systématique</strong></li>
+        <li>RPM → antibioprophylaxie <strong>courte (48 h)</strong></li>
+        <li>Strepto B → ampicilline <strong>perpartum</strong></li>
+      </ul>
+    </div>
+
+  </div>
+
+  <div class="trap-card">
+    <h5>⚠ Pièges docimologiques fréquents</h5>
+    <ul>
+      <li><strong>Ne pas confondre</strong> prématurité spontanée (70–80 %) et induite (20–30 %).</li>
+      <li><strong>Bêta-mimétiques</strong> : ne pas oublier OAP, hyperglycémie, hypokaliémie, tachycardie — et leurs contre-indications (cardiopathie, HTA sévère, diabète décompensé).</li>
+      <li><strong>Inhibiteurs calciques</strong> = moins d'effets secondaires que les bêta-mimétiques → 1<sup>re</sup> intention.</li>
+      <li><strong>Atosiban</strong> : pas de contre-indication sauf hypersensibilité — ne pas le confondre avec les bêta-mimétiques.</li>
+      <li><strong>AINS</strong> : jamais en 1<sup>re</sup> intention — risque de fermeture du canal artériel et d'oligoamnios.</li>
+      <li><strong>Corticothérapie</strong> : pas de contre-indication absolue, même chez la diabétique.</li>
+      <li><strong>HRP</strong> : toujours y penser devant des métrorragies + douleurs — urgence vitale.</li>
+      <li><strong>Après 35 SA</strong> : pas de tocolyse, repos + surveillance.</li>
+      <li><strong>Ventouse</strong> : contre-indiquée chez le prématuré ; <strong>forceps</strong> : utilisation large.</li>
+      <li><strong>Score de menace</strong> : le poids maternel n'en fait pas partie.</li>
+    </ul>
+  </div>
+
+</section>
+
+<!-- ================= CONCLUSION ================= -->
+<section id="conclusion">
+  <div class="conclusion">
+    <h3>Prêt(e) pour l'examen ?</h3>
+    <p>La MAP est un chapitre charnière : il teste à la fois la physiopathologie, la sémiologie, la thérapeutique et l'éthique clinique. Retenez les <strong>3 chiffres clés</strong> (22–37 SA / 7 % / 34 SA), l'<strong>arbre décisionnel</strong> et surtout les <strong>contre-indications à la tocolyse</strong> — ce sont les points les plus discriminants.</p>
+    <span class="motiv">🎯 Respire, révise, et fais de chaque QCM une occasion d'apprendre plus qu'une simple réponse.</span>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  Fiche de révision – Menace d'Accouchement Prématuré · 5<sup>e</sup> année Médecine · Conforme au programme des facultés algériennes
+</footer>
+
+</body>
+</html>

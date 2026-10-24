@@ -553,7 +553,7 @@ export const HEMATO_LESSON_10_RESOURCES: CourseResource[] = [
     courseId: 'crs-hemato-10',
     type: 'astuce',
     title: "Astuces & Pièges aux Concours : Lymphomes",
-    contentMarkdown: `### 🎯 Pièges Cruciaux pour le Concours
+    contentMarkdown: `### Focus : Pièges Cruciaux pour le Concours
 
 1. **Biopsie à l'aiguille fine** :
    - TOUJOURS FAUSSE dans les QCM de diagnostic de lymphome ! Il faut une **biopsie chirurgicale d'exérèse ganglionnaire entière**.
@@ -1110,9 +1110,9 @@ export const HEMATO_LESSON_11_RESOURCES: CourseResource[] = [
 \`\`\`
 
 ## Sévérité biologique :
-- **Sévère** : < 1% (0,01 UI/mL) ➔ Hémarthroses spontanées, hématomes musculaires profonds dès la marche.
-- **Modérée** : 1 à 5% ➔ Saignements pour traumatismes minimes.
-- **Légère / Mineure** : 5 à 40% ➔ Saignements chirurgicaux ou post-traumatiques majeurs.
+- **Sévère** : < 1% (0,01 UI/mL) -> Hémarthroses spontanées, hématomes musculaires profonds dès la marche.
+- **Modérée** : 1 à 5% -> Saignements pour traumatismes minimes.
+- **Légère / Mineure** : 5 à 40% -> Saignements chirurgicaux ou post-traumatiques majeurs.
 
 ## Tableau Biologique :
 - **TCA allongé isolé** (ratio > 1,20).
@@ -1123,7 +1123,7 @@ export const HEMATO_LESSON_11_RESOURCES: CourseResource[] = [
 ## Traitement :
 - **Hémorragie aiguë** : FVIII ou FIX recombinant IV (viser 50 à 100% du pic).
 - **Prophylaxie primaire** : 2-3 injections/semaine ou **Emicizumab** (anticorps bispécifique sous-cutané).
-- **Complication majeure** : Inhibiteur anti-FVIII (Unités Bethesda) ➔ By-passing agents (rFVIIa, FEIBA).
+- **Complication majeure** : Inhibiteur anti-FVIII (Unités Bethesda) -> By-passing agents (rFVIIa, FEIBA).
 - **Contre-indications absolues** : Injections IM, aspirine, AINS.`,
     authorOrSource: 'Dr. LAIDANI.M'
   },
@@ -1132,7 +1132,7 @@ export const HEMATO_LESSON_11_RESOURCES: CourseResource[] = [
     courseId: 'crs-hemato-11',
     type: 'astuce',
     title: "Astuces & Pièges aux Concours : Hémophilie",
-    contentMarkdown: `### 🎯 Pièges Cruciaux pour le Concours
+    contentMarkdown: `### Focus : Pièges Cruciaux pour le Concours
 
 1. **Conductrice obligatoire** :
    - Toute fille d'un homme hémophile est conductrice obligatoire à 100% !
@@ -1680,12 +1680,12 @@ export const HEMATO_LESSON_12_RESOURCES: CourseResource[] = [
                    ┌───────────────────────────┴───────────────────────────┐
                    ▼                                                       ▼
            CLINIQUE & DIAGNOSTIC                                   STRATÉGIE THÉRAPEUTIQUE
-- Thrombopénie périphérique isolée < 100 G/L            - Asymptomatique > 30-50 G/L ➔ Abstention
-- ZÉRO splénomégalie !                                  - Urgence hémorragique ➔ IgIV (1 g/kg) + Corticoïdes
-- Myélogramme (si > 60 ans ou atypie) :                 - 1ère ligne standard ➔ Prednisone ou Dexaméthasone
-  Moelle riche, mégacaryocytes augmentés                 - 2e ligne ➔ Agonistes TPO (Eltrombopag, Romiplostim)
+- Thrombopénie périphérique isolée < 100 G/L            - Asymptomatique > 30-50 G/L -> Abstention
+- ZÉRO splénomégalie !                                  - Urgence hémorragique -> IgIV (1 g/kg) + Corticoïdes
+- Myélogramme (si > 60 ans ou atypie) :                 - 1ère ligne standard -> Prednisone ou Dexaméthasone
+  Moelle riche, mégacaryocytes augmentés                 - 2e ligne -> Agonistes TPO (Eltrombopag, Romiplostim)
 - Diagnostic d'élimination (VIH, VHC, Lupus)                         ou Rituximab (anti-CD20)
-                                                        - 3e ligne ➔ Splénectomie (Vaccins 15j avant !)
+                                                        - 3e ligne -> Splénectomie (Vaccins 15j avant !)
 \`\`\`
 
 ## Différentiel des Thrombopénies Aiguës :
@@ -1700,7 +1700,7 @@ export const HEMATO_LESSON_12_RESOURCES: CourseResource[] = [
     courseId: 'crs-hemato-12',
     type: 'astuce',
     title: "Astuces & Pièges aux Concours : PTI",
-    contentMarkdown: `### 🎯 Pièges Cruciaux pour le Concours
+    contentMarkdown: `### Focus : Pièges Cruciaux pour le Concours
 
 1. **La Rate dans le PTI** :
    - Rate palpable = **NON PTI** ! Éliminer hépatopathie, hémopathie maligne ou hypersplénisme.

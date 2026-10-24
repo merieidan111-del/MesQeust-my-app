@@ -1,0 +1,2038 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Délivrance Normale et Pathologique — Révision Approfondie</title>
+<style>
+  :root{
+    --navy:#16324f;
+    --navy-dark:#0f2438;
+    --navy-light:#1e4a6d;
+    --teal:#2c7a7b;
+    --teal-dark:#225e5f;
+    --teal-light:#e6fffa;
+    --slate:#4a5568;
+    --slate-light:#edf2f7;
+    --slate-mid:#a0aec0;
+    --danger:#9b2c2c;
+    --danger-light:#fff5f5;
+    --success:#276749;
+    --success-light:#f0fff4;
+    --amber:#975a16;
+    --amber-light:#fffaf0;
+    --violet:#553c9a;
+    --violet-light:#faf5ff;
+    --bg:#f7fafc;
+    --card:#ffffff;
+    --shadow:0 4px 18px rgba(15,36,56,.08);
+    --shadow-hover:0 8px 28px rgba(15,36,56,.14);
+    --radius:16px;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    font-family:'Inter','Roboto','Segoe UI',system-ui,-apple-system,sans-serif;
+    background:var(--bg);
+    color:var(--navy-dark);
+    line-height:1.65;
+    font-size:15.5px;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* ============ HERO ============ */
+  .hero{
+    background:linear-gradient(135deg,var(--navy-dark) 0%,var(--navy) 45%,var(--teal-dark) 100%);
+    color:#fff;
+    padding:56px 24px 48px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  .hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:radial-gradient(circle at 85% 15%,rgba(44,122,123,.45),transparent 55%),
+               radial-gradient(circle at 10% 90%,rgba(30,74,109,.5),transparent 50%);
+    pointer-events:none;
+  }
+  .hero h1{
+    font-size:clamp(1.5rem,3.6vw,2.5rem);
+    font-weight:800;
+    letter-spacing:-.5px;
+    position:relative;
+    z-index:1;
+    margin-bottom:12px;
+  }
+  .hero p{
+    position:relative;
+    z-index:1;
+    opacity:.92;
+    max-width:780px;
+    margin:0 auto 8px;
+    font-size:1rem;
+  }
+  .hero .meta{
+    position:relative;
+    z-index:1;
+    display:inline-flex;
+    flex-wrap:wrap;
+    gap:8px;
+    justify-content:center;
+    margin-top:18px;
+  }
+  .hero .meta span{
+    background:rgba(255,255,255,.14);
+    border:1px solid rgba(255,255,255,.25);
+    padding:5px 14px;
+    border-radius:999px;
+    font-size:.78rem;
+    font-weight:600;
+    letter-spacing:.3px;
+  }
+
+  /* ============ LAYOUT ============ */
+  .container{
+    max-width:1080px;
+    margin:0 auto;
+    padding:0 20px 80px;
+  }
+
+  section{
+    margin-top:52px;
+  }
+
+  .section-head{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-bottom:26px;
+    padding-bottom:14px;
+    border-bottom:3px solid var(--teal);
+  }
+  .section-head .num{
+    flex:0 0 auto;
+    width:46px;height:46px;
+    border-radius:13px;
+    background:linear-gradient(135deg,var(--navy),var(--teal));
+    color:#fff;
+    display:grid;place-items:center;
+    font-weight:800;
+    font-size:1.15rem;
+    box-shadow:0 4px 12px rgba(22,50,79,.28);
+  }
+  .section-head h2{
+    font-size:clamp(1.2rem,2.5vw,1.55rem);
+    font-weight:800;
+    color:var(--navy);
+    letter-spacing:-.3px;
+  }
+  .section-head .sub{
+    font-size:.82rem;
+    color:var(--slate);
+    font-weight:500;
+  }
+
+  /* ============ QCM CARDS ============ */
+  .qcard{
+    background:var(--card);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    padding:22px 24px 20px;
+    margin-bottom:20px;
+    border-left:5px solid var(--navy);
+    transition:box-shadow .25s ease, transform .25s ease;
+  }
+  .qcard:hover{box-shadow:var(--shadow-hover);transform:translateY(-2px);}
+
+  .qcard.q-multi{border-left-color:var(--teal);}
+  .qcard.q-simple{border-left-color:var(--navy-light);}
+  .qcard.q-sauf{border-left-color:var(--amber);}
+  .qcard.q-rjrf{border-left-color:var(--violet);}
+
+  .qtop{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:8px;
+    margin-bottom:12px;
+  }
+  .qnum{
+    font-weight:800;
+    color:var(--navy);
+    font-size:1.02rem;
+    margin-right:4px;
+  }
+  .badge{
+    display:inline-block;
+    font-size:.68rem;
+    font-weight:800;
+    letter-spacing:.6px;
+    text-transform:uppercase;
+    padding:4px 10px;
+    border-radius:999px;
+    white-space:nowrap;
+  }
+  .b-rj{background:#e9d8fd;color:var(--violet);}
+  .b-rf{background:#fed7d7;color:var(--danger);}
+  .b-multi{background:var(--teal-light);color:var(--teal-dark);}
+  .b-simple{background:#e2e8f0;color:var(--navy);}
+  .b-sauf{background:var(--amber-light);color:var(--amber);}
+  .b-theme{
+    background:var(--slate-light);
+    color:var(--slate);
+    font-weight:600;
+    text-transform:none;
+    letter-spacing:.2px;
+    font-size:.72rem;
+  }
+
+  .qtext{
+    font-weight:600;
+    color:var(--navy-dark);
+    margin-bottom:14px;
+    font-size:.98rem;
+  }
+
+  .options{list-style:none;display:grid;gap:7px;}
+  .options li{
+    background:var(--slate-light);
+    border-radius:10px;
+    padding:9px 14px 9px 42px;
+    position:relative;
+    font-size:.9rem;
+    color:var(--slate);
+    transition:background .18s;
+  }
+  .options li::before{
+    content:attr(data-letter);
+    position:absolute;
+    left:12px;top:50%;
+    transform:translateY(-50%);
+    width:22px;height:22px;
+    border-radius:50%;
+    background:#fff;
+    border:1.5px solid var(--slate-mid);
+    color:var(--navy);
+    font-weight:800;
+    font-size:.72rem;
+    display:grid;place-items:center;
+  }
+  .options li:hover{background:#e2e8f0;}
+
+  /* ============ CORRECTION ============ */
+  details.corr{
+    margin-top:16px;
+    border-radius:12px;
+    overflow:hidden;
+    border:1.5px solid var(--teal);
+    background:var(--teal-light);
+  }
+  details.corr summary{
+    cursor:pointer;
+    padding:11px 18px;
+    font-weight:700;
+    font-size:.85rem;
+    color:var(--teal-dark);
+    background:#d4f2ee;
+    list-style:none;
+    display:flex;
+    align-items:center;
+    gap:9px;
+    user-select:none;
+    transition:background .2s;
+  }
+  details.corr summary::-webkit-details-marker{display:none;}
+  details.corr summary::before{
+    content:"▸";
+    font-size:1rem;
+    transition:transform .25s;
+    display:inline-block;
+  }
+  details.corr[open] summary::before{transform:rotate(90deg);}
+  details.corr summary:hover{background:#c2ece6;}
+  .corr-body{
+    padding:16px 20px 18px;
+    font-size:.88rem;
+    color:#1d3a34;
+    background:#fff;
+    border-top:1.5px solid #b8e6df;
+  }
+  .corr-body .rep{
+    display:inline-block;
+    background:var(--teal);
+    color:#fff;
+    font-weight:800;
+    font-size:.8rem;
+    padding:3px 12px;
+    border-radius:999px;
+    margin-bottom:10px;
+  }
+  .corr-body p{margin-bottom:9px;}
+  .corr-body strong{color:var(--teal-dark);}
+  .corr-body .why{
+    background:var(--danger-light);
+    border-left:3px solid var(--danger);
+    padding:9px 14px;
+    border-radius:8px;
+    margin-top:10px;
+    font-size:.84rem;
+    color:#742a2a;
+  }
+  .corr-body .why b{color:var(--danger);}
+
+  /* ============ CAS CLINIQUES ============ */
+  .case{
+    background:var(--card);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    margin-bottom:30px;
+    overflow:hidden;
+    border-top:6px solid var(--navy);
+  }
+  .case-head{
+    background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 100%);
+    color:#fff;
+    padding:18px 24px;
+  }
+  .case-head h3{
+    font-size:1.08rem;
+    font-weight:800;
+    display:flex;
+    align-items:center;
+    gap:10px;
+  }
+  .case-head .tag{
+    background:rgba(255,255,255,.18);
+    border:1px solid rgba(255,255,255,.3);
+    font-size:.68rem;
+    padding:3px 11px;
+    border-radius:999px;
+    font-weight:700;
+    letter-spacing:.4px;
+    text-transform:uppercase;
+  }
+  .vignette{
+    padding:18px 24px;
+    background:#f0f6fa;
+    border-bottom:1px solid #d9e6ef;
+    font-size:.9rem;
+    color:var(--slate);
+  }
+  .vignette strong{color:var(--navy);}
+  .vignette .lab{
+    display:inline-block;
+    font-weight:800;
+    color:var(--teal-dark);
+    font-size:.78rem;
+    text-transform:uppercase;
+    letter-spacing:.4px;
+    margin-right:6px;
+  }
+  .case .qcard{
+    margin:18px 24px;
+    box-shadow:none;
+    border:1px solid #e2e8f0;
+    border-left:5px solid var(--teal);
+    border-radius:12px;
+    padding:18px 20px;
+  }
+  .case .qcard:hover{transform:none;box-shadow:0 4px 14px rgba(15,36,56,.08);}
+
+  /* ============ CARTE CONCEPTUELLE ============ */
+  .map-wrap{
+    background:var(--card);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    padding:28px 22px;
+  }
+  .map-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(240px,1fr));
+    gap:16px;
+    margin-top:8px;
+  }
+  .map-node{
+    border-radius:14px;
+    padding:16px 18px;
+    background:var(--slate-light);
+    border-top:4px solid var(--teal);
+    box-shadow:0 2px 8px rgba(15,36,56,.05);
+  }
+  .map-node h4{
+    font-size:.9rem;
+    font-weight:800;
+    color:var(--navy);
+    margin-bottom:9px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .map-node h4 .dot{
+    width:10px;height:10px;border-radius:50%;
+    background:var(--teal);
+    flex:0 0 auto;
+  }
+  .map-node ul{list-style:none;font-size:.82rem;color:var(--slate);display:grid;gap:6px;}
+  .map-node ul li{padding-left:16px;position:relative;}
+  .map-node ul li::before{
+    content:"▸";
+    position:absolute;left:0;
+    color:var(--teal);
+    font-weight:700;
+  }
+  .map-flow{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:stretch;
+    gap:10px;
+    margin:22px 0 8px;
+    justify-content:center;
+  }
+  .flow-step{
+    flex:1 1 150px;
+    min-width:140px;
+    background:linear-gradient(135deg,var(--navy),var(--teal-dark));
+    color:#fff;
+    border-radius:13px;
+    padding:14px 14px 13px;
+    text-align:center;
+    font-size:.82rem;
+    font-weight:600;
+    box-shadow:0 5px 14px rgba(22,50,79,.2);
+    position:relative;
+  }
+  .flow-step .st{
+    display:block;
+    font-size:.66rem;
+    letter-spacing:.7px;
+    text-transform:uppercase;
+    opacity:.75;
+    margin-bottom:5px;
+    font-weight:800;
+  }
+  .flow-arrow{
+    align-self:center;
+    color:var(--teal);
+    font-size:1.4rem;
+    font-weight:800;
+  }
+  .vs-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:14px;
+    margin-top:18px;
+  }
+  .vs-card{
+    border-radius:14px;
+    padding:16px 18px;
+    font-size:.84rem;
+  }
+  .vs-baud{background:#e6f6ff;border:1.5px solid #90cdf4;}
+  .vs-duncan{background:#fff5f5;border:1.5px solid #feb2b2;}
+  .vs-card h5{font-size:.9rem;font-weight:800;margin-bottom:8px;color:var(--navy);}
+  .vs-card ul{list-style:none;display:grid;gap:5px;color:var(--slate);}
+  .vs-card ul li{padding-left:15px;position:relative;}
+  .vs-card ul li::before{content:"•";position:absolute;left:3px;color:var(--teal);font-weight:800;}
+
+  .table-wrap{overflow-x:auto;margin-top:20px;border-radius:12px;box-shadow:0 2px 10px rgba(15,36,56,.06);}
+  table{width:100%;border-collapse:collapse;font-size:.83rem;background:#fff;}
+  thead th{
+    background:var(--navy);
+    color:#fff;
+    padding:11px 13px;
+    text-align:left;
+    font-weight:700;
+    font-size:.78rem;
+    letter-spacing:.3px;
+    white-space:nowrap;
+  }
+  tbody td{padding:10px 13px;border-bottom:1px solid #e2e8f0;color:var(--slate);vertical-align:top;}
+  tbody tr:nth-child(even){background:#f8fafc;}
+  tbody tr:hover{background:var(--teal-light);}
+  .pill{
+    display:inline-block;
+    padding:2px 9px;
+    border-radius:999px;
+    font-size:.7rem;
+    font-weight:700;
+    white-space:nowrap;
+  }
+  .pill-red{background:#fed7d7;color:var(--danger);}
+  .pill-teal{background:var(--teal-light);color:var(--teal-dark);}
+  .pill-amber{background:var(--amber-light);color:var(--amber);}
+  .pill-violet{background:#e9d8fd;color:var(--violet);}
+
+  /* ============ MNÉMOTECHNIQUES ============ */
+  .mnemo{
+    background:var(--card);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    padding:20px 24px;
+    margin-bottom:18px;
+    border-left:5px solid var(--violet);
+    transition:transform .2s;
+  }
+  .mnemo:hover{transform:translateY(-2px);}
+  .mnemo h4{
+    font-size:.98rem;
+    font-weight:800;
+    color:var(--violet);
+    margin-bottom:10px;
+    display:flex;
+    align-items:center;
+    gap:9px;
+  }
+  .mnemo h4 .key{
+    background:var(--violet-light);
+    color:var(--violet);
+    padding:3px 11px;
+    border-radius:8px;
+    font-size:.78rem;
+    letter-spacing:.5px;
+  }
+  .mnemo p{font-size:.88rem;color:var(--slate);margin-bottom:7px;}
+  .mnemo .explication{
+    background:var(--violet-light);
+    border-radius:10px;
+    padding:11px 15px;
+    font-size:.83rem;
+    color:#44337a;
+    margin-top:8px;
+  }
+  .trap{
+    background:var(--amber-light);
+    border-left:5px solid var(--amber);
+    border-radius:var(--radius);
+    padding:18px 22px;
+    margin-top:24px;
+  }
+  .trap h4{color:var(--amber);font-size:.98rem;font-weight:800;margin-bottom:10px;}
+  .trap ul{list-style:none;display:grid;gap:8px;font-size:.86rem;color:#744210;}
+  .trap ul li{padding-left:22px;position:relative;}
+  .trap ul li::before{
+    content:"⚠";
+    position:absolute;left:0;
+    color:var(--amber);
+    font-size:.9rem;
+  }
+
+  /* ============ FOOTER ============ */
+  .motiv{
+    margin-top:56px;
+    background:linear-gradient(135deg,var(--navy-dark),var(--teal-dark));
+    color:#fff;
+    border-radius:20px;
+    padding:36px 28px;
+    text-align:center;
+    box-shadow:0 10px 30px rgba(15,36,56,.22);
+    position:relative;
+    overflow:hidden;
+  }
+  .motiv::before{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:radial-gradient(circle at 20% 20%,rgba(255,255,255,.09),transparent 45%),
+               radial-gradient(circle at 80% 80%,rgba(44,122,123,.35),transparent 50%);
+    pointer-events:none;
+  }
+  .motiv h3{
+    font-size:1.25rem;
+    font-weight:800;
+    margin-bottom:12px;
+    position:relative;
+    z-index:1;
+  }
+  .motiv p{
+    font-size:.94rem;
+    opacity:.93;
+    max-width:640px;
+    margin:0 auto;
+    position:relative;
+    z-index:1;
+  }
+  .motiv .emoji{font-size:1.8rem;display:block;margin-bottom:10px;position:relative;z-index:1;}
+
+  .footer-note{
+    text-align:center;
+    font-size:.76rem;
+    color:var(--slate-mid);
+    margin-top:28px;
+  }
+
+  /* ============ RESPONSIVE ============ */
+  @media (max-width:640px){
+    .hero{padding:40px 16px 34px;}
+    .container{padding:0 13px 60px;}
+    .qcard{padding:18px 16px;}
+    .options li{font-size:.85rem;padding-left:38px;}
+    .case .qcard{margin:14px 13px;}
+    .vignette{padding:15px 16px;}
+    .section-head{gap:10px;}
+    .section-head .num{width:38px;height:38px;font-size:1rem;}
+    .flow-arrow{transform:rotate(90deg);}
+    .vs-grid{grid-template-columns:1fr;}
+    .map-wrap{padding:20px 15px;}
+    .mnemo{padding:16px 17px;}
+  }
+</style>
+</head>
+<body>
+
+<!-- ================= HERO ================= -->
+<header class="hero">
+  <h1>La Délivrance Normale et Pathologique</h1>
+  <p>Module de révision approfondie — 4<sup>e</sup> année de médecine · Faculté de Médecine, CHU Djillali Bounaama (Douéra, Alger)</p>
+  <p style="font-size:.85rem;opacity:.8;">D'après le cours du Dr H. ZOUAOUI — Maître Assistante en Gynécologie-Obstétrique — 2022/2023</p>
+  <div class="meta">
+    <span>25 QCM exigeants</span>
+    <span>5 cas cliniques algériens</span>
+    <span>Carte conceptuelle</span>
+    <span>Mnémotechniques & pièges</span>
+  </div>
+</header>
+
+<div class="container">
+
+<!-- ================= SECTION 1 : QCM ================= -->
+<section id="qcm">
+  <div class="section-head">
+    <div class="num">1</div>
+    <div>
+      <h2>Banque de 25 QCM exigeants</h2>
+      <div class="sub">Questions subtilement mélangées — RJ / RF · Choix multiples (2–3 réponses) · Choix simple (dont « SAUF »)</div>
+    </div>
+  </div>
+
+  <!-- Q1 -->
+  <div class="qcard q-rjrf">
+    <div class="qtop">
+      <span class="qnum">Question 1</span>
+      <span class="badge b-theme">Définition & cadre chronologique</span>
+      <span class="badge b-rf">Réponse fausse (RF)</span>
+    </div>
+    <p class="qtext">Concernant la définition et le cadre chronologique de la délivrance normale, choisissez la réponse fausse (RF) :</p>
+    <ul class="options">
+      <li data-letter="A">La délivrance correspond à l'expulsion hors des voies génitales du placenta et des membranes.</li>
+      <li data-letter="B">Elle constitue le troisième et dernier temps de l'accouchement.</li>
+      <li data-letter="C">Elle débute immédiatement après l'expulsion du fœtus.</li>
+      <li data-letter="D">Elle s'étend jusqu'à la deuxième heure qui suit l'accouchement.</li>
+      <li data-letter="E">Elle correspond à la période allant de la dilatation complète à l'expulsion du fœtus.</li>
+    </ul>
+    <details class="corr">
+      <summary>Voir la correction détaillée</summary>
+      <div class="corr-body">
+        <span class="rep">Réponse : E</span>
+        <p><strong>Rappel fondamental :</strong> l'accouchement comporte trois temps : (1) la dilatation, (2) l'expulsion du fœtus, (3) la délivrance. La délivrance est donc bien le <em>troisième et dernier</em> temps, et non la période d'expulsion fœtale.</p>
+        <p>Elle débute <strong>immédiatement après la sortie du fœtus</strong> et se poursuit jusqu'à la <strong>deuxième heure</strong> du post-partum, ce qui inclut la surveillance rapprochée du globe de sécurité et la surveillance des pertes sanguines.</p>
+        <div class="why">
+          <b>Pourquoi les autres sont justes :</b> A définit exactement la délivrance (placenta + membranes) ; B et C rappellent sa position chronologique ; D précise la fenêtre de surveillance de 2 heures, moment où surviennent la majorité des hémorragies de la délivrance. Seule E confond la délivrance avec le deuxième temps de l'accouchement.
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q2 -->
+  <div class="qcard q-simple">
+    <div class="qtop">
+      <span class="qnum">Question 2</span>
+      <span class="badge b-theme">Temps préparatoire du décollement</span>
+      <span class="badge b-simple">Choix simple</span>
+    </div>
+    <p class="qtext">Le temps préparatoire de la phase de décollement placentaire est caractérisé par :</p>
+    <ul class="options">
+      <li data-letter="A">Une période de repos physiologique apparent de 10 à 15 minutes.</li>
+      <li data-letter="B">Une absence totale de contractions utérines.</li>
+      <li data-letter="C">Une augmentation de l'épaisseur de la zone d'insertion placentaire.</li>
+      <li data-letter="D">Une disparition complète des villosités crampons.</li>
+      <li data-letter="E">Une dilatation active du col utérin.</li>
+    </ul>
+    <details class="corr">
+      <summary>Voir la correction détaillée</summary>
+      <div class="corr-body">
+        <span class="rep">Réponse : A</span>
+        <p>Après l'expulsion fœtale, il existe une période de <strong>repos physiologique apparent</strong> de <strong>10 à 15 minutes</strong> : « apparent » car, en réalité, l'utérus poursuit sa <strong>rétraction</strong>, phénomène passif et permanent.</p>
+        <p>La baisse du volume utérin est compensée par l'<strong>augmentation de l'épaisseur des parois utérines</strong>, sauf au niveau de la zone d'insertion placentaire qui <strong>reste mince</strong> : c'est l'<strong>enchatonnement physiologique</strong> du placenta. Le placenta plissé tire alors sur les villosités crampons, créant des déchirures dans la caduque.</p>
+        <div class="why">
+          <b>Pièges :</b> B est faux car des contractions persistent, même non perçues ; C est faux car la zone d'insertion reste mince (elle ne s'épaissit pas) ; D est faux car les villosités crampons persistent et sont justement mises en tension ; E est faux car le col est déjà totalement dilaté à ce stade.
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q3 -->
+  <div class="qcard q-multi">
+    <div class="qtop">
+      <span class="qnum">Question 3</span>
+      <span class="badge b-theme">Mécanismes du décollement</span>
+      <span class="badge b-multi">Choix multiples (2–3 réponses)</span>
+    </div>
+    <p class="qtext">Concernant les mécanismes du décollement placentaire, quelles propositions sont exactes ?</p>
+    <ul class="options">
+      <li data-letter="A">La rétraction utérine est un phénomène passif et permanent.</li>
+      <li data-letter="B">La contraction utérine est le principal responsable du décollement proprement dit.</li>
+      <li data-letter="C">L'enchatonnement physiologique du placenta résulte de la baisse de volume de l'utérus.</li>
+      <li data-letter="D">Les villosités crampons s'ancrent directement dans le myomètre.</li>
+      <li data-letter="E">La zone d'insertion placentaire s'épaissit comme le reste du myomètre.</li>
+    </ul>
+    <details class="corr">
+      <summary>Voir la correction détaillée</summary>
+      <div class="corr-body">
+        <span class="rep">Réponses : A, B, C</span>
+        <p><strong>A :</strong> la rétraction utérine est un phénomène <strong>passif et permanent</strong>, contrairement à la contraction qui est active et intermittente. Elle crée la baisse de volume compensée par l'épaississement des parois.</p>
+        <p><strong>B :</strong> la contraction utérine, phénomène <strong>actif</strong>, est le principal responsable du décollement proprement dit. Elle devient plus intense et douloureusement ressentie à ce stade.</p>
+        <p><strong>C :</strong> l'enchatonnement correspond à la saillie du placenta dans la cavité utérine du fait de la baisse de volume utérin, la zone d'insertion restant mince.</p>
+        <div class="why">
+          <b>D est faux :</b> les villosités crampons s'ancrent dans la <strong>caduque</strong> (déciduale), pas directement dans le myomètre. Une insertion dans le myomètre correspond à une situation pathologique (placenta accreta). <b>E est faux :</b> la zone d'insertion placentaire <strong>reste mince</strong> alors que le reste du myomètre s'épaissit — c'est justement ce contraste qui permet l'enchatonnement.
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q4 -->
+  <div class="qcard q-sauf">
+    <div class="qtop">
+      <span class="qnum">Question 4</span>
+      <span class="badge b-theme">Modes d'expulsion du délivre</span>
+      <span class="badge b-sauf">Toutes exactes SAUF…</span>
+    </div>
+    <p class="qtext">Concernant les modes d'expulsion du délivre, toutes les propositions suivantes sont exactes, SAUF :</p>
+    <ul class="options">
+      <li data-letter="A">Le mode de Baudelocque s'observe lorsque le placenta est inséré au fond utérin.</li>
+      <li data-letter="B">Dans le mode de Baudelocque, le placenta est expulsé par sa face fœtale en premier.</li>
+      <li data-letter="C">Dans le mode de Duncan, le placenta sort par sa face utérine (maternelle).</li>
+      <li data-letter="D">Le mode de Duncan est le mode habituel des insertions fundiques.</li>
+      <li data-letter="E">Le délivre « en doigt de gant » dans son sac membraneux caractérise le mode de Baudelocque.</li>
+    </ul>
+    <details class="corr">
+      <summary>Voir la correction détaillée</summary>
+      <div class="corr-body">
+        <span class="rep">Réponse : D</span>
+        <p><strong>À retenir fermement :</strong> le mode de <strong>Baudelocque</strong> est le mode habituel des insertions <strong>fundiques</strong> (hautes) — le placenta sort par sa <strong>face fœtale</strong> en premier, « en doigt de gant » dans son sac membraneux. Le mode de <strong>Duncan</strong> s'observe lorsque le placenta est <strong>bas inséré</strong> — il sort par sa <strong>face utérine/maternelle</strong>.</p>
+        <div class="why">
+          <b>D est donc faux :</b> Duncan n'est <strong>pas</strong> le mode des insertions fundiques, c'est celui des insertions basses. A, B, C et E sont des définitions exactes. Piège classique d'examen : inverser les deux modes ou attribuer Duncan à l'insertion fundique.
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q5 -->
+  <div class="qcard q-rjrf">
+    <div class="qtop">
+      <span class="qnum">Question 5</span>
+      <span class="badge b-theme">Hémostase de la zone de décollement</span>
+      <span class="badge b-rj">Réponse juste (RJ)</span>
+    </div>
+    <p class="qtext">Concernant l'hémostase de la zone de décollement, choisissez la réponse juste (RJ) :</p>
+    <ul class="options">
+      <li data-letter="A">La ligature vivante de Pinard correspond à l'obturation des vaisseaux par le clou plaquettaire.</li>
+      <li data-letter="B">La rétraction utérine permet l'écrasement des vaisseaux utéro-placentaires par les fibres myométriales de la couche plexiforme.</li>
+      <li data-letter="C">La thrombose physiologique est assurée par la contraction utérine.</li>
+      <li data-letter="D">L'hémostase dépend exclusivement de la coagulation sanguine.</li>
+      <li data-letter="E">La rétraction utérine est un phénomène actif et intermittent.</li>
+    </ul>
+    <details class="corr">
+      <summary>Voir la correction détaillée</summary>
+      <div class="corr-body">
+        <span class="rep">Réponse : B</span>
+        <p>L'hémostase de la zone de décollement repose sur <strong>deux phénomènes complémentaires</strong> :</p>
+        <p>1. <strong>La rétraction utérine</strong> : elle écrase les vaisseaux utéro-placentaires par les fibres myométriales de la <strong>couche plexiforme</strong> — c'est la <strong>ligature vivante de Pinard</strong>.</p>
+        <p>2. <strong>La coagulation sanguine</strong> (thrombose physiologique) : formation du <strong>clou plaquettaire</strong> qui obture définitivement les orifices vasculaires.</p>
+        <div class="why">
+          <b>A est faux :</b> Pinard = rétraction utérine (mécanique), pas le clou plaquettaire. <b>C est faux :</b> la thrombose physiologique est assurée par la coagulation, non par la contraction. <b>D est faux :</b> l'hémostase est <em>double</em>, mécanique et biologique. <b>E est faux :</b> la rétraction est <strong>passive et permanente</strong> ; c'est la contraction qui est active et intermittente.
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q6 -->
+  <div class="qcard q-multi">
+    <div class="qtop">
+      <span class="qnum">Question 6</span>
+      <span class="badge b-theme">Physiologie de l'hémostase</span>
+      <span class="badge b-multi">Choix multiples (2–3 réponses)</span>
+    </div>
+    <p class="qtext">Parmi les propositions suivantes concernant l'hémostase de la délivrance, quelles sont les affirmations exactes ?</p>
+    <ul class="options">
+      <li data-letter="A">La rétraction utérine réalise la ligature vivante de Pinard.</li>
+      <li data-letter="B">La coagulation forme le clou plaquettaire.</li>
+      <li data-letter="C">La thrombose physiologique obture définitivement les orifices vasculaires.</li>
+      <li data-letter="D">La contraction utérine est le seul mécanisme hémostatique.</li>
+      <li data-letter="E">L'hémostase est indépendante de la rétraction utérine.</li>
+    </ul>
+    <details class="corr">
+      <summary>Voir la correction détaillée</summary>
+      <div class="corr-body">
+        <span class="rep">Réponses : A, B, C</span>
+        <p><strong>A :</strong> la rétraction utérine, en écrasant les vaisseaux par les fibres de la couche plexiforme, constitue la <strong>ligature vivante de Pinard</strong> — mécanisme mécanique immédiat.</p>
+        <p><strong>B :</strong> la coagulation aboutit à la formation du <strong>clou plaquettaire</strong>, première étape de l'obturation.</p>
+        <p><strong>C :</strong> la <strong>thrombose physiologique</strong> assure l'obturation <strong>définitive</strong> des orifices vasculaires, complétant l'action mécanique.</p>
+        <div class="why">
+          <b>D est faux :</b> l'hémostase est <strong>double</strong> (rétraction + coagulation) ; la contraction n'est pas le seul mécanisme. <b>E est faux :</b> au contraire, l'hémostase est <strong>étroitement dépendante</strong> de la rétraction utérine. Une défaillance de la rétraction (atonie) est la première cause d'hémorragie de la délivrance.
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q7 -->
+  <div class="qcard q-simple">
+    <div class="qtop">
+      <span class="qnum">Question 7</span>
+      <span class="badge b-theme">Phase de rémission clinique</span>
+      <span class="badge b-simple">Choix simple</span>
+    </div>
+    <p class="qtext">Concernant la phase de repos ou de rémission clinique, quelle est la proposition exacte ?</p>
+    <ul class="options">
+      <li data-letter="A">Le fond utérin est perçu à 3–4 cm au-dessus de la symphyse pubienne.</li>
+      <li data-letter="B">L'utérus est globuleux, ferme, régulier, d'environ 12 cm de diamètre transversal.</li>
+      <li data-letter="C">Elle dure en moyenne 2 heures.</li>
+      <li data-letter="D">Elle est marquée par des contractions intenses et douloureuses.</li>
+      <li data-letter="E">Elle est contemporaine de la migration placentaire.</li>
+    </ul>
+    <details class="corr">
+      <summary>Voir la correction détaillée</summary>
+      <div class="corr-body">
+        <span class="rep">Réponse : B</span>
+        <p>La phase de rémission clinique se caractérise par une <strong>sensation de repos et de bien-être</strong> remplaçant les contractions. À l'inspection, l'utérus est <strong>globuleux, arrondi, rétracté</strong>, le fond avoisinant l'ombilic. À la palpation, il est <strong>ferme, régulier, d'environ 12 cm de diamètre transversal</strong>. Sa durée moyenne est de <strong>10 à 30 minutes</strong>.</p>
+        <div class="why">
+          <b>A est faux :</b> la remontée du fond à 3–4 cm au-dessus de la symphyse appartient à la <strong>phase de migration placentaire</strong>. <b>C est faux :</b> la durée est de 10 à 30 minutes, pas 2 heures. <b>D est faux :</b> justement, les contractions disparaissent (rémission). <b>E est faux :</b> la migration placentaire est la phase suivante, distincte.
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q8 -->
+  <div class="qcard q-rjrf">
+    <div class="qtop">
+      <span class="qnum">Question 8</span>
+      <span class="badge b-theme">Surveillance — globe de sécurité</span>
+      <span class="badge b-rj">Réponse juste (RJ)</span>
+    </div>
+    <p class="qtext">Concernant la surveillance de la délivrance, choisissez la réponse juste (RJ) :</p>
+    <ul class="options">
+      <li data-letter="A">Le globe utérin de sécurité a son fond situé au-dessus de l'ombilic.</li>
+      <li data-letter="B">La surveillance de la délivrance est moins importante que celle du travail.</li>
+      <li data-letter="C">Le globe de sécurité a son fond légèrement au-dessous de l'ombilic.</li>
+      <li data-letter="D">L'examen du délivre n'est pas nécessaire si la délivrance semble complète.</li>
+      <li data-letter="E">La prise de tension artérielle n'est pas indiquée à ce stade.</li>
+    </ul>
+    <details class="corr">
+      <summary>Voir la correction détaillée</summary>
+      <div class="corr-body">
+        <span class="rep">Réponse : C</span>
+        <p>Le <strong>globe utérin de sécurité</strong> est un utérus fermement rétracté dont le fond se situe <strong>légèrement au-dessous de l'ombilic</strong>, et dont l'expression ne laisse issue qu'un <strong>saignement minime</strong>. C'est le garant de la qualité de la rétraction utérine et donc de l'hémostase.</p>
+        <div class="why">
+          <b>A est faux :</b> un fond au-dessus de l'ombilic doit faire suspecter une <strong>atonie</strong> ou une rétention (mauvaise rétraction). <b>B est faux :</b> la troisième étape de l'accouchement est <strong>la plus dangereuse</strong> pour la femme et nécessite une surveillance aussi rigoureuse que le travail. <b>D est faux :</b> l'examen du délivre (deux faces + cordon) est <strong>systématique</strong> et indispensable. <b>E est faux :</b> la réévaluation de l'état général (TA, pouls) et la quantification des pertes sanguines sont obligatoires.
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q9 -->
+  <div class="qcard q-multi">
+    <div class="qtop">
+      <span class="qnum">Question 9</span>
+      <span class="badge b-theme">Délivrance dirigée — indications</span>
+      <span class="badge b-multi">Choix multiples (2–3 réponses)</span>
+    </div>
+    <p class="qtext">Concernant la délivrance dirigée, quelles propositions sont exactes ?</p>
+    <ul class="options">
+      <li data-letter="A">Elle fait appel aux utérotoniques dès la sortie des épaules.</li>
+      <li data-letter="B">Elle est indiquée chez la femme anémique.</li>
+      <li data-letter="C">Elle est indiquée en cas d'antécédent d'hémorragie de la délivrance.</li>
+      <li data-letter="D">Elle augmente le volume de l'HRP physiologique.</li>
+      <li data-letter="E">Elle ralentit le décollement placentaire.</li>
+    </ul>
+    <details class="corr">
+      <summary>Voir la correction détaillée</summary>
+      <div class="corr-body">
+        <span class="rep">Réponses : A, B, C</span>
+        <p>La délivrance dirigée consiste en l'administration d'<strong>utérotoniques dès la sortie des épaules</strong> (ou après expulsion de la tête dernière en présentation du siège). Ses objectifs :</p>
+        <p>• Réduire la phase de rémission clinique · Accélérer le décollement et la migration du placenta · <strong>Diminuer</strong> le volume de l'HRP physiologique · Obtenir une meilleure rétraction utérine.</p>
+        <p>Indications : <strong>femme anémique</strong>, multipare, césarienne, <strong>ATCD d'hémorragie de la délivrance</strong>, ou présence de facteurs de risque hémorragique.</p>
+        <div class="why">
+          <b>D est faux :</b> la délivrance dirigée <strong>diminue</strong> le volume de l'hématome rétro-placentaire physiologique, elle ne l'augmente pas. <b>E est faux :</b> elle <strong>accélère</strong> le décollement et la migration placentaire, elle ne les ralentit pas.
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q10 -->
+  <div class="qcard q-simple">
+    <div class="qtop">
+      <span class="qnum">Question 10</span>
+      <span class="badge b-theme">Délivrance artificielle / manuelle</span>
+      <span class="badge b-simple">Choix simple</span>
+    </div>
+    <p class="qtext">La délivrance manuelle (artificielle) consiste en :</p>
+    <ul class="options">
+      <li data-letter="A">Une extraction manuelle du placenta hors de l'utérus par introduction de la main dans la cavité utérine.</li>
+      <li data-letter="B">Une simple traction douce sur le cordon.</li>
+      <li data-letter="C">Une expression utérine externe.</li>
+      <li data-letter="D">Une perfusion d'ocytociques.</li>
+      <li data-letter="E">Une révision utérine systématique sans extraction placentaire.</li>
+    </ul>
+    <details class="corr">
+      <summary>Voir la correction détaillée</summary>
+      <div class="corr-body">
+        <span class="rep">Réponse : A</span>
+        <p>La délivrance artificielle (ou manuelle) correspond au <strong>décollement manuel du placenta</strong> par l'opérateur qui <strong>introduit sa main dans la cavité utérine</strong> pour extraire le placenta. C'est le <strong>mode de délivrance le plus fréquent en cas de césarienne</strong>.</p>
+        <div class="why">
+          <b>B est faux :</b> la traction sur le cordon n'est pas une délivrance artificielle — c'est même une <strong>erreur technique</strong> favorisant la rétention et l'inversion utérine. <b>C est faux :</b> l'expression utérine externe appartient à la délivrance naturelle (manœuvre de refoulement utérin). <b>D est faux :</b> les ocytociques relèvent de la délivrance dirigée. <b>E est faux :</b> la révision utérine est un temps de contrôle qui suit l'extraction, pas la définition de la délivrance artificielle.
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q11 -->
+  <div class="qcard q-rjrf">
+    <div class="qtop">
+      <span class="qnum">Question 11</span>
+      <span class="badge b-theme">Rétention placentaire</span>
+      <span class="badge b-rf">Réponse fausse (RF)</span>
+    </div>
+    <p class="qtext">Concernant la rétention placentaire, choisissez la réponse fausse (RF) :</p>
+    <ul class="options">
+      <li data-letter="A">Elle se définit par l'absence de délivrance au-delà de 30 minutes.</li>
+      <li data-letter="B">Elle peut être due à une absence de décollement placentaire.</li>
+      <li data-letter="C">Elle peut être secondaire à un obstacle gênant la migration du délivre.</li>
+      <li data-letter="D">Elle peut être due à une hypertonie utérine réalisant un enchaînement placentaire.</li>
+      <li data-letter="E">Elle est toujours d'origine hypotonique.</li>
+    </ul>
+    <details class="corr">
+      <summary>Voir la correction détaillée</summary>
+      <div class="corr-body">
+        <span class="rep">Réponse : E</span>
+        <p>La rétention placentaire se définit par l'<strong>absence de délivrance au-delà de 30 minutes</strong>. Elle résulte soit d'une <strong>absence de décollement placentaire</strong>, soit d'un <strong>obstacle à la migration du délivre</strong>.</p>
+        <p>Ses étiologies sont multiples : <strong>inertie utérine</strong> (surdistension, fibrome, causes iatrogènes), <strong>hypertonie utérine</strong> réalisant un enchaînement placentaire, <strong>anomalies d'insertion</strong> (accreta, percreta, cotylédon accessoire, insertion basse), et <strong>erreurs techniques</strong> (délivrance dirigée trop tardive, traction sur le cordon, expressions utérines avant décollement).</p>
+        <div class="why">
+          <b>E est faux :</b> la rétention n'est <strong>pas toujours hypotonique</strong> — l'hypertonie utérine (enchaînement placentaire) en est une cause reconnue. A, B, C et D sont des affirmations exactes du cours.
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q12 -->
+  <div class="qcard q-multi">
+    <div class="qtop">
+      <span class="qnum">Question 12</span>
+      <span class="badge b-theme">Étiologies de la rétention placentaire</span>
+      <span class="badge b-multi">Choix multiples (2–3 réponses)</span>
+    </div>
+    <p class="qtext">Parmi les étiologies suivantes de rétention placentaire, quelles sont exactes ?</p>
+    <ul class="options">
+      <li data-letter="A">Grossesse multiple.</li>
+      <li data-letter="B">Hydramnios.</li>
+      <li data-letter="C">Fibrome utérin.</li>
+      <li data-letter="D">Insertion fundique normale du placenta.</li>
+      <li data-letter="E">Délivrance spontanée non assistée.</li>
+    </ul>
+    <details class="corr">
+      <summary>Voir la correction détaillée</summary>
+      <div class="corr-body">
+        <span class="rep">Réponses : A, B, C</span>
+        <p><strong>A, B, C :</strong> ces trois situations entraînent une <strong>surdistension utérine</strong> (grossesse multiple, hydramnios, macrosomie) ou une <strong>pathologie utérine modifiant la contractilité</strong> (fibrome, malformation utérine), responsables d'une inertie utérine et donc d'une rétention placentaire.</p>
+        <div class="why">
+          <b>D est faux :</b> l'insertion fundique normale est la situation physiologique — elle favorise même la délivrance mode Baudelocque. <b>E est faux :</b> la délivrance spontanée est un mode normal d'expulsion, pas une étiologie de rétention. Les autres étiologies à connaître : hydramnios, macrosomie, causes iatrogènes (anesthésiques, tococytiques, arrêt intempestif d'ocytociques), placenta accreta/percreta, cotylédon accessoire, insertion basse, erreurs techniques.
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q13 -->
+  <div class="qcard q-sauf">
+    <div class="qtop">
+      <span class="qnum">Question 13</span>
+      <span class="badge b-theme">Inertie utérine</span>
+      <span class="badge b-sauf">Toutes exactes SAUF…</span>
+    </div>
+    <p class="qtext">Concernant l'inertie utérine, toutes les propositions suivantes sont exactes, SAUF :</p>
+    <ul class="options">
+      <li data-letter="A">Elle peut être secondaire à une surdistension utérine.</li>
+      <li data-letter="B">Elle peut compliquer un travail dystocique prolongé.</li>
+      <li data-letter="C">Elle peut être favorisée par la fièvre.</li>
+      <li data-letter="D">Elle est favorisée par l'utilisation d'ocytociques.</li>
+      <li data-letter="E">Elle peut être iatrogène (anesthésiques, tococytiques).</li>
+    </ul>
+    <details class="corr">
+      <summary>Voir la correction détaillée</summary>
+      <div class="corr-body">
+        <span class="rep">Réponse : D</span>
+        <p>L'inertie utérine est secondaire à une <strong>surdistension utérine</strong>, un <strong>travail dystocique prolongé</strong> ou la <strong>fièvre</strong>. Elle peut également être iatrogène : <strong>anesthésiques, tococytiques, arrêt intempestif d'ocytociques en fin de travail</strong>.</p>
+        <div class="why">
+          <b>D est faux :</b> les <strong>ocytociques</strong> sont au contraire utilisés pour <strong>traiter</strong> l'inertie utérine (5 à 20 UI/500 cc de SGI ou méthylergométrine IM) — c'est l'<strong>arrêt intempestif</strong> des ocytociques qui peut favoriser l'inertie, pas leur utilisation. A, B, C et E sont exactes.
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q14 -->
+  <div class="qcard q-rjrf">
+    <div class="qtop">
+      <span class="qnum">Question 14</span>
+      <span class="badge b-theme">Inversion utérine</span>
+      <span class="badge b-rj">Réponse juste (RJ)</span>
+    </div>
+    <p class="qtext">Concernant l'inversion utérine, choisissez la réponse juste (RJ) :</p>
+    <ul class="options">
+      <li data-letter="A">C'est un accident fréquent de nos jours.</li>
+      <li data-letter="B">Elle est favorisée par l'hypotonie utérine des grandes multipares ou d'un utérus surdistendu.</li>
+      <li data-letter="C">On distingue trois degrés d'inversion.</li>
+      <li data-letter="D">Le traitement repose sur la réduction sous anesthésie locale.</li>
+      <li data-letter="E">Elle survient uniquement sur utérus sain.</li>
+    </ul>
+    <details class="corr">
+      <summary>Voir la correction détaillée</summary>
+      <div class="corr-body">
+        <span class="rep">Réponse : B</span>
+        <p>L'inversion utérine est un <strong>accident exceptionnel de nos jours</strong>, favorisé par l'<strong>hypotonie de l'utérus</strong> de grandes multipares ou surdistendu, ou associé à une <strong>erreur technique</strong> (traction sur le cordon).</p>
+        <div class="why">
+          <b>A est faux :</b> c'est un accident <strong>exceptionnel</strong> de nos jours, pas fréquent. <b>C est faux :</b> on distingue <strong>quatre degrés</strong>, de la simple invagination à l'extériorisation complète de l'utérus hors de l'orifice vulvaire. <b>D est faux :</b> le traitement est la réduction de l'utérus sous <strong>anesthésie générale</strong>, pas locale. <b>E est faux :</b> elle survient typiquement sur un utérus <strong>hypotonique</strong> (multipare, surdistendu), pas sur un utérus sain et bien rétracté.
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q15 -->
+  <div class="qcard q-multi">
+    <div class="qtop">
+      <span class="qnum">Question 15</span>
+      <span class="badge b-theme">Étiologies de l'hémorragie de la délivrance</span>
+      <span class="badge b-multi">Choix multiples (2–3 réponses)</span>
+    </div>
+    <p class="qtext">Quelles sont les principales étiologies des hémorragies de la délivrance ?</p>
+    <ul class="options">
+      <li data-letter="A">Rétention placentaire.</li>
+      <li data-letter="B">Atonie utérine.</li>
+      <li data-letter="C">Placenta prævia.</li>
+      <li data-letter="D">Anomalies de l'hémostase.</li>
+      <li data-letter="E">Grossesse extra-utérine.</li>
+    </ul>
+    <details class="corr">
+      <summary>Voir la correction détaillée</summary>
+      <div class="corr-body">
+        <span class="rep">Réponses : A, B, D</span>
+        <p>Les principales étiologies des hémorragies de la délivrance ou du post-partum sont : <strong>rétention placentaire</strong>, <strong>atonie utérine</strong>, <strong>inversion de l'utérus</strong> et <strong>anomalies de l'hémostase</strong>.</p>
+        <div class="why">
+          <b>C est faux :</b> le placenta prævia est une cause d'hémorragie de la grossesse (3<sup>e</sup> trimestre), pas une étiologie de l'hémorragie de la délivrance. <b>E est faux :</b> la grossesse extra-utérine est une urgence du premier trimestre, sans rapport avec la délivrance. À retenir : l'atonie utérine est la <strong>première cause</strong> d'hémorragie de la délivrance.
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q16 -->
+  <div class="qcard q-simple">
+    <div class="qtop">
+      <span class="qnum">Question 16</span>
+      <span class="badge b-theme">Traitement — mesures de réanimation</span>
+      <span class="badge b-simple">Choix simple</span>
+    </div>
+    <p class="qtext">Dans la prise en charge d'une hémorragie de la délivrance, quelle est la mesure de réanimation initiale correcte ?</p>
+    <ul class="options">
+      <li data-letter="A">Une seule voie veineuse périphérique.</li>
+      <li data-letter="B">Position de Trendelenburg systématique.</li>
+      <li data-letter="C">Une à deux voies d'abord veineux, oxygénothérapie, remplissage vasculaire.</li>
+      <li data-letter="D">Attendre les résultats du bilan avant tout remplissage.</li>
+      <li data-letter="E">Hystérectomie d'hémostase d'emblée.</li>
+    </ul>
+    <details class="corr">
+      <summary>Voir la correction détaillée</summary>
+      <div class="corr-body">
+        <span class="rep">Réponse : C</span>
+        <p>Les mesures de réanimation comportent : <strong>une à deux voies d'abord veineux</strong>, <strong>DLG</strong> (déxtrose-lactate de sodium / Ringer lactate), <strong>oxygénothérapie</strong>, <strong>bilan sanguin</strong> (GR rh, NFS, fibrinogène), <strong>remplissage vasculaire</strong> (plasmagel, PFC, sang total frais) et <strong>antibiothérapie</strong>.</p>
+        <div class="why">
+          <b>A est faux :</b> une seule voie est insuffisante — il en faut <strong>une à deux</strong>. <b>B est faux :</b> la position n'est pas le point clé de la réanimation initiale décrite dans le cours. <b>D est faux :</b> le remplissage est <strong>immédiat</strong>, sans attendre le bilan, car le pronostic dépend de la rapidité. <b>E est faux :</b> l'hystérectomie d'hémostase est un <strong>traitement chirurgical de dernier recours</strong>, pas une mesure initiale.
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q17 -->
+  <div class="qcard q-rjrf">
+    <div class="qtop">
+      <span class="qnum">Question 17</span>
+      <span class="badge b-theme">Mode de Duncan</span>
+      <span class="badge b-rf">Réponse fausse (RF)</span>
+    </div>
+    <p class="qtext">Concernant le mode de Duncan, choisissez la réponse fausse (RF) :</p>
+    <ul class="options">
+      <li data-letter="A">Il s'observe lorsque le placenta est bas inséré.</li>
+      <li data-letter="B">Le placenta sort par sa face utérine (maternelle).</li>
+      <li data-letter="C">Il correspond au mode habituel des insertions fundiques.</li>
+      <li data-letter="D">Il contraste avec le mode de Baudelocque.</li>
+      <li data-letter="E">Il ne concerne pas les insertions fundiques.</li>
+    </ul>
+    <details class="corr">
+      <summary>Voir la correction détaillée</summary>
+      <div class="corr-body">
+        <span class="rep">Réponse : C</span>
+        <p>Le mode de <strong>Duncan</strong> s'observe lorsque le placenta est <strong>bas inséré</strong> : il sort par sa <strong>face utérine (maternelle)</strong>. Il s'oppose au mode de <strong>Baudelocque</strong>, qui est celui des insertions <strong>fundiques</strong> (face fœtale en premier, « en doigt de gant »).</p>
+        <div class="why">
+          <b>C est faux :</b> Duncan <strong>ne correspond pas</strong> aux insertions fundiques — c'est précisément Baudelocque qui correspond à l'insertion fundique. A, B, D et E sont exactes. Piège docimologique majeur : ne jamais inverser Baudelocque (fundique, face fœtale) et Duncan (bas inséré, face maternelle).
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q18 -->
+  <div class="qcard q-multi">
+    <div class="qtop">
+      <span class="qnum">Question 18</span>
+      <span class="badge b-theme">Erreurs techniques</span>
+      <span class="badge b-multi">Choix multiples (2–3 réponses)</span>
+    </div>
+    <p class="qtext">Parmi les erreurs techniques favorisant la rétention placentaire, quelles sont exactes ?</p>
+    <ul class="options">
+      <li data-letter="A">Délivrance dirigée trop tardive.</li>
+      <li data-letter="B">Traction sur le cordon.</li>
+      <li data-letter="C">Expressions utérines avant le décollement placentaire.</li>
+      <li data-letter="D">Révision utérine systématique.</li>
+      <li data-letter="E">Surveillance rapprochée du globe utérin.</li>
+    </ul>
+    <details class="corr">
+      <summary>Voir la correction détaillée</summary>
+      <div class="corr-body">
+        <span class="rep">Réponses : A, B, C</span>
+        <p>Les erreurs techniques favorisant la rétention placentaire sont : <strong>délivrance dirigée trop tardive</strong>, <strong>traction sur le cordon</strong> et <strong>expressions utérines avant le décollement placentaire</strong>.</p>
+        <div class="why">
+          <b>D est faux :</b> la révision utérine est un temps de <strong>contrôle et de traitement</strong>, pas une erreur technique. <b>E est faux :</b> la surveillance du globe utérin est une <strong>bonne pratique</strong> qui permet justement de dépister les anomalies de rétraction. Ces erreurs techniques doivent être connues car elles sont <strong>évitables</strong> par le respect du bon déroulement de la délivrance.
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q19 -->
+  <div class="qcard q-simple">
+    <div class="qtop">
+      <span class="qnum">Question 19</span>
+      <span class="badge b-theme">Définition de l'hémorragie de la délivrance</span>
+      <span class="badge b-simple">Choix simple</span>
+    </div>
+    <p class="qtext">Une hémorragie de la délivrance ou du post-partum se définit par des pertes sanguines :</p>
+    <ul class="options">
+      <li data-letter="A">Supérieures à 300 ml.</li>
+      <li data-letter="B">Supérieures à 500 ml.</li>
+      <li data-letter="C">Supérieures à 1000 ml.</li>
+      <li data-letter="D">Supérieures à 1500 ml.</li>
+      <li data-letter="E">Toute perte sanguine, quelle que soit son abondance.</li>
+    </ul>
+    <details class="corr">
+      <summary>Voir la correction détaillée</summary>
+      <div class="corr-body">
+        <span class="rep">Réponse : B</span>
+        <p>Les hémorragies de la délivrance ou du post-partum sont des pertes sanguines provenant de la <strong>zone d'insertion placentaire</strong>, survenant au moment de la délivrance ou dans les <strong>24 heures</strong> qui suivent l'accouchement, anormales par leur abondance <strong>&gt; 500 ml</strong> et leur retentissement sur l'état général.</p>
+        <div class="why">
+          <b>A est faux :</b> le seuil est 500 ml, pas 300 ml. <b>C et D sont faux :</b> 1000 ml et 1500 ml correspondent à des seuils de gravité (hémorragie sévère), pas au seuil diagnostique. <b>E est faux :</b> toute perte sanguine n'est pas pathologique — le seuil de 500 ml et le retentissement général sont indispensables au diagnostic. Attention : le seuil de 500 ml s'applique à l'accouchement par voie basse (1000 ml pour la césarienne dans certaines classifications).
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q20 -->
+  <div class="qcard q-rjrf">
+    <div class="qtop">
+      <span class="qnum">Question 20</span>
+      <span class="badge b-theme">Délivrance dirigée</span>
+      <span class="badge b-rj">Réponse juste (RJ)</span>
+    </div>
+    <p class="qtext">Concernant la délivrance dirigée, choisissez la réponse juste (RJ) :</p>
+    <ul class="options">
+      <li data-letter="A">Elle utilise les utérotoniques dès la sortie des épaules.</li>
+      <li data-letter="B">Elle est contre-indiquée chez la femme anémique.</li>
+      <li data-letter="C">Elle augmente le volume de l'HRP physiologique.</li>
+      <li data-letter="D">Elle retarde le décollement placentaire.</li>
+      <li data-letter="E">Elle n'a aucune indication en cas de césarienne.</li>
+    </ul>
+    <details class="corr">
+      <summary>Voir la correction détaillée</summary>
+      <div class="corr-body">
+        <span class="rep">Réponse : A</span>
+        <p>La délivrance dirigée fait appel aux <strong>utérotoniques dès la sortie des épaules</strong> (ou après expulsion de la tête dernière en présentation du siège).</p>
+        <div class="why">
+          <b>B est faux :</b> la femme anémique est justement une <strong>indication</strong> de la délivrance dirigée. <b>C est faux :</b> elle <strong>diminue</strong> le volume de l'HRP physiologique. <b>D est faux :</b> elle <strong>accélère</strong> le décollement et la migration. <b>E est faux :</b> la césarienne est une indication reconnue (comme l'ATCD d'hémorragie de la délivrance, la multiparité, les facteurs de risque hémorragique).
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q21 -->
+  <div class="qcard q-sauf">
+    <div class="qtop">
+      <span class="qnum">Question 21</span>
+      <span class="badge b-theme">Surveillance clinique de la délivrance</span>
+      <span class="badge b-sauf">Toutes exactes SAUF…</span>
+    </div>
+    <p class="qtext">Concernant la surveillance de la délivrance, toutes les propositions suivantes sont exactes, SAUF :</p>
+    <ul class="options">
+      <li data-letter="A">Elle doit être aussi rigoureuse que la surveillance du travail.</li>
+      <li data-letter="B">Elle s'assure de la qualité de la rétraction utérine par la présence du globe de sécurité.</li>
+      <li data-letter="C">Elle comporte une réévaluation de l'état général (TA, pouls).</li>
+      <li data-letter="D">L'examen du délivre se fait sous un bon éclairage.</li>
+      <li data-letter="E">Elle peut être allégée si la délivrance a été spontanée et apparemment complète.</li>
+    </ul>
+    <details class="corr">
+      <summary>Voir la correction détaillée</summary>
+      <div class="corr-body">
+        <span class="rep">Réponse : E</span>
+        <p>La troisième étape de l'accouchement est <strong>la plus dangereuse</strong> pour la femme et nécessite une surveillance <strong>aussi rigoureuse que la phase du travail</strong>. Elle comprend : vérification du <strong>globe utérin de sécurité</strong>, réévaluation de l'état général (TA, pouls), quantification des pertes sanguines et <strong>examen du délivre</strong> sous bon éclairage (deux faces + cordon).</p>
+        <div class="why">
+          <b>E est faux :</b> la surveillance ne doit <strong>jamais être allégée</strong>, même après une délivrance spontanée apparemment complète — une rétention partielle ou une atonie peut se manifester secondairement. A, B, C et D sont exactes et constituent le socle de la surveillance clinique.
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q22 -->
+  <div class="qcard q-multi">
+    <div class="qtop">
+      <span class="qnum">Question 22</span>
+      <span class="badge b-theme">Traitement chirurgical</span>
+      <span class="badge b-multi">Choix multiples (2–3 réponses)</span>
+    </div>
+    <p class="qtext">Quelles sont les options chirurgicales en cas d'hémorragie de la délivrance réfractaire au traitement médical ?</p>
+    <ul class="options">
+      <li data-letter="A">Ligature vasculaire.</li>
+      <li data-letter="B">Plicature utérine.</li>
+      <li data-letter="C">Hystérectomie d'hémostase.</li>
+      <li data-letter="D">Révision utérine.</li>
+      <li data-letter="E">Délivrance artificielle.</li>
+    </ul>
+    <details class="corr">
+      <summary>Voir la correction détaillée</summary>
+      <div class="corr-body">
+        <span class="rep">Réponses : A, B, C</span>
+        <p>Le traitement chirurgical de l'hémorragie de la délivrance réfractaire comprend : <strong>ligature vasculaire</strong>, <strong>plicature utérine</strong> (technique de B-Lynch notamment) et <strong>hystérectomie d'hémostase</strong> en dernier recours.</p>
+        <div class="why">
+          <b>D est faux :</b> la révision utérine est un geste <strong>obstétrical</strong> (vérification de la vacuité utérine), pas un traitement chirurgical de l'hémorragie réfractaire. <b>E est faux :</b> la délivrance artificielle est le traitement de la <strong>rétention placentaire</strong>, en amont du traitement chirurgical. La compression utérine en bretelle selon B-Lynch (1997) est une technique de plicature utérine à connaître.
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q23 -->
+  <div class="qcard q-simple">
+    <div class="qtop">
+      <span class="qnum">Question 23</span>
+      <span class="badge b-theme">Hématome rétro-placentaire physiologique</span>
+      <span class="badge b-simple">Choix simple</span>
+    </div>
+    <p class="qtext">L'hématome rétro-placentaire physiologique :</p>
+    <ul class="options">
+      <li data-letter="A">Résulte de l'ouverture des vaisseaux utéro-placentaires lors du clivage de la caduque.</li>
+      <li data-letter="B">Est toujours pathologique.</li>
+      <li data-letter="C">Précède le décollement placentaire.</li>
+      <li data-letter="D">Empêche le décollement placentaire.</li>
+      <li data-letter="E">Est d'origine exclusivement veineuse.</li>
+    </ul>
+    <details class="corr">
+      <summary>Voir la correction détaillée</summary>
+      <div class="corr-body">
+        <span class="rep">Réponse : A</span>
+        <p>Lors du décollement, les contractions utérines permettent le <strong>clivage franc de la caduque</strong>, ce qui <strong>ouvre les vaisseaux utéro-placentaires</strong> et permet la constitution de foyers hémorragiques qui, en confluant, forment l'<strong>hématome rétro-placentaire physiologique</strong>, lequel <strong>complète le décollement</strong>.</p>
+        <div class="why">
+          <b>B est faux :</b> il est <strong>physiologique</strong> dans ce contexte — à ne pas confondre avec l'hématome rétro-placentaire pathologique (HRP) de la grossesse. <b>C est faux :</b> il <strong>complète</strong> le décollement, il ne le précède pas. <b>D est faux :</b> il participe au contraire à la progression du décollement. <b>E est faux :</b> il résulte de l'ouverture des vaisseaux utéro-placentaires (artériels et veineux), pas exclusivement veineux.
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q24 -->
+  <div class="qcard q-multi">
+    <div class="qtop">
+      <span class="qnum">Question 24</span>
+      <span class="badge b-theme">Anomalies d'insertion placentaire</span>
+      <span class="badge b-multi">Choix multiples (2–3 réponses)</span>
+    </div>
+    <p class="qtext">Quelles anomalies d'insertion placentaire favorisent la rétention placentaire ?</p>
+    <ul class="options">
+      <li data-letter="A">Placenta accreta.</li>
+      <li data-letter="B">Placenta percreta.</li>
+      <li data-letter="C">Cotylédon accessoire.</li>
+      <li data-letter="D">Placenta fundique normalement inséré.</li>
+      <li data-letter="E">Placenta sans anomalie morphologique.</li>
+    </ul>
+    <details class="corr">
+      <summary>Voir la correction détaillée</summary>
+      <div class="corr-body">
+        <span class="rep">Réponses : A, B, C</span>
+        <p>Les anomalies d'insertion favorisant la rétention placentaire sont : <strong>placenta accreta</strong> (adhérence anormale au myomètre), <strong>placenta percreta</strong> (traversant le myomètre) et <strong>cotylédon accessoire</strong> (anomalie morphologique laissant un fragment en place).</p>
+        <div class="why">
+          <b>D et E sont faux :</b> une insertion fundique normale et un placenta sans anomalie morphologique sont des situations physiologiques qui ne favorisent pas la rétention. Ces anomalies d'insertion imposent une <strong>grande prudence</strong> : toute tentative de délivrance artificielle sur placenta accreta/percreta risque une hémorragie massive, d'où la nécessité d'un diagnostic anténatal et d'une prise en charge chirurgicale adaptée.
+        </div>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q25 -->
+  <div class="qcard q-simple">
+    <div class="qtop">
+      <span class="qnum">Question 25</span>
+      <span class="badge b-theme">Prophylaxie</span>
+      <span class="badge b-simple">Choix simple</span>
+    </div>
+    <p class="qtext">Concernant la prévention des hémorragies de la délivrance, quelle proposition est exacte ?</p>
+    <ul class="options">
+      <li data-letter="A">Le dépistage des pathologies à risque pendant la grossesse.</li>
+      <li data-letter="B">La délivrance dirigée systématique chez toutes les femmes.</li>
+      <li data-letter="C">La révision utérine systématique chez toutes les femmes.</li>
+      <li data-letter="D">L'abstention de toute surveillance de la délivrance.</li>
+      <li data-letter="E">Aucune mesure préventive n'est efficace.</li>
+    </ul>
+    <details class="corr">
+      <summary>Voir la correction détaillée</summary>
+      <div class="corr-body">
+        <span class="rep">Réponse : A</span>
+        <p>La prophylaxie comporte : <strong>pendant la grossesse</strong>, le dépistage des pathologies à risque ; <strong>pendant le travail</strong>, le respect du bon déroulement du travail et de la délivrance ; <strong>surveillance de la délivrance</strong> ; <strong>délivrance dirigée</strong> avant l'expulsion du placenta ; <strong>révision utérine</strong> si placenta incomplet avec vérification des lésions cervico-vaginales ; <strong>compensation immédiate</strong> des pertes sanguines.</p>
+        <div class="why">
+          <b>B est faux :</b> la délivrance dirigée n'est pas systématique chez toutes les femmes — elle est indiquée en présence de facteurs de risque (anémie, multiparité, césarienne, ATCD d'HD). <b>C est faux :</b> la révision utérine n'est pas systématique — elle est indiquée si le placenta est incomplet ou en cas d'hémorragie. <b>D est faux :</b> la surveillance est le pilier de la prévention. <b>E est faux :</b> les mesures prophylactiques sont efficaces et codifiées.
+        </div>
+      </div>
+    </details>
+  </div>
+
+</section>
+
+<!-- ================= SECTION 2 : CAS CLINIQUES ================= -->
+<section id="cas">
+  <div class="section-head">
+    <div class="num">2</div>
+    <div>
+      <h2>5 cas cliniques hospitaliers algériens</h2>
+      <div class="sub">Situations réalistes — CHU, EPH, urgences maternité — avec QCM et corrections raisonnées</div>
+    </div>
+  </div>
+
+  <!-- CAS 1 -->
+  <div class="case">
+    <div class="case-head">
+      <h3>Cas clinique n°1 — Rétention placentaire sur inertie utérine <span class="tag">Urgences maternité</span></h3>
+    </div>
+    <div class="vignette">
+      <p><span class="lab">Patiente :</span> Mme B., 32 ans, G4P3, sans antécédent particulier, admise en salle de naissance au CHU pour accouchement à terme.</p>
+      <p><span class="lab">Accouchement :</span> travail spontané de 8 heures, expulsion d'un nouveau-né de <strong>4200 g</strong> (macrosomie), Apgar 9/10. Délivrance non survenue <strong>45 minutes</strong> après l'expulsion fœtale.</p>
+      <p><span class="lab">Examen :</span> utérus globuleux, fond perçu <strong>2 cm au-dessus de l'ombilic</strong>, de consistance <strong>molle</strong>, peu rétracté. Saignement vaginal modéré. La patiente ne présente pas de douleur aiguë.</p>
+      <p><span class="lab">Constantes :</span> TA 110/70 mmHg, pouls 88/min, température 36,8 °C.</p>
+    </div>
+
+    <div class="qcard">
+      <div class="qtop">
+        <span class="qnum">Q1</span>
+        <span class="badge b-simple">Choix simple</span>
+      </div>
+      <p class="qtext">Quel est le diagnostic le plus probable ?</p>
+      <ul class="options">
+        <li data-letter="A">Rétention placentaire par inertie utérine.</li>
+        <li data-letter="B">Inversion utérine du deuxième degré.</li>
+        <li data-letter="C">Hémorragie de la délivrance par anomalies de l'hémostase.</li>
+        <li data-letter="D">Rupture utérine.</li>
+        <li data-letter="E">Délivrance normale retardée.</li>
+      </ul>
+      <details class="corr">
+        <summary>Voir la correction</summary>
+        <div class="corr-body">
+          <span class="rep">Réponse : A</span>
+          <p>Absence de délivrance au-delà de 30 minutes + utérus mou, fond au-dessus de l'ombilic + macrosomie fœtale = tableau typique de <strong>rétention placentaire par inertie utérine</strong>.</p>
+          <div class="why">
+            <b>B :</b> l'inversion utérine donne une masse vaginale extériorisée et un tableau de choc, absent ici. <b>C :</b> les anomalies de l'hémostase ne donnent pas un utérus mou, mais un saignement diffus sans anomalie de rétraction. <b>D :</b> la rupture utérine donne une douleur brutale, un choc et une défense abdominale. <b>E :</b> une délivrance normale ne dépasse pas 30 minutes ; au-delà, il s'agit d'une rétention pathologique.
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <div class="qcard">
+      <div class="qtop">
+        <span class="qnum">Q2</span>
+        <span class="badge b-multi">Choix multiples (2–3 réponses)</span>
+      </div>
+      <p class="qtext">Quels facteurs étiologiques retrouve-t-on chez cette patiente ?</p>
+      <ul class="options">
+        <li data-letter="A">Macrosomie fœtale.</li>
+        <li data-letter="B">Multiparité (G4P3).</li>
+        <li data-letter="C">Travail prolongé de 8 heures.</li>
+        <li data-letter="D">Fièvre per-partum.</li>
+        <li data-letter="E">Placenta accreta.</li>
+      </ul>
+      <details class="corr">
+        <summary>Voir la correction</summary>
+        <div class="corr-body">
+          <span class="rep">Réponses : A, B, C</span>
+          <p>La <strong>macrosomie</strong> (A) entraîne une surdistension utérine, l'<strong>inertie</strong> est favorisée par la <strong>multiparité</strong> (B), et le <strong>travail prolongé</strong> (C) épuise le muscle utérin. Ces trois éléments concourent à l'inertie utérine.</p>
+          <div class="why">
+            <b>D :</b> aucune fièvre n'est mentionnée. <b>E :</b> aucun argument pour un placenta accreta (pas d'ATCD de césarienne, pas de placenta prævia). Attention : ne pas confondre facteurs de risque d'atonie et anomalies d'insertion.
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <div class="qcard">
+      <div class="qtop">
+        <span class="qnum">Q3</span>
+        <span class="badge b-simple">Choix simple</span>
+      </div>
+      <p class="qtext">Quelle est la conduite à tenir immédiate la plus appropriée ?</p>
+      <ul class="options">
+        <li data-letter="A">Attendre 30 minutes supplémentaires.</li>
+        <li data-letter="B">Délivrance artificielle suivie d'une révision utérine, sous couverture d'ocytociques.</li>
+        <li data-letter="C">Hystérectomie d'hémostase d'emblée.</li>
+        <li data-letter="D">Traction continue sur le cordon.</li>
+        <li data-letter="E">Simple surveillance clinique.</li>
+      </ul>
+      <details class="corr">
+        <summary>Voir la correction</summary>
+        <div class="corr-body">
+          <span class="rep">Réponse : B</span>
+          <p>Devant une rétention placentaire au-delà de 30 minutes, la conduite est : <strong>délivrance artificielle</strong> (extraction manuelle du placenta) suivie d'une <strong>révision utérine</strong> systématique, sous couverture d'<strong>ocytociques</strong> (5 à 20 UI/500 cc de SGI ou méthylergométrine IM) et après vérification de l'absence de lésions cervico-vaginales.</p>
+          <div class="why">
+            <b>A :</b> dangereux — le risque hémorragique augmente avec le temps. <b>C :</b> geste de dernier recours, disproportionné ici. <b>D :</b> la traction sur le cordon est une <strong>erreur technique</strong> qui favorise l'inversion utérine. <b>E :</b> insuffisant — la rétention est une urgence relative.
+          </div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- CAS 2 -->
+  <div class="case">
+    <div class="case-head">
+      <h3>Cas clinique n°2 — Hémorragie de la délivrance sur atonie utérine <span class="tag">Grossesse gémellaire</span></h3>
+    </div>
+    <div class="vignette">
+      <p><span class="lab">Patiente :</span> Mme K., 38 ans, G5P4, grossesse gémellaire bi-amniotique bi-choriale, accouchement par voie basse à 37 SA.</p>
+      <p><span class="lab">Post-partum immédiat :</span> après l'expulsion des deux nouveau-nés et la délivrance apparemment complète, survient un <strong>saignement abondant</strong> par la vulve. L'utérus est <strong>mou, mal rétracté</strong>, fond perçu au niveau de l'ombilic.</p>
+      <p><span class="lab">Constantes :</span> TA 90/50 mmHg, pouls 120/min, pâleur cutanéo-muqueuse. Pertes estimées à <strong>700 ml</strong> en 15 minutes.</p>
+      <p><span class="lab">Examen du délivre :</span> placenta et membranes complets, deux placentas bien individualisés.</p>
+    </div>
+
+    <div class="qcard">
+      <div class="qtop">
+        <span class="qnum">Q1</span>
+        <span class="badge b-simple">Choix simple</span>
+      </div>
+      <p class="qtext">Quel est le diagnostic le plus probable ?</p>
+      <ul class="options">
+        <li data-letter="A">Hémorragie de la délivrance par atonie utérine.</li>
+        <li data-letter="B">Rétention placentaire.</li>
+        <li data-letter="C">Inversion utérine.</li>
+        <li data-letter="D">Anomalie de l'hémostase constitutionnelle.</li>
+        <li data-letter="E">Hématome périnéal.</li>
+      </ul>
+      <details class="corr">
+        <summary>Voir la correction</summary>
+        <div class="corr-body">
+          <span class="rep">Réponse : A</span>
+          <p>Saignement &gt; 500 ml après délivrance complète + utérus mou et mal rétracté + contexte de surdistension (grossesse gémellaire) = <strong>atonie utérine</strong>, première cause d'hémorragie de la délivrance.</p>
+          <div class="why">
+            <b>B :</b> le délivre est complet — pas de rétention. <b>C :</b> aucune masse extériorisée, tableau différent. <b>D :</b> il s'agit d'une cause rare, à évoquer seulement après exclusion d'une cause utérine mécanique. <b>E :</b> l'hématome périnéal se traduit par une tuméfaction douloureuse, non mentionnée ici.
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <div class="qcard">
+      <div class="qtop">
+        <span class="qnum">Q2</span>
+        <span class="badge b-multi">Choix multiples (2–3 réponses)</span>
+      </div>
+      <p class="qtext">Quels sont les facteurs de risque d'atonie utérine présents chez cette patiente ?</p>
+      <ul class="options">
+        <li data-letter="A">Surdistension utérine par grossesse gémellaire.</li>
+        <li data-letter="B">Grande multiparité (G5P4).</li>
+        <li data-letter="C">Âge maternel de 38 ans.</li>
+        <li data-letter="D">Placenta fundique.</li>
+        <li data-letter="E">Délivrance spontanée.</li>
+      </ul>
+      <details class="corr">
+        <summary>Voir la correction</summary>
+        <div class="corr-body">
+          <span class="rep">Réponses : A, B, C</span>
+          <p>La <strong>surdistension utérine</strong> (A) altère la contractilité myométriale ; la <strong>grande multiparité</strong> (B) est un facteur classique d'inertie ; l'<strong>âge maternel avancé</strong> (C) est également un facteur de risque reconnu d'atonie.</p>
+          <div class="why">
+            <b>D :</b> l'insertion fundique est normale et n'est pas un facteur de risque. <b>E :</b> la délivrance spontanée est un mode normal d'expulsion, pas un facteur de risque.
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <div class="qcard">
+      <div class="qtop">
+        <span class="qnum">Q3</span>
+        <span class="badge b-simple">Choix simple</span>
+      </div>
+      <p class="qtext">Quelle est la première mesure thérapeutique à instaurer ?</p>
+      <ul class="options">
+        <li data-letter="A">Réanimation (voies veineuses, oxygénothérapie, remplissage) associée à un massage utérin et à des ocytociques.</li>
+        <li data-letter="B">Hystérectomie d'hémostase immédiate.</li>
+        <li data-letter="C">Attente de la constitution d'un hématome.</li>
+        <li data-letter="D">Antibiothérapie isolée.</li>
+        <li data-letter="E">Transfusion sanguine exclusive.</li>
+      </ul>
+      <details class="corr">
+        <summary>Voir la correction</summary>
+        <div class="corr-body">
+          <span class="rep">Réponse : A</span>
+          <p>La prise en charge associe <strong>mesures de réanimation</strong> (1–2 voies veineuses, DLG, oxygénothérapie, bilan, remplissage) et <strong>traitement obstétrical</strong> : massage utérin ou compression utérine + <strong>ocytociques</strong> (5–20 UI/500 cc SGI ou méthylergométrine IM).</p>
+          <div class="why">
+            <b>B :</b> réservée aux échecs du traitement médical. <b>C :</b> attitude dangereuse, la patiente est déjà en état de choc débutant. <b>D :</b> l'antibiothérapie est associée mais non prioritaire. <b>E :</b> la transfusion ne se conçoit qu'après remplissage et selon le bilan.
+          </div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- CAS 3 -->
+  <div class="case">
+    <div class="case-head">
+      <h3>Cas clinique n°3 — Inversion utérine après traction sur le cordon <span class="tag">Erreur technique</span></h3>
+    </div>
+    <div class="vignette">
+      <p><span class="lab">Patiente :</span> Mme L., 24 ans, primipare, accouchement à terme par voie basse d'un nouveau-né de 3500 g.</p>
+      <p><span class="lab">Contexte :</span> devant l'absence de délivrance à 10 minutes, l'accoucheur effectue une <strong>traction soutenue sur le cordon</strong> avant tout signe de décollement. La patiente présente brutalement une <strong>douleur pelvienne intense</strong>, un <strong>malaise</strong> et une <strong>hypotension</strong>.</p>
+      <p><span class="lab">Examen :</span> à l'inspection de la vulve, on découvre une <strong>masse charnue violacée</strong> extériorisée, saignant, correspondant à l'utérus retourné. Le fond utérin n'est plus perçu à l'abdomen.</p>
+    </div>
+
+    <div class="qcard">
+      <div class="qtop">
+        <span class="qnum">Q1</span>
+        <span class="badge b-simple">Choix simple</span>
+      </div>
+      <p class="qtext">Quel est le diagnostic ?</p>
+      <ul class="options">
+        <li data-letter="A">Inversion utérine.</li>
+        <li data-letter="B">Prolapsus génital.</li>
+        <li data-letter="C">Hématome vaginal.</li>
+        <li data-letter="D">Rétention placentaire simple.</li>
+        <li data-letter="E">Rupture utérine.</li>
+      </ul>
+      <details class="corr">
+        <summary>Voir la correction</summary>
+        <div class="corr-body">
+          <span class="rep">Réponse : A</span>
+          <p>Douleur brutale + malaise + masse violacée extériorisée à la vulve + disparition du fond utérin à l'abdomen = <strong>inversion utérine</strong>, ici favorisée par la traction sur le cordon (erreur technique) et l'hypotonie utérine.</p>
+          <div class="why">
+            <b>B :</b> le prolapsus génital est chronique et non douloureux. <b>C :</b> l'hématome vaginal est latéral, non extériorisé de façon charnue. <b>D :</b> la rétention placentaire ne donne pas de masse utérine extériorisée. <b>E :</b> la rupture utérine donne un tableau de choc avec défense abdominale, sans masse vulvaire.
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <div class="qcard">
+      <div class="qtop">
+        <span class="qnum">Q2</span>
+        <span class="badge b-multi">Choix multiples (2–3 réponses)</span>
+      </div>
+      <p class="qtext">Quels facteurs ont favorisé cette inversion utérine ?</p>
+      <ul class="options">
+        <li data-letter="A">Traction sur le cordon avant décollement.</li>
+        <li data-letter="B">Hypotonie utérine.</li>
+        <li data-letter="C">Primiparité.</li>
+        <li data-letter="D">Macrosomie fœtale.</li>
+        <li data-letter="E">Placenta accreta.</li>
+      </ul>
+      <details class="corr">
+        <summary>Voir la correction</summary>
+        <div class="corr-body">
+          <span class="rep">Réponses : A, B</span>
+          <p>L'inversion utérine est favorisée par l'<strong>hypotonie utérine</strong> (utérus mal rétracté) et par une <strong>erreur technique</strong> : traction sur le cordon, expressions utérines avant décollement. Ici, la traction soutenue sur un utérus hypotonique a entraîné le retournement.</p>
+          <div class="why">
+            <b>C :</b> la primiparité n'est pas un facteur d'inversion (celle-ci survient plutôt chez la multipare hypotonique). <b>D :</b> la macrosomie n'est pas mentionnée (3500 g). <b>E :</b> aucun argument pour un placenta accreta.
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <div class="qcard">
+      <div class="qtop">
+        <span class="qnum">Q3</span>
+        <span class="badge b-simple">Choix simple</span>
+      </div>
+      <p class="qtext">Quel est le traitement de référence ?</p>
+      <ul class="options">
+        <li data-letter="A">Réduction de l'utérus sous anesthésie générale.</li>
+        <li data-letter="B">Réduction sous anesthésie locale.</li>
+        <li data-letter="C">Hystérectomie d'emblée.</li>
+        <li data-letter="D">Traction douce pour compléter l'extériorisation.</li>
+        <li data-letter="E">Simple surveillance.</li>
+      </ul>
+      <details class="corr">
+        <summary>Voir la correction</summary>
+        <div class="corr-body">
+          <span class="rep">Réponse : A</span>
+          <p>Le traitement est la <strong>réduction de l'utérus sous anesthésie générale</strong>, permettant la relaxation musculaire nécessaire à la réintégration.</p>
+          <div class="why">
+            <b>B :</b> l'anesthésie locale ne permet pas la relaxation nécessaire. <b>C :</b> l'hystérectomie n'est réservée qu'aux échecs de réduction ou aux cas compliqués. <b>D :</b> toute traction aggrave l'inversion. <b>E :</b> l'inversion est une urgence vitale (choc, hémorragie).
+          </div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- CAS 4 -->
+  <div class="case">
+    <div class="case-head">
+      <h3>Cas clinique n°4 — Prophylaxie de l'hémorragie de la délivrance <span class="tag">Consultation prénatale</span></h3>
+    </div>
+    <div class="vignette">
+      <p><span class="lab">Patiente :</span> Mme S., 35 ans, G6P5, suivie à l'EPH pour grossesse évolutive à 38 SA.</p>
+      <p><span class="lab">Antécédents :</span> <strong>hémorragie de la délivrance</strong> lors de son dernier accouchement (ayant nécessité une transfusion), anémie chronique avec <strong>Hb à 9 g/dl</strong>.</p>
+      <p><span class="lab">Grossesse actuelle :</span> grossesse unique, présentation céphalique, croissance fœtale normale, pas d'anomalie morphologique.</p>
+      <p><span class="lab">Question :</span> l'équipe prévoit une <strong>délivrance dirigée</strong> dès la sortie des épaules.</p>
+    </div>
+
+    <div class="qcard">
+      <div class="qtop">
+        <span class="qnum">Q1</span>
+        <span class="badge b-multi">Choix multiples (2–3 réponses)</span>
+      </div>
+      <p class="qtext">Quelles sont les indications de la délivrance dirigée présentes chez cette patiente ?</p>
+      <ul class="options">
+        <li data-letter="A">Anémie (Hb 9 g/dl).</li>
+        <li data-letter="B">Antécédent d'hémorragie de la délivrance.</li>
+        <li data-letter="C">Multiparité (G6P5).</li>
+        <li data-letter="D">Primiparité.</li>
+        <li data-letter="E">Grossesse gémellaire.</li>
+      </ul>
+      <details class="corr">
+        <summary>Voir la correction</summary>
+        <div class="corr-body">
+          <span class="rep">Réponses : A, B, C</span>
+          <p>Les indications de la délivrance dirigée sont : <strong>femme anémique</strong>, <strong>multipare</strong>, césarienne, <strong>ATCD d'hémorragie de la délivrance</strong>, ou présence de facteurs de risque hémorragique.</p>
+          <div class="why">
+            <b>D :</b> la primiparité n'est pas une indication. <b>E :</b> il s'agit d'une grossesse unique, pas gémellaire.
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <div class="qcard">
+      <div class="qtop">
+        <span class="qnum">Q2</span>
+        <span class="badge b-simple">Choix simple</span>
+      </div>
+      <p class="qtext">Quel est l'objectif principal de la délivrance dirigée ?</p>
+      <ul class="options">
+        <li data-letter="A">Réduire la phase de rémission clinique, accélérer le décollement et la migration du placenta, diminuer l'HRP physiologique et obtenir une meilleure rétraction utérine.</li>
+        <li data-letter="B">Remplacer la délivrance artificielle en cas de rétention.</li>
+        <li data-letter="C">Éviter toute surveillance ultérieure.</li>
+        <li data-letter="D">Augmenter le volume de l'HRP physiologique.</li>
+        <li data-letter="E">Ralentir le décollement placentaire.</li>
+      </ul>
+      <details class="corr">
+        <summary>Voir la correction</summary>
+        <div class="corr-body">
+          <span class="rep">Réponse : A</span>
+          <p>La délivrance dirigée vise à : <strong>réduire la phase de rémission clinique</strong>, <strong>accélérer le décollement et la migration du placenta</strong>, <strong>diminuer le volume de l'HRP physiologique</strong> et obtenir une <strong>meilleure rétraction utérine</strong>.</p>
+          <div class="why">
+            <b>B :</b> la délivrance dirigée ne remplace pas la délivrance artificielle, qui reste indiquée en cas de rétention. <b>C :</b> la surveillance reste indispensable. <b>D :</b> elle diminue, et n'augmente pas, l'HRP. <b>E :</b> elle accélère le décollement.
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <div class="qcard">
+      <div class="qtop">
+        <span class="qnum">Q3</span>
+        <span class="badge b-simple">Choix simple</span>
+      </div>
+      <p class="qtext">Quel protocole médicamenteux correspond à la délivrance dirigée ?</p>
+      <ul class="options">
+        <li data-letter="A">Ocytociques 5 à 20 UI/500 cc de SGI ou méthylergométrine en IM.</li>
+        <li data-letter="B">Antibiotiques seuls.</li>
+        <li data-letter="C">Antispasmodiques.</li>
+        <li data-letter="D">Bêta-2 mimétiques.</li>
+        <li data-letter="E">Aucun médicament, seulement une surveillance.</li>
+      </ul>
+      <details class="corr">
+        <summary>Voir la correction</summary>
+        <div class="corr-body">
+          <span class="rep">Réponse : A</span>
+          <p>Les <strong>utérotoniques</strong> utilisés sont : <strong>ocytociques 5 à 20 UI/500 cc de SGI</strong> ou <strong>méthylergométrine en IM</strong>.</p>
+          <div class="why">
+            <b>B :</b> les antibiotiques ne sont pas utérotoniques. <b>C :</b> les antispasmodiques n'ont pas leur place. <b>D :</b> les bêta-2 mimétiques sont tocolytiques (relaxants utérins) — ils aggraveraient l'atonie. <b>E :</b> la délivrance dirigée est précisément médicamenteuse.
+          </div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+  <!-- CAS 5 -->
+  <div class="case">
+    <div class="case-head">
+      <h3>Cas clinique n°5 — Placenta accreta et hémorragie cataclysmique <span class="tag">Bloc obstétrical</span></h3>
+    </div>
+    <div class="vignette">
+      <p><span class="lab">Patiente :</span> Mme M., 30 ans, G3P2, <strong>antécédent de césarienne</strong>, grossesse actuelle compliquée d'un <strong>placenta prævia</strong> recouvrant.</p>
+      <p><span class="lab">Accouchement :</span> césarienne programmée à 37 SA. Après extraction fœtale, tentative de délivrance : le placenta adhère fortement à la paroi utérine. Toute tentative de clivage entraîne une <strong>hémorragie abondante</strong>.</p>
+      <p><span class="lab">Constat :</span> le placenta semble <strong>anormalement adhérent</strong> au myomètre, sans plan de clivage.</p>
+    </div>
+
+    <div class="qcard">
+      <div class="qtop">
+        <span class="qnum">Q1</span>
+        <span class="badge b-simple">Choix simple</span>
+      </div>
+      <p class="qtext">Quel est le diagnostic le plus probable ?</p>
+      <ul class="options">
+        <li data-letter="A">Placenta accreta.</li>
+        <li data-letter="B">Rétention placentaire simple par inertie.</li>
+        <li data-letter="C">Cotylédon accessoire.</li>
+        <li data-letter="D">Inversion utérine.</li>
+        <li data-letter="E">Hématome rétro-placentaire.</li>
+      </ul>
+      <details class="corr">
+        <summary>Voir la correction</summary>
+        <div class="corr-body">
+          <span class="rep">Réponse : A</span>
+          <p>Antécédent de césarienne + placenta prævia + absence de plan de clivage + hémorragie à la tentative de décollement = <strong>placenta accreta</strong> (adhérence anormale au myomètre).</p>
+          <div class="why">
+            <b>B :</b> l'inertie ne donne pas une adhérence anormale. <b>C :</b> le cotylédon accessoire est un fragment surnuméraire, pas une adhérence. <b>D :</b> l'inversion donne une masse extériorisée, pas une adhérence. <b>E :</b> l'HRP est un accident de la grossesse, non du post-partum.
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <div class="qcard">
+      <div class="qtop">
+        <span class="qnum">Q2</span>
+        <span class="badge b-multi">Choix multiples (2–3 réponses)</span>
+      </div>
+      <p class="qtext">Quels facteurs de risque de placenta accreta présente cette patiente ?</p>
+      <ul class="options">
+        <li data-letter="A">Antécédent de césarienne.</li>
+        <li data-letter="B">Placenta prævia.</li>
+        <li data-letter="C">Multiparité (G3P2).</li>
+        <li data-letter="D">Primiparité.</li>
+        <li data-letter="E">Grossesse gémellaire.</li>
+      </ul>
+      <details class="corr">
+        <summary>Voir la correction</summary>
+        <div class="corr-body">
+          <span class="rep">Réponses : A, B, C</span>
+          <p>Les facteurs de risque de placenta accreta sont : <strong>antécédent de césarienne</strong> (cicatrice utérine), <strong>placenta prævia</strong> et <strong>multiparité</strong>. L'association césarienne + prævia est particulièrement à risque.</p>
+          <div class="why">
+            <b>D :</b> la primiparité n'est pas un facteur. <b>E :</b> la grossesse gémellaire n'est pas mentionnée.
+          </div>
+        </div>
+      </details>
+    </div>
+
+    <div class="qcard">
+      <div class="qtop">
+        <span class="qnum">Q3</span>
+        <span class="badge b-simple">Choix simple</span>
+      </div>
+      <p class="qtext">Quelle est la conduite à tenir devant ce placenta anormalement adhérent avec hémorragie ?</p>
+      <ul class="options">
+        <li data-letter="A">Ne pas insister sur le clivage, poursuivre la réanimation et envisager un traitement chirurgical (hystérectomie d'hémostase).</li>
+        <li data-letter="B">Insister sur le clivage manuel jusqu'à extraction complète.</li>
+        <li data-letter="C">Attendre 30 minutes supplémentaires.</li>
+        <li data-letter="D">Simple surveillance.</li>
+        <li data-letter="E">Traction sur le cordon.</li>
+      </ul>
+      <details class="corr">
+        <summary>Voir la correction</summary>
+        <div class="corr-body">
+          <span class="rep">Réponse : A</span>
+          <p>Devant un placenta accreta, il ne faut <strong>pas insister</strong> sur le clivage (risque d'hémorragie massive), mais <strong>poursuivre la réanimation</strong> et envisager le <strong>traitement chirurgical</strong> : ligature vasculaire, plicature utérine ou <strong>hystérectomie d'hémostase</strong>.</p>
+          <div class="why">
+            <b>B :</b> le clivage forcé est dangereux et expose à une hémorragie cataclysmique. <b>C :</b> l'attente aggrave l'hémorragie. <b>D :</b> insuffisant face à une hémorragie active. <b>E :</b> la traction sur le cordon est une erreur technique majeure.
+          </div>
+        </div>
+      </details>
+    </div>
+  </div>
+
+</section>
+
+<!-- ================= SECTION 3 : CARTE CONCEPTUELLE ================= -->
+<section id="carte">
+  <div class="section-head">
+    <div class="num">3</div>
+    <div>
+      <h2>Carte conceptuelle & synthèse visuelle</h2>
+      <div class="sub">Physiologie, clinique, complications et traitement en un coup d'œil</div>
+    </div>
+  </div>
+
+  <div class="map-wrap">
+
+    <!-- FLOW GLOBAL -->
+    <div class="map-flow">
+      <div class="flow-step"><span class="st">Temps 1</span>Dilatation</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><span class="st">Temps 2</span>Expulsion du fœtus</div>
+      <div class="flow-arrow">→</div>
+      <div class="flow-step"><span class="st">Temps 3</span>Délivrance<br><small style="font-weight:400;opacity:.85;">(0 → 2 h post-partum)</small></div>
+    </div>
+
+    <!-- 3 PHASES PHYSIOLOGIQUES -->
+    <h3 style="margin:26px 0 14px;font-size:1rem;color:var(--navy);font-weight:800;">Les 3 phases physiologiques de la délivrance</h3>
+    <div class="map-grid">
+      <div class="map-node">
+        <h4><span class="dot"></span>1 · Décollement placentaire</h4>
+        <ul>
+          <li>Temps préparatoire : repos apparent 10–15 min</li>
+          <li>Rétraction utérine (passive, permanente)</li>
+          <li>Enchatonnement physiologique du placenta</li>
+          <li>Déchirures de la caduque par mise en tension des villosités crampons</li>
+          <li>Contraction utérine = phénomène actif principal</li>
+          <li>HRP physiologique complétant le décollement</li>
+        </ul>
+      </div>
+      <div class="map-node">
+        <h4><span class="dot"></span>2 · Expulsion du délivre</h4>
+        <ul>
+          <li>Placenta tombe dans le segment inférieur</li>
+          <li>Membranes se décollent « en doigt de gant »</li>
+          <li>Traversée du vagin puis de la vulve</li>
+          <li><strong>Mode de Baudelocque</strong> : insertion fundique, face fœtale</li>
+          <li><strong>Mode de Duncan</strong> : insertion basse, face maternelle</li>
+        </ul>
+      </div>
+      <div class="map-node">
+        <h4><span class="dot"></span>3 · Hémostase</h4>
+        <ul>
+          <li><strong>Rétraction utérine</strong> → écrasement des vaisseaux par la couche plexiforme = <em>ligature vivante de Pinard</em></li>
+          <li><strong>Coagulation</strong> → clou plaquettaire = <em>thrombose physiologique</em></li>
+          <li>Obturation définitive des orifices vasculaires</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- BAUDELOCQUE VS DUNCAN -->
+    <h3 style="margin:28px 0 4px;font-size:1rem;color:var(--navy);font-weight:800;">Baudelocque vs Duncan — le duo à ne jamais inverser</h3>
+    <div class="vs-grid">
+      <div class="vs-card vs-baud">
+        <h5>🟦 Mode de BAUDELOCQUE</h5>
+        <ul>
+          <li>Placenta inséré au <strong>fond utérin</strong></li>
+          <li>Expulsion par la <strong>face fœtale</strong> en premier</li>
+          <li>« En doigt de gant » dans son sac membraneux</li>
+          <li>Mode habituel des insertions hautes</li>
+        </ul>
+      </div>
+      <div class="vs-card vs-duncan">
+        <h5>🟥 Mode de DUNCAN</h5>
+        <ul>
+          <li>Placenta <strong>bas inséré</strong></li>
+          <li>Expulsion par la <strong>face utérine (maternelle)</strong></li>
+          <li>Sortie par la face maternelle</li>
+          <li>Contraste avec Baudelocque</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- CLINIQUE -->
+    <h3 style="margin:28px 0 14px;font-size:1rem;color:var(--navy);font-weight:800;">Étude clinique — 3 temps</h3>
+    <div class="map-grid">
+      <div class="map-node" style="border-top-color:var(--navy-light);">
+        <h4><span class="dot" style="background:var(--navy-light);"></span>Phase de rémission clinique</h4>
+        <ul>
+          <li>Sensation de repos et de bien-être</li>
+          <li>Utérus globuleux, arrondi, rétracté</li>
+          <li>Fond avoisinant l'ombilic</li>
+          <li>Utérus ferme, régulier, ~12 cm transversal</li>
+          <li>Durée : 10 à 30 minutes</li>
+        </ul>
+      </div>
+      <div class="map-node" style="border-top-color:var(--amber);">
+        <h4><span class="dot" style="background:var(--amber);"></span>Phase de migration placentaire</h4>
+        <ul>
+          <li>Réapparition des contractions utérines</li>
+          <li>Petite quantité de sang (HRP physiologique)</li>
+          <li>Fond utérin remonte à 3–4 cm au-dessus de la symphyse</li>
+          <li>Utérus dur (globe utérin) sous-ombilical</li>
+        </ul>
+      </div>
+      <div class="map-node" style="border-top-color:var(--teal);">
+        <h4><span class="dot"></span>Phase d'expulsion</h4>
+        <ul>
+          <li><strong>Délivrance spontanée</strong> : passive, très lente</li>
+          <li><strong>Délivrance naturelle</strong> : manœuvre de refoulement utérin</li>
+          <li><strong>Délivrance dirigée</strong> : utérotoniques</li>
+          <li><strong>Délivrance manuelle</strong> : extraction intra-utérine</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- TABLEAU COMPLICATIONS -->
+    <h3 style="margin:28px 0 4px;font-size:1rem;color:var(--navy);font-weight:800;">Complications de la délivrance</h3>
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th>Complication</th>
+            <th>Définition / Mécanisme</th>
+            <th>Étiologies clés</th>
+            <th>Prise en charge</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="pill pill-teal">Rétention placentaire</span></td>
+            <td>Absence de délivrance &gt; 30 min — absence de décollement ou obstacle à la migration</td>
+            <td>Inertie, hypertonie (enchaînement), anomalies d'insertion, erreurs techniques</td>
+            <td>Délivrance artificielle + révision utérine</td>
+          </tr>
+          <tr>
+            <td><span class="pill pill-red">Inertie utérine</span></td>
+            <td>Défaut de contractilité myométriale</td>
+            <td>Surdistension, travail dystocique prolongé, fièvre, causes iatrogènes</td>
+            <td>Ocytociques, massage, compression</td>
+          </tr>
+          <tr>
+            <td><span class="pill pill-violet">Inversion utérine</span></td>
+            <td>Retournement de l'utérus, 4 degrés</td>
+            <td>Hypotonie (grande multipare, surdistension), traction sur le cordon</td>
+            <td>Réduction sous anesthésie générale</td>
+          </tr>
+          <tr>
+            <td><span class="pill pill-red">Hémorragie de la délivrance</span></td>
+            <td>Pertes &gt; 500 ml dans les 24 h, retentissement général</td>
+            <td>Rétention, atonie, inversion, anomalies de l'hémostase</td>
+            <td>Réanimation + obstétrical + chirurgical + prophylaxie</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- ALGORITHME -->
+    <h3 style="margin:30px 0 14px;font-size:1rem;color:var(--navy);font-weight:800;">Algorithme simplifié — Hémorragie de la délivrance</h3>
+    <div class="map-flow" style="flex-direction:column;gap:0;">
+
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px;justify-content:center;width:100%;">
+        <div class="flow-step" style="background:linear-gradient(135deg,#9b2c2c,#c53030);flex:0 1 260px;">Saignement &gt; 500 ml</div>
+        <div class="flow-arrow">→</div>
+        <div class="flow-step" style="flex:0 1 260px;">Appel à l'aide + Réanimation</div>
+      </div>
+
+      <div style="text-align:center;color:var(--teal);font-size:1.3rem;font-weight:800;margin:4px 0;">↓</div>
+
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px;justify-content:center;width:100%;">
+        <div class="flow-step" style="flex:0 1 300px;">Identifier la cause</div>
+      </div>
+
+      <div style="text-align:center;color:var(--teal);font-size:1.3rem;font-weight:800;margin:4px 0;">↓</div>
+
+      <div style="display:flex;flex-wrap:wrap;gap:12px;justify-content:center;width:100%;">
+        <div class="flow-step" style="flex:1 1 200px;background:linear-gradient(135deg,#2c7a7b,#285e61);">
+          <span class="st">Cause utérine</span>
+          Atonie → ocytociques + massage<br>
+          Rétention → DA + révision
+        </div>
+        <div class="flow-step" style="flex:1 1 200px;background:linear-gradient(135deg,#975a16,#744210);">
+          <span class="st">Cause mécanique</span>
+          Inversion → réduction sous AG<br>
+          Lésions → réparation
+        </div>
+        <div class="flow-step" style="flex:1 1 200px;background:linear-gradient(135deg,#553c9a,#44337a);">
+          <span class="st">Cause biologique</span>
+          Hémostase → PFC, fibrinogène,<br>facteurs de coagulation
+        </div>
+      </div>
+
+      <div style="text-align:center;color:var(--teal);font-size:1.3rem;font-weight:800;margin:4px 0;">↓</div>
+
+      <div style="display:flex;flex-wrap:wrap;align-items:center;gap:10px;justify-content:center;width:100%;">
+        <div class="flow-step" style="background:linear-gradient(135deg,#16324f,#0f2438);flex:0 1 340px;">Échec → Chirurgie : ligature · plicature · hystérectomie d'hémostase</div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- ================= SECTION 4 : MNÉMOTECHNIQUES ================= -->
+<section id="mnemo">
+  <div class="section-head">
+    <div class="num">4</div>
+    <div>
+      <h2>Mnémotechniques & « trucs et astuces » d'examen</h2>
+      <div class="sub">Mémorisation durable, pièges docimologiques et discriminateurs clés</div>
+    </div>
+  </div>
+
+  <div class="mnemo">
+    <h4><span class="key">Mnémo 1</span> Les 3 phases de la délivrance : « D-E-H »</h4>
+    <p><strong>D</strong>écollement → <strong>E</strong>xpulsion → <strong>H</strong>émostase.</p>
+    <div class="explication">
+      Astuce : <em>« Décolle, Expulse, Hémostase »</em> — dans cet ordre chronologique strict. Le décollement précède toujours l'expulsion, et l'hémostase clôt le processus. Toute inversion de l'ordre est un piège classique.
+    </div>
+  </div>
+
+  <div class="mnemo">
+    <h4><span class="key">Mnémo 2</span> Baudelocque vs Duncan : « Baud = Haut = Fœtal » / « Dun = Bas = Maternel »</h4>
+    <p><strong>B</strong>audelocque = <strong>B</strong>ien haut (fond utérin) = face <strong>fœtale</strong>.<br><strong>D</strong>uncan = <strong>D</strong>escendu (bas inséré) = face <strong>maternelle</strong>.</p>
+    <div class="explication">
+      Retenez que le « B » de Baudelocque est « rond comme un ballon au fond de l'utérus », et que le « D » de Duncan est « descendu » vers le segment inférieur. Le piège classique consiste à attribuer Duncan aux insertions fundiques.
+    </div>
+  </div>
+
+  <div class="mnemo">
+    <h4><span class="key">Mnémo 3</span> Les 4 étiologies de l'hémorragie de la délivrance : « R-A-I-H »</h4>
+    <p><strong>R</strong>étention placentaire · <strong>A</strong>tonie utérine · <strong>I</strong>nversion utérine · <strong>H</strong>émostase (anomalies).</p>
+    <div class="explication">
+      « RAIH » comme « <em>Rage</em> » — l'hémorragie de la délivrance est une rage hémorragique. L'atonie est la première cause. Ne jamais oublier l'inversion, souvent oubliée dans les copies.
+    </div>
+  </div>
+
+  <div class="mnemo">
+    <h4><span class="key">Mnémo 4</span> Les 4 degrés de l'inversion utérine : « I-E-P-C »</h4>
+    <p><strong>I</strong>nvagination simple → <strong>E</strong>xtériorisation partielle → <strong>P</strong>rolapsus complet → <strong>C</strong>omplète hors vulve.</p>
+    <div class="explication">
+      De la simple invagination jusqu'à l'extériorisation complète de l'utérus hors de l'orifice vulvaire. Le traitement est la réduction sous <strong>anesthésie générale</strong> — pas locale.
+    </div>
+  </div>
+
+  <div class="mnemo">
+    <h4><span class="key">Mnémo 5</span> Le globe de sécurité : « Sous l'ombilic, c'est bon ; au-dessus, c'est mou »</h4>
+    <p>Le fond utérin doit être <strong>légèrement au-dessous de l'ombilic</strong>, utérus ferme, saignement minime à l'expression.</p>
+    <div class="explication">
+      Un fond au-dessus de l'ombilic avec un utérus mou = alerte : suspecter une <strong>atonie</strong> ou une <strong>rétention</strong>. C'est le signe clinique le plus simple et le plus fiable de la qualité de la rétraction utérine.
+    </div>
+  </div>
+
+  <div class="mnemo">
+    <h4><span class="key">Mnémo 6</span> Pinard = rétraction ; Clou = coagulation</h4>
+    <p><strong>Pinard</strong> → ligature <strong>vivante</strong> (mécanique, rétraction).<br><strong>Clou plaquettaire</strong> → thrombose <strong>physiologique</strong> (biologique, coagulation).</p>
+    <div class="explication">
+      Ne pas confondre les deux : Pinard est un mécanisme <em>mécanique</em> (écrasement des vaisseaux par les fibres de la couche plexiforme), tandis que la thrombose physiologique est un mécanisme <em>biologique</em> (clou plaquettaire).
+    </div>
+  </div>
+
+  <div class="trap">
+    <h4>⚠️ Pièges docimologiques classiques (4<sup>e</sup> année — Faculté algérienne)</h4>
+    <ul>
+      <li><strong>Inverser Baudelocque et Duncan</strong> — le piège n°1. Baudelocque = fundique = face fœtale ; Duncan = bas = face maternelle.</li>
+      <li><strong>Confondre rétraction et contraction</strong> : la rétraction est <em>passive et permanente</em>, la contraction est <em>active et intermittente</em>. La contraction est le principal responsable du décollement.</li>
+      <li><strong>Dire que la zone d'insertion placentaire s'épaissit</strong> — faux : elle <em>reste mince</em>, c'est ce qui permet l'enchatonnement.</li>
+      <li><strong>Attribuer la ligature de Pinard au clou plaquettaire</strong> — Pinard = rétraction mécanique, le clou = coagulation.</li>
+      <li><strong>Confondre HRP physiologique et HRP pathologique</strong> : le premier complète le décollement normal ; le second est un accident de la grossesse.</li>
+      <li><strong>Oublier l'hypertonie</strong> comme cause de rétention placentaire (enchaînement placentaire) — la rétention n'est pas toujours hypotonique.</li>
+      <li><strong>Confondre délivrance dirigée et délivrance artificielle</strong> : la première est médicamenteuse (utérotoniques), la seconde est manuelle (extraction intra-utérine).</li>
+      <li><strong>Erreur sur le seuil d'hémorragie</strong> : 500 ml (et non 300, 1000 ou 1500) avec retentissement sur l'état général.</li>
+      <li><strong>Erreur sur la durée de la rétention</strong> : au-delà de <strong>30 minutes</strong>, pas 45 ni 60.</li>
+      <li><strong>Erreur sur le traitement de l'inversion</strong> : réduction sous <strong>anesthésie générale</strong> (pas locale).</li>
+      <li><strong>Erreur sur le nombre de degrés de l'inversion</strong> : <strong>quatre</strong> degrés, pas trois.</li>
+      <li><strong>Oublier l'examen du délivre</strong> (deux faces + cordon) sous bon éclairage — systématique, même si la délivrance semble complète.</li>
+    </ul>
+  </div>
+
+</section>
+
+<!-- ================= MOTIVATION ================= -->
+<div class="motiv">
+  <span class="emoji">🩺</span>
+  <h3>Bravo, vous avez terminé ce module !</h3>
+  <p>La délivrance est le temps le plus court mais le plus dangereux de l'accouchement. Maîtrisez ses 3 phases, ses 4 complications et ses 3 modes de prise en charge : vous sauverez des vies. <strong>Ne lâchez rien — le jour J, vous serez prêt(e) !</strong> 💪</p>
+</div>
+
+<p class="footer-note">Support de révision — Délivrance normale et pathologique · Dr H. ZOUAOUI · CHU Djillali Bounaama, Douéra, Alger · 2022/2023</p>
+
+</div><!-- /container -->
+
+</body>
+</html>

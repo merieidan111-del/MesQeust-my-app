@@ -789,7 +789,7 @@ export const APPENDICITE_AIGUE_RESOURCES: CourseResource[] = [
     courseId: 'crs-gastro-appendicite-aigue',
     type: 'Astuce',
     title: 'Mnémotechniques : Appendicite Aiguë',
-    contentMarkdown: `### 💡 Mnémotechniques d'Examen (Dr LOUDDANI A.)
+    contentMarkdown: `### Astuce : Mnémotechniques d'Examen (Dr LOUDDANI A.)
 
 1. **Signes Cliniques : « M.A.C. B.U.R.N.E.Y »**
    - **M** : **M**igration de la douleur (épigastre -> FID)

@@ -712,10 +712,10 @@ export const LESIONS_CAUSTIQUES_RESOURCES: CourseResource[] = [
 - **Stade 4** : Perforation digestive établie.
 
 ### 4. Premiers Secours : LES 4 INTERDITS ABSOLUS
-- ❌ **NE PAS faire vomir** (double brûlure de l'œsophage et risque d'inhalation pulmonaire).
-- ❌ **NE PAS neutraliser** par un acide/base opposé (réaction exothermique thermique destructrice).
-- ❌ **NE PAS faire boire** (ni eau, ni lait).
-- ❌ **NE PAS poser de sonde nasogastrique à l'aveugle**.
+- [Refus/CI] **NE PAS faire vomir** (double brûlure de l'œsophage et risque d'inhalation pulmonaire).
+- [Refus/CI] **NE PAS neutraliser** par un acide/base opposé (réaction exothermique thermique destructrice).
+- [Refus/CI] **NE PAS faire boire** (ni eau, ni lait).
+- [Refus/CI] **NE PAS poser de sonde nasogastrique à l'aveugle**.
 
 ### 5. Prise en Charge Thérapeutique
 - **Urgence vitale** : Si perforation ou nécrose transmurale TDM -> **Œsogastrectomie d'urgence**.
@@ -729,7 +729,7 @@ export const LESIONS_CAUSTIQUES_RESOURCES: CourseResource[] = [
     courseId: 'crs-gastro-lesions-caustiques',
     type: 'Astuce',
     title: 'Mnémotechniques : Ingestion de Caustiques',
-    contentMarkdown: `### 💡 Mnémotechniques d'Examen (Brûlures Caustiques)
+    contentMarkdown: `### Astuce : Mnémotechniques d'Examen (Brûlures Caustiques)
 
 1. **Bases vs Acides : « BITE & LICK »**
    - **B**ases = **B**ite l'œsophage (Liquéfaction profonde)

@@ -1,0 +1,1603 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Révision Intégrée : Le Cycle Menstruel - 4ème Année Médecine</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+        :root {
+            --navy: #1a2a3a;
+            --slate: #4a5568;
+            --teal: #319795;
+            --teal-light: #e6fffa;
+            --bg-color: #f7fafc;
+            --card-bg: #ffffff;
+            --border-color: #e2e8f0;
+            --danger: #e53e3e;
+            --success: #38a169;
+            --warning: #d69e2e;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--slate);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, var(--navy) 0%, #2d3748 100%);
+            color: white;
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(26, 42, 58, 0.2);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 10px;
+            letter-spacing: -0.5px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        h2 {
+            color: var(--navy);
+            font-size: 1.8rem;
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--teal);
+            display: inline-block;
+        }
+
+        h3 {
+            color: var(--navy);
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        .card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05), 0 1px 3px rgba(0, 0, 0, 0.1);
+            border: 1px solid var(--border-color);
+            transition: transform 0.2s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .question-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-topic {
+            background-color: var(--navy);
+            color: white;
+        }
+
+        .badge-rj {
+            background-color: var(--teal-light);
+            color: var(--teal);
+            border: 1px solid var(--teal);
+        }
+
+        .badge-multi {
+            background-color: #fefcbf;
+            color: #b7791f;
+            border: 1px solid #b7791f;
+        }
+
+        .badge-single {
+            background-color: #e2e8f0;
+            color: var(--slate);
+            border: 1px solid var(--slate);
+        }
+
+        .badge-except {
+            background-color: #fed7d7;
+            color: var(--danger);
+            border: 1px solid var(--danger);
+        }
+
+        .question-text {
+            font-weight: 600;
+            font-size: 1.1rem;
+            color: var(--navy);
+            margin-bottom: 15px;
+        }
+
+        .options-list {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .options-list li {
+            padding: 8px 12px;
+            margin-bottom: 5px;
+            background-color: var(--bg-color);
+            border-radius: 6px;
+            border-left: 3px solid transparent;
+        }
+
+        .options-list li strong {
+            color: var(--navy);
+            margin-right: 8px;
+        }
+
+        details {
+            margin-top: 15px;
+            background-color: var(--teal-light);
+            border-radius: 8px;
+            border: 1px solid #b2f5ea;
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 12px 20px;
+            background-color: #e6fffa;
+            color: var(--teal);
+            font-weight: 700;
+            cursor: pointer;
+            user-select: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        summary::before {
+            content: "▶";
+            font-size: 0.8rem;
+            transition: transform 0.2s;
+        }
+
+        details[open] summary::before {
+            transform: rotate(90deg);
+        }
+
+        .correction-content {
+            padding: 20px;
+            background-color: white;
+            border-top: 1px solid #b2f5ea;
+            font-size: 0.95rem;
+        }
+
+        .correction-content p {
+            margin-bottom: 10px;
+        }
+
+        .correction-content ul {
+            margin-left: 20px;
+            margin-bottom: 10px;
+        }
+
+        .correction-content li {
+            margin-bottom: 5px;
+        }
+
+        .correct-answer {
+            color: var(--success);
+            font-weight: 700;
+        }
+
+        .wrong-answer {
+            color: var(--danger);
+            font-weight: 600;
+        }
+
+        /* Clinical Cases */
+        .case-vignette {
+            background-color: #edf2f7;
+            padding: 20px;
+            border-radius: 8px;
+            border-left: 5px solid var(--navy);
+            margin-bottom: 20px;
+            font-style: italic;
+        }
+
+        /* Concept Map */
+        .concept-map-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        @media (min-width: 768px) {
+            .concept-map-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        .axis-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 10px;
+            background-color: #edf2f7;
+            padding: 20px;
+            border-radius: 12px;
+        }
+
+        .axis-box {
+            background-color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            border: 2px solid var(--teal);
+            font-weight: 700;
+            color: var(--navy);
+            width: 100%;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .axis-arrow {
+            font-size: 1.5rem;
+            color: var(--teal);
+            font-weight: bold;
+        }
+
+        .timeline-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .timeline-bar {
+            display: flex;
+            height: 60px;
+            border-radius: 8px;
+            overflow: hidden;
+            margin-bottom: 10px;
+        }
+
+        .timeline-segment {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+            font-size: 0.85rem;
+            text-align: center;
+            padding: 5px;
+        }
+
+        .seg-menstruation { background-color: #e53e3e; width: 17.8%; }
+        .seg-follicular { background-color: #dd6b20; width: 32.1%; }
+        .seg-ovulation { background-color: #d69e2e; width: 7.1%; }
+        .seg-luteal { background-color: #319795; width: 42.8%; }
+
+        .hormone-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+            font-size: 0.9rem;
+        }
+
+        .hormone-table th, .hormone-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .hormone-table th {
+            background-color: var(--navy);
+            color: white;
+        }
+
+        .hormone-table tr:nth-child(even) {
+            background-color: var(--bg-color);
+        }
+
+        /* Mnemonics */
+        .mnemonic-card {
+            background: linear-gradient(to right, #fff, #f7fafc);
+            border-left: 4px solid var(--warning);
+            padding: 15px 20px;
+            margin-bottom: 15px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .mnemonic-title {
+            font-weight: 700;
+            color: var(--navy);
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+        }
+
+        .highlight {
+            background-color: #fefcbf;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: 600;
+            color: #744210;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 50px;
+            padding: 30px;
+            background-color: var(--navy);
+            color: white;
+            border-radius: 16px;
+            font-size: 1.2rem;
+            font-weight: 600;
+            box-shadow: 0 -4px 10px rgba(0,0,0,0.1);
+        }
+
+        footer span {
+            display: inline-block;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Révision Intégrée : Le Cycle Menstruel</h1>
+        <p>Préparation aux Examens de Gynécologie-Obstétrique — 4ème Année Médecine</p>
+    </header>
+
+    <main>
+        <!-- SECTION 1 : QCM -->
+        <section id="mcq-section">
+            <h2>1. Banque de 25 QCM Exigeants</h2>
+
+            <!-- Q1 -->
+            <div class="card">
+                <div class="question-header">
+                    <span class="badge badge-topic">Caractéristiques générales</span>
+                    <span class="badge badge-except">Choix simple (Sauf)</span>
+                </div>
+                <p class="question-text">1. Toutes les propositions suivantes concernant les caractéristiques générales du cycle menstruel normal sont exactes, SAUF une. Laquelle ?</p>
+                <ul class="options-list">
+                    <li><strong>A.</strong> La ménarchie survient habituellement vers l'âge de 12 ans.</li>
+                    <li><strong>B.</strong> La durée moyenne d'un cycle normal est de 28 jours, avec des extrêmes allant de 21 à 35 jours.</li>
+                    <li><strong>C.</strong> L'hémorragie menstruelle dure en moyenne 4 jours, avec des extrêmes de 3 à 7 jours.</li>
+                    <li><strong>D.</strong> Une menstruation moyenne correspond à une perte de sang comprise entre 25 et 80 ml.</li>
+                    <li><strong>E.</strong> Le cycle menstruel persiste tout au long de la grossesse et de l'allaitement.</li>
+                </ul>
+                <details>
+                    <summary>Voir la correction et l'explication</summary>
+                    <div class="correction-content">
+                        <p><span class="correct-answer">Réponse correcte : E</span></p>
+                        <p><strong>Explication :</strong> Le cycle menstruel est physiologiquement interrompu pendant la grossesse et l'allaitement (en raison de l'inhibition de l'axe hypothalamo-hypophysaire par les hormones placentaires et la prolactine). Il disparaît définitivement à la ménopause.</p>
+                        <ul>
+                            <li><strong>A (Vrai) :</strong> La ménarchie se situe autour de 12 ans.</li>
+                            <li><strong>B (Vrai) :</strong> Le cycle normal est de 28 ± 4 jours, soit 21 à 35 jours.</li>
+                            <li><strong>C (Vrai) :</strong> Les règles durent en moyenne 4 jours (3-7 jours).</li>
+                            <li><strong>D (Vrai) :</strong> Le volume normal de perte sanguine est de 25 à 80 ml.</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+
+            <!-- Q2 -->
+            <div class="card">
+                <div class="question-header">
+                    <span class="badge badge-topic">Ovulation</span>
+                    <span class="badge badge-multi">QCM Multiples (2-3 réponses)</span>
+                </div>
+                <p class="question-text">2. Concernant les phénomènes hormonaux précédant et accompagnant l'ovulation, quelles sont les propositions exactes ? (Choisir 2 à 3 réponses)</p>
+                <ul class="options-list">
+                    <li><strong>A.</strong> Un pic important d'œstradiol survient environ 24 heures avant l'ovulation.</li>
+                    <li><strong>B.</strong> Le pic de LH précède immédiatement le pic d'œstradiol.</li>
+                    <li><strong>C.</strong> La sécrétion de progestérone débute quelques heures après le début du pic de LH, avant la rupture folliculaire.</li>
+                    <li><strong>D.</strong> Le taux croissant de progestérone après l'ovulation exerce un rétrocontrôle positif sur la LH.</li>
+                    <li><strong>E.</strong> La lutéinisation est induite par la FSH.</li>
+                </ul>
+                <details>
+                    <summary>Voir la correction et l'explication</summary>
+                    <div class="correction-content">
+                        <p><span class="correct-answer">Réponses correctes : A et C</span></p>
+                        <p><strong>Explication :</strong></p>
+                        <ul>
+                            <li><strong>A (Vrai) :</strong> Le pic d'œstradiol précède le pic de LH et est le signal déclencheur de l'ovulation.</li>
+                            <li><strong>B (Faux) :</strong> C'est l'inverse. Le pic d'œstradiol précède le pic de LH. Le pic de LH est consécutif au rétrocontrôle positif des œstrogènes.</li>
+                            <li><strong>C (Vrai) :</strong> La lutéinisation (début de sécrétion de progestérone) est induite par le pic de LH et commence avant la rupture folliculaire.</li>
+                            <li><strong>D (Faux) :</strong> La progestérone exerce un rétrocontrôle <strong>négatif</strong> sur la LH (et la FSH), ce qui limite la durée de la phase lutéale.</li>
+                            <li><strong>E (Faux) :</strong> C'est la <strong>LH</strong> qui déclenche l'ovulation et les phénomènes de lutéinisation (la FSH est impliquée dans la maturation folliculaire).</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+
+            <!-- Q3 -->
+            <div class="card">
+                <div class="question-header">
+                    <span class="badge badge-topic">Glaire cervicale</span>
+                    <span class="badge badge-rj">Réponse Juste (RJ)</span>
+                </div>
+                <p class="question-text">3. Concernant la glaire cervicale, quelle est la proposition juste ?</p>
+                <ul class="options-list">
+                    <li><strong>A.</strong> Sa production est sous la dépendance exclusive de la progestérone.</li>
+                    <li><strong>B.</strong> Sous l'action des œstrogènes, son abondance et sa filance augmentent progressivement au début du cycle.</li>
+                    <li><strong>C.</strong> Sous l'action de la progestérone, sa filance augmente pour faciliter le passage des spermatozoïdes.</li>
+                    <li><strong>D.</strong> Elle est sécrétée par les glandes de l'endomètre.</li>
+                    <li><strong>E.</strong> Elle présente une viscosité maximale au moment de l'ovulation.</li>
+                </ul>
+                <details>
+                    <summary>Voir la correction et l'explication</summary>
+                    <div class="correction-content">
+                        <p><span class="correct-answer">Réponse correcte : B</span></p>
+                        <p><strong>Explication :</strong></p>
+                        <ul>
+                            <li><strong>A (Faux) :</strong> La glaire cervicale est sous la dépendance des œstrogènes ET de la progestérone, avec des effets opposés.</li>
+                            <li><strong>B (Vrai) :</strong> Les œstrogènes augmentent l'abondance et la filance de la glaire (aspect "filant" et clair), facilitant la pénétration des spermatozoïdes.</li>
+                            <li><strong>C (Faux) :</strong> La progestérone diminue l'abondance et la filance de la glaire, la rendant épaisse et imperméable.</li>
+                            <li><strong>D (Faux) :</strong> Elle est le produit de sécrétion des <strong>glandes cervicales</strong> (col de l'utérus), et non de l'endomètre.</li>
+                            <li><strong>E (Faux) :</strong> Au moment de l'ovulation (sous l'effet des œstrogènes), la glaire est au contraire très fluide et filante (viscosité minimale).</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+
+            <!-- Q4 -->
+            <div class="card">
+                <div class="question-header">
+                    <span class="badge badge-topic">Follicule de De Graaf</span>
+                    <span class="badge badge-single">Choix simple</span>
+                </div>
+                <p class="question-text">4. Quel est le diamètre approximatif du follicule de De Graaf (follicule pré-ovulatoire) ?</p>
+                <ul class="options-list">
+                    <li><strong>A.</strong> 1 à 2 mm</li>
+                    <li><strong>B.</strong> 5 à 7 mm</li>
+                    <li><strong>C.</strong> 10 à 12 mm</li>
+                    <li><strong>D.</strong> 15 à 20 mm</li>
+                    <li><strong>E.</strong> 25 à 30 mm</li>
+                </ul>
+                <details>
+                    <summary>Voir la correction et l'explication</summary>
+                    <div class="correction-content">
+                        <p><span class="correct-answer">Réponse correcte : C</span></p>
+                        <p><strong>Explication :</strong> Le follicule de De Graaf, qui est le follicule mature prêt à ovuler, atteint un diamètre de 10 à 12 mm. Il se présente comme une vésicule contenant un liquide folliculaire et deux couches cellulaires (la granulosa en interne et les thèques interne/externe en périphérie).</p>
+                        <ul>
+                            <li><strong>A (Faux) :</strong> 1-2 mm correspond à un follicule primordial ou primaire.</li>
+                            <li><strong>B (Faux) :</strong> 5-7 mm est la taille d'un follicule en cours de maturation (antral).</li>
+                            <li><strong>D (Faux) :</strong> 15-20 mm est une taille qui peut être observée en échographie mais qui dépasse la taille classique du De Graaf citée dans le cours (10-12 mm).</li>
+                            <li><strong>E (Faux) :</strong> 25-30 mm correspondrait plutôt à un kyste ovarien fonctionnel.</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+
+            <!-- Q5 -->
+            <div class="card">
+                <div class="question-header">
+                    <span class="badge badge-topic">Aménorrhée</span>
+                    <span class="badge badge-rj">Réponse Fausse (RF)</span>
+                </div>
+                <p class="question-text">5. Parmi les propositions suivantes concernant les aménorrhées, laquelle est FAUSSE ?</p>
+                <ul class="options-list">
+                    <li><strong>A.</strong> L'aménorrhée primaire est l'absence des premières règles à l'âge habituel de la ménarchie (plus de 18 ans).</li>
+                    <li><strong>B.</strong> L'aménorrhée secondaire est la disparition des règles plus de 3 mois chez une femme antérieurement réglée.</li>
+                    <li><strong>C.</strong> L'aménorrhée se définit comme l'absence de règles en dehors de la grossesse.</li>
+                    <li><strong>D.</strong> Une aménorrhée primaire peut être due à une cause anatomique (imperforation de l'hymen).</li>
+                    <li><strong>E.</strong> L'aménorrhée secondaire est physiologique chez la femme ménopausée.</li>
+                </ul>
+                <details>
+                    <summary>Voir la correction et l'explication</summary>
+                    <div class="correction-content">
+                        <p><span class="correct-answer">Réponse incorrecte (FAUSSE) : C</span></p>
+                        <p><strong>Explication :</strong> La définition de l'aménorrhée précise qu'elle survient <strong>en dehors de la grossesse et de l'allaitement</strong>. L'option C est donc incomplète et constitue la proposition fausse.</p>
+                        <ul>
+                            <li><strong>A (Vrai) :</strong> C'est la définition classique de l'aménorrhée primaire (> 18 ans dans le cours, bien que certaines définitions récentes utilisent 15-16 ans).</li>
+                            <li><strong>B (Vrai) :</strong> Définition de l'aménorrhée secondaire (> 3 mois).</li>
+                            <li><strong>D (Vrai) :</strong> L'imperforation de l'hymen est une cause anatomique d'aménorrhée primaire (les règles ne peuvent pas s'écouler).</li>
+                            <li><strong>E (Vrai) :</strong> La ménopause est une cause physiologique d'aménorrhée secondaire.</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+
+            <!-- Q6 -->
+            <div class="card">
+                <div class="question-header">
+                    <span class="badge badge-topic">Endomètre</span>
+                    <span class="badge badge-multi">QCM Multiples (2-3 réponses)</span>
+                </div>
+                <p class="question-text">6. Concernant les modifications de l'endomètre au cours du cycle menstruel, quelles sont les propositions exactes ? (Choisir 2 à 3 réponses)</p>
+                <ul class="options-list">
+                    <li><strong>A.</strong> De J1 à J5, la desquamation de la partie superficielle de l'endomètre correspond aux règles.</li>
+                    <li><strong>B.</strong> De J5 à J14, l'endomètre s'épaissit progressivement et présente un aspect lisse (phase prolifératoire).</li>
+                    <li><strong>C.</strong> Pendant la phase lutéale, l'endomètre est creusé et gorgé de sang, formant la dentelle utérine.</li>
+                    <li><strong>D.</strong> La phase sécrétoire est marquée par le développement de glandes en tubes qui sécrètent du glycogène.</li>
+                    <li><strong>E.</strong> Si l'ovocyte n'est pas fécondé, l'endomètre est maintenu jusqu'à J35.</li>
+                </ul>
+                <details>
+                    <summary>Voir la correction et l'explication</summary>
+                    <div class="correction-content">
+                        <p><span class="correct-answer">Réponses correctes : A, B, C, D (Toutes sauf E)</span></p>
+                        <p><strong>Explication :</strong></p>
+                        <ul>
+                            <li><strong>A (Vrai) :</strong> Les règles (J1-J5) correspondent à la desquamation de la couche superficielle de l'endomètre.</li>
+                            <li><strong>B (Vrai) :</strong> La phase prolifératoire (J5-J14) est sous l'effet des œstrogènes, l'endomètre se reconstitue et s'épaissit.</li>
+                            <li><strong>C (Vrai) :</strong> La phase sécrétoire (ou lutéale) voit l'endomètre se creuser (dentelle utérine) sous l'effet de la progestérone.</li>
+                            <li><strong>D (Vrai) :</strong> Les glandes en tubes spiralées se développent et sécrètent du glycogène (nutriment pour un éventuel embryon).</li>
+                            <li><strong>E (Faux) :</strong> En l'absence de fécondation, le corps jaune régresse, la progestérone chute, et l'endomètre est éliminé à <strong>J28</strong> (c'est le début des règles suivantes).</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+
+            <!-- Q7 -->
+            <div class="card">
+                <div class="question-header">
+                    <span class="badge badge-topic">Exploration clinique</span>
+                    <span class="badge badge-single">Choix simple</span>
+                </div>
+                <p class="question-text">7. Quelle est la variation thermique observée lors de l'ovulation lors de la prise de la température basale ?</p>
+                <ul class="options-list">
+                    <li><strong>A.</strong> Une diminution d'environ 0,5 °C.</li>
+                    <li><strong>B.</strong> Une augmentation d'environ 0,5 °C qui se maintient durant la deuxième partie du cycle.</li>
+                    <li><strong>C.</strong> Une augmentation brutale de 1,5 °C pendant 24 heures.</li>
+                    <li><strong>D.</strong> Aucune variation thermique n'est observée.</li>
+                    <li><strong>E.</strong> Une augmentation de 0,5 °C uniquement le jour de l'ovulation, puis un retour à la normale.</li>
+                </ul>
+                <details>
+                    <summary>Voir la correction et l'explication</summary>
+                    <div class="correction-content">
+                        <p><span class="correct-answer">Réponse correcte : B</span></p>
+                        <p><strong>Explication :</strong> La courbe ménothermique met en évidence une augmentation de la température corporelle d'environ 0,5 °C au moment de l'ovulation. Cette hyperthermie est due à l'effet de la <strong>progestérone</strong> et se maintient pendant toute la phase lutéale (deuxième partie du cycle).</p>
+                        <ul>
+                            <li><strong>A (Faux) :</strong> La température augmente, elle ne diminue pas.</li>
+                            <li><strong>C (Faux) :</strong> L'élévation est modérée (environ 0,5 °C), pas de 1,5 °C.</li>
+                            <li><strong>D (Faux) :</strong> La variation existe et est un signe clinique d'ovulation.</li>
+                            <li><strong>E (Faux) :</strong> L'augmentation ne dure pas qu'un seul jour, elle persiste durant toute la phase lutéale.</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+
+            <!-- Q8 -->
+            <div class="card">
+                <div class="question-header">
+                    <span class="badge badge-topic">Phase lutéale</span>
+                    <span class="badge badge-rj">Réponse Juste (RJ)</span>
+                </div>
+                <p class="question-text">8. Concernant la phase post-ovulatoire (lutéale), quelle est la proposition juste ?</p>
+                <ul class="options-list">
+                    <li><strong>A.</strong> Le corps jaune régresse systématiquement 5 jours après l'ovulation.</li>
+                    <li><strong>B.</strong> La sécrétion de progestérone est importante et s'accompagne d'une augmentation des œstrogènes.</li>
+                    <li><strong>C.</strong> Le processus de lutéinisation est indépendant de la LH.</li>
+                    <li><strong>D.</strong> Le corps jaune sécrète de la progestérone pendant 28 jours en l'absence de fécondation.</li>
+                    <li><strong>E.</strong> En cas de fécondation, le corps jaune régresse pour permettre l'implantation.</li>
+                </ul>
+                <details>
+                    <summary>Voir la correction et l'explication</summary>
+                    <div class="correction-content">
+                        <p><span class="correct-answer">Réponse correcte : B</span></p>
+                        <p><strong>Explication :</strong> Pendant la phase lutéale, le corps jaune sécrète de la progestérone en grande quantité, et la sécrétion des œstrogènes augmente également (bien que moins qu'en phase folliculaire).</p>
+                        <ul>
+                            <li><strong>A (Faux) :</strong> En l'absence de fécondation, le corps jaune régresse environ 10 jours après l'ovulation (et non 5 jours).</li>
+                            <li><strong>C (Faux) :</strong> La lutéinisation est entretenue par le taux de LH (même minime).</li>
+                            <li><strong>D (Faux) :</strong> Le corps jaune sécrète de la progestérone pendant 12 à 14 jours (et non 28 jours).</li>
+                            <li><strong>E (Faux) :</strong> En cas de fécondation, le corps jaune <strong>persiste</strong> (grâce à l'hCG) pour maintenir la progestérone et éviter le décollement de l'endomètre.</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+
+            <!-- Q9 -->
+            <div class="card">
+                <div class="question-header">
+                    <span class="badge badge-topic">Anomalies du cycle</span>
+                    <span class="badge badge-multi">QCM Multiples (2-3 réponses)</span>
+                </div>
+                <p class="question-text">9. Concernant les anomalies de la durée du cycle menstruel, quelles sont les propositions exactes ? (Choisir 2 à 3 réponses)</p>
+                <ul class="options-list">
+                    <li><strong>A.</strong> La spanioménorrhée est un cycle long supérieur à 35 jours.</li>
+                    <li><strong>B.</strong> La polyménorrhée est un cycle court inférieur à 21 jours.</li>
+                    <li><strong>C.</strong> Les cycles irréguliers se définissent par l'alternance de cycles longs et de cycles courts.</li>
+                    <li><strong>D.</strong> La polyménorrhée se définit par des règles peu abondantes.</li>
+                    <li><strong>E.</strong> La spanioménorrhée est toujours d'origine organique.</li>
+                </ul>
+                <details>
+                    <summary>Voir la correction et l'explication</summary>
+                    <div class="correction-content">
+                        <p><span class="correct-answer">Réponses correctes : A, B, C</span></p>
+                        <p><strong>Explication :</strong></p>
+                        <ul>
+                            <li><strong>A (Vrai) :</strong> Spanioménorrhée = cycle > 35 jours.</li>
+                            <li><strong>B (Vrai) :</strong> Polyménorrhée = cycle < 21 jours.</li>
+                            <li><strong>C (Vrai) :</strong> L'irrégularité se caractérise par l'alternance de cycles longs et courts.</li>
+                            <li><strong>D (Faux) :</strong> La polyménorrhée concerne la <strong>fréquence</strong> (cycle court), pas l'abondance. Les règles peu abondantes correspondent à l'hypoménorrhée.</li>
+                            <li><strong>E (Faux) :</strong> La spanioménorrhée peut être fonctionnelle (ex: stress, syndrome des ovaires polykystiques) ou organique, elle n'est pas toujours organique.</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+
+            <!-- Q10 -->
+            <div class="card">
+                <div class="question-header">
+                    <span class="badge badge-topic">Régulation neuroendocrinienne</span>
+                    <span class="badge badge-single">Choix simple</span>
+                </div>
+                <p class="question-text">10. Quelle hormone est responsable du déclenchement de l'ovulation et des phénomènes de lutéinisation ?</p>
+                <ul class="options-list">
+                    <li><strong>A.</strong> La FSH (Follicule Stimulating Hormone)</li>
+                    <li><strong>B.</strong> La Gn-RH (Gonadotropin-Releasing Hormone)</li>
+                    <li><strong>C.</strong> La LH (Luteinizing Hormone)</li>
+                    <li><strong>D.</strong> La progestérone</li>
+                    <li><strong>E.</strong> L'œstradiol</li>
+                </ul>
+                <details>
+                    <summary>Voir la correction et l'explication</summary>
+                    <div class="correction-content">
+                        <p><span class="correct-answer">Réponse correcte : C</span></p>
+                        <p><strong>Explication :</strong> Le pic de LH (Luteinizing Hormone) est le signal déclencheur de l'ovulation. C'est également elle qui induit la lutéinisation des cellules de la granulosa pour former le corps jaune.</p>
+                        <ul>
+                            <li><strong>A (Faux) :</strong> La FSH agit surtout sur la maturation du follicule ovarien.</li>
+                            <li><strong>B (Faux) :</strong> La Gn-RH est l'hormone hypothalamique qui stimule la sécrétion de LH et FSH, mais elle n'agit pas directement sur l'ovaire.</li>
+                            <li><strong>D (Faux) :</strong> La progestérone est le produit du corps jaune, elle ne déclenche pas l'ovulation.</li>
+                            <li><strong>E (Faux) :</strong> L'œstradiol prépare l'ovulation (rétrocontrôle positif) mais ne la déclenche pas directement.</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+
+            <!-- Q11 -->
+            <div class="card">
+                <div class="question-header">
+                    <span class="badge badge-topic">Axe hypothalamo-hypophysaire</span>
+                    <span class="badge badge-rj">Réponse Fausse (RF)</span>
+                </div>
+                <p class="question-text">11. Concernant la régulation neuroendocrinienne du cycle menstruel, quelle proposition est FAUSSE ?</p>
+                <ul class="options-list">
+                    <li><strong>A.</strong> L'hypothalamus commande les sécrétions antéhypophysaires par voie sanguine via le système porte.</li>
+                    <li><strong>B.</strong> Le contrôle hypothalamique s'effectue par l'intermédiaire de la Gn-RH.</li>
+                    <li><strong>C.</strong> La Gn-RH stimule la décharge de LH et de FSH.</li>
+                    <li><strong>D.</strong> L'antéhypophyse agit sur le fonctionnement ovarien par l'intermédiaire de la FSH et de la LH.</li>
+                    <li><strong>E.</strong> Les hormones ovariennes exercent une rétroaction uniquement positive sur l'hypothalamus.</li>
+                </ul>
+                <details>
+                    <summary>Voir la correction et l'explication</summary>
+                    <div class="correction-content">
+                        <p><span class="correct-answer">Réponse incorrecte (FAUSSE) : E</span></p>
+                        <p><strong>Explication :</strong> Les hormones ovariennes exercent une rétroaction (feed-back) <strong>négative</strong> la plupart du temps (pour réguler la sécrétion de FSH/LH), et une rétroaction <strong>positive</strong> uniquement au moment du pic d'œstradiol pré-ovulatoire (qui déclenche le pic de LH). L'option E est donc fausse car elle stipule "uniquement positive".</p>
+                        <ul>
+                            <li><strong>A (Vrai) :</strong> L'hypothalamus utilise le système porte pour communiquer avec l'antéhypophyse.</li>
+                            <li><strong>B (Vrai) :</strong> La Gn-RH est le chef d'orchestre hypothalamique.</li>
+                            <li><strong>C (Vrai) :</strong> La Gn-RH stimule la libération de LH et FSH.</li>
+                            <li><strong>D (Vrai) :</strong> La FSH et la LH sont les gonadotropines hypophysaires agissant sur l'ovaire.</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+
+            <!-- Q12 -->
+            <div class="card">
+                <div class="question-header">
+                    <span class="badge badge-topic">Explorations para-cliniques</span>
+                    <span class="badge badge-multi">QCM Multiples (2-3 réponses)</span>
+                </div>
+                <p class="question-text">12. Quels sont les examens para-cliniques permettant d'explorer le cycle menstruel ? (Choisir 2 à 3 réponses)</p>
+                <ul class="options-list">
+                    <li><strong>A.</strong> Le dosage de l'AMH (Hormone Anti-Müllérienne).</li>
+                    <li><strong>B.</strong> L'échographie pelvienne pour apprécier la croissance folliculaire.</li>
+                    <li><strong>C.</strong> L'hystérosalpingographie pour l'étude de la cavité utérine.</li>
+                    <li><strong>D.</strong> La cœlioscopie diagnostique pour évaluer la pathologie annexielle.</li>
+                    <li><strong>E.</strong> Le dosage de la prolactine pour évaluer la phase lutéale.</li>
+                </ul>
+                <details>
+                    <summary>Voir la correction et l'explication</summary>
+                    <div class="correction-content">
+                        <p><span class="correct-answer">Réponses correctes : A, B, C, D (Toutes sauf E)</span></p>
+                        <p><strong>Explication :</strong></p>
+                        <ul>
+                            <li><strong>A (Vrai) :</strong> L'AMH est un marqueur de la réserve ovarienne (investigation hormonale).</li>
+                            <li><strong>B (Vrai) :</strong> L'échographie est l'examen de choix pour le suivi folliculaire et de l'endomètre.</li>
+                            <li><strong>C (Vrai) :</strong> L'hystérosalpingographie évalue la cavité utérine et la perméabilité tubaire.</li>
+                            <li><strong>D (Vrai) :</strong> La cœlioscopie est une méthode endoscopique d'exploration pelvienne.</li>
+                            <li><strong>E (Faux) :</strong> Le dosage de la prolactine explore l'axe hypothalamo-hypophysaire (hyperprolactinémie), mais ce n'est pas l'examen spécifique pour évaluer la phase lutéale (on doserait plutôt la progestérone au 21e jour).</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+
+            <!-- Q13 -->
+            <div class="card">
+                <div class="question-header">
+                    <span class="badge badge-topic">Troubles des menstruations</span>
+                    <span class="badge badge-except">Choix simple (Sauf)</span>
+                </div>
+                <p class="question-text">13. Toutes les propositions suivantes concernant les troubles des menstruations sont exactes, SAUF une. Laquelle ?</p>
+                <ul class="options-list">
+                    <li><strong>A.</strong> L'hypoménorrhée correspond à des règles peu abondantes (inférieures à 25 ml).</li>
+                    <li><strong>B.</strong> L'hyperménorrhée correspond à des règles trop abondantes (supérieures à 80 ml).</li>
+                    <li><strong>C.</strong> La ménorragie correspond à des règles trop abondantes et/ou trop longues (supérieures à 7 jours).</li>
+                    <li><strong>D.</strong> La dysménorrhée correspond à des douleurs pelviennes survenant en dehors des règles.</li>
+                    <li><strong>E.</strong> La métrorragie correspond à des hémorragies utérines survenant en dehors des règles.</li>
+                </ul>
+                <details>
+                    <summary>Voir la correction et l'explication</summary>
+                    <div class="correction-content">
+                        <p><span class="correct-answer">Réponse incorrecte (FAUSSE) : D</span></p>
+                        <p><strong>Explication :</strong> La dysménorrhée correspond aux douleurs pelviennes qui surviennent <strong>au moment des règles</strong> (et non en dehors). Les douleurs en dehors des règles peuvent être des douleurs intermenstruelles ou être liées à d'autres pathologies (endométriose, etc.).</p>
+                        <ul>
+                            <li><strong>A (Vrai) :</strong> Hypoménorrhée = volume < 25 ml.</li>
+                            <li><strong>B (Vrai) :</strong> Hyperménorrhée = volume > 80 ml.</li>
+                            <li><strong>C (Vrai) :</strong> Ménorragie = volume > 80 ml et/ou durée > 7 jours.</li>
+                            <li><strong>E (Vrai) :</strong> Métrorragie = saignement en dehors des règles.</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+
+            <!-- Q14 -->
+            <div class="card">
+                <div class="question-header">
+                    <span class="badge badge-topic">Corps jaune</span>
+                    <span class="badge badge-rj">Réponse Juste (RJ)</span>
+                </div>
+                <p class="question-text">14. Quelle est la proposition exacte concernant le corps jaune ?</p>
+                <ul class="options-list">
+                    <li><strong>A.</strong> Il se forme à partir des cellules de la thèque externe.</li>
+                    <li><strong>B.</strong> Il sécrète de la progestérone pendant 12 à 14 jours en l'absence de fécondation.</li>
+                    <li><strong>C.</strong> Il persiste pendant toute la grossesse en sécrétant de la progestérone.</li>
+                    <li><strong>D.</strong> Sa régression est due à une augmentation du taux de LH.</li>
+                    <li><strong>E.</strong> Il est formé par les cellules de la granulosa qui se chargent de pigments rouges.</li>
+                </ul>
+                <details>
+                    <summary>Voir la correction et l'explication</summary>
+                    <div class="correction-content">
+                        <p><span class="correct-answer">Réponse correcte : B</span></p>
+                        <p><strong>Explication :</strong> Après l'ovulation, les cellules de la granulosa se chargent de pigments jaunes (lutéine) et forment le corps jaune, qui sécrète de la progestérone pendant 12 à 14 jours. Ensuite, en l'absence de fécondation, il régresse.</p>
+                        <ul>
+                            <li><strong>A (Faux) :</strong> Le corps jaune se forme à partir des cellules de la <strong>granulosa</strong> (et des thèques internes).</li>
+                            <li><strong>C (Faux) :</strong> Il persiste au début de la grossesse (grâce à l'hCG), mais pas pendant toute la grossesse (le placenta prend le relais).</li>
+                            <li><strong>D (Faux) :</strong> Sa régression est due à la <strong>baisse</strong> de LH (et à l'absence d'hCG).</li>
+                            <li><strong>E (Faux) :</strong> Les pigments sont <strong>jaunes</strong> (d'où le nom "corps jaune").</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+
+            <!-- Q15 -->
+            <div class="card">
+                <div class="question-header">
+                    <span class="badge badge-topic">Rétrocontrôle</span>
+                    <span class="badge badge-multi">QCM Multiples (2-3 réponses)</span>
+                </div>
+                <p class="question-text">15. Concernant le rétrocontrôle (feed-back) hormonal, quelles sont les propositions exactes ? (Choisir 2 à 3 réponses)</p>
+                <ul class="options-list">
+                    <li><strong>A.</strong> L'augmentation des œstrogènes en phase folliculaire exerce un rétrocontrôle négatif sur la FSH.</li>
+                    <li><strong>B.</strong> Le pic d'œstradiol pré-ovulatoire exerce un rétrocontrôle positif sur la LH.</li>
+                    <li><strong>C.</strong> Le taux croissant de progestérone après l'ovulation exerce un rétrocontrôle négatif sur la LH.</li>
+                    <li><strong>D.</strong> La FSH exerce un rétrocontrôle positif sur la Gn-RH.</li>
+                    <li><strong>E.</strong> La progestérone exerce un rétrocontrôle positif sur la FSH.</li>
+                </ul>
+                <details>
+                    <summary>Voir la correction et l'explication</summary>
+                    <div class="correction-content">
+                        <p><span class="correct-answer">Réponses correctes : A, B, C</span></p>
+                        <p><strong>Explication :</strong></p>
+                        <ul>
+                            <li><strong>A (Vrai) :</strong> En phase folliculaire, l'augmentation progressive des œstrogènes freine la sécrétion de FSH (rétrocontrôle négatif).</li>
+                            <li><strong>B (Vrai) :</strong> Au moment de l'ovulation, le taux très élevé d'œstradiol bascule en rétrocontrôle positif, déclenchant le pic de LH.</li>
+                            <li><strong>C (Vrai) :</strong> Après l'ovulation, la progestérone freine la LH pour éviter une nouvelle ovulation (rétrocontrôle négatif).</li>
+                            <li><strong>D (Faux) :</strong> La FSH exerce un rétrocontrôle négatif sur la Gn-RH.</li>
+                            <li><strong>E (Faux) :</strong> La progestérone exerce un rétrocontrôle négatif sur la FSH et la LH.</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+
+            <!-- Q16 -->
+            <div class="card">
+                <div class="question-header">
+                    <span class="badge badge-topic">Métrorragies</span>
+                    <span class="badge badge-except">Choix simple (Sauf)</span>
+                </div>
+                <p class="question-text">16. Toutes les affirmations suivantes concernant les métrorragies sont exactes, SAUF une. Laquelle ?</p>
+                <ul class="options-list">
+                    <li><strong>A.</strong> Ce sont des hémorragies utérines survenant en dehors des règles.</li>
+                    <li><strong>B.</strong> Elles peuvent être révélatrices d'un cancer de l'endomètre.</li>
+                    <li><strong>C.</strong> Elles sont toujours d'origine hormonale.</li>
+                    <li><strong>D.</strong> Elles peuvent être liées à des lésions organiques (polypes, fibromes).</li>
+                    <li><strong>E.</strong> Leur exploration nécessite souvent une échographie pelvienne et une hystéroscopie.</li>
+                </ul>
+                <details>
+                    <summary>Voir la correction et l'explication</summary>
+                    <div class="correction-content">
+                        <p><span class="correct-answer">Réponse incorrecte (FAUSSE) : C</span></p>
+                        <p><strong>Explication :</strong> Les métrorragies ne sont pas toujours d'origine hormonale. Elles peuvent être d'origine organique (polypes, fibromes, cancer de l'endomètre, cervicite, etc.). C'est une distinction majeure à faire en clinique.</p>
+                        <ul>
+                            <li><strong>A (Vrai) :</strong> Définition des métrorragies.</li>
+                            <li><strong>B (Vrai) :</strong> C'est un signe d'alerte majeur chez la femme ménopausée.</li>
+                            <li><strong>D (Vrai) :</strong> Les causes organiques sont fréquentes.</li>
+                            <li><strong>E (Vrai) :</strong> Ce sont les examens de première intention pour explorer une métrorragie.</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+
+            <!-- Q17 -->
+            <div class="card">
+                <div class="question-header">
+                    <span class="badge badge-topic">Système porte</span>
+                    <span class="badge badge-rj">Réponse Juste (RJ)</span>
+                </div>
+                <p class="question-text">17. Par quel système l'hypothalamus communique-t-il avec l'antéhypophyse ?</p>
+                <ul class="options-list">
+                    <li><strong>A.</strong> Le système nerveux périphérique</li>
+                    <li><strong>B.</strong> Le système porte hypothalamo-hypophysaire</li>
+                    <li><strong>C.</strong> Le liquide céphalo-rachidien</li>
+                    <li><strong>D.</strong> Le système lymphatique</li>
+                    <li><strong>E.</strong> La circulation systémique directe</li>
+                </ul>
+                <details>
+                    <summary>Voir la correction et l'explication</summary>
+                    <div class="correction-content">
+                        <p><span class="correct-answer">Réponse correcte : B</span></p>
+                        <p><strong>Explication :</strong> L'hypothalamus libère la Gn-RH dans le système porte hypothalamo-hypophysaire, un réseau de vaisseaux sanguins reliant l'hypothalamus à l'antéhypophyse. Cela permet à la Gn-RH d'atteindre directement les cellules gonadotropes de l'antéhypophyse.</p>
+                        <ul>
+                            <li><strong>A (Faux) :</strong> Il n'y a pas de connexion nerveuse directe pour la sécrétion des hormones antéhypophysaires (bien qu'il existe des connexions pour la post-hypophyse).</li>
+                            <li><strong>C (Faux) :</strong> Le LCR n'est pas le vecteur de la Gn-RH.</li>
+                            <li><strong>D (Faux) :</strong> Le système lymphatique n'est pas impliqué ici.</li>
+                            <li><strong>E (Faux) :</strong> La circulation systémique directe ne permet pas d'atteindre l'hypophyse à des concentrations suffisantes.</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+
+            <!-- Q18 -->
+            <div class="card">
+                <div class="question-header">
+                    <span class="badge badge-topic">Effets de la progestérone</span>
+                    <span class="badge badge-multi">QCM Multiples (2-3 réponses)</span>
+                </div>
+                <p class="question-text">18. Quels sont les effets de la progestérone sur les organes cibles ? (Choisir 2 à 3 réponses)</p>
+                <ul class="options-list">
+                    <li><strong>A.</strong> Elle augmente la filance de la glaire cervicale.</li>
+                    <li><strong>B.</strong> Elle induit la phase sécrétoire de l'endomètre.</li>
+                    <li><strong>C.</strong> Elle augmente la température corporelle basale.</li>
+                    <li><strong>D.</strong> Elle favorise le développement des glandes en tubes de l'endomètre.</li>
+                    <li><strong>E.</strong> Elle est responsable de la desquamation de l'endomètre en fin de cycle.</li>
+                </ul>
+                <details>
+                    <summary>Voir la correction et l'explication</summary>
+                    <div class="correction-content">
+                        <p><span class="correct-answer">Réponses correctes : B, C, D</span></p>
+                        <p><strong>Explication :</strong></p>
+                        <ul>
+                            <li><strong>A (Faux) :</strong> La progestérone <strong>diminue</strong> la filance et l'abondance de la glaire cervicale (effet anti-œstrogénique).</li>
+                            <li><strong>B (Vrai) :</strong> La progestérone transforme l'endomètre prolifératif en endomètre sécrétoire (dentelle utérine).</li>
+                            <li><strong>C (Vrai) :</strong> La progestérone est hyperthermiante (responsable de l'élévation de 0,5 °C).</li>
+                            <li><strong>D (Vrai) :</strong> Elle favorise le développement des glandes en tubes spiralées.</li>
+                            <li><strong>E (Faux) :</strong> C'est la <strong>chute</strong> de la progestérone (due à la régression du corps jaune) qui provoque la desquamation de l'endomètre (règles), et non la progestérone elle-même.</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+
+            <!-- Q19 -->
+            <div class="card">
+                <div class="question-header">
+                    <span class="badge badge-topic">Aménorrhée primaire</span>
+                    <span class="badge badge-single">Choix simple</span>
+                </div>
+                <p class="question-text">19. L'aménorrhée primaire se définit par l'absence des premières règles à quel âge (selon le cours) ?</p>
+                <ul class="options-list">
+                    <li><strong>A.</strong> Plus de 14 ans</li>
+                    <li><strong>B.</strong> Plus de 16 ans</li>
+                    <li><strong>C.</strong> Plus de 18 ans</li>
+                    <li><strong>D.</strong> Plus de 20 ans</li>
+                    <li><strong>E.</strong> Plus de 21 ans</li>
+                </ul>
+                <details>
+                    <summary>Voir la correction et l'explication</summary>
+                    <div class="correction-content">
+                        <p><span class="correct-answer">Réponse correcte : C</span></p>
+                        <p><strong>Explication :</strong> Selon le document fourni, l'aménorrhée primaire est définie comme l'absence des premières règles à l'âge habituel de la ménarchie, soit <strong>plus de 18 ans</strong>. (Note : dans la pratique clinique actuelle, on tend à considérer 15-16 ans, mais il faut se référer au cours pour l'examen).</p>
+                        <ul>
+                            <li><strong>A (Faux) :</strong> 14 ans est l'âge moyen de la ménarchie, pas la limite pathologique.</li>
+                            <li><strong>B (Faux) :</strong> 16 ans est souvent utilisé en pratique clinique moderne mais ne correspond pas à la définition stricte du cours.</li>
+                            <li><strong>D (Faux) :</strong> 20 ans est trop tardif.</li>
+                            <li><strong>E (Faux) :</strong> 21 ans est trop tardif.</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+
+            <!-- Q20 -->
+            <div class="card">
+                <div class="question-header">
+                    <span class="badge badge-topic">Hyperménorrhée</span>
+                    <span class="badge badge-rj">Réponse Fausse (RF)</span>
+                </div>
+                <p class="question-text">20. Concernant l'hyperménorrhée, quelle proposition est FAUSSE ?</p>
+                <ul class="options-list">
+                    <li><strong>A.</strong> Elle correspond à des règles trop abondantes (supérieures à 80 ml).</li>
+                    <li><strong>B.</strong> Elle peut être responsable d'une anémie ferriprive.</li>
+                    <li><strong>C.</strong> Elle est synonyme de ménorragie dans tous les cas.</li>
+                    <li><strong>D.</strong> Elle peut être liée à un fibrome utérin.</li>
+                    <li><strong>E.</strong> Elle se définit par un volume de sang supérieur à la normale.</li>
+                </ul>
+                <details>
+                    <summary>Voir la correction et l'explication</summary>
+                    <div class="correction-content">
+                        <p><span class="correct-answer">Réponse incorrecte (FAUSSE) : C</span></p>
+                        <p><strong>Explication :</strong> L'hyperménorrhée définit uniquement l'<strong>abondance</strong> (> 80 ml). La ménorragie définit l'abondance ET/OU la durée prolongée (> 7 jours). Elles ne sont donc pas strictement synonymes dans toutes les définitions : une femme peut avoir une hyperménorrhée sans ménorragie si ses règles durent moins de 7 jours.</p>
+                        <ul>
+                            <li><strong>A (Vrai) :</strong> C'est la définition de l'hyperménorrhée.</li>
+                            <li><strong>B (Vrai) :</strong> La perte de sang excessive entraîne une carence en fer.</li>
+                            <li><strong>D (Vrai) :</strong> Le fibrome est une cause classique d'hyperménorrhée.</li>
+                            <li><strong>E (Vrai) :</strong> C'est le principe même de l'hyperménorrhée.</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+
+            <!-- Q21 -->
+            <div class="card">
+                <div class="question-header">
+                    <span class="badge badge-topic">Tests dynamiques</span>
+                    <span class="badge badge-multi">QCM Multiples (2-3 réponses)</span>
+                </div>
+                <p class="question-text">21. Quels sont les tests hormonaux dynamiques cités dans l'exploration du cycle menstruel ? (Choisir 2 à 3 réponses)</p>
+                <ul class="options-list">
+                    <li><strong>A.</strong> Test au progestatif</li>
+                    <li><strong>B.</strong> Test au Clomid</li>
+                    <li><strong>C.</strong> Test à la Gn-RH</li>
+                    <li><strong>D.</strong> Test de freinage à la dexaméthasone</li>
+                    <li><strong>E.</strong> Test de surcharge glucosée</li>
+                </ul>
+                <details>
+                    <summary>Voir la correction et l'explication</summary>
+                    <div class="correction-content">
+                        <p><span class="correct-answer">Réponses correctes : A, B, C</span></p>
+                        <p><strong>Explication :</strong> Le cours mentionne explicitement le test au progestatif, le test au Clomid et le test Gn-RH comme tests hormonaux dynamiques pour explorer le cycle menstruel.</p>
+                        <ul>
+                            <li><strong>A (Vrai) :</strong> Évalue l'imprégnation œstrogénique et la réponse de l'endomètre.</li>
+                            <li><strong>B (Vrai) :</strong> Évalue la capacité de l'axe hypothalamo-hypophysaire à répondre (test de stimulation).</li>
+                            <li><strong>C (Vrai) :</strong> Évalue la réserve hypophysaire en gonadotropines.</li>
+                            <li><strong>D (Faux) :</strong> Le test de freinage à la dexaméthasone est utilisé pour explorer l'axe corticotrope (syndrome de Cushing), pas le cycle menstruel.</li>
+                            <li><strong>E (Faux) :</strong> L'hyperglycémie provoquée par voie orale explore le métabolisme glucidique (diabète, SOPK), ce n'est pas un test dynamique de l'axe gonadotrope.</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+
+            <!-- Q22 -->
+            <div class="card">
+                <div class="question-header">
+                    <span class="badge badge-topic">Phase sécrétoire</span>
+                    <span class="badge badge-except">Choix simple (Sauf)</span>
+                </div>
+                <p class="question-text">22. Toutes les propositions suivantes concernant la phase sécrétoire (lutéale) de l'endomètre sont exactes, SAUF une. Laquelle ?</p>
+                <ul class="options-list">
+                    <li><strong>A.</strong> Elle s'étend de J14 à J28.</li>
+                    <li><strong>B.</strong> L'endomètre est creusé et gorgé de sang, formant la dentelle utérine.</li>
+                    <li><strong>C.</strong> Les glandes en tubes sécrètent du glycogène.</li>
+                    <li><strong>D.</strong> Elle est sous la dépendance de la progestérone.</li>
+                    <li><strong>E.</strong> En l'absence de fécondation, l'endomètre est maintenu et les règles n'apparaissent pas.</li>
+                </ul>
+                <details>
+                    <summary>Voir la correction et l'explication</summary>
+                    <div class="correction-content">
+                        <p><span class="correct-answer">Réponse incorrecte (FAUSSE) : E</span></p>
+                        <p><strong>Explication :</strong> En l'absence de fécondation, le corps jaune régresse, la progestérone chute, et l'endomètre est <strong>éliminé</strong> à J28 (rupture des artères spiralées) : ce sont les règles. L'endomètre n'est maintenu qu'en cas de fécondation (grâce à l'hCG).</p>
+                        <ul>
+                            <li><strong>A (Vrai) :</strong> La phase lutéale correspond à la deuxième moitié du cycle (J14-J28).</li>
+                            <li><strong>B (Vrai) :</strong> C'est l'aspect caractéristique de la dentelle utérine.</li>
+                            <li><strong>C (Vrai) :</strong> Les glandes sécrètent du glycogène pour nourrir un éventuel embryon.</li>
+                            <li><strong>D (Vrai) :</strong> La progestérone est l'hormone clé de cette phase.</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+
+            <!-- Q23 -->
+            <div class="card">
+                <div class="question-header">
+                    <span class="badge badge-topic">Ménopause</span>
+                    <span class="badge badge-rj">Réponse Juste (RJ)</span>
+                </div>
+                <p class="question-text">23. Concernant la ménopause, quelle est la proposition juste ?</p>
+                <ul class="options-list">
+                    <li><strong>A.</strong> Elle correspond à l'apparition des premières règles.</li>
+                    <li><strong>B.</strong> Elle marque la disparition définitive du cycle menstruel.</li>
+                    <li><strong>C.</strong> Elle survient généralement vers l'âge de 30 ans.</li>
+                    <li><strong>D.</strong> Elle s'accompagne d'une augmentation des œstrogènes.</li>
+                    <li><strong>E.</strong> Elle est réversible sous traitement hormonal.</li>
+                </ul>
+                <details>
+                    <summary>Voir la correction et l'explication</summary>
+                    <div class="correction-content">
+                        <p><span class="correct-answer">Réponse correcte : B</span></p>
+                        <p><strong>Explication :</strong> La ménopause est la cessation définitive des cycles menstruels (et de la fonction ovarienne), survenant généralement autour de 50 ans. Elle est due à l'épuisement du capital folliculaire.</p>
+                        <ul>
+                            <li><strong>A (Faux) :</strong> L'apparition des premières règles est la ménarchie.</li>
+                            <li><strong>C (Faux) :</strong> La ménopause survient en moyenne vers 50 ans, pas 30 ans.</li>
+                            <li><strong>D (Faux) :</strong> La ménopause s'accompagne d'une <strong>diminution</strong> des œstrogènes (et une augmentation relative des gonadotropines FSH/LH).</li>
+                            <li><strong>E (Faux) :</strong> La ménopause est irréversible (le traitement hormonal substitutif ne restaure pas la fertilité).</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+
+            <!-- Q24 -->
+            <div class="card">
+                <div class="question-header">
+                    <span class="badge badge-topic">Anomalies : Synthèse</span>
+                    <span class="badge badge-multi">QCM Multiples (2-3 réponses)</span>
+                </div>
+                <p class="question-text">24. Quelles sont les propositions exactes concernant les anomalies du cycle menstruel ? (Choisir 2 à 3 réponses)</p>
+                <ul class="options-list">
+                    <li><strong>A.</strong> La spanioménorrhée correspond à un cycle supérieur à 35 jours.</li>
+                    <li><strong>B.</strong> La polyménorrhée correspond à un cycle inférieur à 21 jours.</li>
+                    <li><strong>C.</strong> La dysménorrhée correspond à des douleurs pelviennes au moment des règles.</li>
+                    <li><strong>D.</strong> L'hypoménorrhée correspond à des règles supérieures à 80 ml.</li>
+                    <li><strong>E.</strong> La métrorragie correspond à des règles abondantes survenant pendant les règles.</li>
+                </ul>
+                <details>
+                    <summary>Voir la correction et l'explication</summary>
+                    <div class="correction-content">
+                        <p><span class="correct-answer">Réponses correctes : A, B, C</span></p>
+                        <p><strong>Explication :</strong></p>
+                        <ul>
+                            <li><strong>A (Vrai) :</strong> Spanioménorrhée = cycle long (> 35 jours).</li>
+                            <li><strong>B (Vrai) :</strong> Polyménorrhée = cycle court (< 21 jours).</li>
+                            <li><strong>C (Vrai) :</strong> Dysménorrhée = douleurs pendant les règles.</li>
+                            <li><strong>D (Faux) :</strong> L'hypoménorrhée correspond à des règles <strong>peu</strong> abondantes (< 25 ml).</li>
+                            <li><strong>E (Faux) :</strong> La métrorragie correspond à des hémorragies survenant <strong>en dehors</strong> des règles.</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+
+            <!-- Q25 -->
+            <div class="card">
+                <div class="question-header">
+                    <span class="badge badge-topic">Objectifs de l'exploration</span>
+                    <span class="badge badge-single">Choix simple</span>
+                </div>
+                <p class="question-text">25. Quel est l'intérêt principal de l'étude de la physiologie du cycle menstruel ?</p>
+                <ul class="options-list">
+                    <li><strong>A.</strong> Comprendre et explorer les anomalies du cycle.</li>
+                    <li><strong>B.</strong> Déterminer le sexe de l'embryon.</li>
+                    <li><strong>C.</strong> Prévenir les infections génitales.</li>
+                    <li><strong>D.</strong> Traiter la ménopause.</li>
+                    <li><strong>E.</strong> Évaluer la réserve ovarienne uniquement.</li>
+                </ul>
+                <details>
+                    <summary>Voir la correction et l'explication</summary>
+                    <div class="correction-content">
+                        <p><span class="correct-answer">Réponse correcte : A</span></p>
+                        <p><strong>Explication :</strong> L'intérêt de l'étude de la physiologie du cycle menstruel, tel que souligné dans le cours, est de permettre de comprendre et d'explorer les anomalies du cycle (diagnostic, bilan étiologique, prise en charge).</p>
+                        <ul>
+                            <li><strong>B (Faux) :</strong> La détermination du sexe fœtal relève de l'échographie ou du caryotype, pas de l'étude du cycle menstruel.</li>
+                            <li><strong>C (Faux) :</strong> La prévention des infections génitales relève de l'hygiène et de la vaccination (HPV), pas de la physiologie du cycle.</li>
+                            <li><strong>D (Faux) :</strong> Le traitement de la ménopause est une application thérapeutique, mais l'intérêt premier de l'étude du cycle est de comprendre les anomalies.</li>
+                            <li><strong>E (Faux) :</strong> L'évaluation de la réserve ovarienne (AMH) n'est qu'un aspect parmi d'autres de l'exploration.</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <!-- SECTION 2 : CAS CLINIQUES -->
+        <section id="clinical-cases">
+            <h2>2. Cas Cliniques Hospitaliers Algériens</h2>
+
+            <!-- CAS 1 -->
+            <div class="card">
+                <h3>Cas Clinique 1 : Consultation de Gynécologie (CHU Mustapha Pacha)</h3>
+                <div class="case-vignette">
+                    <p>Mme K., 24 ans, célibataire, consulte au CHU Mustapha Pacha pour des cycles irréguliers depuis 2 ans. Elle rapporte des cycles allant de 40 à 60 jours. Elle présente une obésité (IMC à 32) et de l'acné. L'examen clinique révèle un score de Ferriman-Gallwey à 12 (hirsutisme modéré). L'échographie pelvienne montre des ovaires de volume augmenté avec plus de 12 follicules antraux par ovaire, sans kyste organique.</p>
+                </div>
+                <div class="question-header">
+                    <span class="badge badge-topic">Cas 1 - Diagnostic</span>
+                    <span class="badge badge-single">Choix simple</span>
+                </div>
+                <p class="question-text">1.1. Quel est le diagnostic le plus probable devant ce tableau ?</p>
+                <ul class="options-list">
+                    <li><strong>A.</strong> Insuffisance ovarienne prématurée</li>
+                    <li><strong>B.</strong> Syndrome des Ovaires Polykystiques (SOPK)</li>
+                    <li><strong>C.</strong> Hyperprolactinémie</li>
+                    <li><strong>D.</strong> Aménorrhée hypothalamique fonctionnelle</li>
+                    <li><strong>E.</strong> Tumeur ovarienne sécrétante</li>
+                </ul>
+                <details>
+                    <summary>Voir la correction</summary>
+                    <div class="correction-content">
+                        <p><span class="correct-answer">Réponse correcte : B</span></p>
+                        <p><strong>Explication :</strong> Le tableau associe une spanioménorrhée, une hyperandrogénie clinique (acné, hirsutisme) et des ovaires polykystiques à l'échographie (critères de Rotterdam). C'est la présentation typique du SOPK.</p>
+                        <ul>
+                            <li><strong>A (Faux) :</strong> L'insuffisance ovarienne prématurée se manifeste par une aménorrhée et une FSH élevée, pas par des cycles longs et des ovaires polykystiques.</li>
+                            <li><strong>C (Faux) :</strong> L'hyperprolactinémie donne souvent une aménorrhée et une galactorrhée, sans hirsutisme marqué.</li>
+                            <li><strong>D (Faux) :</strong> L'aménorrhée hypothalamique survient dans un contexte de stress, de perte de poids ou d'exercice intense, avec des ovaires de taille normale et sans hyperandrogénie.</li>
+                            <li><strong>E (Faux) :</strong> Une tumeur sécrétante donnerait une virilisation rapide et sévère, avec des taux de testostérone très élevés, et non un tableau de SOPK.</li>
+                        </ul>
+                    </div>
+                </details>
+                <div class="question-header">
+                    <span class="badge badge-topic">Cas 1 - Exploration</span>
+                    <span class="badge badge-multi">QCM Multiples (2-3 réponses)</span>
+                </div>
+                <p class="question-text">1.2. Quels examens complémentaires sont indiqués en première intention pour confirmer le diagnostic et éliminer les diagnostics différentiels ? (Choisir 2 à 3 réponses)</p>
+                <ul class="options-list">
+                    <li><strong>A.</strong> Dosage de la testostérone totale et de la SDHEA</li>
+                    <li><strong>B.</strong> Dosage de la FSH et de la LH</li>
+                    <li><strong>C.</strong> Dosage de la prolactine</li>
+                    <li><strong>D.</strong> Dosage de l'AMH</li>
+                    <li><strong>E.</strong> Cœlioscopie diagnostique</li>
+                </ul>
+                <details>
+                    <summary>Voir la correction</summary>
+                    <div class="correction-content">
+                        <p><span class="correct-answer">Réponses correctes : A, B, C</span></p>
+                        <p><strong>Explication :</strong> Le bilan initial du SOPK comprend un bilan hormonal pour éliminer les autres causes d'hyperandrogénie (dosage de testostérone, SDHEA, 17-OHP) et une évaluation de l'axe gonadotrope (FSH, LH), ainsi qu'un dosage de la prolactine pour éliminer une hyperprolactinémie.</p>
+                        <ul>
+                            <li><strong>A (Vrai) :</strong> Pour évaluer l'hyperandrogénie biologique.</li>
+                            <li><strong>B (Vrai) :</strong> Pour voir le rapport LH/FSH (souvent > 2 dans le SOPK) et éliminer une insuffisance ovarienne.</li>
+                            <li><strong>C (Vrai) :</strong> Pour éliminer une hyperprolactinémie qui peut aussi donner des cycles irréguliers.</li>
+                            <li><strong>D (Faux) :</strong> L'AMH est utile pour la réserve ovarienne, mais n'est pas indiquée en première intention pour le diagnostic du SOPK (elle est souvent élevée dans le SOPK, mais ce n'est pas un critère diagnostique).</li>
+                            <li><strong>E (Faux) :</strong> La cœlioscopie n'est pas indiquée en première intention pour le diagnostic du SOPK (elle est réservée aux cas complexes ou pour traiter des kystes organiques).</li>
+                        </ul>
+                    </div>
+                </details>
+                <div class="question-header">
+                    <span class="badge badge-topic">Cas 1 - Prise en charge</span>
+                    <span class="badge badge-single">Choix simple</span>
+                </div>
+                <p class="question-text">1.3. Quelle est la première mesure thérapeutique à proposer chez cette patiente ?</p>
+                <ul class="options-list">
+                    <li><strong>A.</strong> Traitement par metformine en première intention</li>
+                    <li><strong>B.</strong> Modification du mode de vie (régime hypocalorique et activité physique)</li>
+                    <li><strong>C.</strong> Chirurgie cœlioscopique (drilling ovarien)</li>
+                    <li><strong>D.</strong> Traitement par inducteur d'ovulation (Clomid)</li>
+                    <li><strong>E.</strong> Traitement hormonal substitutif</li>
+                </ul>
+                <details>
+                    <summary>Voir la correction</summary>
+                    <div class="correction-content">
+                        <p><span class="correct-answer">Réponse correcte : B</span></p>
+                        <p><strong>Explication :</strong> La prise en charge de première intention du SOPK repose sur la perte de poids et la modification du mode de vie (régime hypocalorique et activité physique), qui améliorent la sensibilité à l'insuline et peuvent restaurer l'ovulation.</p>
+                        <ul>
+                            <li><strong>A (Faux) :</strong> La metformine est une option de deuxième intention, surtout en cas de résistance à l'insuline documentée.</li>
+                            <li><strong>C (Faux) :</strong> Le drilling ovarien est réservé aux cas résistants au traitement médical.</li>
+                            <li><strong>D (Faux) :</strong> Le Clomid est indiqué en cas d'infertilité, mais la première mesure reste la perte de poids.</li>
+                            <li><strong>E (Faux) :</strong> Le traitement hormonal n'est pas indiqué en première intention pour un SOPK chez une femme qui souhaite une régularisation du cycle.</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+
+            <!-- CAS 2 -->
+            <div class="card">
+                <h3>Cas Clinique 2 : Urgences Gynécologiques (EPH Bab El Oued)</h3>
+                <div class="case-vignette">
+                    <p>Mme L., 16 ans, est amenée aux urgences par sa mère pour des douleurs pelviennes intenses survenant pendant les règles depuis 6 mois. Elle décrit des douleurs en coup de poignard, irradiant vers les lombes, qui la obligent à manquer les cours. Elle n'a jamais eu de rapport sexuel. L'examen clinique est normal en dehors d'une sensibilité pelvienne. L'échographie pelvienne est normale.</p>
+                </div>
+                <div class="question-header">
+                    <span class="badge badge-topic">Cas 2 - Diagnostic</span>
+                    <span class="badge badge-single">Choix simple</span>
+                </div>
+                <p class="question-text">2.1. Quel est le diagnostic le plus probable ?</p>
+                <ul class="options-list">
+                    <li><strong>A.</strong> Endométriose pelvienne</li>
+                    <li><strong>B.</strong> Dysménorrhée primaire</li>
+                    <li><strong>C.</strong> Salpingite aiguë</li>
+                    <li><strong>D.</strong> Kyste ovarien hémorragique</li>
+                    <li><strong>E.</strong> Malformation utérine (utérus bicorne)</li>
+                </ul>
+                <details>
+                    <summary>Voir la correction</summary>
+                    <div class="correction-content">
+                        <p><span class="correct-answer">Réponse correcte : B</span></p>
+                        <p><strong>Explication :</strong> Le tableau associe des douleurs pelviennes rythmées par les règles, sans anomalie à l'examen clinique ni à l'échographie, chez une adolescente. C'est une dysménorrhée primaire (d'origine fonctionnelle, par hyperactivité utérine due aux prostaglandines).</p>
+                        <ul>
+                            <li><strong>A (Faux) :</strong> L'endométriose est possible, mais il s'agit d'un diagnostic d'exclusion (souvent après échec du traitement symptomatique), et l'échographie est normale ici.</li>
+                            <li><strong>C (Faux) :</strong> La salpingite donne de la fièvre, des leucorrhées et une douleur permanente, pas rythmée par les règles.</li>
+                            <li><strong>D (Faux) :</strong> Le kyste hémorragique donne une douleur aiguë, souvent en milieu de cycle, et serait visible à l'échographie.</li>
+                            <li><strong>E (Faux) :</strong> L'utérus bicorne peut donner des dysménorrhées, mais l'échographie serait anormale (ou nécessiterait une hystéroscopie).</li>
+                        </ul>
+                    </div>
+                </details>
+                <div class="question-header">
+                    <span class="badge badge-topic">Cas 2 - Prise en charge</span>
+                    <span class="badge badge-multi">QCM Multiples (2-3 réponses)</span>
+                </div>
+                <p class="question-text">2.2. Quelle est la prise en charge initiale recommandée ? (Choisir 2 à 3 réponses)</p>
+                <ul class="options-list">
+                    <li><strong>A.</strong> Antalgiques de palier 1 (paracétamol)</li>
+                    <li><strong>B.</strong> Anti-inflammatoires non stéroïdiens (AINS)</li>
+                    <li><strong>C.</strong> Contraception œstroprogestative en continu</li>
+                    <li><strong>D.</strong> Cœlioscopie diagnostique en urgence</li>
+                    <li><strong>E.</strong> Hystérectomie</li>
+                </ul>
+                <details>
+                    <summary>Voir la correction</summary>
+                    <div class="correction-content">
+                        <p><span class="correct-answer">Réponses correctes : A, B, C</span></p>
+                        <p><strong>Explication :</strong> La prise en charge de la dysménorrhée primaire repose sur les antalgiques et les AINS (qui inhibent les prostaglandines), et éventuellement une contraception œstroprogestative en continu pour supprimer les règles et les douleurs.</p>
+                        <ul>
+                            <li><strong>A (Vrai) :</strong> Antalgique de première intention.</li>
+                            <li><strong>B (Vrai) :</strong> Les AINS sont le traitement de choix de la dysménorrhée primaire (inhibition de la synthèse des prostaglandines).</li>
+                            <li><strong>C (Vrai) :</strong> La contraception œstroprogestative est efficace en cas d'échec des AINS ou pour un traitement de fond.</li>
+                            <li><strong>D (Faux) :</strong> La cœlioscopie n'est pas indiquée en première intention, elle est réservée aux cas résistants ou en cas de suspicion d'endométriose.</li>
+                            <li><strong>E (Faux) :</strong> L'hystérectomie est un traitement radical de dernier recours, jamais chez une adolescente.</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+
+            <!-- CAS 3 -->
+            <div class="card">
+                <h3>Cas Clinique 3 : Consultation de Ménopause (CHU Oran)</h3>
+                <div class="case-vignette">
+                    <p>Mme B., 52 ans, consulte pour des métrorragies récidivantes depuis 2 mois. Elle est ménopausée depuis 3 ans et ne prend pas de traitement hormonal. L'examen clinique retrouve un utérus légèrement augmenté de volume. L'échographie pelvienne montre un épaississement de l'endomètre à 12 mm avec une image suspecte. La patiente est hypertendue et diabétique de type 2.</p>
+                </div>
+                <div class="question-header">
+                    <span class="badge badge-topic">Cas 3 - Diagnostic</span>
+                    <span class="badge badge-single">Choix simple</span>
+                </div>
+                <p class="question-text">3.1. Quel est le diagnostic le plus redouté devant ce tableau ?</p>
+                <ul class="options-list">
+                    <li><strong>A.</strong> Cancer de l'endomètre</li>
+                    <li><strong>B.</strong> Fibrome utérin</li>
+                    <li><strong>C.</strong> Atrophie endometriale</li>
+                    <li><strong>D.</strong> Polype endométrial bénin</li>
+                    <li><strong>E.</strong> Hyperplasie endométriale simple</li>
+                </ul>
+                <details>
+                    <summary>Voir la correction</summary>
+                    <div class="correction-content">
+                        <p><span class="correct-answer">Réponse correcte : A</span></p>
+                        <p><strong>Explication :</strong> Chez une femme ménopausée, toute métrorragie doit faire suspecter un cancer de l'endomètre, surtout en présence de facteurs de risque (HTA, diabète, obésité). L'épaississement de l'endomètre à 12 mm est très suspect.</p>
+                        <ul>
+                            <li><strong>B (Faux) :</strong> Le fibrome peut donner des saignements, mais il est généralement bénin et l'image échographique serait différente.</li>
+                            <li><strong>C (Faux) :</strong> L'atrophie donne un endometre fin, pas épaissi à 12 mm.</li>
+                            <li><strong>D (Faux) :</strong> Le polype bénin est possible, mais le cancer doit être éliminé en priorité.</li>
+                            <li><strong>E (Faux) :</strong> L'hyperplasie est un diagnostic différentiel, mais le cancer est le plus redouté.</li>
+                        </ul>
+                    </div>
+                </details>
+                <div class="question-header">
+                    <span class="badge badge-topic">Cas 3 - Exploration</span>
+                    <span class="badge badge-single">Choix simple</span>
+                </div>
+                <p class="question-text">3.2. Quel examen est indispensable pour confirmer le diagnostic ?</p>
+                <ul class="options-list">
+                    <li><strong>A.</strong> Hystérosalpingographie</li>
+                    <li><strong>B.</strong> Biopsie d'endomètre avec examen histologique</li>
+                    <li><strong>C.</strong> IRM pelvienne</li>
+                    <li><strong>D.</strong> Dosage du CA 125</li>
+                    <li><strong>E.</strong> Frottis cervico-vaginal</li>
+                </ul>
+                <details>
+                    <summary>Voir la correction</summary>
+                    <div class="correction-content">
+                        <p><span class="correct-answer">Réponse correcte : B</span></p>
+                        <p><strong>Explication :</strong> Le diagnostic de certitude du cancer de l'endomètre repose sur l'étude histologique d'une biopsie d'endomètre (ou d'une hystéroscopie avec biopsie).</p>
+                        <ul>
+                            <li><strong>A (Faux) :</strong> L'hystérosalpingographie n'est pas l'examen de choix pour le diagnostic tissulaire.</li>
+                            <li><strong>C (Faux) :</strong> L'IRM est utile pour le bilan d'extension, pas pour le diagnostic initial.</li>
+                            <li><strong>D (Faux) :</strong> Le CA 125 n'est pas spécifique du cancer de l'endomètre.</li>
+                            <li><strong>E (Faux) :</strong> Le frottis cervico-vaginal explore le col, pas l'endomètre.</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+
+            <!-- CAS 4 -->
+            <div class="card">
+                <h3>Cas Clinique 4 : Consultation de Procréation Médicalement Assistée (EPH Alger)</h3>
+                <div class="case-vignette">
+                    <p>Mme R., 29 ans, consulte pour une infertilité primaire de 2 ans. Elle a des cycles réguliers de 28 jours. L'examen clinique est normal. Le bilan hormonal de base est normal. Le couple est pris en charge en PMA. Le médecin décide d'explorer la phase lutéale.</p>
+                </div>
+                <div class="question-header">
+                    <span class="badge badge-topic">Cas 4 - Exploration</span>
+                    <span class="badge badge-rj">Réponse Juste (RJ)</span>
+                </div>
+                <p class="question-text">4.1. Quel examen permet d'évaluer la qualité de la phase lutéale ?</p>
+                <ul class="options-list">
+                    <li><strong>A.</strong> Dosage de la FSH au 3e jour du cycle</li>
+                    <li><strong>B.</strong> Dosage de la progestérone au 21e jour du cycle</li>
+                    <li><strong>C.</strong> Dosage de l'œstradiol au 12e jour du cycle</li>
+                    <li><strong>D.</strong> Échographie pelvienne au 5e jour du cycle</li>
+                    <li><strong>E.</strong> Hystéroscopie diagnostique</li>
+                </ul>
+                <details>
+                    <summary>Voir la correction</summary>
+                    <div class="correction-content">
+                        <p><span class="correct-answer">Réponse correcte : B</span></p>
+                        <p><strong>Explication :</strong> Le dosage de la progestérone au 21e jour (ou 7 jours après l'ovulation) permet d'évaluer la qualité de la phase lutéale. Un taux bas (< 10 ng/ml) évoque une insuffisance lutéale.</p>
+                        <ul>
+                            <li><strong>A (Faux) :</strong> La FSH au 3e jour évalue la réserve ovarienne.</li>
+                            <li><strong>C (Faux) :</strong> L'œstradiol au 12e jour évalue la maturation folliculaire.</li>
+                            <li><strong>D (Faux) :</strong> L'échographie au 5e jour évalue la vacuité utérine et le nombre de follicules antraux.</li>
+                            <li><strong>E (Faux) :</strong> L'hystéroscopie évalue la cavité utérine (polypes, synéchies).</li>
+                        </ul>
+                    </div>
+                </details>
+                <div class="question-header">
+                    <span class="badge badge-topic">Cas 4 - Interprétation</span>
+                    <span class="badge badge-multi">QCM Multiples (2-3 réponses)</span>
+                </div>
+                <p class="question-text">4.2. Quels sont les signes cliniques et paracliniques d'une insuffisance lutéale ? (Choisir 2 à 3 réponses)</p>
+                <ul class="options-list">
+                    <li><strong>A.</strong> Une phase lutéale inférieure à 11 jours</li>
+                    <li><strong>B.</strong> Un taux de progestérone bas au 21e jour</li>
+                    <li><strong>C.</strong> Des règles abondantes et prolongées</li>
+                    <li><strong>D.</strong> Un aspect d'endomètre sécrétoire retardé à la biopsie</li>
+                    <li><strong>E.</strong> Une température basale augmentée</li>
+                </ul>
+                <details>
+                    <summary>Voir la correction</summary>
+                    <div class="correction-content">
+                        <p><span class="correct-answer">Réponses correctes : A, B, D</span></p>
+                        <p><strong>Explication :</strong> L'insuffisance lutéale se manifeste par une phase lutéale courte (< 11 jours), un taux de progestérone bas et un retard de maturation de l'endomètre à la biopsie.</p>
+                        <ul>
+                            <li><strong>A (Vrai) :</strong> La phase lutéale normale dure 14 jours ; une durée < 11 jours est pathologique.</li>
+                            <li><strong>B (Vrai) :</strong> Le taux de progestérone est insuffisant.</li>
+                            <li><strong>C (Faux) :</strong> L'insuffisance lutéale donne plutôt des règles peu abondantes et des spottings prémenstruels, pas des règles abondantes.</li>
+                            <li><strong>D (Vrai) :</strong> La biopsie d'endomètre montre un retard de maturation.</li>
+                            <li><strong>E (Faux) :</strong> La température basale est augmentée normalement par la progestérone, mais en cas d'insuffisance lutéale, l'augmentation est moindre ou absente.</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+
+            <!-- CAS 5 -->
+            <div class="card">
+                <h3>Cas Clinique 5 : Consultation de Médecine Générale (EPSP)</h3>
+                <div class="case-vignette">
+                    <p>Mlle S., 19 ans, consulte car elle n'a jamais eu ses règles. Elle présente un développement mammaire normal (stade Tanner 4) et une pilosité pubienne normale. L'examen clinique est sans particularité. L'échographie pelvienne montre un utérus de taille normale et des ovaires de taille normale. Le bilan hormonal montre une FSH et une LH normales, et un taux d'œstradiol normal.</p>
+                </div>
+                <div class="question-header">
+                    <span class="badge badge-topic">Cas 5 - Diagnostic</span>
+                    <span class="badge badge-single">Choix simple</span>
+                </div>
+                <p class="question-text">5.1. Devant ce tableau, quelle est l'étiologie la plus probable de l'aménorrhée primaire ?</p>
+                <ul class="options-list">
+                    <li><strong>A.</strong> Insuffisance ovarienne prématurée</li>
+                    <li><strong>B.</strong> Syndrome de Turner</li>
+                    <li><strong>C.</strong> Imperforation de l'hymen</li>
+                    <li><strong>D.</strong> Syndrome de Kallmann</li>
+                    <li><strong>E.</strong> Anomalie utérine (agénésie utérine)</li>
+                </ul>
+                <details>
+                    <summary>Voir la correction</summary>
+                    <div class="correction-content">
+                        <p><span class="correct-answer">Réponse correcte : C</span></p>
+                        <p><strong>Explication :</strong> La patiente a un développement pubertaire normal, un utérus et des ovaires normaux, et un bilan hormonal normal. Cela suggère une cause anatomique à l'écoulement des règles, comme une imperforation de l'hymen (ou un diaphragme vaginal). Les règles se produisent mais ne peuvent pas s'écouler.</p>
+                        <ul>
+                            <li><strong>A (Faux) :</strong> L'insuffisance ovarienne prématurée donnerait une FSH élevée et un œstradiol bas.</li>
+                            <li><strong>B (Faux) :</strong> Le syndrome de Turner donne une FSH élevée et un développement pubertaire absent ou incomplet.</li>
+                            <li><strong>D (Faux) :</strong> Le syndrome de Kallmann donne une FSH et LH basses (hypogonadisme hypogonadotrophique).</li>
+                            <li><strong>E (Faux) :</strong> L'agénésie utérine donnerait une absence d'utérus à l'échographie.</li>
+                        </ul>
+                    </div>
+                </details>
+                <div class="question-header">
+                    <span class="badge badge-topic">Cas 5 - Examen</span>
+                    <span class="badge badge-multi">QCM Multiples (2-3 réponses)</span>
+                </div>
+                <p class="question-text">5.2. Quels signes cliniques pourraient accompagner une imperforation de l'hymen ? (Choisir 2 à 3 réponses)</p>
+                <ul class="options-list">
+                    <li><strong>A.</strong> Des douleurs pelviennes cycliques</li>
+                    <li><strong>B.</strong> Une masse vaginale bleutée à l'examen</li>
+                    <li><strong>C.</strong> Une aménorrhée primaire</li>
+                    <li><strong>D.</strong> Des métrorragies</li>
+                    <li><strong>E.</strong> Une absence de développement mammaire</li>
+                </ul>
+                <details>
+                    <summary>Voir la correction</summary>
+                    <div class="correction-content">
+                        <p><span class="correct-answer">Réponses correctes : A, B, C</span></p>
+                        <p><strong>Explication :</strong> L'imperforation de l'hymen empêche l'écoulement des règles, ce qui entraîne une aménorrhée primaire, des douleurs cycliques (par rétention sanguine) et une masse vaginale bleutée (hématocolpos).</p>
+                        <ul>
+                            <li><strong>A (Vrai) :</strong> Douleurs liées à la rétention menstruelle.</li>
+                            <li><strong>B (Vrai) :</strong> La masse bleutée est l'hématocolpos (sang accumulé dans le vagin).</li>
+                            <li><strong>C (Vrai) :</strong> C'est la définition de l'aménorrhée primaire.</li>
+                            <li><strong>D (Faux) :</strong> Les métrorragies sont des saignements en dehors des règles, impossibles ici car l'hymen est imperforé.</li>
+                            <li><strong>E (Faux) :</strong> Le développement mammaire est normal (les ovaires fonctionnent normalement).</li>
+                        </ul>
+                    </div>
+                </details>
+            </div>
+        </section>
+
+        <!-- SECTION 3 : CARTE CONCEPTUELLE -->
+        <section id="concept-map">
+            <h2>3. Carte Conceptuelle & Synthèse Visuelle</h2>
+
+            <div class="concept-map-grid">
+                <!-- Axe -->
+                <div class="card">
+                    <h3>Axe Hypothalamo-Hypophyso-Ovarien</h3>
+                    <div class="axis-container">
+                        <div class="axis-box">Hypothalamus <br><small>(Sécrétion de Gn-RH)</small></div>
+                        <div class="axis-arrow">↓</div>
+                        <div class="axis-box">Antéhypophyse <br><small>(Sécrétion de FSH et LH)</small></div>
+                        <div class="axis-arrow">↓</div>
+                        <div class="axis-box" style="border-color: var(--warning);">Ovaires <br><small>(Follicules & Corps jaune)</small></div>
+                        <div class="axis-arrow">↓</div>
+                        <div class="axis-box" style="border-color: var(--slate);">Organes Cibles <br><small>(Endomètre, Col, Vagin, Seins)</small></div>
+                    </div>
+                    <p style="margin-top: 15px; font-size: 0.9rem; text-align: center; color: var(--slate);">
+                        <strong>Rétrocontrôle :</strong> Négatif (œstrogènes/progestérone) sauf pic pré-ovulatoire d'œstradiol (positif).
+                    </p>
+                </div>
+
+                <!-- Chronologie -->
+                <div class="card">
+                    <h3>Chronologie du Cycle (28 jours)</h3>
+                    <div class="timeline-container">
+                        <div class="timeline-bar">
+                            <div class="timeline-segment seg-menstruation">Règles <br>J1-J5</div>
+                            <div class="timeline-segment seg-follicular">Phase Folliculaire <br>J5-J14</div>
+                            <div class="timeline-segment seg-ovulation">Ovulation <br>J14</div>
+                            <div class="timeline-segment seg-luteal">Phase Lutéale <br>J14-J28</div>
+                        </div>
+                        <table class="hormone-table">
+                            <thead>
+                                <tr>
+                                    <th>Hormone</th>
+                                    <th>Phase Folliculaire</th>
+                                    <th>Ovulation</th>
+                                    <th>Phase Lutéale</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td><strong>FSH</strong></td>
+                                    <td>↑ (maturation)</td>
+                                    <td>Pic modéré</td>
+                                    <td>↓</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Œstradiol</strong></td>
+                                    <td>↑ (progressif)</td>
+                                    <td>Pic majeur</td>
+                                    <td>↑ (2e pic)</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>LH</strong></td>
+                                    <td>Stable (bas)</td>
+                                    <td>Pic majeur</td>
+                                    <td>↓</td>
+                                </tr>
+                                <tr>
+                                    <td><strong>Progestérone</strong></td>
+                                    <td>Très bas</td>
+                                    <td>Début ↑</td>
+                                    <td>Pic majeur</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Anomalies -->
+            <div class="card">
+                <h3>Classification des Anomalies du Cycle</h3>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-top: 15px;">
+                    <div style="background-color: #fff5f5; padding: 15px; border-radius: 8px; border-left: 4px solid #e53e3e;">
+                        <h4 style="color: #e53e3e; margin-bottom: 5px;">Aménorrhée</h4>
+                        <p><strong>Primaire :</strong> Absence de règles > 18 ans.</p>
+                        <p><strong>Secondaire :</strong> Absence de règles > 3 mois.</p>
+                    </div>
+                    <div style="background-color: #fffaf0; padding: 15px; border-radius: 8px; border-left: 4px solid #dd6b20;">
+                        <h4 style="color: #dd6b20; margin-bottom: 5px;">Durée du cycle</h4>
+                        <p><strong>Spanioménorrhée :</strong> > 35 jours.</p>
+                        <p><strong>Polyménorrhée :</strong> < 21 jours.</p>
+                    </div>
+                    <div style="background-color: #f0fff4; padding: 15px; border-radius: 8px; border-left: 4px solid #38a169;">
+                        <h4 style="color: #38a169; margin-bottom: 5px;">Abondance</h4>
+                        <p><strong>Hypoménorrhée :</strong> < 25 ml.</p>
+                        <p><strong>Hyperménorrhée :</strong> > 80 ml.</p>
+                    </div>
+                    <div style="background-color: #e6fffa; padding: 15px; border-radius: 8px; border-left: 4px solid #319795;">
+                        <h4 style="color: #319795; margin-bottom: 5px;">Autres</h4>
+                        <p><strong>Ménorragie :</strong> > 80 ml et/ou > 7 jours.</p>
+                        <p><strong>Dysménorrhée :</strong> Douleurs pendant les règles.</p>
+                        <p><strong>Métrorragie :</strong> Saignements hors règles.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4 : MNÉMOTECHNIQUES -->
+        <section id="mnemonics">
+            <h2>4. Mnémotechniques & Astuces d'Examen</h2>
+
+            <div class="mnemonic-card">
+                <div class="mnemonic-title">🧠 Astuce 1 : La règle des "4"</div>
+                <p>Pour le cycle normal, retenez les chiffres clés :</p>
+                <ul>
+                    <li><strong>28</strong> jours de cycle (± 4).</li>
+                    <li><strong>4</strong> jours de règles (3 à 7).</li>
+                    <li><strong>25 à 80</strong> ml de perte sanguine.</li>
+                </ul>
+            </div>
+
+            <div class="mnemonic-card">
+                <div class="mnemonic-title">🧠 Astuce 2 : Les 2 pics d'Œstradiol</div>
+                <p>L'œstradiol a <strong>deux</strong> pics dans le cycle :</p>
+                <ul>
+                    <li>Un premier pic <strong>pré-ovulatoire</strong> (majeur) qui déclenche l'ovulation (rétrocontrôle positif).</li>
+                    <li>Un deuxième pic <strong>lutéal</strong> (mineur) concomitant à la sécrétion de progestérone.</li>
+                </ul>
+                <p><em>Piège d'examen : Ne pas confondre le pic de LH (qui suit le pic d'œstradiol) avec le pic d'œstradiol lui-même.</em></p>
+            </div>
+
+            <div class="mnemonic-card">
+                <div class="mnemonic-title">🧠 Astuce 3 : LH = Luteinizing & Leaping (Ovulation)</div>
+                <p><strong>LH</strong> :</p>
+                <ul>
+                    <li><strong>L</strong>uteinizing : Induit la formation du corps jaune (lutéinisation).</li>
+                    <li><strong>L</strong>eaping : Fait "sauter" l'ovocyte hors du follicule (ovulation).</li>
+                </ul>
+                <p><em>La FSH, elle, est la "Fée" qui fait grandir le follicule (Follicle Stimulating).</em></p>
+            </div>
+
+            <div class="mnemonic-card">
+                <div class="mnemonic-title">🧠 Astuce 4 : Distinguer Ménorragie, Hyperménorrhée et Métrorragie</div>
+                <ul>
+                    <li><strong>Hyper</strong>ménorrhée : C'est "trop" (volume > 80 ml).</li>
+                    <li><strong>Méno</strong>rragie : C'est "trop + long" (> 80 ml ET/OU > 7 jours). <em>Méno = Menstruation prolongée.</em></li>
+                    <li><strong>Métro</strong>rragie : C'est "à côté" (en dehors des règles). <em>Métro = Métro qui passe en dehors des rails.</em></li>
+                </ul>
+            </div>
+
+            <div class="mnemonic-card">
+                <div class="mnemonic-title">🧠 Piège classique : La phase lutéale est FIXE</div>
+                <p>La phase folliculaire est variable (elle peut être longue ou courte, c'est elle qui détermine la durée du cycle). La phase lutéale est <strong>constante</strong> (14 jours).</p>
+                <p><em>Si une femme a des cycles de 35 jours, l'ovulation se fait à J21. Si elle a des cycles de 21 jours, l'ovulation se fait à J7.</em></p>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p><span>🚀</span> Tu tiens le bon bout ! Chaque QCM te rapproche un peu plus du stéthoscope. Relis les explications, comprends les pièges, et le jour de l'examen, tu seras le/la maître du cycle ! 💪🩺</p>
+    </footer>
+
+</body>
+</html>

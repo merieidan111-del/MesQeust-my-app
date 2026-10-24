@@ -786,7 +786,7 @@ export const CANCER_ESTOMAC_RESOURCES: CourseResource[] = [
     courseId: 'crs-gastro-cancer-estomac',
     type: 'Resume',
     title: "Carte Mentale & Conduite Pratique : Cancer de l'Estomac (Blida)",
-    contentMarkdown: `## 🧠 Carte Mentale & Synthèse : Cancer de l'Estomac
+    contentMarkdown: `## Carte Mentale & Synthèse : Cancer de l'Estomac
 **Faculté de Médecine de Blida | Dr A.M. KHALOUF, Pr N. SERIDJ**
 
 ### 1. Étiologies & Facteurs de Risque
@@ -821,7 +821,7 @@ export const CANCER_ESTOMAC_RESOURCES: CourseResource[] = [
     courseId: 'crs-gastro-cancer-estomac',
     type: 'Astuce',
     title: "Mnémoniques & Perles Cliniques : Cancer de l'Estomac",
-    contentMarkdown: `### 💡 Astuces & Mnémotechniques Officiels (Blida)
+    contentMarkdown: `### Astuce : Astuces & Mnémotechniques Officiels (Blida)
 
 1. **Classification de BORMANN (Formes macroscopiques)** :
    - Mnémo « **VUUI** » :

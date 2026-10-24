@@ -17,6 +17,7 @@ import {
   Sparkles,
   Layers,
   ArrowUpRight,
+  X,
 } from 'lucide-react';
 
 export interface YearDriveConfig {
@@ -336,9 +337,9 @@ export const Library: React.FC<LibraryProps> = () => {
             <button
               type="button"
               onClick={() => setSearchQuery('')}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-xs font-bold text-slate-400 hover:text-slate-600"
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 cursor-pointer"
             >
-              ✕
+              <X className="w-3.5 h-3.5" />
             </button>
           )}
         </div>

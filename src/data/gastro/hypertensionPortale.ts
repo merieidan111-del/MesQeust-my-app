@@ -669,7 +669,7 @@ export const HYPERTENSION_PORTALE_RESOURCES: CourseResource[] = [
     "courseId": "crs-gastro-hypertension-portale",
     "type": "Fiche Synthèse",
     "title": "Synthèse Clinique : Hypertension Portale (HTP)",
-    "contentMarkdown": "### 🎯 Points Clés : Hypertension Portale\n- **Définition** : GPVH > 5 mmHg (cliniquement significative si >= 10 mmHg).\n- **Étiologies selon le siège** :\n  1. *Sous-hépatique (pré-hépatique)* : thrombose de la veine porte, cavernome portal.\n  2. *Intra-hépatique* : cirrhose (sinusoïdal, 90%), bilharziose (pré-sinusoïdal).\n  3. *Sus-hépatique (post-hépatique)* : Budd-Chiari (thrombose sus-hépatiques).\n- **Conséquences** : Varices œsophagiennes et gastriques, splénomégalie, ascite.\n- **Prise en charge de la rupture de VO** :\n  - Vasoactif (Terlipressine) précoce.\n  - C3G prophylactique systématique 7 jours.\n  - Ligature élastique en urgence (< 12h).\n  - Seuil transfusionnel : Hb 7-8 g/dL.",
+    "contentMarkdown": "### Focus : Points Clés : Hypertension Portale\n- **Définition** : GPVH > 5 mmHg (cliniquement significative si >= 10 mmHg).\n- **Étiologies selon le siège** :\n  1. *Sous-hépatique (pré-hépatique)* : thrombose de la veine porte, cavernome portal.\n  2. *Intra-hépatique* : cirrhose (sinusoïdal, 90%), bilharziose (pré-sinusoïdal).\n  3. *Sus-hépatique (post-hépatique)* : Budd-Chiari (thrombose sus-hépatiques).\n- **Conséquences** : Varices œsophagiennes et gastriques, splénomégalie, ascite.\n- **Prise en charge de la rupture de VO** :\n  - Vasoactif (Terlipressine) précoce.\n  - C3G prophylactique systématique 7 jours.\n  - Ligature élastique en urgence (< 12h).\n  - Seuil transfusionnel : Hb 7-8 g/dL.",
     "author": "Collège National des Enseignants d’Hépatologie"
   },
   {
@@ -677,7 +677,7 @@ export const HYPERTENSION_PORTALE_RESOURCES: CourseResource[] = [
     "courseId": "crs-gastro-hypertension-portale",
     "type": "Astuce",
     "title": "Mnémoniques : Conduite à tenir Rupture VO",
-    "contentMarkdown": "### 💡 Règle des 3 V + L + A dans la rupture de VO :\n1. **V**oies veineuses & Remplissage prudent.\n2. **V**asoactif splanchnique (Terlipressine).\n3. **V**érification restrictive : Transfusion cible Hb 7-8 g/dL.\n4. **L**igature élastique rapide (< 12h).\n5. **A**ntibiothérapie prophylactique systématique (Ceftriaxone 7j).",
+    "contentMarkdown": "### Astuce : Règle des 3 V + L + A dans la rupture de VO :\n1. **V**oies veineuses & Remplissage prudent.\n2. **V**asoactif splanchnique (Terlipressine).\n3. **V**érification restrictive : Transfusion cible Hb 7-8 g/dL.\n4. **L**igature élastique rapide (< 12h).\n5. **A**ntibiothérapie prophylactique systématique (Ceftriaxone 7j).",
     "author": "Faculté de Médecine"
   }
 ];

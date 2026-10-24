@@ -687,7 +687,7 @@ export const TUMEURS_PANCREAS_RESOURCES: CourseResource[] = [
     courseId: 'crs-gastro-tumeurs-pancreas',
     type: 'Resume',
     title: "Carte Mentale & Algorithme Diagnostique : Tumeurs du Pancréas (Dr MOUSSAOUI)",
-    contentMarkdown: `## 🧠 Carte Mentale : Tumeurs du Pancréas
+    contentMarkdown: `## Carte Mentale : Tumeurs du Pancréas
 **D'après le cours officiel du Dr MOUSSAOUI - Faculté de Médecine**
 
 ### 1. Classification & Fréquence
@@ -730,7 +730,7 @@ Masse Pancréatique à l'Imagerie
     courseId: 'crs-gastro-tumeurs-pancreas',
     type: 'Astuce',
     title: "Mnémoniques & Règles d'Or : Tumeurs du Pancréas",
-    contentMarkdown: `### 📚 Mnémoniques & Perles d'Examen (Dr MOUSSAOUI)
+    contentMarkdown: `### Mnémoniques & Perles d'Examen (Dr MOUSSAOUI)
 
 1. **Règle des PanIN (1-2-3)** :
    - PanIN-1 : **P**olaire (polarité conservée, hyperplasie mucineuse simple)

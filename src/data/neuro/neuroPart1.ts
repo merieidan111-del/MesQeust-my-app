@@ -1648,13 +1648,13 @@ export const NEURO_LESSON_3_RESOURCES: CourseResource[] = [
 # ASTUCES & PIÈGES AU CONCOURS (NEUROMUSCULAIRE)
 *Par Dr. LAIDANI.MERIEM*
 
-### ⚠️ Myasthénie : Le test à la glace (Ice Pack Test)
+### Piège : Myasthénie : Le test à la glace (Ice Pack Test)
 - L'application d'une poche de glace sur la paupière pendant 2 minutes améliore spectaculairement le ptosis myasthénique en inhibant l'acétylcholinestérase locale.
 
-### ⚠️ Guillain-Barré : "Gare en Box de Réanimation !"
+### Piège : Guillain-Barré : "Gare en Box de Réanimation !"
 - Tout patient suspect de syndrome de Guillain-Barré doit faire l'objet d'une surveillance continue de la capacité vitale (spirométrie au lit) : si CV < 15-20 ml/kg -> Intubation préventive immédiate !
 
-### ⚠️ Myopathie de Duchenne vs Becker :
+### Piège : Myopathie de Duchenne vs Becker :
 - **DMD** : Délétion avec **Rupture** du cadre de lecture -> Dystrophine absente -> Forme grave de l'enfant (fauteuil vers 10-12 ans).
 - **BMD** : Délétion avec **Respect** du cadre -> Dystrophine partielle -> Forme plus tardive et bénigne.
 `

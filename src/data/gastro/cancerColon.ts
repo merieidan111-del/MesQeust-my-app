@@ -709,7 +709,7 @@ export const CANCER_COLON_RESOURCES: CourseResource[] = [
     courseId: 'crs-gastro-cancer-colon',
     type: 'Astuce',
     title: 'Mnémotechniques : Cancer du Côlon',
-    contentMarkdown: `### 💡 Mnémotechniques d'Examen (Cancer du Côlon - Blida)
+    contentMarkdown: `### Astuce : Mnémotechniques d'Examen (Cancer du Côlon - Blida)
 
 1. **Critères d'Amsterdam II (Lynch) : « 3 - 2 - 1 - 0 »**
    - **3** sujets apparentés avec cancer du spectre Lynch

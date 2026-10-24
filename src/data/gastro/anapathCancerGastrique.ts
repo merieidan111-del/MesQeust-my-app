@@ -735,7 +735,7 @@ export const ANAPATH_CANCER_GASTRIQUE_RESOURCES: CourseResource[] = [
     courseId: 'crs-gastro-anapath-cancer-gastrique',
     type: 'Resume',
     title: "Carte Mentale : Anatomie Pathologique du Cancer Gastrique (Dr G.IFAIDI)",
-    contentMarkdown: `## 🧠 Carte Mentale : Anatomie Pathologique du Cancer Gastrique
+    contentMarkdown: `## Carte Mentale : Anatomie Pathologique du Cancer Gastrique
 **Dr G.IFAIDI – CHU Frantz Fanon Blida**
 
 ### 1. Lésions Précancéreuses
@@ -766,7 +766,7 @@ export const ANAPATH_CANCER_GASTRIQUE_RESOURCES: CourseResource[] = [
     courseId: 'crs-gastro-anapath-cancer-gastrique',
     type: 'Astuce',
     title: "Mnémotechniques : Anapath Cancer Gastrique",
-    contentMarkdown: `### 💡 Mnémotechniques d'Examen (Dr G.IFAIDI)
+    contentMarkdown: `### Astuce : Mnémotechniques d'Examen (Dr G.IFAIDI)
 
 1. **Borrmann (« VUEI »)** :
    - 1 : **V**égétant

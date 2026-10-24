@@ -1,0 +1,2265 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pathologie du Col Utérin — Révision 5e Année</title>
+<style>
+  :root{
+    --navy:#0f2740;
+    --navy-2:#16385b;
+    --slate:#475569;
+    --slate-light:#64748b;
+    --teal:#0d9488;
+    --teal-dark:#0f766e;
+    --teal-light:#ccfbf1;
+    --bg:#f1f5f9;
+    --card:#ffffff;
+    --border:#e2e8f0;
+    --danger:#b91c1c;
+    --danger-light:#fee2e2;
+    --amber:#b45309;
+    --amber-light:#fef3c7;
+    --green:#15803d;
+    --green-light:#dcfce7;
+    --shadow:0 4px 14px rgba(15,39,64,.08);
+    --shadow-hover:0 8px 24px rgba(15,39,64,.14);
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter','Segoe UI',Roboto,system-ui,-apple-system,sans-serif;
+    background:var(--bg);
+    color:var(--slate);
+    line-height:1.65;
+    font-size:16px;
+    -webkit-font-smoothing:antialiased;
+  }
+  /* ---------- HEADER ---------- */
+  header.hero{
+    background:linear-gradient(135deg,var(--navy) 0%,var(--navy-2) 55%,var(--teal-dark) 100%);
+    color:#fff;
+    padding:56px 24px 48px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  header.hero::after{
+    content:"";
+    position:absolute;
+    inset:0;
+    background:radial-gradient(circle at 20% 20%,rgba(13,148,136,.25),transparent 40%),
+               radial-gradient(circle at 80% 80%,rgba(255,255,255,.08),transparent 45%);
+    pointer-events:none;
+  }
+  .hero-badge{
+    display:inline-block;
+    background:rgba(255,255,255,.14);
+    border:1px solid rgba(255,255,255,.28);
+    color:#e0f2fe;
+    font-size:.75rem;
+    font-weight:600;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    padding:6px 16px;
+    border-radius:999px;
+    margin-bottom:18px;
+    backdrop-filter:blur(4px);
+  }
+  header.hero h1{
+    font-size:clamp(1.7rem,3.4vw,2.6rem);
+    font-weight:800;
+    letter-spacing:-.02em;
+    margin-bottom:12px;
+    position:relative;
+  }
+  header.hero p.subtitle{
+    font-size:1.02rem;
+    color:#cbd5e1;
+    max-width:720px;
+    margin:0 auto;
+    position:relative;
+  }
+  .hero-tags{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:10px;
+    margin-top:24px;
+    position:relative;
+  }
+  .hero-tags span{
+    background:rgba(255,255,255,.10);
+    border:1px solid rgba(255,255,255,.20);
+    padding:5px 14px;
+    border-radius:999px;
+    font-size:.8rem;
+    color:#e2e8f0;
+    font-weight:500;
+  }
+  /* ---------- NAV ---------- */
+  nav.toc{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(255,255,255,.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+    box-shadow:0 2px 10px rgba(15,39,64,.04);
+  }
+  nav.toc .inner{
+    max-width:1160px;
+    margin:0 auto;
+    padding:10px 20px;
+    display:flex;
+    gap:8px;
+    overflow-x:auto;
+    scrollbar-width:thin;
+  }
+  nav.toc a{
+    color:var(--slate);
+    text-decoration:none;
+    font-size:.82rem;
+    font-weight:600;
+    padding:7px 14px;
+    border-radius:8px;
+    white-space:nowrap;
+    transition:.2s;
+    border:1px solid transparent;
+  }
+  nav.toc a:hover{
+    background:var(--teal-light);
+    color:var(--teal-dark);
+    border-color:#99f6e4;
+  }
+  /* ---------- LAYOUT ---------- */
+  main{
+    max-width:1160px;
+    margin:0 auto;
+    padding:40px 20px 80px;
+  }
+  section{margin-bottom:64px;scroll-margin-top:80px;}
+  .section-head{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    margin-bottom:28px;
+    padding-bottom:16px;
+    border-bottom:2px solid var(--border);
+  }
+  .section-num{
+    flex-shrink:0;
+    width:48px;
+    height:48px;
+    border-radius:14px;
+    background:linear-gradient(135deg,var(--navy),var(--teal-dark));
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:800;
+    font-size:1.25rem;
+    box-shadow:var(--shadow);
+  }
+  .section-head h2{
+    font-size:clamp(1.2rem,2.4vw,1.55rem);
+    color:var(--navy);
+    font-weight:800;
+    letter-spacing:-.01em;
+  }
+  .section-head .sub{
+    font-size:.85rem;
+    color:var(--slate-light);
+    font-weight:500;
+  }
+  /* ---------- CARDS / QCM ---------- */
+  .qcm-card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:16px;
+    padding:22px 24px;
+    margin-bottom:20px;
+    box-shadow:var(--shadow);
+    transition:.25s ease;
+  }
+  .qcm-card:hover{box-shadow:var(--shadow-hover);transform:translateY(-1px);}
+  .qcm-top{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:10px;
+    margin-bottom:14px;
+  }
+  .q-number{
+    background:var(--navy);
+    color:#fff;
+    font-weight:800;
+    font-size:.82rem;
+    padding:4px 12px;
+    border-radius:8px;
+    letter-spacing:.04em;
+  }
+  .badge{
+    font-size:.7rem;
+    font-weight:700;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    padding:4px 10px;
+    border-radius:999px;
+  }
+  .badge-rj{background:var(--teal-light);color:var(--teal-dark);border:1px solid #99f6e4;}
+  .badge-rf{background:var(--danger-light);color:var(--danger);border:1px solid #fecaca;}
+  .badge-multi{background:var(--amber-light);color:var(--amber);border:1px solid #fde68a;}
+  .badge-simple{background:#e0e7ff;color:#3730a3;border:1px solid #c7d2fe;}
+  .theme-tag{
+    font-size:.74rem;
+    font-weight:600;
+    color:var(--slate-light);
+    background:#f1f5f9;
+    padding:3px 10px;
+    border-radius:6px;
+    border:1px solid var(--border);
+  }
+  .q-stem{
+    font-weight:600;
+    color:var(--navy);
+    font-size:1rem;
+    margin-bottom:14px;
+  }
+  .options{list-style:none;margin:0 0 4px;}
+  .options li{
+    padding:8px 12px;
+    margin-bottom:6px;
+    border-radius:8px;
+    background:#f8fafc;
+    border:1px solid transparent;
+    font-size:.94rem;
+    transition:.15s;
+  }
+  .options li:hover{background:#eef2f7;border-color:var(--border);}
+  .options .letter{
+    display:inline-block;
+    width:22px;
+    height:22px;
+    line-height:22px;
+    text-align:center;
+    background:var(--navy);
+    color:#fff;
+    border-radius:6px;
+    font-size:.75rem;
+    font-weight:800;
+    margin-right:10px;
+  }
+  /* ---------- CORRECTION ---------- */
+  details.correction{
+    margin-top:14px;
+    border-radius:12px;
+    overflow:hidden;
+    border:1px solid #99f6e4;
+    background:#f0fdfa;
+  }
+  details.correction[open]{box-shadow:0 4px 14px rgba(13,148,136,.12);}
+  details.correction > summary{
+    cursor:pointer;
+    list-style:none;
+    padding:12px 18px;
+    font-weight:700;
+    color:var(--teal-dark);
+    font-size:.9rem;
+    display:flex;
+    align-items:center;
+    gap:10px;
+    user-select:none;
+    background:linear-gradient(90deg,#ccfbf1,#f0fdfa);
+  }
+  details.correction > summary::-webkit-details-marker{display:none;}
+  details.correction > summary::before{
+    content:"+";
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    width:22px;
+    height:22px;
+    background:var(--teal);
+    color:#fff;
+    border-radius:6px;
+    font-size:1rem;
+    font-weight:800;
+    transition:.2s;
+  }
+  details.correction[open] > summary::before{content:"−";background:var(--teal-dark);}
+  .correction-body{
+    padding:16px 20px 20px;
+    font-size:.9rem;
+    color:#134e4a;
+    border-top:1px dashed #99f6e4;
+  }
+  .correction-body p{margin-bottom:8px;}
+  .correction-body strong{color:var(--teal-dark);}
+  .answer-key{
+    display:inline-block;
+    background:var(--teal);
+    color:#fff;
+    font-weight:800;
+    font-size:.8rem;
+    padding:3px 12px;
+    border-radius:6px;
+    margin-bottom:10px;
+    letter-spacing:.04em;
+  }
+  .why-wrong{
+    margin-top:10px;
+    padding-left:14px;
+    border-left:3px solid #fca5a5;
+  }
+  .why-wrong li{
+    list-style:none;
+    font-size:.85rem;
+    color:#7f1d1d;
+    margin-bottom:5px;
+    padding-left:6px;
+  }
+  .why-wrong li::before{content:"✗ ";color:#dc2626;font-weight:800;}
+  .why-right{
+    margin-top:8px;
+    padding-left:14px;
+    border-left:3px solid #34d399;
+  }
+  .why-right li{
+    list-style:none;
+    font-size:.86rem;
+    color:#065f46;
+    margin-bottom:4px;
+  }
+  .why-right li::before{content:"✓ ";color:#059669;font-weight:800;}
+  /* ---------- CLINICAL CASES ---------- */
+  .case-card{
+    background:var(--card);
+    border-radius:18px;
+    border:1px solid var(--border);
+    box-shadow:var(--shadow);
+    margin-bottom:32px;
+    overflow:hidden;
+  }
+  .case-header{
+    background:linear-gradient(135deg,var(--navy),var(--navy-2));
+    color:#fff;
+    padding:18px 26px;
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:14px;
+  }
+  .case-header .case-num{
+    background:var(--teal);
+    width:38px;height:38px;
+    border-radius:10px;
+    display:flex;align-items:center;justify-content:center;
+    font-weight:800;font-size:1rem;
+    flex-shrink:0;
+  }
+  .case-header h3{font-size:1.08rem;font-weight:700;letter-spacing:-.01em;}
+  .case-header .loc{
+    margin-left:auto;
+    font-size:.72rem;
+    background:rgba(255,255,255,.14);
+    border:1px solid rgba(255,255,255,.25);
+    padding:4px 12px;
+    border-radius:999px;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    font-weight:600;
+  }
+  .vignette{
+    padding:20px 26px;
+    background:#f8fafc;
+    border-bottom:1px solid var(--border);
+    font-size:.93rem;
+    color:#334155;
+  }
+  .vignette strong{color:var(--navy);}
+  .vignette .vital{
+    display:inline-block;
+    margin-top:10px;
+    background:#fff;
+    border:1px solid var(--border);
+    padding:6px 12px;
+    border-radius:8px;
+    font-size:.82rem;
+    font-weight:600;
+    color:var(--teal-dark);
+  }
+  .case-qcm{padding:22px 26px;}
+  /* ---------- CONCEPT MAP ---------- */
+  .concept-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+    gap:18px;
+    margin-bottom:28px;
+  }
+  .concept-box{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:14px;
+    padding:18px 20px;
+    box-shadow:var(--shadow);
+    border-top:4px solid var(--teal);
+  }
+  .concept-box.navy{border-top-color:var(--navy);}
+  .concept-box.amber{border-top-color:var(--amber);}
+  .concept-box.danger{border-top-color:var(--danger);}
+  .concept-box h4{
+    color:var(--navy);
+    font-size:.98rem;
+    font-weight:800;
+    margin-bottom:10px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .concept-box h4 .dot{
+    width:10px;height:10px;border-radius:50%;
+    background:var(--teal);display:inline-block;flex-shrink:0;
+  }
+  .concept-box.navy h4 .dot{background:var(--navy);}
+  .concept-box.amber h4 .dot{background:var(--amber);}
+  .concept-box.danger h4 .dot{background:var(--danger);}
+  .concept-box ul{list-style:none;font-size:.86rem;}
+  .concept-box ul li{
+    padding:5px 0 5px 18px;
+    position:relative;
+    border-bottom:1px dashed #eef2f7;
+  }
+  .concept-box ul li:last-child{border-bottom:none;}
+  .concept-box ul li::before{
+    content:"▸";
+    position:absolute;left:0;color:var(--teal);
+    font-weight:800;
+  }
+  /* Flow / algorithm */
+  .flow-wrap{
+    background:linear-gradient(135deg,#f0fdfa,#ffffff);
+    border:1px solid #99f6e4;
+    border-radius:18px;
+    padding:28px 22px;
+    margin-bottom:24px;
+    box-shadow:var(--shadow);
+  }
+  .flow-title{
+    text-align:center;
+    font-weight:800;
+    color:var(--teal-dark);
+    font-size:1.05rem;
+    margin-bottom:22px;
+    letter-spacing:.02em;
+  }
+  .flow{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:0;
+  }
+  .flow-node{
+    background:#fff;
+    border:2px solid var(--teal);
+    border-radius:12px;
+    padding:12px 20px;
+    font-size:.88rem;
+    font-weight:600;
+    color:var(--navy);
+    text-align:center;
+    max-width:460px;
+    box-shadow:0 3px 10px rgba(13,148,136,.10);
+  }
+  .flow-node.start{background:var(--navy);color:#fff;border-color:var(--navy);}
+  .flow-node.final{background:var(--teal);color:#fff;border-color:var(--teal-dark);}
+  .flow-node.warn{background:var(--amber-light);border-color:var(--amber);color:#78350f;}
+  .flow-arrow{
+    width:2px;height:26px;background:var(--teal);
+    position:relative;
+  }
+  .flow-arrow::after{
+    content:"";
+    position:absolute;
+    bottom:-4px;left:50%;
+    transform:translateX(-50%);
+    border-left:6px solid transparent;
+    border-right:6px solid transparent;
+    border-top:8px solid var(--teal);
+  }
+  .flow-branches{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:16px;
+    width:100%;
+    max-width:640px;
+  }
+  /* Table */
+  .styled-table{
+    width:100%;
+    border-collapse:separate;
+    border-spacing:0;
+    font-size:.86rem;
+    background:#fff;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:var(--shadow);
+    border:1px solid var(--border);
+    margin-bottom:16px;
+  }
+  .styled-table th{
+    background:var(--navy);
+    color:#fff;
+    text-align:left;
+    padding:12px 14px;
+    font-size:.78rem;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    font-weight:700;
+  }
+  .styled-table td{
+    padding:11px 14px;
+    border-bottom:1px solid var(--border);
+    vertical-align:top;
+  }
+  .styled-table tr:last-child td{border-bottom:none;}
+  .styled-table tr:nth-child(even) td{background:#f8fafc;}
+  .styled-table td strong{color:var(--navy);}
+  .pill{
+    display:inline-block;
+    padding:2px 9px;
+    border-radius:999px;
+    font-size:.72rem;
+    font-weight:700;
+    letter-spacing:.03em;
+  }
+  .pill-teal{background:var(--teal-light);color:var(--teal-dark);}
+  .pill-danger{background:var(--danger-light);color:var(--danger);}
+  .pill-amber{background:var(--amber-light);color:var(--amber);}
+  /* Mnemonic cards */
+  .mnemo-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:18px;
+  }
+  .mnemo-card{
+    background:linear-gradient(145deg,#ffffff,#f0fdfa);
+    border:1px solid #99f6e4;
+    border-left:5px solid var(--teal);
+    border-radius:14px;
+    padding:18px 20px;
+    box-shadow:var(--shadow);
+    transition:.2s;
+  }
+  .mnemo-card:hover{transform:translateY(-2px);box-shadow:var(--shadow-hover);}
+  .mnemo-card .mnemo-key{
+    font-weight:800;
+    color:var(--teal-dark);
+    font-size:1rem;
+    margin-bottom:6px;
+    letter-spacing:.02em;
+  }
+  .mnemo-card p{font-size:.88rem;color:#334155;}
+  .trap-card{
+    background:#fff7ed;
+    border:1px solid #fed7aa;
+    border-left:5px solid #ea580c;
+    border-radius:14px;
+    padding:18px 20px;
+    box-shadow:var(--shadow);
+    margin-bottom:14px;
+  }
+  .trap-card .trap-title{
+    font-weight:800;
+    color:#9a3412;
+    margin-bottom:6px;
+    font-size:.95rem;
+  }
+  .trap-card p{font-size:.87rem;color:#7c2d12;}
+  /* Footer */
+  footer.motivate{
+    background:linear-gradient(135deg,var(--navy),var(--teal-dark));
+    color:#fff;
+    text-align:center;
+    padding:48px 24px;
+    margin-top:40px;
+    border-radius:24px 24px 0 0;
+  }
+  footer.motivate h3{
+    font-size:1.35rem;
+    font-weight:800;
+    margin-bottom:12px;
+    letter-spacing:-.01em;
+  }
+  footer.motivate p{
+    max-width:640px;
+    margin:0 auto 8px;
+    color:#cbd5e1;
+    font-size:.95rem;
+  }
+  footer.motivate .emoji{font-size:1.6rem;display:block;margin-top:16px;}
+  /* Responsive */
+  @media(max-width:640px){
+    .qcm-card{padding:18px 16px;}
+    .case-header{padding:16px 18px;}
+    .vignette,.case-qcm{padding:16px 18px;}
+    .flow-branches{grid-template-columns:1fr;}
+    .section-head{gap:12px;}
+    .section-num{width:40px;height:40px;font-size:1.05rem;}
+  }
+  /* Progress count chips */
+  .stat-row{
+    display:flex;flex-wrap:wrap;gap:12px;margin-bottom:26px;
+  }
+  .stat-chip{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:10px 16px;
+    font-size:.82rem;
+    font-weight:600;
+    color:var(--slate);
+    box-shadow:var(--shadow);
+    display:flex;align-items:center;gap:8px;
+  }
+  .stat-chip b{color:var(--navy);font-size:1.05rem;}
+  .stat-chip .sq{width:9px;height:9px;border-radius:3px;display:inline-block;}
+</style>
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="hero">
+  <span class="hero-badge">Module de Gynécologie–Obstétrique · Anatomie Pathologique</span>
+  <h1>Pathologie du Col Utérin</h1>
+  <p class="subtitle">Révision intensive 5<sup>e</sup> année — QCM exigeants, cas cliniques hospitaliers algériens, carte conceptuelle et mnémotechniques. D'après le cours du Dr G. Ifaidi / Pr Guermi — CHU Blida, 2026–2027.</p>
+  <div class="hero-tags">
+    <span>25 QCM mixtes</span>
+    <span>5 cas cliniques</span>
+    <span>Carte conceptuelle</span>
+    <span>Mnémotechniques</span>
+    <span>Pièges d'examen</span>
+  </div>
+</header>
+
+<!-- ============ NAV ============ -->
+<nav class="toc">
+  <div class="inner">
+    <a href="#qcm">🧩 Banque de QCM</a>
+    <a href="#cas">🏥 Cas cliniques</a>
+    <a href="#concept">🗺️ Carte conceptuelle</a>
+    <a href="#mnemo">🧠 Mnémotechniques</a>
+    <a href="#pieges">⚠️ Pièges d'examen</a>
+  </div>
+</nav>
+
+<main>
+
+<!-- ===================================================== -->
+<!-- SECTION 1 : 25 QCM -->
+<!-- ===================================================== -->
+<section id="qcm">
+  <div class="section-head">
+    <div class="section-num">1</div>
+    <div>
+      <h2>Banque de 25 QCM exigeants</h2>
+      <div class="sub">Mélange subtil de RJ/RF · QCM à réponses multiples · QCM à réponse unique</div>
+    </div>
+  </div>
+
+  <div class="stat-row">
+    <div class="stat-chip"><span class="sq" style="background:#0d9488"></span> 7 questions <b>RJ / RF</b></div>
+    <div class="stat-chip"><span class="sq" style="background:#d97706"></span> 8 questions <b>multiples</b></div>
+    <div class="stat-chip"><span class="sq" style="background:#4338ca"></span> 10 questions <b>simples</b></div>
+  </div>
+
+  <!-- Q1 -->
+  <div class="qcm-card">
+    <div class="qcm-top">
+      <span class="q-number">Q1</span>
+      <span class="badge badge-rj">Réponse juste</span>
+      <span class="theme-tag">Anatomie du col</span>
+    </div>
+    <p class="q-stem">Concernant l'anatomie normale du col utérin, choisissez la réponse juste :</p>
+    <ul class="options">
+      <li><span class="letter">A</span>Le col utérin est situé en avant de la vessie et en arrière du rectum</li>
+      <li><span class="letter">B</span>Le col fait suite au corps utérin par l'intermédiaire de l'isthme</li>
+      <li><span class="letter">C</span>Le col mesure habituellement 5 à 6 cm chez la nullipare</li>
+      <li><span class="letter">D</span>Le col est situé en arrière du rectum et en avant de la vessie</li>
+      <li><span class="letter">E</span>Le col a une direction strictement verticale et rigide</li>
+    </ul>
+    <details class="correction">
+      <summary>Correction détaillée &amp; explication pédagogique</summary>
+      <div class="correction-body">
+        <span class="answer-key">Réponse : B</span>
+        <ul class="why-right">
+          <li><strong>B — VRAI :</strong> Le col succède au corps utérin via l'isthme utérin, puis s'abouche dans le vagin. C'est un repère anatomique fondamental pour la colposcopie et la chirurgie.</li>
+        </ul>
+        <ul class="why-wrong">
+          <li><strong>A — FAUX :</strong> Le col est en <em>arrière</em> de la vessie et en <em>avant</em> du rectum ; les deux rapports sont inversés.</li>
+          <li><strong>C — FAUX :</strong> La longueur normale est de <strong>2,5 à 3 cm</strong> chez la nullipare, et non 5–6 cm.</li>
+          <li><strong>D — FAUX :</strong> Même inversion des rapports que A.</li>
+          <li><strong>E — FAUX :</strong> Le col est de forme cylindrique avec une direction <strong>oblique, légèrement en arrière</strong>, et non strictement verticale.</li>
+        </ul>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q2 -->
+  <div class="qcm-card">
+    <div class="qcm-top">
+      <span class="q-number">Q2</span>
+      <span class="badge badge-rf">Réponse fausse</span>
+      <span class="theme-tag">Histologie normale</span>
+    </div>
+    <p class="q-stem">Concernant l'histologie normale du col utérin, choisissez la réponse fausse :</p>
+    <ul class="options">
+      <li><span class="letter">A</span>L'exocol est tapissé d'un épithélium pavimenteux stratifié</li>
+      <li><span class="letter">B</span>L'endocol est tapissé d'un épithélium cylindrique glandulaire</li>
+      <li><span class="letter">C</span>L'épithélium pavimenteux se renouvelle en environ 28 jours</li>
+      <li><span class="letter">D</span>L'épithélium cylindrique est constitué d'une seule couche de cellules hautes</li>
+      <li><span class="letter">E</span>Les cellules cylindriques sécrètent un mucus qui lubrifie le col et le vagin</li>
+    </ul>
+    <details class="correction">
+      <summary>Correction détaillée &amp; explication pédagogique</summary>
+      <div class="correction-body">
+        <span class="answer-key">Réponse : C</span>
+        <ul class="why-right">
+          <li><strong>C — FAUX :</strong> Le renouvellement de l'épithélium pavimenteux est d'environ <strong>4 jours</strong>, grâce aux divisions des cellules basales. C'est un chiffre clé à retenir (turnover très rapide).</li>
+        </ul>
+        <ul class="why-wrong">
+          <li><strong>A — VRAI :</strong> L'exocol est bien un épithélium malpighien (pavimenteux) stratifié, organisé en couches basale, intermédiaire et superficielle.</li>
+          <li><strong>B — VRAI :</strong> L'endocol est tapissé d'un épithélium cylindrique à mucus, s'invaginant en cryptes.</li>
+          <li><strong>D — VRAI :</strong> L'épithélium cylindrique est monocellulaire (une seule couche de cellules hautes).</li>
+          <li><strong>E — VRAI :</strong> La sécrétion muqueuse assure la lubrification et la protection du col et du vagin.</li>
+        </ul>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q3 -->
+  <div class="qcm-card">
+    <div class="qcm-top">
+      <span class="q-number">Q3</span>
+      <span class="badge badge-rj">Réponse juste</span>
+      <span class="theme-tag">Koïlocytes / HPV</span>
+    </div>
+    <p class="q-stem">Les koïlocytes observés dans la cervicite virale à HPV sont caractérisés par :</p>
+    <ul class="options">
+      <li><span class="letter">A</span>Un noyau punctiforme et un cytoplasme clair, riche en filaments intermédiaires</li>
+      <li><span class="letter">B</span>Un cytoplasme vacuolisé, un noyau volumineux hyperchromatique, parfois plurinucléé</li>
+      <li><span class="letter">C</span>Des mitoses anormales et une désorganisation architecturale complète</li>
+      <li><span class="letter">D</span>Une couche de parakératose avec noyaux pycnotiques dans les lamelles de kératine</li>
+      <li><span class="letter">E</span>Une seule couche de cellules hautes mucosécrétantes</li>
+    </ul>
+    <details class="correction">
+      <summary>Correction détaillée &amp; explication pédagogique</summary>
+      <div class="correction-body">
+        <span class="answer-key">Réponse : B</span>
+        <ul class="why-right">
+          <li><strong>B — VRAI :</strong> Le koïlocyte est la cellule pathognomonique de l'infection à HPV : cytoplasme vacuolisé (aspect « halo »), noyau volumineux, hyperplasique, hyperchromatique, parfois plurinucléé. Sa présence signe l'effet cytopathogène viral.</li>
+        </ul>
+        <ul class="why-wrong">
+          <li><strong>A — FAUX :</strong> Cette description correspond aux <strong>cellules superficielles normales</strong> de l'épithélium pavimenteux mature.</li>
+          <li><strong>C — FAUX :</strong> Ce sont les caractéristiques des <strong>CIN</strong> (désorganisation, mitoses anormales), pas des koïlocytes isolés.</li>
+          <li><strong>D — FAUX :</strong> Cette description définit la <strong>leucoplasie</strong> (parakératose avec noyaux pycnotiques).</li>
+          <li><strong>E — FAUX :</strong> Il s'agit de l'<strong>épithélium cylindrique normal de l'endocol</strong>, pas d'un koïlocyte.</li>
+        </ul>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q4 -->
+  <div class="qcm-card">
+    <div class="qcm-top">
+      <span class="q-number">Q4</span>
+      <span class="badge badge-rf">Réponse fausse</span>
+      <span class="theme-tag">Épidémiologie HPV</span>
+    </div>
+    <p class="q-stem">Concernant l'infection à HPV et le cancer du col, choisissez la réponse fausse :</p>
+    <ul class="options">
+      <li><span class="letter">A</span>Il existe plus de 140 génotypes d'HPV dans l'espèce humaine</li>
+      <li><span class="letter">B</span>Environ 15 génotypes sont potentiellement oncogènes (à haut risque)</li>
+      <li><span class="letter">C</span>HPV 16 et 18 sont impliqués dans environ 70 % des cancers du col</li>
+      <li><span class="letter">D</span>L'infection à HPV est toujours persistante chez la femme jeune</li>
+      <li><span class="letter">E</span>L'HPV est impliqué dans plus de 85 % des carcinomes épidermoïdes</li>
+    </ul>
+    <details class="correction">
+      <summary>Correction détaillée &amp; explication pédagogique</summary>
+      <div class="correction-body">
+        <span class="answer-key">Réponse : D</span>
+        <ul class="why-right">
+          <li><strong>D — FAUX :</strong> Au contraire, <strong>50 à 75 % des jeunes femmes</strong> ont une infection HPV <em>transitoire</em> (pic de transmission 15–25 ans). Seulement <strong>10 %</strong> développeront une dysplasie. La persistance virale est l'exception, pas la règle.</li>
+        </ul>
+        <ul class="why-wrong">
+          <li><strong>A — VRAI :</strong> Plus de 140 génotypes HPV sont décrits chez l'homme.</li>
+          <li><strong>B — VRAI :</strong> Environ 15 génotypes sont classés à haut risque oncogène.</li>
+          <li><strong>C — VRAI :</strong> HPV 16 et 18 couvrent à eux deux ~70 % des cancers du col.</li>
+          <li><strong>E — VRAI :</strong> L'HPV est retrouvé dans plus de 85 % des carcinomes épidermoïdes et 70 % des adénocarcinomes.</li>
+        </ul>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q5 -->
+  <div class="qcm-card">
+    <div class="qcm-top">
+      <span class="q-number">Q5</span>
+      <span class="badge badge-rj">Réponse juste</span>
+      <span class="theme-tag">Classification CIN</span>
+    </div>
+    <p class="q-stem">Concernant la classification des CIN (néoplasies cervicales intra-épithéliales), choisissez la réponse juste :</p>
+    <ul class="options">
+      <li><span class="letter">A</span>CIN 1 correspond à une atteinte des 2/3 de l'épithélium</li>
+      <li><span class="letter">B</span>CIN 2 correspond à une atteinte de toute la hauteur de l'épithélium</li>
+      <li><span class="letter">C</span>CIN 3 regroupe la dysplasie sévère et le carcinome in situ (CIS)</li>
+      <li><span class="letter">D</span>CIN 1 correspond à une dysplasie sévère</li>
+      <li><span class="letter">E</span>CIN 2 correspond au carcinome in situ</li>
+    </ul>
+    <details class="correction">
+      <summary>Correction détaillée &amp; explication pédagogique</summary>
+      <div class="correction-body">
+        <span class="answer-key">Réponse : C</span>
+        <ul class="why-right">
+          <li><strong>C — VRAI :</strong> CIN 3 englobe la <strong>dysplasie sévère et le carcinome in situ</strong>. La distinction entre ces deux entités est difficile et sans intérêt pratique, car la prise en charge est identique.</li>
+        </ul>
+        <ul class="why-wrong">
+          <li><strong>A — FAUX :</strong> CIN 1 = atteinte du <strong>1/3</strong> de l'épithélium (dysplasie légère).</li>
+          <li><strong>B — FAUX :</strong> CIN 2 = atteinte des <strong>2/3</strong> (dysplasie modérée), pas de toute la hauteur.</li>
+          <li><strong>D — FAUX :</strong> CIN 1 = dysplasie <em>légère</em>, pas sévère.</li>
+          <li><strong>E — FAUX :</strong> Le carcinome in situ appartient à CIN 3, pas à CIN 2.</li>
+        </ul>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q6 -->
+  <div class="qcm-card">
+    <div class="qcm-top">
+      <span class="q-number">Q6</span>
+      <span class="badge badge-rf">Réponse fausse</span>
+      <span class="theme-tag">Frottis cervico-vaginal</span>
+    </div>
+    <p class="q-stem">Concernant le frottis cervico-vaginal (FCV), choisissez la réponse fausse :</p>
+    <ul class="options">
+      <li><span class="letter">A</span>Le FCV est un examen de dépistage et non de diagnostic</li>
+      <li><span class="letter">B</span>Il s'adresse à toutes les femmes à partir de 25 ans ayant eu des rapports sexuels</li>
+      <li><span class="letter">C</span>Il doit être réalisé idéalement en période ovulatoire</li>
+      <li><span class="letter">D</span>Il peut être réalisé sans inconvénient pendant les règles</li>
+      <li><span class="letter">E</span>Le prélèvement doit intéresser impérativement la zone de jonction</li>
+    </ul>
+    <details class="correction">
+      <summary>Correction détaillée &amp; explication pédagogique</summary>
+      <div class="correction-body">
+        <span class="answer-key">Réponse : D</span>
+        <ul class="why-right">
+          <li><strong>D — FAUX :</strong> Le FCV doit être réalisé <strong>en l'absence de saignement</strong> et d'infection. Les règles constituent une contre-indication relative majeure (sang = prélèvement non interprétable).</li>
+        </ul>
+        <ul class="why-wrong">
+          <li><strong>A — VRAI :</strong> Le FCV est un test de dépistage ; le diagnostic définitif repose sur la biopsie.</li>
+          <li><strong>B — VRAI :</strong> Le dépistage débute à 25 ans chez les femmes ayant une activité sexuelle.</li>
+          <li><strong>C — VRAI :</strong> La période ovulatoire est optimale (col accessible, glaire claire).</li>
+          <li><strong>E — VRAI :</strong> La zone de jonction est <strong>la cible obligatoire</strong> du prélèvement, car c'est là que siègent les lésions les plus sévères.</li>
+        </ul>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q7 -->
+  <div class="qcm-card">
+    <div class="qcm-top">
+      <span class="q-number">Q7</span>
+      <span class="badge badge-rj">Réponse juste</span>
+      <span class="theme-tag">Système de Bethesda</span>
+    </div>
+    <p class="q-stem">Concernant le système de Bethesda utilisé pour l'interprétation cytologique, choisissez la réponse juste :</p>
+    <ul class="options">
+      <li><span class="letter">A</span>Il a été proposé en 1988 et régulièrement mis à jour (dernière mise à jour 2001)</li>
+      <li><span class="letter">B</span>Il a été introduit en 1960 et n'a jamais été modifié</li>
+      <li><span class="letter">C</span>Il ne s'intéresse qu'à la qualité du prélèvement</li>
+      <li><span class="letter">D</span>Il remplace la biopsie pour le diagnostic définitif</li>
+      <li><span class="letter">E</span>Il a été abandonné au profit du système de Papanicolaou</li>
+    </ul>
+    <details class="correction">
+      <summary>Correction détaillée &amp; explication pédagogique</summary>
+      <div class="correction-body">
+        <span class="answer-key">Réponse : A</span>
+        <ul class="why-right">
+          <li><strong>A — VRAI :</strong> Le système de Bethesda a été proposé en <strong>1988</strong>, avec des mises à jour régulières (dernière en 2001). Il standardise le diagnostic cytologique grâce à 3 critères : qualité du prélèvement, caractère normal/anormal, description des lésions.</li>
+        </ul>
+        <ul class="why-wrong">
+          <li><strong>B — FAUX :</strong> Le système a bien été modifié plusieurs fois.</li>
+          <li><strong>C — FAUX :</strong> Bethesda évalue aussi la nature (normal/anormal) et décrit les lésions (ASCUS, LSIL, HSIL…).</li>
+          <li><strong>D — FAUX :</strong> Le FCV reste un <em>test de dépistage</em> ; la biopsie demeure le gold standard diagnostique.</li>
+          <li><strong>E — FAUX :</strong> Bethesda est universellement utilisé, il n'a pas été abandonné.</li>
+        </ul>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q8 -->
+  <div class="qcm-card">
+    <div class="qcm-top">
+      <span class="q-number">Q8</span>
+      <span class="badge badge-multi">Choix multiples (2–3)</span>
+      <span class="theme-tag">Zone de jonction</span>
+    </div>
+    <p class="q-stem">Concernant la zone de jonction du col utérin, quelles sont les propositions exactes ?</p>
+    <ul class="options">
+      <li><span class="letter">A</span>Elle correspond à la région d'affrontement des deux épithéliums</li>
+      <li><span class="letter">B</span>Elle est le siège de remaniements permanents</li>
+      <li><span class="letter">C</span>Elle est particulièrement sensible à l'action des virus</li>
+      <li><span class="letter">D</span>Elle est située au même endroit fixe tout au long de la vie</li>
+      <li><span class="letter">E</span>Elle est le siège exclusif de tous les carcinomes du col</li>
+    </ul>
+    <details class="correction">
+      <summary>Correction détaillée &amp; explication pédagogique</summary>
+      <div class="correction-body">
+        <span class="answer-key">Réponses : A, B, C</span>
+        <ul class="why-right">
+          <li><strong>A — VRAI :</strong> La zone de jonction est la frontière entre l'épithélium pavimenteux de l'exocol et l'épithélium cylindrique de l'endocol.</li>
+          <li><strong>B — VRAI :</strong> C'est une zone en remaniements permanents (métaplasie, cicatrisation), ce qui favorise l'intégration virale.</li>
+          <li><strong>C — VRAI :</strong> Sa sensibilité aux virus (surtout HPV) explique qu'elle soit le siège privilégié des dysplasies et des cancers.</li>
+        </ul>
+        <ul class="why-wrong">
+          <li><strong>D — FAUX :</strong> La zone de jonction <strong>migre</strong> avec l'âge et les variations hormonales (grossesse, ménopause).</li>
+          <li><strong>E — FAUX :</strong> Elle est le siège <em>préférentiel</em>, mais pas exclusif, des carcinomes.</li>
+        </ul>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q9 -->
+  <div class="qcm-card">
+    <div class="qcm-top">
+      <span class="q-number">Q9</span>
+      <span class="badge badge-multi">Choix multiples (2–3)</span>
+      <span class="theme-tag">Lésions bénignes &amp; dystrophiques</span>
+    </div>
+    <p class="q-stem">Concernant les lésions bénignes et dystrophiques du col, quelles sont les propositions exactes ?</p>
+    <ul class="options">
+      <li><span class="letter">A</span>L'ectropion est une extension mécanique de la muqueuse endocervicale sur l'exocol</li>
+      <li><span class="letter">B</span>Le polype endocervical est une tumeur maligne très fréquente</li>
+      <li><span class="letter">C</span>La métaplasie malpighienne est considérée comme un phénomène physiologique de réparation</li>
+      <li><span class="letter">D</span>Les kystes de Naboth sont des kystes de rétention liés à l'occlusion d'une crypte endocervicale</li>
+      <li><span class="letter">E</span>La leucoplasie correspond à une atrophie de l'épithélium malpighien</li>
+    </ul>
+    <details class="correction">
+      <summary>Correction détaillée &amp; explication pédagogique</summary>
+      <div class="correction-body">
+        <span class="answer-key">Réponses : A, C, D</span>
+        <ul class="why-right">
+          <li><strong>A — VRAI :</strong> L'ectropion est l'extension de la muqueuse endocervicale sur l'exocol, favorisée par la grossesse et les traumatismes obstétricaux.</li>
+          <li><strong>C — VRAI :</strong> La métaplasie malpighienne est une transformation physiologique de réparation de l'épithélium cylindrique en épithélium malpighien.</li>
+          <li><strong>D — VRAI :</strong> Les kystes de Naboth résultent de l'occlusion d'une crypte par l'épithélium pavimenteux métaplasique, formant des kystes de rétention muqueuse.</li>
+        </ul>
+        <ul class="why-wrong">
+          <li><strong>B — FAUX :</strong> Le polype endocervical est une tumeur <strong>bénigne</strong> très fréquente, pas maligne.</li>
+          <li><strong>E — FAUX :</strong> La leucoplasie est une <strong>kératinisation</strong> (parakératose), pas une atrophie.</li>
+        </ul>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q10 -->
+  <div class="qcm-card">
+    <div class="qcm-top">
+      <span class="q-number">Q10</span>
+      <span class="badge badge-multi">Choix multiples (2–3)</span>
+      <span class="theme-tag">HPV à haut risque</span>
+    </div>
+    <p class="q-stem">Concernant les HPV à haut risque oncogène, quelles sont les propositions exactes ?</p>
+    <ul class="options">
+      <li><span class="letter">A</span>Il existe environ 15 génotypes potentiellement oncogènes</li>
+      <li><span class="letter">B</span>HPV 16 et 18 sont responsables d'environ 70 % des cancers du col</li>
+      <li><span class="letter">C</span>Le vaccin actuel protège contre tous les types à haut risque</li>
+      <li><span class="letter">D</span>HPV 6 et 11 sont les principaux génotypes oncogènes</li>
+      <li><span class="letter">E</span>Le pic de transmission de l'HPV se situe entre 15 et 25 ans</li>
+    </ul>
+    <details class="correction">
+      <summary>Correction détaillée &amp; explication pédagogique</summary>
+      <div class="correction-body">
+        <span class="answer-key">Réponses : A, B, E</span>
+        <ul class="why-right">
+          <li><strong>A — VRAI :</strong> 15 génotypes sont classés à haut risque oncogène.</li>
+          <li><strong>B — VRAI :</strong> HPV 16 et 18 sont impliqués dans ~70 % des cancers du col.</li>
+          <li><strong>E — VRAI :</strong> Le pic de transmission se situe entre 15 et 25 ans, période charnière de la vaccination.</li>
+        </ul>
+        <ul class="why-wrong">
+          <li><strong>C — FAUX :</strong> Le vaccin actuel ne couvre <strong>que HPV 16 et 18</strong> ; il ne protège donc pas contre les autres types à haut risque.</li>
+          <li><strong>D — FAUX :</strong> HPV 6 et 11 sont des génotypes <strong>à bas risque</strong> (responsables des condylomes bénins), pas oncogènes.</li>
+        </ul>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q11 -->
+  <div class="qcm-card">
+    <div class="qcm-top">
+      <span class="q-number">Q11</span>
+      <span class="badge badge-multi">Choix multiples (2–3)</span>
+      <span class="theme-tag">CIN / SIL</span>
+    </div>
+    <p class="q-stem">Concernant les néoplasies cervicales intra-épithéliales (CIN), quelles sont les propositions exactes ?</p>
+    <ul class="options">
+      <li><span class="letter">A</span>Ce sont des lésions strictement intra-épithéliales</li>
+      <li><span class="letter">B</span>Elles sont fréquemment localisées au niveau de la zone de jonction</li>
+      <li><span class="letter">C</span>Elles sont assez souvent plurifocales</li>
+      <li><span class="letter">D</span>CIN 1 correspond à une dysplasie sévère</li>
+      <li><span class="letter">E</span>Toutes les CIN évoluent obligatoirement vers un cancer invasif</li>
+    </ul>
+    <details class="correction">
+      <summary>Correction détaillée &amp; explication pédagogique</summary>
+      <div class="correction-body">
+        <span class="answer-key">Réponses : A, B, C</span>
+        <ul class="why-right">
+          <li><strong>A — VRAI :</strong> Les CIN sont, par définition, des lésions <em>strictement intra-épithéliales</em> (la membrane basale reste intacte).</li>
+          <li><strong>B — VRAI :</strong> Elles siègent préférentiellement au niveau de la zone de jonction, cible du prélèvement cytologique.</li>
+          <li><strong>C — VRAI :</strong> Elles sont assez souvent plurifocales et plus ou moins étendues.</li>
+        </ul>
+        <ul class="why-wrong">
+          <li><strong>D — FAUX :</strong> CIN 1 = dysplasie <em>légère</em> (1/3 de l'épithélium).</li>
+          <li><strong>E — FAUX :</strong> Les CIN peuvent <strong>régresser, persister ou évoluer</strong> ; l'évolution n'est donc pas obligatoire, d'où l'intérêt du dépistage et du traitement.</li>
+        </ul>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q12 -->
+  <div class="qcm-card">
+    <div class="qcm-top">
+      <span class="q-number">Q12</span>
+      <span class="badge badge-multi">Choix multiples (2–3)</span>
+      <span class="theme-tag">Bethesda / catégories</span>
+    </div>
+    <p class="q-stem">Concernant les catégories diagnostiques du système de Bethesda, quelles sont les propositions exactes ?</p>
+    <ul class="options">
+      <li><span class="letter">A</span>ASCUS signifie atypies des cellules malpighiennes de signification indéterminée</li>
+      <li><span class="letter">B</span>LSIL inclut CIN 1 et les signes d'infection à HPV</li>
+      <li><span class="letter">C</span>HSIL inclut CIN 2, CIN 3 et le carcinome in situ (CIS)</li>
+      <li><span class="letter">D</span>ASGUS concerne les atypies des cellules malpighiennes</li>
+      <li><span class="letter">E</span>Le carcinome malpighien n'est pas décrit dans le système de Bethesda</li>
+    </ul>
+    <details class="correction">
+      <summary>Correction détaillée &amp; explication pédagogique</summary>
+      <div class="correction-body">
+        <span class="answer-key">Réponses : A, B, C</span>
+        <ul class="why-right">
+          <li><strong>A — VRAI :</strong> ASCUS = <em>Atypical Squamous Cells of Undetermined Significance</em>, atypies malpighiennes de signification indéterminée.</li>
+          <li><strong>B — VRAI :</strong> LSIL (Low-grade SIL) regroupe CIN 1 et les signes cytologiques d'infection à HPV (koïlocytes).</li>
+          <li><strong>C — VRAI :</strong> HSIL (High-grade SIL) englobe CIN 2, CIN 3 et le carcinome in situ.</li>
+        </ul>
+        <ul class="why-wrong">
+          <li><strong>D — FAUX :</strong> ASGUS (ou AGUS) désigne les atypies des <strong>cellules glandulaires</strong>, pas malpighiennes.</li>
+          <li><strong>E — FAUX :</strong> Le carcinome malpighien est bien une catégorie diagnostique décrite dans Bethesda.</li>
+        </ul>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q13 -->
+  <div class="qcm-card">
+    <div class="qcm-top">
+      <span class="q-number">Q13</span>
+      <span class="badge badge-multi">Choix multiples (2–3)</span>
+      <span class="theme-tag">Carcinome épidermoïde</span>
+    </div>
+    <p class="q-stem">Concernant le carcinome épidermoïde du col utérin, quelles sont les propositions exactes ?</p>
+    <ul class="options">
+      <li><span class="letter">A</span>C'est le type histologique le plus fréquent (70 à 95 %)</li>
+      <li><span class="letter">B</span>Il se développe le plus souvent au niveau de la zone de jonction</li>
+      <li><span class="letter">C</span>Il peut se présenter macroscopiquement comme une masse exophytique, papillaire ou ulcérée</li>
+      <li><span class="letter">D</span>Selon l'OMS 2020, il est toujours HPV-indépendant</li>
+      <li><span class="letter">E</span>Il représente moins de 10 % des cancers du col</li>
+    </ul>
+    <details class="correction">
+      <summary>Correction détaillée &amp; explication pédagogique</summary>
+      <div class="correction-body">
+        <span class="answer-key">Réponses : A, B, C</span>
+        <ul class="why-right">
+          <li><strong>A — VRAI :</strong> Le carcinome épidermoïde est le type le plus fréquent (70–95 % des cancers du col).</li>
+          <li><strong>B — VRAI :</strong> Il se développe le plus souvent à partir d'un épithélium malpighien (souvent métaplasique) de la zone de jonction, et infiltre le chorion.</li>
+          <li><strong>C — VRAI :</strong> Les formes macroscopiques sont variées : masse exophytique, papillaire, polypoïde, nodulaire ou ulcérée.</li>
+        </ul>
+        <ul class="why-wrong">
+          <li><strong>D — FAUX :</strong> L'OMS 2020 distingue les carcinomes épidermoïdes <strong>HPV-associés</strong> et <strong>HPV-indépendants</strong> ; il n'est pas toujours HPV-indépendant.</li>
+          <li><strong>E — FAUX :</strong> C'est l'inverse : il représente la grande majorité des cancers du col.</li>
+        </ul>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q14 -->
+  <div class="qcm-card">
+    <div class="qcm-top">
+      <span class="q-number">Q14</span>
+      <span class="badge badge-multi">Choix multiples (2–3)</span>
+      <span class="theme-tag">Adénocarcinome</span>
+    </div>
+    <p class="q-stem">Concernant l'adénocarcinome (ADK) du col utérin, quelles sont les propositions exactes ?</p>
+    <ul class="options">
+      <li><span class="letter">A</span>Il représente environ 10 à 15 % des cancers du col</li>
+      <li><span class="letter">B</span>Il se développe aux dépens de l'endocol</li>
+      <li><span class="letter">C</span>Il débute souvent au niveau de la zone de jonction</li>
+      <li><span class="letter">D</span>Il est plus fréquent que le carcinome épidermoïde</li>
+      <li><span class="letter">E</span>Tous les adénocarcinomes sont HPV-associés</li>
+    </ul>
+    <details class="correction">
+      <summary>Correction détaillée &amp; explication pédagogique</summary>
+      <div class="correction-body">
+        <span class="answer-key">Réponses : A, B, C</span>
+        <ul class="why-right">
+          <li><strong>A — VRAI :</strong> L'ADK représente 10 à 15 % des cancers du col, moins fréquent que le carcinome épidermoïde.</li>
+          <li><strong>B — VRAI :</strong> Il se développe aux dépens de l'épithélium glandulaire de l'endocol.</li>
+          <li><strong>C — VRAI :</strong> Il débute souvent au niveau de la zone de jonction, comme les lésions malpighiennes.</li>
+        </ul>
+        <ul class="why-wrong">
+          <li><strong>D — FAUX :</strong> L'ADK est <em>moins</em> fréquent que le carcinome épidermoïde (10–15 % vs 70–95 %).</li>
+          <li><strong>E — FAUX :</strong> Selon l'OMS 2020, certains ADK sont <strong>HPV-indépendants</strong> (gastrique, à cellules claires, mésonéphrique, endométrioïde), avec un pronostic différent.</li>
+        </ul>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q15 -->
+  <div class="qcm-card">
+    <div class="qcm-top">
+      <span class="q-number">Q15</span>
+      <span class="badge badge-multi">Choix multiples (2–3)</span>
+      <span class="theme-tag">Technique du FCV</span>
+    </div>
+    <p class="q-stem">Concernant la technique du frottis cervico-vaginal, quelles sont les propositions exactes ?</p>
+    <ul class="options">
+      <li><span class="letter">A</span>Le frottis conventionnel est étalé sur lame puis fixé au cytospray</li>
+      <li><span class="letter">B</span>La technique en couche mince élimine les débris cellulaires, cellules inflammatoires et hématies</li>
+      <li><span class="letter">C</span>La technique en couche mince permet la recherche d'ADN de l'HPV sur le matériel résiduel</li>
+      <li><span class="letter">D</span>La technique en couche mince est moins coûteuse que le frottis conventionnel</li>
+      <li><span class="letter">E</span>Le prélèvement ne doit pas intéresser la zone de jonction</li>
+    </ul>
+    <details class="correction">
+      <summary>Correction détaillée &amp; explication pédagogique</summary>
+      <div class="correction-body">
+        <span class="answer-key">Réponses : A, B, C</span>
+        <ul class="why-right">
+          <li><strong>A — VRAI :</strong> Le frottis conventionnel est étalé sur lame de verre et immédiatement fixé au cytospray.</li>
+          <li><strong>B — VRAI :</strong> La technique en couche mince (après centrifugation et filtrage) élimine les débris et les cellules gênantes.</li>
+          <li><strong>C — VRAI :</strong> Le liquide résiduel permet de rechercher l'ADN HPV (test HPV réflexe).</li>
+        </ul>
+        <ul class="why-wrong">
+          <li><strong>D — FAUX :</strong> La technique en couche mince est <strong>plus coûteuse</strong> (+25 % de prix de revient).</li>
+          <li><strong>E — FAUX :</strong> Le prélèvement <strong>doit impérativement</strong> intéresser la zone de jonction.</li>
+        </ul>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q16 -->
+  <div class="qcm-card">
+    <div class="qcm-top">
+      <span class="q-number">Q16</span>
+      <span class="badge badge-simple">Réponse unique</span>
+      <span class="theme-tag">Renouvellement épithélial</span>
+    </div>
+    <p class="q-stem">Le renouvellement de l'épithélium pavimenteux cervical se fait en environ :</p>
+    <ul class="options">
+      <li><span class="letter">A</span>4 jours</li>
+      <li><span class="letter">B</span>14 jours</li>
+      <li><span class="letter">C</span>28 jours</li>
+      <li><span class="letter">D</span>48 jours</li>
+      <li><span class="letter">E</span>7 jours</li>
+    </ul>
+    <details class="correction">
+      <summary>Correction détaillée &amp; explication pédagogique</summary>
+      <div class="correction-body">
+        <span class="answer-key">Réponse : A</span>
+        <ul class="why-right">
+          <li><strong>A — VRAI :</strong> Les divisions des cellules basales et parabasales permettent le renouvellement de l'épithélium en environ <strong>4 jours</strong>. C'est ce turnover rapide qui rend l'épithélium vulnérable et explique la cinétique des lésions HPV.</li>
+        </ul>
+        <ul class="why-wrong">
+          <li><strong>B, C, D, E — FAUX :</strong> Aucune de ces durées ne correspond au renouvellement de l'épithélium pavimenteux cervical. Attention à ne pas confondre avec le cycle menstruel (28 jours) ni avec le renouvellement d'autres épithéliums.</li>
+        </ul>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q17 -->
+  <div class="qcm-card">
+    <div class="qcm-top">
+      <span class="q-number">Q17</span>
+      <span class="badge badge-simple">Réponse unique</span>
+      <span class="theme-tag">Kystes de Naboth</span>
+    </div>
+    <p class="q-stem">Les kystes de Naboth résultent de :</p>
+    <ul class="options">
+      <li><span class="letter">A</span>Une métaplasie osseuse du chorion</li>
+      <li><span class="letter">B</span>L'occlusion d'une ouverture de crypte endocervicale par l'épithélium pavimenteux métaplasique</li>
+      <li><span class="letter">C</span>Une infection à Trichomonas vaginalis</li>
+      <li><span class="letter">D</span>Une hyperplasie des cellules basales</li>
+      <li><span class="letter">E</span>Une infection à HPV de type 16</li>
+    </ul>
+    <details class="correction">
+      <summary>Correction détaillée &amp; explication pédagogique</summary>
+      <div class="correction-body">
+        <span class="answer-key">Réponse : B</span>
+        <ul class="why-right">
+          <li><strong>B — VRAI :</strong> Les kystes de Naboth sont des <em>kystes de rétention muqueuse</em> : l'épithélium pavimenteux métaplasique obstrue l'orifice d'une crypte endocervicale, qui se dilate en kyste. Ils sont totalement bénins.</li>
+        </ul>
+        <ul class="why-wrong">
+          <li><strong>A — FAUX :</strong> Aucune métaplasie osseuse n'entre en jeu.</li>
+          <li><strong>C — FAUX :</strong> Trichomonas provoque une cervicite, pas des kystes de Naboth.</li>
+          <li><strong>D — FAUX :</strong> L'hyperplasie basale ne forme pas de kyste de rétention.</li>
+          <li><strong>E — FAUX :</strong> L'HPV est responsable de lésions dysplasiques, pas des kystes de Naboth.</li>
+        </ul>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q18 -->
+  <div class="qcm-card">
+    <div class="qcm-top">
+      <span class="q-number">Q18</span>
+      <span class="badge badge-simple">Réponse unique</span>
+      <span class="theme-tag">Ectropion</span>
+    </div>
+    <p class="q-stem">L'ectropion cervical est :</p>
+    <ul class="options">
+      <li><span class="letter">A</span>Une extension mécanique de la muqueuse endocervicale sur l'exocol</li>
+      <li><span class="letter">B</span>Une tumeur maligne du col</li>
+      <li><span class="letter">C</span>Une métaplasie osseuse du chorion</li>
+      <li><span class="letter">D</span>Une lésion précancéreuse obligatoire</li>
+      <li><span class="letter">E</span>Une infection virale à HPV</li>
+    </ul>
+    <details class="correction">
+      <summary>Correction détaillée &amp; explication pédagogique</summary>
+      <div class="correction-body">
+        <span class="answer-key">Réponse : A</span>
+        <ul class="why-right">
+          <li><strong>A — VRAI :</strong> L'ectropion est une dystrophie pseudo-tumorale : la muqueuse endocervicale déborde mécaniquement sur l'exocol. Il est accentué par la grossesse et les traumatismes obstétricaux. C'est une lésion <strong>bénigne</strong>.</li>
+        </ul>
+        <ul class="why-wrong">
+          <li><strong>B — FAUX :</strong> L'ectropion n'est pas une tumeur, et encore moins maligne.</li>
+          <li><strong>C — FAUX :</strong> Aucune métaplasie osseuse.</li>
+          <li><strong>D — FAUX :</strong> Ce n'est pas une lésion précancéreuse ; il peut être le siège de lésions HPV ultérieures, mais n'y prédispose pas intrinsèquement.</li>
+          <li><strong>E — FAUX :</strong> L'ectropion n'est pas infectieux.</li>
+        </ul>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q19 -->
+  <div class="qcm-card">
+    <div class="qcm-top">
+      <span class="q-number">Q19</span>
+      <span class="badge badge-simple">Réponse unique</span>
+      <span class="theme-tag">Leucoplasie</span>
+    </div>
+    <p class="q-stem">La leucoplasie cervicale correspond à :</p>
+    <ul class="options">
+      <li><span class="letter">A</span>Une kératinisation de l'épithélium malpighien avec parakératose</li>
+      <li><span class="letter">B</span>Une ulcération profonde de l'exocol</li>
+      <li><span class="letter">C</span>Un kyste de rétention muqueuse</li>
+      <li><span class="letter">D</span>Une métaplasie cylindrique de l'exocol</li>
+      <li><span class="letter">E</span>Une atrophie simple de l'épithélium</li>
+    </ul>
+    <details class="correction">
+      <summary>Correction détaillée &amp; explication pédagogique</summary>
+      <div class="correction-body">
+        <span class="answer-key">Réponse : A</span>
+        <ul class="why-right">
+          <li><strong>A — VRAI :</strong> La leucoplasie est une kératinisation de l'épithélium malpighien non kératinisé normalement. Elle se recouvre d'une couche de parakératose (noyaux pycnotiques dans les lamelles de kératine). Macroscopiquement, le col apparaît blanchâtre et fripé, « comme une peau ». Elle survient surtout en cas de perturbation hormonale (ménopause) ou d'irritation chronique (prolapsus).</li>
+        </ul>
+        <ul class="why-wrong">
+          <li><strong>B — FAUX :</strong> La leucoplasie est une hyperkératinisation, pas une ulcération.</li>
+          <li><strong>C — FAUX :</strong> C'est la définition du kyste de Naboth.</li>
+          <li><strong>D — FAUX :</strong> La métaplasie de l'exocol est <em>malpighienne</em> (et non cylindrique).</li>
+          <li><strong>E — FAUX :</strong> La leucoplasie est un épaississement kératinisé, pas une atrophie.</li>
+        </ul>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q20 -->
+  <div class="qcm-card">
+    <div class="qcm-top">
+      <span class="q-number">Q20</span>
+      <span class="badge badge-simple">Réponse unique</span>
+      <span class="theme-tag">Cervicites infectieuses</span>
+    </div>
+    <p class="q-stem">Les agents infectieux les plus fréquemment responsables de cervicite sont :</p>
+    <ul class="options">
+      <li><span class="letter">A</span>Trichomonas vaginalis, Candida albicans et le virus de l'Herpès simplex</li>
+      <li><span class="letter">B</span>HPV, EBV et CMV</li>
+      <li><span class="letter">C</span>Chlamydia trachomatis, gonocoque et Treponema pallidum</li>
+      <li><span class="letter">D</span>Streptocoque et staphylocoque doré</li>
+      <li><span class="letter">E</span>VIH, VHB et VHC</li>
+    </ul>
+    <details class="correction">
+      <summary>Correction détaillée &amp; explication pédagogique</summary>
+      <div class="correction-body">
+        <span class="answer-key">Réponse : A</span>
+        <ul class="why-right">
+          <li><strong>A — VRAI :</strong> Le cours cite explicitement <em>Trichomonas vaginalis</em>, <em>Candida albicans</em> et le <em>virus de l'Herpès simplex</em> comme les agents les plus fréquemment responsables de cervicite. Macroscopiquement : col rouge, sensible, avec ou sans vésicules et ulcérations.</li>
+        </ul>
+        <ul class="why-wrong">
+          <li><strong>B — FAUX :</strong> HPV, EBV et CMV ne sont pas les agents classiques de cervicite aiguë.</li>
+          <li><strong>C — FAUX :</strong> Ces agents sont responsables d'IST, mais ne sont pas les plus fréquemment cités pour la cervicite dans ce cours.</li>
+          <li><strong>D — FAUX :</strong> Les cocci ne sont pas les agents dominants.</li>
+          <li><strong>E — FAUX :</strong> VIH, VHB et VHC ne sont pas des agents de cervicite.</li>
+        </ul>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q21 SAUF -->
+  <div class="qcm-card">
+    <div class="qcm-top">
+      <span class="q-number">Q21</span>
+      <span class="badge badge-simple">Réponse unique · SAUF</span>
+      <span class="theme-tag">SIL</span>
+    </div>
+    <p class="q-stem">Toutes les propositions suivantes concernant les SIL (lésions squameuses intra-épithéliales) sont exactes, <strong>SAUF</strong> :</p>
+    <ul class="options">
+      <li><span class="letter">A</span>LSIL inclut CIN 1 et les signes d'infection à HPV</li>
+      <li><span class="letter">B</span>HSIL inclut CIN 2, CIN 3 et le carcinome in situ</li>
+      <li><span class="letter">C</span>Les SIL peuvent régresser, persister ou évoluer vers un carcinome invasif</li>
+      <li><span class="letter">D</span>Les SIL sont des lésions invasives du chorion sous-jacent</li>
+      <li><span class="letter">E</span>L'évolution vers un cancer invasif prend environ 10 ans</li>
+    </ul>
+    <details class="correction">
+      <summary>Correction détaillée &amp; explication pédagogique</summary>
+      <div class="correction-body">
+        <span class="answer-key">Réponse : D (proposition fausse)</span>
+        <ul class="why-right">
+          <li><strong>D — FAUX :</strong> Les SIL sont des lésions <strong>strictement intra-épithéliales</strong>, sans invasion du chorion. C'est précisément ce qui les distingue du carcinome invasif. Le terme SIL ne s'applique qu'aux anomalies confinées à l'épithélium.</li>
+        </ul>
+        <ul class="why-wrong">
+          <li><strong>A — VRAI :</strong> LSIL = CIN 1 + HPV.</li>
+          <li><strong>B — VRAI :</strong> HSIL = CIN 2 + CIN 3 + CIS.</li>
+          <li><strong>C — VRAI :</strong> L'évolution est variable : régression, persistance ou progression.</li>
+          <li><strong>E — VRAI :</strong> La progression vers un cancer invasif prend en moyenne 10 ans, ce qui justifie le dépistage par FCV.</li>
+        </ul>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q22 SAUF -->
+  <div class="qcm-card">
+    <div class="qcm-top">
+      <span class="q-number">Q22</span>
+      <span class="badge badge-simple">Réponse unique · SAUF</span>
+      <span class="theme-tag">Classification OMS 2020</span>
+    </div>
+    <p class="q-stem">Toutes les propositions suivantes concernant la classification OMS 2020 des tumeurs du col sont exactes, <strong>SAUF</strong> :</p>
+    <ul class="options">
+      <li><span class="letter">A</span>Les carcinomes épidermoïdes sont séparés en HPV-associés et HPV-indépendants</li>
+      <li><span class="letter">B</span>Les adénocarcinomes sont séparés en HPV-associés et HPV-indépendants</li>
+      <li><span class="letter">C</span>Cette classification repose sur des différences de pathogenèse et de pronostic</li>
+      <li><span class="letter">D</span>Tous les carcinomes épidermoïdes sont HPV-associés</li>
+      <li><span class="letter">E</span>Les adénocarcinomes HPV-indépendants ont un pronostic différent</li>
+    </ul>
+    <details class="correction">
+      <summary>Correction détaillée &amp; explication pédagogique</summary>
+      <div class="correction-body">
+        <span class="answer-key">Réponse : D (proposition fausse)</span>
+        <ul class="why-right">
+          <li><strong>D — FAUX :</strong> Depuis l'OMS 2020, les carcinomes épidermoïdes sont séparés en deux catégories : <strong>HPV-associés (8085/3)</strong> et <strong>HPV-indépendants (8086/3)</strong>. Ils ne sont donc pas tous HPV-associés.</li>
+        </ul>
+        <ul class="why-wrong">
+          <li><strong>A — VRAI :</strong> Séparation des carcinomes épidermoïdes en HPV-associés et HPV-indépendants.</li>
+          <li><strong>B — VRAI :</strong> Idem pour les adénocarcinomes : usuel/mucineux (HPV-associés) vs gastrique, à cellules claires, mésonéphrique, endométrioïde (HPV-indépendants).</li>
+          <li><strong>C — VRAI :</strong> La classification repose sur des différences de pathogenèse et de pronostic.</li>
+          <li><strong>E — VRAI :</strong> Les ADK HPV-indépendants ont un pronostic distinct.</li>
+        </ul>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q23 SAUF -->
+  <div class="qcm-card">
+    <div class="qcm-top">
+      <span class="q-number">Q23</span>
+      <span class="badge badge-simple">Réponse unique · SAUF</span>
+      <span class="theme-tag">FCV</span>
+    </div>
+    <p class="q-stem">Toutes les propositions suivantes concernant le FCV sont exactes, <strong>SAUF</strong> :</p>
+    <ul class="options">
+      <li><span class="letter">A</span>Le FCV est un examen de dépistage du cancer du col</li>
+      <li><span class="letter">B</span>Il s'adresse aux femmes à partir de 25 ans ayant eu des rapports sexuels</li>
+      <li><span class="letter">C</span>Le prélèvement doit impérativement intéresser la zone de jonction</li>
+      <li><span class="letter">D</span>Le FCV permet de poser le diagnostic définitif de cancer</li>
+      <li><span class="letter">E</span>Un FCV tous les 3 ans diminue l'incidence du cancer de 91 %</li>
+    </ul>
+    <details class="correction">
+      <summary>Correction détaillée &amp; explication pédagogique</summary>
+      <div class="correction-body">
+        <span class="answer-key">Réponse : D (proposition fausse)</span>
+        <ul class="why-right">
+          <li><strong>D — FAUX :</strong> Le FCV est un <strong>examen de dépistage</strong>, pas de diagnostic. Le diagnostic définitif repose sur la <strong>biopsie</strong> (colposcopie + biopsie). Confondre dépistage et diagnostic est un piège classique.</li>
+        </ul>
+        <ul class="why-wrong">
+          <li><strong>A — VRAI :</strong> C'est la définition du FCV.</li>
+          <li><strong>B — VRAI :</strong> Dépistage à partir de 25 ans chez les femmes ayant une activité sexuelle.</li>
+          <li><strong>C — VRAI :</strong> La zone de jonction est la cible obligatoire du prélèvement.</li>
+          <li><strong>E — VRAI :</strong> Un FCV tous les 3 ans diminue l'incidence de 91 % (1 FCV/an : 93 % ; tous les 5 ans : 81 %).</li>
+        </ul>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q24 -->
+  <div class="qcm-card">
+    <div class="qcm-top">
+      <span class="q-number">Q24</span>
+      <span class="badge badge-simple">Réponse unique</span>
+      <span class="theme-tag">Vaccination HPV</span>
+    </div>
+    <p class="q-stem">Le vaccin HPV actuellement disponible protège principalement contre :</p>
+    <ul class="options">
+      <li><span class="letter">A</span>HPV 16 et 18</li>
+      <li><span class="letter">B</span>Tous les HPV à haut risque</li>
+      <li><span class="letter">C</span>HPV 6 et 11 uniquement</li>
+      <li><span class="letter">D</span>HPV 31 et 33</li>
+      <li><span class="letter">E</span>HPV 45 et 52</li>
+    </ul>
+    <details class="correction">
+      <summary>Correction détaillée &amp; explication pédagogique</summary>
+      <div class="correction-body">
+        <span class="answer-key">Réponse : A</span>
+        <ul class="why-right">
+          <li><strong>A — VRAI :</strong> Le vaccin disponible cible principalement <strong>HPV 16 et 18</strong>. Il ne protège donc <em>pas</em> contre les autres types HPV à haut risque — point souligné dans la conclusion du cours.</li>
+        </ul>
+        <ul class="why-wrong">
+          <li><strong>B — FAUX :</strong> Il ne couvre pas tous les HPV à haut risque (15 génotypes).</li>
+          <li><strong>C — FAUX :</strong> HPV 6 et 11 sont des génotypes à bas risque, pas la cible principale du vaccin dans ce cours.</li>
+          <li><strong>D, E — FAUX :</strong> Ces génotypes ne sont pas la cible principale du vaccin cité.</li>
+        </ul>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q25 -->
+  <div class="qcm-card">
+    <div class="qcm-top">
+      <span class="q-number">Q25</span>
+      <span class="badge badge-simple">Réponse unique</span>
+      <span class="theme-tag">Bethesda — ASCUS</span>
+    </div>
+    <p class="q-stem">Dans le système de Bethesda, l'abréviation ASCUS signifie :</p>
+    <ul class="options">
+      <li><span class="letter">A</span>Atypies des cellules malpighiennes de signification indéterminée</li>
+      <li><span class="letter">B</span>Atypies des cellules glandulaires de signification indéterminée</li>
+      <li><span class="letter">C</span>Adénocarcinome in situ</li>
+      <li><span class="letter">D</span>Lésion malpighienne intra-épithéliale de haut grade</li>
+      <li><span class="letter">E</span>Carcinome malpighien</li>
+    </ul>
+    <details class="correction">
+      <summary>Correction détaillée &amp; explication pédagogique</summary>
+      <div class="correction-body">
+        <span class="answer-key">Réponse : A</span>
+        <ul class="why-right">
+          <li><strong>A — VRAI :</strong> ASCUS = <em>Atypical Squamous Cells of Undetermined Significance</em> = atypies des cellules <strong>malpighiennes</strong> de signification indéterminée. C'est une catégorie d'incertitude, qui nécessite souvent un contrôle ou un test HPV.</li>
+        </ul>
+        <ul class="why-wrong">
+          <li><strong>B — FAUX :</strong> Pour les cellules glandulaires, on parle d'ASGUS (ou AGUS).</li>
+          <li><strong>C — FAUX :</strong> L'adénocarcinome in situ est une entité différente.</li>
+          <li><strong>D — FAUX :</strong> HSIL (ou ASC-H pour les atypies ne permettant pas d'exclure un HSIL).</li>
+          <li><strong>E — FAUX :</strong> Le carcinome malpighien est une catégorie diagnostique distincte.</li>
+        </ul>
+      </div>
+    </details>
+  </div>
+
+</section>
+
+<!-- ===================================================== -->
+<!-- SECTION 2 : 5 CAS CLINIQUES -->
+<!-- ===================================================== -->
+<section id="cas">
+  <div class="section-head">
+    <div class="section-num">2</div>
+    <div>
+      <h2>5 cas cliniques hospitaliers algériens</h2>
+      <div class="sub">CHU · EPH · réalités épidémiologiques locales</div>
+    </div>
+  </div>
+
+  <!-- CAS 1 -->
+  <div class="case-card">
+    <div class="case-header">
+      <div class="case-num">1</div>
+      <h3>Frottis anormal chez une femme de 45 ans</h3>
+      <span class="loc">CHU de Blida — Consultation de gynécologie</span>
+    </div>
+    <div class="vignette">
+      <strong>Mme B.</strong>, 45 ans, G4P3, consulte pour un frottis cervico-vaginal de dépistage anormal. Elle est asymptomatique. À l'examen : col d'aspect macroscopiquement sain, pas de saignement au contact. La cytologie révèle un <strong>HSIL</strong>. Une colposcopie avec biopsie est réalisée : l'histologie conclut à une <strong>CIN 3</strong>.
+      <span class="vital">FCV : HSIL · Biopsie : CIN 3</span>
+    </div>
+    <div class="case-qcm">
+      <div class="qcm-card">
+        <div class="qcm-top">
+          <span class="q-number">C1·Q1</span>
+          <span class="badge badge-simple">Réponse unique</span>
+        </div>
+        <p class="q-stem">Quel est le diagnostic histologique exact de cette lésion ?</p>
+        <ul class="options">
+          <li><span class="letter">A</span>CIN 1 — dysplasie légère</li>
+          <li><span class="letter">B</span>CIN 2 — dysplasie modérée</li>
+          <li><span class="letter">C</span>CIN 3 — dysplasie sévère / carcinome in situ</li>
+          <li><span class="letter">D</span>Carcinome épidermoïde invasif</li>
+          <li><span class="letter">E</span>Adénocarcinome in situ</li>
+        </ul>
+        <details class="correction">
+          <summary>Correction</summary>
+          <div class="correction-body">
+            <span class="answer-key">Réponse : C</span>
+            <ul class="why-right">
+              <li><strong>C — VRAI :</strong> La biopsie conclut à CIN 3, qui regroupe la dysplasie sévère et le carcinome in situ (atteinte de toute la hauteur de l'épithélium, sans rupture de la membrane basale).</li>
+            </ul>
+            <ul class="why-wrong">
+              <li><strong>A — FAUX :</strong> CIN 1 = atteinte du 1/3.</li>
+              <li><strong>B — FAUX :</strong> CIN 2 = atteinte des 2/3.</li>
+              <li><strong>D — FAUX :</strong> Un carcinome invasif franchit la membrane basale et envahit le chorion ; ce n'est pas le cas ici.</li>
+              <li><strong>E — FAUX :</strong> Aucune composante glandulaire n'est décrite.</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+
+      <div class="qcm-card">
+        <div class="qcm-top">
+          <span class="q-number">C1·Q2</span>
+          <span class="badge badge-multi">Choix multiples (2–3)</span>
+        </div>
+        <p class="q-stem">Quels sont les facteurs de risque et éléments physiopathologiques les plus pertinents chez cette patiente ?</p>
+        <ul class="options">
+          <li><span class="letter">A</span>Infection persistante par un HPV à haut risque</li>
+          <li><span class="letter">B</span>Lésion localisée à la zone de jonction</li>
+          <li><span class="letter">C</span>Multiparité et facteurs socio-économiques</li>
+          <li><span class="letter">D</span>Absence totale de risque de progression</li>
+          <li><span class="letter">E</span>Lésion exclusivement localisée à l'endocol profond</li>
+        </ul>
+        <details class="correction">
+          <summary>Correction</summary>
+          <div class="correction-body">
+            <span class="answer-key">Réponses : A, B, C</span>
+            <ul class="why-right">
+              <li><strong>A — VRAI :</strong> L'infection persistante par un HPV à haut risque (16, 18 et autres) est le principal facteur de risque.</li>
+              <li><strong>B — VRAI :</strong> La lésion siège électivement à la zone de jonction.</li>
+              <li><strong>C — VRAI :</strong> La multiparité et les facteurs socio-économiques sont des cofacteurs classiques.</li>
+            </ul>
+            <ul class="why-wrong">
+              <li><strong>D — FAUX :</strong> Une CIN 3 a un risque important de progression vers un cancer invasif en l'absence de traitement.</li>
+              <li><strong>E — FAUX :</strong> La lésion est malpighienne et siège à la zone de jonction, pas exclusivement dans l'endocol profond.</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+
+      <div class="qcm-card">
+        <div class="qcm-top">
+          <span class="q-number">C1·Q3</span>
+          <span class="badge badge-simple">Réponse unique</span>
+        </div>
+        <p class="q-stem">Quelle est la prise en charge la plus appropriée ?</p>
+        <ul class="options">
+          <li><span class="letter">A</span>Simple surveillance cytologique à 1 an</li>
+          <li><span class="letter">B</span>Traitement destructeur ou excisionnel (conisation) après colposcopie/biopsie</li>
+          <li><span class="letter">C</span>Hystérectomie d'emblée</li>
+          <li><span class="letter">D</span>Radiothérapie externe</li>
+          <li><span class="letter">E</span>Chimiothérapie néoadjuvante</li>
+        </ul>
+        <details class="correction">
+          <summary>Correction</summary>
+          <div class="correction-body">
+            <span class="answer-key">Réponse : B</span>
+            <ul class="why-right">
+              <li><strong>B — VRAI :</strong> Une CIN 3 confirmée histologiquement justifie un traitement local (destruction ou conisation). La conisation permet en outre l'analyse histologique complète et l'évaluation des marges.</li>
+            </ul>
+            <ul class="why-wrong">
+              <li><strong>A — FAUX :</strong> La surveillance seule est insuffisante pour une CIN 3.</li>
+              <li><strong>C — FAUX :</strong> L'hystérectomie n'est pas le traitement de première intention d'une CIN 3.</li>
+              <li><strong>D, E — FAUX :</strong> La radiothérapie et la chimiothérapie relèvent des cancers invasifs, pas des lésions intra-épithéliales.</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+
+  <!-- CAS 2 -->
+  <div class="case-card">
+    <div class="case-header">
+      <div class="case-num">2</div>
+      <h3>Saignements post-coïtaux chez une femme jeune</h3>
+      <span class="loc">EPH de proximité — Consultation</span>
+    </div>
+    <div class="vignette">
+      <strong>Mme K.</strong>, 28 ans, G2P1, consulte pour des saignements post-coïtaux récents. À l'examen au spéculum : le col présente une zone rouge, saignant au contact, débordant sur l'exocol. Elle est enceinte de 12 SA. Le FCV montre un <strong>ASCUS</strong>. Le test HPV est <strong>négatif</strong>.
+      <span class="vital">Grossesse 12 SA · FCV : ASCUS · HPV : négatif</span>
+    </div>
+    <div class="case-qcm">
+      <div class="qcm-card">
+        <div class="qcm-top">
+          <span class="q-number">C2·Q1</span>
+          <span class="badge badge-simple">Réponse unique</span>
+        </div>
+        <p class="q-stem">Quel est le diagnostic le plus probable de l'aspect cervical ?</p>
+        <ul class="options">
+          <li><span class="letter">A</span>Ectropion cervical</li>
+          <li><span class="letter">B</span>Carcinome épidermoïde invasif</li>
+          <li><span class="letter">C</span>Leucoplasie</li>
+          <li><span class="letter">D</span>Polype endocervical</li>
+          <li><span class="letter">E</span>CIN 3</li>
+        </ul>
+        <details class="correction">
+          <summary>Correction</summary>
+          <div class="correction-body">
+            <span class="answer-key">Réponse : A</span>
+            <ul class="why-right">
+              <li><strong>A — VRAI :</strong> L'ectropion est favorisé par la grossesse (hyperoestrogénie) et les traumatismes obstétricaux. Il donne un col rouge, saignant facilement au contact, et peut simuler une lésion. C'est une lésion bénigne.</li>
+            </ul>
+            <ul class="why-wrong">
+              <li><strong>B — FAUX :</strong> Un cancer invasif est possible mais moins probable chez une femme jeune avec HPV négatif et sans masse.</li>
+              <li><strong>C — FAUX :</strong> La leucoplasie donne un aspect blanchâtre et fripé, pas rouge.</li>
+              <li><strong>D — FAUX :</strong> Le polype est une formation piriforme ou arrondie, lisse, faisant saillie à l'orifice externe.</li>
+              <li><strong>E — FAUX :</strong> Une CIN 3 est rarement visible macroscopiquement et ne donne pas cet aspect rouge diffus.</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+
+      <div class="qcm-card">
+        <div class="qcm-top">
+          <span class="q-number">C2·Q2</span>
+          <span class="badge badge-multi">Choix multiples (2–3)</span>
+        </div>
+        <p class="q-stem">Quelles sont les propositions exactes concernant la conduite à tenir ?</p>
+        <ul class="options">
+          <li><span class="letter">A</span>Un FCV ASCUS avec HPV négatif a un risque faible de lésion de haut grade</li>
+          <li><span class="letter">B</span>Une colposcopie est indiquée en première intention chez la femme enceinte avec ASCUS</li>
+          <li><span class="letter">C</span>Une simple surveillance peut être proposée selon les recommandations</li>
+          <li><span class="letter">D</span>Une conisation d'emblée est indiquée pendant la grossesse</li>
+          <li><span class="letter">E</span>L'ectropion doit être traité par hystérectomie</li>
+        </ul>
+        <details class="correction">
+          <summary>Correction</summary>
+          <div class="correction-body">
+            <span class="answer-key">Réponses : A, C</span>
+            <ul class="why-right">
+              <li><strong>A — VRAI :</strong> Un ASCUS associé à un test HPV négatif présente un risque très faible de lésion de haut grade.</li>
+              <li><strong>C — VRAI :</strong> Selon les recommandations, une surveillance (contrôle du FCV) peut être proposée dans ce contexte à faible risque, notamment chez la femme enceinte où les procédures invasives sont à éviter.</li>
+            </ul>
+            <ul class="why-wrong">
+              <li><strong>B — FAUX :</strong> La colposcopie n'est pas systématique en première intention devant un ASCUS HPV-négatif, a fortiori pendant la grossesse.</li>
+              <li><strong>D — FAUX :</strong> La conisation n'est pas indiquée pendant la grossesse en première intention (risque obstétrical).</li>
+              <li><strong>E — FAUX :</strong> L'ectropion est bénin et ne justifie pas d'hystérectomie.</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+
+      <div class="qcm-card">
+        <div class="qcm-top">
+          <span class="q-number">C2·Q3</span>
+          <span class="badge badge-simple">Réponse unique</span>
+        </div>
+        <p class="q-stem">Quel est le lien physiopathologique entre la grossesse et l'ectropion ?</p>
+        <ul class="options">
+          <li><span class="letter">A</span>L'hyperœstrogénie gravidique favorise l'extension de la muqueuse endocervicale sur l'exocol</li>
+          <li><span class="letter">B</span>La grossesse provoque une métaplasie osseuse du col</li>
+          <li><span class="letter">C</span>La grossesse induit une infection à HPV</li>
+          <li><span class="letter">D</span>La grossesse est sans effet sur le col</li>
+          <li><span class="letter">E</span>L'ectropion est une lésion maligne induite par la grossesse</li>
+        </ul>
+        <details class="correction">
+          <summary>Correction</summary>
+          <div class="correction-body">
+            <span class="answer-key">Réponse : A</span>
+            <ul class="why-right">
+              <li><strong>A — VRAI :</strong> L'imprégnation hormonale de la grossesse accentue l'ectropion, qui est une extension mécanique de la muqueuse endocervicale sur l'exocol.</li>
+            </ul>
+            <ul class="why-wrong">
+              <li><strong>B — FAUX :</strong> Aucune métaplasie osseuse.</li>
+              <li><strong>C — FAUX :</strong> La grossesse n'induit pas d'infection HPV.</li>
+              <li><strong>D — FAUX :</strong> La grossesse modifie l'aspect du col (ectropion, hypervascularisation).</li>
+              <li><strong>E — FAUX :</strong> L'ectropion reste bénin.</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+
+  <!-- CAS 3 -->
+  <div class="case-card">
+    <div class="case-header">
+      <div class="case-num">3</div>
+      <h3>Col blanchâtre chez une femme ménopausée</h3>
+      <span class="loc">EPH — Consultation de gynécologie</span>
+    </div>
+    <div class="vignette">
+      <strong>Mme A.</strong>, 58 ans, ménopausée depuis 8 ans, consulte pour un prolapsus génital. À l'examen : le col est blanchâtre, fripé, d'aspect « comme une peau ». Le FCV est normal. Pas d'antécédent de lésion HPV.
+      <span class="vital">Ménopause · Prolapsus · Col blanchâtre fripé</span>
+    </div>
+    <div class="case-qcm">
+      <div class="qcm-card">
+        <div class="qcm-top">
+          <span class="q-number">C3·Q1</span>
+          <span class="badge badge-simple">Réponse unique</span>
+        </div>
+        <p class="q-stem">Quel est le diagnostic le plus probable ?</p>
+        <ul class="options">
+          <li><span class="letter">A</span>Leucoplasie</li>
+          <li><span class="letter">B</span>Carcinome épidermoïde</li>
+          <li><span class="letter">C</span>Ectropion</li>
+          <li><span class="letter">D</span>Polype endocervical</li>
+          <li><span class="letter">E</span>Kyste de Naboth</li>
+        </ul>
+        <details class="correction">
+          <summary>Correction</summary>
+          <div class="correction-body">
+            <span class="answer-key">Réponse : A</span>
+            <ul class="why-right">
+              <li><strong>A — VRAI :</strong> La leucoplasie donne un aspect macroscopique blanchâtre et fripé, « comme une peau ». Elle survient surtout en cas de perturbation hormonale (ménopause) ou d'irritation chronique (prolapsus), exactement le tableau de cette patiente.</li>
+            </ul>
+            <ul class="why-wrong">
+              <li><strong>B — FAUX :</strong> Un carcinome aurait un aspect ulcéré, bourgeonnant ou induré, pas simplement blanchâtre et fripé.</li>
+              <li><strong>C — FAUX :</strong> L'ectropion donne un col rouge, pas blanchâtre.</li>
+              <li><strong>D — FAUX :</strong> Le polype est une formation saillante, pas un aspect diffus.</li>
+              <li><strong>E — FAUX :</strong> Les kystes de Naboth sont de petits kystes muqueux, sans aspect blanchâtre diffus.</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+
+      <div class="qcm-card">
+        <div class="qcm-top">
+          <span class="q-number">C3·Q2</span>
+          <span class="badge badge-multi">Choix multiples (2–3)</span>
+        </div>
+        <p class="q-stem">Concernant la leucoplasie, quelles sont les propositions exactes ?</p>
+        <ul class="options">
+          <li><span class="letter">A</span>Elle correspond à une kératinisation de l'épithélium malpighien normalement non kératinisé</li>
+          <li><span class="letter">B</span>Elle est caractérisée par une parakératose avec noyaux pycnotiques</li>
+          <li><span class="letter">C</span>Elle peut survenir en cas de ménopause ou d'irritation chronique</li>
+          <li><span class="letter">D</span>Elle est toujours d'origine virale à HPV</li>
+          <li><span class="letter">E</span>Elle est considérée comme une lésion maligne</li>
+        </ul>
+        <details class="correction">
+          <summary>Correction</summary>
+          <div class="correction-body">
+            <span class="answer-key">Réponses : A, B, C</span>
+            <ul class="why-right">
+              <li><strong>A — VRAI :</strong> La leucoplasie est une kératinisation de l'épithélium malpighien du col, normalement non kératinisé.</li>
+              <li><strong>B — VRAI :</strong> Histologiquement, il y a une couche de parakératose avec noyaux pycnotiques dans les lamelles de kératine.</li>
+              <li><strong>C — VRAI :</strong> Elle apparaît en cas de perturbation hormonale (ménopause) ou d'irritation chronique (prolapsus).</li>
+            </ul>
+            <ul class="why-wrong">
+              <li><strong>D — FAUX :</strong> La leucoplasie n'est pas une lésion HPV.</li>
+              <li><strong>E — FAUX :</strong> C'est une lésion bénigne, pas maligne.</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+
+      <div class="qcm-card">
+        <div class="qcm-top">
+          <span class="q-number">C3·Q3</span>
+          <span class="badge badge-simple">Réponse unique</span>
+        </div>
+        <p class="q-stem">Quelle est la conduite à tenir devant cette leucoplasie isolée, avec FCV normal ?</p>
+        <ul class="options">
+          <li><span class="letter">A</span>Hystérectomie d'emblée</li>
+          <li><span class="letter">B</span>Traitement de la cause favorisante et surveillance</li>
+          <li><span class="letter">C</span>Radiothérapie externe</li>
+          <li><span class="letter">D</span>Chimiothérapie</li>
+          <li><span class="letter">E</span>Conisation en urgence</li>
+        </ul>
+        <details class="correction">
+          <summary>Correction</summary>
+          <div class="correction-body">
+            <span class="answer-key">Réponse : B</span>
+            <ul class="why-right">
+              <li><strong>B — VRAI :</strong> La leucoplasie isolée sans atypie (FCV normal) est bénigne. On traite la cause favorisante (correction du prolapsus, traitement hormonal local si besoin) et on surveille.</li>
+            </ul>
+            <ul class="why-wrong">
+              <li><strong>A, C, D, E — FAUX :</strong> Aucun traitement agressif n'est indiqué devant une lésion bénigne sans signe de gravité.</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+
+  <!-- CAS 4 -->
+  <div class="case-card">
+    <div class="case-header">
+      <div class="case-num">4</div>
+      <h3>Leucorrhées verdâtres malodorantes</h3>
+      <span class="loc">EPH — Consultation de gynécologie</span>
+    </div>
+    <div class="vignette">
+      <strong>Mme S.</strong>, 35 ans, consulte pour leucorrhées verdâtres malodorantes avec prurit et brûlures. À l'examen : col rouge, œdématié, avec un aspect framboisé. Le prélèvement vaginal met en évidence <strong>Trichomonas vaginalis</strong>.
+      <span class="vital">Prélèvement : Trichomonas vaginalis</span>
+    </div>
+    <div class="case-qcm">
+      <div class="qcm-card">
+        <div class="qcm-top">
+          <span class="q-number">C4·Q1</span>
+          <span class="badge badge-simple">Réponse unique</span>
+        </div>
+        <p class="q-stem">Quel est le diagnostic ?</p>
+        <ul class="options">
+          <li><span class="letter">A</span>Cervicite à Trichomonas vaginalis</li>
+          <li><span class="letter">B</span>CIN 3</li>
+          <li><span class="letter">C</span>Carcinome épidermoïde</li>
+          <li><span class="letter">D</span>Leucoplasie</li>
+          <li><span class="letter">E</span>Kyste de Naboth</li>
+        </ul>
+        <details class="correction">
+          <summary>Correction</summary>
+          <div class="correction-body">
+            <span class="answer-key">Réponse : A</span>
+            <ul class="why-right">
+              <li><strong>A — VRAI :</strong> Le tableau est typique d'une cervicite à Trichomonas : leucorrhées verdâtres malodorantes, prurit, col rouge framboisé. C'est l'un des agents les plus fréquents de cervicite.</li>
+            </ul>
+            <ul class="why-wrong">
+              <li><strong>B — FAUX :</strong> Aucune lésion intra-épithéliale n'est en cause ici.</li>
+              <li><strong>C — FAUX :</strong> Pas de masse ni d'ulcération tumorale.</li>
+              <li><strong>D — FAUX :</strong> La leucoplasie est blanchâtre et indolore.</li>
+              <li><strong>E — FAUX :</strong> Les kystes de Naboth sont asymptomatiques.</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+
+      <div class="qcm-card">
+        <div class="qcm-top">
+          <span class="q-number">C4·Q2</span>
+          <span class="badge badge-multi">Choix multiples (2–3)</span>
+        </div>
+        <p class="q-stem">Quelles sont les propositions exactes concernant les cervicites ?</p>
+        <ul class="options">
+          <li><span class="letter">A</span>L'inflammation est la pathologie la plus fréquente du col</li>
+          <li><span class="letter">B</span>Les agents les plus fréquents sont Trichomonas, Candida et HSV</li>
+          <li><span class="letter">C</span>Macroscopiquement, le col est rouge, sensible, avec ou sans vésicules et ulcérations</li>
+          <li><span class="letter">D</span>Elles sont toujours d'origine virale à HPV</li>
+          <li><span class="letter">E</span>Elles évoluent systématiquement vers un cancer</li>
+        </ul>
+        <details class="correction">
+          <summary>Correction</summary>
+          <div class="correction-body">
+            <span class="answer-key">Réponses : A, B, C</span>
+            <ul class="why-right">
+              <li><strong>A — VRAI :</strong> L'inflammation est la pathologie la plus fréquente du col.</li>
+              <li><strong>B — VRAI :</strong> Trichomonas, Candida et HSV sont les agents les plus fréquemment en cause.</li>
+              <li><strong>C — VRAI :</strong> Le col est rouge, sensible, avec éventuellement vésicules et ulcérations selon le germe.</li>
+            </ul>
+            <ul class="why-wrong">
+              <li><strong>D — FAUX :</strong> Les cervicites ne sont pas exclusivement virales à HPV.</li>
+              <li><strong>E — FAUX :</strong> Les cervicites non-HPV n'évoluent pas vers un cancer (seule l'infection HPV persistante est cancérigène).</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+
+      <div class="qcm-card">
+        <div class="qcm-top">
+          <span class="q-number">C4·Q3</span>
+          <span class="badge badge-simple">Réponse unique</span>
+        </div>
+        <p class="q-stem">Quel élément microscopique caractérise la cervicite ?</p>
+        <ul class="options">
+          <li><span class="letter">A</span>Présence de débris cellulaires et d'abondantes sécrétions inflammatoires recouvrant l'épithélium</li>
+          <li><span class="letter">B</span>Koïlocytes pathognomoniques</li>
+          <li><span class="letter">C</span>Désorganisation complète de l'architecture épithéliale</li>
+          <li><span class="letter">D</span>Parakératose étendue</li>
+          <li><span class="letter">E</span>Métaplasie osseuse</li>
+        </ul>
+        <details class="correction">
+          <summary>Correction</summary>
+          <div class="correction-body">
+            <span class="answer-key">Réponse : A</span>
+            <ul class="why-right">
+              <li><strong>A — VRAI :</strong> La cervicite se caractérise par des débris cellulaires et des sécrétions inflammatoires abondantes recouvrant l'épithélium, avec possible ulcération et congestion du stroma.</li>
+            </ul>
+            <ul class="why-wrong">
+              <li><strong>B — FAUX :</strong> Les koïlocytes signent l'infection HPV, pas une cervicite banale.</li>
+              <li><strong>C — FAUX :</strong> La désorganisation architecturale est le propre des CIN.</li>
+              <li><strong>D — FAUX :</strong> La parakératose étendue définit la leucoplasie.</li>
+              <li><strong>E — FAUX :</strong> Aucune métaplasie osseuse.</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+
+  <!-- CAS 5 -->
+  <div class="case-card">
+    <div class="case-header">
+      <div class="case-num">5</div>
+      <h3>Lésion végétante du col chez une femme de 32 ans</h3>
+      <span class="loc">CHU — Consultation de colposcopie</span>
+    </div>
+    <div class="vignette">
+      <strong>Mme T.</strong>, 32 ans, consulte pour une lésion végétante du col découverte lors d'un examen systématique. À l'examen : lésion en « chou-fleur » sur l'exocol. La biopsie retrouve une papillomatose, une acanthose marquée, une parakératose, des cellules binucléées et des <strong>koïlocytes</strong>.
+      <span class="vital">Lésion en chou-fleur · Biopsie : koïlocytes</span>
+    </div>
+    <div class="case-qcm">
+      <div class="qcm-card">
+        <div class="qcm-top">
+          <span class="q-number">C5·Q1</span>
+          <span class="badge badge-simple">Réponse unique</span>
+        </div>
+        <p class="q-stem">Quel est le diagnostic le plus probable ?</p>
+        <ul class="options">
+          <li><span class="letter">A</span>Condylome acuminé (lésion HPV)</li>
+          <li><span class="letter">B</span>Carcinome épidermoïde invasif</li>
+          <li><span class="letter">C</span>Leucoplasie</li>
+          <li><span class="letter">D</span>Ectropion</li>
+          <li><span class="letter">E</span>CIN 1</li>
+        </ul>
+        <details class="correction">
+          <summary>Correction</summary>
+          <div class="correction-body">
+            <span class="answer-key">Réponse : A</span>
+            <ul class="why-right">
+              <li><strong>A — VRAI :</strong> La description est pathognomonique d'un condylome acuminé : lésion en chou-fleur, papillomatose, acanthose, parakératose, cellules binucléées, dyskératosiques et surtout koïlocytes.</li>
+            </ul>
+            <ul class="why-wrong">
+              <li><strong>B — FAUX :</strong> Pas d'invasion du chorion décrite.</li>
+              <li><strong>C — FAUX :</strong> La leucoplasie est blanchâtre, pas en chou-fleur.</li>
+              <li><strong>D — FAUX :</strong> L'ectropion est une zone rouge diffuse, pas une lésion végétante.</li>
+              <li><strong>E — FAUX :</strong> La CIN 1 est une lésion intra-épithéliale, pas une lésion végétante exophytique.</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+
+      <div class="qcm-card">
+        <div class="qcm-top">
+          <span class="q-number">C5·Q2</span>
+          <span class="badge badge-simple">Réponse unique</span>
+        </div>
+        <p class="q-stem">Quel est le signe histologique pathognomonique de l'infection à HPV ?</p>
+        <ul class="options">
+          <li><span class="letter">A</span>Le koïlocyte</li>
+          <li><span class="letter">B</span>La cellule basale</li>
+          <li><span class="letter">C</span>La cellule superficielle</li>
+          <li><span class="letter">D</span>La cellule cylindrique mucosécrétante</li>
+          <li><span class="letter">E</span>La cellule parakératosique</li>
+        </ul>
+        <details class="correction">
+          <summary>Correction</summary>
+          <div class="correction-body">
+            <span class="answer-key">Réponse : A</span>
+            <ul class="why-right">
+              <li><strong>A — VRAI :</strong> Le koïlocyte (cytoplasme vacuolisé, noyau volumineux hyperchromatique, parfois plurinucléé) est le signe pathognomonique de l'infection à HPV.</li>
+            </ul>
+            <ul class="why-wrong">
+              <li><strong>B — FAUX :</strong> La cellule basale est normale.</li>
+              <li><strong>C — FAUX :</strong> La cellule superficielle normale a un noyau punctiforme et un cytoplasme clair.</li>
+              <li><strong>D — FAUX :</strong> La cellule cylindrique est normale dans l'endocol.</li>
+              <li><strong>E — FAUX :</strong> La cellule parakératosique est associée à la leucoplasie, pas spécifiquement à l'HPV.</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+
+      <div class="qcm-card">
+        <div class="qcm-top">
+          <span class="q-number">C5·Q3</span>
+          <span class="badge badge-multi">Choix multiples (2–3)</span>
+        </div>
+        <p class="q-stem">Quelles sont les propositions exactes concernant l'HPV et sa prévention ?</p>
+        <ul class="options">
+          <li><span class="letter">A</span>HPV 16 et 18 sont impliqués dans environ 70 % des cancers du col</li>
+          <li><span class="letter">B</span>Le vaccin actuel protège contre tous les types à haut risque</li>
+          <li><span class="letter">C</span>Le pic de transmission se situe entre 15 et 25 ans</li>
+          <li><span class="letter">D</span>Les condylomes sont des lésions bénignes liées à HPV</li>
+          <li><span class="letter">E</span>La vaccination contre l'HPV remplace le dépistage par FCV</li>
+        </ul>
+        <details class="correction">
+          <summary>Correction</summary>
+          <div class="correction-body">
+            <span class="answer-key">Réponses : A, C, D</span>
+            <ul class="why-right">
+              <li><strong>A — VRAI :</strong> HPV 16 et 18 sont responsables d'environ 70 % des cancers du col.</li>
+              <li><strong>C — VRAI :</strong> Le pic de transmission est entre 15 et 25 ans.</li>
+              <li><strong>D — VRAI :</strong> Les condylomes (dont le condylome acuminé) sont des lésions bénignes liées à HPV.</li>
+            </ul>
+            <ul class="why-wrong">
+              <li><strong>B — FAUX :</strong> Le vaccin actuel ne couvre que HPV 16 et 18, pas tous les types à haut risque.</li>
+              <li><strong>E — FAUX :</strong> La vaccination ne remplace pas le dépistage par FCV ; les deux sont complémentaires.</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ===================================================== -->
+<!-- SECTION 3 : CARTE CONCEPTUELLE -->
+<!-- ===================================================== -->
+<section id="concept">
+  <div class="section-head">
+    <div class="section-num">3</div>
+    <div>
+      <h2>Carte conceptuelle &amp; synthèse visuelle</h2>
+      <div class="sub">Structures HTML/CSS — algorithmes décisionnels et tableaux comparatifs</div>
+    </div>
+  </div>
+
+  <div class="concept-grid">
+    <div class="concept-box navy">
+      <h4><span class="dot"></span>Anatomie &amp; histologie</h4>
+      <ul>
+        <li>Col : 2,5–3 cm (nullipare), oblique en arrière</li>
+        <li>Exocol : épithélium pavimenteux stratifié</li>
+        <li>Endocol : épithélium cylindrique glandulaire</li>
+        <li>Renouvellement épithélial : ~4 jours</li>
+        <li>Zone de jonction : cible privilégiée des lésions</li>
+      </ul>
+    </div>
+    <div class="concept-box">
+      <h4><span class="dot"></span>Lésions bénignes</h4>
+      <ul>
+        <li>Ectropion (grossesse, traumatismes)</li>
+        <li>Polype endocervical (bénin)</li>
+        <li>Métaplasie malpighienne (physiologique)</li>
+        <li>Kystes de Naboth (rétention)</li>
+        <li>Leucoplasie (kératinisation, ménopause)</li>
+      </ul>
+    </div>
+    <div class="concept-box amber">
+      <h4><span class="dot"></span>Lésions précancéreuses</h4>
+      <ul>
+        <li>LSIL = CIN 1 + HPV</li>
+        <li>HSIL = CIN 2 + CIN 3 + CIS</li>
+        <li>Évolution en ~10 ans</li>
+        <li>Régression possible</li>
+        <li>Dépistage = FCV + test HPV</li>
+      </ul>
+    </div>
+    <div class="concept-box danger">
+      <h4><span class="dot"></span>Cancers invasifs</h4>
+      <ul>
+        <li>Carcinome épidermoïde : 70–95 %</li>
+        <li>Adénocarcinome : 10–15 %</li>
+        <li>OMS 2020 : HPV-associés vs HPV-indépendants</li>
+        <li>HPV 16/18 : ~70 % des cas</li>
+        <li>Facteur de risque principal : HPV</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Algorithme décisionnel -->
+  <div class="flow-wrap">
+    <div class="flow-title">Algorithme décisionnel — FCV anormal</div>
+    <div class="flow">
+      <div class="flow-node start">Frottis cervico-vaginal (dépistage)</div>
+      <div class="flow-arrow"></div>
+      <div class="flow-node warn">Résultat anormal ? (ASCUS, LSIL, HSIL…)</div>
+      <div class="flow-arrow"></div>
+      <div class="flow-branches">
+        <div style="display:flex;flex-direction:column;align-items:center;gap:0;">
+          <div class="flow-node" style="border-color:#0d9488;">ASCUS / LSIL</div>
+          <div class="flow-arrow"></div>
+          <div class="flow-node">Test HPV réflexe ou contrôle FCV</div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:center;gap:0;">
+          <div class="flow-node" style="border-color:#b45309;">HSIL / ASC-H</div>
+          <div class="flow-arrow"></div>
+          <div class="flow-node">Colposcopie + biopsie</div>
+        </div>
+      </div>
+      <div class="flow-arrow"></div>
+      <div class="flow-node final">Prise en charge adaptée (surveillance, conisation…)</div>
+    </div>
+  </div>
+
+  <!-- Tableau comparatif -->
+  <table class="styled-table">
+    <thead>
+      <tr>
+        <th>Entité</th>
+        <th>Définition clé</th>
+        <th>Gravité</th>
+        <th>Conduite</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>CIN 1 / LSIL</strong></td>
+        <td>Atteinte du 1/3 de l'épithélium + HPV</td>
+        <td><span class="pill pill-teal">Bas grade</span></td>
+        <td>Surveillance / contrôle</td>
+      </tr>
+      <tr>
+        <td><strong>CIN 2 / HSIL</strong></td>
+        <td>Atteinte des 2/3 de l'épithélium</td>
+        <td><span class="pill pill-amber">Haut grade</span></td>
+        <td>Colposcopie + biopsie → traitement</td>
+      </tr>
+      <tr>
+        <td><strong>CIN 3 / CIS</strong></td>
+        <td>Atteinte de toute la hauteur, membrane basale intacte</td>
+        <td><span class="pill pill-danger">Haut grade</span></td>
+        <td>Conisation / destruction</td>
+      </tr>
+      <tr>
+        <td><strong>Carcinome invasif</strong></td>
+        <td>Franchissement de la membrane basale</td>
+        <td><span class="pill pill-danger">Malin</span></td>
+        <td>Prise en charge oncologique</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <table class="styled-table">
+    <thead>
+      <tr>
+        <th>Type histologique</th>
+        <th>Fréquence</th>
+        <th>Localisation</th>
+        <th>Particularité OMS 2020</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Carcinome épidermoïde</strong></td>
+        <td>70–95 %</td>
+        <td>Zone de jonction</td>
+        <td>HPV-associé (8085/3) / HPV-indépendant (8086/3)</td>
+      </tr>
+      <tr>
+        <td><strong>Adénocarcinome</strong></td>
+        <td>10–15 %</td>
+        <td>Endocol / zone de jonction</td>
+        <td>Usuel/mucineux (HPV-associé) vs gastrique, à cellules claires, mésonéphrique, endométrioïde (HPV-indépendant)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <!-- Encadré vaccin -->
+  <div class="concept-box amber" style="margin-top:18px;">
+    <h4><span class="dot"></span>Vaccination &amp; dépistage — points clés</h4>
+    <ul>
+      <li>Vaccin actuel : cible <strong>HPV 16 et 18</strong> (pas tous les hauts risques)</li>
+      <li>Dépistage : FCV à partir de <strong>25 ans</strong></li>
+      <li>1 FCV/an → −93 % d'incidence ; tous les 3 ans → −91 % ; tous les 5 ans → −81 %</li>
+      <li>Faux négatifs : 10–30 % ; faux positifs : 1–5 %</li>
+      <li>Le FCV est un test de dépistage, <strong>la biopsie</strong> fait le diagnostic</li>
+    </ul>
+  </div>
+
+</section>
+
+<!-- ===================================================== -->
+<!-- SECTION 4 : MNÉMOTECHNIQUES -->
+<!-- ===================================================== -->
+<section id="mnemo">
+  <div class="section-head">
+    <div class="section-num">4</div>
+    <div>
+      <h2>Mnémotechniques &amp; trucs d'examen</h2>
+      <div class="sub">Retenir l'essentiel pour le jour J</div>
+    </div>
+  </div>
+
+  <div class="mnemo-grid">
+    <div class="mnemo-card">
+      <div class="mnemo-key">« 4 jours, 4 couches »</div>
+      <p>L'épithélium pavimenteux se renouvelle en <strong>4 jours</strong> et comporte 4 couches fonctionnelles (basale, parabasale, intermédiaire, superficielle). Une question fréquente cible le chiffre « 4 jours ».</p>
+    </div>
+    <div class="mnemo-card">
+      <div class="mnemo-key">« 16–18 = 70 % »</div>
+      <p>HPV <strong>16 et 18</strong> sont responsables d'environ <strong>70 %</strong> des cancers du col. Associer le chiffre 70 % aux deux génotypes stars.</p>
+    </div>
+    <div class="mnemo-card">
+      <div class="mnemo-key">« CIN 1–2–3 = 1/3, 2/3, 3/3 »</div>
+      <p>La hauteur de l'atteinte épithéliale suit le grade : <strong>1/3, 2/3, toute la hauteur</strong>. CIN 3 regroupe dysplasie sévère et carcinome in situ.</p>
+    </div>
+    <div class="mnemo-card">
+      <div class="mnemo-key">« Zone de jonction = zone de danger »</div>
+      <p>Toujours penser à la zone de jonction : elle concentre les lésions, elle est la cible obligatoire du FCV, et elle est le siège préférentiel des dysplasies et des cancers.</p>
+    </div>
+    <div class="mnemo-card">
+      <div class="mnemo-key">« 25 ANS = premier FCV »</div>
+      <p>Le dépistage commence à <strong>25 ans</strong> chez les femmes ayant une activité sexuelle. À retenir aussi : 1 FCV/an → −93 % ; /3 ans → −91 % ; /5 ans → −81 %.</p>
+    </div>
+    <div class="mnemo-card">
+      <div class="mnemo-key">« KOÏLOCYTE = KOÏ = HPV »</div>
+      <p>Le koïlocyte (cytoplasme vacuolisé, noyau volumineux hyperchromatique) est le signe <strong>pathognomonique</strong> de l'infection à HPV.</p>
+    </div>
+    <div class="mnemo-card">
+      <div class="mnemo-key">« LEUCO = BLANC = KÉRATINE »</div>
+      <p>La leucoplasie = kératinisation (parakératose avec noyaux pycnotiques). Col blanchâtre, fripé, « comme une peau ». Ménopause, prolapsus.</p>
+    </div>
+    <div class="mnemo-card">
+      <div class="mnemo-key">« NABOTH = bouchon muqueux »</div>
+      <p>Le kyste de Naboth naît de l'occlusion d'une crypte endocervicale par l'épithélium pavimenteux métaplasique. Bénin.</p>
+    </div>
+    <div class="mnemo-card">
+      <div class="mnemo-key">« ECTROPION = EC comme EXocol »</div>
+      <p>L'ectropion est l'extension de la muqueuse endocervicale sur l'exocol. Favorisé par la grossesse et les traumatismes obstétricaux. Bénin.</p>
+    </div>
+    <div class="mnemo-card">
+      <div class="mnemo-key">« Bethesda 88 / 2001 »</div>
+      <p>Système de Bethesda : proposé en <strong>1988</strong>, dernière mise à jour <strong>2001</strong>. Trois critères : qualité du prélèvement, normal/anormal, description des lésions.</p>
+    </div>
+  </div>
+
+  <h3 style="color:var(--navy);margin:32px 0 16px;font-size:1.15rem;font-weight:800;">⚠️ Pièges d'examen &amp; pièges docimologiques</h3>
+
+  <div class="trap-card">
+    <div class="trap-title">Piège n°1 — CIN 3 ≠ cancer invasif</div>
+    <p>Dans CIN 3, la membrane basale reste intacte : c'est une lésion intra-épithéliale. Un carcinome invasif franchit la membrane basale et envahit le chorion. Ne pas confondre « carcinome in situ » (dans CIN 3) et « carcinome invasif ».</p>
+  </div>
+  <div class="trap-card">
+    <div class="trap-title">Piège n°2 — Ectropion ≠ lésion précancéreuse</div>
+    <p>L'ectropion est une dystrophie pseudo-tumorale <strong>bénigne</strong>. Il peut être le siège de lésions HPV, mais n'est pas en soi une lésion précancéreuse ni un cancer.</p>
+  </div>
+  <div class="trap-card">
+    <div class="trap-title">Piège n°3 — FCV = dépistage, PAS diagnostic</div>
+    <p>Le FCV dépiste. Le diagnostic définitif est <strong>histologique</strong> (biopsie après colposcopie). Une question classique : « le FCV permet de poser le diagnostic définitif » → FAUX.</p>
+  </div>
+  <div class="trap-card">
+    <div class="trap-title">Piège n°4 — L'infection HPV est souvent transitoire</div>
+    <p>50–75 % des jeunes femmes ont une infection transitoire (pic 15–25 ans). Seulement ~10 % développent une dysplasie. La persistance virale est le vrai facteur de risque.</p>
+  </div>
+  <div class="trap-card">
+    <div class="trap-title">Piège n°5 — Le vaccin ne couvre pas tout</div>
+    <p>Le vaccin cible principalement HPV 16 et 18, mais ne protège PAS contre les autres génotypes à haut risque. Il ne remplace pas le dépistage par FCV.</p>
+  </div>
+  <div class="trap-card">
+    <div class="trap-title">Piège n°6 — CIN 1 = bas grade, pas sévère</div>
+    <p>Attention aux inversions : CIN 1 = dysplasie légère (1/3) ; CIN 2 = modérée (2/3) ; CIN 3 = sévère + CIS (toute la hauteur).</p>
+  </div>
+  <div class="trap-card">
+    <div class="trap-title">Piège n°7 — Adénocarcinome ≠ plus fréquent</div>
+    <p>L'ADK représente 10–15 % des cancers du col, contre 70–95 % pour le carcinome épidermoïde. Ne pas inverser les fréquences.</p>
+  </div>
+  <div class="trap-card">
+    <div class="trap-title">Piège n°8 — OMS 2020 : HPV-associé vs HPV-indépendant</div>
+    <p>Tous les carcinomes ne sont pas HPV-associés. L'OMS 2020 sépare les carcinomes épidermoïdes et les adénocarcinomes en deux catégories avec pronostic différent.</p>
+  </div>
+
+</section>
+
+<!-- ===================================================== -->
+<!-- FOOTER -->
+<!-- ===================================================== -->
+<footer class="motivate">
+  <h3>Bravo, vous avez terminé la révision ! 🎓</h3>
+  <p>La pathologie du col utérin est un chapitre charnière : il relie l'anatomie, l'histologie, la virologie et l'oncologie. Maîtrisez la zone de jonction, les CIN et le dépistage par FCV — ce sont les trois piliers des examens de 5<sup>e</sup> année.</p>
+  <p>Relisez les corrections, refaites les QCM à J+3 et J+7, et discutez les cas cliniques entre amis : la répétition espacée est votre meilleure alliée.</p>
+  <span class="emoji">💪 « Le col, c'est petit, mais ça vaut le détour — et surtout, ça s'attrape à temps ! »</span>
+</footer>
+
+</main>
+</body>
+</html>

@@ -1,0 +1,1997 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Menace d'avortement &amp; Avortement spontané — Révision 4e année</title>
+<style>
+  :root{
+    --navy:#0b2545;
+    --navy-2:#13315c;
+    --teal:#0f766e;
+    --teal-2:#14b8a6;
+    --teal-soft:#e6f7f5;
+    --slate:#475569;
+    --slate-2:#64748b;
+    --slate-soft:#eef2f7;
+    --bg:#f4f7fb;
+    --card:#ffffff;
+    --border:#dbe4ee;
+    --amber:#b45309;
+    --amber-soft:#fef6e7;
+    --red:#b91c1c;
+    --red-soft:#fdeaea;
+    --green:#15803d;
+    --green-soft:#e8f6ee;
+    --purple:#6d28d9;
+    --purple-soft:#f1ecfd;
+    --shadow:0 4px 16px rgba(11,37,69,.07);
+    --shadow-lg:0 10px 30px rgba(11,37,69,.12);
+    --radius:16px;
+  }
+
+  *{box-sizing:border-box;margin:0;padding:0;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    font-family:'Inter','Segoe UI',Roboto,'Helvetica Neue',Arial,sans-serif;
+    background:var(--bg);
+    color:#1e293b;
+    line-height:1.65;
+    font-size:16px;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* ============ HEADER ============ */
+  header{
+    background:linear-gradient(135deg,var(--navy) 0%,var(--navy-2) 45%,var(--teal) 100%);
+    color:#fff;
+    padding:52px 24px 60px;
+    position:relative;
+    overflow:hidden;
+  }
+  header::after{
+    content:"";
+    position:absolute;
+    width:520px;height:520px;
+    border-radius:50%;
+    background:radial-gradient(circle,rgba(20,184,166,.35),transparent 70%);
+    top:-260px;right:-140px;
+  }
+  header::before{
+    content:"";
+    position:absolute;
+    width:360px;height:360px;
+    border-radius:50%;
+    background:radial-gradient(circle,rgba(255,255,255,.08),transparent 70%);
+    bottom:-200px;left:-100px;
+  }
+  .header-inner{
+    max-width:1080px;margin:0 auto;position:relative;z-index:2;
+  }
+  .kicker{
+    display:inline-block;
+    background:rgba(255,255,255,.14);
+    border:1px solid rgba(255,255,255,.28);
+    padding:6px 16px;
+    border-radius:999px;
+    font-size:.78rem;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    font-weight:600;
+    margin-bottom:18px;
+  }
+  header h1{
+    font-size:clamp(1.7rem,4vw,2.6rem);
+    font-weight:800;
+    line-height:1.2;
+    letter-spacing:-.02em;
+  }
+  header h2{
+    font-size:clamp(1rem,2vw,1.2rem);
+    font-weight:500;
+    color:#c9e9e6;
+    margin-top:10px;
+  }
+  .header-meta{
+    display:flex;flex-wrap:wrap;gap:10px;margin-top:24px;
+  }
+  .chip{
+    background:rgba(255,255,255,.12);
+    border:1px solid rgba(255,255,255,.2);
+    padding:6px 14px;border-radius:999px;
+    font-size:.82rem;font-weight:500;
+  }
+
+  /* ============ LAYOUT ============ */
+  main{max-width:1080px;margin:0 auto;padding:0 20px 70px;}
+
+  section{margin-top:52px;}
+
+  .section-head{
+    display:flex;align-items:center;gap:14px;
+    margin-bottom:26px;
+    padding-bottom:14px;
+    border-bottom:3px solid var(--teal-2);
+  }
+  .section-num{
+    flex:0 0 auto;
+    width:44px;height:44px;
+    border-radius:12px;
+    background:linear-gradient(135deg,var(--navy),var(--teal));
+    color:#fff;
+    display:flex;align-items:center;justify-content:center;
+    font-weight:800;font-size:1.1rem;
+    box-shadow:var(--shadow);
+  }
+  .section-head h2{
+    font-size:clamp(1.2rem,2.6vw,1.6rem);
+    color:var(--navy);
+    font-weight:800;
+    letter-spacing:-.02em;
+  }
+  .section-head p{
+    font-size:.86rem;color:var(--slate-2);font-weight:500;
+  }
+
+  /* ============ QUESTION CARD ============ */
+  .qcard{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:22px 22px 20px;
+    margin-bottom:26px;
+    box-shadow:var(--shadow);
+    transition:box-shadow .25s ease, transform .25s ease;
+  }
+  .qcard:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px);}
+
+  .qtop{
+    display:flex;flex-wrap:wrap;align-items:center;gap:10px;
+    margin-bottom:14px;
+  }
+  .qnum{
+    background:var(--navy);
+    color:#fff;
+    font-weight:800;
+    font-size:.85rem;
+    padding:5px 13px;
+    border-radius:9px;
+    letter-spacing:.03em;
+  }
+  .theme{
+    background:var(--teal-soft);
+    color:var(--teal);
+    border:1px solid #b9e6e1;
+    font-size:.75rem;
+    font-weight:700;
+    padding:5px 12px;
+    border-radius:999px;
+    text-transform:uppercase;
+    letter-spacing:.05em;
+  }
+  .type-badge{
+    font-size:.72rem;font-weight:700;
+    padding:5px 12px;border-radius:999px;
+    letter-spacing:.05em;text-transform:uppercase;
+  }
+  .t-rj{background:var(--green-soft);color:var(--green);border:1px solid #bfe6cf;}
+  .t-rf{background:var(--red-soft);color:var(--red);border:1px solid #f3c6c6;}
+  .t-multi{background:var(--purple-soft);color:var(--purple);border:1px solid #ddd0fb;}
+  .t-simple{background:var(--amber-soft);color:var(--amber);border:1px solid #f6dfb5;}
+
+  .qtext{
+    font-weight:600;
+    color:var(--navy);
+    font-size:1.02rem;
+    margin-bottom:14px;
+  }
+
+  ul.options{list-style:none;}
+  ul.options li{
+    display:flex;gap:11px;
+    padding:9px 13px;
+    border-radius:10px;
+    margin-bottom:6px;
+    background:var(--slate-soft);
+    font-size:.94rem;
+    transition:background .18s ease;
+  }
+  ul.options li:hover{background:#e3ebf5;}
+  .letter{
+    flex:0 0 auto;
+    width:24px;height:24px;
+    border-radius:7px;
+    background:#fff;
+    border:1px solid var(--border);
+    color:var(--navy);
+    font-weight:800;
+    font-size:.78rem;
+    display:flex;align-items:center;justify-content:center;
+    margin-top:1px;
+  }
+
+  /* ============ CORRECTION ============ */
+  .corr{
+    margin-top:16px;
+    border-left:5px solid var(--teal-2);
+    background:linear-gradient(90deg,var(--teal-soft),#fbfefe 65%);
+    border-radius:0 12px 12px 0;
+    padding:15px 18px;
+  }
+  .corr-head{
+    display:flex;flex-wrap:wrap;align-items:center;gap:10px;
+    margin-bottom:9px;
+  }
+  .corr-title{
+    font-weight:800;
+    color:var(--teal);
+    font-size:.82rem;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+  }
+  .ans-badge{
+    background:var(--teal);
+    color:#fff;
+    font-weight:800;
+    font-size:.8rem;
+    padding:4px 12px;
+    border-radius:8px;
+    letter-spacing:.04em;
+  }
+  .corr p{font-size:.9rem;color:#334155;margin-bottom:7px;}
+  .corr p:last-child{margin-bottom:0;}
+  .corr ul{margin:6px 0 6px 4px;list-style:none;}
+  .corr ul li{
+    font-size:.88rem;color:#334155;
+    padding-left:18px;position:relative;margin-bottom:5px;
+  }
+  .corr ul li::before{
+    content:"▸";
+    position:absolute;left:0;color:var(--teal-2);font-weight:800;
+  }
+  .why-false{color:#94a3b8;}
+  .hl{font-weight:700;color:var(--navy);}
+  .ko{font-weight:700;color:var(--red);}
+  .ok{font-weight:700;color:var(--green);}
+
+  /* ============ CLINICAL CASES ============ */
+  .case{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    margin-bottom:34px;
+    overflow:hidden;
+  }
+  .case-head{
+    background:linear-gradient(135deg,var(--navy),var(--navy-2));
+    color:#fff;
+    padding:16px 22px;
+    display:flex;flex-wrap:wrap;align-items:center;gap:12px;
+  }
+  .case-id{
+    background:var(--teal-2);
+    color:#052e2b;
+    font-weight:800;
+    font-size:.8rem;
+    padding:4px 12px;border-radius:8px;
+    letter-spacing:.04em;
+  }
+  .case-head h3{font-size:1.05rem;font-weight:700;}
+  .case-body{padding:20px 22px;}
+  .vignette{
+    background:var(--slate-soft);
+    border-radius:12px;
+    padding:16px 18px;
+    font-size:.93rem;
+    color:#334155;
+    border-left:4px solid var(--navy-2);
+    margin-bottom:20px;
+  }
+  .vignette strong{color:var(--navy);}
+  .vignette .lbl{
+    display:inline-block;
+    font-size:.72rem;font-weight:800;letter-spacing:.06em;
+    text-transform:uppercase;color:var(--teal);
+    margin-right:6px;
+  }
+  .case-q{
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:15px 17px;
+    margin-bottom:16px;
+    background:#fdfefe;
+  }
+  .case-q .qtext{font-size:.96rem;margin-bottom:11px;}
+  .case-q ul.options li{background:#f6f9fc;font-size:.9rem;padding:7px 11px;}
+
+  /* ============ CONCEPT MAP ============ */
+  .grid-2{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:20px;
+    margin-bottom:24px;
+  }
+  .panel{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:20px;
+    box-shadow:var(--shadow);
+  }
+  .panel h4{
+    color:var(--navy);
+    font-size:1rem;
+    font-weight:800;
+    margin-bottom:14px;
+    padding-bottom:9px;
+    border-bottom:2px dashed var(--border);
+    letter-spacing:-.01em;
+  }
+
+  /* Flow */
+  .flow{display:flex;flex-direction:column;align-items:stretch;gap:0;}
+  .flow-box{
+    border-radius:12px;
+    padding:13px 16px;
+    font-size:.9rem;
+    font-weight:600;
+    text-align:center;
+    border:2px solid;
+  }
+  .fb-start{background:var(--navy);color:#fff;border-color:var(--navy);}
+  .fb-decision{background:var(--amber-soft);color:var(--amber);border-color:#f0d19a;}
+  .fb-ok{background:var(--green-soft);color:var(--green);border-color:#bfe6cf;}
+  .fb-ko{background:var(--red-soft);color:var(--red);border-color:#f3c6c6;}
+  .fb-teal{background:var(--teal-soft);color:var(--teal);border-color:#b9e6e1;}
+  .arrow{
+    text-align:center;
+    color:var(--teal-2);
+    font-size:1.15rem;
+    line-height:1;
+    padding:6px 0;
+    font-weight:800;
+  }
+
+  /* Table */
+  table{
+    width:100%;
+    border-collapse:separate;
+    border-spacing:0;
+    font-size:.86rem;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:var(--shadow);
+    background:#fff;
+  }
+  thead th{
+    background:var(--navy);
+    color:#fff;
+    padding:12px 12px;
+    text-align:left;
+    font-weight:700;
+    font-size:.8rem;
+    letter-spacing:.03em;
+    text-transform:uppercase;
+  }
+  tbody td{
+    padding:11px 12px;
+    border-bottom:1px solid var(--border);
+    color:#334155;
+    vertical-align:top;
+  }
+  tbody tr:nth-child(even) td{background:#f8fafc;}
+  tbody tr:last-child td{border-bottom:none;}
+  tbody td:first-child{font-weight:700;color:var(--navy);}
+
+  /* Key numbers */
+  .numbers{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:14px;
+  }
+  .num-card{
+    background:linear-gradient(135deg,var(--navy),var(--teal));
+    color:#fff;
+    border-radius:14px;
+    padding:18px 14px;
+    text-align:center;
+    box-shadow:var(--shadow);
+  }
+  .num-card .big{
+    font-size:1.7rem;font-weight:800;display:block;letter-spacing:-.03em;
+  }
+  .num-card .small{
+    font-size:.78rem;color:#c8ebe7;font-weight:500;margin-top:3px;display:block;
+  }
+
+  /* Cause pills */
+  .pills{display:flex;flex-wrap:wrap;gap:9px;}
+  .pill{
+    font-size:.82rem;
+    font-weight:600;
+    padding:7px 14px;
+    border-radius:999px;
+    border:1px solid;
+  }
+  .p-ov{background:#eef6ff;color:#1d4ed8;border-color:#c7ddfb;}
+  .p-ut{background:#fdf1f7;color:#be185d;border-color:#f7cfe3;}
+  .p-inf{background:#fef3f2;color:#b91c1c;border-color:#f7d4d1;}
+  .p-end{background:#f3f0ff;color:#6d28d9;border-color:#ddd3fb;}
+  .p-imm{background:#ecfdf5;color:#047857;border-color:#bff0db;}
+  .p-iat{background:#fefce8;color:#a16207;border-color:#f3e9ab;}
+
+  /* ============ MNEMO ============ */
+  .mnemo{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-left:6px solid var(--teal);
+    border-radius:14px;
+    padding:18px 20px;
+    margin-bottom:18px;
+    box-shadow:var(--shadow);
+  }
+  .mnemo h4{
+    color:var(--navy);
+    font-size:1rem;
+    font-weight:800;
+    margin-bottom:8px;
+  }
+  .mnemo .acro{
+    font-family:'Inter',monospace;
+    font-weight:800;
+    color:var(--teal);
+    font-size:1.05rem;
+    letter-spacing:.06em;
+    background:var(--teal-soft);
+    display:inline-block;
+    padding:3px 12px;
+    border-radius:8px;
+    margin-bottom:10px;
+  }
+  .mnemo p{font-size:.9rem;color:#334155;}
+  .mnemo ul{margin:8px 0 0 0;list-style:none;}
+  .mnemo ul li{
+    font-size:.88rem;color:#334155;
+    padding-left:20px;position:relative;margin-bottom:5px;
+  }
+  .mnemo ul li::before{
+    content:"✔";position:absolute;left:0;color:var(--teal-2);font-weight:800;
+  }
+
+  .trap{
+    background:var(--amber-soft);
+    border:1px solid #f2d9a8;
+    border-left:6px solid var(--amber);
+    border-radius:14px;
+    padding:16px 20px;
+    margin-bottom:14px;
+  }
+  .trap h4{color:var(--amber);font-size:.95rem;font-weight:800;margin-bottom:7px;}
+  .trap p{font-size:.89rem;color:#5b4520;}
+
+  /* ============ FOOTER ============ */
+  footer{
+    background:linear-gradient(135deg,var(--navy),var(--teal));
+    color:#fff;
+    text-align:center;
+    padding:40px 24px;
+    margin-top:20px;
+  }
+  footer p{font-size:1rem;font-weight:600;}
+  footer .sub{font-size:.85rem;color:#bfe6e2;font-weight:400;margin-top:8px;}
+
+  @media (max-width:640px){
+    .qcard{padding:17px 15px;}
+    .case-body{padding:16px 15px;}
+    .section-head{flex-direction:column;align-items:flex-start;gap:10px;}
+    ul.options li{font-size:.88rem;}
+    table{font-size:.78rem;}
+    thead th, tbody td{padding:8px 9px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <span class="kicker">Gynécologie–Obstétrique · 4<sup>e</sup> année</span>
+    <h1>Menace d'avortement &amp; Avortement spontané</h1>
+    <h2>Dossier de révision complet — Banque de QCM, cas cliniques, carte conceptuelle &amp; mnémotechniques</h2>
+    <div class="header-meta">
+      <span class="chip">Pr. Y. TAYEBI — CHU Douéra</span>
+      <span class="chip">25 QCM exigeants</span>
+      <span class="chip">5 cas hospitaliers algériens</span>
+      <span class="chip">Conforme aux standards des facultés algériennes</span>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ============================================================ -->
+<!-- PARTIE 1 : BANQUE DE QCM                                      -->
+<!-- ============================================================ -->
+<section id="qcm">
+  <div class="section-head">
+    <div class="section-num">1</div>
+    <div>
+      <h2>Banque de 25 QCM exigeants</h2>
+      <p>Questions mélangées : réponses justes/fausses, choix multiples et choix simples — corrigés détaillés et commentés.</p>
+    </div>
+  </div>
+
+  <!-- Q1 -->
+  <article class="qcard">
+    <div class="qtop">
+      <span class="qnum">Q1</span>
+      <span class="theme">Définition — Menace d'avortement</span>
+      <span class="type-badge t-rj">Réponse juste</span>
+    </div>
+    <p class="qtext">Concernant la menace d'avortement, quelle proposition est exacte ?</p>
+    <ul class="options">
+      <li><span class="letter">A</span><span>Elle se définit par l'expulsion partielle des produits de la conception.</span></li>
+      <li><span class="letter">B</span><span>Elle associe des contractions utérines à des saignements susceptibles d'entraver la poursuite de la grossesse.</span></li>
+      <li><span class="letter">C</span><span>L'activité cardiaque fœtale est constamment absente.</span></li>
+      <li><span class="letter">D</span><span>L'orifice interne du col est habituellement dilaté.</span></li>
+      <li><span class="letter">E</span><span>Les douleurs pelviennes sont constamment retrouvées.</span></li>
+    </ul>
+    <div class="corr">
+      <div class="corr-head">
+        <span class="corr-title">Correction &amp; explication</span>
+        <span class="ans-badge">Réponse : B</span>
+      </div>
+      <p>La menace d'avortement est une entité <span class="hl">clinique</span> définie par l'apparition de contractions utérines accompagnées de saignements, capables d'entraver la poursuite de la grossesse — mais où <span class="ok">la grossesse est encore évolutive</span>.</p>
+      <ul>
+        <li><span class="ko">A fausse :</span> l'expulsion <em>partielle</em> définit l'<span class="hl">avortement incomplet</span>, entité évolutive distincte, avec processus d'expulsion déjà engagé.</li>
+        <li><span class="ko">C fausse :</span> au contraire, la présence d'une <span class="hl">activité cardiaque</span> est un critère diagnostique cardinal de la menace d'avortement. Son absence ferait basculer vers une grossesse arrêtée / avortement inévitable.</li>
+        <li><span class="ko">D fausse :</span> dans la menace, l'orifice interne du col est <span class="hl">fermé</span>. La dilatation cervicale est le signe qui fait franchir le cap vers l'avortement inévitable.</li>
+        <li><span class="ko">E fausse :</span> les douleurs pelviennes <span class="hl">peuvent manquer</span> — la métrorragie isolée est une présentation fréquente. Le cours insiste explicitement sur ce point.</li>
+      </ul>
+    </div>
+  </article>
+
+  <!-- Q2 -->
+  <article class="qcard">
+    <div class="qtop">
+      <span class="qnum">Q2</span>
+      <span class="theme">Étiologies</span>
+      <span class="type-badge t-multi">Choix multiples</span>
+    </div>
+    <p class="qtext">Parmi les propositions suivantes concernant les étiologies de la menace d'avortement, quelles sont les réponses exactes ? <em>(2 à 3 réponses)</em></p>
+    <ul class="options">
+      <li><span class="letter">A</span><span>Les anomalies chromosomiques dominent les causes ovulaires.</span></li>
+      <li><span class="letter">B</span><span>L'iso-immunisation Rhésus appartient aux causes endocriniennes.</span></li>
+      <li><span class="letter">C</span><span>Les malformations utérines constituent une cause utérine.</span></li>
+      <li><span class="letter">D</span><span>L'herpès, la rubéole et le CMV figurent parmi les causes infectieuses.</span></li>
+      <li><span class="letter">E</span><span>La grossesse multiple relève des causes immunologiques.</span></li>
+    </ul>
+    <div class="corr">
+      <div class="corr-head">
+        <span class="corr-title">Correction &amp; explication</span>
+        <span class="ans-badge">Réponses : A, C, D</span>
+      </div>
+      <p>Le cours classe les étiologies en six grandes familles : <span class="hl">ovulaire, utérine, infectieuse, endocrinienne, immunologique et iatrogène</span>.</p>
+      <ul>
+        <li><span class="ok">A exacte :</span> la cause ovulaire est <em>essentiellement chromosomique</em> ; les grossesses multiples appartiennent également à ce groupe.</li>
+        <li><span class="ko">B fausse :</span> l'iso-immunisation (incompatibilité Rhésus) relève des causes <span class="hl">immunologiques</span>, au même titre que les maladies auto-immunes (lupus, SAPL). La confusion est classique en QCM.</li>
+        <li><span class="ok">C exacte :</span> les malformations utérines (utérus cloisonné, bicorne, fibrome sous-muqueux) compromettent l'implantation et la vascularisation trophoblastique.</li>
+        <li><span class="ok">D exacte :</span> herpès, rubéole et CMV sont les trois agents infectieux explicitement cités dans le cours.</li>
+        <li><span class="ko">E fausse :</span> la grossesse multiple est une cause <span class="hl">ovulaire</span> (liée au produit de conception), non immunologique. Le piège repose sur l'analogie trompeuse « gémellaire → immunologique ».</li>
+      </ul>
+    </div>
+  </article>
+
+  <!-- Q3 -->
+  <article class="qcard">
+    <div class="qtop">
+      <span class="qnum">Q3</span>
+      <span class="theme">Examen clinique</span>
+      <span class="type-badge t-simple">Choix simple</span>
+    </div>
+    <p class="qtext">Chez une patiente consultant pour une menace d'avortement, l'examen clinique retrouve typiquement :</p>
+    <ul class="options">
+      <li><span class="letter">A</span><span>Un col ouvert laissant sourdre des débris de gestation.</span></li>
+      <li><span class="letter">B</span><span>Un orifice interne fermé, un utérus mou, augmenté de volume en rapport avec l'âge gestationnel, et une sensibilité utérine.</span></li>
+      <li><span class="letter">C</span><span>Un utérus de volume nettement inférieur au terme théorique.</span></li>
+      <li><span class="letter">D</span><span>Un saignement dont l'origine est cervicale et non endo-utérine.</span></li>
+      <li><span class="letter">E</span><span>Une absence totale de sensibilité utérine à la palpation.</span></li>
+    </ul>
+    <div class="corr">
+      <div class="corr-head">
+        <span class="corr-title">Correction &amp; explication</span>
+        <span class="ans-badge">Réponse : B</span>
+      </div>
+      <p>La triade sémiologique de la menace d'avortement à l'examen est : <span class="hl">orifice interne fermé + utérus mou et concordant avec l'âge gestationnel + sensibilité utérine</span>. Le saignement est d'origine <span class="hl">endo-utérine</span>.</p>
+      <ul>
+        <li><span class="ko">A fausse :</span> col ouvert + débris = avortement <span class="hl">inévitable ou incomplet</span>.</li>
+        <li><span class="ko">C fausse :</span> un utérus plus petit que le terme évoque un avortement <span class="hl">incomplet ou complet</span>, ou une grossesse arrêtée.</li>
+        <li><span class="ko">D fausse :</span> le cours précise bien que « l'origine du saignement est endo-utérine » — un saignement cervical orienterait vers une lésion locale (polype, ectropion, cervicite).</li>
+        <li><span class="ko">E fausse :</span> la sensibilité utérine fait partie du tableau ; son absence n'est pas un signe négatif attendu.</li>
+      </ul>
+    </div>
+  </article>
+
+  <!-- Q4 -->
+  <article class="qcard">
+    <div class="qtop">
+      <span class="qnum">Q4</span>
+      <span class="theme">Échographie — Menace</span>
+      <span class="type-badge t-rf">Réponse fausse</span>
+    </div>
+    <p class="qtext">Concernant l'apport de l'échographie dans la menace d'avortement, quelle proposition est <strong>fausse</strong> ?</p>
+    <ul class="options">
+      <li><span class="letter">A</span><span>Elle objective la vitalité fœtale.</span></li>
+      <li><span class="letter">B</span><span>Elle confirme le siège intra-utérin de la grossesse.</span></li>
+      <li><span class="letter">C</span><span>Elle apprécie l'existence et l'étendue du décollement trophoblastique.</span></li>
+      <li><span class="letter">D</span><span>L'absence d'activité cardiaque constitue un critère diagnostique de la menace d'avortement.</span></li>
+      <li><span class="letter">E</span><span>Elle permet de suivre l'évolution du décollement sous traitement.</span></li>
+    </ul>
+    <div class="corr">
+      <div class="corr-head">
+        <span class="corr-title">Correction &amp; explication</span>
+        <span class="ans-badge">Réponse fausse : D</span>
+      </div>
+      <p>L'échographie est le complément <span class="hl">indissociable</span> de la clinique dans la menace d'avortement : elle vérifie la vitalité fœtale, le siège intra-utérin, et quantifie le décollement trophoblastique.</p>
+      <ul>
+        <li><span class="ko">D est la proposition fausse :</span> c'est <span class="hl">l'absence</span> d'activité cardiaque qui est <em>incompatible</em> avec le diagnostic de menace d'avortement — elle signe l'arrêt de la grossesse. Le critère diagnostique est bien la <span class="ok">présence</span> d'une grossesse évolutive avec activité cardiaque, associée à un décollement partiel du sac gestationnel.</li>
+        <li><span class="ok">A, B, C, E sont exactes :</span> elles correspondent point par point aux données du cours. Le piège consiste à inverser une proposition vraie en introduisant une négation trompeuse.</li>
+      </ul>
+    </div>
+  </article>
+
+  <!-- Q5 -->
+  <article class="qcard">
+    <div class="qtop">
+      <span class="qnum">Q5</span>
+      <span class="theme">Évolution favorable</span>
+      <span class="type-badge t-multi">Choix multiples</span>
+    </div>
+    <p class="qtext">L'évolution favorable d'une menace d'avortement se traduit par : <em>(2 à 3 réponses)</em></p>
+    <ul class="options">
+      <li><span class="letter">A</span><span>Le tarissement du saignement.</span></li>
+      <li><span class="letter">B</span><span>L'apparition d'un oligoamnios à l'échographie.</span></li>
+      <li><span class="letter">C</span><span>La disparition des douleurs.</span></li>
+      <li><span class="letter">D</span><span>La dilatation progressive de l'orifice interne du col.</span></li>
+      <li><span class="letter">E</span><span>La disparition du décollement et la normalisation de l'échographie.</span></li>
+    </ul>
+    <div class="corr">
+      <div class="corr-head">
+        <span class="corr-title">Correction &amp; explication</span>
+        <span class="ans-badge">Réponses : A, C, E</span>
+      </div>
+      <p>Le cours décrit l'évolution favorable comme la <span class="hl">poursuite de la grossesse</span>, objectivée par trois éléments clinico-échographiques : tarissement du saignement, disparition des douleurs, et disparition du décollement à l'échographie avec normalisation de celle-ci.</p>
+      <ul>
+        <li><span class="ko">B fausse :</span> l'oligoamnios est un signe d'<span class="hl">avortement inévitable</span> par rupture des membranes — c'est un signe d'aggravation, non de guérison.</li>
+        <li><span class="ko">D fausse :</span> la dilatation du col signe le passage à l'avortement inévitable. Une menace qui évolue favorablement garde un col <span class="hl">fermé</span>.</li>
+      </ul>
+    </div>
+  </article>
+
+  <!-- Q6 -->
+  <article class="qcard">
+    <div class="qtop">
+      <span class="qnum">Q6</span>
+      <span class="theme">Traitement — Menace</span>
+      <span class="type-badge t-simple">Choix simple</span>
+    </div>
+    <p class="qtext">Parmi les mesures thérapeutiques suivantes, laquelle <strong>n'a pas sa place</strong> dans la prise en charge d'une menace d'avortement ?</p>
+    <ul class="options">
+      <li><span class="letter">A</span><span>Le repos.</span></li>
+      <li><span class="letter">B</span><span>L'acide folique.</span></li>
+      <li><span class="letter">C</span><span>La progestérone injectable ou intravaginale.</span></li>
+      <li><span class="letter">D</span><span>Le curetage évacuateur systématique.</span></li>
+      <li><span class="letter">E</span><span>Le Spasfon en cas de douleur.</span></li>
+    </ul>
+    <div class="corr">
+      <div class="corr-head">
+        <span class="corr-title">Correction &amp; explication</span>
+        <span class="ans-badge">Réponse : D</span>
+      </div>
+      <p>La prise en charge de la menace d'avortement est <span class="hl">conservatrice</span> : on cherche à maintenir la grossesse. Le traitement associe repos, acide folique, progestérone (injectable ou intravaginale), Spasfon pour la douleur, et prise en charge de la cause identifiée.</p>
+      <ul>
+        <li><span class="ko">D est la réponse :</span> le curetage évacuateur est un geste d'<span class="hl">évacuation utérine</span> réservé aux avortements avec rétention (incomplet, inévitable avec expulsion partielle). L'appliquer à une grossesse évolutive serait une faute médicale grave — il détruirait une grossesse viable.</li>
+        <li><span class="ok">A, B, C, E :</span> toutes relèvent du traitement médical de la menace, conformément au cours.</li>
+      </ul>
+    </div>
+  </article>
+
+  <!-- Q7 -->
+  <article class="qcard">
+    <div class="qtop">
+      <span class="qnum">Q7</span>
+      <span class="theme">Définition OMS 1976</span>
+      <span class="type-badge t-simple">Choix simple — SAUF</span>
+    </div>
+    <p class="qtext">Toutes les propositions suivantes concernant la définition de l'avortement spontané selon l'OMS (1976) sont exactes, <strong>SAUF</strong> :</p>
+    <ul class="options">
+      <li><span class="letter">A</span><span>Expulsion spontanée d'un embryon ou d'un fœtus avant qu'il soit viable.</span></li>
+      <li><span class="letter">B</span><span>Poids du produit de conception inférieur à 500 grammes.</span></li>
+      <li><span class="letter">C</span><span>Terme inférieur à 20 semaines de gestation, soit 22 semaines d'aménorrhée.</span></li>
+      <li><span class="letter">D</span><span>Cette définition inclut les interruptions volontaires de grossesse.</span></li>
+      <li><span class="letter">E</span><span>Environ 87 % des avortements surviennent au stade embryonnaire.</span></li>
+    </ul>
+    <div class="corr">
+      <div class="corr-head">
+        <span class="corr-title">Correction &amp; explication</span>
+        <span class="ans-badge">Réponse fausse (SAUF) : D</span>
+      </div>
+      <p>La définition de l'OMS 1976 est <span class="hl">strictement spontanée</span> : expulsion <em>spontanée</em> d'un embryon ou fœtus non viable, c'est-à-dire pesant <span class="hl">moins de 500 g</span> et/ou de <span class="hl">moins de 20 semaines de gestation (22 SA)</span>, le terme étant compté à partir du premier jour des dernières règles.</p>
+      <ul>
+        <li><span class="ko">D est la proposition fausse :</span> la définition exclut par nature les interruptions volontaires et thérapeutiques de grossesse, qui ne sont pas « spontanées ». C'est le piège sémantique le plus fréquent sur cette question.</li>
+        <li><span class="ok">A, B, C, E :</span> reflètent fidèlement le texte du cours. Notez la double équivalence <span class="hl">20 semaines de gestation = 22 SA</span> — la différence de 2 semaines correspond au décalage entre la date des dernières règles et la conception.</li>
+      </ul>
+    </div>
+  </article>
+
+  <!-- Q8 -->
+  <article class="qcard">
+    <div class="qtop">
+      <span class="qnum">Q8</span>
+      <span class="theme">Répartition par stade</span>
+      <span class="type-badge t-rj">Réponse juste</span>
+    </div>
+    <p class="qtext">Concernant la répartition des avortements spontanés selon le stade de développement, quelle proposition est exacte ?</p>
+    <ul class="options">
+      <li><span class="letter">A</span><span>87 % surviennent au stade fœtal et 13 % au stade embryonnaire.</span></li>
+      <li><span class="letter">B</span><span>87 % surviennent au stade embryonnaire et 13 % au stade fœtal.</span></li>
+      <li><span class="letter">C</span><span>La répartition est équilibrée : 50 % / 50 %.</span></li>
+      <li><span class="letter">D</span><span>13 % surviennent au stade embryonnaire et 87 % au stade fœtal.</span></li>
+      <li><span class="letter">E</span><span>La majorité survient après 22 semaines d'aménorrhée.</span></li>
+    </ul>
+    <div class="corr">
+      <div class="corr-head">
+        <span class="corr-title">Correction &amp; explication</span>
+        <span class="ans-badge">Réponse : B</span>
+      </div>
+      <p>Le cours précise que <span class="hl">87 % des avortements surviennent au stade embryonnaire</span> (période d'organogenèse, où les anomalies chromosomiques s'expriment massivement) et <span class="hl">13 % au stade fœtal</span>.</p>
+      <ul>
+        <li><span class="ko">A, D fausses :</span> inversion pure et simple des chiffres — piège docimologique classique.</li>
+        <li><span class="ko">C fausse :</span> la répartition n'est pas équilibrée, elle est très fortement asymétrique.</li>
+        <li><span class="ko">E fausse :</span> par définition, l'avortement se produit <em>avant</em> 22 SA. Un arrêt de grossesse après ce terme ne s'appelle plus avortement mais <span class="hl">mort fœtale in utero</span> (MFIU).</li>
+      </ul>
+      <p><span class="hl">Logique physiopathologique :</span> la majorité des anomalies chromosomiques (trisomies, monosomie X…) sont létales très précocement, expliquant la prédominance écrasante du stade embryonnaire.</p>
+    </div>
+  </article>
+
+  <!-- Q9 -->
+  <article class="qcard">
+    <div class="qtop">
+      <span class="qnum">Q9</span>
+      <span class="theme">Classification évolutive</span>
+      <span class="type-badge t-multi">Choix multiples</span>
+    </div>
+    <p class="qtext">Parmi les entités suivantes, lesquelles appartiennent à la classification évolutive de l'avortement spontané ? <em>(2 à 3 réponses)</em></p>
+    <ul class="options">
+      <li><span class="letter">A</span><span>La grossesse extra-utérine.</span></li>
+      <li><span class="letter">B</span><span>La menace d'avortement.</span></li>
+      <li><span class="letter">C</span><span>L'avortement inévitable.</span></li>
+      <li><span class="letter">D</span><span>La mole hydatiforme.</span></li>
+      <li><span class="letter">E</span><span>L'avortement incomplet.</span></li>
+    </ul>
+    <div class="corr">
+      <div class="corr-head">
+        <span class="corr-title">Correction &amp; explication</span>
+        <span class="ans-badge">Réponses : B, C, E</span>
+      </div>
+      <p>Le cours énumère cinq stades évolutifs : <span class="hl">menace d'avortement, avortement inévitable, avortement incomplet, avortement complet, avortement septique</span>. C'est une <em>gradation</em> du même processus pathologique.</p>
+      <ul>
+        <li><span class="ko">A fausse :</span> la GEU est une <span class="hl">localisation ectopique</span> de la grossesse (diagnostic topographique), et non un stade d'expulsion. Elle figure dans les <em>diagnostics différentiels</em>.</li>
+        <li><span class="ko">D fausse :</span> la mole hydatiforme est une <span class="hl">pathologie trophoblastique</span> proliférative, également un diagnostic différentiel.</li>
+        <li><span class="ok">B, C, E :</span> ce sont bien trois des cinq stades du processus d'expulsion décrits dans le cours.</li>
+      </ul>
+      <p><span class="hl">À retenir :</span> la classification évolutive répond à la question « où en est le processus d'expulsion ? », tandis que les diagnostics différentiels répondent à « s'agit-il bien d'un avortement ? ».</p>
+    </div>
+  </article>
+
+  <!-- Q10 -->
+  <article class="qcard">
+    <div class="qtop">
+      <span class="qnum">Q10</span>
+      <span class="theme">Avortement inévitable — Clinique</span>
+      <span class="type-badge t-simple">Choix simple</span>
+    </div>
+    <p class="qtext">Le tableau clinique d'un avortement inévitable associe :</p>
+    <ul class="options">
+      <li><span class="letter">A</span><span>Des douleurs pelviennes intermittentes, des métrorragies souvent importantes avec caillots, et un orifice interne du col dilaté.</span></li>
+      <li><span class="letter">B</span><span>Un orifice interne fermé et une absence totale de douleur.</span></li>
+      <li><span class="letter">C</span><span>Une cavité utérine vide à l'échographie avec col fermé.</span></li>
+      <li><span class="letter">D</span><span>Un utérus de volume inférieur au terme avec un col fermé.</span></li>
+      <li><span class="letter">E</span><span>Une absence constante de métrorragie.</span></li>
+    </ul>
+    <div class="corr">
+      <div class="corr-head">
+        <span class="corr-title">Correction &amp; explication</span>
+        <span class="ans-badge">Réponse : A</span>
+      </div>
+      <p>L'avortement inévitable est le stade où le processus d'expulsion est <span class="hl">engagé et irréversible</span> : douleurs pelviennes intermittentes de type contractile, métrorragies souvent abondantes avec caillots, écoulement de liquide amniotique, et <span class="hl">dilatation de l'orifice interne du col</span>.</p>
+      <ul>
+        <li><span class="ko">B fausse :</span> décrit la menace d'avortement (col fermé), pas l'avortement inévitable.</li>
+        <li><span class="ko">C fausse :</span> cavité vide + col fermé évoque un <span class="hl">avortement complet</span> ou une GEU — situation opposée.</li>
+        <li><span class="ko">D fausse :</span> associe deux éléments contradictoires avec le stade inévitable ; l'utérus est plutôt augmenté, et le col est dilaté.</li>
+        <li><span class="ko">E fausse :</span> la métrorragie est un élément cardinal du tableau.</li>
+      </ul>
+    </div>
+  </article>
+
+  <!-- Q11 -->
+  <article class="qcard">
+    <div class="qtop">
+      <span class="qnum">Q11</span>
+      <span class="theme">Avortement inévitable — Échographie</span>
+      <span class="type-badge t-rf">Réponse fausse</span>
+    </div>
+    <p class="qtext">Concernant l'avortement inévitable, quelle proposition est <strong>fausse</strong> ?</p>
+    <ul class="options">
+      <li><span class="letter">A</span><span>L'échographie montre la présence du produit de la grossesse dans la cavité utérine.</span></li>
+      <li><span class="letter">B</span><span>Un oligoamnios peut être observé en cas de rupture des membranes.</span></li>
+      <li><span class="letter">C</span><span>Une quantité plus ou moins importante de caillots sanguins peut être visualisée.</span></li>
+      <li><span class="letter">D</span><span>L'orifice interne du col est constamment fermé.</span></li>
+      <li><span class="letter">E</span><span>Il peut exister un écoulement de liquide amniotique.</span></li>
+    </ul>
+    <div class="corr">
+      <div class="corr-head">
+        <span class="corr-title">Correction &amp; explication</span>
+        <span class="ans-badge">Réponse fausse : D</span>
+      </div>
+      <p>Dans l'avortement inévitable, le produit de la grossesse est <span class="hl">encore entier dans la cavité utérine</span> — c'est la différence clé avec l'avortement incomplet. L'échographie retrouve le sac/produit, un éventuel oligoamnios si les membranes sont rompues, et des caillots.</p>
+      <ul>
+        <li><span class="ko">D est la proposition fausse :</span> c'est précisément la <span class="hl">dilatation de l'orifice interne du col</span> qui définit le caractère « inévitable » et le distingue de la simple menace. Un col fermé signifierait que l'expulsion n'est pas engagée.</li>
+        <li><span class="ok">A, B, C, E :</span> conformes aux données du cours. Le mot « constamment » dans l'option D est un signal d'alerte : en médecine, les affirmations absolues (« toujours », « jamais », « constamment ») sont très souvent fausses.</li>
+      </ul>
+    </div>
+  </article>
+
+  <!-- Q12 -->
+  <article class="qcard">
+    <div class="qtop">
+      <span class="qnum">Q12</span>
+      <span class="theme">Avortement incomplet</span>
+      <span class="type-badge t-multi">Choix multiples</span>
+    </div>
+    <p class="qtext">Concernant l'avortement incomplet, quelles propositions sont exactes ? <em>(2 à 3 réponses)</em></p>
+    <ul class="options">
+      <li><span class="letter">A</span><span>L'expulsion des produits de la grossesse est partielle, le processus d'avortement est inachevé.</span></li>
+      <li><span class="letter">B</span><span>L'utérus est augmenté de taille mais souvent de volume inférieur au terme théorique.</span></li>
+      <li><span class="letter">C</span><span>L'échographie montre une cavité utérine totalement vide.</span></li>
+      <li><span class="letter">D</span><span>L'orifice interne du col est dilaté, avec parfois des débris de gestation.</span></li>
+      <li><span class="letter">E</span><span>Aucun geste d'évacuation utérine n'est nécessaire.</span></li>
+    </ul>
+    <div class="corr">
+      <div class="corr-head">
+        <span class="corr-title">Correction &amp; explication</span>
+        <span class="ans-badge">Réponses : A, B, D</span>
+      </div>
+      <p>L'avortement incomplet se définit par une <span class="hl">expulsion partielle</span> des produits de la conception : le processus est inachevé, il persiste une rétention intracavitaire.</p>
+      <ul>
+        <li><span class="ok">A exacte :</span> définition même de l'entité.</li>
+        <li><span class="ok">B exacte :</span> l'utérus est augmenté mais <span class="hl">inférieur au terme</span>, car une partie du contenu a déjà été expulsée.</li>
+        <li><span class="ko">C fausse :</span> la vacuité utérine caractérise l'avortement <span class="hl">complet</span>. Ici, l'échographie montre au contraire des signes de <em>rétention partielle</em>.</li>
+        <li><span class="ok">D exacte :</span> le col reste dilaté, parfois avec des débris visibles à l'orifice.</li>
+        <li><span class="ko">E fausse :</span> la prise en charge repose justement sur un <span class="hl">curetage évacuateur rapide</span>, pour prévenir hémorragie, infection et rétention prolongée.</li>
+      </ul>
+    </div>
+  </article>
+
+  <!-- Q13 -->
+  <article class="qcard">
+    <div class="qtop">
+      <span class="qnum">Q13</span>
+      <span class="theme">Prise en charge — Avortement incomplet</span>
+      <span class="type-badge t-simple">Choix simple</span>
+    </div>
+    <p class="qtext">La prise en charge de l'avortement incomplet repose avant tout sur :</p>
+    <ul class="options">
+      <li><span class="letter">A</span><span>L'abstention thérapeutique avec surveillance simple.</span></li>
+      <li><span class="letter">B</span><span>Un curetage évacuateur rapide.</span></li>
+      <li><span class="letter">C</span><span>La prescription isolée de progestérone.</span></li>
+      <li><span class="letter">D</span><span>Le repos strict seul.</span></li>
+      <li><span class="letter">E</span><span>Une surveillance échographique différée à un mois.</span></li>
+    </ul>
+    <div class="corr">
+      <div class="corr-head">
+        <span class="corr-title">Correction &amp; explication</span>
+        <span class="ans-badge">Réponse : B</span>
+      </div>
+      <p>Le cours est explicite : l'avortement incomplet impose une <span class="hl">prise en charge rapide par curetage évacuateur</span>.</p>
+      <ul>
+        <li><span class="ko">A et E fausses :</span> la rétention de débris expose à l'<span class="hl">hémorragie secondaire</span>, à l'<span class="hl">infection</span> (endométrite, avortement septique) et aux <span class="hl">synéchies</span>. Attendre un mois serait une faute.</li>
+        <li><span class="ko">C fausse :</span> la progestérone vise à <em>maintenir</em> une grossesse évolutive — logique opposée à celle d'un avortement déjà engagé.</li>
+        <li><span class="ko">D fausse :</span> le repos est un adjuvant, jamais un traitement curatif d'une rétention.</li>
+      </ul>
+      <p><span class="hl">Point clé d'examen :</span> opposition stricte entre <em>menace</em> (traitement conservateur) et <em>avortement incomplet</em> (évacuation).</p>
+    </div>
+  </article>
+
+  <!-- Q14 -->
+  <article class="qcard">
+    <div class="qtop">
+      <span class="qnum">Q14</span>
+      <span class="theme">Avortement complet</span>
+      <span class="type-badge t-simple">Choix simple — SAUF</span>
+    </div>
+    <p class="qtext">Toutes les propositions suivantes concernant l'avortement complet sont exactes, <strong>SAUF</strong> :</p>
+    <ul class="options">
+      <li><span class="letter">A</span><span>L'expulsion des produits de la grossesse est complète.</span></li>
+      <li><span class="letter">B</span><span>L'utérus est plus petit que la durée de la grossesse.</span></li>
+      <li><span class="letter">C</span><span>L'orifice cervical peut être fermé.</span></li>
+      <li><span class="letter">D</span><span>L'échographie montre une cavité utérine vide.</span></li>
+      <li><span class="letter">E</span><span>Un curetage évacuateur est systématiquement indiqué.</span></li>
+    </ul>
+    <div class="corr">
+      <div class="corr-head">
+        <span class="corr-title">Correction &amp; explication</span>
+        <span class="ans-badge">Réponse fausse (SAUF) : E</span>
+      </div>
+      <p>Dans l'avortement complet, l'expulsion est totale : l'utérus est <span class="hl">plus petit que le terme</span>, le col <span class="hl">peut être fermé</span>, et l'échographie montre une <span class="hl">cavité utérine vide</span>. C'est cette vacuité qui a un <span class="hl">rôle déterminant dans la prise en charge</span>.</p>
+      <ul>
+        <li><span class="ko">E est la proposition fausse :</span> devant une cavité vide, <span class="hl">il n'y a pas de curetage</span> — le geste serait inutile et délétère (risque de synéchies, de perforation, d'infection). C'est un piège récurrent : beaucoup d'étudiants associent « avortement » et « curetage » de façon réflexe.</li>
+        <li><span class="ok">A, B, C, D :</span> correspondent exactement aux données du cours.</li>
+      </ul>
+    </div>
+  </article>
+
+  <!-- Q15 -->
+  <article class="qcard">
+    <div class="qtop">
+      <span class="qnum">Q15</span>
+      <span class="theme">Diagnostic différentiel — Cavité vide</span>
+      <span class="type-badge t-simple">Choix simple</span>
+    </div>
+    <p class="qtext">Devant une cavité utérine échographiquement vide chez une patiente avec aménorrhée et métrorragies, le diagnostic différentiel prioritaire à éliminer est :</p>
+    <ul class="options">
+      <li><span class="letter">A</span><span>La grossesse extra-utérine.</span></li>
+      <li><span class="letter">B</span><span>La mole hydatiforme.</span></li>
+      <li><span class="letter">C</span><span>Le placenta bas inséré.</span></li>
+      <li><span class="letter">D</span><span>La menace d'avortement.</span></li>
+      <li><span class="letter">E</span><span>L'avortement septique.</span></li>
+    </ul>
+    <div class="corr">
+      <div class="corr-head">
+        <span class="corr-title">Correction &amp; explication</span>
+        <span class="ans-badge">Réponse : A</span>
+      </div>
+      <p>Le cours souligne explicitement que le diagnostic différentiel de l'avortement complet (cavité vide) est la <span class="hl">grossesse extra-utérine</span>. Une cavité vide avec βhCG positifs doit toujours faire éliminer une GEU avant de conclure à un avortement complet.</p>
+      <ul>
+        <li><span class="ko">B fausse :</span> la mole hydatiforme donne une image intracavitaire « en tempête de neige », non une cavité vide.</li>
+        <li><span class="ko">C fausse :</span> le placenta bas inséré se manifeste au 2<sup>e</sup>–3<sup>e</sup> trimestre, pas devant une cavité vide du 1<sup>er</sup> trimestre.</li>
+        <li><span class="ko">D fausse :</span> la menace d'avortement comporte par définition un sac intra-utérin avec activité cardiaque.</li>
+        <li><span class="ko">E fausse :</span> l'avortement septique comporte un contexte fébrile et infectieux, non une cavité vide isolée.</li>
+      </ul>
+      <p><span class="hl">Réflexe de sécurité :</span> cavité vide + βhCG positifs = éliminer une GEU par βhCG sériques répétés et échographie endovaginale de suivi.</p>
+    </div>
+  </article>
+
+  <!-- Q16 -->
+  <article class="qcard">
+    <div class="qtop">
+      <span class="qnum">Q16</span>
+      <span class="theme">Diagnostics différentiels</span>
+      <span class="type-badge t-multi">Choix multiples</span>
+    </div>
+    <p class="qtext">Parmi les diagnostics différentiels des métrorragies du premier trimestre, on retient : <em>(2 à 3 réponses)</em></p>
+    <ul class="options">
+      <li><span class="letter">A</span><span>La grossesse extra-utérine.</span></li>
+      <li><span class="letter">B</span><span>Le fibrome utérin.</span></li>
+      <li><span class="letter">C</span><span>La mole hydatiforme.</span></li>
+      <li><span class="letter">D</span><span>Le placenta bas inséré.</span></li>
+      <li><span class="letter">E</span><span>L'endométriose pelvienne.</span></li>
+    </ul>
+    <div class="corr">
+      <div class="corr-head">
+        <span class="corr-title">Correction &amp; explication</span>
+        <span class="ans-badge">Réponses : A, C, D</span>
+      </div>
+      <p>Le cours énumère cinq diagnostics différentiels : <span class="hl">grossesse extra-utérine, hémorragie génitale basse, mole hydatiforme, métrorragies non gravidiques, placenta bas inséré</span>.</p>
+      <ul>
+        <li><span class="ok">A exacte :</span> la GEU est le diagnostic le plus urgent à éliminer, car potentiellement mortel (rupture, hémopéritoine).</li>
+        <li><span class="ko">B fausse :</span> le fibrome utérin, bien que cause de saignements, n'est pas listé comme diagnostic différentiel dans le cours ; il relève des « métrorragies non gravidiques » mais n'est pas cité nommément. L'item a été introduit comme leurre plausible.</li>
+        <li><span class="ok">C exacte :</span> la mole hydatiforme donne des métrorragies précoces souvent abondantes, avec βhCG anormalement élevés et aspect échographique caractéristique.</li>
+        <li><span class="ok">D exacte :</span> un placenta bas inséré peut se manifester par des saignements — il figure explicitement dans la liste du cours.</li>
+        <li><span class="ko">E fausse :</span> l'endométriose se manifeste par des dysménorrhées et douleurs pelviennes chroniques, non par des métrorragies aiguës du premier trimestre.</li>
+      </ul>
+    </div>
+  </article>
+
+  <!-- Q17 -->
+  <article class="qcard">
+    <div class="qtop">
+      <span class="qnum">Q17</span>
+      <span class="theme">Piège GEU vs Menace</span>
+      <span class="type-badge t-simple">Choix simple</span>
+    </div>
+    <p class="qtext">Devant une femme présentant une aménorrhée, des douleurs pelviennes et des métrorragies, quel élément plaide le plus fortement <strong>contre</strong> une menace d'avortement et <strong>pour</strong> une grossesse extra-utérine ?</p>
+    <ul class="options">
+      <li><span class="letter">A</span><span>L'absence de sac intra-utérin à l'échographie endovaginale.</span></li>
+      <li><span class="letter">B</span><span>Un orifice interne du col fermé.</span></li>
+      <li><span class="letter">C</span><span>Un utérus mou et augmenté de volume.</span></li>
+      <li><span class="letter">D</span><span>La présence de débris dans la cavité utérine.</span></li>
+      <li><span class="letter">E</span><span>L'existence de douleurs pelviennes.</span></li>
+    </ul>
+    <div class="corr">
+      <div class="corr-head">
+        <span class="corr-title">Correction &amp; explication</span>
+        <span class="ans-badge">Réponse : A</span>
+      </div>
+      <p>L'élément discriminant majeur est le <span class="hl">siège de la grossesse</span>. La menace d'avortement suppose un sac intra-utérin avec activité cardiaque. L'absence de sac intra-utérin alors que les βhCG sont positifs oriente vers une GEU.</p>
+      <ul>
+        <li><span class="ko">B fausse :</span> le col fermé est retrouvé dans la menace d'avortement <em>et</em> dans la GEU — non discriminant.</li>
+        <li><span class="ko">C fausse :</span> l'utérus mou et augmenté se voit dans toute grossesse débutante, y compris la GEU (réaction déciduale).</li>
+        <li><span class="ko">D fausse :</span> des débris intracavitaires évoquent une rétention (avortement incomplet), pas une GEU.</li>
+        <li><span class="ko">E fausse :</span> les douleurs pelviennes sont communes aux deux tableaux.</li>
+      </ul>
+      <p><span class="hl">Règle d'or :</span> devant toute métrorragie du premier trimestre, la première question à se poser est « la grossesse est-elle bien <em>dans</em> l'utérus ? ».</p>
+    </div>
+  </article>
+
+  <!-- Q18 -->
+  <article class="qcard">
+    <div class="qtop">
+      <span class="qnum">Q18</span>
+      <span class="theme">Douleurs — Menace</span>
+      <span class="type-badge t-rf">Réponse fausse</span>
+    </div>
+    <p class="qtext">Concernant les douleurs dans la menace d'avortement, quelle proposition est <strong>fausse</strong> ?</p>
+    <ul class="options">
+      <li><span class="letter">A</span><span>Les douleurs pelviennes peuvent parfois manquer.</span></li>
+      <li><span class="letter">B</span><span>Les douleurs sont constantes et toujours d'intensité majeure.</span></li>
+      <li><span class="letter">C</span><span>Des contractions utérines accompagnent le tableau.</span></li>
+      <li><span class="letter">D</span><span>Les douleurs peuvent précéder ou accompagner les saignements.</span></li>
+      <li><span class="letter">E</span><span>Elles traduisent l'irritation utérine liée au décollement.</span></li>
+    </ul>
+    <div class="corr">
+      <div class="corr-head">
+        <span class="corr-title">Correction &amp; explication</span>
+        <span class="ans-badge">Réponse fausse : B</span>
+      </div>
+      <p>Le cours précise explicitement que « les douleurs pelviennes peuvent parfois manquer ». La métrorragie peut donc être le seul symptôme révélateur.</p>
+      <ul>
+        <li><span class="ko">B est la proposition fausse :</span> affirmer que les douleurs sont <span class="hl">constantes</span> et <span class="hl">toujours intenses</span> contredit directement le cours. Les deux adverbes absolutistes sont des leurres classiques.</li>
+        <li><span class="ok">A, C, D, E :</span> cohérentes avec la définition (contractions utérines + saignement) et avec la physiopathologie : le décollement trophoblastique irrite le myomètre et déclenche des contractions.</li>
+      </ul>
+      <p><span class="hl">Astuce docimologique :</span> en QCM de gynécologie-obstétrique, méfiez-vous systématiquement des mots « toujours », « jamais », « constamment », « systématiquement ».</p>
+    </div>
+  </article>
+
+  <!-- Q19 -->
+  <article class="qcard">
+    <div class="qtop">
+      <span class="qnum">Q19</span>
+      <span class="theme">Étiologies — Classement</span>
+      <span class="type-badge t-multi">Choix multiples</span>
+    </div>
+    <p class="qtext">Concernant le classement étiologique des menaces d'avortement, quelles propositions sont exactes ? <em>(2 à 3 réponses)</em></p>
+    <ul class="options">
+      <li><span class="letter">A</span><span>L'herpès, la rubéole et le CMV sont des causes infectieuses reconnues.</span></li>
+      <li><span class="letter">B</span><span>Les causes iatrogènes sont possibles et parfois évitables.</span></li>
+      <li><span class="letter">C</span><span>Les malformations utérines constituent des causes iatrogènes.</span></li>
+      <li><span class="letter">D</span><span>L'iso-immunisation Rhésus est une cause infectieuse.</span></li>
+      <li><span class="letter">E</span><span>Les causes ovulaires sont essentiellement chromosomiques.</span></li>
+    </ul>
+    <div class="corr">
+      <div class="corr-head">
+        <span class="corr-title">Correction &amp; explication</span>
+        <span class="ans-badge">Réponses : A, B, E</span>
+      </div>
+      <p>Le cours insiste sur le caractère <span class="hl">multiple</span> des étiologies, dont certaines sont <span class="hl">évitables</span> — d'où l'intérêt d'une enquête étiologique systématique.</p>
+      <ul>
+        <li><span class="ok">A exacte :</span> herpès, rubéole et CMV sont les trois causes infectieuses citées textuellement.</li>
+        <li><span class="ok">B exacte :</span> les causes iatrogènes (gestes endo-utérins, médicaments, radiations) sont effectivement possibles et potentiellement évitables par une bonne pratique.</li>
+        <li><span class="ko">C fausse :</span> les malformations utérines sont des causes <span class="hl">utérines</span>, congénitales — rien à voir avec l'iatrogénie.</li>
+        <li><span class="ko">D fausse :</span> l'iso-immunisation est une cause <span class="hl">immunologique</span>.</li>
+        <li><span class="ok">E exacte :</span> le cours précise que la cause ovulaire est « essentiellement chromosomique ».</li>
+      </ul>
+      <p><span class="hl">Tableau mental à mémoriser :</span> Ovulaire – Utérine – Infectieuse – Endocrinienne – Immunologique – Iatrogène.</p>
+    </div>
+  </article>
+
+  <!-- Q20 -->
+  <article class="qcard">
+    <div class="qtop">
+      <span class="qnum">Q20</span>
+      <span class="theme">Traitement étiologique</span>
+      <span class="type-badge t-simple">Choix simple</span>
+    </div>
+    <p class="qtext">Dans la prise en charge de la menace d'avortement, « agir sur la cause si elle est identifiée » implique notamment :</p>
+    <ul class="options">
+      <li><span class="letter">A</span><span>La réalisation d'un curetage systématique.</span></li>
+      <li><span class="letter">B</span><span>Le traitement d'une infection génitale documentée.</span></li>
+      <li><span class="letter">C</span><span>Une antibioprophylaxie aveugle pour toutes les patientes.</span></li>
+      <li><span class="letter">D</span><span>Une aspiration endo-utérine exploratrice.</span></li>
+      <li><span class="letter">E</span><span>Une hystéroscopie diagnostique en urgence.</span></li>
+    </ul>
+    <div class="corr">
+      <div class="corr-head">
+        <span class="corr-title">Correction &amp; explication</span>
+        <span class="ans-badge">Réponse : B</span>
+      </div>
+      <p>Le traitement de la menace d'avortement est <span class="hl">médical et conservateur</span>. « Agir sur la cause » signifie traiter une étiologie identifiée : infection documentée, déséquilibre endocrinien (dysthyroïdie, diabète), cause immunologique, etc.</p>
+      <ul>
+        <li><span class="ko">A et D fausses :</span> tout geste d'évacuation ou d'aspiration détruirait une grossesse évolutive — contre-indication absolue dans la menace.</li>
+        <li><span class="ko">C fausse :</span> l'antibioprophylaxie aveugle n'est pas justifiée ; elle relève d'une démarche documentée, pas d'une systématisation.</li>
+        <li><span class="ko">E fausse :</span> l'hystéroscopie est un geste invasif endo-utérin, formellement proscrit pendant une grossesse évolutive.</li>
+      </ul>
+    </div>
+  </article>
+
+  <!-- Q21 -->
+  <article class="qcard">
+    <div class="qtop">
+      <span class="qnum">Q21</span>
+      <span class="theme">Critères OMS — Seuils</span>
+      <span class="type-badge t-rj">Réponse juste</span>
+    </div>
+    <p class="qtext">Selon l'OMS (1976), l'avortement spontané correspond à l'expulsion d'un produit de conception :</p>
+    <ul class="options">
+      <li><span class="letter">A</span><span>Pesant plus de 500 grammes.</span></li>
+      <li><span class="letter">B</span><span>Survenant avant 28 semaines d'aménorrhée.</span></li>
+      <li><span class="letter">C</span><span>Pesant moins de 500 grammes et/ou survenant avant 20 semaines de gestation (22 SA).</span></li>
+      <li><span class="letter">D</span><span>Survenant uniquement au stade fœtal.</span></li>
+      <li><span class="letter">E</span><span>Survenant uniquement après que le fœtus soit devenu viable.</span></li>
+    </ul>
+    <div class="corr">
+      <div class="corr-head">
+        <span class="corr-title">Correction &amp; explication</span>
+        <span class="ans-badge">Réponse : C</span>
+      </div>
+      <p>La définition OMS 1976 repose sur un <span class="hl">double critère pondéral et chronologique</span> : poids &lt; 500 g <strong>et/ou</strong> terme &lt; 20 semaines de gestation (= 22 SA).</p>
+      <ul>
+        <li><span class="ko">A fausse :</span> inversion du seuil — plus de 500 g correspond à un fœtus viable, donc à une mort fœtale in utero.</li>
+        <li><span class="ko">B fausse :</span> 28 SA est un seuil obsolète ; la référence actuelle de l'OMS est 22 SA.</li>
+        <li><span class="ko">D fausse :</span> 87 % des avortements surviennent au stade <span class="hl">embryonnaire</span>, pas fœtal.</li>
+        <li><span class="ko">E fausse :</span> par définition, l'avortement survient <em>avant</em> la viabilité.</li>
+      </ul>
+      <p><span class="hl">Mnémotechnique :</span> « <strong>5 – 20 – 22</strong> » → 500 g, 20 semaines de gestation, 22 SA.</p>
+    </div>
+  </article>
+
+  <!-- Q22 -->
+  <article class="qcard">
+    <div class="qtop">
+      <span class="qnum">Q22</span>
+      <span class="theme">Avortement septique</span>
+      <span class="type-badge t-simple">Choix simple — SAUF</span>
+    </div>
+    <p class="qtext">Toutes les propositions suivantes concernant l'avortement septique sont exactes, <strong>SAUF</strong> :</p>
+    <ul class="options">
+      <li><span class="letter">A</span><span>Il complique souvent un avortement incomplet négligé ou un geste non médicalisé.</span></li>
+      <li><span class="letter">B</span><span>Il s'accompagne de fièvre et de signes infectieux locaux.</span></li>
+      <li><span class="letter">C</span><span>Il expose au risque de choc septique.</span></li>
+      <li><span class="letter">D</span><span>Il impose une antibiothérapie et une évacuation utérine.</span></li>
+      <li><span class="letter">E</span><span>Il relève d'un traitement purement ambulatoire par progestérone.</span></li>
+    </ul>
+    <div class="corr">
+      <div class="corr-head">
+        <span class="corr-title">Correction &amp; explication</span>
+        <span class="ans-badge">Réponse fausse (SAUF) : E</span>
+      </div>
+      <p>L'avortement septique est une <span class="hl">urgence médico-chirurgicale</span> : il résulte de la contamination de débris de conception retenus dans la cavité utérine.</p>
+      <ul>
+        <li><span class="ko">E est la proposition fausse :</span> proposer un traitement ambulatoire par progestérone est une absurdité thérapeutique — la progestérone <em>maintient</em> la grossesse, et l'ambulatoire expose à une évolution vers le choc septique.</li>
+        <li><span class="ok">A exacte :</span> c'est la complication classique d'un avortement incomplet négligé ou provoqué dans des conditions d'asepsie insuffisantes (réalité de santé publique en Algérie comme ailleurs).</li>
+        <li><span class="ok">B, C, D exactes :</span> fièvre + signes locaux, risque de choc septique, nécessité d'une antibiothérapie à large spectre et d'une évacuation utérine après stabilisation hémodynamique.</li>
+      </ul>
+      <p><span class="hl">Points d'examen :</span> hémocultures, NFS/CRP, prélèvement bactériologique, échographie pelvienne, réanimation hydro-électrolytique, antibiothérapie parentérale, puis évacuation utérine.</p>
+    </div>
+  </article>
+
+  <!-- Q23 -->
+  <article class="qcard">
+    <div class="qtop">
+      <span class="qnum">Q23</span>
+      <span class="theme">Échographie — Rétention partielle</span>
+      <span class="type-badge t-multi">Choix multiples</span>
+    </div>
+    <p class="qtext">Quels signes échographiques orientent vers une rétention partielle (avortement incomplet) ? <em>(2 à 3 réponses)</em></p>
+    <ul class="options">
+      <li><span class="letter">A</span><span>Un contenu intracavitaire hétérogène et hyperéchogène.</span></li>
+      <li><span class="letter">B</span><span>Une cavité utérine complètement vide.</span></li>
+      <li><span class="letter">C</span><span>Un épaississement de la ligne cavitaire avec matériel résiduel.</span></li>
+      <li><span class="letter">D</span><span>Un sac gestationnel intra-utérin avec activité cardiaque présente.</span></li>
+      <li><span class="letter">E</span><span>Une absence totale d'anomalie échographique.</span></li>
+    </ul>
+    <div class="corr">
+      <div class="corr-head">
+        <span class="corr-title">Correction &amp; explication</span>
+        <span class="ans-badge">Réponses : A, C</span>
+      </div>
+      <p>Le cours précise que l'échographie montre « des signes en faveur d'une rétention partielle » : il s'agit d'un <span class="hl">contenu intracavitaire résiduel</span>.</p>
+      <ul>
+        <li><span class="ok">A exacte :</span> le matériel trophoblastique résiduel apparaît comme une image hétérogène hyperéchogène, mêlée à des caillots.</li>
+        <li><span class="ko">B fausse :</span> la vacuité complète caractérise l'avortement <span class="hl">complet</span> — exactement l'inverse.</li>
+        <li><span class="ok">C exacte :</span> l'épaississement de la ligne cavitaire avec matériel résiduel est un signe classique de rétention.</li>
+        <li><span class="ko">D fausse :</span> un sac avec activité cardiaque correspond à une <span class="hl">grossesse évolutive</span>, donc à une menace d'avortement — pas à une rétention.</li>
+        <li><span class="ko">E fausse :</span> par définition, une rétention partielle est visible à l'échographie.</li>
+      </ul>
+    </div>
+  </article>
+
+  <!-- Q24 -->
+  <article class="qcard">
+    <div class="qtop">
+      <span class="qnum">Q24</span>
+      <span class="theme">Curetage — Indications</span>
+      <span class="type-badge t-rf">Réponse fausse</span>
+    </div>
+    <p class="qtext">Concernant le curetage dans la prise en charge des avortements, quelle proposition est <strong>fausse</strong> ?</p>
+    <ul class="options">
+      <li><span class="letter">A</span><span>Il est indiqué dans l'avortement incomplet.</span></li>
+      <li><span class="letter">B</span><span>Il est indiqué en cas de rétention de débris de conception.</span></li>
+      <li><span class="letter">C</span><span>Il doit être systématique devant une cavité utérine vide.</span></li>
+      <li><span class="letter">D</span><span>Il expose au risque de synéchies utérines.</span></li>
+      <li><span class="letter">E</span><span>Il doit être précédé d'une évaluation soigneuse du col et de l'utérus.</span></li>
+    </ul>
+    <div class="corr">
+      <div class="corr-head">
+        <span class="corr-title">Correction &amp; explication</span>
+        <span class="ans-badge">Réponse fausse : C</span>
+      </div>
+      <p>Le curetage est un geste d'<span class="hl">évacuation utérine</span>, indiqué uniquement lorsqu'il existe un contenu à évacuer.</p>
+      <ul>
+        <li><span class="ko">C est la proposition fausse :</span> devant une cavité utérine vide (avortement complet), <span class="hl">le curetage est formellement inutile</span>. Le cours insiste : la vacuité échographique a un « rôle déterminant dans la prise en charge (pas de curetage) ». Un curetage sur cavité vide n'apporte rien et expose inutilement aux synéchies et à la perforation.</li>
+        <li><span class="ok">A, B exactes :</span> ce sont les indications légitimes du curetage évacuateur.</li>
+        <li><span class="ok">D exacte :</span> les synéchies (syndrome d'Asherman), causes d'aménorrhée et d'infertilité secondaire, sont une complication reconnue du curetage répété ou agressif.</li>
+        <li><span class="ok">E exacte :</span> l'évaluation préalable (taille utérine, état du col, position) est une règle de sécurité opératoire.</li>
+      </ul>
+    </div>
+  </article>
+
+  <!-- Q25 -->
+  <article class="qcard">
+    <div class="qtop">
+      <span class="qnum">Q25</span>
+      <span class="theme">Synthèse — Menace vs Inévitable</span>
+      <span class="type-badge t-multi">Choix multiples</span>
+    </div>
+    <p class="qtext">Concernant la distinction entre menace d'avortement et avortement inévitable, quelles propositions sont exactes ? <em>(2 à 3 réponses)</em></p>
+    <ul class="options">
+      <li><span class="letter">A</span><span>Dans la menace d'avortement, l'orifice interne du col est fermé.</span></li>
+      <li><span class="letter">B</span><span>Dans l'avortement inévitable, l'orifice interne du col est dilaté.</span></li>
+      <li><span class="letter">C</span><span>Dans la menace d'avortement, l'échographie montre une cavité utérine vide.</span></li>
+      <li><span class="letter">D</span><span>Dans la menace d'avortement, la grossesse est évolutive avec activité cardiaque présente.</span></li>
+      <li><span class="letter">E</span><span>Dans l'avortement inévitable, l'expulsion des produits de la conception est déjà complète.</span></li>
+    </ul>
+    <div class="corr">
+      <div class="corr-head">
+        <span class="corr-title">Correction &amp; explication</span>
+        <span class="ans-badge">Réponses : A, B, D</span>
+      </div>
+      <p>Le discriminant majeur entre ces deux stades est l'état du <span class="hl">col utérin</span>, associé à la vitalité de la grossesse.</p>
+      <ul>
+        <li><span class="ok">A exacte :</span> dans la menace, le col reste fermé — c'est ce qui autorise l'espoir de poursuite de la grossesse.</li>
+        <li><span class="ok">B exacte :</span> la dilatation de l'orifice interne signe l'engagement irréversible du processus d'expulsion.</li>
+        <li><span class="ko">C fausse :</span> la cavité vide caractérise l'avortement <span class="hl">complet</span>, pas la menace (où le sac est bien présent).</li>
+        <li><span class="ok">D exacte :</span> l'activité cardiaque est le critère cardinal de la menace d'avortement.</li>
+        <li><span class="ko">E fausse :</span> dans l'avortement inévitable, le produit de la grossesse est <span class="hl">encore entier dans la cavité utérine</span> ; seule la dilatation cervicale annonce l'expulsion imminente. L'expulsion complète définit l'avortement complet.</li>
+      </ul>
+    </div>
+  </article>
+
+</section>
+
+<!-- ============================================================ -->
+<!-- PARTIE 2 : CAS CLINIQUES                                      -->
+<!-- ============================================================ -->
+<section id="cas">
+  <div class="section-head">
+    <div class="section-num">2</div>
+    <div>
+      <h2>5 cas cliniques hospitaliers algériens</h2>
+      <p>Présentations typiques rencontrées aux urgences gynécologiques (CHU / EPH), avec QCM et corrections raisonnées.</p>
+    </div>
+  </div>
+
+  <!-- CAS 1 -->
+  <article class="case">
+    <div class="case-head">
+      <span class="case-id">CAS 1</span>
+      <h3>Métrorragies du premier trimestre aux urgences du CHU — Menace d'avortement</h3>
+    </div>
+    <div class="case-body">
+      <div class="vignette">
+        <p><span class="lbl">Identité</span> Mme B. K., 28 ans, G2P1, mariée, sans antécédent particulier.</p>
+        <p><span class="lbl">Motif</span> Consulté aux urgences gynécologiques du CHU pour <strong>métrorragies de faible abondance</strong> et <strong>pesanteur pelvienne</strong> évoluant depuis 24 heures.</p>
+        <p><span class="lbl">Histoire</span> Aménorrhée de <strong>9 semaines</strong>. Grossesse désirée, suivie en consultation prénatale à l'EPH. Pas de fièvre, pas d'écoulement liquidien, pas d'expulsion de tissu. Pas de dysurie, pas de douleur scapulaire.</p>
+        <p><span class="lbl">Examen</span> Bon état général, TA 110/70 mmHg, pouls 82/min, apyrexie. Abdomen souple. Au spéculum : saignement d'origine endo-utérine, col d'aspect normal, <strong>orifice interne fermé</strong>. Au toucher vaginal : utérus <strong>mou, augmenté de volume, concordant avec 9 SA</strong>, sensibilité utérine modérée. Annexes libres.</p>
+        <p><span class="lbl">Échographie endovaginale</span> Sac gestationnel intra-utérin, embryon visible avec <strong>activité cardiaque présente (162 bpm)</strong>, <strong>décollement chorial de 15 mm</strong>. Pas d'épanchement du Douglas.</p>
+      </div>
+
+      <div class="case-q">
+        <p class="qtext"><strong>Q1.</strong> Quel est le diagnostic le plus probable ?</p>
+        <ul class="options">
+          <li><span class="letter">A</span><span>Avortement inévitable.</span></li>
+          <li><span class="letter">B</span><span>Menace d'avortement.</span></li>
+          <li><span class="letter">C</span><span>Avortement incomplet.</span></li>
+          <li><span class="letter">D</span><span>Grossesse extra-utérine.</span></li>
+          <li><span class="letter">E</span><span>Grossesse arrêtée.</span></li>
+        </ul>
+        <div class="corr">
+          <div class="corr-head"><span class="corr-title">Correction</span><span class="ans-badge">Réponse : B</span></div>
+          <p>On retient une <span class="hl">menace d'avortement</span> devant l'association : métrorragies + sensibilité utérine + <span class="ok">grossesse évolutive avec activité cardiaque</span> + <span class="ok">décollement partiel du sac</span> + <span class="ok">col fermé</span>.</p>
+          <ul>
+            <li><span class="ko">A fausse :</span> l'avortement inévitable exigerait une dilatation de l'orifice interne du col.</li>
+            <li><span class="ko">C fausse :</span> l'avortement incomplet implique une expulsion partielle avec rétention intracavitaire ; ici le produit est entier.</li>
+            <li><span class="ko">D fausse :</span> la GEU est éliminée par la visualisation d'un sac intra-utérin avec activité cardiaque.</li>
+            <li><span class="ko">E fausse :</span> la grossesse arrêtée se traduirait par l'absence d'activité cardiaque.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="case-q">
+        <p class="qtext"><strong>Q2.</strong> Quel élément échographique est <em>indispensable</em> pour retenir ce diagnostic ?</p>
+        <ul class="options">
+          <li><span class="letter">A</span><span>La présence d'un décollement chorial de plus de 10 mm.</span></li>
+          <li><span class="letter">B</span><span>La présence d'une activité cardiaque fœtale et le siège intra-utérin de la grossesse.</span></li>
+          <li><span class="letter">C</span><span>La mesure de la longueur cranio-caudale.</span></li>
+          <li><span class="letter">D</span><span>La présence d'un épanchement dans le cul-de-sac de Douglas.</span></li>
+          <li><span class="letter">E</span><span>L'épaisseur de l'endomètre.</span></li>
+        </ul>
+        <div class="corr">
+          <div class="corr-head"><span class="corr-title">Correction</span><span class="ans-badge">Réponse : B</span></div>
+          <p>Le diagnostic de menace d'avortement repose sur le triptyque : <span class="hl">grossesse évolutive avec activité cardiaque</span>, <span class="hl">siège intra-utérin</span>, et <span class="hl">décollement trophoblastique partiel</span>. Les deux premiers éléments sont <em>indispensables</em> : sans activité cardiaque, on parle d'arrêt de grossesse ; sans siège intra-utérin, on évoque une GEU.</p>
+          <ul>
+            <li><span class="ko">A fausse :</span> le seuil de 10 mm n'est pas un critère diagnostique formel — l'étendue du décollement est un élément pronostique et de suivi.</li>
+            <li><span class="ko">C, D, E fausses :</span> ce sont des mesures complémentaires, non discriminantes pour ce diagnostic.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="case-q">
+        <p class="qtext"><strong>Q3.</strong> Quelle est la conduite thérapeutique initiale la plus adaptée ?</p>
+        <ul class="options">
+          <li><span class="letter">A</span><span>Curetage évacuateur en urgence.</span></li>
+          <li><span class="letter">B</span><span>Repos, acide folique, progestérone et antispasmodique, avec recherche et traitement de la cause.</span></li>
+          <li><span class="letter">C</span><span>Antibiothérapie probabiliste à large spectre.</span></li>
+          <li><span class="letter">D</span><span>Méthotrexate en injection intramusculaire.</span></li>
+          <li><span class="letter">E</span><span>Ocytociques intraveineux pour accélérer l'expulsion.</span></li>
+        </ul>
+        <div class="corr">
+          <div class="corr-head"><span class="corr-title">Correction</span><span class="ans-badge">Réponse : B</span></div>
+          <p>Le traitement de la menace d'avortement est <span class="hl">conservateur</span> : repos, acide folique, progestérone injectable ou intravaginale, Spasfon pour la douleur, et traitement étiologique si une cause est identifiée.</p>
+          <ul>
+            <li><span class="ko">A fausse :</span> le curetage évacuerait une grossesse évolutive — faute grave.</li>
+            <li><span class="ko">C fausse :</span> aucune indication d'antibiotiques en l'absence de signe infectieux.</li>
+            <li><span class="ko">D fausse :</span> le méthotrexate est réservé à la GEU non rompue.</li>
+            <li><span class="ko">E fausse :</span> les ocytociques précipiteraient l'expulsion — objectif inverse du traitement.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="case-q">
+        <p class="qtext"><strong>Q4.</strong> Quels signes doivent faire craindre une évolution défavorable lors du suivi ?</p>
+        <ul class="options">
+          <li><span class="letter">A</span><span>Le tarissement du saignement.</span></li>
+          <li><span class="letter">B</span><span>La disparition des douleurs pelviennes.</span></li>
+          <li><span class="letter">C</span><span>L'augmentation de l'étendue du décollement, la dilatation cervicale et la majoration des métrorragies.</span></li>
+          <li><span class="letter">D</span><span>La normalisation de l'aspect échographique.</span></li>
+          <li><span class="letter">E</span><span>La disparition du décollement à l'échographie de contrôle.</span></li>
+        </ul>
+        <div class="corr">
+          <div class="corr-head"><span class="corr-title">Correction</span><span class="ans-badge">Réponse : C</span></div>
+          <p>L'évolution défavorable se traduit par la progression vers le <span class="hl">processus d'expulsion</span> : majoration des saignements, dilatation du col, extension du décollement.</p>
+          <ul>
+            <li><span class="ko">A, B, D, E fausses :</span> ce sont tous des signes d'évolution <span class="ok">favorable</span> selon le cours (tarissement du saignement, disparition des douleurs, disparition du décollement et normalisation échographique).</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- CAS 2 -->
+  <article class="case">
+    <div class="case-head">
+      <span class="case-id">CAS 2</span>
+      <h3>Métrorragies abondantes avec caillots à 13 SA — Avortement inévitable</h3>
+    </div>
+    <div class="case-body">
+      <div class="vignette">
+        <p><span class="lbl">Identité</span> Mme A. M., 32 ans, G4P2, deux enfants en bonne santé, pas de suivi prénatal régulier.</p>
+        <p><span class="lbl">Motif</span> Admise à l'EPH pour <strong>douleurs pelviennes intermittentes</strong> à type de contractions, <strong>métrorragies abondantes avec caillots</strong>, et sensation d'<strong>écoulement liquidien</strong> par la vulve depuis quelques heures.</p>
+        <p><span class="lbl">Histoire</span> Aménorrhée de <strong>13 semaines</strong>. Notion de portage de charges lourdes la veille. Pas de fièvre.</p>
+        <p><span class="lbl">Examen</span> TA 100/60 mmHg, pouls 96/min, pâleur conjonctivale modérée, apyrexie. Au spéculum : métrorragies actives avec caillots, <strong>orifice interne du col dilaté</strong>. Au toucher vaginal : utérus augmenté de volume, sensible, col entrouvert.</p>
+        <p><span class="lbl">Échographie</span> <strong>Produit de la grossesse entier dans la cavité utérine</strong>, <strong>oligoamnios</strong> en faveur d'une rupture des membranes, <strong>caillots sanguins</strong> intra-cavitaires. Absence d'activité cardiaque retrouvée.</p>
+      </div>
+
+      <div class="case-q">
+        <p class="qtext"><strong>Q1.</strong> Quel est le diagnostic ?</p>
+        <ul class="options">
+          <li><span class="letter">A</span><span>Menace d'avortement.</span></li>
+          <li><span class="letter">B</span><span>Avortement inévitable.</span></li>
+          <li><span class="letter">C</span><span>Avortement complet.</span></li>
+          <li><span class="letter">D</span><span>Grossesse extra-utérine rompue.</span></li>
+          <li><span class="letter">E</span><span>Mole hydatiforme.</span></li>
+        </ul>
+        <div class="corr">
+          <div class="corr-head"><span class="corr-title">Correction</span><span class="ans-badge">Réponse : B</span></div>
+          <p>Le tableau associe les éléments cardinaux de l'<span class="hl">avortement inévitable</span> : douleurs pelviennes intermittentes, métrorragies abondantes avec caillots, écoulement de liquide amniotique, <span class="hl">dilatation de l'orifice interne du col</span>, avec le <span class="hl">produit de la grossesse encore entier</span> dans la cavité utérine.</p>
+          <ul>
+            <li><span class="ko">A fausse :</span> dans la menace, le col est fermé et la grossesse évolutive.</li>
+            <li><span class="ko">C fausse :</span> l'avortement complet suppose une expulsion totale et une cavité vide.</li>
+            <li><span class="ko">D fausse :</span> la GEU rompue donne un tableau d'hémopéritoine et l'absence de sac intra-utérin.</li>
+            <li><span class="ko">E fausse :</span> la mole donne une image « en tempête de neige » et des βhCG très élevés.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="case-q">
+        <p class="qtext"><strong>Q2.</strong> Quel signe clinique fait <em>basculer</em> le diagnostic de la menace vers l'avortement inévitable ?</p>
+        <ul class="options">
+          <li><span class="letter">A</span><span>La présence de douleurs pelviennes.</span></li>
+          <li><span class="letter">B</span><span>La présence de métrorragies.</span></li>
+          <li><span class="letter">C</span><span>La dilatation de l'orifice interne du col utérin.</span></li>
+          <li><span class="letter">D</span><span>L'utérus augmenté de volume.</span></li>
+          <li><span class="letter">E</span><span>L'absence de fièvre.</span></li>
+        </ul>
+        <div class="corr">
+          <div class="corr-head"><span class="corr-title">Correction</span><span class="ans-badge">Réponse : C</span></div>
+          <p>Le <span class="hl">col</span> est le véritable discriminateur entre menace et avortement inévitable : <span class="ok">fermé = menace</span>, <span class="ko">dilaté = inévitable</span>.</p>
+          <ul>
+            <li><span class="ko">A, B fausses :</span> douleurs et métrorragies existent dans les deux entités.</li>
+            <li><span class="ko">D fausse :</span> l'utérus est augmenté dans toute grossesse du premier trimestre.</li>
+            <li><span class="ko">E fausse :</span> l'absence de fièvre n'a aucune valeur discriminante ici.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="case-q">
+        <p class="qtext"><strong>Q3.</strong> Quels éléments échographiques sont attendus dans cette situation ?</p>
+        <ul class="options">
+          <li><span class="letter">A</span><span>Une cavité utérine vide.</span></li>
+          <li><span class="letter">B</span><span>Le produit de la grossesse entier dans la cavité utérine, un oligoamnios et des caillots.</span></li>
+          <li><span class="letter">C</span><span>Un sac gestationnel avec activité cardiaque normale.</span></li>
+          <li><span class="letter">D</span><span>Une image en « tempête de neige ».</span></li>
+          <li><span class="letter">E</span><span>Un hématome rétroplacentaire.</span></li>
+        </ul>
+        <div class="corr">
+          <div class="corr-head"><span class="corr-title">Correction</span><span class="ans-badge">Réponse : B</span></div>
+          <p>Le cours décrit précisément pour l'avortement inévitable : présence du produit entier dans la cavité, <span class="hl">oligoamnios en cas de rupture des membranes</span>, et quantité plus ou moins importante de caillots sanguins.</p>
+          <ul>
+            <li><span class="ko">A fausse :</span> cavité vide = avortement complet.</li>
+            <li><span class="ko">C fausse :</span> l'activité cardiaque est absente ici.</li>
+            <li><span class="ko">D fausse :</span> aspect de la mole hydatiforme.</li>
+            <li><span class="ko">E fausse :</span> l'hématome rétroplacentaire appartient au troisième trimestre.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="case-q">
+        <p class="qtext"><strong>Q4.</strong> Quelle est la conduite à tenir ?</p>
+        <ul class="options">
+          <li><span class="letter">A</span><span>Repos strict et progestérone, avec réévaluation à 48 heures.</span></li>
+          <li><span class="letter">B</span><span>Évacuation utérine après évaluation du bilan préopératoire et surveillance de l'état hémodynamique.</span></li>
+          <li><span class="letter">C</span><span>Abstention thérapeutique et surveillance ambulatoire.</span></li>
+          <li><span class="letter">D</span><span>Méthotrexate intramusculaire.</span></li>
+          <li><span class="letter">E</span><span>Antibiothérapie orale seule à domicile.</span></li>
+        </ul>
+        <div class="corr">
+          <div class="corr-head"><span class="corr-title">Correction</span><span class="ans-badge">Réponse : B</span></div>
+          <p>L'avortement inévitable avec produit entier en rétention impose une <span class="hl">évacuation utérine</span> : le processus d'expulsion est irréversible et la rétention expose à l'hémorragie et à l'infection.</p>
+          <ul>
+            <li><span class="ko">A fausse :</span> le traitement conservateur n'a plus de sens quand le col est dilaté et le processus engagé.</li>
+            <li><span class="ko">C fausse :</span> l'abstention ferait courir un risque hémorragique et infectieux majeur.</li>
+            <li><span class="ko">D fausse :</span> le méthotrexate est réservé à la GEU.</li>
+            <li><span class="ko">E fausse :</span> l'antibiothérapie seule ne traite pas la rétention.</li>
+          </ul>
+          <p><span class="hl">À ne pas oublier :</span> bilan préopératoire (NFS, groupe-Rhésus, TP/TCA), voie veineuse, correction d'une éventuelle anémie, prévention de l'iso-immunisation chez les patientes Rhésus négatif.</p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- CAS 3 -->
+  <article class="case">
+    <div class="case-head">
+      <span class="case-id">CAS 3</span>
+      <h3>Expulsion à domicile puis métrorragies persistantes — Avortement incomplet</h3>
+    </div>
+    <div class="case-body">
+      <div class="vignette">
+        <p><span class="lbl">Identité</span> Mme H. S., 25 ans, G1P0, primigeste.</p>
+        <p><span class="lbl">Motif</span> Consulté pour <strong>métrorragies persistantes</strong> depuis 3 jours, après l'expulsion à domicile d'un « caillot charnu » il y a 72 heures.</p>
+        <p><span class="lbl">Histoire</span> Aménorrhée de <strong>11 semaines</strong>. Pas de fièvre. Douleurs pelviennes à type de contractions utérines, modérées.</p>
+        <p><span class="lbl">Examen</span> TA 105/65 mmHg, pouls 88/min, apyrexie. Au spéculum : métrorragies de moyenne abondance, <strong>orifice interne du col dilaté avec présence de débris de gestation</strong>. Au toucher vaginal : <strong>utérus augmenté de taille mais de volume inférieur au terme théorique</strong>, sensible.</p>
+        <p><span class="lbl">Échographie</span> <strong>Contenu intracavitaire hétérogène hyperéchogène</strong>, épaississement de la ligne cavitaire, <strong>pas d'activité cardiaque</strong>. Pas d'épanchement.</p>
+        <p><span class="lbl">Biologie</span> Hb 10,4 g/dL, βhCG positifs mais en décroissance.</p>
+      </div>
+
+      <div class="case-q">
+        <p class="qtext"><strong>Q1.</strong> Quel est le diagnostic le plus probable ?</p>
+        <ul class="options">
+          <li><span class="letter">A</span><span>Menace d'avortement.</span></li>
+          <li><span class="letter">B</span><span>Avortement inévitable.</span></li>
+          <li><span class="letter">C</span><span>Avortement incomplet.</span></li>
+          <li><span class="letter">D</span><span>Avortement complet.</span></li>
+          <li><span class="letter">E</span><span>Grossesse extra-utérine.</span></li>
+        </ul>
+        <div class="corr">
+          <div class="corr-head"><span class="corr-title">Correction</span><span class="ans-badge">Réponse : C</span></div>
+          <p>L'expulsion a été <span class="hl">partielle</span> (le processus est inachevé) : il persiste un contenu intracavitaire hétérogène, un col dilaté avec débris, un utérus de volume inférieur au terme. C'est la définition même de l'<span class="hl">avortement incomplet</span>.</p>
+          <ul>
+            <li><span class="ko">A fausse :</span> la grossesse n'est plus évolutive.</li>
+            <li><span class="ko">B fausse :</span> dans l'avortement inévitable, le produit est encore entier dans la cavité.</li>
+            <li><span class="ko">D fausse :</span> l'avortement complet exige une cavité utérine vide.</li>
+            <li><span class="ko">E fausse :</span> la présence de contenu intra-utérin écarte la GEU.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="case-q">
+        <p class="qtext"><strong>Q2.</strong> Quelle est la prise en charge adaptée ?</p>
+        <ul class="options">
+          <li><span class="letter">A</span><span>Surveillance simple avec contrôle échographique à 1 mois.</span></li>
+          <li><span class="letter">B</span><span>Curetage évacuateur rapide, précédé d'une évaluation préopératoire.</span></li>
+          <li><span class="letter">C</span><span>Progestérone intravaginale et repos.</span></li>
+          <li><span class="letter">D</span><span>Antibiothérapie seule.</span></li>
+          <li><span class="letter">E</span><span>Ocytociques seuls sans évacuation.</span></li>
+        </ul>
+        <div class="corr">
+          <div class="corr-head"><span class="corr-title">Correction</span><span class="ans-badge">Réponse : B</span></div>
+          <p>Le cours est explicite : l'avortement incomplet impose une <span class="hl">prise en charge rapide par curetage évacuateur</span>.</p>
+          <ul>
+            <li><span class="ko">A fausse :</span> la rétention prolongée expose à l'hémorragie secondaire, à l'infection et aux synéchies.</li>
+            <li><span class="ko">C fausse :</span> la progestérone n'a aucune place dans un avortement déjà engagé.</li>
+            <li><span class="ko">D fausse :</span> l'antibiothérapie seule ne traite pas la rétention (elle est adjuvante en cas de signes infectieux).</li>
+            <li><span class="ko">E fausse :</span> les ocytociques peuvent aider à l'expulsion mais ne remplacent pas l'évacuation instrumentale dans ce contexte.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="case-q">
+        <p class="qtext"><strong>Q3.</strong> Quelles complications redoutez-vous en cas d'absence de traitement ?</p>
+        <ul class="options">
+          <li><span class="letter">A</span><span>Hémorragie, infection utérine et synéchies.</span></li>
+          <li><span class="letter">B</span><span>Môle hydatiforme.</span></li>
+          <li><span class="letter">C</span><span>Grossesse extra-utérine.</span></li>
+          <li><span class="letter">D</span><span>Placenta bas inséré.</span></li>
+          <li><span class="letter">E</span><span>Aucune complication n'est à redouter.</span></li>
+        </ul>
+        <div class="corr">
+          <div class="corr-head"><span class="corr-title">Correction</span><span class="ans-badge">Réponse : A</span></div>
+          <p>La rétention de débris de conception est le lit de l'<span class="hl">hémorragie secondaire</span>, de l'<span class="hl">endométrite</span> (pouvant évoluer vers l'avortement septique) et des <span class="hl">synéchies utérines</span> (syndrome d'Asherman) responsables d'hypoménorrhée et d'infertilité.</p>
+          <ul>
+            <li><span class="ko">B, C, D fausses :</span> ce ne sont pas des complications de l'avortement incomplet, mais des entités pathologiques distinctes.</li>
+            <li><span class="ko">E fausse :</span> l'affirmation est dangereuse et contredit le cours.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- CAS 4 -->
+  <article class="case">
+    <div class="case-head">
+      <span class="case-id">CAS 4</span>
+      <h3>Cavité utérine vide à 8 SA — Le piège de la grossesse extra-utérine</h3>
+    </div>
+    <div class="case-body">
+      <div class="vignette">
+        <p><span class="lbl">Identité</span> Mme D. N., 30 ans, G3P2, antécédent de salpingite traitée il y a 3 ans.</p>
+        <p><span class="lbl">Motif</span> Consulté pour <strong>métrorragies brunâtres</strong> et <strong>douleur pelvienne latéralisée à droite</strong>, d'intensité croissante depuis 48 heures.</p>
+        <p><span class="lbl">Histoire</span> Aménorrhée de <strong>8 semaines</strong>. Pas de fièvre. Pas de douleur scapulaire. Pas de lipothymie.</p>
+        <p><span class="lbl">Examen</span> TA 115/70 mmHg, pouls 90/min, apyrexie, pas de pâleur. Abdomen souple, défense absente. Au spéculum : métrorragies minimes, <strong>orifice interne du col fermé</strong>. Au toucher vaginal : utérus légèrement augmenté, <strong>masse latéro-utérine droite sensible</strong>, cri du Douglas négatif.</p>
+        <p><span class="lbl">Échographie endovaginale</span> <strong>Cavité utérine vide</strong>, pas de sac intra-utérin. Épanchement minime dans le Douglas. <strong>βhCG sérique : 850 UI/L</strong>.</p>
+      </div>
+
+      <div class="case-q">
+        <p class="qtext"><strong>Q1.</strong> Quel diagnostic devez-vous éliminer en priorité ?</p>
+        <ul class="options">
+          <li><span class="letter">A</span><span>Avortement complet.</span></li>
+          <li><span class="letter">B</span><span>Grossesse extra-utérine.</span></li>
+          <li><span class="letter">C</span><span>Menace d'avortement.</span></li>
+          <li><span class="letter">D</span><span>Môle hydatiforme.</span></li>
+          <li><span class="letter">E</span><span>Placenta bas inséré.</span></li>
+        </ul>
+        <div class="corr">
+          <div class="corr-head"><span class="corr-title">Correction</span><span class="ans-badge">Réponse : B</span></div>
+          <p>Le cours souligne que le diagnostic différentiel de l'avortement complet (cavité vide) est la <span class="hl">grossesse extra-utérine</span>. Devant une cavité vide avec βhCG positifs, la GEU est le diagnostic à éliminer <em>en priorité</em> en raison de son potentiel létal.</p>
+          <p>Ici, plusieurs éléments renforcent cette hypothèse : <span class="hl">antécédent de salpingite</span> (facteur de risque tubaire majeur), <span class="hl">douleur latéralisée</span>, <span class="hl">masse latéro-utérine</span>, <span class="hl">épanchement du Douglas</span>.</p>
+          <ul>
+            <li><span class="ko">A fausse :</span> l'avortement complet reste possible, mais ne doit être retenu qu'après élimination formelle de la GEU.</li>
+            <li><span class="ko">C fausse :</span> la menace d'avortement exige un sac intra-utérin évolutif.</li>
+            <li><span class="ko">D fausse :</span> la mole donne une image intracavitaire caractéristique, non une cavité vide.</li>
+            <li><span class="ko">E fausse :</span> le placenta bas inséré se manifeste plus tard dans la grossesse.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="case-q">
+        <p class="qtext"><strong>Q2.</strong> Quel examen est le plus contributif pour trancher ?</p>
+        <ul class="options">
+          <li><span class="letter">A</span><span>Un dosage unique de βhCG.</span></li>
+          <li><span class="letter">B</span><span>Une cinétique des βhCG sériques à 48 heures associée à une échographie endovaginale de suivi.</span></li>
+          <li><span class="letter">C</span><span>Une radiographie d'abdomen sans préparation.</span></li>
+          <li><span class="letter">D</span><span>Un frottis cervico-utérin.</span></li>
+          <li><span class="letter">E</span><span>Une hystéroscopie en urgence.</span></li>
+        </ul>
+        <div class="corr">
+          <div class="corr-head"><span class="corr-title">Correction</span><span class="ans-badge">Réponse : B</span></div>
+          <p>La <span class="hl">cinétique des βhCG</span> est l'élément clé : une décroissance anormale ou une stagnation associée à une cavité utérine vide et à des signes cliniques oriente vers la GEU. L'échographie endovaginale de suivi recherche une masse annexielle ou un sac extra-utérin.</p>
+          <ul>
+            <li><span class="ko">A fausse :</span> une valeur isolée est insuffisante ; c'est la <em>cinétique</em> qui est informative.</li>
+            <li><span class="ko">C fausse :</span> l'ASP n'a aucune place dans cette situation.</li>
+            <li><span class="ko">D fausse :</span> le FCU est un examen de dépistage du cancer du col, sans rapport.</li>
+            <li><span class="ko">E fausse :</span> l'hystéroscopie n'est ni indiquée ni réalisable dans ce contexte d'urgence.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="case-q">
+        <p class="qtext"><strong>Q3.</strong> Quelle serait l'attitude la plus prudente ?</p>
+        <ul class="options">
+          <li><span class="letter">A</span><span>Renvoi à domicile avec simple surveillance.</span></li>
+          <li><span class="letter">B</span><span>Hospitalisation en milieu gynécologique pour surveillance et exploration, avec élimination formelle de la GEU avant de conclure à un avortement complet.</span></li>
+          <li><span class="letter">C</span><span>Curetage évacuateur immédiat.</span></li>
+          <li><span class="letter">D</span><span>Antibiothérapie orale à domicile.</span></li>
+          <li><span class="letter">E</span><span>Ocytociques à domicile.</span></li>
+        </ul>
+        <div class="corr">
+          <div class="corr-head"><span class="corr-title">Correction</span><span class="ans-badge">Réponse : B</span></div>
+          <p>Devant une cavité vide avec βhCG positifs, le principe de sécurité impose d'<span class="hl">éliminer une GEU</span> avant de retenir un avortement complet. L'hospitalisation permet la surveillance hémodynamique et la répétition des examens.</p>
+          <ul>
+            <li><span class="ko">A fausse :</span> un renvoi à domicile expose à la rupture d'une GEU avec hémopéritoine.</li>
+            <li><span class="ko">C fausse :</span> un curetage sur cavité vide est inutile et dangereux ; de plus, il ne traiterait pas une GEU.</li>
+            <li><span class="ko">D fausse :</span> l'antibiotique ne traite ni une GEU ni un avortement complet.</li>
+            <li><span class="ko">E fausse :</span> les ocytociques à domicile sont proscrits sans diagnostic établi.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </article>
+
+  <!-- CAS 5 -->
+  <article class="case">
+    <div class="case-head">
+      <span class="case-id">CAS 5</span>
+      <h3>Fièvre et métrorragies fétides après avortement non médicalisé — Avortement septique</h3>
+    </div>
+    <div class="case-body">
+      <div class="vignette">
+        <p><span class="lbl">Identité</span> Mme F. Z., 22 ans, célibataire, sans suivi médical.</p>
+        <p><span class="lbl">Motif</span> Amenée aux urgences pour <strong>fièvre à 39,2 °C avec frissons</strong>, <strong>douleurs pelviennes intenses</strong> et <strong>métrorragies fétides</strong>, 5 jours après un avortement réalisé dans des conditions non médicalisées.</p>
+        <p><span class="lbl">Examen</span> Altération de l'état général, <strong>TA 90/60 mmHg</strong>, <strong>pouls 118/min</strong>, température 39,2 °C, pâleur cutanéo-muqueuse. Abdomen douloureux diffusément, défense absente. Au spéculum : métrorragies malodorantes, <strong>leucorrhées purulentes</strong>, col ouvert. Au toucher vaginal : utérus augmenté, très sensible, mobilisation douloureuse.</p>
+        <p><span class="lbl">Biologie</span> GB 19 800/mm³, CRP 148 mg/L, Hb 9,2 g/dL.</p>
+        <p><span class="lbl">Échographie</span> Contenu intracavitaire hétérogène, <strong>débris de conception retenus</strong>, épanchement pelvien minime.</p>
+      </div>
+
+      <div class="case-q">
+        <p class="qtext"><strong>Q1.</strong> Quel est le diagnostic ?</p>
+        <ul class="options">
+          <li><span class="letter">A</span><span>Menace d'avortement.</span></li>
+          <li><span class="letter">B</span><span>Avortement complet.</span></li>
+          <li><span class="letter">C</span><span>Avortement septique.</span></li>
+          <li><span class="letter">D</span><span>Grossesse extra-utérine.</span></li>
+          <li><span class="letter">E</span><span>Môle hydatiforme infectée.</span></li>
+        </ul>
+        <div class="corr">
+          <div class="corr-head"><span class="corr-title">Correction</span><span class="ans-badge">Réponse : C</span></div>
+          <p>Le tableau associe un <span class="hl">contexte d'avortement</span>, des <span class="hl">signes infectieux locaux</span> (leucorrhées purulentes fétides, utérus très sensible) et des <span class="hl">signes généraux</span> (fièvre élevée, tachycardie, hypotension, hyperleucocytose, CRP élevée). C'est un <span class="hl">avortement septique</span>, cinquième stade de la classification évolutive.</p>
+          <ul>
+            <li><span class="ko">A, B fausses :</span> aucune de ces entités ne comporte de tableau infectieux de cette gravité.</li>
+            <li><span class="ko">D fausse :</span> le contenu intra-utérin et le contexte écartent la GEU.</li>
+            <li><span class="ko">E fausse :</span> rien n'évoque une pathologie trophoblastique proliférative.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="case-q">
+        <p class="qtext"><strong>Q2.</strong> Quels examens complémentaires sont prioritaires ?</p>
+        <ul class="options">
+          <li><span class="letter">A</span><span>NFS, CRP, hémocultures, prélèvement bactériologique, bilan hémodynamique et échographie pelvienne.</span></li>
+          <li><span class="letter">B</span><span>Uniquement un dosage de βhCG.</span></li>
+          <li><span class="letter">C</span><span>Un frottis cervico-utérin.</span></li>
+          <li><span class="letter">D</span><span>Une hystéroscopie diagnostique.</span></li>
+          <li><span class="letter">E</span><span>Une IRM pelvienne en urgence.</span></li>
+        </ul>
+        <div class="corr">
+          <div class="corr-head"><span class="corr-title">Correction</span><span class="ans-badge">Réponse : A</span></div>
+          <p>Le bilan d'un avortement septique comprend : <span class="hl">NFS, CRP, hémocultures</span> (avant antibiothérapie), <span class="hl">prélèvements bactériologiques</span> (vaginaux, endo-utérins si possible), <span class="hl">bilan hémodynamique</span> (ionogramme, créatinine, lactates, groupe-Rhésus) et <span class="hl">échographie pelvienne</span> pour objectiver la rétention.</p>
+          <ul>
+            <li><span class="ko">B fausse :</span> les βhCG sont utiles pour le suivi mais non prioritaires face à l'urgence infectieuse.</li>
+            <li><span class="ko">C fausse :</span> le FCU est un examen de dépistage, sans pertinence ici.</li>
+            <li><span class="ko">D fausse :</span> l'hystéroscopie est contre-indiquée en contexte infectieux aigu.</li>
+            <li><span class="ko">E fausse :</span> l'IRM n'a pas sa place dans l'urgence de cette situation.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="case-q">
+        <p class="qtext"><strong>Q3.</strong> Quelle est la stratégie thérapeutique ?</p>
+        <ul class="options">
+          <li><span class="letter">A</span><span>Traitement ambulatoire par progestérone et antalgiques.</span></li>
+          <li><span class="letter">B</span><span>Réanimation hydro-électrolytique et hémodynamique, antibiothérapie parentérale à large spectre, puis évacuation utérine dès stabilisation.</span></li>
+          <li><span class="letter">C</span><span>Curetage immédiat sans stabilisation préalable.</span></li>
+          <li><span class="letter">D</span><span>Antibiothérapie orale isolée à domicile.</span></li>
+          <li><span class="letter">E</span><span>Simple surveillance en attente de l'antibiogramme.</span></li>
+        </ul>
+        <div class="corr">
+          <div class="corr-head"><span class="corr-title">Correction</span><span class="ans-badge">Réponse : B</span></div>
+          <p>L'avortement septique est une <span class="hl">urgence médico-chirurgicale</span>. La séquence est : <span class="ok">réanimation</span> (remplissage vasculaire, correction des troubles hydro-électrolytiques, transfusion si besoin) → <span class="ok">antibiothérapie parentérale à large spectre</span> (après prélèvements) → <span class="ok">évacuation utérine</span> dès stabilisation hémodynamique.</p>
+          <ul>
+            <li><span class="ko">A fausse :</span> le traitement ambulatoire par progestérone est une aberration dans ce contexte.</li>
+            <li><span class="ko">C fausse :</span> opérer une patiente en choc septique non stabilisé majore la mortalité.</li>
+            <li><span class="ko">D fausse :</span> l'antibiothérapie orale isolée est insuffisante et inadaptée à la gravité.</li>
+            <li><span class="ko">E fausse :</span> attendre l'antibiogramme sans traiter expose au choc septique et au décès.</li>
+          </ul>
+          <p><span class="hl">Pronostic :</span> risque de choc septique, de CIVD, d'insuffisance rénale aiguë, de stérilité tubaire et de synéchies utérines.</p>
+        </div>
+      </div>
+    </div>
+  </article>
+
+</section>
+
+<!-- ============================================================ -->
+<!-- PARTIE 3 : CARTE CONCEPTUELLE                                 -->
+<!-- ============================================================ -->
+<section id="carte">
+  <div class="section-head">
+    <div class="section-num">3</div>
+    <div>
+      <h2>Carte conceptuelle &amp; synthèse visuelle</h2>
+      <p>Tableaux comparatifs, algorithme décisionnel et chiffres clés — l'essentiel du cours en un coup d'œil.</p>
+    </div>
+  </div>
+
+  <!-- Algorithme -->
+  <div class="panel" style="margin-bottom:24px;">
+    <h4>Algorithme décisionnel — Métrorragies du 1<sup>er</sup> trimestre</h4>
+    <div class="flow">
+      <div class="flow-box fb-start">Femme enceinte + métrorragies + douleurs pelviennes</div>
+      <div class="arrow">▼</div>
+      <div class="flow-box fb-decision">Échographie endovaginale + βhCG</div>
+      <div class="arrow">▼</div>
+      <div class="flow-box fb-decision">Sac intra-utérin présent ?</div>
+      <div class="arrow">▼</div>
+      <div class="flow-box fb-ko">NON → Cavité vide : ÉLIMINER UNE GEU (βhCG, masse annexielle, Douglas)</div>
+      <div class="arrow">▼</div>
+      <div class="flow-box fb-ok">OUI → Activité cardiaque présente ?</div>
+      <div class="arrow">▼</div>
+      <div class="flow-box fb-teal">OUI + col FERMÉ + décollement partiel → MENACE D'AVORTEMENT → traitement conservateur</div>
+      <div class="arrow">▼</div>
+      <div class="flow-box fb-decision">Col DILATÉ ou produit partiellement expulsé ?</div>
+      <div class="arrow">▼</div>
+      <div class="flow-box fb-teal">Produit ENTIER dans la cavité → AVORTEMENT INÉVITABLE → évacuation utérine</div>
+      <div class="arrow">▼</div>
+      <div class="flow-box fb-teal">Expulsion PARTIELLE + rétention → AVORTEMENT INCOMPLET → curetage évacuateur</div>
+      <div class="arrow">▼</div>
+      <div class="flow-box fb-ok">Cavité VIDE + col fermé → AVORTEMENT COMPLET → PAS DE CURETAGE</div>
+      <div class="arrow">▼</div>
+      <div class="flow-box fb-ko">Fièvre + leucorrhées fétides + débris → AVORTEMENT SEPTIQUE → urgence médico-chirurgicale</div>
+    </div>
+  </div>
+
+  <!-- Tableau comparatif -->
+  <div class="panel" style="margin-bottom:24px;">
+    <h4>Tableau comparatif des stades évolutifs</h4>
+    <div style="overflow-x:auto;">
+      <table>
+        <thead>
+          <tr>
+            <th>Stade</th>
+            <th>Col utérin</th>
+            <th>Contenu utérin</th>
+            <th>Grossesse évolutive</th>
+            <th>Conduite</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Menace d'avortement</td>
+            <td>Fermé</td>
+            <td>Produit entier + décollement partiel</td>
+            <td>OUI (activité cardiaque +)</td>
+            <td>Conservateur : repos, acide folique, progestérone, Spasfon, cause</td>
+          </tr>
+          <tr>
+            <td>Avortement inévitable</td>
+            <td>Dilaté</td>
+            <td>Produit entier + caillots ± oligoamnios</td>
+            <td>NON</td>
+            <td>Évacuation utérine</td>
+          </tr>
+          <tr>
+            <td>Avortement incomplet</td>
+            <td>Dilaté, débris</td>
+            <td>Rétention partielle (image hétérogène)</td>
+            <td>NON</td>
+            <td>Curetage évacuateur rapide</td>
+          </tr>
+          <tr>
+            <td>Avortement complet</td>
+            <td>Peut être fermé</td>
+            <td>Cavité VIDE</td>
+            <td>NON</td>
+            <td>PAS de curetage — surveillance ± contrôle βhCG</td>
+          </tr>
+          <tr>
+            <td>Avortement septique</td>
+            <td>Ouvert, leucorrhées fétides</td>
+            <td>Débris retenus</td>
+            <td>NON</td>
+            <td>Réanimation + ATB IV + évacuation après stabilisation</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Étiologies + chiffres -->
+  <div class="grid-2">
+    <div class="panel">
+      <h4>Les 6 familles étiologiques</h4>
+      <div class="pills">
+        <span class="pill p-ov">Ovulaire — essentiellement chromosomique · grossesses multiples</span>
+        <span class="pill p-ut">Utérine — malformations utérines</span>
+        <span class="pill p-inf">Infectieuse — herpès · rubéole · CMV</span>
+        <span class="pill p-end">Endocrinienne — dysthyroïdies · diabète</span>
+        <span class="pill p-imm">Immunologique — iso-immunisation · maladies auto-immunes</span>
+        <span class="pill p-iat">Iatrogène — gestes endo-utérins · médicaments</span>
+      </div>
+      <p style="margin-top:14px;font-size:.86rem;color:var(--slate-2);">Étiologies multiples, <strong>parfois évitables</strong> → intérêt d'une enquête étiologique systématique.</p>
+    </div>
+
+    <div class="panel">
+      <h4>Chiffres &amp; seuils à retenir</h4>
+      <div class="numbers">
+        <div class="num-card"><span class="big">&lt; 500 g</span><span class="small">Poids seuil OMS</span></div>
+        <div class="num-card"><span class="big">20 SG</span><span class="small">= 22 SA — terme seuil</span></div>
+        <div class="num-card"><span class="big">87 %</span><span class="small">Avortements au stade embryonnaire</span></div>
+        <div class="num-card"><span class="big">13 %</span><span class="small">Avortements au stade fœtal</span></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Diagnostics différentiels -->
+  <div class="panel" style="margin-top:24px;">
+    <h4>Diagnostics différentiels à ne jamais oublier</h4>
+    <div class="grid-2" style="margin-bottom:0;">
+      <div>
+        <div class="flow-box fb-ko" style="text-align:left;margin-bottom:10px;">Grossesse extra-utérine <span style="font-weight:400;">— urgence vitale absolue</span></div>
+        <div class="flow-box fb-teal" style="text-align:left;margin-bottom:10px;">Hémorragie génitale basse</div>
+        <div class="flow-box fb-teal" style="text-align:left;">Môle hydatiforme</div>
+      </div>
+      <div>
+        <div class="flow-box fb-teal" style="text-align:left;margin-bottom:10px;">Métrorragies non gravidiques</div>
+        <div class="flow-box fb-teal" style="text-align:left;margin-bottom:10px;">Placenta bas inséré</div>
+        <div class="flow-box fb-decision" style="text-align:left;">→ Toujours vérifier le SIÈGE de la grossesse</div>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ============================================================ -->
+<!-- PARTIE 4 : MNÉMOTECHNIQUES                                    -->
+<!-- ============================================================ -->
+<section id="mnemo">
+  <div class="section-head">
+    <div class="section-num">4</div>
+    <div>
+      <h2>Mnémotechniques &amp; « trucs et astuces » d'examen</h2>
+      <p>Moyens mnésiques durables et pièges docimologiques classiques des facultés algériennes.</p>
+    </div>
+  </div>
+
+  <div class="mnemo">
+    <h4>1. Les 5 stades évolutifs de l'avortement</h4>
+    <span class="acro">M · I · I · C · S</span>
+    <p>« <strong>M</strong>on <strong>I</strong>nterne <strong>I</strong>ntelligent <strong>C</strong>herche le <strong>S</strong>uccès »</p>
+    <ul>
+      <li><strong>M</strong>enace d'avortement — col <strong>fermé</strong>, grossesse évolutive</li>
+      <li><strong>I</strong>névitable — col <strong>dilaté</strong>, produit entier en rétention</li>
+      <li><strong>I</strong>ncomplet — expulsion <strong>partielle</strong>, rétention résiduelle</li>
+      <li><strong>C</strong>omplet — expulsion <strong>totale</strong>, cavité vide</li>
+      <li><strong>S</strong>eptique — infection, urgence médico-chirurgicale</li>
+    </ul>
+  </div>
+
+  <div class="mnemo">
+    <h4>2. Les 6 familles étiologiques</h4>
+    <span class="acro">O · U · I · E · I · I</span>
+    <p>« <strong>O</strong>ù est-il ? <strong>U</strong>n <strong>I</strong>nfecté <strong>E</strong>ndormi, <strong>I</strong>mmunologiquement <strong>I</strong>mpatient »</p>
+    <ul>
+      <li><strong>O</strong>vulaire — essentiellement chromosomique</li>
+      <li><strong>U</strong>térine — malformations</li>
+      <li><strong>I</strong>nfectieuse — Herpès, Rubéole, CMV</li>
+      <li><strong>E</strong>ndocrinienne</li>
+      <li><strong>I</strong>mmunologique — iso-immunisation, auto-immunité</li>
+      <li><strong>I</strong>atrogène</li>
+    </ul>
+  </div>
+
+  <div class="mnemo">
+    <h4>3. Le traitement de la menace d'avortement</h4>
+    <span class="acro">R · A · P · S</span>
+    <p>« <strong>RAPS</strong> » — ce qu'on fait pour <em>épargner</em> la grossesse :</p>
+    <ul>
+      <li><strong>R</strong>epos</li>
+      <li><strong>A</strong>cide folique</li>
+      <li><strong>P</strong>rogestérone (injectable ou intravaginale)</li>
+      <li><strong>S</strong>pasfon (antispasmodique pour la douleur)</li>
+      <li>+ <strong>Agir sur la cause</strong> si identifiée</li>
+    </ul>
+  </div>
+
+  <div class="mnemo">
+    <h4>4. La règle du COL — le discriminant suprême</h4>
+    <span class="acro">COL FERMÉ vs COL OUVERT</span>
+    <ul>
+      <li><strong>Col FERMÉ</strong> → Menace d'avortement <em>ou</em> Avortement complet <em>ou</em> GEU</li>
+      <li><strong>Col OUVERT / DILATÉ</strong> → Avortement inévitable <em>ou</em> incomplet <em>ou</em> septique</li>
+      <li>Pour distinguer les deux premières : <strong>l'échographie</strong> (sac présent = menace ; cavité vide = complet ou GEU)</li>
+    </ul>
+  </div>
+
+  <div class="mnemo">
+    <h4>5. Le seuil OMS — « 5 · 20 · 22 »</h4>
+    <span class="acro">500 g — 20 SG — 22 SA</span>
+    <ul>
+      <li><strong>500 g</strong> = poids seuil de viabilité</li>
+      <li><strong>20 SG</strong> = âge gestationnel seuil (à partir de la conception)</li>
+      <li><strong>22 SA</strong> = âge seuil en semaines d'aménorrhée (à partir des dernières règles)</li>
+      <li>Écart de 2 semaines = décalage physiologique entre DDR et conception</li>
+    </ul>
+  </div>
+
+  <div class="mnemo">
+    <h4>6. Les 87 / 13</h4>
+    <span class="acro">« 87 = EMBRYON, 13 = FŒTUS »</span>
+    <p>Retenez que l'immense majorité des avortements se produit <strong>tôt</strong>, pendant l'organogenèse, quand les anomalies chromosomiques sont létales. Le fœtus, plus résistant, n'est concerné que dans 13 % des cas.</p>
+  </div>
+
+  <!-- Pièges -->
+  <div class="trap">
+    <h4>⚠ Piège n°1 : « Avortement = curetage »</h4>
+    <p>Faux ! L'avortement <strong>complet</strong> ne nécessite <strong>aucun curetage</strong>. C'est un piège docimologique extrêmement fréquent : on associe mécaniquement « avortement » à « curetage ». Retenez : <strong>cavité vide = pas de geste</strong>.</p>
+  </div>
+
+  <div class="trap">
+    <h4>⚠ Piège n°2 : « Cavité vide = avortement complet »</h4>
+    <p>Non — il faut d'abord <strong>éliminer une grossesse extra-utérine</strong>. Devant une cavité vide avec βhCG positifs, la question n'est pas « est-ce un avortement complet ? » mais « la grossesse est-elle bien dans l'utérus ? ». La GEU est une urgence vitale.</p>
+  </div>
+
+  <div class="trap">
+    <h4>⚠ Piège n°3 : les mots absolutistes</h4>
+    <p>« <strong>toujours</strong> », « <strong>constamment</strong> », « <strong>jamais</strong> », « <strong>systématiquement</strong> » : dans les QCM de gynécologie-obstétrique, ces mots signalent presque systématiquement une proposition <strong>fausse</strong>. Exemple : les douleurs pelviennes « constamment présentes » dans la menace → FAUX, elles peuvent manquer.</p>
+  </div>
+
+  <div class="trap">
+    <h4>⚠ Piège n°4 : inversion des catégories étiologiques</h4>
+    <p>L'iso-immunisation Rhésus est <strong>immunologique</strong> (pas endocrinienne). La grossesse multiple est <strong>ovulaire</strong> (pas immunologique). Les malformations utérines sont <strong>utérines</strong> (pas iatrogènes). Ces glissements sont la source d'erreurs la plus fréquente sur les QCM d'étiologie.</p>
+  </div>
+
+  <div class="trap">
+    <h4>⚠ Piège n°5 : le poids de 500 g inversé</h4>
+    <p>« Pesant <strong>plus</strong> de 500 g » ≠ avortement. On parle d'avortement pour un produit pesant <strong>moins</strong> de 500 g. Au-delà, il s'agit d'une mort fœtale in utero. Vérifiez toujours le sens de l'inégalité.</p>
+  </div>
+
+  <div class="trap">
+    <h4>⚠ Piège n°6 : confondre avortement inévitable et incomplet</h4>
+    <p>Dans l'<strong>inévitable</strong>, le produit est <strong>encore entier</strong> dans la cavité (seul le col est dilaté). Dans l'<strong>incomplet</strong>, l'expulsion a <strong>déjà commencé</strong> et il persiste une rétention partielle. Le mot-clé est « partiel ».</p>
+  </div>
+
+  <div class="mnemo" style="border-left-color:var(--navy);">
+    <h4>🎯 Réflexes de sécurité à garder en tête</h4>
+    <ul>
+      <li>Toute métrorragie du 1<sup>er</sup> trimestre → <strong>vérifier le siège de la grossesse</strong> (éliminer la GEU).</li>
+      <li>Toute grossesse évolutive → <strong>aucun geste endo-utérin</strong>.</li>
+      <li>Toute rétention → <strong>évacuation utérine</strong>.</li>
+      <li>Toute cavité vide → <strong>pas de curetage</strong>.</li>
+      <li>Toute fièvre + métrorragies fétides → <strong>urgence septique</strong>.</li>
+      <li>Patiente Rhésus négatif → <strong>prévention de l'iso-immunisation</strong>.</li>
+    </ul>
+  </div>
+
+</section>
+
+</main>
+
+<footer>
+  <p>Bonne chance et bonne révision ! 🩺</p>
+  <p class="sub">Tu as maintenant toutes les armes pour transformer ce chapitre en points gagnés le jour de l'examen. Avance sereinement — un futur médecin se prépare aussi par la confiance.</p>
+</footer>
+
+</body>
+</html>

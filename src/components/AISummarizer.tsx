@@ -628,8 +628,9 @@ Les diurétiques de l'anse (Furosémide) ne sont administrés qu'en cas de réte
             </div>
 
             {/* Exact Requested Message */}
-            <div className="p-4 rounded-2xl bg-amber-50 border border-amber-200 text-amber-950 font-black text-sm sm:text-base tracking-tight shadow-2xs">
-              ⚠️ this feature in not available yet
+            <div className="p-4 rounded-2xl bg-amber-50 border border-amber-200 text-amber-950 font-black text-sm sm:text-base tracking-tight shadow-2xs flex items-center gap-2.5">
+              <AlertTriangle className="w-5 h-5 text-amber-600 shrink-0" />
+              <span>this feature in not available yet</span>
             </div>
 
             <p className="text-xs text-slate-500 font-medium leading-relaxed px-2">

@@ -24,6 +24,7 @@ import {
   ArrowUpRight,
   Check,
   Flame,
+  Crown,
 } from 'lucide-react';
 import { UserProfile, AcademicYear } from '../types/medical';
 
@@ -42,7 +43,7 @@ interface RankTier {
   color: string;
   textColor: string;
   borderColor: string;
-  icon: string;
+  icon: React.ElementType;
   perks: string[];
 }
 
@@ -56,7 +57,7 @@ const RANK_TIERS: RankTier[] = [
     color: 'from-blue-500 to-indigo-600',
     textColor: 'text-indigo-700',
     borderColor: 'border-indigo-200',
-    icon: '🩺',
+    icon: Stethoscope,
     perks: ['Accès illimité aux 720 QCMs officiels', 'Historique des séries & corrections'],
   },
   {
@@ -68,7 +69,7 @@ const RANK_TIERS: RankTier[] = [
     color: 'from-emerald-500 to-teal-600',
     textColor: 'text-emerald-700',
     borderColor: 'border-emerald-200',
-    icon: '⚡',
+    icon: Zap,
     perks: ['Accès aux Fiches Synthèses & Mémos', 'Mode Élimination d’items activé'],
   },
   {
@@ -80,7 +81,7 @@ const RANK_TIERS: RankTier[] = [
     color: 'from-purple-500 to-violet-600',
     textColor: 'text-purple-700',
     borderColor: 'border-purple-200',
-    icon: '🧠',
+    icon: Brain,
     perks: ['Dossiers Cliniques Progressifs Avancés', '1 Gel de Série offert chaque mois'],
   },
   {
@@ -92,7 +93,7 @@ const RANK_TIERS: RankTier[] = [
     color: 'from-amber-500 to-orange-600',
     textColor: 'text-amber-700',
     borderColor: 'border-amber-200',
-    icon: '🌟',
+    icon: Award,
     perks: ['Aura dorée sur le classement de promo', 'Mode Examen Blanc Minuté'],
   },
   {
@@ -104,7 +105,7 @@ const RANK_TIERS: RankTier[] = [
     color: 'from-rose-500 via-purple-600 to-amber-500',
     textColor: 'text-rose-700',
     borderColor: 'border-rose-200',
-    icon: '👑',
+    icon: Crown,
     perks: ['Titre honorifique officiel de Major', 'Accès prioritaire aux banques de résidanat'],
   },
 ];
@@ -452,7 +453,9 @@ export const ClinicalProgressDiagram: React.FC<ClinicalProgressDiagramProps> = (
                   >
                     {/* Top status indicator */}
                     <div className="flex items-center justify-between mb-3">
-                      <span className="text-2xl">{tier.icon}</span>
+                      <div className={`w-8 h-8 rounded-xl bg-gradient-to-br ${tier.color} text-white flex items-center justify-center shadow-2xs`}>
+                        <tier.icon className="w-4 h-4" />
+                      </div>
                       {isPassed ? (
                         <div className="w-6 h-6 rounded-full bg-emerald-500 text-white flex items-center justify-center shadow-2xs">
                           <Check className="w-3.5 h-3.5 stroke-[3]" />

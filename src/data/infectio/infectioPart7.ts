@@ -481,14 +481,14 @@ export const INFECTIO_LESSON_18_RESOURCES: CourseResource[] = [
 # ASTUCES & PIÈGES AU CONCOURS (BACTÉRIÉMIE & FONGÉMIE)
 *Par Dr. LAIDANI.M - Urgences & Maladies Infectieuses*
 
-### ⚠️ PIÈGE N°1 : Le Streptococcus bovis / gallolyticus
+### Piège : PIÈGE N°1 : Le Streptococcus bovis / gallolyticus
 - Question récurrente au Résidanat : « Quel examen complémentaire demandez-vous devant une bactériémie à Streptococcus bovis ? »
 - **Réponse réflexe** : Coloscopie totale (association formelle avec polype adénomateux et cancer colique).
 
-### ⚠️ PIÈGE N°2 : La fausse négativité de l'hémoculture sur cathéter
+### Piège : PIÈGE N°2 : La fausse négativité de l'hémoculture sur cathéter
 - Ne jamais prélever de sang à travers une tubulure où passe une perfusion d'antibiotique en cours !
 
-### ⚠️ PIÈGE N°3 : Le retrait du cathéter
+### Piège : PIÈGE N°3 : Le retrait du cathéter
 - Retrait immédiat si : *Staph aureus*, *Candida*, *Pseudomonas*, choc septique, thrombophlébite suppurée ou tunnelite.
 `
   }
@@ -977,17 +977,17 @@ export const INFECTIO_LESSON_19_RESOURCES: CourseResource[] = [
 # ASTUCES & PIÈGES AU CONCOURS (SEPSIS & CHOC SEPTIQUE)
 *Par Dr. LAIDANI.M - Réanimation Médicale & Infectiologie*
 
-### ⚠️ PIÈGE N°1 : Les anciens critères SIRS vs Sepsis-3
+### Piège : PIÈGE N°1 : Les anciens critères SIRS vs Sepsis-3
 - Ne cochez plus les critères SIRS (Tachycardie, Leucocytose, etc.) pour définir le sepsis ! Sepsis-3 a aboli le terme 'sepsis sévère'. C'est désormais : **Sepsis** (SOFA ≥ 2) ou **Choc Septique** (Noradrénaline pour PAM ≥ 65 + Lactates > 2 mmol/L).
 
-### ⚠️ PIÈGE N°2 : Le délai de l'antibiothérapie
+### Piège : PIÈGE N°2 : Le délai de l'antibiothérapie
 - Si la question demande le délai maximal pour les antibiotiques dans le choc septique : cochez **1 heure** (pas 3 heures, pas 6 heures !).
 
-### ⚠️ PIÈGE N°3 : Le choix du soluté de remplissage
+### Piège : PIÈGE N°3 : Le choix du soluté de remplissage
 - Contre-indication absolue des amidons (Hydroxyéthylamidons / Voluven) : toxicité rénale démontrée.
 - Toujours choisir : **Cristalloïdes équilibrés (Ringer Lactate) ou Sérum salé 0,9% à 30 ml/kg**.
 
-### ⚠️ PIÈGE N°4 : La Noradrénaline en 1ère ligne
+### Piège : PIÈGE N°4 : La Noradrénaline en 1ère ligne
 - La Dopamine est détrônée depuis plus de 10 ans : le bon choix QCM est **toujours la Noradrénaline**.
 `
   }

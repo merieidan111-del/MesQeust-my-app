@@ -669,7 +669,7 @@ export const PANCREATITE_CHRONIQUE_RESOURCES: CourseResource[] = [
     "courseId": "crs-gastro-pancreatite-chronique",
     "type": "Fiche Synthèse",
     "title": "Synthèse Clinique : Pancréatite Chronique (PC)",
-    "contentMarkdown": "### 🎯 Points Clés : Pancréatite Chronique\n- **Étiologie n°1** : Alcoolisme chronique (> 80%) potentialisé par le tabagisme. Autres : génétique (PRSS1, CFTR), auto-immune (IgG4), obstructive.\n- **Signe pathognomonique** : Calcifications pancréatiques à l'ASP/Scanner.\n- **Évolution naturelle** :\n  1. Douleur initiale (épigastrique transfixiante soulagée en antéflexion).\n  2. Insuffisance exocrine (stéatorrhée, élastase fécale < 200 µg/g) -> Créon.\n  3. Insuffisance endocrine (diabète pancréatoprive 3c instable) -> Insuline.\n- **Complications majeures** : Pseudokystes (kysto-gastrostomie), compression de la VBP (ictère/cholestase), thrombose de la veine splénique (HTP segmentaire), faux-anévrysmes artériels.",
+    "contentMarkdown": "### Focus : Points Clés : Pancréatite Chronique\n- **Étiologie n°1** : Alcoolisme chronique (> 80%) potentialisé par le tabagisme. Autres : génétique (PRSS1, CFTR), auto-immune (IgG4), obstructive.\n- **Signe pathognomonique** : Calcifications pancréatiques à l'ASP/Scanner.\n- **Évolution naturelle** :\n  1. Douleur initiale (épigastrique transfixiante soulagée en antéflexion).\n  2. Insuffisance exocrine (stéatorrhée, élastase fécale < 200 µg/g) -> Créon.\n  3. Insuffisance endocrine (diabète pancréatoprive 3c instable) -> Insuline.\n- **Complications majeures** : Pseudokystes (kysto-gastrostomie), compression de la VBP (ictère/cholestase), thrombose de la veine splénique (HTP segmentaire), faux-anévrysmes artériels.",
     "author": "Société Française d’Endoscopie Digestive"
   },
   {
@@ -677,7 +677,7 @@ export const PANCREATITE_CHRONIQUE_RESOURCES: CourseResource[] = [
     "courseId": "crs-gastro-pancreatite-chronique",
     "type": "Astuce",
     "title": "Règles d'or dans la Pancréatite Chronique",
-    "contentMarkdown": "### 💡 3 pièges classiques aux examens :\n1. La lithiase biliaire provoque des pancréatites AIGUËS, jamais de pancréatite CHRONIQUE !\n2. Les extraits pancréatiques (Créon) doivent impérativement être pris PENDANT le repas.\n3. Le tabac est un facteur de risque indépendant d'accélération de la PC et de cancer du pancréas.",
+    "contentMarkdown": "### Astuce : 3 pièges classiques aux examens :\n1. La lithiase biliaire provoque des pancréatites AIGUËS, jamais de pancréatite CHRONIQUE !\n2. Les extraits pancréatiques (Créon) doivent impérativement être pris PENDANT le repas.\n3. Le tabac est un facteur de risque indépendant d'accélération de la PC et de cancer du pancréas.",
     "author": "Faculté de Médecine"
   }
 ];

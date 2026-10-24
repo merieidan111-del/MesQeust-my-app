@@ -789,7 +789,7 @@ export const CANCER_CANAL_ANAL_RESOURCES: CourseResource[] = [
     courseId: 'crs-gastro-cancer-canal-anal',
     type: 'Resume',
     title: "Mind Map & Algorithmes : Cancers du Canal Anal (4ème année Médecine)",
-    contentMarkdown: `## 🧠 Mind Map & Conduite Pratique : Cancers du Canal Anal
+    contentMarkdown: `## Mind Map & Conduite Pratique : Cancers du Canal Anal
 
 ### 1. Épidémiologie & Étiologie
 - **Fréquence** : < 2 % des cancers digestifs, incidence 1-2 / 100 000 habitants, prédominance féminine (sex-ratio F/H = 1,5 à 3). Âge médian 60-65 ans.
@@ -846,7 +846,7 @@ Bilan : IRM pelvienne + TDM TAP + Sérologies VIH/VHB/VHC + SCC
     courseId: 'crs-gastro-cancer-canal-anal',
     type: 'Astuce',
     title: "Astuces & Mnémoniques Clés : Cancers du Canal Anal",
-    contentMarkdown: `### 💡 Mnémotechniques & Règles d'Or
+    contentMarkdown: `### Astuce : Mnémotechniques & Règles d'Or
 
 1. **Facteurs de Risque (« T.H.I.S »)** :
    - **T** : Tabac

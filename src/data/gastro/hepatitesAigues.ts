@@ -669,7 +669,7 @@ export const HEPATITES_AIGUES_RESOURCES: CourseResource[] = [
     "courseId": "crs-gastro-hepatites-aigues",
     "type": "Fiche Synthèse",
     "title": "Synthèse Clinique : Hépatites Aiguës",
-    "contentMarkdown": "### 🎯 Points Clés : Hépatites Aiguës\n- **Biologie cardinale** : Cytolyse massive (ALAT > ASAT > 10-50N).\n- **Gravité** : Taux de prothrombine (TP) et Facteur V :\n  - TP < 50% = Hépatite grave.\n  - TP < 50% + Encéphalopathie (astérixis) = Hépatite fulminante (greffe d'urgence).\n- **Étiologies principales** :\n  - *VHA* : féco-orale, jamais de chronicité, IgM anti-VHA.\n  - *VHE* : porc/eau, fulminant chez la femme enceinte (20%).\n  - *VHB* : parentérale/sexuelle, Ag HBs + IgM anti-HBc, chronicité < 5-10% adulte.\n  - *Paracétamol* : 1ère cause toxique, antidote = N-acétylcystéine IV précoce.",
+    "contentMarkdown": "### Focus : Points Clés : Hépatites Aiguës\n- **Biologie cardinale** : Cytolyse massive (ALAT > ASAT > 10-50N).\n- **Gravité** : Taux de prothrombine (TP) et Facteur V :\n  - TP < 50% = Hépatite grave.\n  - TP < 50% + Encéphalopathie (astérixis) = Hépatite fulminante (greffe d'urgence).\n- **Étiologies principales** :\n  - *VHA* : féco-orale, jamais de chronicité, IgM anti-VHA.\n  - *VHE* : porc/eau, fulminant chez la femme enceinte (20%).\n  - *VHB* : parentérale/sexuelle, Ag HBs + IgM anti-HBc, chronicité < 5-10% adulte.\n  - *Paracétamol* : 1ère cause toxique, antidote = N-acétylcystéine IV précoce.",
     "author": "Collège National des Enseignants d’Hépatologie"
   },
   {
@@ -677,7 +677,7 @@ export const HEPATITES_AIGUES_RESOURCES: CourseResource[] = [
     "courseId": "crs-gastro-hepatites-aigues",
     "type": "Astuce",
     "title": "Critères de Gravité & Conduite à Tenir",
-    "contentMarkdown": "### 💡 Règle absolue devant toute cytolyse aiguë :\n1. Doser le TP immédiatement.\n2. Rechercher l'astérixis / confusion.\n3. Si TP < 50% -> hospitalisation en soins continus/réanimation.\n4. Si encéphalopathie -> appel du centre de transplantation hépatique sans attendre.",
+    "contentMarkdown": "### Astuce : Règle absolue devant toute cytolyse aiguë :\n1. Doser le TP immédiatement.\n2. Rechercher l'astérixis / confusion.\n3. Si TP < 50% -> hospitalisation en soins continus/réanimation.\n4. Si encéphalopathie -> appel du centre de transplantation hépatique sans attendre.",
     "author": "Faculté de Médecine"
   }
 ];

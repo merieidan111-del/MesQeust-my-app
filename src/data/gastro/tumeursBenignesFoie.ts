@@ -763,7 +763,7 @@ export const TUMEURS_BENIGNES_FOIE_RESOURCES: CourseResource[] = [
     courseId: 'crs-gastro-tumeurs-benignes-foie',
     type: 'Astuce',
     title: 'Mnémotechniques : Tumeurs Bénignes du Foie',
-    contentMarkdown: `### 💡 Mnémotechniques d'Examen (CHU Douera)
+    contentMarkdown: `### Astuce : Mnémotechniques d'Examen (CHU Douera)
 
 1. **HNF = « Cœur et Étoile »**
    - **C**icatrice centrale

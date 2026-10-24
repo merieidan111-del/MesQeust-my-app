@@ -1,0 +1,2102 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Grossesse Normale — Diagnostic & Surveillance | Révision 4e année</title>
+<style>
+  :root{
+    --navy:#0f2c52;
+    --navy-2:#173a6b;
+    --navy-3:#0b1f3b;
+    --teal:#0d9488;
+    --teal-dark:#0f766e;
+    --teal-light:#ccfbf1;
+    --teal-soft:#e6fffb;
+    --slate:#475569;
+    --slate-2:#334155;
+    --slate-light:#f1f5f9;
+    --border:#e2e8f0;
+    --bg:#f6f8fb;
+    --white:#ffffff;
+    --danger:#b91c1c;
+    --danger-light:#fee2e2;
+    --danger-soft:#fff5f5;
+    --warning:#b45309;
+    --warning-light:#fef3c7;
+    --success:#047857;
+    --success-light:#d1fae5;
+    --shadow:0 4px 18px rgba(15,44,82,0.08);
+    --shadow-lg:0 10px 30px rgba(15,44,82,0.12);
+    --radius:16px;
+    --radius-sm:10px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter','Roboto','Segoe UI',system-ui,-apple-system,sans-serif;
+    background:var(--bg);
+    color:var(--slate-2);
+    line-height:1.6;
+    font-size:16px;
+    -webkit-font-smoothing:antialiased;
+  }
+  /* ---------- HEADER ---------- */
+  header.hero{
+    background:linear-gradient(135deg,var(--navy-3) 0%,var(--navy) 45%,var(--teal-dark) 100%);
+    color:#fff;
+    padding:48px 24px 40px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  header.hero::before{
+    content:"";
+    position:absolute;
+    width:420px;height:420px;
+    background:radial-gradient(circle,rgba(13,148,136,0.35),transparent 70%);
+    top:-180px;right:-120px;
+    border-radius:50%;
+  }
+  header.hero::after{
+    content:"";
+    position:absolute;
+    width:340px;height:340px;
+    background:radial-gradient(circle,rgba(255,255,255,0.08),transparent 70%);
+    bottom:-160px;left:-100px;
+    border-radius:50%;
+  }
+  header.hero .inner{position:relative;z-index:2;max-width:900px;margin:0 auto;}
+  header.hero .eyebrow{
+    display:inline-block;
+    font-size:.78rem;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    font-weight:600;
+    background:rgba(255,255,255,.12);
+    border:1px solid rgba(255,255,255,.22);
+    padding:6px 16px;
+    border-radius:999px;
+    margin-bottom:18px;
+    backdrop-filter:blur(6px);
+  }
+  header.hero h1{
+    font-size:clamp(1.6rem,4vw,2.4rem);
+    font-weight:800;
+    letter-spacing:-.02em;
+    margin-bottom:12px;
+    line-height:1.2;
+  }
+  header.hero p{
+    font-size:1.02rem;
+    color:#cbd5e1;
+    max-width:680px;
+    margin:0 auto;
+  }
+  header.hero .chips{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    justify-content:center;
+    margin-top:24px;
+  }
+  header.hero .chip{
+    font-size:.8rem;
+    font-weight:600;
+    background:rgba(255,255,255,.1);
+    border:1px solid rgba(255,255,255,.2);
+    padding:5px 14px;
+    border-radius:999px;
+  }
+  /* ---------- NAV ---------- */
+  nav.toc{
+    position:sticky;
+    top:0;
+    z-index:50;
+    background:rgba(255,255,255,.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--border);
+    box-shadow:0 2px 10px rgba(15,44,82,.05);
+  }
+  nav.toc .wrap{
+    max-width:1100px;
+    margin:0 auto;
+    display:flex;
+    gap:6px;
+    overflow-x:auto;
+    padding:10px 16px;
+    scrollbar-width:thin;
+  }
+  nav.toc a{
+    flex-shrink:0;
+    text-decoration:none;
+    color:var(--slate);
+    font-size:.83rem;
+    font-weight:600;
+    padding:7px 14px;
+    border-radius:999px;
+    transition:.2s;
+    white-space:nowrap;
+  }
+  nav.toc a:hover{background:var(--teal-soft);color:var(--teal-dark);}
+  /* ---------- LAYOUT ---------- */
+  main{
+    max-width:1100px;
+    margin:0 auto;
+    padding:38px 18px 70px;
+  }
+  section.block{
+    margin-bottom:56px;
+    scroll-margin-top:80px;
+  }
+  .section-head{
+    display:flex;
+    align-items:center;
+    gap:14px;
+    margin-bottom:8px;
+  }
+  .section-num{
+    flex-shrink:0;
+    width:42px;height:42px;
+    border-radius:12px;
+    background:linear-gradient(135deg,var(--navy),var(--teal-dark));
+    color:#fff;
+    display:grid;place-items:center;
+    font-weight:800;
+    font-size:1.05rem;
+    box-shadow:var(--shadow);
+  }
+  .section-head h2{
+    font-size:1.4rem;
+    font-weight:800;
+    color:var(--navy);
+    letter-spacing:-.01em;
+  }
+  .section-sub{
+    color:var(--slate);
+    font-size:.92rem;
+    margin:0 0 22px 56px;
+  }
+  /* ---------- QCM CARD ---------- */
+  .q-card{
+    background:var(--white);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:22px 22px 18px;
+    margin-bottom:20px;
+    box-shadow:var(--shadow);
+    transition:box-shadow .25s, transform .25s;
+    position:relative;
+    overflow:hidden;
+  }
+  .q-card::before{
+    content:"";
+    position:absolute;
+    left:0;top:0;bottom:0;
+    width:4px;
+    background:linear-gradient(180deg,var(--teal),var(--navy));
+  }
+  .q-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px);}
+  .q-top{
+    display:flex;
+    flex-wrap:wrap;
+    align-items:center;
+    gap:8px;
+    margin-bottom:10px;
+  }
+  .q-num{
+    font-size:.78rem;
+    font-weight:800;
+    color:#fff;
+    background:var(--navy);
+    padding:3px 11px;
+    border-radius:999px;
+    letter-spacing:.03em;
+  }
+  .badge{
+    font-size:.72rem;
+    font-weight:700;
+    padding:3px 11px;
+    border-radius:999px;
+    letter-spacing:.02em;
+    text-transform:uppercase;
+  }
+  .badge-rj{background:var(--teal-light);color:var(--teal-dark);border:1px solid #99f6e4;}
+  .badge-rf{background:var(--danger-light);color:var(--danger);border:1px solid #fecaca;}
+  .badge-multi{background:#dbeafe;color:#1e40af;border:1px solid #bfdbfe;}
+  .badge-simple{background:var(--slate-light);color:var(--slate-2);border:1px solid #cbd5e1;}
+  .badge-theme{background:var(--warning-light);color:var(--warning);border:1px solid #fde68a;}
+  .q-text{
+    font-weight:600;
+    color:var(--navy-2);
+    margin:6px 0 14px;
+    font-size:1.01rem;
+  }
+  .q-options{list-style:none;display:flex;flex-direction:column;gap:7px;margin-bottom:14px;}
+  .q-options li{
+    padding:9px 14px 9px 42px;
+    border:1px solid var(--border);
+    border-radius:var(--radius-sm);
+    background:#fbfcfe;
+    font-size:.94rem;
+    position:relative;
+    transition:.18s;
+  }
+  .q-options li::before{
+    content:attr(data-letter);
+    position:absolute;
+    left:12px;top:50%;
+    transform:translateY(-50%);
+    width:22px;height:22px;
+    border-radius:50%;
+    background:var(--slate-light);
+    color:var(--slate-2);
+    font-size:.72rem;
+    font-weight:800;
+    display:grid;place-items:center;
+  }
+  .q-options li:hover{background:var(--teal-soft);border-color:#99f6e4;}
+  details.correction{
+    border:1px solid #bae6fd;
+    border-radius:var(--radius-sm);
+    background:linear-gradient(180deg,#f0f9ff,#f8fdff);
+    overflow:hidden;
+  }
+  details.correction summary{
+    cursor:pointer;
+    padding:11px 16px;
+    font-weight:700;
+    font-size:.88rem;
+    color:var(--teal-dark);
+    list-style:none;
+    display:flex;
+    align-items:center;
+    gap:8px;
+    user-select:none;
+    transition:.2s;
+  }
+  details.correction summary::-webkit-details-marker{display:none;}
+  details.correction summary::before{
+    content:"▸";
+    font-size:.9rem;
+    transition:transform .25s;
+    color:var(--teal);
+  }
+  details.correction[open] summary::before{transform:rotate(90deg);}
+  details.correction summary:hover{background:rgba(13,148,136,.06);}
+  .correction-body{
+    padding:6px 18px 18px;
+    font-size:.9rem;
+    border-top:1px solid #e0f2fe;
+  }
+  .correction-body p{margin-bottom:9px;}
+  .correction-body .answer-line{
+    display:inline-block;
+    background:var(--success-light);
+    color:var(--success);
+    font-weight:800;
+    padding:4px 12px;
+    border-radius:8px;
+    font-size:.85rem;
+    margin-bottom:10px;
+    border:1px solid #a7f3d0;
+  }
+  .correction-body .why{
+    background:#fff;
+    border-left:3px solid var(--teal);
+    padding:10px 14px;
+    border-radius:6px;
+    margin-bottom:10px;
+  }
+  .correction-body .why b{color:var(--navy);}
+  .correction-body .distractor{
+    font-size:.85rem;
+    color:var(--slate);
+    margin-bottom:5px;
+    padding-left:14px;
+    position:relative;
+  }
+  .correction-body .distractor::before{
+    content:"✗";
+    position:absolute;
+    left:0;
+    color:var(--danger);
+    font-weight:800;
+  }
+  .correction-body .distractor.ok::before{content:"✓";color:var(--success);}
+  /* ---------- CLINICAL CASES ---------- */
+  .case-card{
+    background:var(--white);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    margin-bottom:30px;
+    overflow:hidden;
+  }
+  .case-header{
+    background:linear-gradient(135deg,var(--navy),var(--navy-2));
+    color:#fff;
+    padding:18px 22px;
+    display:flex;
+    align-items:center;
+    gap:14px;
+  }
+  .case-header .case-icon{
+    width:38px;height:38px;
+    border-radius:10px;
+    background:rgba(255,255,255,.13);
+    display:grid;place-items:center;
+    font-size:1.1rem;
+    flex-shrink:0;
+  }
+  .case-header h3{font-size:1.08rem;font-weight:800;letter-spacing:-.01em;}
+  .case-header .case-tag{
+    font-size:.72rem;
+    font-weight:700;
+    background:var(--teal);
+    padding:3px 10px;
+    border-radius:999px;
+    margin-left:auto;
+    white-space:nowrap;
+  }
+  .case-vignette{
+    padding:18px 22px;
+    background:linear-gradient(180deg,#f8fafc,#fff);
+    border-bottom:1px solid var(--border);
+    font-size:.94rem;
+  }
+  .case-vignette .vignette-title{
+    font-size:.74rem;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:.1em;
+    color:var(--teal-dark);
+    margin-bottom:8px;
+  }
+  .case-vignette .data-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(160px,1fr));
+    gap:8px;
+    margin-top:12px;
+  }
+  .case-vignette .data-item{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:8px;
+    padding:8px 12px;
+    font-size:.83rem;
+  }
+  .case-vignette .data-item b{color:var(--navy);display:block;font-size:.7rem;text-transform:uppercase;letter-spacing:.05em;}
+  .case-questions{padding:18px 22px 8px;}
+  /* ---------- MIND MAP ---------- */
+  .mindmap{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:18px;
+    margin-bottom:24px;
+  }
+  .mm-card{
+    background:var(--white);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:20px;
+    box-shadow:var(--shadow);
+    position:relative;
+    overflow:hidden;
+  }
+  .mm-card::after{
+    content:"";
+    position:absolute;
+    top:0;left:0;right:0;
+    height:4px;
+    background:linear-gradient(90deg,var(--teal),var(--navy));
+  }
+  .mm-card h4{
+    font-size:.95rem;
+    font-weight:800;
+    color:var(--navy);
+    margin-bottom:12px;
+    display:flex;
+    align-items:center;
+    gap:8px;
+  }
+  .mm-card h4 .mm-dot{
+    width:9px;height:9px;
+    border-radius:50%;
+    background:var(--teal);
+    flex-shrink:0;
+  }
+  .mm-list{list-style:none;font-size:.87rem;}
+  .mm-list li{
+    padding:5px 0 5px 18px;
+    position:relative;
+    color:var(--slate-2);
+    border-bottom:1px dashed #eef2f7;
+  }
+  .mm-list li:last-child{border-bottom:none;}
+  .mm-list li::before{
+    content:"▸";
+    position:absolute;
+    left:0;
+    color:var(--teal);
+    font-weight:800;
+  }
+  .mm-list li b{color:var(--navy);}
+  /* Flowchart */
+  .flow{
+    display:flex;
+    flex-direction:column;
+    gap:0;
+    margin:8px 0;
+  }
+  .flow-step{
+    display:flex;
+    align-items:flex-start;
+    gap:14px;
+  }
+  .flow-marker{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    flex-shrink:0;
+  }
+  .flow-circle{
+    width:30px;height:30px;
+    border-radius:50%;
+    background:var(--teal);
+    color:#fff;
+    display:grid;place-items:center;
+    font-weight:800;
+    font-size:.8rem;
+    box-shadow:0 2px 8px rgba(13,148,136,.3);
+  }
+  .flow-line{
+    width:2px;
+    flex:1;
+    min-height:18px;
+    background:linear-gradient(180deg,var(--teal),#cbd5e1);
+  }
+  .flow-content{
+    padding-bottom:16px;
+    font-size:.88rem;
+  }
+  .flow-content b{color:var(--navy);display:block;font-size:.9rem;}
+  .flow-content span{color:var(--slate);font-size:.84rem;}
+  /* Table */
+  .styled-table{
+    width:100%;
+    border-collapse:collapse;
+    font-size:.85rem;
+    background:#fff;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:var(--shadow);
+    margin:14px 0;
+  }
+  .styled-table thead{
+    background:linear-gradient(135deg,var(--navy),var(--navy-2));
+    color:#fff;
+  }
+  .styled-table th{
+    padding:11px 14px;
+    text-align:left;
+    font-weight:700;
+    font-size:.78rem;
+    text-transform:uppercase;
+    letter-spacing:.05em;
+  }
+  .styled-table td{
+    padding:10px 14px;
+    border-bottom:1px solid var(--border);
+    color:var(--slate-2);
+  }
+  .styled-table tbody tr:nth-child(even){background:#f8fafc;}
+  .styled-table tbody tr:hover{background:var(--teal-soft);}
+  .styled-table td b{color:var(--navy);}
+  /* ---------- MNEMONICS ---------- */
+  .mnemo-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(270px,1fr));
+    gap:16px;
+  }
+  .mnemo-card{
+    background:var(--white);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:20px;
+    box-shadow:var(--shadow);
+    transition:.25s;
+    position:relative;
+  }
+  .mnemo-card:hover{transform:translateY(-3px);box-shadow:var(--shadow-lg);}
+  .mnemo-card .mnemo-key{
+    display:inline-block;
+    font-size:.72rem;
+    font-weight:800;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    background:var(--teal-light);
+    color:var(--teal-dark);
+    padding:4px 12px;
+    border-radius:999px;
+    margin-bottom:12px;
+  }
+  .mnemo-card .mnemo-word{
+    font-size:1.15rem;
+    font-weight:800;
+    color:var(--navy);
+    letter-spacing:.02em;
+    margin-bottom:8px;
+    word-break:break-word;
+  }
+  .mnemo-card .mnemo-word span{color:var(--teal-dark);}
+  .mnemo-card p{font-size:.86rem;color:var(--slate);}
+  .trap-card{
+    background:var(--danger-soft);
+    border:1px solid #fecaca;
+    border-left:4px solid var(--danger);
+    border-radius:12px;
+    padding:16px 18px;
+    margin-bottom:12px;
+  }
+  .trap-card .trap-title{
+    font-size:.82rem;
+    font-weight:800;
+    color:var(--danger);
+    text-transform:uppercase;
+    letter-spacing:.06em;
+    margin-bottom:6px;
+    display:flex;
+    align-items:center;
+    gap:7px;
+  }
+  .trap-card p{font-size:.88rem;color:var(--slate-2);}
+  .trap-card p b{color:var(--navy);}
+  /* ---------- FOOTER ---------- */
+  footer.motivation{
+    background:linear-gradient(135deg,var(--navy-3),var(--navy) 60%,var(--teal-dark));
+    color:#fff;
+    text-align:center;
+    padding:46px 22px;
+    position:relative;
+    overflow:hidden;
+  }
+  footer.motivation::before{
+    content:"";
+    position:absolute;
+    width:300px;height:300px;
+    background:radial-gradient(circle,rgba(13,148,136,.4),transparent 70%);
+    top:-140px;left:-80px;
+    border-radius:50%;
+  }
+  footer.motivation .inner{position:relative;z-index:2;max-width:640px;margin:0 auto;}
+  footer.motivation .emoji{font-size:2rem;margin-bottom:10px;}
+  footer.motivation h3{font-size:1.25rem;font-weight:800;margin-bottom:10px;}
+  footer.motivation p{color:#cbd5e1;font-size:.95rem;}
+  footer.motivation .signature{
+    margin-top:18px;
+    font-size:.78rem;
+    color:#94a3b8;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+  }
+  /* ---------- RESPONSIVE ---------- */
+  @media(max-width:640px){
+    body{font-size:15px;}
+    main{padding:26px 12px 50px;}
+    .q-card{padding:18px 15px 15px;}
+    .case-header{flex-wrap:wrap;padding:15px 16px;}
+    .case-header .case-tag{margin-left:0;width:100%;text-align:center;}
+    .case-vignette,.case-questions{padding-left:16px;padding-right:16px;}
+    .section-sub{margin-left:0;}
+    .q-options li{font-size:.88rem;}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="inner">
+    <span class="eyebrow">Gynécologie–Obstétrique · 4<sup>e</sup> année</span>
+    <h1>Grossesse Normale : Diagnostic &amp; Surveillance</h1>
+    <p>Support de révision complet — QCM exigeants, cas cliniques algériens, carte conceptuelle et mnémotechniques, conformes aux standards des facultés de médecine algériennes.</p>
+    <div class="chips">
+      <span class="chip">25 QCM</span>
+      <span class="chip">5 cas cliniques</span>
+      <span class="chip">Carte conceptuelle</span>
+      <span class="chip">Mnémotechniques</span>
+    </div>
+  </div>
+</header>
+
+<nav class="toc">
+  <div class="wrap">
+    <a href="#qcm">📝 Banque de QCM</a>
+    <a href="#cas">🏥 Cas cliniques</a>
+    <a href="#mindmap">🧠 Carte conceptuelle</a>
+    <a href="#mnemo">💡 Mnémotechniques</a>
+    <a href="#pieges">⚠️ Pièges d'examen</a>
+  </div>
+</nav>
+
+<main>
+
+<!-- ==================== SECTION 1 : QCM ==================== -->
+<section class="block" id="qcm">
+  <div class="section-head">
+    <div class="section-num">1</div>
+    <h2>Banque de 25 QCM exigeants</h2>
+  </div>
+  <p class="section-sub">Questions subtilement mélangées — Réponses justes / fausses, choix multiples et choix simples. Les corrections détaillées sont masquées : cliquez pour les révéler.</p>
+
+  <!-- Q1 -->
+  <div class="q-card">
+    <div class="q-top">
+      <span class="q-num">Q1</span>
+      <span class="badge badge-rj">Réponse juste</span>
+      <span class="badge badge-theme">Diagnostic clinique — Aménorrhée</span>
+    </div>
+    <p class="q-text">Parmi les propositions suivantes concernant l'aménorrhée secondaire comme signe de grossesse, laquelle est exacte ?</p>
+    <ul class="q-options">
+      <li data-letter="A">Elle est évocatrice même si la disparition des règles est progressive et incomplète.</li>
+      <li data-letter="B">Elle est considérée comme le signe le plus évocateur de grossesse à condition que la disparition des règles soit brusque et complète.</li>
+      <li data-letter="C">Elle peut être affirmée comme signe de grossesse chez une femme allaitante.</li>
+      <li data-letter="D">Elle est calculée à partir de la date de conception présumée.</li>
+      <li data-letter="E">Elle est définie par une absence de règles depuis plus de 6 mois.</li>
+    </ul>
+    <details class="correction">
+      <summary>Voir la correction et l'explication détaillée</summary>
+      <div class="correction-body">
+        <span class="answer-line">Réponse : B</span>
+        <div class="why">
+          <b>Mécanisme clé :</b> L'aménorrhée secondaire n'est un signe évocateur de grossesse que si elle survient <b>brusquement et complètement</b> chez une femme en période d'activité génitale, <b>régulièrement réglée</b> et <b>en l'absence d'allaitement</b>. La date de référence est la <b>DDR</b> (date des dernières règles), et non la date de conception présumée.
+        </div>
+        <p class="distractor"><b>A :</b> Une disparition progressive ou incomplète des règles oriente plutôt vers une cause endocrinienne, organique ou psychogène — elle n'est pas évocatrice de grossesse.</p>
+        <p class="distractor"><b>C :</b> Chez une femme allaitante, l'aménorrhée lactationnelle est physiologique (hyperprolactinémie) — elle ne peut donc pas être attribuée à une grossesse sans autre argument.</p>
+        <p class="distractor"><b>D :</b> Le calcul se fait à partir de la <b>DDR</b>, pas de la date de conception présumée (qui est inconnue).</p>
+        <p class="distractor"><b>E :</b> La définition de l'aménorrhée secondaire repose sur l'absence de règles chez une femme antérieurement réglée (généralement &gt; 3 mois), et non sur un seuil de 6 mois.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q2 -->
+  <div class="q-card">
+    <div class="q-top">
+      <span class="q-num">Q2</span>
+      <span class="badge badge-multi">Choix multiples</span>
+      <span class="badge badge-theme">Signes sympathiques</span>
+    </div>
+    <p class="q-text">Parmi les signes sympathiques de la grossesse, quelles propositions sont exactes ? <em>(2 à 3 réponses exactes)</em></p>
+    <ul class="q-options">
+      <li data-letter="A">Ils sont constants et spécifiques de la grossesse.</li>
+      <li data-letter="B">Ils résultent de l'imprégnation progestéronique.</li>
+      <li data-letter="C">La sialorrhée et la constipation en font partie.</li>
+      <li data-letter="D">L'émotivité et la somnolence en font partie.</li>
+      <li data-letter="E">Ils sont d'apparition tardive au 2<sup>e</sup> trimestre.</li>
+    </ul>
+    <details class="correction">
+      <summary>Voir la correction et l'explication détaillée</summary>
+      <div class="correction-body">
+        <span class="answer-line">Réponses : B, C, D</span>
+        <div class="why">
+          <b>Mécanisme clé :</b> Les signes sympathiques sont la conséquence directe de l'<b>imprégnation progestéronique</b>. Ils sont <b>inconstants, variables et non spécifiques</b> — ils ne permettent donc jamais à eux seuls de poser le diagnostic de grossesse. Ils regroupent : troubles digestifs (nausées, vomissements, sialorrhée, constipation, pyrosis), troubles nerveux (émotivité, irritabilité, somnolence, fatigue), gonflement général et tension mammaire, ainsi que la pollakiurie.
+        </div>
+        <p class="distractor"><b>A :</b> Faux — ils sont par définition inconstants et non spécifiques ; les confondre avec des signes pathognomoniques est une erreur classique.</p>
+        <p class="distractor"><b>E :</b> Faux — ils apparaissent dès le <b>1<sup>er</sup> trimestre</b>, liés à l'imprégnation hormonale précoce.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q3 -->
+  <div class="q-card">
+    <div class="q-top">
+      <span class="q-num">Q3</span>
+      <span class="badge badge-simple">Choix simple</span>
+      <span class="badge badge-theme">Courbe ménothermique</span>
+    </div>
+    <p class="q-text">Quelle est la caractéristique de la courbe ménothermique permettant d'évoquer une grossesse ?</p>
+    <ul class="q-options">
+      <li data-letter="A">Un nadir thermique suivi d'un plateau de moins de 10 jours.</li>
+      <li data-letter="B">Un plateau thermique prolongé supérieur à 16 jours.</li>
+      <li data-letter="C">Une hyperthermie permanente dès le 1<sup>er</sup> jour du cycle.</li>
+      <li data-letter="D">Une courbe en dents de scie sans décalage thermique.</li>
+      <li data-letter="E">Un décalage thermique survenant à la fin du plateau.</li>
+    </ul>
+    <details class="correction">
+      <summary>Voir la correction et l'explication détaillée</summary>
+      <div class="correction-body">
+        <span class="answer-line">Réponse : B</span>
+        <div class="why">
+          <b>Mécanisme clé :</b> La courbe ménothermique est un moyen <b>très précis de datation</b> mais <b>contraignant</b> (température au réveil pendant plusieurs jours). Le jour de l'ovulation correspond au <b>nadir</b>, juste avant le <b>décalage thermique</b>, suivi d'un <b>plateau thermique prolongé &gt; 16 jours</b> — ce plateau prolongé évoque la grossesse (maintien du corps jaune par l'hCG).
+        </div>
+        <p class="distractor"><b>A :</b> Un plateau de moins de 10 jours correspond à une phase lutéale normale, non à une grossesse.</p>
+        <p class="distractor"><b>C :</b> Une hyperthermie permanente n'est pas physiologique — elle évoque un syndrome infectieux ou inflammatoire.</p>
+        <p class="distractor"><b>D :</b> L'absence de décalage thermique signe l'absence d'ovulation, pas une grossesse.</p>
+        <p class="distractor"><b>E :</b> Le décalage thermique <b>suit</b> le nadir, il n'est pas situé à la fin du plateau.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q4 -->
+  <div class="q-card">
+    <div class="q-top">
+      <span class="q-num">Q4</span>
+      <span class="badge badge-rf">Réponse fausse</span>
+      <span class="badge badge-theme">Modifications utérines</span>
+    </div>
+    <p class="q-text">Concernant les modifications de l'utérus gravide, quelle proposition est <strong>fausse</strong> ?</p>
+    <ul class="q-options">
+      <li data-letter="A">Le col devient mou comme la lèvre.</li>
+      <li data-letter="B">À 6 SA, l'utérus atteint la taille d'une mandarine.</li>
+      <li data-letter="C">À 16 SA, le fond utérin est à mi-chemin entre la symphyse pubienne et l'ombilic.</li>
+      <li data-letter="D">Le signe de Noble correspond au ramollissement du corps utérin.</li>
+      <li data-letter="E">À 20 SA, le fond utérin atteint l'ombilic.</li>
+    </ul>
+    <details class="correction">
+      <summary>Voir la correction et l'explication détaillée</summary>
+      <div class="correction-body">
+        <span class="answer-line">Réponse : D</span>
+        <div class="why">
+          <b>Piège classique :</b> Le <b>signe de Noble</b> correspond à la <b>modification de forme</b> de l'utérus gravide : le doigt qui suit le cul-de-sac latéral, au lieu de s'enfoncer librement, <b>bute contre le pourtour évasé de l'utérus</b>. Le <b>ramollissement du corps utérin</b> avec contact des doigts vaginaux et abdominaux en avant de l'isthme correspond au <b>signe de Hégar</b>. Confondre les deux est l'erreur docimologique la plus fréquente.
+        </div>
+        <p class="distractor ok"><b>A :</b> Exact — le col passe de « ferme comme le nez » à « mou comme la lèvre ».</p>
+        <p class="distractor ok"><b>B :</b> Exact — 6 SA = mandarine.</p>
+        <p class="distractor ok"><b>C :</b> Exact — 16 SA = mi-chemin symphyse/ombilic.</p>
+        <p class="distractor ok"><b>E :</b> Exact — 20 SA = ombilic.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q5 -->
+  <div class="q-card">
+    <div class="q-top">
+      <span class="q-num">Q5</span>
+      <span class="badge badge-multi">Choix multiples</span>
+      <span class="badge badge-theme">hCG — Biologie</span>
+    </div>
+    <p class="q-text">Concernant l'hormone chorionique gonadotrope (hCG), quelles propositions sont exactes ? <em>(2 à 3 réponses exactes)</em></p>
+    <ul class="q-options">
+      <li data-letter="A">Elle est sécrétée par le syncytiotrophoblaste dès le 9<sup>e</sup> jour après la fécondation.</li>
+      <li data-letter="B">Sa sous-unité alpha est spécifique et dosée seule.</li>
+      <li data-letter="C">Elle maintient l'activité du corps jaune dès le 10<sup>e</sup> jour de grossesse.</li>
+      <li data-letter="D">Son taux double tous les 2 jours jusqu'à la 9<sup>e</sup> SA.</li>
+      <li data-letter="E">Sa production maximale se situe à la 20<sup>e</sup> SA.</li>
+    </ul>
+    <details class="correction">
+      <summary>Voir la correction et l'explication détaillée</summary>
+      <div class="correction-body">
+        <span class="answer-line">Réponses : A, C, D</span>
+        <div class="why">
+          <b>Mécanisme clé :</b> L'hCG est sécrétée par le <b>syncytiotrophoblaste</b> à partir du <b>9<sup>e</sup> jour après la fécondation</b>. Elle joue un rôle <b>lutéotrophique</b> : elle maintient le corps jaune dès le <b>10<sup>e</sup> jour</b> en relayant la LH hypophysaire, ce qui assure la sécrétion d'œstrogènes et de progestérone jusqu'à la <b>7<sup>e</sup> SA</b>, avant le relais placentaire. Sa cinétique : <b>doublement tous les 2 jours jusqu'à la 9<sup>e</sup> SA</b>, pic à la <b>9<sup>e</sup> SA</b>, puis décroissance irrégulière jusqu'au terme.
+        </div>
+        <p class="distractor"><b>B :</b> Faux — la sous-unité <b>bêta</b> est spécifique de l'hCG ; l'alpha est commune à la FSH, LH et TSH, d'où le dosage isolé de la bêta.</p>
+        <p class="distractor"><b>E :</b> Faux — la production maximale est à la <b>9<sup>e</sup> SA</b>, pas à la 20<sup>e</sup> SA.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q6 -->
+  <div class="q-card">
+    <div class="q-top">
+      <span class="q-num">Q6</span>
+      <span class="badge badge-simple">Toutes sauf</span>
+      <span class="badge badge-theme">Échographie T1</span>
+    </div>
+    <p class="q-text">Toutes les propositions suivantes concernant l'échographie du 1<sup>er</sup> trimestre sont exactes, <strong>SAUF</strong> :</p>
+    <ul class="q-options">
+      <li data-letter="A">La voie vaginale permet un diagnostic plus précoce que la voie sus-pubienne.</li>
+      <li data-letter="B">Le sac ovulaire intra-utérin est visible dès 5–6 SA.</li>
+      <li data-letter="C">L'activité cardiaque embryonnaire est visible dès 6–7 SA.</li>
+      <li data-letter="D">En l'absence de signes d'appel, elle doit être réalisée entre 11 et 13+6 SA.</li>
+      <li data-letter="E">La clarté nucale est considérée normale si elle est supérieure à 3 mm.</li>
+    </ul>
+    <details class="correction">
+      <summary>Voir la correction et l'explication détaillée</summary>
+      <div class="correction-body">
+        <span class="answer-line">Réponse : E</span>
+        <div class="why">
+          <b>Piège majeur :</b> La clarté nucale est considérée <b>normale si &lt; 3 mm</b>. Une valeur <b>&gt; 3 mm</b> constitue un signe d'appel pour une anomalie chromosomique (trisomies 21, 13, 18) et impose une exploration complémentaire. L'inversion du signe de l'inégalité est une erreur classique.
+        </div>
+        <p class="distractor ok"><b>A :</b> Exact — la voie vaginale offre un diagnostic plus précoce et plus précis.</p>
+        <p class="distractor ok"><b>B :</b> Exact — sac ovulaire intra-utérin = image anéchogène entourée d'une couronne hyperéchogène (trophoblaste).</p>
+        <p class="distractor ok"><b>C :</b> Exact — embryon et activité cardiaque visibles à partir de 6–7 SA.</p>
+        <p class="distractor ok"><b>D :</b> Exact — en l'absence de signes d'appel, l'écho T1 de datation se fait entre 11 et 13+6 SA ; un examen plus précoce n'est justifié qu'en cas de doute (GEU, métrorragies, cycles irréguliers).</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q7 -->
+  <div class="q-card">
+    <div class="q-top">
+      <span class="q-num">Q7</span>
+      <span class="badge badge-rj">Réponse juste</span>
+      <span class="badge badge-theme">Bilan biologique T1</span>
+    </div>
+    <p class="q-text">Parmi les examens biologiques du 1<sup>er</sup> trimestre, quelle proposition est exacte ?</p>
+    <ul class="q-options">
+      <li data-letter="A">La glycémie à jeun est obligatoire chez toutes les femmes enceintes.</li>
+      <li data-letter="B">La sérologie de la toxoplasmose doit être refaite tous les mois jusqu'au terme si elle est négative.</li>
+      <li data-letter="C">Le test de Coombs indirect est obligatoire chez toutes les femmes.</li>
+      <li data-letter="D">L'ECBU est un examen obligatoire du 1<sup>er</sup> trimestre.</li>
+      <li data-letter="E">La NFS fait partie du bilan obligatoire.</li>
+    </ul>
+    <details class="correction">
+      <summary>Voir la correction et l'explication détaillée</summary>
+      <div class="correction-body">
+        <span class="answer-line">Réponse : B</span>
+        <div class="why">
+          <b>Règle clé :</b> La sérologie de la toxoplasmose fait partie du bilan <b>obligatoire</b> du 1<sup>er</sup> trimestre. Si elle est <b>négative</b> (absence d'immunité), elle doit être <b>refaite tous les mois jusqu'au terme</b> afin de dépister une séroconversion.
+        </div>
+        <p class="distractor"><b>A :</b> Faux — la glycémie à jeun est <b>indiquée</b> seulement en présence de facteurs de risque de diabète.</p>
+        <p class="distractor"><b>C :</b> Faux — le test de Coombs indirect est <b>indiqué si Rh−</b>, pas chez toutes les femmes.</p>
+        <p class="distractor"><b>D :</b> Faux — l'ECBU est indiqué si antécédent d'infection urinaire ou signes fonctionnels urinaires.</p>
+        <p class="distractor"><b>E :</b> Faux — la NFS est indiquée si antécédents d'anémie, grossesses rapprochées ou pâleur cutanéo-muqueuse.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q8 -->
+  <div class="q-card">
+    <div class="q-top">
+      <span class="q-num">Q8</span>
+      <span class="badge badge-multi">Choix multiples</span>
+      <span class="badge badge-theme">Antécédents — Grossesse à risque</span>
+    </div>
+    <p class="q-text">Parmi les antécédents suivants, lesquels font craindre une grossesse à haut risque ? <em>(2 à 3 réponses exactes)</em></p>
+    <ul class="q-options">
+      <li data-letter="A">Antécédent d'éclampsie lors d'une grossesse antérieure.</li>
+      <li data-letter="B">Antécédent de mort fœtale in utero.</li>
+      <li data-letter="C">Prise de médicaments tératogènes.</li>
+      <li data-letter="D">Antécédent de contraception orale.</li>
+      <li data-letter="E">Ménarche à 13 ans.</li>
+    </ul>
+    <details class="correction">
+      <summary>Voir la correction et l'explication détaillée</summary>
+      <div class="correction-body">
+        <span class="answer-line">Réponses : A, B, C</span>
+        <div class="why">
+          <b>Logique :</b> L'interrogatoire du 1<sup>er</sup> trimestre recherche des antécédents faisant craindre une grossesse à haut risque, répartis en 4 catégories : physiologiques, pathologiques médicaux/chirurgicaux, familiaux (maladies génétiques) et obstétricaux. L'éclampsie et la mort fœtale in utero appartiennent aux <b>antécédents obstétricaux</b> ; la prise de tératogènes aux <b>antécédents pathologiques</b>.
+        </div>
+        <p class="distractor"><b>D :</b> Faux — l'antécédent de contraception orale est un élément du questionnaire <b>physiologique</b>, mais ne constitue pas en soi un facteur de risque de grossesse à haut risque.</p>
+        <p class="distractor"><b>E :</b> Faux — l'âge de la ménarche est un élément physiologique, sans valeur pronostique péjorative.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q9 -->
+  <div class="q-card">
+    <div class="q-top">
+      <span class="q-num">Q9</span>
+      <span class="badge badge-simple">Choix simple</span>
+      <span class="badge badge-theme">Hauteur utérine</span>
+    </div>
+    <p class="q-text">Concernant la mesure de la hauteur utérine, quelle proposition est exacte ?</p>
+    <ul class="q-options">
+      <li data-letter="A">Entre 4 et 7 mois, on multiplie le nombre de mois par 3.</li>
+      <li data-letter="B">Entre 4 et 7 mois, on multiplie le nombre de mois par 4.</li>
+      <li data-letter="C">Au 8<sup>e</sup> et 9<sup>e</sup> mois, on multiplie le terme en mois par 4 et on ajoute 2 cm.</li>
+      <li data-letter="D">La hauteur utérine n'a aucune valeur dans la surveillance de la grossesse.</li>
+      <li data-letter="E">Elle est mesurée du pubis à l'appendice xiphoïde.</li>
+    </ul>
+    <details class="correction">
+      <summary>Voir la correction et l'explication détaillée</summary>
+      <div class="correction-body">
+        <span class="answer-line">Réponse : B</span>
+        <div class="why">
+          <b>Formule clé :</b> Entre 4 et 7 mois, hauteur utérine = <b>nombre de mois × 4</b>. Au 8<sup>e</sup> et 9<sup>e</sup> mois, on utilise : <b>(terme en mois × 4) − 2 cm</b>. Cette mesure évalue la croissance fœtale et doit être reportée sur une courbe.
+        </div>
+        <p class="distractor"><b>A :</b> Faux — le coefficient est 4, pas 3.</p>
+        <p class="distractor"><b>C :</b> Faux — on <b>soustrait</b> 2 cm, on n'ajoute pas 2 cm.</p>
+        <p class="distractor"><b>D :</b> Faux — la hauteur utérine est un élément essentiel de la surveillance de la croissance fœtale.</p>
+        <p class="distractor"><b>E :</b> Faux — elle est mesurée du <b>bord supérieur de la symphyse pubienne au fond utérin</b>.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q10 -->
+  <div class="q-card">
+    <div class="q-top">
+      <span class="q-num">Q10</span>
+      <span class="badge badge-rf">Réponse fausse</span>
+      <span class="badge badge-theme">Mouvements actifs fœtaux</span>
+    </div>
+    <p class="q-text">Concernant les mouvements actifs fœtaux (MAF), quelle proposition est <strong>fausse</strong> ?</p>
+    <ul class="q-options">
+      <li data-letter="A">Ils sont perçus chez la primigeste vers 18–20 SA.</li>
+      <li data-letter="B">Ils sont perçus chez la multigeste vers 16–18 SA.</li>
+      <li data-letter="C">Leur perception constitue un élément important de la surveillance du 2<sup>e</sup> trimestre.</li>
+      <li data-letter="D">Leur diminution doit faire suspecter une souffrance fœtale.</li>
+      <li data-letter="E">Ils sont perçus dès 10 SA chez la primigeste.</li>
+    </ul>
+    <details class="correction">
+      <summary>Voir la correction et l'explication détaillée</summary>
+      <div class="correction-body">
+        <span class="answer-line">Réponse : E</span>
+        <div class="why">
+          <b>Repères cliniques :</b> Les MAF sont perçus chez la <b>primigeste vers 18–20 SA</b> et chez la <b>multigeste vers 16–18 SA</b>. Leur perception est un élément rassurant de vitalité fœtale ; leur diminution ou disparition doit faire craindre une souffrance fœtale et imposer une évaluation urgente.
+        </div>
+        <p class="distractor ok"><b>A, B, C, D :</b> Exactes.</p>
+        <p class="distractor"><b>E :</b> Fausse — à 10 SA, la primigeste ne perçoit pas encore les MAF ; les mouvements fœtaux existent mais ne sont pas ressentis avant 18–20 SA chez la primigeste.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q11 -->
+  <div class="q-card">
+    <div class="q-top">
+      <span class="q-num">Q11</span>
+      <span class="badge badge-simple">Toutes sauf</span>
+      <span class="badge badge-theme">Échographie T2</span>
+    </div>
+    <p class="q-text">Toutes les propositions suivantes concernant l'échographie morphologique du 2<sup>e</sup> trimestre sont exactes, <strong>SAUF</strong> :</p>
+    <ul class="q-options">
+      <li data-letter="A">Elle est réalisée entre 18 et 22 SA.</li>
+      <li data-letter="B">Elle permet le dépistage des malformations fœtales.</li>
+      <li data-letter="C">Elle permet la mesure des biométries fœtales (BIP, PC, DAT, PA, LF).</li>
+      <li data-letter="D">Elle permet la localisation placentaire et l'étude du liquide amniotique.</li>
+      <li data-letter="E">Elle est réalisée entre 32 et 35 SA.</li>
+    </ul>
+    <details class="correction">
+      <summary>Voir la correction et l'explication détaillée</summary>
+      <div class="correction-body">
+        <span class="answer-line">Réponse : E</span>
+        <div class="why">
+          <b>Repère chronologique :</b> L'échographie du 2<sup>e</sup> trimestre dite « morphologique » se réalise entre <b>18 et 22 SA</b>. L'intervalle <b>32–35 SA</b> correspond à l'échographie du <b>3<sup>e</sup> trimestre</b> dite « de croissance ».
+        </div>
+        <p class="distractor ok"><b>A, B, C, D :</b> Exactes — l'écho T2 étudie la morphologie, les biométries (BIP, PC, DAT, PA, LF), la localisation placentaire et la quantité de liquide amniotique.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q12 -->
+  <div class="q-card">
+    <div class="q-top">
+      <span class="q-num">Q12</span>
+      <span class="badge badge-multi">Choix multiples</span>
+      <span class="badge badge-theme">Conseils hygiéno-diététiques</span>
+    </div>
+    <p class="q-text">Concernant les conseils hygiéno-diététiques de la grossesse, quelles propositions sont exactes ? <em>(2 à 3 réponses exactes)</em></p>
+    <ul class="q-options">
+      <li data-letter="A">Le tabac augmente le risque de RCIU, d'accouchement prématuré et d'hématome rétroplacentaire.</li>
+      <li data-letter="B">L'alcool a une toxicité sur le cerveau fœtal.</li>
+      <li data-letter="C">La consommation de fromages non pasteurisés est autorisée.</li>
+      <li data-letter="D">La consommation de viande crue est autorisée.</li>
+      <li data-letter="E">L'activité physique doit être totalement supprimée.</li>
+    </ul>
+    <details class="correction">
+      <summary>Voir la correction et l'explication détaillée</summary>
+      <div class="correction-body">
+        <span class="answer-line">Réponses : A, B</span>
+        <div class="why">
+          <b>Rationnel :</b> Le tabac est associé à un risque accru de <b>RCIU</b>, d'<b>accouchement prématuré</b> et d'<b>hématome rétroplacentaire</b>. L'alcool est toxique pour le cerveau fœtal (troubles du spectre de l'alcoolisation fœtale). La prévention de la <b>listériose</b> impose d'éviter les fromages non pasteurisés, les charcuteries artisanales et les viandes/poissons crus.
+        </div>
+        <p class="distractor"><b>C :</b> Faux — les fromages non pasteurisés sont à éviter (listériose).</p>
+        <p class="distractor"><b>D :</b> Faux — la viande crue expose à la toxoplasmose et à la listériose ; elle doit être bien cuite ou consommée après congélation.</p>
+        <p class="distractor"><b>E :</b> Faux — une activité sportive douce adaptée au terme est recommandée.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q13 -->
+  <div class="q-card">
+    <div class="q-top">
+      <span class="q-num">Q13</span>
+      <span class="badge badge-rj">Réponse juste</span>
+      <span class="badge badge-theme">Supplémentation vitaminique</span>
+    </div>
+    <p class="q-text">Concernant les supplémentations vitaminiques au cours de la grossesse, quelle proposition est exacte ?</p>
+    <ul class="q-options">
+      <li data-letter="A">L'acide folique est recommandé en période périconceptionnelle pour prévenir les anomalies de fermeture du tube neural.</li>
+      <li data-letter="B">La vitamine D est recommandée au 1<sup>er</sup> trimestre pour prévenir le spina bifida.</li>
+      <li data-letter="C">L'apport systématique de fer est recommandé chez toutes les femmes enceintes.</li>
+      <li data-letter="D">L'acide folique est recommandé uniquement au 3<sup>e</sup> trimestre.</li>
+      <li data-letter="E">La vitamine D est recommandée au 1<sup>er</sup> trimestre en période estivale.</li>
+    </ul>
+    <details class="correction">
+      <summary>Voir la correction et l'explication détaillée</summary>
+      <div class="correction-body">
+        <span class="answer-line">Réponse : A</span>
+        <div class="why">
+          <b>Règle clé :</b> L'<b>acide folique</b> est recommandé en période <b>périconceptionnelle</b> pour prévenir les anomalies de fermeture du tube neural (spina bifida), en particulier chez les femmes épileptiques sous antiépileptiques (ex. Dépakine). La <b>vitamine D</b> est recommandée au <b>3<sup>e</sup> trimestre</b>, surtout en période hivernale, pour prévenir l'<b>hypocalcémie néonatale</b>.
+        </div>
+        <p class="distractor"><b>B :</b> Faux — la vitamine D ne prévient pas le spina bifida (rôle de l'acide folique) ; elle est donnée au 3<sup>e</sup> trimestre.</p>
+        <p class="distractor"><b>C :</b> Faux — l'apport systématique de fer n'est <b>pas recommandé</b> ; il est réservé aux anémies par carence martiale.</p>
+        <p class="distractor"><b>D :</b> Faux — l'acide folique agit en périconceptionnel, pas au 3<sup>e</sup> trimestre.</p>
+        <p class="distractor"><b>E :</b> Faux — la vitamine D est recommandée au 3<sup>e</sup> trimestre, surtout en période <b>hivernale</b>.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q14 -->
+  <div class="q-card">
+    <div class="q-top">
+      <span class="q-num">Q14</span>
+      <span class="badge badge-simple">Choix simple</span>
+      <span class="badge badge-theme">Signe de Hégar</span>
+    </div>
+    <p class="q-text">Le signe de Hégar correspond à :</p>
+    <ul class="q-options">
+      <li data-letter="A">La modification de forme de l'utérus gravide (pourtour évasé).</li>
+      <li data-letter="B">Le ramollissement du corps utérin avec contact des doigts vaginaux et abdominaux en avant de l'isthme.</li>
+      <li data-letter="C">La pigmentation de l'aréole mammaire.</li>
+      <li data-letter="D">La présence du réseau veineux de Haller.</li>
+      <li data-letter="E">Le bombement des tubercules de Montgomery.</li>
+    </ul>
+    <details class="correction">
+      <summary>Voir la correction et l'explication détaillée</summary>
+      <div class="correction-body">
+        <span class="answer-line">Réponse : B</span>
+        <div class="why">
+          <b>Distinction fondamentale :</b> Le <b>signe de Hégar</b> = ramollissement du corps utérin, les doigts vaginaux placés en avant de l'isthme arrivent facilement au contact des doigts abdominaux. Le <b>signe de Noble</b> = modification de forme (le doigt bute contre le pourtour évasé de l'utérus).
+        </div>
+        <p class="distractor"><b>A :</b> Faux — décrit le signe de Noble.</p>
+        <p class="distractor"><b>C, D, E :</b> Faux — ce sont des modifications mammaires (pigmentation aréolaire, réseau de Haller, tubercules de Montgomery), sans rapport avec le signe de Hégar.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q15 -->
+  <div class="q-card">
+    <div class="q-top">
+      <span class="q-num">Q15</span>
+      <span class="badge badge-multi">Choix multiples</span>
+      <span class="badge badge-theme">Diagnostic différentiel</span>
+    </div>
+    <p class="q-text">Devant une augmentation du volume utérin chez une femme en aménorrhée, quels diagnostics différentiels évoquer ? <em>(2 à 3 réponses exactes)</em></p>
+    <ul class="q-options">
+      <li data-letter="A">Fibrome utérin.</li>
+      <li data-letter="B">Grossesse extra-utérine.</li>
+      <li data-letter="C">Môle hydatiforme.</li>
+      <li data-letter="D">Kyste ovarien non fixé à l'utérus.</li>
+      <li data-letter="E">Aménorrhée psychogène isolée.</li>
+    </ul>
+    <details class="correction">
+      <summary>Voir la correction et l'explication détaillée</summary>
+      <div class="correction-body">
+        <span class="answer-line">Réponses : A, B, C</span>
+        <div class="why">
+          <b>Démarche :</b> Devant une augmentation du volume utérin : fibrome utérin, tumeur de l'ovaire fixée à l'utérus. Devant une discordance entre l'âge gestationnel et le volume utérin : erreur de datation, grossesse multiple, môle hydatiforme, grossesse arrêtée, GEU.
+        </div>
+        <p class="distractor"><b>D :</b> Faux — c'est la <b>tumeur de l'ovaire fixée à l'utérus</b> qui est évoquée ; un kyste non fixé ne modifie pas le volume utérin.</p>
+        <p class="distractor"><b>E :</b> Faux — l'aménorrhée psychogène est une cause d'aménorrhée, pas d'augmentation isolée du volume utérin.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q16 -->
+  <div class="q-card">
+    <div class="q-top">
+      <span class="q-num">Q16</span>
+      <span class="badge badge-rf">Réponse fausse</span>
+      <span class="badge badge-theme">Échographie T3</span>
+    </div>
+    <p class="q-text">Concernant l'échographie du 3<sup>e</sup> trimestre, quelle proposition est <strong>fausse</strong> ?</p>
+    <ul class="q-options">
+      <li data-letter="A">Elle est réalisée entre 32 et 35 SA.</li>
+      <li data-letter="B">Elle permet d'apprécier la croissance fœtale et de dépister un RCIU ou une macrosomie.</li>
+      <li data-letter="C">Elle permet le diagnostic de la présentation fœtale.</li>
+      <li data-letter="D">Elle permet d'évaluer la quantité de liquide amniotique.</li>
+      <li data-letter="E">Elle est réalisée entre 11 et 13+6 SA.</li>
+    </ul>
+    <details class="correction">
+      <summary>Voir la correction et l'explication détaillée</summary>
+      <div class="correction-body">
+        <span class="answer-line">Réponse : E</span>
+        <div class="why">
+          <b>Repère :</b> L'intervalle <b>11–13+6 SA</b> correspond à l'échographie du <b>1<sup>er</sup> trimestre</b> dite « de datation ». L'échographie du 3<sup>e</sup> trimestre, dite « de croissance », se réalise entre <b>32 et 35 SA</b> et permet d'apprécier la vitalité, la croissance, la présentation, la localisation placentaire, la quantité de liquide amniotique et le score biophysique de Manning.
+        </div>
+        <p class="distractor ok"><b>A, B, C, D :</b> Exactes.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q17 -->
+  <div class="q-card">
+    <div class="q-top">
+      <span class="q-num">Q17</span>
+      <span class="badge badge-simple">Choix simple</span>
+      <span class="badge badge-theme">Calcul du terme</span>
+    </div>
+    <p class="q-text">Chez une femme ayant un cycle régulier de 28 jours, le terme théorique se calcule par :</p>
+    <ul class="q-options">
+      <li data-letter="A">DDR + 7 jours + 9 mois.</li>
+      <li data-letter="B">DDR + 14 jours + 9 mois.</li>
+      <li data-letter="C">DDR + 21 jours + 9 mois.</li>
+      <li data-letter="D">Date de conception + 9 mois.</li>
+      <li data-letter="E">DDR − 14 jours + 9 mois.</li>
+    </ul>
+    <details class="correction">
+      <summary>Voir la correction et l'explication détaillée</summary>
+      <div class="correction-body">
+        <span class="answer-line">Réponse : B</span>
+        <div class="why">
+          <b>Formule officielle :</b> Terme théorique = <b>DDR + 14 jours + 9 mois</b>. Elle nécessite un cycle régulier de 28 jours. La datation précise du début de grossesse permet le diagnostic de prématurité, de RCIU, de macrosomie et de dépassement de terme.
+        </div>
+        <p class="distractor"><b>A :</b> Faux — le décalage est de 14 jours, pas 7.</p>
+        <p class="distractor"><b>C :</b> Faux — 21 jours est excessif.</p>
+        <p class="distractor"><b>D :</b> Faux — la date de conception est inconnue ; on part de la DDR.</p>
+        <p class="distractor"><b>E :</b> Faux — on ajoute 14 jours, on ne les soustrait pas.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q18 -->
+  <div class="q-card">
+    <div class="q-top">
+      <span class="q-num">Q18</span>
+      <span class="badge badge-simple">Choix simple</span>
+      <span class="badge badge-theme">Score de Bishop</span>
+    </div>
+    <p class="q-text">Le score de Bishop, utilisé au 3<sup>e</sup> trimestre, évalue :</p>
+    <ul class="q-options">
+      <li data-letter="A">La vitalité fœtale.</li>
+      <li data-letter="B">Les conditions cervicales (position, consistance, longueur, effacement, dilatation).</li>
+      <li data-letter="C">La quantité de liquide amniotique.</li>
+      <li data-letter="D">La localisation placentaire.</li>
+      <li data-letter="E">La présentation fœtale uniquement.</li>
+    </ul>
+    <details class="correction">
+      <summary>Voir la correction et l'explication détaillée</summary>
+      <div class="correction-body">
+        <span class="answer-line">Réponse : B</span>
+        <div class="why">
+          <b>Définition :</b> Le score de Bishop évalue les <b>conditions cervicales</b> : position, consistance, longueur, effacement et dilatation. Il permet de prédire le succès d'un déclenchement du travail.
+        </div>
+        <p class="distractor"><b>A :</b> Faux — la vitalité fœtale s'apprécie par les BCF, l'échographie et le score de Manning.</p>
+        <p class="distractor"><b>C :</b> Faux — le liquide amniotique s'évalue par échographie.</p>
+        <p class="distractor"><b>D :</b> Faux — la localisation placentaire relève de l'échographie.</p>
+        <p class="distractor"><b>E :</b> Faux — le type de présentation est apprécié cliniquement (palpation, TV) mais ne fait pas partie du score de Bishop.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q19 -->
+  <div class="q-card">
+    <div class="q-top">
+      <span class="q-num">Q19</span>
+      <span class="badge badge-multi">Choix multiples</span>
+      <span class="badge badge-theme">Pronostic d'accouchement</span>
+    </div>
+    <p class="q-text">Quels sont les éléments de bon pronostic d'accouchement ? <em>(2 à 3 réponses exactes)</em></p>
+    <ul class="q-options">
+      <li data-letter="A">Un bassin normal.</li>
+      <li data-letter="B">Une présentation céphalique engagée.</li>
+      <li data-letter="C">Un utérus sain avec segment inférieur amplié.</li>
+      <li data-letter="D">Une macrosomie fœtale.</li>
+      <li data-letter="E">Un périnée rigide.</li>
+    </ul>
+    <details class="correction">
+      <summary>Voir la correction et l'explication détaillée</summary>
+      <div class="correction-body">
+        <span class="answer-line">Réponses : A, B, C</span>
+        <div class="why">
+          <b>Éléments de bon pronostic :</b> Mère sans pathologie ; utérus sain avec segment inférieur amplié et col ramolli ouvert ; fœtus de volume normal, présentation du sommet engagée, absence de souffrance fœtale ; bassin normal ; périnée souple.
+        </div>
+        <p class="distractor"><b>D :</b> Faux — la macrosomie est un élément de <b>mauvais</b> pronostic (dystocie des épaules, traumatisme périnéal).</p>
+        <p class="distractor"><b>E :</b> Faux — c'est le périnée <b>souple</b> qui est un élément de bon pronostic.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q20 -->
+  <div class="q-card">
+    <div class="q-top">
+      <span class="q-num">Q20</span>
+      <span class="badge badge-simple">Toutes sauf</span>
+      <span class="badge badge-theme">Prévention de la toxoplasmose</span>
+    </div>
+    <p class="q-text">Toutes les propositions suivantes concernant la prévention de la toxoplasmose chez la femme enceinte non immunisée sont exactes, <strong>SAUF</strong> :</p>
+    <ul class="q-options">
+      <li data-letter="A">Consommer la viande bien cuite ou après congélation.</li>
+      <li data-letter="B">Laver soigneusement les fruits et légumes souillés de terre.</li>
+      <li data-letter="C">Éviter les contacts avec les chats.</li>
+      <li data-letter="D">Consommer des fromages non pasteurisés.</li>
+      <li data-letter="E">Se laver les mains avant chaque repas.</li>
+    </ul>
+    <details class="correction">
+      <summary>Voir la correction et l'explication détaillée</summary>
+      <div class="correction-body">
+        <span class="answer-line">Réponse : D</span>
+        <div class="why">
+          <b>Règle :</b> Les fromages non pasteurisés sont à <b>éviter</b> chez la femme enceinte (risque de <b>listériose</b>), indépendamment du statut toxoplasmose. Les autres mesures préviennent la toxoplasmose (viande bien cuite ou congelée, lavage des fruits/légumes, éviter les chats) et l'hygiène générale (lavage des mains).
+        </div>
+        <p class="distractor ok"><b>A, B, C, E :</b> Exactes.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q21 -->
+  <div class="q-card">
+    <div class="q-top">
+      <span class="q-num">Q21</span>
+      <span class="badge badge-rf">Réponse fausse</span>
+      <span class="badge badge-theme">Cinétique de l'hCG</span>
+    </div>
+    <p class="q-text">Concernant la cinétique de l'hCG, quelle proposition est <strong>fausse</strong> ?</p>
+    <ul class="q-options">
+      <li data-letter="A">La phase ascendante comporte un doublement tous les 2 jours jusqu'à la 9<sup>e</sup> SA.</li>
+      <li data-letter="B">La production maximale est atteinte à la 9<sup>e</sup> SA.</li>
+      <li data-letter="C">Le taux descend progressivement et de façon irrégulière jusqu'au terme.</li>
+      <li data-letter="D">Le test plasmatique de bêta-hCG est positif dès le 10<sup>e</sup> jour de grossesse.</li>
+      <li data-letter="E">Le taux d'hCG reste stable du 10<sup>e</sup> jour de grossesse jusqu'au terme.</li>
+    </ul>
+    <details class="correction">
+      <summary>Voir la correction et l'explication détaillée</summary>
+      <div class="correction-body">
+        <span class="answer-line">Réponse : E</span>
+        <div class="why">
+          <b>Cinétique :</b> La courbe d'hCG est <b>ascendante</b> (doublement tous les 2 jours) jusqu'à la <b>9<sup>e</sup> SA</b>, atteint son <b>maximum à la 9<sup>e</sup> SA</b>, puis <b>décroît progressivement et irrégulièrement</b> jusqu'au terme. Elle n'est donc pas stable.
+        </div>
+        <p class="distractor ok"><b>A, B, C, D :</b> Exactes.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q22 -->
+  <div class="q-card">
+    <div class="q-top">
+      <span class="q-num">Q22</span>
+      <span class="badge badge-simple">Choix simple</span>
+      <span class="badge badge-theme">Taille utérine selon le terme</span>
+    </div>
+    <p class="q-text">À 12–14 SA, l'utérus gravide atteint la taille :</p>
+    <ul class="q-options">
+      <li data-letter="A">D'une mandarine.</li>
+      <li data-letter="B">D'une orange.</li>
+      <li data-letter="C">D'un pamplemousse.</li>
+      <li data-letter="D">D'un melon.</li>
+      <li data-letter="E">D'une noix.</li>
+    </ul>
+    <details class="correction">
+      <summary>Voir la correction et l'explication détaillée</summary>
+      <div class="correction-body">
+        <span class="answer-line">Réponse : C</span>
+        <div class="why">
+          <b>Repères à mémoriser :</b>
+          <ul style="margin:8px 0 8px 20px;font-size:.86rem;">
+            <li><b>6 SA</b> → mandarine</li>
+            <li><b>8–10 SA</b> → orange</li>
+            <li><b>12–14 SA</b> → pamplemousse</li>
+            <li><b>16 SA</b> → mi-chemin symphyse/ombilic</li>
+            <li><b>20 SA</b> → ombilic</li>
+          </ul>
+        </div>
+        <p class="distractor"><b>A :</b> Mandarine = 6 SA.</p>
+        <p class="distractor"><b>B :</b> Orange = 8–10 SA.</p>
+        <p class="distractor"><b>D, E :</b> Aucune correspondance dans la classification classique.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q23 -->
+  <div class="q-card">
+    <div class="q-top">
+      <span class="q-num">Q23</span>
+      <span class="badge badge-multi">Choix multiples</span>
+      <span class="badge badge-theme">Bilan T1 indiqué si facteurs de risque</span>
+    </div>
+    <p class="q-text">Quels examens sont indiqués au 1<sup>er</sup> trimestre en présence de facteurs de risque ? <em>(2 à 3 réponses exactes)</em></p>
+    <ul class="q-options">
+      <li data-letter="A">Glycémie à jeun si facteurs de risque de diabète.</li>
+      <li data-letter="B">Test de Coombs indirect si Rh−.</li>
+      <li data-letter="C">Électrophorèse de l'hémoglobine si contexte géographique ou antécédents familiaux de thalassémie/drépanocytose.</li>
+      <li data-letter="D">Sérologie de la rubéole chez toutes les femmes, quel que soit le statut antérieur.</li>
+      <li data-letter="E">Aucun examen supplémentaire n'est indiqué.</li>
+    </ul>
+    <details class="correction">
+      <summary>Voir la correction et l'explication détaillée</summary>
+      <div class="correction-body">
+        <span class="answer-line">Réponses : A, B, C</span>
+        <div class="why">
+          <b>Logique :</b> Le bilan du 1<sup>er</sup> trimestre distingue les examens <b>obligatoires</b>, <b>indiqués en présence de facteurs de risque</b> et <b>recommandés</b>. La glycémie à jeun (FDR de diabète), le test de Coombs indirect (Rh−) et l'électrophorèse de l'hémoglobine (contexte géographique/antécédents familiaux) font partie des examens <b>indiqués si facteurs de risque</b>.
+        </div>
+        <p class="distractor"><b>D :</b> Faux — la sérologie de la rubéole fait partie du bilan <b>obligatoire</b> (si sérologie antérieure négative), pas du bilan « indiqué si FDR ».</p>
+        <p class="distractor"><b>E :</b> Faux — des examens supplémentaires sont bien indiqués selon les facteurs de risque.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q24 -->
+  <div class="q-card">
+    <div class="q-top">
+      <span class="q-num">Q24</span>
+      <span class="badge badge-simple">Choix simple</span>
+      <span class="badge badge-theme">Datation échographique</span>
+    </div>
+    <p class="q-text">Concernant la datation échographique avant 14 SA, quelle proposition est exacte ?</p>
+    <ul class="q-options">
+      <li data-letter="A">Le sac gestationnel est utilisé pour la datation avant 7 SA.</li>
+      <li data-letter="B">La LCC est utilisée entre 7 et 13 SA et 6 jours avec une estimation à ± 8 jours.</li>
+      <li data-letter="C">Le BIP est utilisé entre 12 et 24 SA avec une estimation à ± 3 jours.</li>
+      <li data-letter="D">La LCC est utilisée entre 5 et 6 SA.</li>
+      <li data-letter="E">Le BIP est utilisé dès 7 SA.</li>
+    </ul>
+    <details class="correction">
+      <summary>Voir la correction et l'explication détaillée</summary>
+      <div class="correction-body">
+        <span class="answer-line">Réponse : A</span>
+        <div class="why">
+          <b>Règles de datation :</b>
+          <ul style="margin:8px 0 8px 20px;font-size:.86rem;">
+            <li><b>Sac gestationnel</b> : avant 7 SA</li>
+            <li><b>LCC</b> : entre 7 et 13 SA + 6 jours, estimation à <b>± 3 jours</b></li>
+            <li><b>BIP</b> : entre 12 et 24 SA, estimation à <b>± 8 jours</b></li>
+          </ul>
+        </div>
+        <p class="distractor"><b>B :</b> Faux — l'estimation de la LCC est à ± 3 jours, pas ± 8 jours.</p>
+        <p class="distractor"><b>C :</b> Faux — l'estimation du BIP est à ± 8 jours, pas ± 3 jours.</p>
+        <p class="distractor"><b>D :</b> Faux — la LCC est utilisée à partir de 7 SA, pas à 5–6 SA.</p>
+        <p class="distractor"><b>E :</b> Faux — le BIP est utilisé à partir de 12 SA.</p>
+      </div>
+    </details>
+  </div>
+
+  <!-- Q25 -->
+  <div class="q-card">
+    <div class="q-top">
+      <span class="q-num">Q25</span>
+      <span class="badge badge-multi">Choix multiples</span>
+      <span class="badge badge-theme">Organisation de la surveillance</span>
+    </div>
+    <p class="q-text">Concernant l'organisation de la surveillance prénatale, quelles propositions sont exactes ? <em>(2 à 3 réponses exactes)</em></p>
+    <ul class="q-options">
+      <li data-letter="A">Trois consultations prénatales sont obligatoires.</li>
+      <li data-letter="B">La surveillance peut être assurée par une sage-femme, un médecin généraliste ou un gynécologue-obstétricien.</li>
+      <li data-letter="C">La surveillance prénatale vise le dépistage précoce des grossesses à risque.</li>
+      <li data-letter="D">La surveillance prénatale n'a aucun impact sur la morbi-mortalité materno-fœtale.</li>
+      <li data-letter="E">La surveillance est allégée en cas de grossesse à haut risque.</li>
+    </ul>
+    <details class="correction">
+      <summary>Voir la correction et l'explication détaillée</summary>
+      <div class="correction-body">
+        <span class="answer-line">Réponses : A, B, C</span>
+        <div class="why">
+          <b>Objectifs :</b> La surveillance prénatale a pour objectif le <b>dépistage précoce des grossesses à risque</b> afin de promouvoir une prise en charge précoce et adaptée, réduisant ainsi la morbi-mortalité materno-fœtale. <b>Trois consultations prénatales sont obligatoires</b> ; un examen clinique bien conduit associé aux examens complémentaires ciblés suffisent au suivi de la grossesse normale à bas risque. Le suivi peut être fait par une sage-femme, un médecin généraliste ou un gynécologue-obstétricien.
+        </div>
+        <p class="distractor"><b>D :</b> Faux — la surveillance prénatale <b>réduit</b> la morbi-mortalité materno-fœtale.</p>
+        <p class="distractor"><b>E :</b> Faux — la surveillance est <b>renforcée</b> en cas de grossesse à haut risque, pas allégée ; la patiente doit être orientée vers un centre spécialisé.</p>
+      </div>
+    </details>
+  </div>
+
+</section>
+
+<!-- ==================== SECTION 2 : CAS CLINIQUES ==================== -->
+<section class="block" id="cas">
+  <div class="section-head">
+    <div class="section-num">2</div>
+    <h2>5 cas cliniques hospitaliers algériens</h2>
+  </div>
+  <p class="section-sub">Scénarios réalistes inspirés des consultations d'EPH et des urgences de CHU — diagnostic, examens de première intention et prise en charge adaptée au contexte local.</p>
+
+  <!-- CAS 1 -->
+  <div class="case-card">
+    <div class="case-header">
+      <div class="case-icon">🏥</div>
+      <h3>Cas n°1 — Première consultation du 1<sup>er</sup> trimestre</h3>
+      <span class="case-tag">EPH · Consultation prénatale</span>
+    </div>
+    <div class="case-vignette">
+      <div class="vignette-title">Vignette clinique</div>
+      <p>Femme de 26 ans, primigeste, se présente à la consultation prénatale de l'EPH pour aménorrhée de 8 semaines. Cycles réguliers de 28 jours, DDR précise. Elle rapporte des nausées matinales, une pollakiurie et une tension mammaire. Aucun antécédent médical ou chirurgical notable. Non fumeuse, non alcoolique. Pas d'antécédent familial de maladie génétique.</p>
+      <div class="data-grid">
+        <div class="data-item"><b>Taille</b>1,65 m</div>
+        <div class="data-item"><b>Poids</b>62 kg</div>
+        <div class="data-item"><b>IMC</b>22,8 kg/m²</div>
+        <div class="data-item"><b>TA</b>110/70 mmHg</div>
+        <div class="data-item"><b>Examen mammaire</b>Seins tendus, aréoles pigmentées, tubercules de Montgomery saillants</div>
+        <div class="data-item"><b>TV</b>Col mou, utérus taille orange, signe de Hégar présent</div>
+      </div>
+    </div>
+    <div class="case-questions">
+      <div class="q-card" style="box-shadow:none;border:1px solid var(--border);">
+        <div class="q-top"><span class="q-num">C1-Q1</span><span class="badge badge-simple">Choix simple</span></div>
+        <p class="q-text">Quel est le signe clinique le plus évocateur du diagnostic de grossesse chez cette patiente ?</p>
+        <ul class="q-options">
+          <li data-letter="A">Les nausées matinales.</li>
+          <li data-letter="B">L'aménorrhée secondaire brusque et complète.</li>
+          <li data-letter="C">La pollakiurie.</li>
+          <li data-letter="D">La tension mammaire.</li>
+          <li data-letter="E">Le signe de Hégar.</li>
+        </ul>
+        <details class="correction">
+          <summary>Voir la correction</summary>
+          <div class="correction-body">
+            <span class="answer-line">Réponse : B</span>
+            <div class="why">L'aménorrhée secondaire est le signe le plus évocateur, à condition qu'elle soit brusque et complète chez une femme régulièrement réglée, en activité génitale et sans allaitement. Les nausées, la pollakiurie et la tension mammaire sont des signes sympathiques <b>inconstants et non spécifiques</b>. Le signe de Hégar est un signe physique <b>tardif</b> et moins sensible que l'aménorrhée pour évoquer le diagnostic.</div>
+            <p class="distractor"><b>A, C, D :</b> Signes sympathiques non spécifiques.</p>
+            <p class="distractor"><b>E :</b> Signe physique d'apparition plus tardive, ne constituant pas le signe le plus évocateur.</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="q-card" style="box-shadow:none;border:1px solid var(--border);">
+        <div class="q-top"><span class="q-num">C1-Q2</span><span class="badge badge-simple">Choix simple</span></div>
+        <p class="q-text">Quel examen para-clinique permet le diagnostic précoce de grossesse ?</p>
+        <ul class="q-options">
+          <li data-letter="A">L'échographie sus-pubienne.</li>
+          <li data-letter="B">Le dosage plasmatique de la bêta-hCG.</li>
+          <li data-letter="C">Le dosage urinaire des prolans.</li>
+          <li data-letter="D">La courbe ménothermique.</li>
+          <li data-letter="E">Le toucher vaginal.</li>
+        </ul>
+        <details class="correction">
+          <summary>Voir la correction</summary>
+          <div class="correction-body">
+            <span class="answer-line">Réponse : B</span>
+            <div class="why">Le dosage plasmatique de la bêta-hCG permet le diagnostic de grossesse et de son évolutivité selon la cinétique du taux. Le test est positif dès le 10<sup>e</sup> jour de grossesse. Le dosage urinaire des prolans est fiable si bien utilisé mais moins précoce et moins quantitatif. L'échographie est utile mais moins précoce que la biologie pour le diagnostic.</div>
+            <p class="distractor"><b>A :</b> L'échographie sus-pubienne est moins précoce que la voie vaginale et que la biologie.</p>
+            <p class="distractor"><b>C :</b> Le dosage urinaire est qualitatif et moins sensible.</p>
+            <p class="distractor"><b>D :</b> La courbe ménothermique est un moyen de datation, pas un examen diagnostique formel.</p>
+            <p class="distractor"><b>E :</b> Le TV est un examen clinique, non para-clinique.</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="q-card" style="box-shadow:none;border:1px solid var(--border);">
+        <div class="q-top"><span class="q-num">C1-Q3</span><span class="badge badge-multi">Choix multiples</span></div>
+        <p class="q-text">Quels examens biologiques obligatoires du 1<sup>er</sup> trimestre prescrivez-vous ? <em>(2 à 3 réponses exactes)</em></p>
+        <ul class="q-options">
+          <li data-letter="A">Groupe sanguin ABO, Rhésus et Kell.</li>
+          <li data-letter="B">Recherche d'agglutinines irrégulières (RAI).</li>
+          <li data-letter="C">Sérologie de la rubéole et de la toxoplasmose.</li>
+          <li data-letter="D">Glycémie à jeun.</li>
+          <li data-letter="E">ECBU.</li>
+        </ul>
+        <details class="correction">
+          <summary>Voir la correction</summary>
+          <div class="correction-body">
+            <span class="answer-line">Réponses : A, B, C</span>
+            <div class="why">Le bilan obligatoire du 1<sup>er</sup> trimestre comprend : groupe ABO/Rhésus/Kell, RAI, sérologie rubéole et toxoplasmose (si négative, à refaire tous les mois jusqu'au terme), sérologie syphilis (TPHA/VDRL) et bandelette urinaire (protéinurie, glycosurie). La glycémie à jeun n'est indiquée qu'en présence de facteurs de risque de diabète. L'ECBU n'est indiqué qu'en cas d'antécédent d'infection urinaire ou de signes fonctionnels urinaires.</div>
+            <p class="distractor"><b>D :</b> Indiquée seulement si facteurs de risque de diabète.</p>
+            <p class="distractor"><b>E :</b> Indiqué seulement si antécédent d'infection urinaire ou signes fonctionnels urinaires.</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="q-card" style="box-shadow:none;border:1px solid var(--border);">
+        <div class="q-top"><span class="q-num">C1-Q4</span><span class="badge badge-simple">Choix simple</span></div>
+        <p class="q-text">En l'absence de signes d'appel, quand doit être réalisée l'échographie du 1<sup>er</sup> trimestre dite « de datation » ?</p>
+        <ul class="q-options">
+          <li data-letter="A">Entre 5 et 6 SA.</li>
+          <li data-letter="B">Entre 8 et 10 SA.</li>
+          <li data-letter="C">Entre 11 et 13+6 SA.</li>
+          <li data-letter="D">Entre 18 et 22 SA.</li>
+          <li data-letter="E">Entre 32 et 35 SA.</li>
+        </ul>
+        <details class="correction">
+          <summary>Voir la correction</summary>
+          <div class="correction-body">
+            <span class="answer-line">Réponse : C</span>
+            <div class="why">En l'absence de signes d'appel, l'échographie du 1<sup>er</sup> trimestre se réalise entre 11 et 13+6 SA. Un examen plus précoce n'est nécessaire qu'en cas de doute sur la localisation, la vitalité ou la datation (FDR de GEU, métrorragies, cycles irréguliers).</div>
+            <p class="distractor"><b>A :</b> Trop précoce — réservé aux situations suspectes.</p>
+            <p class="distractor"><b>B :</b> Non recommandé en routine sans signe d'appel.</p>
+            <p class="distractor"><b>D :</b> Échographie du 2<sup>e</sup> trimestre (morphologique).</p>
+            <p class="distractor"><b>E :</b> Échographie du 3<sup>e</sup> trimestre (croissance).</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+
+  <!-- CAS 2 -->
+  <div class="case-card">
+    <div class="case-header">
+      <div class="case-icon">🚑</div>
+      <h3>Cas n°2 — Métrorragies du 1<sup>er</sup> trimestre aux urgences</h3>
+      <span class="case-tag">CHU · Urgences gynécologiques</span>
+    </div>
+    <div class="case-vignette">
+      <div class="vignette-title">Vignette clinique</div>
+      <p>Femme de 30 ans, G3P2, aménorrhée de 7 SA, consulte aux urgences du CHU pour douleurs pelviennes latéro-utérines gauches et métrorragies de faible abondance. Antécédents : salpingite traitée il y a 3 ans, tabagisme actif (10 cigarettes/jour). À l'examen : TA 100/60 mmHg, pouls 96/min, abdomen souple mais douloureux en fosse iliaque gauche, utérus de taille mandarine, pas de signe de Hégar net. Bêta-hCG plasmatique : 1 200 UI/L.</p>
+      <div class="data-grid">
+        <div class="data-item"><b>Âge gestationnel</b>7 SA</div>
+        <div class="data-item"><b>Bêta-hCG</b>1 200 UI/L</div>
+        <div class="data-item"><b>TA</b>100/60 mmHg</div>
+        <div class="data-item"><b>Pouls</b>96/min</div>
+        <div class="data-item"><b>Antécédent</b>Salpingite</div>
+        <div class="data-item"><b>Facteur de risque</b>Tabagisme actif</div>
+      </div>
+    </div>
+    <div class="case-questions">
+      <div class="q-card" style="box-shadow:none;border:1px solid var(--border);">
+        <div class="q-top"><span class="q-num">C2-Q1</span><span class="badge badge-simple">Choix simple</span></div>
+        <p class="q-text">Quel diagnostic évoquez-vous en priorité ?</p>
+        <ul class="q-options">
+          <li data-letter="A">Grossesse intra-utérine évolutive normale.</li>
+          <li data-letter="B">Grossesse extra-utérine (GEU).</li>
+          <li data-letter="C">Môle hydatiforme.</li>
+          <li data-letter="D">Grossesse arrêtée.</li>
+          <li data-letter="E">Fibrome utérin compliqué.</li>
+        </ul>
+        <details class="correction">
+          <summary>Voir la correction</summary>
+          <div class="correction-body">
+            <span class="answer-line">Réponse : B</span>
+            <div class="why">Le tableau associe : aménorrhée, douleurs pelviennes latéralisées, métrorragies, antécédent de salpingite et tabagisme — deux facteurs de risque majeurs de GEU. La discordance entre le volume utérin (mandarine, correspondant à ~6 SA) et l'âge gestationnel (7 SA) renforce la suspicion. Le diagnostic doit être confirmé par échographie (visualisation d'un sac extra-utérin, absence de sac intra-utérin) et surveillance du taux de bêta-hCG.</div>
+            <p class="distractor"><b>A :</b> Peu probable devant les douleurs latéralisées et les métrorragies.</p>
+            <p class="distractor"><b>C :</b> La môle donne typiquement des métrorragies et un utérus augmenté de volume, mais avec un bêta-hCG très élevé.</p>
+            <p class="distractor"><b>D :</b> La grossesse arrêtée donne une discordance mais sans douleur latéralisée typique.</p>
+            <p class="distractor"><b>E :</b> Le fibrome ne donne pas ce tableau aigu du 1<sup>er</sup> trimestre.</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="q-card" style="box-shadow:none;border:1px solid var(--border);">
+        <div class="q-top"><span class="q-num">C2-Q2</span><span class="badge badge-simple">Choix simple</span></div>
+        <p class="q-text">Quel examen para-clinique de première intention réalisez-vous aux urgences ?</p>
+        <ul class="q-options">
+          <li data-letter="A">Échographie pelvienne par voie vaginale.</li>
+          <li data-letter="B">Échographie abdominale sus-pubienne.</li>
+          <li data-letter="C">Hystérosalpingographie.</li>
+          <li data-letter="D">IRM pelvienne.</li>
+          <li data-letter="E">Cœlioscopie diagnostique d'emblée.</li>
+        </ul>
+        <details class="correction">
+          <summary>Voir la correction</summary>
+          <div class="correction-body">
+            <span class="answer-line">Réponse : A</span>
+            <div class="why">L'échographie pelvienne par voie vaginale est l'examen de première intention : elle permet un diagnostic plus précoce et précis par rapport à la voie sus-pubienne, en recherchant un sac intra-utérin, une activité cardiaque, un épanchement péritonéal et une masse annexielle. Le dosage de bêta-hCG est couplé.</div>
+            <p class="distractor"><b>B :</b> Moins sensible et moins précoce que la voie vaginale.</p>
+            <p class="distractor"><b>C :</b> Contre-indiquée en urgence dans ce contexte.</p>
+            <p class="distractor"><b>D :</b> Non indiquée en première intention.</p>
+            <p class="distractor"><b>E :</b> Réservée aux cas où l'échographie est non contributive et où le tableau est inquiétant.</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="q-card" style="box-shadow:none;border:1px solid var(--border);">
+        <div class="q-top"><span class="q-num">C2-Q3</span><span class="badge badge-multi">Choix multiples</span></div>
+        <p class="q-text">Devant une discordance entre l'âge gestationnel et le volume utérin, quels diagnostics évoquez-vous ? <em>(2 à 3 réponses exactes)</em></p>
+        <ul class="q-options">
+          <li data-letter="A">Erreur de datation.</li>
+          <li data-letter="B">Grossesse multiple.</li>
+          <li data-letter="C">Môle hydatiforme.</li>
+          <li data-letter="D">Grossesse arrêtée.</li>
+          <li data-letter="E">Aménorrhée psychogène isolée.</li>
+        </ul>
+        <details class="correction">
+          <summary>Voir la correction</summary>
+          <div class="correction-body">
+            <span class="answer-line">Réponses : A, B, C, D</span>
+            <div class="why">Le cours énumère : erreur de datation, grossesse multiple, môle hydatiforme, grossesse arrêtée, GEU. Ces diagnostics doivent être systématiquement évoqués devant une discordance entre l'âge gestationnel et le volume utérin.</div>
+            <p class="distractor"><b>E :</b> Faux — l'aménorrhée psychogène n'entraîne pas d'augmentation du volume utérin et ne fait pas partie des diagnostics de discordance.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+
+  <!-- CAS 3 -->
+  <div class="case-card">
+    <div class="case-header">
+      <div class="case-icon">🧪</div>
+      <h3>Cas n°3 — Suivi biologique et prévention infectieuse</h3>
+      <span class="case-tag">Consultation · Suivi de grossesse</span>
+    </div>
+    <div class="case-vignette">
+      <div class="vignette-title">Vignette clinique</div>
+      <p>Femme de 32 ans, G2P1, à 10 SA, vient pour sa première consultation prénatale. Elle est en bonne santé apparente, non immunisée contre la toxoplasmose (IgG et IgM négatives). Elle possède un chat à domicile et consomme régulièrement du fromage artisanal non pasteurisé.</p>
+      <div class="data-grid">
+        <div class="data-item"><b>Sérologie toxoplasmose</b>IgG−, IgM−</div>
+        <div class="data-item"><b>Âge gestationnel</b>10 SA</div>
+        <div class="data-item"><b>Contact</b>Chat à domicile</div>
+        <div class="data-item"><b>Alimentation</b>Fromage artisanal non pasteurisé</div>
+      </div>
+    </div>
+    <div class="case-questions">
+      <div class="q-card" style="box-shadow:none;border:1px solid var(--border);">
+        <div class="q-top"><span class="q-num">C3-Q1</span><span class="badge badge-simple">Choix simple</span></div>
+        <p class="q-text">Quelle conduite tenir concernant la sérologie de la toxoplasmose ?</p>
+        <ul class="q-options">
+          <li data-letter="A">Aucun contrôle ultérieur n'est nécessaire.</li>
+          <li data-letter="B">Refaire la sérologie tous les mois jusqu'au terme.</li>
+          <li data-letter="C">Refaire la sérologie au 3<sup>e</sup> trimestre uniquement.</li>
+          <li data-letter="D">Prescrire une sérologie uniquement en cas de symptômes.</li>
+          <li data-letter="E">Prescrire une sérologie à la fin du 1<sup>er</sup> trimestre uniquement.</li>
+        </ul>
+        <details class="correction">
+          <summary>Voir la correction</summary>
+          <div class="correction-body">
+            <span class="answer-line">Réponse : B</span>
+            <div class="why">Chez une femme non immunisée, la sérologie de la toxoplasmose doit être refaite <b>tous les mois jusqu'au terme</b> afin de dépister une éventuelle séroconversion, qui justifierait une prise en charge spécifique.</div>
+            <p class="distractor"><b>A :</b> Faux — le risque de séroconversion persiste pendant toute la grossesse.</p>
+            <p class="distractor"><b>C, E :</b> Faux — la surveillance est mensuelle, pas trimestrielle.</p>
+            <p class="distractor"><b>D :</b> Faux — la séroconversion est le plus souvent asymptomatique.</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="q-card" style="box-shadow:none;border:1px solid var(--border);">
+        <div class="q-top"><span class="q-num">C3-Q2</span><span class="badge badge-multi">Choix multiples</span></div>
+        <p class="q-text">Quels conseils de prévention de la toxoplasmose donnez-vous à cette patiente ? <em>(2 à 3 réponses exactes)</em></p>
+        <ul class="q-options">
+          <li data-letter="A">Consommer la viande bien cuite ou après congélation.</li>
+          <li data-letter="B">Laver soigneusement les fruits et légumes souillés de terre.</li>
+          <li data-letter="C">Éviter les contacts avec les chats.</li>
+          <li data-letter="D">Consommer des fromages non pasteurisés.</li>
+          <li data-letter="E">Supprimer toute activité physique.</li>
+        </ul>
+        <details class="correction">
+          <summary>Voir la correction</summary>
+          <div class="correction-body">
+            <span class="answer-line">Réponses : A, B, C</span>
+            <div class="why">En l'absence d'immunité contre la toxoplasmose : consommer la viande bien cuite ou après congélation ; laver soigneusement les fruits et légumes souillés de terre ; éviter les contacts avec les chats. À cela s'ajoutent les mesures générales : se laver les mains avant chaque repas, éviter les fromages non pasteurisés, charcuteries artisanales, viande et poissons crus (prévention de la listériose).</div>
+            <p class="distractor"><b>D :</b> Faux — à éviter (listériose).</p>
+            <p class="distractor"><b>E :</b> Faux — l'activité physique douce adaptée au terme est recommandée.</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="q-card" style="box-shadow:none;border:1px solid var(--border);">
+        <div class="q-top"><span class="q-num">C3-Q3</span><span class="badge badge-simple">Choix simple</span></div>
+        <p class="q-text">Concernant la supplémentation en acide folique, quelle est la bonne indication ?</p>
+        <ul class="q-options">
+          <li data-letter="A">En période périconceptionnelle pour prévenir les anomalies de fermeture du tube neural.</li>
+          <li data-letter="B">Au 3<sup>e</sup> trimestre pour prévenir l'hypocalcémie néonatale.</li>
+          <li data-letter="C">En systématique chez toutes les femmes au 2<sup>e</sup> trimestre.</li>
+          <li data-letter="D">Uniquement en cas d'anémie ferriprive.</li>
+          <li data-letter="E">En cas de diabète gestationnel.</li>
+        </ul>
+        <details class="correction">
+          <summary>Voir la correction</summary>
+          <div class="correction-body">
+            <span class="answer-line">Réponse : A</span>
+            <div class="why">L'acide folique est recommandé en période périconceptionnelle pour prévenir les anomalies de fermeture du tube neural (spina bifida), en particulier chez les femmes épileptiques sous antiépileptiques (ex. Dépakine).</div>
+            <p class="distractor"><b>B :</b> Faux — c'est la vitamine D au 3<sup>e</sup> trimestre qui prévient l'hypocalcémie néonatale.</p>
+            <p class="distractor"><b>C, D, E :</b> Faux — les indications sont précises et ne correspondent pas à ces situations.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+
+  <!-- CAS 4 -->
+  <div class="case-card">
+    <div class="case-header">
+      <div class="case-icon">🖥️</div>
+      <h3>Cas n°4 — Échographie morphologique du 2<sup>e</sup> trimestre</h3>
+      <span class="case-tag">Consultation · Échographie T2</span>
+    </div>
+    <div class="case-vignette">
+      <div class="vignette-title">Vignette clinique</div>
+      <p>Femme de 29 ans, G1P0, à 22 SA, se présente pour l'échographie morphologique du 2<sup>e</sup> trimestre. Grossesse bien suivie, aucun facteur de risque particulier. Elle a déjà réalisé l'échographie du 1<sup>er</sup> trimestre qui était normale (clarté nucale à 1,8 mm).</p>
+      <div class="data-grid">
+        <div class="data-item"><b>Âge gestationnel</b>22 SA</div>
+        <div class="data-item"><b>Clarté nucale T1</b>1,8 mm</div>
+        <div class="data-item"><b>Grossesse</b>Unique, évolutive</div>
+        <div class="data-item"><b>Facteurs de risque</b>Aucun</div>
+      </div>
+    </div>
+    <div class="case-questions">
+      <div class="q-card" style="box-shadow:none;border:1px solid var(--border);">
+        <div class="q-top"><span class="q-num">C4-Q1</span><span class="badge badge-multi">Choix multiples</span></div>
+        <p class="q-text">Quels éléments sont étudiés lors de l'échographie morphologique du 2<sup>e</sup> trimestre ? <em>(2 à 3 réponses exactes)</em></p>
+        <ul class="q-options">
+          <li data-letter="A">L'étude morphologique et le dépistage des malformations fœtales.</li>
+          <li data-letter="B">La mesure des biométries fœtales (BIP, PC, DAT, PA, LF).</li>
+          <li data-letter="C">La localisation placentaire et la quantité de liquide amniotique.</li>
+          <li data-letter="D">Le score de Bishop.</li>
+          <li data-letter="E">La mesure de la clarté nucale.</li>
+        </ul>
+        <details class="correction">
+          <summary>Voir la correction</summary>
+          <div class="correction-body">
+            <span class="answer-line">Réponses : A, B, C</span>
+            <div class="why">L'échographie morphologique entre 18 et 22 SA permet l'étude morphologique, la détermination de la croissance fœtale par biométries (BIP, PC, DAT, PA, LF), la localisation placentaire et l'évaluation du liquide amniotique.</div>
+            <p class="distractor"><b>D :</b> Faux — le score de Bishop évalue les conditions cervicales au 3<sup>e</sup> trimestre.</p>
+            <p class="distractor"><b>E :</b> Faux — la clarté nucale se mesure à l'échographie du 1<sup>er</sup> trimestre (11–13+6 SA).</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="q-card" style="box-shadow:none;border:1px solid var(--border);">
+        <div class="q-top"><span class="q-num">C4-Q2</span><span class="badge badge-simple">Choix simple</span></div>
+        <p class="q-text">Quelle était la valeur normale de la clarté nucale à l'échographie du 1<sup>er</sup> trimestre ?</p>
+        <ul class="q-options">
+          <li data-letter="A">&lt; 1 mm.</li>
+          <li data-letter="B">&lt; 2 mm.</li>
+          <li data-letter="C">&lt; 3 mm.</li>
+          <li data-letter="D">&lt; 4 mm.</li>
+          <li data-letter="E">&lt; 5 mm.</li>
+        </ul>
+        <details class="correction">
+          <summary>Voir la correction</summary>
+          <div class="correction-body">
+            <span class="answer-line">Réponse : C</span>
+            <div class="why">La clarté nucale est considérée normale si elle est <b>&lt; 3 mm</b>. Une valeur ≥ 3 mm constitue un signe d'appel pour une anomalie chromosomique (trisomies 21, 13, 18).</div>
+            <p class="distractor"><b>A, B :</b> Valeurs trop basses — une clarté nucale très fine n'est pas la limite supérieure de la normale.</p>
+            <p class="distractor"><b>D, E :</b> Valeurs pathologiques.</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="q-card" style="box-shadow:none;border:1px solid var(--border);">
+        <div class="q-top"><span class="q-num">C4-Q3</span><span class="badge badge-simple">Choix simple</span></div>
+        <p class="q-text">Quel examen d'imagerie est réalisé au 3<sup>e</sup> trimestre pour évaluer la croissance fœtale ?</p>
+        <ul class="q-options">
+          <li data-letter="A">Échographie entre 11 et 13+6 SA.</li>
+          <li data-letter="B">Échographie entre 18 et 22 SA.</li>
+          <li data-letter="C">Échographie entre 32 et 35 SA.</li>
+          <li data-letter="D">IRM fœtale systématique.</li>
+          <li data-letter="E">Radiographie du bassin.</li>
+        </ul>
+        <details class="correction">
+          <summary>Voir la correction</summary>
+          <div class="correction-body">
+            <span class="answer-line">Réponse : C</span>
+            <div class="why">L'échographie du 3<sup>e</sup> trimestre, dite « de croissance », est réalisée entre 32 et 35 SA. Elle apprécie la vitalité fœtale, la croissance (RCIU, macrosomie), la présentation, la localisation placentaire, la quantité de liquide amniotique et le score biophysique de Manning.</div>
+            <p class="distractor"><b>A :</b> Échographie du 1<sup>er</sup> trimestre (datation).</p>
+            <p class="distractor"><b>B :</b> Échographie du 2<sup>e</sup> trimestre (morphologique).</p>
+            <p class="distractor"><b>D, E :</b> Non systématiques dans le suivi de la grossesse normale.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+
+  <!-- CAS 5 -->
+  <div class="case-card">
+    <div class="case-header">
+      <div class="case-icon">👶</div>
+      <h3>Cas n°5 — Consultation du 3<sup>e</sup> trimestre et pronostic d'accouchement</h3>
+      <span class="case-tag">CHU · Consultation du 9<sup>e</sup> mois</span>
+    </div>
+    <div class="case-vignette">
+      <div class="vignette-title">Vignette clinique</div>
+      <p>Femme de 35 ans, G4P3, à 36 SA, consulte pour la consultation du 3<sup>e</sup> trimestre. Grossesse unique, bien suivie. Elle ne présente aucune pathologie maternelle. À l'examen : TA 115/70 mmHg, poids 72 kg, hauteur utérine 32 cm, présentation céphalique engagée, BCF réguliers à 140/min. Au toucher vaginal : col postérieur, tonique, long, fermé ; périnée souple ; bassin normal.</p>
+      <div class="data-grid">
+        <div class="data-item"><b>Âge gestationnel</b>36 SA</div>
+        <div class="data-item"><b>Hauteur utérine</b>32 cm</div>
+        <div class="data-item"><b>Présentation</b>Céphalique engagée</div>
+        <div class="data-item"><b>BCF</b>140/min réguliers</div>
+        <div class="data-item"><b>Col</b>Postérieur, tonique, long, fermé</div>
+        <div class="data-item"><b>Bassin</b>Normal</div>
+      </div>
+    </div>
+    <div class="case-questions">
+      <div class="q-card" style="box-shadow:none;border:1px solid var(--border);">
+        <div class="q-top"><span class="q-num">C5-Q1</span><span class="badge badge-multi">Choix multiples</span></div>
+        <p class="q-text">Quels éléments de bon pronostic d'accouchement retrouvez-vous chez cette patiente ? <em>(2 à 3 réponses exactes)</em></p>
+        <ul class="q-options">
+          <li data-letter="A">Absence de pathologie maternelle.</li>
+          <li data-letter="B">Présentation céphalique engagée.</li>
+          <li data-letter="C">Bassin normal et périnée souple.</li>
+          <li data-letter="D">Col postérieur, tonique et long.</li>
+          <li data-letter="E">Hauteur utérine à 32 cm.</li>
+        </ul>
+        <details class="correction">
+          <summary>Voir la correction</summary>
+          <div class="correction-body">
+            <span class="answer-line">Réponses : A, B, C</span>
+            <div class="why">Les éléments de bon pronostic sont : mère sans pathologie, utérus sain avec segment inférieur amplié et col ramolli ouvert, fœtus de volume normal, présentation du sommet engagée, absence de souffrance fœtale, bassin normal, périnée souple. Ici, l'absence de pathologie, la présentation céphalique engagée, le bassin normal et le périnée souple sont des éléments favorables.</div>
+            <p class="distractor"><b>D :</b> Faux — un col postérieur, tonique, long et fermé est un élément <b>défavorable</b> (score de Bishop bas), qui rend un déclenchement difficile.</p>
+            <p class="distractor"><b>E :</b> Faux — la hauteur utérine n'est pas en soi un élément de bon pronostic d'accouchement ; elle évalue la croissance.</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="q-card" style="box-shadow:none;border:1px solid var(--border);">
+        <div class="q-top"><span class="q-num">C5-Q2</span><span class="badge badge-simple">Choix simple</span></div>
+        <p class="q-text">Quel score évalue les conditions cervicales au 3<sup>e</sup> trimestre ?</p>
+        <ul class="q-options">
+          <li data-letter="A">Score de Manning.</li>
+          <li data-letter="B">Score de Bishop.</li>
+          <li data-letter="C">Score d'Apgar.</li>
+          <li data-letter="D">Score de Silverman.</li>
+          <li data-letter="E">Score de Glasgow.</li>
+        </ul>
+        <details class="correction">
+          <summary>Voir la correction</summary>
+          <div class="correction-body">
+            <span class="answer-line">Réponse : B</span>
+            <div class="why">Le score de Bishop évalue les conditions cervicales : position, consistance, longueur, effacement et dilatation. Il permet de prédire le succès d'un déclenchement du travail.</div>
+            <p class="distractor"><b>A :</b> Score biophysique de bien-être fœtal (Manning).</p>
+            <p class="distractor"><b>C :</b> Évaluation néonatale à la naissance.</p>
+            <p class="distractor"><b>D :</b> Détresse respiratoire du nouveau-né.</p>
+            <p class="distractor"><b>E :</b> État de conscience.</p>
+          </div>
+        </details>
+      </div>
+
+      <div class="q-card" style="box-shadow:none;border:1px solid var(--border);">
+        <div class="q-top"><span class="q-num">C5-Q3</span><span class="badge badge-simple">Choix simple</span></div>
+        <p class="q-text">Quand doit être réalisée l'échographie de croissance du 3<sup>e</sup> trimestre ?</p>
+        <ul class="q-options">
+          <li data-letter="A">Entre 11 et 13+6 SA.</li>
+          <li data-letter="B">Entre 18 et 22 SA.</li>
+          <li data-letter="C">Entre 32 et 35 SA.</li>
+          <li data-letter="D">Entre 36 et 38 SA.</li>
+          <li data-letter="E">Après 40 SA.</li>
+        </ul>
+        <details class="correction">
+          <summary>Voir la correction</summary>
+          <div class="correction-body">
+            <span class="answer-line">Réponse : C</span>
+            <div class="why">L'échographie du 3<sup>e</sup> trimestre, dite « de croissance », est réalisée entre 32 et 35 SA. Elle apprécie la vitalité, la croissance, la présentation, la localisation placentaire, la quantité de liquide amniotique et le score de Manning.</div>
+            <p class="distractor"><b>A :</b> Échographie T1 (datation).</p>
+            <p class="distractor"><b>B :</b> Échographie T2 (morphologique).</p>
+            <p class="distractor"><b>D, E :</b> Hors des recommandations systématiques.</p>
+          </div>
+        </details>
+      </div>
+    </div>
+  </div>
+
+</section>
+
+<!-- ==================== SECTION 3 : MIND MAP ==================== -->
+<section class="block" id="mindmap">
+  <div class="section-head">
+    <div class="section-num">3</div>
+    <h2>Carte conceptuelle &amp; synthèse visuelle</h2>
+  </div>
+  <p class="section-sub">Vue d'ensemble structurée du cours — diagnostic, bilans, échographies et surveillance trimestrielle.</p>
+
+  <div class="mindmap">
+    <div class="mm-card">
+      <h4><span class="mm-dot"></span>Diagnostic clinique</h4>
+      <ul class="mm-list">
+        <li><b>Aménorrhée secondaire</b> — signe le plus évocateur (brusque, complète, femme réglée, hors allaitement)</li>
+        <li><b>Signes sympathiques</b> — inconstants, non spécifiques, liés à la progestérone</li>
+        <li><b>Courbe ménothermique</b> — plateau &gt; 16 jours</li>
+        <li><b>Modifications mammaires</b> — réseau de Haller, tubercules de Montgomery</li>
+        <li><b>Signes utérins</b> — Noble (forme), Hégar (consistance)</li>
+      </ul>
+    </div>
+
+    <div class="mm-card">
+      <h4><span class="mm-dot"></span>Diagnostic para-clinique</h4>
+      <ul class="mm-list">
+        <li><b>Bêta-hCG plasmatique</b> — positif dès J10, doublement /2 jours jusqu'à 9 SA</li>
+        <li><b>Pic</b> à 9 SA puis décroissance irrégulière</li>
+        <li><b>Sous-unité bêta</b> spécifique (alpha commune FSH/LH/TSH)</li>
+        <li><b>Échographie vaginale</b> — plus précoce que sus-pubienne</li>
+        <li><b>Sac ovulaire</b> 5–6 SA ; <b>activité cardiaque</b> 6–7 SA</li>
+      </ul>
+    </div>
+
+    <div class="mm-card">
+      <h4><span class="mm-dot"></span>Bilan du 1<sup>er</sup> trimestre</h4>
+      <ul class="mm-list">
+        <li><b>Obligatoire</b> — groupe ABO/Rh/Kell, RAI, rubéole, toxoplasmose, syphilis, bandelette urinaire</li>
+        <li><b>Si FDR</b> — glycémie à jeun, Coombs indirect (Rh−), électrophorèse Hb, NFS, ECBU</li>
+        <li><b>Recommandé</b> — prélèvement vaginal, VIH, hépatite B, FCU si &gt; 3 ans</li>
+        <li><b>Toxoplasmose négative</b> → sérologie mensuelle jusqu'au terme</li>
+      </ul>
+    </div>
+
+    <div class="mm-card">
+      <h4><span class="mm-dot"></span>Échographies — chronologie</h4>
+      <ul class="mm-list">
+        <li><b>T1 — datation</b> : 11–13+6 SA (LCC ± 3 j, clarté nucale &lt; 3 mm)</li>
+        <li><b>T2 — morphologique</b> : 18–22 SA (BIP, PC, DAT, PA, LF)</li>
+        <li><b>T3 — croissance</b> : 32–35 SA (présentation, placenta, LA, Manning)</li>
+        <li><b>Avant 14 SA</b> : sac gestationnel &lt; 7 SA, LCC 7–13+6 SA, BIP 12–24 SA (± 8 j)</li>
+      </ul>
+    </div>
+
+    <div class="mm-card">
+      <h4><span class="mm-dot"></span>Surveillance trimestrielle</h4>
+      <ul class="mm-list">
+        <li><b>T1</b> — interrogatoire, examen général, seins, abdomen, gynéco, bilan, écho de datation</li>
+        <li><b>T2</b> — MAF (primigeste 18–20 SA ; multigeste 16–18 SA), hauteur utérine, BCF, écho morphologique</li>
+        <li><b>T3</b> — pronostic d'accouchement, Bishop, présentation, bassin, écho de croissance</li>
+        <li><b>3 consultations obligatoires</b> — renforcées si haut risque</li>
+      </ul>
+    </div>
+
+    <div class="mm-card">
+      <h4><span class="mm-dot"></span>Conseils &amp; prévention</h4>
+      <ul class="mm-list">
+        <li><b>Arrêt tabac/alcool</b> — RCIU, prématurité, HRP, toxicité cérébrale</li>
+        <li><b>Alimentation</b> — calcium, fruits/légumes, éviter fromages non pasteurisés, viandes/poissons crus</li>
+        <li><b>Toxoplasmose</b> — viande cuite/congelée, laver fruits/légumes, éviter chats</li>
+        <li><b>Acide folique</b> périconceptionnel — spina bifida</li>
+        <li><b>Vitamine D</b> au 3<sup>e</sup> trimestre — hypocalcémie néonatale</li>
+        <li><b>Fer</b> — pas systématique</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="mm-card" style="margin-top:8px;">
+    <h4><span class="mm-dot"></span>Algorithme — Conduite devant une aménorrhée du 1<sup>er</sup> trimestre</h4>
+    <div class="flow">
+      <div class="flow-step">
+        <div class="flow-marker"><div class="flow-circle">1</div><div class="flow-line"></div></div>
+        <div class="flow-content"><b>Aménorrhée secondaire</b><span>Femme en activité génitale, régulièrement réglée, hors allaitement</span></div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-marker"><div class="flow-circle">2</div><div class="flow-line"></div></div>
+        <div class="flow-content"><b>Dosage plasmatique bêta-hCG</b><span>Positif dès J10 ; cinétique de doublement /2 jours jusqu'à 9 SA</span></div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-marker"><div class="flow-circle">3</div><div class="flow-line"></div></div>
+        <div class="flow-content"><b>Échographie pelvienne (voie vaginale)</b><span>Localisation (GIU / GEU), vitalité, datation, nombre, morphologie précoce</span></div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-marker"><div class="flow-circle">4</div><div class="flow-line"></div></div>
+        <div class="flow-content"><b>Discordance âge gestationnel / volume utérin ?</b><span>Erreur de datation · grossesse multiple · môle · grossesse arrêtée · GEU</span></div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-marker"><div class="flow-circle">5</div></div>
+        <div class="flow-content"><b>Bilan prénatal + conseils</b><span>Obligatoire / si FDR / recommandé ; acide folique, hygiène, prévention</span></div>
+      </div>
+    </div>
+  </div>
+
+  <table class="styled-table">
+    <thead>
+      <tr>
+        <th>Trimestre</th>
+        <th>Âge gestationnel</th>
+        <th>Échographie</th>
+        <th>Objectif principal</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><b>T1</b></td>
+        <td>11 – 13+6 SA</td>
+        <td>Datation</td>
+        <td>Localisation, datation (LCC), vitalité, clarté nucale</td>
+      </tr>
+      <tr>
+        <td><b>T2</b></td>
+        <td>18 – 22 SA</td>
+        <td>Morphologique</td>
+        <td>Morphologie, biométries, placenta, liquide amniotique</td>
+      </tr>
+      <tr>
+        <td><b>T3</b></td>
+        <td>32 – 35 SA</td>
+        <td>Croissance</td>
+        <td>Croissance, présentation, bien-être fœtal (Manning)</td>
+      </tr>
+    </tbody>
+  </table>
+
+</section>
+
+<!-- ==================== SECTION 4 : MNÉMOTECHNIQUES ==================== -->
+<section class="block" id="mnemo">
+  <div class="section-head">
+    <div class="section-num">4</div>
+    <h2>Mnémotechniques &amp; trucs d'examen</h2>
+  </div>
+  <p class="section-sub">Astuces de mémorisation et pièges docimologiques classiques des facultés algériennes.</p>
+
+  <div class="mnemo-grid">
+    <div class="mnemo-card">
+      <span class="mnemo-key">Taille utérine</span>
+      <div class="mnemo-word">M<span>andarine</span> — O<span>range</span> — P<span>amplemousse</span></div>
+      <p><b>M-O-P</b> : 6 SA → mandarine ; 8–10 SA → orange ; 12–14 SA → pamplemousse. Puis <b>16 SA</b> = mi-chemin symphyse/ombilic et <b>20 SA</b> = ombilic. L'ordre alphabétique des fruits aide : M avant O avant P.</p>
+    </div>
+
+    <div class="mnemo-card">
+      <span class="mnemo-key">Signes utérins</span>
+      <div class="mnemo-word">N<span>oble</span> = <span>N</span>orme (forme) · H<span>égar</span> = <span>H</span>umide (consistance)</div>
+      <p><b>Noble</b> : modification de forme (le doigt bute contre le pourtour évasé). <b>Hégar</b> : ramollissement du corps (contact des doigts en avant de l'isthme). Retenez : <b>N</b>oble → <b>N</b>ouvelle forme ; <b>H</b>égar → <b>H</b>umide/mou.</p>
+    </div>
+
+    <div class="mnemo-card">
+      <span class="mnemo-key">Bilan obligatoire T1</span>
+      <div class="mnemo-word">G-R-T-S-B</div>
+      <p><b>G</b>roupe ABO/Rh/Kell · <b>R</b>AI · <b>T</b>oxoplasmose + rubéole · <b>S</b>yphilis (TPHA/VDRL) · <b>B</b>andelette urinaire. C'est le noyau <b>obligatoire</b> à ne pas confondre avec les examens « si FDR » (glycémie, Coombs, électrophorèse Hb, NFS, ECBU).</p>
+    </div>
+
+    <div class="mnemo-card">
+      <span class="mnemo-key">Échographies</span>
+      <div class="mnemo-word">11-13 · 18-22 · 32-35</div>
+      <p><b>11–13+6</b> = datation · <b>18–22</b> = morphologique · <b>32–35</b> = croissance. Les intervalles sont espacés d'environ 7 SA : retenez la séquence croissante <b>13 → 22 → 35</b>.</p>
+    </div>
+
+    <div class="mnemo-card">
+      <span class="mnemo-key">hCG</span>
+      <div class="mnemo-word">9-9-2 : J9, pic 9 SA, ×2 / 2 jours</div>
+      <p>Sécrétion dès <b>J9</b> après fécondation · <b>pic à 9 SA</b> · <b>doublement tous les 2 jours</b> jusqu'à 9 SA. Trois « 9 » et un « 2 » : mnémotechnique imparable.</p>
+    </div>
+
+    <div class="mnemo-card">
+      <span class="mnemo-key">DDR</span>
+      <div class="mnemo-word">+14 j +9 mois</div>
+      <p>Terme = <b>DDR + 14 jours + 9 mois</b> (cycle régulier de 28 jours). Ne jamais utiliser la date de conception présumée.</p>
+    </div>
+
+    <div class="mnemo-card">
+      <span class="mnemo-key">Toxoplasmose</span>
+      <div class="mnemo-word">C-C-L-C : Cuire, Congeler, Laver, Chats</div>
+      <p>Chez la femme non immunisée : <b>C</b>uire la viande · <b>C</b>ongeler · <b>L</b>aver fruits et légumes · éviter les <b>C</b>hats. Et surtout : sérologie <b>mensuelle</b> jusqu'au terme.</p>
+    </div>
+
+    <div class="mnemo-card">
+      <span class="mnemo-key">Vitaminothérapie</span>
+      <div class="mnemo-word">Folate = Fermeture · Vit D = Dernier trimestre</div>
+      <p>Acide <b>folique</b> en périconceptionnel → anomalies de <b>fermeture</b> du tube neural. Vitamine <b>D</b> au <b>3<sup>e</sup> trimestre</b> → hypocalcémie néonatale. Fer : <b>pas systématique</b>.</p>
+    </div>
+
+    <div class="mnemo-card">
+      <span class="mnemo-key">MAF</span>
+      <div class="mnemo-word">Primi 18-20 · Multi 16-18</div>
+      <p>La <b>primigeste</b> perçoit les MAF plus tard (18–20 SA) que la <b>multigeste</b> (16–18 SA) — le seuil de perception est abaissé par l'expérience.</p>
+    </div>
+  </div>
+
+  <!-- PIÈGES -->
+  <div id="pieges" style="margin-top:34px;">
+    <div class="section-head" style="margin-bottom:18px;">
+      <div class="section-num" style="background:linear-gradient(135deg,var(--danger),#7f1d1d);">⚠</div>
+      <h2 style="font-size:1.2rem;">Pièges d'examen classiques</h2>
+    </div>
+
+    <div class="trap-card">
+      <div class="trap-title">⚠ Confusion Noble / Hégar</div>
+      <p>Le piège le plus fréquent : <b>Noble = forme</b> (pourtour évasé, le doigt bute), <b>Hégar = consistance</b> (ramollissement, contact des doigts en avant de l'isthme). Ne jamais les inverser.</p>
+    </div>
+
+    <div class="trap-card">
+      <div class="trap-title">⚠ Clarté nucale : sens de l'inégalité</div>
+      <p>Normale si <b>&lt; 3 mm</b>. Une valeur <b>&gt; 3 mm</b> est un signe d'appel pour trisomie 21/13/18. Les QCM inversent souvent le signe.</p>
+    </div>
+
+    <div class="trap-card">
+      <div class="trap-title">⚠ Bilan obligatoire vs indiqué si FDR</div>
+      <p>Obligatoire : groupe/RAI/rubéole/toxoplasmose/syphilis/bandelette. Si FDR : glycémie à jeun, Coombs indirect (Rh−), électrophorèse Hb, NFS, ECBU. Ne pas confondre les deux listes.</p>
+    </div>
+
+    <div class="trap-card">
+      <div class="trap-title">⚠ Échographie T2 vs T3</div>
+      <p><b>18–22 SA</b> = morphologique (T2). <b>32–35 SA</b> = croissance (T3). Les QCM proposent souvent 32–35 SA comme piège dans une question sur l'écho T2.</p>
+    </div>
+
+    <div class="trap-card">
+      <div class="trap-title">⚠ Hauteur utérine : signe de l'opération</div>
+      <p>Entre 4 et 7 mois : mois <b>× 4</b>. Au 8<sup>e</sup>–9<sup>e</sup> mois : (mois × 4) <b>− 2 cm</b>. Le piège classique propose « + 2 cm ».</p>
+    </div>
+
+    <div class="trap-card">
+      <div class="trap-title">⚠ Fer : pas systématique</div>
+      <p>L'apport systématique de fer n'est <b>pas recommandé</b>. Seule une anémie par carence martiale et/ou en acide folique justifie un traitement martial.</p>
+    </div>
+
+    <div class="trap-card">
+      <div class="trap-title">⚠ Pic d'hCG : 9 SA, pas 20 SA</div>
+      <p>Production maximale à la <b>9<sup>e</sup> SA</b>, puis décroissance irrégulière jusqu'au terme. Le piège propose souvent 20 SA ou un plateau stable.</p>
+    </div>
+  </div>
+
+</section>
+
+</main>
+
+<footer class="motivation">
+  <div class="inner">
+    <div class="emoji">🩺✨</div>
+    <h3>Tu tiens le bon bout !</h3>
+    <p>Chaque QCM travaillé aujourd'hui est une grossesse à risque dépistée demain. Relis la carte conceptuelle la veille de l'examen, respire, et fais confiance à ta préparation — le CHU t'attend, futur médecin.</p>
+    <div class="signature">Bon courage et bonne réussite 🌟</div>
+  </div>
+</footer>
+
+</body>
+</html>

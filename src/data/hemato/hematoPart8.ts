@@ -532,12 +532,12 @@ export const HEMATO_LESSON_22_RESOURCES: CourseResource[] = [
          ┌──────────────────┬───────────────────────┼───────────────────────┬──────────────────┐
          ▼                  ▼                       ▼                       ▼                  ▼
 CIRCONSTANCES DE DÉCOUVERTE PREUVE HISTOPATHOLOGIQUE SYNDROMES PARANÉOPLASIQUES SIGNES PHYSIQUES CLÉS   NOMENCLATURE
-- Signes d'appel d'organe   - **BIOPSIE INDISPENSABLE** - SIADH ➔ Cancer à      - Ganglion de Troisier  - Épithélium :
+- Signes d'appel d'organe   - **BIOPSIE INDISPENSABLE** - SIADH -> Cancer à      - Ganglion de Troisier  - Épithélium :
 - Altération état général     (Ponction cytologique       petites cellules (CBPC) (sus-claviculaire G)    **Carcinome**
   (3 A : Asthénie,            insuffisante !)           - Hypercalcémie PTH-rp  - Nodule de Sœur        - Conjonctif :
-  Anorexie, Amaigrissement) - Franchissement de la        ➔ Carcinome épidermoïde   Marie-Joseph (ombilic) **Sarcome**
+  Anorexie, Amaigrissement) - Franchissement de la        -> Carcinome épidermoïde   Marie-Joseph (ombilic) **Sarcome**
 - Découverte fortuite TDM     membrane basale =         - Lambert-Eaton (anti-  - Hippocratisme digital - Hématopoïèse :
-- Dépistage organisé          **Carcinome invasif**       VGCC) ➔ CBPC            (Pierre-Marie) ➔ Poumon  Lymphome / Leucémie
+- Dépistage organisé          **Carcinome invasif**       VGCC) -> CBPC            (Pierre-Marie) -> Poumon  Lymphome / Leucémie
 \`\`\`
 
 ## La Règle d'Or :
@@ -550,7 +550,7 @@ CIRCONSTANCES DE DÉCOUVERTE PREUVE HISTOPATHOLOGIQUE SYNDROMES PARANÉOPLASIQUE
     courseId: 'crs-hemato-22',
     type: 'astuce',
     title: "Astuces & Pièges aux Concours : Diagnostic et Paranéoplasies",
-    contentMarkdown: `### 🎯 Pièges Cruciaux pour le Concours
+    contentMarkdown: `### Focus : Pièges Cruciaux pour le Concours
 
 1. **La preuve diagnostique** :
    - Un marqueur tumoral à 10 000 ou une masse au scanner ne font JAMAIS le diagnostic de certitude. Seule l'**histopathologie d'une biopsie tissulaire** apporte la certitude.
@@ -1102,7 +1102,7 @@ export const HEMATO_LESSON_23_RESOURCES: CourseResource[] = [
 TOXIQUES & MODE DE VIE  AGENTS INFECTIEUX   EXPOSITIONS PRO   RAYONNEMENTS        NIVEAUX PRÉVENTION
 - **Tabac** : 1ère cause   - **HPV 16, 18** : - **Amiante** :   - **UVB/UVA** :    - **Primaire** :
   évitable (85% poumon)     Col, anus, ORL     Mésothéliome,      Mélanome,          Éviction toxique,
-- **Alcool** : Synergie     ➔ E6 (p53),        Poumon             Carcinomes         Vaccin HPV / VHB
+- **Alcool** : Synergie     -> E6 (p53),        Poumon             Carcinomes         Vaccin HPV / VHB
   multiplicative avec       E7 (pRb)          - **Bois** :      - **Radon 222** :  - **Secondaire** :
   tabac (VADS, œsophage)  - **H. pylori** :    Adéno-ethmoïde     2e cause poumon    Dépistage précoce
 - Obésité : Sein post-      Estomac, MALT     - **Amines** :    - **Radiations** :   (FIT, FCV, Mammo)
@@ -1111,7 +1111,7 @@ TOXIQUES & MODE DE VIE  AGENTS INFECTIEUX   EXPOSITIONS PRO   RAYONNEMENTS      
 \`\`\`
 
 ## Dépistages Organisés :
-1. **Cancer Colorectal** : Test immunologique fécal (**test FIT**) tous les 2 ans de 50 à 74 ans. Si positif ➔ **Coloscopie totale**.
+1. **Cancer Colorectal** : Test immunologique fécal (**test FIT**) tous les 2 ans de 50 à 74 ans. Si positif -> **Coloscopie totale**.
 2. **Cancer du Sein** : **Mammographie bilatérale** tous les 2 ans de 50 à 74 ans (double lecture).
 3. **Cancer du Col Utérin** : **Test HPV-HR** tous les 5 ans de 30 à 65 ans (ou frottis tous les 3 ans de 25 à 29 ans).`,
     authorOrSource: 'Dr. LAIDANI.M'
@@ -1121,7 +1121,7 @@ TOXIQUES & MODE DE VIE  AGENTS INFECTIEUX   EXPOSITIONS PRO   RAYONNEMENTS      
     courseId: 'crs-hemato-23',
     type: 'astuce',
     title: "Astuces & Pièges aux Concours : Cancérogènes & Dépistages",
-    contentMarkdown: `### 🎯 Pièges Cruciaux pour le Concours
+    contentMarkdown: `### Focus : Pièges Cruciaux pour le Concours
 
 1. **Alcool + Tabac** :
    - Risque MULTIPLICATIF (pas seulement additif) dans les cancers des VADS et de l'œsophage.
@@ -1673,11 +1673,11 @@ export const HEMATO_LESSON_24_RESOURCES: CourseResource[] = [
          ▼                  ▼                       ▼                       ▼                  ▼
 ÉTAPES CARCINOGÉNÈSE    ONCOGÈNES (Dominants)   SUPPRESSEURS TUMEUR     MÉTABOLISME & ANGIOGÉNÈSE ÉCHAPPEMENT IMMUN
 1. **Initiation**       - Mutation activatrice  - Mutation récessive    - **Effet Warburg** :     - Perte du CMH-I
-   (Mutation irrévers.)   gain de fonction      - **Loi de Knudson**      Glycolyse aérobie ➔     - **Axe PD-1 / PD-L1**
+   (Mutation irrévers.)   gain de fonction      - **Loi de Knudson**      Glycolyse aérobie ->     - **Axe PD-1 / PD-L1**
 2. **Promotion**        - 1 seul allèle muté      (2 hits nécessaires)    Consommation massive      (Épuisement lymphoïde)
    (Prolifération         suffit !              - **TP53** (Gardien du    de glucose (TEP-FDG)    - Rôle des **Treg** et
    réversible)          - Exemples :              génome : p21 / BAX)   - **Angiogenèse** :         MDSC suppressifs
-3. **Progression**        * **KRAS** (GTPase)   - **RB1** (Contrôle       Hypoxie ➔ HIF-1α ➔     - Révolution des
+3. **Progression**        * **KRAS** (GTPase)   - **RB1** (Contrôle       Hypoxie -> HIF-1α ->     - Révolution des
    (Instabilité, invasion * **c-MYC** (Transcr.)  G1/S via E2F)           Sécrétion de **VEGF**     **anti-PD-1** si
    et métastases)         * **HER2 / EGFR**     - **APC** (Dégrade        (Switch angiogénique)     statut **MSI-H / TMB-H**
                                                   la β-caténine)
@@ -1699,7 +1699,7 @@ export const HEMATO_LESSON_24_RESOURCES: CourseResource[] = [
     courseId: 'crs-hemato-24',
     type: 'astuce',
     title: "Astuces & Pièges aux Concours : Oncogènes vs Suppresseurs de Tumeurs",
-    contentMarkdown: `### 🎯 Pièges Cruciaux pour le Concours
+    contentMarkdown: `### Focus : Pièges Cruciaux pour le Concours
 
 1. **Oncogène vs Gène Suppresseur** :
    - Oncogène (ex: KRAS, HER2, MYC) : Mutation **dominante**, **gain de fonction** (1 allèle muté suffit).
@@ -1709,11 +1709,11 @@ export const HEMATO_LESSON_24_RESOURCES: CourseResource[] = [
    - Active **BAX / PUMA** pour déclencher l'apoptose si irréparable.
 3. **pRb & E2F** :
    - pRb hypophosphorylée = active (bloque E2F).
-   - pRb hyperphosphorylée par CDK4/6 = inactive (libère E2F ➔ entrée en phase S).
+   - pRb hyperphosphorylée par CDK4/6 = inactive (libère E2F -> entrée en phase S).
 4. **Effet Warburg** :
    - Glycolyse avec production de lactate MÊME en présence d'oxygène (aérobie). Explique la fixation du FDG en TEP.
 5. **MSI-H et Réponse à l'Immunothérapie** :
-   - Les tumeurs MSI-H / dMMR ont des milliers de mutations (TMB élevée) produisant des néoantigènes ➔ réponse majeure aux anti-PD-1 (Pembrolizumab).`,
+   - Les tumeurs MSI-H / dMMR ont des milliers de mutations (TMB élevée) produisant des néoantigènes -> réponse majeure aux anti-PD-1 (Pembrolizumab).`,
     authorOrSource: 'Dr. LAIDANI.M'
   }
 ];

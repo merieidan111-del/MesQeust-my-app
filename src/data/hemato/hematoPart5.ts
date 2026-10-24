@@ -550,7 +550,7 @@ CLINIQUE & BIOLOGIE                     CYTOGÉNÉTIQUE & BIOMOL                
     courseId: 'crs-hemato-13',
     type: 'astuce',
     title: "Astuces & Pièges aux Concours : LMC",
-    contentMarkdown: `### 🎯 Pièges Cruciaux pour le Concours
+    contentMarkdown: `### Focus : Pièges Cruciaux pour le Concours
 
 1. **Myélémie de la LMC** :
    - Équilibrée et harmonieuse (tous les précurseurs présents, myélocytes et métamyélocytes prédominants, blastes < 5-10%). Pas de hiatus leucémique !
@@ -1118,7 +1118,7 @@ VITAMINE B12 (Cobalamine)                                                      V
 
 ## Traitement :
 - **B12** : Hydroxocobalamine IM à vie dans Biermer.
-- **Attention** : Crise réticulocytaire à J5-J8 ➔ **Surveillance de la KALIÉMIE (risque d'arrêt cardiaque sur hypokaliémie)**.
+- **Attention** : Crise réticulocytaire à J5-J8 -> **Surveillance de la KALIÉMIE (risque d'arrêt cardiaque sur hypokaliémie)**.
 - Ne JAMAIS donner de folates seuls si B12 basse (aggravation neurologique) !`,
     authorOrSource: 'Dr. LAIDANI.M'
   },
@@ -1127,7 +1127,7 @@ VITAMINE B12 (Cobalamine)                                                      V
     courseId: 'crs-hemato-14',
     type: 'astuce',
     title: "Astuces & Pièges aux Concours : Anémie de Biermer & FAP",
-    contentMarkdown: `### 🎯 Pièges Cruciaux pour le Concours
+    contentMarkdown: `### Focus : Pièges Cruciaux pour le Concours
 
 1. **Signes neurologiques** :
    - Présents UNIQUEMENT dans la carence en **B12** (Sclérose combinée de la moelle). ABSENTS dans la carence en folates.
@@ -1139,7 +1139,7 @@ VITAMINE B12 (Cobalamine)                                                      V
 4. **Crise réticulocytaire & Potassium** :
    - Entre J5 et J8 sous B12 : Risque majeur d'**HYPOKALIÉMIE** de transfert mortelle par incorporation massive dans les hématies régénérées.
 5. **Surveillance endoscopique dans Biermer** :
-   - Risque accru d'**adénocarcinome gastrique** et de **tumeurs neuroendocrines (carcinoïdes)** fundiques ➔ FOGD avec biopsies étagées.`,
+   - Risque accru d'**adénocarcinome gastrique** et de **tumeurs neuroendocrines (carcinoïdes)** fundiques -> FOGD avec biopsies étagées.`,
     authorOrSource: 'Dr. LAIDANI.M'
   }
 ];
@@ -1680,7 +1680,7 @@ NEUTROPÉNIE FÉBRILE            COMPRESSION MÉDULLAIRE         SYNDROME CAVE S
 - Score MASCC (≥ 21 = bas r.)    + Déficit moteur + Sphincter   - Veines jugulaires turgesc.    Morphine de référence)
 - Urgence absolue (< 1h !)     - **IRM médullaire d'urgence** - Circulation collatérale       - **Laxatif systématique**
 - Bêtalactamine anti-pyo IV    - Dexaméthasone forte dose     - TDM injecté, Dexaméthasone    - Surdosage : Myosis +
-  (Tazocilline / Céfépime)       + Chirurgie / Radiothérapie    + Traiter la cause (chimio)     Bradypnée ➔ **NALOXONE**
+  (Tazocilline / Céfépime)       + Chirurgie / Radiothérapie    + Traiter la cause (chimio)     Bradypnée -> **NALOXONE**
 \`\`\`
 
 ## Autres Urgences Métaboliques Majeures :
@@ -1696,7 +1696,7 @@ NEUTROPÉNIE FÉBRILE            COMPRESSION MÉDULLAIRE         SYNDROME CAVE S
     courseId: 'crs-hemato-15',
     type: 'astuce',
     title: "Astuces & Pièges aux Concours : Urgences Oncologiques",
-    contentMarkdown: `### 🎯 Pièges Cruciaux pour le Concours
+    contentMarkdown: `### Focus : Pièges Cruciaux pour le Concours
 
 1. **Règle de l'heure dorée (Golden Hour)** :
    - Dans la neutropénie fébrile, l'antibiothérapie doit être passée dans l'heure suivant l'arrivée ! Ne jamais attendre les résultats d'hémocultures.

@@ -1,0 +1,2286 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Conduite à tenir devant un couple infertile — Révision 4e année</title>
+<style>
+  :root{
+    --navy:#0f2a44;
+    --navy-soft:#1e3a5f;
+    --slate:#475569;
+    --slate-light:#64748b;
+    --teal:#0f766e;
+    --teal-bright:#14b8a6;
+    --teal-light:#ccfbf1;
+    --teal-pale:#f0fdfa;
+    --bg:#f1f5f9;
+    --card:#ffffff;
+    --border:#e2e8f0;
+    --amber:#b45309;
+    --amber-light:#fef3c7;
+    --rose:#9f1239;
+    --rose-light:#ffe4e6;
+    --indigo:#3730a3;
+    --indigo-light:#e0e7ff;
+    --shadow-sm:0 1px 2px rgba(15,42,68,.06),0 1px 3px rgba(15,42,68,.08);
+    --shadow-md:0 4px 12px rgba(15,42,68,.08),0 2px 4px rgba(15,42,68,.05);
+    --shadow-lg:0 12px 30px rgba(15,42,68,.12);
+    --radius:16px;
+    --radius-sm:10px;
+  }
+
+  *{box-sizing:border-box;}
+
+  html{scroll-behavior:smooth;}
+
+  body{
+    margin:0;
+    font-family:'Inter','Roboto',-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+    background:
+      radial-gradient(circle at 0% 0%, rgba(20,184,166,.07), transparent 40%),
+      radial-gradient(circle at 100% 0%, rgba(15,42,68,.06), transparent 40%),
+      var(--bg);
+    color:var(--slate);
+    line-height:1.65;
+    font-size:16px;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  /* ============ HEADER ============ */
+  header.hero{
+    background:linear-gradient(135deg,var(--navy) 0%, var(--navy-soft) 55%, var(--teal) 100%);
+    color:#fff;
+    padding:56px 24px 64px;
+    position:relative;
+    overflow:hidden;
+  }
+  header.hero::after{
+    content:"";
+    position:absolute;
+    inset:auto -80px -120px auto;
+    width:420px;height:420px;
+    background:radial-gradient(circle,rgba(20,184,166,.35),transparent 65%);
+    border-radius:50%;
+  }
+  header.hero::before{
+    content:"";
+    position:absolute;
+    inset:-100px auto auto -80px;
+    width:320px;height:320px;
+    background:radial-gradient(circle,rgba(255,255,255,.08),transparent 70%);
+    border-radius:50%;
+  }
+  .hero-inner{max-width:1100px;margin:0 auto;position:relative;z-index:2;}
+  .hero-tag{
+    display:inline-flex;align-items:center;gap:8px;
+    background:rgba(255,255,255,.12);
+    border:1px solid rgba(255,255,255,.22);
+    padding:6px 14px;border-radius:999px;
+    font-size:.78rem;font-weight:600;letter-spacing:.4px;text-transform:uppercase;
+    backdrop-filter:blur(6px);
+  }
+  .hero-tag .dot{width:8px;height:8px;border-radius:50%;background:var(--teal-bright);box-shadow:0 0 0 4px rgba(20,184,166,.25);}
+  header.hero h1{
+    font-size:clamp(1.7rem,3.4vw,2.6rem);
+    line-height:1.2;
+    margin:18px 0 12px;
+    font-weight:800;
+    letter-spacing:-.5px;
+  }
+  header.hero p.sub{
+    max-width:760px;
+    color:#cbd5e1;
+    font-size:1.02rem;
+    margin:0 0 22px;
+  }
+  .hero-chips{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px;}
+  .chip{
+    background:rgba(255,255,255,.1);
+    border:1px solid rgba(255,255,255,.18);
+    color:#e2e8f0;
+    padding:6px 13px;border-radius:999px;
+    font-size:.8rem;font-weight:500;
+  }
+
+  /* ============ LAYOUT ============ */
+  main{max-width:1100px;margin:-36px auto 0;padding:0 20px 80px;position:relative;z-index:3;}
+
+  .section{margin-top:56px;}
+  .section-head{
+    display:flex;align-items:center;gap:14px;
+    margin-bottom:26px;
+  }
+  .section-icon{
+    flex:0 0 auto;
+    width:52px;height:52px;border-radius:14px;
+    display:grid;place-items:center;
+    background:linear-gradient(135deg,var(--teal),var(--teal-bright));
+    color:#fff;font-size:1.4rem;
+    box-shadow:var(--shadow-md);
+  }
+  .section-head h2{
+    margin:0;color:var(--navy);font-size:1.5rem;font-weight:800;letter-spacing:-.3px;
+  }
+  .section-head .sub{display:block;color:var(--slate-light);font-size:.88rem;font-weight:500;margin-top:2px;}
+
+  /* ============ CARDS ============ */
+  .card{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow-sm);
+    padding:22px 22px 18px;
+    margin-bottom:18px;
+    transition:box-shadow .25s ease, transform .25s ease;
+  }
+  .card:hover{box-shadow:var(--shadow-md);}
+
+  /* ============ QCM CARD ============ */
+  .q-card{
+    position:relative;
+    border-left:5px solid var(--teal);
+    overflow:hidden;
+  }
+  .q-card::before{
+    content:"";
+    position:absolute;top:0;left:0;right:0;height:3px;
+    background:linear-gradient(90deg,var(--teal),var(--teal-bright),transparent);
+    opacity:.55;
+  }
+  .q-head{display:flex;flex-wrap:wrap;align-items:center;gap:9px;margin-bottom:14px;}
+  .q-num{
+    font-weight:800;color:#fff;font-size:.82rem;
+    background:var(--navy);
+    padding:5px 12px;border-radius:8px;
+    letter-spacing:.3px;
+  }
+  .badge{
+    display:inline-flex;align-items:center;gap:5px;
+    font-size:.71rem;font-weight:700;
+    padding:4px 10px;border-radius:999px;
+    letter-spacing:.3px;text-transform:uppercase;
+  }
+  .b-simple{background:var(--indigo-light);color:var(--indigo);}
+  .b-rj{background:var(--teal-light);color:var(--teal);}
+  .b-rf{background:var(--rose-light);color:var(--rose);}
+  .b-multi{background:var(--amber-light);color:var(--amber);}
+  .b-sauf{background:#ede9fe;color:#5b21b6;}
+  .b-theme{
+    background:#f1f5f9;color:var(--slate);
+    text-transform:none;letter-spacing:0;font-weight:600;
+    border:1px solid var(--border);
+  }
+
+  .q-text{
+    color:var(--navy);
+    font-weight:600;
+    font-size:1.02rem;
+    margin:0 0 14px;
+  }
+  .options{
+    list-style:none;padding:0;margin:0;
+    display:flex;flex-direction:column;gap:8px;
+  }
+  .options li{
+    background:#f8fafc;
+    border:1px solid var(--border);
+    border-radius:var(--radius-sm);
+    padding:10px 14px;
+    font-size:.94rem;
+    color:var(--slate);
+    display:flex;gap:11px;align-items:flex-start;
+    transition:background .2s ease;
+  }
+  .options li:hover{background:#f1f5f9;}
+  .opt-letter{
+    flex:0 0 auto;
+    width:24px;height:24px;border-radius:7px;
+    display:grid;place-items:center;
+    background:var(--navy);color:#fff;
+    font-size:.75rem;font-weight:800;
+    margin-top:1px;
+  }
+
+  /* ============ CORRECTION ============ */
+  details.correction{
+    margin-top:16px;
+    border:1px solid var(--teal-light);
+    border-radius:var(--radius-sm);
+    background:linear-gradient(180deg,var(--teal-pale),#ffffff);
+    overflow:hidden;
+  }
+  details.correction summary{
+    cursor:pointer;
+    list-style:none;
+    padding:12px 16px;
+    font-weight:700;
+    color:var(--teal);
+    font-size:.9rem;
+    display:flex;align-items:center;gap:9px;
+    user-select:none;
+    transition:background .2s ease;
+  }
+  details.correction summary::-webkit-details-marker{display:none;}
+  details.correction summary::after{
+    content:"▾";
+    margin-left:auto;
+    font-size:.85rem;
+    transition:transform .25s ease;
+    color:var(--teal);
+  }
+  details.correction[open] summary::after{transform:rotate(180deg);}
+  details.correction summary:hover{background:rgba(20,184,166,.07);}
+  .corr-body{
+    padding:4px 18px 18px;
+    font-size:.93rem;
+    color:var(--slate);
+  }
+  .answer-line{
+    display:inline-flex;align-items:center;gap:8px;
+    background:var(--teal);color:#fff;
+    padding:6px 14px;border-radius:8px;
+    font-weight:700;font-size:.86rem;
+    margin:6px 0 12px;
+    letter-spacing:.3px;
+  }
+  .corr-body p{margin:0 0 10px;}
+  .corr-body strong{color:var(--navy);}
+  .why-list{
+    margin:10px 0 0;
+    padding-left:0;
+    list-style:none;
+    display:flex;flex-direction:column;gap:7px;
+  }
+  .why-list li{
+    padding:8px 12px 8px 36px;
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:8px;
+    position:relative;
+    font-size:.89rem;
+  }
+  .why-list li::before{
+    content:"✕";
+    position:absolute;left:12px;top:8px;
+    color:var(--rose);font-weight:800;font-size:.85rem;
+  }
+  .why-list li.ok::before{content:"✓";color:var(--teal);}
+  .why-list li.ok{background:var(--teal-pale);border-color:var(--teal-light);}
+
+  /* ============ CAS CLINIQUES ============ */
+  .case-card{
+    border-left:5px solid var(--navy);
+    background:linear-gradient(180deg,#ffffff, #fbfdff);
+  }
+  .case-header{
+    display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-bottom:14px;
+  }
+  .case-num{
+    background:linear-gradient(135deg,var(--navy),var(--navy-soft));
+    color:#fff;font-weight:800;font-size:.8rem;
+    padding:6px 13px;border-radius:8px;letter-spacing:.4px;
+  }
+  .case-loc{
+    font-size:.75rem;font-weight:700;text-transform:uppercase;
+    letter-spacing:.5px;
+    background:#e0f2fe;color:#075985;
+    padding:4px 10px;border-radius:999px;
+  }
+  .vignette{
+    background:#f8fafc;
+    border:1px dashed #cbd5e1;
+    border-radius:12px;
+    padding:16px 18px;
+    font-size:.94rem;
+    color:var(--slate);
+    margin-bottom:16px;
+  }
+  .vignette p{margin:0 0 8px;}
+  .vignette p:last-child{margin-bottom:0;}
+  .vignette .vlabel{
+    display:inline-block;
+    font-size:.72rem;font-weight:800;text-transform:uppercase;letter-spacing:.4px;
+    color:var(--teal);margin-right:6px;
+  }
+  .vitals{
+    display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;
+  }
+  .vital-pill{
+    background:#fff;border:1px solid var(--border);
+    padding:4px 11px;border-radius:999px;
+    font-size:.78rem;font-weight:600;color:var(--navy);
+    box-shadow:var(--shadow-sm);
+  }
+  .case-question{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:12px;
+    padding:15px 17px;
+    margin-bottom:12px;
+  }
+  .case-question .cq-head{
+    display:flex;align-items:center;gap:9px;margin-bottom:9px;
+  }
+  .cq-tag{
+    font-size:.7rem;font-weight:800;text-transform:uppercase;
+    background:var(--navy);color:#fff;
+    padding:3px 9px;border-radius:6px;letter-spacing:.3px;
+  }
+  .cq-text{font-weight:600;color:var(--navy);margin:0 0 10px;font-size:.96rem;}
+  .case-question .options li{font-size:.9rem;padding:8px 12px;}
+
+  /* ============ MAP CONCEPTUELLE ============ */
+  .map-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:18px;
+    margin-top:8px;
+  }
+  .map-box{
+    background:#fff;
+    border:1px solid var(--border);
+    border-radius:var(--radius);
+    padding:20px;
+    box-shadow:var(--shadow-sm);
+    position:relative;
+    overflow:hidden;
+  }
+  .map-box::after{
+    content:"";
+    position:absolute;top:0;right:0;left:0;height:4px;
+    background:linear-gradient(90deg,var(--teal),var(--teal-bright));
+  }
+  .map-box h3{
+    margin:6px 0 12px;color:var(--navy);font-size:1.02rem;
+    display:flex;align-items:center;gap:8px;
+  }
+  .map-box h3 .num{
+    width:26px;height:26px;border-radius:8px;
+    background:var(--teal-light);color:var(--teal);
+    display:grid;place-items:center;font-size:.8rem;font-weight:800;
+  }
+  .map-list{list-style:none;padding:0;margin:0;font-size:.9rem;}
+  .map-list li{
+    padding:7px 0 7px 20px;
+    border-bottom:1px dashed #eef2f6;
+    position:relative;
+  }
+  .map-list li:last-child{border-bottom:none;}
+  .map-list li::before{
+    content:"";
+    position:absolute;left:4px;top:14px;
+    width:7px;height:7px;border-radius:50%;
+    background:var(--teal-bright);
+  }
+
+  /* FLOWCHART */
+  .flow{
+    display:flex;flex-direction:column;gap:0;margin-top:10px;
+  }
+  .flow-step{
+    display:flex;align-items:flex-start;gap:14px;
+    position:relative;
+    padding-bottom:18px;
+  }
+  .flow-step:last-child{padding-bottom:0;}
+  .flow-step::before{
+    content:"";
+    position:absolute;left:19px;top:38px;bottom:0;
+    width:2px;background:linear-gradient(180deg,var(--teal-bright),#e2e8f0);
+  }
+  .flow-step:last-child::before{display:none;}
+  .flow-dot{
+    flex:0 0 auto;
+    width:40px;height:40px;border-radius:50%;
+    background:linear-gradient(135deg,var(--teal),var(--teal-bright));
+    color:#fff;font-weight:800;font-size:.9rem;
+    display:grid;place-items:center;
+    box-shadow:0 0 0 4px var(--teal-pale);
+    z-index:2;
+  }
+  .flow-content{
+    background:#fff;border:1px solid var(--border);
+    border-radius:12px;padding:12px 16px;flex:1;
+    box-shadow:var(--shadow-sm);
+  }
+  .flow-content strong{color:var(--navy);display:block;font-size:.95rem;margin-bottom:2px;}
+  .flow-content span{font-size:.87rem;color:var(--slate-light);}
+
+  /* TABLE */
+  .table-wrap{overflow-x:auto;border-radius:var(--radius);box-shadow:var(--shadow-sm);margin-top:14px;}
+  table.mini{
+    width:100%;border-collapse:collapse;background:#fff;font-size:.9rem;min-width:520px;
+  }
+  table.mini th{
+    background:var(--navy);color:#fff;
+    padding:12px 14px;text-align:left;font-weight:700;font-size:.83rem;
+    letter-spacing:.3px;
+  }
+  table.mini td{
+    padding:11px 14px;border-bottom:1px solid var(--border);color:var(--slate);
+    vertical-align:top;
+  }
+  table.mini tr:nth-child(even) td{background:#f8fafc;}
+  table.mini tr:last-child td{border-bottom:none;}
+  table.mini td strong{color:var(--navy);}
+
+  /* ALERT */
+  .alert{
+    display:flex;gap:14px;align-items:flex-start;
+    background:var(--amber-light);
+    border:1px solid #fcd34d;
+    border-left:5px solid var(--amber);
+    border-radius:12px;
+    padding:16px 18px;
+    margin:14px 0;
+    font-size:.92rem;
+  }
+  .alert .icon{font-size:1.3rem;line-height:1;}
+  .alert strong{color:#92400e;}
+
+  .alert.teal{
+    background:var(--teal-pale);
+    border-color:var(--teal-light);
+    border-left-color:var(--teal);
+  }
+  .alert.teal strong{color:var(--teal);}
+
+  /* MNEMO */
+  .mnemo-grid{
+    display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));
+    gap:18px;margin-top:8px;
+  }
+  .mnemo{
+    background:#fff;border:1px solid var(--border);
+    border-radius:var(--radius);padding:20px;
+    box-shadow:var(--shadow-sm);
+    position:relative;
+    overflow:hidden;
+  }
+  .mnemo::before{
+    content:"";
+    position:absolute;top:0;left:0;width:4px;height:100%;
+    background:linear-gradient(180deg,var(--teal),var(--teal-bright));
+  }
+  .mnemo .m-title{
+    font-weight:800;color:var(--navy);font-size:1rem;
+    display:flex;align-items:center;gap:9px;margin-bottom:10px;
+  }
+  .mnemo .m-title .m-icon{
+    width:34px;height:34px;border-radius:10px;
+    background:var(--teal-light);color:var(--teal);
+    display:grid;place-items:center;font-size:1rem;font-weight:800;
+  }
+  .mnemo .m-code{
+    display:inline-block;
+    background:var(--navy);color:#fff;
+    font-weight:800;letter-spacing:1px;
+    padding:5px 12px;border-radius:8px;
+    font-size:.86rem;margin-bottom:9px;
+  }
+  .mnemo p{font-size:.9rem;margin:0 0 8px;}
+  .mnemo ul{list-style:none;padding:0;margin:0;font-size:.88rem;}
+  .mnemo ul li{
+    padding:6px 0 6px 20px;position:relative;
+    border-bottom:1px dashed #eef2f6;
+  }
+  .mnemo ul li:last-child{border-bottom:none;}
+  .mnemo ul li::before{
+    content:"▸";position:absolute;left:2px;color:var(--teal-bright);font-weight:800;
+  }
+
+  .trap{
+    background:var(--rose-light);
+    border:1px solid #fda4af;
+    border-left:5px solid var(--rose);
+    border-radius:12px;
+    padding:15px 18px;
+    margin:14px 0;
+    font-size:.92rem;
+  }
+  .trap strong{color:var(--rose);}
+
+  /* FOOTER */
+  footer{
+    background:linear-gradient(135deg,var(--navy),var(--teal));
+    color:#e2e8f0;
+    margin-top:60px;
+    padding:48px 24px 40px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  footer::before{
+    content:"";
+    position:absolute;inset:-40% auto auto 50%;
+    width:600px;height:600px;
+    background:radial-gradient(circle,rgba(20,184,166,.25),transparent 60%);
+    transform:translateX(-50%);
+  }
+  footer .foot-inner{max-width:760px;margin:0 auto;position:relative;z-index:2;}
+  footer .motivation{
+    font-size:1.15rem;font-weight:600;color:#fff;line-height:1.6;margin:0 0 18px;
+  }
+  footer .motivation .em{color:var(--teal-bright);}
+  footer .sign{
+    font-size:.85rem;color:#94a3b8;margin-top:18px;
+    border-top:1px solid rgba(255,255,255,.14);padding-top:18px;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width:640px){
+    header.hero{padding:40px 18px 52px;}
+    main{padding:0 14px 60px;margin-top:-28px;}
+    .card{padding:18px 16px 16px;}
+    .section-head h2{font-size:1.25rem;}
+    .section-icon{width:44px;height:44px;font-size:1.15rem;border-radius:12px;}
+    .q-text{font-size:.96rem;}
+    .options li{font-size:.89rem;}
+  }
+
+  /* PROGRESS BAR under header */
+  .progress-wrap{
+    max-width:1100px;margin:22px auto 0;padding:0 20px;
+    position:relative;z-index:4;
+  }
+  .progress-bar{
+    display:flex;flex-wrap:wrap;gap:8px;
+    background:#fff;border:1px solid var(--border);
+    border-radius:14px;padding:10px;
+    box-shadow:var(--shadow-md);
+  }
+  .progress-bar a{
+    flex:1 1 auto;text-align:center;
+    text-decoration:none;color:var(--slate);
+    font-size:.8rem;font-weight:600;
+    padding:9px 10px;border-radius:9px;
+    transition:all .2s ease;
+    white-space:nowrap;
+  }
+  .progress-bar a:hover{background:var(--teal-pale);color:var(--teal);}
+  .progress-bar a .p-ico{margin-right:5px;}
+</style>
+</head>
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="hero">
+  <div class="hero-inner">
+    <span class="hero-tag"><span class="dot"></span> Module de Médecine de la Reproduction — 4<sup>e</sup> année</span>
+    <h1>Conduite à tenir devant un couple infertile</h1>
+    <p class="sub">
+      Fiches de révision avancées : QCM exigEants, cas cliniques hospitaliers algériens,
+      carte conceptuelle et mnémotechniques. Un support pensé pour transformer la connaissance
+      en réflexe clinique.
+    </p>
+    <div class="hero-chips">
+      <span class="chip">🎯 25 QCM mélangés</span>
+      <span class="chip">🏥 5 cas cliniques</span>
+      <span class="chip">🗺️ Carte conceptuelle</span>
+      <span class="chip">🧠 Mnémotechniques</span>
+    </div>
+  </div>
+</header>
+
+<div class="progress-wrap">
+  <nav class="progress-bar" aria-label="Navigation rapide">
+    <a href="#qcm"><span class="p-ico">①</span>Banque de QCM</a>
+    <a href="#cas"><span class="p-ico">②</span>Cas cliniques</a>
+    <a href="#carte"><span class="p-ico">③</span>Carte conceptuelle</a>
+    <a href="#mnemo"><span class="p-ico">④</span>Mnémotechniques</a>
+  </nav>
+</div>
+
+<main>
+
+<!-- ================= SECTION 1 : QCM ================= -->
+<section class="section" id="qcm">
+  <div class="section-head">
+    <div class="section-icon">🎯</div>
+    <div>
+      <h2>1. Banque de 25 QCM exigeants</h2>
+      <span class="sub">Types volontairement mélangés — RJ / RF, choix multiples, choix simple et « SAUF »</span>
+    </div>
+  </div>
+
+  <!-- Q1 -->
+  <article class="card q-card">
+    <div class="q-head">
+      <span class="q-num">Q1</span>
+      <span class="badge b-simple">Choix simple</span>
+      <span class="badge b-theme">Définition & délais d'exploration</span>
+    </div>
+    <p class="q-text">Concernant les délais d'exploration d'une infertilité, quelle proposition est exacte ?</p>
+    <ul class="options">
+      <li><span class="opt-letter">A</span>Chez une femme de 33 ans sans facteur de risque, l'exploration débute après 6 mois de rapports non protégés.</li>
+      <li><span class="opt-letter">B</span>Chez une femme de 36 ans, l'exploration peut débuter après 6 mois de rapports non protégés.</li>
+      <li><span class="opt-letter">C</span>Chez une femme de 41 ans, il est recommandé d'attendre 12 mois avant toute exploration.</li>
+      <li><span class="opt-letter">D</span>L'exploration ne doit jamais débuter avant 12 mois, quel que soit l'âge.</li>
+      <li><span class="opt-letter">E</span>Un antécédent de grossesse extra-utérine ne justifie pas une exploration précoce.</li>
+    </ul>
+    <details class="correction">
+      <summary>🔍 Voir la correction détaillée</summary>
+      <div class="corr-body">
+        <span class="answer-line">Réponse : B</span>
+        <p><strong>Raisonnement.</strong> Le seuil de 12 mois ne s'applique qu'à la femme de moins de 35 ans sans facteur de risque. À partir de 35 ans, le délai est ramené à <strong>6 mois</strong>, car la réserve ovarienne et la qualité ovocytaire déclinent de manière accélérée : attendre 12 mois ferait perdre un temps thérapeutique précieux.</p>
+        <ul class="why-list">
+          <li>33 ans sans facteur de risque : le délai reste de 12 mois. L'exploration à 6 mois n'est pas indiquée.</li>
+          <li class="ok">36 ans : le seuil de 6 mois est correctement appliqué.</li>
+          <li>41 ans : plus l'âge avance, plus l'exploration doit être précoce, voire immédiate. Attendre 12 mois est une erreur pronostique majeure.</li>
+          <li>« Jamais avant 12 mois » : contredit les situations de facteur de risque connu, où l'exploration est immédiate quel que soit l'âge.</li>
+          <li>Antécédent de GEU : c'est précisément un facteur de risque tubaire justifiant une exploration précoce, sans attendre 12 mois.</li>
+        </ul>
+      </div>
+    </details>
+  </article>
+
+  <!-- Q2 -->
+  <article class="card q-card">
+    <div class="q-head">
+      <span class="q-num">Q2</span>
+      <span class="badge b-multi">Choix multiples</span>
+      <span class="badge b-theme">Axe hypothalamo-hypophyso-gonadique</span>
+    </div>
+    <p class="q-text">Quelles propositions concernant la physiologie reproductive sont exactes ? <em>(2 à 3 réponses)</em></p>
+    <ul class="options">
+      <li><span class="opt-letter">A</span>La GnRH est sécrétée de façon pulsatile par l'hypothalamus.</li>
+      <li><span class="opt-letter">B</span>Chez l'homme, la FSH agit principalement sur les cellules de Leydig.</li>
+      <li><span class="opt-letter">C</span>Chez la femme, la LH participe à l'ovulation et à la formation du corps jaune.</li>
+      <li><span class="opt-letter">D</span>La progestérone est sécrétée par les cellules de la granulosa dès la phase folliculaire précoce.</li>
+      <li><span class="opt-letter">E</span>La testostérone est produite par les cellules de Sertoli sous l'effet de la FSH.</li>
+    </ul>
+    <details class="correction">
+      <summary>🔍 Voir la correction détaillée</summary>
+      <div class="corr-body">
+        <span class="answer-line">Réponses : A et C</span>
+        <p><strong>Mécanisme clé.</strong> L'axe reproducteur est un système pulsatile hiérarchisé : hypothalamus (GnRH) → hypophyse antérieure (FSH/LH) → gonades. La pulsatilité de la GnRH est indispensable : une sécrétion continue bloque l'axe (principe des agonistes de la GnRH en AMP).</p>
+        <ul class="why-list">
+          <li class="ok">La GnRH est bien pulsatile : c'est la signature hypothalamique de l'axe.</li>
+          <li>La FSH agit sur les <strong>cellules de Sertoli</strong> (spermatogenèse), tandis que la LH stimule les <strong>cellules de Leydig</strong> (testostérone). L'item inverse les deux cibles.</li>
+          <li class="ok">La LH déclenche l'ovulation et lutéinise le follicule pour former le corps jaune.</li>
+          <li>La progestérone est produite massivement par le <strong>corps jaune en phase lutéale</strong>, pas dès la phase folliculaire précoce.</li>
+          <li>La testostérone est produite par les <strong>cellules de Leydig</strong> sous l'effet de la LH, et non par les cellules de Sertoli.</li>
+        </ul>
+      </div>
+    </details>
+  </article>
+
+  <!-- Q3 -->
+  <article class="card q-card">
+    <div class="q-head">
+      <span class="q-num">Q3</span>
+      <span class="badge b-rj">Réponse juste</span>
+      <span class="badge b-theme">Fenêtre fertile & spermatogenèse</span>
+    </div>
+    <p class="q-text">Choisissez la réponse juste.</p>
+    <ul class="options">
+      <li><span class="opt-letter">A</span>La fenêtre fertile correspond approximativement aux 5 jours précédant l'ovulation et au jour de l'ovulation.</li>
+      <li><span class="opt-letter">B</span>L'ovulation survient exactement 14 jours après le début des règles.</li>
+      <li><span class="opt-letter">C</span>La spermatogenèse se déroule dans l'épididyme.</li>
+      <li><span class="opt-letter">D</span>La maturation épididymaire précède chronologiquement la spermatogenèse.</li>
+      <li><span class="opt-letter">E</span>Des rapports quotidiens strictement programmés sont recommandés pour optimiser la fertilité.</li>
+    </ul>
+    <details class="correction">
+      <summary>🔍 Voir la correction détaillée</summary>
+      <div class="corr-body">
+        <span class="answer-line">Réponse : A</span>
+        <p><strong>Logique physiologique.</strong> Les spermatozoïdes survivent environ 3 à 5 jours dans le tractus génital féminin, alors que l'ovocyte n'est fécondable que 12 à 24 heures. La fenêtre fécondante se situe donc <em>avant</em> l'ovulation, ce qui explique l'intérêt de rapports tous les 2 à 3 jours plutôt qu'une programmation rigide.</p>
+        <ul class="why-list">
+          <li class="ok">La fenêtre fertile est bien définie par les 5 jours pré-ovulatoires et le jour de l'ovulation.</li>
+          <li>L'ovulation survient environ 14 jours <strong>avant les règles suivantes</strong>, et non après le début du cycle : cette règle ne s'applique qu'aux cycles de 28 jours.</li>
+          <li>La spermatogenèse se déroule dans les <strong>tubes séminifères</strong> testiculaires.</li>
+          <li>La maturation épididymaire est <strong>postérieure</strong> à la spermatogenèse ; elle la suit.</li>
+          <li>Les rapports quotidiens programmés sont contraignants et non recommandés ; l'intervalle de 2 à 3 jours est privilégié.</li>
+        </ul>
+      </div>
+    </details>
+  </article>
+
+  <!-- Q4 -->
+  <article class="card q-card">
+    <div class="q-head">
+      <span class="q-num">Q4</span>
+      <span class="badge b-simple">Choix simple</span>
+      <span class="badge b-theme">Fécondation & implantation</span>
+    </div>
+    <p class="q-text">Quelle proposition est exacte ?</p>
+    <ul class="options">
+      <li><span class="opt-letter">A</span>La fécondation se déroule habituellement dans la cavité utérine.</li>
+      <li><span class="opt-letter">B</span>La fécondation se déroule habituellement dans l'ampoule tubaire.</li>
+      <li><span class="opt-letter">C</span>L'implantation survient indifféremment dans l'endomètre ou dans la trompe.</li>
+      <li><span class="opt-letter">D</span>Une anomalie de la cavité utérine n'affecte pas l'implantation embryonnaire.</li>
+      <li><span class="opt-letter">E</span>Le transport tubaire est indépendant de la perméabilité tubaire.</li>
+    </ul>
+    <details class="correction">
+      <summary>🔍 Voir la correction détaillée</summary>
+      <div class="corr-body">
+        <span class="answer-line">Réponse : B</span>
+        <p><strong>Rappel anatomique.</strong> La rencontre des gamètes se fait dans l'ampoule tubaire, segment dilaté de la trompe. L'embryon migre ensuite vers la cavité utérine grâce au péristaltisme tubaire et aux cils ; une altération de ce transport favorise la grossesse extra-utérine.</p>
+        <ul class="why-list">
+          <li>La cavité utérine est le lieu de l'implantation, pas de la fécondation.</li>
+          <li class="ok">L'ampoule tubaire est bien le site physiologique de la fécondation.</li>
+          <li>L'implantation ectopique est pathologique ; elle ne constitue pas une alternative normale.</li>
+          <li>Une anomalie utérine (polype, fibrome sous-muqueux, synéchie, malformation) peut compromettre l'implantation.</li>
+          <li>Le transport tubaire dépend étroitement de la perméabilité et de l'intégrité ciliaire tubaire.</li>
+        </ul>
+      </div>
+    </details>
+  </article>
+
+  <!-- Q5 -->
+  <article class="card q-card">
+    <div class="q-head">
+      <span class="q-num">Q5</span>
+      <span class="badge b-rf">Réponse fausse</span>
+      <span class="badge b-theme">Examen clinique masculin</span>
+    </div>
+    <p class="q-text">Choisissez la réponse fausse.</p>
+    <ul class="options">
+      <li><span class="opt-letter">A</span>La varicocèle est recherchée en position debout et lors de la manœuvre de Valsalva.</li>
+      <li><span class="opt-letter">B</span>L'examen apprécie le volume et la consistance des testicules.</li>
+      <li><span class="opt-letter">C</span>La palpation des canaux déférents fait partie de l'examen.</li>
+      <li><span class="opt-letter">D</span>Une azoospermie peut justifier un avis spécialisé en andrologie ou urologie reproductive.</li>
+      <li><span class="opt-letter">E</span>La varicocèle doit être traitée chirurgicalement chez tout homme infertile.</li>
+    </ul>
+    <details class="correction">
+      <summary>🔍 Voir la correction détaillée</summary>
+      <div class="corr-body">
+        <span class="answer-line">Réponse fausse : E</span>
+        <p><strong>Nuance capitale.</strong> La varicocèle est fréquente et souvent asymptomatique ; son traitement n'est <em>pas</em> systématique. Il se discute au cas par cas, chez des hommes sélectionnés (varicocèle palpable, paramètres spermatiques anormaux, après avis spécialisé), car le bénéfice sur la fertilité n'est pas démontré dans toutes les situations.</p>
+        <ul class="why-list">
+          <li class="ok">La recherche en position debout avec Valsalva est la technique de référence.</li>
+          <li class="ok">Le volume et la consistance testiculaires renseignent sur la fonction endocrine et exocrine.</li>
+          <li class="ok">La palpation des canaux déférents recherche une agénésie ou une obstruction.</li>
+          <li class="ok">L'azoospermie est une urgence andrologique relative : avis spécialisé rapide.</li>
+          <li>Le traitement systématique de toute varicocèle est une erreur : décision individualisée.</li>
+        </ul>
+      </div>
+    </details>
+  </article>
+
+  <!-- Q6 -->
+  <article class="card q-card">
+    <div class="q-head">
+      <span class="q-num">Q6</span>
+      <span class="badge b-multi">Choix multiples</span>
+      <span class="badge b-theme">Interrogatoire masculin</span>
+    </div>
+    <p class="q-text">Quels éléments doivent être recherchés à l'interrogatoire de l'homme infertile ? <em>(2 à 3 réponses)</em></p>
+    <ul class="options">
+      <li><span class="opt-letter">A</span>Antécédent de cryptorchidie.</li>
+      <li><span class="opt-letter">B</span>Antécédent de torsion testiculaire.</li>
+      <li><span class="opt-letter">C</span>Prise de testostérone exogène ou de stéroïdes anabolisants.</li>
+      <li><span class="opt-letter">D</span>Antécédent de cholécystectomie.</li>
+      <li><span class="opt-letter">E</span>Antécédent de thyroïdectomie totale pour carcinome papillaire.</li>
+    </ul>
+    <details class="correction">
+      <summary>🔍 Voir la correction détaillée</summary>
+      <div class="corr-body">
+        <span class="answer-line">Réponses : A, B et C</span>
+        <p><strong>Fil conducteur.</strong> Tout ce qui altère la spermatogenèse — testicule, voie excrétrice, axe hormonal — doit être recherché. La testostérone exogène est un piège classique : elle supprime la sécrétion de gonadotrophines par rétrocontrôle négatif, entraînant une oligospermie voire une azoospermie.</p>
+        <ul class="why-list">
+          <li class="ok">La cryptorchidie est une cause majeure de trouble de la spermatogenèse, surtout si non traitée tôt.</li>
+          <li class="ok">La torsion testiculaire peut laisser des séquelles ischémiques définitives.</li>
+          <li class="ok">Les stéroïdes anabolisants et la testostérone exogène inhibent l'axe gonadotrope.</li>
+          <li>La cholécystectomie n'a pas de retentissement reproductif masculin connu.</li>
+          <li>La thyroïdectomie pour carcinome papillaire n'est pas un facteur d'infertilité masculine classique.</li>
+        </ul>
+      </div>
+    </details>
+  </article>
+
+  <!-- Q7 -->
+  <article class="card q-card">
+    <div class="q-head">
+      <span class="q-num">Q7</span>
+      <span class="badge b-sauf">Toutes… SAUF</span>
+      <span class="badge b-theme">Interrogatoire féminin</span>
+    </div>
+    <p class="q-text">Toutes les propositions suivantes concernant l'interrogatoire de la femme infertile sont exactes, <strong>SAUF</strong> :</p>
+    <ul class="options">
+      <li><span class="opt-letter">A</span>Rechercher l'âge de la ménarche et la régularité des cycles.</li>
+      <li><span class="opt-letter">B</span>Rechercher des signes d'hyperandrogénie (hirsutisme, acné, alopécie).</li>
+      <li><span class="opt-letter">C</span>Rechercher des antécédents d'IST, de MIP et de GEU.</li>
+      <li><span class="opt-letter">D</span>Rechercher des antécédents familiaux de ménopause précoce.</li>
+      <li><span class="opt-letter">E</span>Considérer que l'interrogatoire de la femme suffit à évaluer le couple infertile.</li>
+    </ul>
+    <details class="correction">
+      <summary>🔍 Voir la correction détaillée</summary>
+      <div class="corr-body">
+        <span class="answer-line">Réponse fausse : E</span>
+        <p><strong>Principe fondateur.</strong> L'infertilité est une problématique <em>du couple</em>. Un interrogatoire féminin complet ne dispense jamais de l'évaluation masculine (interrogatoire + examen + spermogramme) réalisée simultanément.</p>
+        <ul class="why-list">
+          <li class="ok">L'histoire menstruelle est le premier reflet de la fonction ovulatoire.</li>
+          <li class="ok">L'hyperandrogénie oriente vers un SOPK ou une cause surrénalienne/ovarienne.</li>
+          <li class="ok">Les antécédents d'IST/MIP/GEU orientent vers une cause tubaire.</li>
+          <li class="ok">La ménopause précoce familiale évoque une insuffisance ovarienne prématurée.</li>
+          <li>Se limiter à la femme est une erreur grave : elle méconnaît une cause masculine dans près d'un tiers des cas.</li>
+        </ul>
+      </div>
+    </details>
+  </article>
+
+  <!-- Q8 -->
+  <article class="card q-card">
+    <div class="q-head">
+      <span class="q-num">Q8</span>
+      <span class="badge b-multi">Choix multiples</span>
+      <span class="badge b-theme">Étiologies féminines</span>
+    </div>
+    <p class="q-text">Quelles sont des causes <strong>tubaires ou péritonéales</strong> d'infertilité féminine ? <em>(2 à 3 réponses)</em></p>
+    <ul class="options">
+      <li><span class="opt-letter">A</span>Hydrosalpinx.</li>
+      <li><span class="opt-letter">B</span>Séquelles d'infection génitale haute.</li>
+      <li><span class="opt-letter">C</span>Synéchies intra-utérines.</li>
+      <li><span class="opt-letter">D</span>Endométriose avec adhérences pelviennes.</li>
+      <li><span class="opt-letter">E</span>Insuffisance ovarienne prématurée.</li>
+    </ul>
+    <details class="correction">
+      <summary>🔍 Voir la correction détaillée</summary>
+      <div class="corr-body">
+        <span class="answer-line">Réponses : A, B et D</span>
+        <p><strong>Classification à connaître.</strong> Les causes féminines se répartissent en troubles ovulatoires, causes tubo-péritonéales et causes utérines. L'hydrosalpinx, les séquelles de MIP et l'endométriose avec adhérences appartiennent au compartiment tubo-péritonéal.</p>
+        <ul class="why-list">
+          <li class="ok">L'hydrosalpinx obstrue la trompe et le liquide intratubaire est embryotoxique.</li>
+          <li class="ok">Les séquelles d'IGHA (MIP) créent des adhérences et détruisent l'épithélium ciliaire.</li>
+          <li>Les synéchies sont des causes <strong>utérines</strong> (cavité), pas tubaires.</li>
+          <li class="ok">L'endométriose agit par inflammation, adhérences et distorsion anatomique.</li>
+          <li>L'insuffisance ovarienne prématurée est une cause <strong>ovulatoire</strong>.</li>
+        </ul>
+      </div>
+    </details>
+  </article>
+
+  <!-- Q9 -->
+  <article class="card q-card">
+    <div class="q-head">
+      <span class="q-num">Q9</span>
+      <span class="badge b-simple">Choix simple</span>
+      <span class="badge b-theme">Anomalies du spermogramme</span>
+    </div>
+    <p class="q-text">Quelle proposition est exacte ?</p>
+    <ul class="options">
+      <li><span class="opt-letter">A</span>L'oligozoospermie correspond à une diminution de la mobilité des spermatozoïdes.</li>
+      <li><span class="opt-letter">B</span>L'asthénozoospermie correspond à une diminution de la concentration spermatique.</li>
+      <li><span class="opt-letter">C</span>La tératozoospermie correspond à une proportion accrue de spermatozoïdes de morphologie anormale.</li>
+      <li><span class="opt-letter">D</span>L'azoospermie correspond à un volume d'éjaculat nul.</li>
+      <li><span class="opt-letter">E</span>Un spermogramme anormal isolé établit toujours un diagnostic définitif.</li>
+    </ul>
+    <details class="correction">
+      <summary>🔍 Voir la correction détaillée</summary>
+      <div class="corr-body">
+        <span class="answer-line">Réponse : C</span>
+        <p><strong>Vocabulaire à ne pas confondre.</strong> Chaque terme cible un paramètre précis : concentration (oligo-), mobilité (asthéno-), morphologie (térato-), absence (azoospermie). Un contrôle est souvent nécessaire en raison de la variabilité biologique.</p>
+        <ul class="why-list">
+          <li>L'oligozoospermie concerne la <strong>concentration</strong>, pas la mobilité.</li>
+          <li>L'asthénozoospermie concerne la <strong>mobilité</strong>, pas la concentration.</li>
+          <li class="ok">La tératozoospermie désigne une morphologie anormale excessive.</li>
+          <li>L'azoospermie est l'<strong>absence de spermatozoïdes</strong> dans l'éjaculat, pas un volume nul (qui correspond à une aspermie).</li>
+          <li>Un spermogramme anormal isolé n'est pas définitif : il faut contrôler et interpréter selon le contexte.</li>
+        </ul>
+      </div>
+    </details>
+  </article>
+
+  <!-- Q10 -->
+  <article class="card q-card">
+    <div class="q-head">
+      <span class="q-num">Q10</span>
+      <span class="badge b-rj">Réponse juste</span>
+      <span class="badge b-theme">Évaluation de l'ovulation</span>
+    </div>
+    <p class="q-text">Choisissez la réponse juste.</p>
+    <ul class="options">
+      <li><span class="opt-letter">A</span>Des cycles réguliers de 21 à 35 jours sont généralement compatibles avec une ovulation.</li>
+      <li><span class="opt-letter">B</span>La progestérone doit toujours être dosée à J21 fixe chez toutes les patientes.</li>
+      <li><span class="opt-letter">C</span>L'AMH prédit à elle seule la survenue d'une grossesse spontanée.</li>
+      <li><span class="opt-letter">D</span>Le compte des follicules antraux n'a aucune valeur pour prédire la réponse à la stimulation.</li>
+      <li><span class="opt-letter">E</span>L'AMH doit être interprétée indépendamment de l'âge.</li>
+    </ul>
+    <details class="correction">
+      <summary>🔍 Voir la correction détaillée</summary>
+      <div class="corr-body">
+        <span class="answer-line">Réponse : A</span>
+        <p><strong>Message-clé du cours.</strong> Des cycles réguliers de 21 à 35 jours sont un excellent argument clinique en faveur d'une ovulation. La confirmation biologique n'est pas systématique ; lorsqu'elle est utile, la progestérone se dose environ 7 jours <em>avant la date présumée des règles</em>, et non à un jour fixe.</p>
+        <ul class="why-list">
+          <li class="ok">La régularité menstruelle est un bon marqueur indirect d'ovulation.</li>
+          <li>Le dosage à J21 fixe est incorrect : il dépend de la durée du cycle.</li>
+          <li>L'AMH évalue la <strong>réserve ovarienne</strong>, pas la fertilité spontanée.</li>
+          <li>Le compte des follicules antraux est justement prédictif de la réponse à la stimulation.</li>
+          <li>L'AMH doit toujours être interprétée <strong>avec l'âge</strong> de la patiente.</li>
+        </ul>
+      </div>
+    </details>
+  </article>
+
+  <!-- Q11 -->
+  <article class="card q-card">
+    <div class="q-head">
+      <span class="q-num">Q11</span>
+      <span class="badge b-multi">Choix multiples</span>
+      <span class="badge b-theme">Examens non recommandés</span>
+    </div>
+    <p class="q-text">Quels examens ne sont <strong>pas</strong> recommandés en routine dans le bilan initial d'infertilité ? <em>(2 à 3 réponses)</em></p>
+    <ul class="options">
+      <li><span class="opt-letter">A</span>La cœlioscopie diagnostique systématique.</li>
+      <li><span class="opt-letter">B</span>Les tests post-coïtaux.</li>
+      <li><span class="opt-letter">C</span>Le spermogramme en première intention.</li>
+      <li><span class="opt-letter">D</span>Les tests immunologiques et thrombophiliques systématiques.</li>
+      <li><span class="opt-letter">E</span>L'hystérosalpingographie lorsqu'elle est indiquée.</li>
+    </ul>
+    <details class="correction">
+      <summary>🔍 Voir la correction détaillée</summary>
+      <div class="corr-body">
+        <span class="answer-line">Réponses : A, B et D</span>
+        <p><strong>Principe de parcimonie.</strong> Le bilan doit répondre à une question clinique précise. Les examens invasifs, coûteux ou sans impact thérapeutique démontré ne doivent pas être prescrits en première intention.</p>
+        <ul class="why-list">
+          <li class="ok">La cœlioscopie n'est pas systématique : elle se discute dans des situations ciblées.</li>
+          <li class="ok">Les tests post-coïtaux ont été abandonnés en routine.</li>
+          <li>Le spermogramme est au contraire un examen <strong>fondamental</strong> du bilan initial.</li>
+          <li class="ok">Les tests immunologiques et thrombophiliques systématiques ne sont pas recommandés.</li>
+          <li>L'HSG est recommandée lorsqu'elle est indiquée pour évaluer la perméabilité tubaire.</li>
+        </ul>
+      </div>
+    </details>
+  </article>
+
+  <!-- Q12 -->
+  <article class="card q-card">
+    <div class="q-head">
+      <span class="q-num">Q12</span>
+      <span class="badge b-simple">Choix simple</span>
+      <span class="badge b-theme">Varicocèle</span>
+    </div>
+    <p class="q-text">Quelle proposition est exacte ?</p>
+    <ul class="options">
+      <li><span class="opt-letter">A</span>La varicocèle est une dilatation des veines du plexus pampiniforme.</li>
+      <li><span class="opt-letter">B</span>Son traitement est systématique chez tout homme infertile.</li>
+      <li><span class="opt-letter">C</span>Elle est recherchée uniquement en position couchée.</li>
+      <li><span class="opt-letter">D</span>Elle n'a jamais d'impact sur les paramètres spermatiques.</li>
+      <li><span class="opt-letter">E</span>Elle contre-indique formellement toute AMP.</li>
+    </ul>
+    <details class="correction">
+      <summary>🔍 Voir la correction détaillée</summary>
+      <div class="corr-body">
+        <span class="answer-line">Réponse : A</span>
+        <p><strong>Définition.</strong> La varicocèle est une dilatation veineuse du plexus pampiniforme, prédominant à gauche du fait de l'anatomie de la veine spermatique. Elle peut élever la température scrotale et altérer la spermatogenèse, mais son traitement n'est pas systématique.</p>
+        <ul class="why-list">
+          <li class="ok">La définition anatomique est correcte.</li>
+          <li>Le traitement est individualisé, pas systématique.</li>
+          <li>La recherche se fait <strong>debout</strong>, avec manœuvre de Valsalva.</li>
+          <li>Elle peut altérer les paramètres spermatiques (oligospermie, asthénospermie).</li>
+          <li>Elle ne contre-indique pas l'AMP.</li>
+        </ul>
+      </div>
+    </details>
+  </article>
+
+  <!-- Q13 -->
+  <article class="card q-card">
+    <div class="q-head">
+      <span class="q-num">Q13</span>
+      <span class="badge b-rf">Réponse fausse</span>
+      <span class="badge b-theme">Prise en charge</span>
+    </div>
+    <p class="q-text">Choisissez la réponse fausse.</p>
+    <ul class="options">
+      <li><span class="opt-letter">A</span>L'arrêt du tabac est recommandé.</li>
+      <li><span class="opt-letter">B</span>Une supplémentation préconceptionnelle en acide folique est recommandée chez la femme.</li>
+      <li><span class="opt-letter">C</span>La testostérone exogène peut être prescrite chez un homme souhaitant concevoir.</li>
+      <li><span class="opt-letter">D</span>Le létrozole est généralement recommandé en première intention dans le SOPK anovulatoire.</li>
+      <li><span class="opt-letter">E</span>Les gonadotrophines nécessitent une surveillance en raison du risque d'hyperstimulation ovarienne.</li>
+    </ul>
+    <details class="correction">
+      <summary>🔍 Voir la correction détaillée</summary>
+      <div class="corr-body">
+        <span class="answer-line">Réponse fausse : C</span>
+        <p><strong>Piège classique.</strong> La testostérone exogène est <em>proscrite</em> chez l'homme souhaitant concevoir : elle exerce un rétrocontrôle négatif sur l'axe hypothalamo-hypophysaire, supprimant FSH et LH, et peut entraîner une oligospermie sévère voire une azoospermie.</p>
+        <ul class="why-list">
+          <li class="ok">Le tabac altère la fertilité des deux partenaires.</li>
+          <li class="ok">L'acide folique préconceptionnel réduit le risque d'anomalies du tube neural.</li>
+          <li>La testostérone exogène est <strong>délétère</strong> pour la spermatogenèse.</li>
+          <li class="ok">Le létrozole est le traitement de première intention du SOPK anovulatoire.</li>
+          <li class="ok">Les gonadotrophines exposent au risque d'hyperstimulation et de grossesse multiple.</li>
+        </ul>
+      </div>
+    </details>
+  </article>
+
+  <!-- Q14 -->
+  <article class="card q-card">
+    <div class="q-head">
+      <span class="q-num">Q14</span>
+      <span class="badge b-multi">Choix multiples</span>
+      <span class="badge b-theme">Assistance médicale à la procréation</span>
+    </div>
+    <p class="q-text">Quelles propositions concernant l'AMP sont exactes ? <em>(2 à 3 réponses)</em></p>
+    <ul class="options">
+      <li><span class="opt-letter">A</span>L'IIU nécessite une perméabilité tubaire suffisante.</li>
+      <li><span class="opt-letter">B</span>L'ICSI consiste à injecter un spermatozoïde dans le cytoplasme d'un ovocyte mature.</li>
+      <li><span class="opt-letter">C</span>L'ICSI est systématiquement supérieure à la FIV conventionnelle dans toutes les situations.</li>
+      <li><span class="opt-letter">D</span>La FIV peut être indiquée en cas d'atteinte tubaire importante.</li>
+      <li><span class="opt-letter">E</span>La cryoconservation des spermatozoïdes est formellement interdite avant chimiothérapie.</li>
+    </ul>
+    <details class="correction">
+      <summary>🔍 Voir la correction détaillée</summary>
+      <div class="corr-body">
+        <span class="answer-line">Réponses : A, B et D</span>
+        <p><strong>Logique des techniques.</strong> L'IIU suppose que les gamètes puissent se rencontrer dans la trompe : elle exige donc des trompes perméables. La FIV court-circuite la trompe, d'où son indication dans les atteintes tubaires. L'ICSI est réservée aux infertilités masculines sévères ou aux échecs de fécondation.</p>
+        <ul class="why-list">
+          <li class="ok">L'IIU dépose les spermatozoïdes dans l'utérus ; la trompe doit être fonctionnelle.</li>
+          <li class="ok">L'ICSI est bien une micro-injection intra-cytoplasmique.</li>
+          <li>L'ICSI n'est pas systématiquement supérieure à la FIV : elle est indiquée dans des situations précises.</li>
+          <li class="ok">La FIV est une option de choix en cas d'atteinte tubaire bilatérale sévère.</li>
+          <li>La cryoconservation est au contraire <strong>recommandée</strong> avant traitement gonadotoxique.</li>
+        </ul>
+      </div>
+    </details>
+  </article>
+
+  <!-- Q15 -->
+  <article class="card q-card">
+    <div class="q-head">
+      <span class="q-num">Q15</span>
+      <span class="badge b-sauf">Toutes… SAUF</span>
+      <span class="badge b-theme">Endométriose & fertilité</span>
+    </div>
+    <p class="q-text">Toutes les propositions suivantes sont exactes concernant l'endométriose, <strong>SAUF</strong> :</p>
+    <ul class="options">
+      <li><span class="opt-letter">A</span>Elle peut altérer la fertilité par inflammation et adhérences.</li>
+      <li><span class="opt-letter">B</span>La stratégie thérapeutique tient compte de l'âge et de la réserve ovarienne.</li>
+      <li><span class="opt-letter">C</span>La chirurgie ovarienne répétée peut diminuer la réserve ovarienne.</li>
+      <li><span class="opt-letter">D</span>La chirurgie est systématiquement indiquée dans le seul but d'améliorer la fertilité.</li>
+      <li><span class="opt-letter">E</span>L'atteinte ovarienne (endométriome) peut compromettre la fonction ovarienne.</li>
+    </ul>
+    <details class="correction">
+      <summary>🔍 Voir la correction détaillée</summary>
+      <div class="corr-body">
+        <span class="answer-line">Réponse fausse : D</span>
+        <p><strong>Nuance chirurgicale.</strong> La chirurgie n'est pas systématique dans le seul but d'améliorer la fertilité, surtout lorsqu'elle risque d'altérer la réserve ovarienne. La décision est individualisée : douleur, âge, atteinte anatomique, réserve ovarienne et projet reproductif.</p>
+        <ul class="why-list">
+          <li class="ok">L'inflammation et les adhérences sont des mécanismes reconnus.</li>
+          <li class="ok">L'âge et la réserve ovarienne sont centraux dans la décision.</li>
+          <li class="ok">La chirurgie ovarienne répétée réduit la réserve folliculaire.</li>
+          <li>La chirurgie systématique est une erreur : elle peut être délétère.</li>
+          <li class="ok">L'endométriome peut altérer la fonction ovarienne.</li>
+        </ul>
+      </div>
+    </details>
+  </article>
+
+  <!-- Q16 -->
+  <article class="card q-card">
+    <div class="q-head">
+      <span class="q-num">Q16</span>
+      <span class="badge b-multi">Choix multiples</span>
+      <span class="badge b-theme">Étiologies masculines</span>
+    </div>
+    <p class="q-text">Quelles sont des causes d'infertilité masculine ? <em>(2 à 3 réponses)</em></p>
+    <ul class="options">
+      <li><span class="opt-letter">A</span>Cryptorchidie.</li>
+      <li><span class="opt-letter">B</span>Orchite (notamment ourlienne).</li>
+      <li><span class="opt-letter">C</span>Obstruction des voies spermatiques.</li>
+      <li><span class="opt-letter">D</span>Insuffisance ovarienne prématurée.</li>
+      <li><span class="opt-letter">E</span>Antécédent de grossesse extra-utérine chez la partenaire.</li>
+    </ul>
+    <details class="correction">
+      <summary>🔍 Voir la correction détaillée</summary>
+      <div class="corr-body">
+        <span class="answer-line">Réponses : A, B et C</span>
+        <p><strong>Trois grands mécanismes masculins.</strong> Atteinte testiculaire (cryptorchidie, orchite), obstruction des voies excrétrices, et causes endocriniennes ou médicamenteuses. Les deux dernières propositions relèvent de la sphère féminine.</p>
+        <ul class="why-list">
+          <li class="ok">La cryptorchidie altère la spermatogenèse par hyperthermie testiculaire.</li>
+          <li class="ok">L'orchite ourlienne peut détruire l'épithélium séminifère.</li>
+          <li class="ok">L'obstruction (épididymaire, déférentielle) empêche l'émission des spermatozoïdes.</li>
+          <li>L'insuffisance ovarienne prématurée concerne la femme.</li>
+          <li>La GEU est une cause féminine (tubaire).</li>
+        </ul>
+      </div>
+    </details>
+  </article>
+
+  <!-- Q17 -->
+  <article class="card q-card">
+    <div class="q-head">
+      <span class="q-num">Q17</span>
+      <span class="badge b-rj">Réponse juste</span>
+      <span class="badge b-theme">Infertilité inexpliquée</span>
+    </div>
+    <p class="q-text">Choisissez la réponse juste.</p>
+    <ul class="options">
+      <li><span class="opt-letter">A</span>Le diagnostic d'infertilité inexpliquée repose sur un bilan standard normal.</li>
+      <li><span class="opt-letter">B</span>L'infertilité inexpliquée signifie qu'aucune cause biologique ne peut exister.</li>
+      <li><span class="opt-letter">C</span>L'infertilité inexpliquée dispense d'une exploration tubaire.</li>
+      <li><span class="opt-letter">D</span>L'infertilité mixte est définie par une cause identifiée chez un seul partenaire.</li>
+      <li><span class="opt-letter">E</span>L'infertilité inexpliquée autorise à omettre le spermogramme.</li>
+    </ul>
+    <details class="correction">
+      <summary>🔍 Voir la correction détaillée</summary>
+      <div class="corr-body">
+        <span class="answer-line">Réponse : A</span>
+        <p><strong>Définition d'exclusion.</strong> L'infertilité inexpliquée est retenue après un bilan standard normal : ovulation compatible, trompes perméables, spermogramme sans anomalie significative. Elle ne signifie pas que tous les mécanismes ont été explorés.</p>
+        <ul class="why-list">
+          <li class="ok">C'est bien un diagnostic d'exclusion.</li>
+          <li>Elle n'exclut pas l'existence de causes non encore accessibles aux examens.</li>
+          <li>L'exploration tubaire est indispensable avant de conclure.</li>
+          <li>L'infertilité mixte suppose des facteurs chez <strong>les deux</strong> partenaires.</li>
+          <li>Le spermogramme est obligatoire.</li>
+        </ul>
+      </div>
+    </details>
+  </article>
+
+  <!-- Q18 -->
+  <article class="card q-card">
+    <div class="q-head">
+      <span class="q-num">Q18</span>
+      <span class="badge b-simple">Choix simple</span>
+      <span class="badge b-theme">Exploration tubaire</span>
+    </div>
+    <p class="q-text">Quelle proposition est exacte ?</p>
+    <ul class="options">
+      <li><span class="opt-letter">A</span>L'HSG permet d'évaluer la perméabilité tubaire et de visualiser la cavité utérine.</li>
+      <li><span class="opt-letter">B</span>La cœlioscopie est un examen systématique du bilan initial.</li>
+      <li><span class="opt-letter">C</span>L'hystéroscopie n'a aucune place dans le bilan.</li>
+      <li><span class="opt-letter">D</span>L'échographie avec contraste est formellement contre-indiquée.</li>
+      <li><span class="opt-letter">E</span>L'HSG est contre-indiquée chez toute femme de plus de 35 ans.</li>
+    </ul>
+    <details class="correction">
+      <summary>🔍 Voir la correction détaillée</summary>
+      <div class="corr-body">
+        <span class="answer-line">Réponse : A</span>
+        <p><strong>Outil de première ligne.</strong> L'HSG est l'examen de référence pour évaluer la perméabilité tubaire et dépister certaines anomalies de la cavité utérine. L'échographie avec contraste est une alternative lorsqu'elle est disponible.</p>
+        <ul class="why-list">
+          <li class="ok">L'HSG est bien l'examen de première intention pour les trompes.</li>
+          <li>La cœlioscopie n'est pas systématique.</li>
+          <li>L'hystéroscopie est indiquée dans certaines anomalies de la cavité utérine.</li>
+          <li>L'échographie avec contraste n'est pas contre-indiquée ; elle est une alternative.</li>
+          <li>Aucune limite d'âge n'interdit l'HSG.</li>
+        </ul>
+      </div>
+    </details>
+  </article>
+
+  <!-- Q19 -->
+  <article class="card q-card">
+    <div class="q-head">
+      <span class="q-num">Q19</span>
+      <span class="badge b-multi">Choix multiples</span>
+      <span class="badge b-theme">Mesures générales</span>
+    </div>
+    <p class="q-text">Quelles mesures générales sont recommandées devant une infertilité ? <em>(2 à 3 réponses)</em></p>
+    <ul class="options">
+      <li><span class="opt-letter">A</span>Arrêt du tabac.</li>
+      <li><span class="opt-letter">B</span>Correction d'une dénutrition ou d'un excès pondéral important.</li>
+      <li><span class="opt-letter">C</span>Prescription systématique d'antioxydants chez tous les couples.</li>
+      <li><span class="opt-letter">D</span>Optimisation des rapports pendant la période fertile.</li>
+      <li><span class="opt-letter">E</span>Prescription systématique de testostérone chez l'homme infertile.</li>
+    </ul>
+    <details class="correction">
+      <summary>🔍 Voir la correction détaillée</summary>
+      <div class="corr-body">
+        <span class="answer-line">Réponses : A, B et D</span>
+        <p><strong>Hygiène de vie et fertilité.</strong> Les mesures générales ont un impact démontré et peu coûteux : tabac, poids, alimentation, activité physique, prévention des IST, et information sur la période fertile.</p>
+        <ul class="why-list">
+          <li class="ok">Le tabac est gonadotoxique chez les deux partenaires.</li>
+          <li class="ok">Les troubles du poids altèrent l'ovulation et la spermatogenèse.</li>
+          <li>Les antioxydants ne sont pas recommandés systématiquement, faute de preuve.</li>
+          <li class="ok">La connaissance de la fenêtre fertile améliore les chances de conception.</li>
+          <li>La testostérone exogène est <strong>délétère</strong> pour la spermatogenèse.</li>
+        </ul>
+      </div>
+    </details>
+  </article>
+
+  <!-- Q20 -->
+  <article class="card q-card">
+    <div class="q-head">
+      <span class="q-num">Q20</span>
+      <span class="badge b-rf">Réponse fausse</span>
+      <span class="badge b-theme">Nouveautés en médecine de la reproduction</span>
+    </div>
+    <p class="q-text">Choisissez la réponse fausse.</p>
+    <ul class="options">
+      <li><span class="opt-letter">A</span>Les recommandations OMS 2025 proposent un cadre global pour la prévention, le diagnostic et le traitement de l'infertilité.</li>
+      <li><span class="opt-letter">B</span>L'individualisation des stimulations ovariennes est recommandée.</li>
+      <li><span class="opt-letter">C</span>Le transfert électif d'un embryon unique peut réduire les risques maternels.</li>
+      <li><span class="opt-letter">D</span>Les tests de réceptivité endométriale doivent être proposés de manière systématique.</li>
+      <li><span class="opt-letter">E</span>Les recommandations AUA/ASRM 2024 renforcent la place de l'andrologie.</li>
+    </ul>
+    <details class="correction">
+      <summary>🔍 Voir la correction détaillée</summary>
+      <div class="corr-body">
+        <span class="answer-line">Réponse fausse : D</span>
+        <p><strong>Principe de preuve.</strong> Les tests de réceptivité endométriale, les tests immunologiques et les tests spermatiques avancés ne doivent pas être proposés systématiquement : ils relèvent d'indications précises et de preuves suffisantes de bénéfice clinique.</p>
+        <ul class="why-list">
+          <li class="ok">Les recommandations OMS 2025 constituent un cadre global.</li>
+          <li class="ok">L'individualisation des protocoles est un principe actuel majeur.</li>
+          <li class="ok">Le transfert électif d'un embryon réduit les grossesses multiples.</li>
+          <li>La systématisation des tests de réceptivité est <strong>non recommandée</strong>.</li>
+          <li class="ok">L'andrologie occupe une place croissante dans les recommandations.</li>
+        </ul>
+      </div>
+    </details>
+  </article>
+
+  <!-- Q21 -->
+  <article class="card q-card">
+    <div class="q-head">
+      <span class="q-num">Q21</span>
+      <span class="badge b-simple">Choix simple</span>
+      <span class="badge b-theme">Traitement des troubles ovulatoires</span>
+    </div>
+    <p class="q-text">Quelle proposition est exacte concernant la prise en charge du SOPK anovulatoire ?</p>
+    <ul class="options">
+      <li><span class="opt-letter">A</span>Le létrozole est généralement recommandé en première intention en l'absence d'autre facteur d'infertilité.</li>
+      <li><span class="opt-letter">B</span>Les gonadotrophines sont le traitement de première intention et ne nécessitent pas de surveillance.</li>
+      <li><span class="opt-letter">C</span>Le létrozole augmente fortement le risque d'hyperstimulation ovarienne sévère.</li>
+      <li><span class="opt-letter">D</span>La metformine est le traitement de première intention chez toutes les patientes.</li>
+      <li><span class="opt-letter">E</span>Le clomifène est formellement contre-indiqué dans le SOPK.</li>
+    </ul>
+    <details class="correction">
+      <summary>🔍 Voir la correction détaillée</summary>
+      <div class="corr-body">
+        <span class="answer-line">Réponse : A</span>
+        <p><strong>Hiérarchie thérapeutique.</strong> Dans le SOPK anovulatoire sans autre facteur, le létrozole est le traitement d'induction de première intention. Les gonadotrophines viennent en seconde ligne et nécessitent une surveillance stricte.</p>
+        <ul class="why-list">
+          <li class="ok">Le létrozole est bien le traitement de première intention recommandé.</li>
+          <li>Les gonadotrophines ne sont pas de première intention et exigent une surveillance.</li>
+          <li>Le létrozole a un risque d'hyperstimulation plus faible que les gonadotrophines.</li>
+          <li>La metformine n'est pas le traitement de première intention de toutes les patientes.</li>
+          <li>Le clomifène n'est pas formellement contre-indiqué, mais n'est plus le premier choix.</li>
+        </ul>
+      </div>
+    </details>
+  </article>
+
+  <!-- Q22 -->
+  <article class="card q-card">
+    <div class="q-head">
+      <span class="q-num">Q22</span>
+      <span class="badge b-multi">Choix multiples</span>
+      <span class="badge b-theme">Bilan d'ovulation</span>
+    </div>
+    <p class="q-text">Quelles propositions sont exactes concernant l'évaluation de l'ovulation ? <em>(2 à 3 réponses)</em></p>
+    <ul class="options">
+      <li><span class="opt-letter">A</span>Des cycles réguliers de 21 à 35 jours sont généralement compatibles avec une ovulation.</li>
+      <li><span class="opt-letter">B</span>En cas de doute, la progestérone peut être dosée environ 7 jours avant la date présumée des règles.</li>
+      <li><span class="opt-letter">C</span>En cas d'aménorrhée, les examens sont orientés par le contexte : test de grossesse, FSH, TSH, prolactine.</li>
+      <li><span class="opt-letter">D</span>La progestérone doit être dosée à J21 fixe chez toutes les patientes.</li>
+      <li><span class="opt-letter">E</span>L'AMH est le seul examen utile pour évaluer l'ovulation.</li>
+    </ul>
+    <details class="correction">
+      <summary>🔍 Voir la correction détaillée</summary>
+      <div class="corr-body">
+        <span class="answer-line">Réponses : A, B et C</span>
+        <p><strong>Adaptation au cycle.</strong> La date du dosage de progestérone dépend de la durée du cycle ; le J21 fixe est un dogme dépassé. L'AMH évalue la réserve, pas l'ovulation.</p>
+        <ul class="why-list">
+          <li class="ok">La régularité des cycles est un bon indice d'ovulation.</li>
+          <li class="ok">Le dosage 7 jours avant les règles présumées est la bonne approche.</li>
+          <li class="ok">Devant une aménorrhée, le bilan est orienté par le contexte.</li>
+          <li>Le J21 fixe est inadapté aux cycles irréguliers ou longs.</li>
+          <li>L'AMH ne renseigne pas sur l'ovulation.</li>
+        </ul>
+      </div>
+    </details>
+  </article>
+
+  <!-- Q23 -->
+  <article class="card q-card">
+    <div class="q-head">
+      <span class="q-num">Q23</span>
+      <span class="badge b-rj">Réponse juste</span>
+      <span class="badge b-theme">Testostérone exogène & spermatogenèse</span>
+    </div>
+    <p class="q-text">Choisissez la réponse juste.</p>
+    <ul class="options">
+      <li><span class="opt-letter">A</span>La testostérone exogène peut supprimer la sécrétion de gonadotrophines et altérer la spermatogenèse.</li>
+      <li><span class="opt-letter">B</span>La testostérone exogène améliore la spermatogenèse chez l'homme infertile.</li>
+      <li><span class="opt-letter">C</span>La testostérone est produite par les cellules de Sertoli.</li>
+      <li><span class="opt-letter">D</span>La FSH agit sur les cellules de Leydig.</li>
+      <li><span class="opt-letter">E</span>La spermatogenèse se déroule dans l'épididyme.</li>
+    </ul>
+    <details class="correction">
+      <summary>🔍 Voir la correction détaillée</summary>
+      <div class="corr-body">
+        <span class="answer-line">Réponse : A</span>
+        <p><strong>Rétrocontrôle négatif.</strong> La testostérone exogène inhibe la sécrétion hypothalamo-hypophysaire de GnRH, FSH et LH. Résultat : arrêt de la spermatogenèse. C'est un piège fréquent chez les sportifs utilisant des stéroïdes anabolisants.</p>
+        <ul class="why-list">
+          <li class="ok">L'effet suppressif sur l'axe gonadotrope est bien décrit.</li>
+          <li>La testostérone exogène <strong>n'améliore pas</strong> la spermatogenèse, elle l'inhibe.</li>
+          <li>La testostérone est produite par les <strong>cellules de Leydig</strong>.</li>
+          <li>La FSH agit sur les <strong>cellules de Sertoli</strong>.</li>
+          <li>La spermatogenèse se déroule dans les <strong>tubes séminifères</strong>.</li>
+        </ul>
+      </div>
+    </details>
+  </article>
+
+  <!-- Q24 -->
+  <article class="card q-card">
+    <div class="q-head">
+      <span class="q-num">Q24</span>
+      <span class="badge b-sauf">Toutes… SAUF</span>
+      <span class="badge b-theme">Dimensions psychologiques & éthiques</span>
+    </div>
+    <p class="q-text">Toutes les propositions suivantes sont exactes, <strong>SAUF</strong> :</p>
+    <ul class="options">
+      <li><span class="opt-letter">A</span>L'infertilité peut provoquer anxiété, tristesse et sentiment de culpabilité.</li>
+      <li><span class="opt-letter">B</span>Le médecin doit accueillir la souffrance sans jugement.</li>
+      <li><span class="opt-letter">C</span>Le consentement libre et éclairé des deux partenaires doit être recueilli lorsque nécessaire.</li>
+      <li><span class="opt-letter">D</span>Des promesses irréalistes de grossesse peuvent être faites pour rassurer le couple.</li>
+      <li><span class="opt-letter">E</span>Le coût des traitements doit être pris en considération dans la décision.</li>
+    </ul>
+    <details class="correction">
+      <summary>🔍 Voir la correction détaillée</summary>
+      <div class="corr-body">
+        <span class="answer-line">Réponse fausse : D</span>
+        <p><strong>Éthique de la parole médicale.</strong> Les promesses irréalistes de grossesse sont proscrites : elles nourrissent une fausse espérance, majorent la souffrance en cas d'échec et altèrent la relation de confiance. L'information doit être claire, honnête et proportionnée.</p>
+        <ul class="why-list">
+          <li class="ok">La souffrance psychologique est réelle et doit être reconnue.</li>
+          <li class="ok">L'accueil sans jugement est une obligation déontologique.</li>
+          <li class="ok">Le consentement éclairé des deux partenaires est requis.</li>
+          <li>Les promesses irréalistes sont une faute éthique.</li>
+          <li class="ok">Le coût et l'accès aux soins font partie de la décision.</li>
+        </ul>
+      </div>
+    </details>
+  </article>
+
+  <!-- Q25 -->
+  <article class="card q-card">
+    <div class="q-head">
+      <span class="q-num">Q25</span>
+      <span class="badge b-simple">Choix simple</span>
+      <span class="badge b-theme">Démarche diagnostique pratique</span>
+    </div>
+    <p class="q-text">Quelle proposition est exacte concernant la démarche diagnostique devant un couple infertile ?</p>
+    <ul class="options">
+      <li><span class="opt-letter">A</span>L'exploration doit débuter par la femme uniquement.</li>
+      <li><span class="opt-letter">B</span>Les deux partenaires doivent être explorés simultanément.</li>
+      <li><span class="opt-letter">C</span>Le spermogramme ne fait pas partie du bilan initial.</li>
+      <li><span class="opt-letter">D</span>La cœlioscopie est l'examen de première intention.</li>
+      <li><span class="opt-letter">E</span>Le bilan complémentaire ne dépend pas des résultats initiaux.</li>
+    </ul>
+    <details class="correction">
+      <summary>🔍 Voir la correction détaillée</summary>
+      <div class="corr-body">
+        <span class="answer-line">Réponse : B</span>
+        <p><strong>Message pédagogique essentiel.</strong> L'infertilité est une problématique du couple : les deux partenaires doivent être évalués simultanément, avec une prise en charge individualisée et respectueuse.</p>
+        <ul class="why-list">
+          <li>Commencer par la femme seule fait perdre du temps et méconnaît une cause masculine.</li>
+          <li class="ok">L'exploration simultanée est le standard de pratique.</li>
+          <li>Le spermogramme est un examen fondamental du bilan initial.</li>
+          <li>La cœlioscopie n'est pas un examen de première intention.</li>
+          <li>Le bilan complémentaire est guidé par les résultats initiaux.</li>
+        </ul>
+      </div>
+    </details>
+  </article>
+</section>
+
+<!-- ================= SECTION 2 : CAS CLINIQUES ================= -->
+<section class="section" id="cas">
+  <div class="section-head">
+    <div class="section-icon">🏥</div>
+    <div>
+      <h2>2. Cinq cas cliniques hospitaliers algériens</h2>
+      <span class="sub">Vignettes réalistes — CHU, EPH, consultations de gynécologie et d'urologie</span>
+    </div>
+  </div>
+
+  <!-- CAS 1 -->
+  <article class="card case-card">
+    <div class="case-header">
+      <span class="case-num">CAS 1</span>
+      <span class="case-loc">Consultation de gynécologie — CHU de Blida</span>
+    </div>
+    <div class="vignette">
+      <p><span class="vlabel">Motif :</span>Couple consultE pour infertilité primaire depuis 18 mois.</p>
+      <p><span class="vlabel">Femme :</span>Mme K., 29 ans, mariée depuis 2 ans. Cycles irréguliers depuis l'adolescence (35–50 jours), pas d'aménorrhée. Poids 84 kg, taille 1,62 m. Hirsutisme modéré (score de Ferriman-Gallwey à 12), acné persistante. Pas d'antécédent chirurgical. Pas de dysménorrhée.</p>
+      <p><span class="vlabel">Homme :</span>M. K., 32 ans, sans antécédent particulier. Spermogramme : concentration 48 millions/mL, mobilité progressive 45 %, morphologie normale 6 %. Examen clinique normal.</p>
+      <p><span class="vlabel">Biologie :</span>TSH normale, prolactine normale, testostérone totale discrètement élevée, progestérone en phase lutéale basse.</p>
+      <div class="vitals">
+        <span class="vital-pill">IMC 32 kg/m²</span>
+        <span class="vital-pill">Cycles 35–50 j</span>
+        <span class="vital-pill">Spermogramme normal</span>
+        <span class="vital-pill">TSH & prolactine normales</span>
+      </div>
+    </div>
+
+    <div class="case-question">
+      <div class="cq-head"><span class="cq-tag">Q1</span></div>
+      <p class="cq-text">Quel est le diagnostic le plus probable chez Mme K. ?</p>
+      <ul class="options">
+        <li><span class="opt-letter">A</span>Insuffisance ovarienne prématurée.</li>
+        <li><span class="opt-letter">B</span>Syndrome des ovaires polykystiques.</li>
+        <li><span class="opt-letter">C</span>Hyperprolactinémie.</li>
+        <li><span class="opt-letter">D</span>Insuffisance hypothalamo-hypophysaire.</li>
+        <li><span class="opt-letter">E</span>Endométriose profonde.</li>
+      </ul>
+      <details class="correction">
+        <summary>🔍 Correction</summary>
+        <div class="corr-body">
+          <span class="answer-line">Réponse : B</span>
+          <p>Association de cycles irréguliers, hyperandrogénie clinique et biologique, obésité et progestérone lutéale basse : tableau typique de SOPK (critères de Rotterdam).</p>
+          <ul class="why-list">
+            <li>L'IOP survient généralement avant 40 ans avec FSH élevée et aménorrhée : non compatible.</li>
+            <li class="ok">Le SOPK associe anovulation chronique, hyperandrogénie et morphologie ovarienne polykystique.</li>
+            <li>La prolactine est normale : l'hyperprolactinémie est éliminée.</li>
+            <li>L'insuffisance hypothalamique donnerait plutôt une aménorrhée avec FSH/LH basses.</li>
+            <li>L'endométriose ne s'accompagne pas classiquement d'hyperandrogénie ni de cycles longs.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <div class="case-question">
+      <div class="cq-head"><span class="cq-tag">Q2</span></div>
+      <p class="cq-text">Quel est le traitement de première intention de l'infertilité par anovulation dans ce contexte ?</p>
+      <ul class="options">
+        <li><span class="opt-letter">A</span>FIV avec ICSI d'emblée.</li>
+        <li><span class="opt-letter">B</span>Létrozole avec conseils hygiéno-diététiques.</li>
+        <li><span class="opt-letter">C</span>Gonadotrophines sans surveillance.</li>
+        <li><span class="opt-letter">D</span>Chirurgie ovarienne par drilling en première intention.</li>
+        <li><span class="opt-letter">E</span>Testostérone transdermique.</li>
+      </ul>
+      <details class="correction">
+        <summary>🔍 Correction</summary>
+        <div class="corr-body">
+          <span class="answer-line">Réponse : B</span>
+          <p>Le létrozole est le traitement d'induction de première intention du SOPK anovulatoire, associé à la perte de poids et à l'hygiène de vie.</p>
+          <ul class="why-list">
+            <li>La FIV n'est pas indiquée en première intention en l'absence d'autre facteur.</li>
+            <li class="ok">Le létrozole est recommandé en première ligne.</li>
+            <li>Les gonadotrophines nécessitent une surveillance stricte et ne sont pas de première intention.</li>
+            <li>Le drilling ovarien est réservé à des situations sélectionnées.</li>
+            <li>La testostérone est proscrite chez la femme.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <div class="case-question">
+      <div class="cq-head"><span class="cq-tag">Q3</span></div>
+      <p class="cq-text">Quel examen complémentaire est le plus utile pour évaluer la réponse ovarienne à une future stimulation ?</p>
+      <ul class="options">
+        <li><span class="opt-letter">A</span>AMH et compte des follicules antraux.</li>
+        <li><span class="opt-letter">B</span>Radiographie du bassin.</li>
+        <li><span class="opt-letter">C</span>Dosage de la progestérone à J21 fixe.</li>
+        <li><span class="opt-letter">D</span>Hystérosalpingographie seule.</li>
+        <li><span class="opt-letter">E</span>Test de grossesse.</li>
+      </ul>
+      <details class="correction">
+        <summary>🔍 Correction</summary>
+        <div class="corr-body">
+          <span class="answer-line">Réponse : A</span>
+          <p>L'AMH et le compte des follicules antraux sont les marqueurs de choix de la réserve ovarienne et de la réponse attendue à la stimulation.</p>
+          <ul class="why-list">
+            <li class="ok">L'AMH et le CFA sont les deux examens clés de la réserve ovarienne.</li>
+            <li>La radiographie du bassin n'a aucun intérêt dans ce contexte.</li>
+            <li>La progestérone à J21 fixe est inadaptée.</li>
+            <li>L'HSG évalue les trompes, pas la réserve.</li>
+            <li>Le test de grossesse est utile en cas d'aménorrhée, pas ici.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+  </article>
+
+  <!-- CAS 2 -->
+  <article class="card case-card">
+    <div class="case-header">
+      <span class="case-num">CAS 2</span>
+      <span class="case-loc">Consultation de gynécologie — EPH de Rouiba</span>
+    </div>
+    <div class="vignette">
+      <p><span class="vlabel">Motif :</span>Infertilité secondaire depuis 14 mois.</p>
+      <p><span class="vlabel">Femme :</span>Mme B., 34 ans, un enfant de 6 ans. Antécédent de grossesse extra-utérine il y a 4 ans traitée par salpingectomie droite. Depuis, douleurs pelviennes chroniques et dyspareunie. Cycles réguliers de 28 jours.</p>
+      <p><span class="vlabel">Homme :</span>M. B., 36 ans, spermogramme normal.</p>
+      <p><span class="vlabel">Imagerie :</span>HSG : trompe droite absente (salpingectomie), trompe gauche non opacifiée avec dilatation et aspect d'hydrosalpinx. Échographie pelvienne : utérus normal, pas de fibrome.</p>
+      <div class="vitals">
+        <span class="vital-pill">GEU ancienne</span>
+        <span class="vital-pill">Salpingectomie droite</span>
+        <span class="vital-pill">Hydrosalpinx gauche</span>
+        <span class="vital-pill">Spermogramme normal</span>
+      </div>
+    </div>
+
+    <div class="case-question">
+      <div class="cq-head"><span class="cq-tag">Q1</span></div>
+      <p class="cq-text">Quel est le facteur principal d'infertilité chez ce couple ?</p>
+      <ul class="options">
+        <li><span class="opt-letter">A</span>Facteur masculin.</li>
+        <li><span class="opt-letter">B</span>Facteur tubaire bilatéral.</li>
+        <li><span class="opt-letter">C</span>Facteur utérin.</li>
+        <li><span class="opt-letter">D</span>Facteur ovulatoire.</li>
+        <li><span class="opt-letter">E</span>Infertilité inexpliquée.</li>
+      </ul>
+      <details class="correction">
+        <summary>🔍 Correction</summary>
+        <div class="corr-body">
+          <span class="answer-line">Réponse : B</span>
+          <p>La salpingectomie droite et l'hydrosalpinx gauche rendent les deux trompes non fonctionnelles : le facteur tubaire est bilatéral.</p>
+          <ul class="why-list">
+            <li>Le spermogramme est normal : pas de facteur masculin.</li>
+            <li class="ok">Les deux trompes sont inutilisables.</li>
+            <li>L'utérus est normal à l'échographie.</li>
+            <li>Les cycles sont réguliers, en faveur d'une ovulation.</li>
+            <li>Une cause tubaire est clairement identifiée.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <div class="case-question">
+      <div class="cq-head"><span class="cq-tag">Q2</span></div>
+      <p class="cq-text">Quelle est la stratégie thérapeutique la plus adaptée ?</p>
+      <ul class="options">
+        <li><span class="opt-letter">A</span>Attendre une grossesse spontanée 12 mois supplémentaires.</li>
+        <li><span class="opt-letter">B</span>Insémination intra-utérine.</li>
+        <li><span class="opt-letter">C</span>Fécondation in vitro.</li>
+        <li><span class="opt-letter">D</span>Létrozole seul.</li>
+        <li><span class="opt-letter">E</span>Traitement antibiotique seul.</li>
+      </ul>
+      <details class="correction">
+        <summary>🔍 Correction</summary>
+        <div class="corr-body">
+          <span class="answer-line">Réponse : C</span>
+          <p>En cas d'atteinte tubaire bilatérale, la FIV court-circuite la trompe et constitue la meilleure option.</p>
+          <ul class="why-list">
+            <li>Attendre est injustifié : les trompes sont non fonctionnelles.</li>
+            <li>L'IIU exige une perméabilité tubaire suffisante, ici absente.</li>
+            <li class="ok">La FIV est le traitement de référence des atteintes tubaires bilatérales.</li>
+            <li>Le létrozole ne corrige pas le facteur tubaire.</li>
+            <li>Les antibiotiques ne restaurent pas une trompe détruite.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <div class="case-question">
+      <div class="cq-head"><span class="cq-tag">Q3</span></div>
+      <p class="cq-text">Quel est l'impact potentiel de l'hydrosalpinx sur les résultats de la FIV ?</p>
+      <ul class="options">
+        <li><span class="opt-letter">A</span>Aucun impact démontré.</li>
+        <li><span class="opt-letter">B</span>Il peut réduire les chances d'implantation par effet toxique et mécanique.</li>
+        <li><span class="opt-letter">C</span>Il améliore l'implantation.</li>
+        <li><span class="opt-letter">D</span>Il empêche toute stimulation ovarienne.</li>
+        <li><span class="opt-letter">E</span>Il contre-indique la ponction ovocytaire.</li>
+      </ul>
+      <details class="correction">
+        <summary>🔍 Correction</summary>
+        <div class="corr-body">
+          <span class="answer-line">Réponse : B</span>
+          <p>Le liquide hydrosalpinx est embryotoxique et peut mécaniquement nuire à l'implantation. Sa prise en charge (salpingectomie ou interruption) peut être discutée avant FIV.</p>
+          <ul class="why-list">
+            <li>L'impact négatif est bien documenté.</li>
+            <li class="ok">Effet toxique et mécanique sur l'endomètre et l'embryon.</li>
+            <li>Il n'améliore pas l'implantation.</li>
+            <li>Il ne bloque pas la stimulation ovarienne.</li>
+            <li>Il ne contre-indique pas la ponction.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+  </article>
+
+  <!-- CAS 3 -->
+  <article class="card case-card">
+    <div class="case-header">
+      <span class="case-num">CAS 3</span>
+      <span class="case-loc">Consultation d'urologie-andrologie — CHU de Constantine</span>
+    </div>
+    <div class="vignette">
+      <p><span class="vlabel">Motif :</span>Couple consultant pour infertilité primaire depuis 2 ans.</p>
+      <p><span class="vlabel">Homme :</span>M. T., 31 ans, marié depuis 3 ans. Antécédent de cryptorchidie gauche opérée à l'âge de 9 ans. Pas de tabac, pas d'alcool. Pas de traitement actuel.</p>
+      <p><span class="vlabel">Examen :</span>Testicules de petit volume (12 mL à droite, 8 mL à gauche), consistance ferme. Épididymes et canaux déférents perçus. Pas de varicocèle palpable. Caractères sexuels secondaires normaux.</p>
+      <p><span class="vlabel">Biologie :</span>Spermogramme : azoospermie (2 contrôles). FSH élevée, LH normale haute, testostérone normale basse.</p>
+      <div class="vitals">
+        <span class="vital-pill">Azoospermie</span>
+        <span class="vital-pill">FSH élevée</span>
+        <span class="vital-pill">Cryptorchidie ancienne</span>
+        <span class="vital-pill">Testicules hypotrophiques</span>
+      </div>
+    </div>
+
+    <div class="case-question">
+      <div class="cq-head"><span class="cq-tag">Q1</span></div>
+      <p class="cq-text">Quel est le mécanisme le plus probable de l'azoospermie ?</p>
+      <ul class="options">
+        <li><span class="opt-letter">A</span>Azoospermie obstructive.</li>
+        <li><span class="opt-letter">B</span>Azoospermie non obstructive d'origine testiculaire.</li>
+        <li><span class="opt-letter">C</span>Azoospermie par déficit gonadotrope.</li>
+        <li><span class="opt-letter">D</span>Azoospermie par prise de testostérone.</li>
+        <li><span class="opt-letter">E</span>Azoospermie par obstruction épididymaire bilatérale.</li>
+      </ul>
+      <details class="correction">
+        <summary>🔍 Correction</summary>
+        <div class="corr-body">
+          <span class="answer-line">Réponse : B</span>
+          <p>L'association testicules hypotrophiques, FSH élevée et antécédent de cryptorchidie plaide pour une atteinte testiculaire non obstructive : la FSH élevée traduit l'absence de rétrocontrôle inhibinique normal.</p>
+          <ul class="why-list">
+            <li>Une obstruction donnerait plutôt une FSH normale et des testicules de volume normal.</li>
+            <li class="ok">L'atteinte testiculaire est la plus probable.</li>
+            <li>Un déficit gonadotrope s'accompagnerait d'une FSH basse.</li>
+            <li>Pas de prise de testostérone rapportée.</li>
+            <li>L'obstruction épididymaire n'est pas évoquée par l'examen.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <div class="case-question">
+      <div class="cq-head"><span class="cq-tag">Q2</span></div>
+      <p class="cq-text">Quel examen complémentaire est prioritaire dans ce contexte d'azoospermie non obstructive ?</p>
+      <ul class="options">
+        <li><span class="opt-letter">A</span>Caryotype et recherche de microdélétions du chromosome Y.</li>
+        <li><span class="opt-letter">B</span>Hystérosalpingographie.</li>
+        <li><span class="opt-letter">C</span>Dosage de l'AMH chez l'homme.</li>
+        <li><span class="opt-letter">D</span>Échographie abdominale.</li>
+        <li><span class="opt-letter">E</span>Test de grossesse.</li>
+      </ul>
+      <details class="correction">
+        <summary>🔍 Correction</summary>
+        <div class="corr-body">
+          <span class="answer-line">Réponse : A</span>
+          <p>Devant une azoospermie non obstructive, un caryotype et une recherche de microdélétions du chromosome Y (région AZF) sont indiqués, notamment avant une extraction testiculaire de spermatozoïdes.</p>
+          <ul class="why-list">
+            <li class="ok">Le bilan génétique est prioritaire.</li>
+            <li>L'HSG est un examen féminin.</li>
+            <li>L'AMH n'a pas d'indication masculine ici.</li>
+            <li>L'échographie abdominale n'est pas prioritaire.</li>
+            <li>Le test de grossesse est sans objet.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <div class="case-question">
+      <div class="cq-head"><span class="cq-tag">Q3</span></div>
+      <p class="cq-text">Quelle option thérapeutique peut être discutée chez ce couple ?</p>
+      <ul class="options">
+        <li><span class="opt-letter">A</span>Prescription de testostérone exogène.</li>
+        <li><span class="opt-letter">B</span>Extraction testiculaire de spermatozoïdes (TESE) avec ICSI.</li>
+        <li><span class="opt-letter">C</span>Insémination intra-utérine avec sperme du conjoint.</li>
+        <li><span class="opt-letter">D</span>Létrozole chez l'homme.</li>
+        <li><span class="opt-letter">E</span>Attente spontanée.</li>
+      </ul>
+      <details class="correction">
+        <summary>🔍 Correction</summary>
+        <div class="corr-body">
+          <span class="answer-line">Réponse : B</span>
+          <p>En cas d'azoospermie non obstructive, la TESE avec ICSI peut être proposée après avis spécialisé et bilan génétique, si des spermatozoïdes sont retrouvés.</p>
+          <ul class="why-list">
+            <li>La testostérone exogène aggrave l'azoospermie.</li>
+            <li class="ok">La TESE + ICSI est la voie possible.</li>
+            <li>L'IIU est impossible sans spermatozoïdes dans l'éjaculat.</li>
+            <li>Le létrozole n'a pas d'indication ici.</li>
+            <li>L'attente spontanée est illusoire.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+  </article>
+
+  <!-- CAS 4 -->
+  <article class="card case-card">
+    <div class="case-header">
+      <span class="case-num">CAS 4</span>
+      <span class="case-loc">Consultation de gynécologie — CHU de Sétif</span>
+    </div>
+    <div class="vignette">
+      <p><span class="vlabel">Motif :</span>Infertilité primaire depuis 24 mois.</p>
+      <p><span class="vlabel">Femme :</span>Mme L., 28 ans, cycles réguliers de 28 jours, pas de dysménorrhée, pas d'antécédent. IMC 22. Progestérone en phase lutéale normale. HSG : trompes perméables, cavité utérine normale. Échographie pelvienne normale.</p>
+      <p><span class="vlabel">Homme :</span>M. L., 30 ans, spermogramme avec 2 contrôles normaux.</p>
+      <p><span class="vlabel">Bilan :</span>Aucune anomalie identifiée. TSH, prolactine normales.</p>
+      <div class="vitals">
+        <span class="vital-pill">Cycles réguliers</span>
+        <span class="vital-pill">HSG normale</span>
+        <span class="vital-pill">Spermogramme normal</span>
+        <span class="vital-pill">Bilan standard normal</span>
+      </div>
+    </div>
+
+    <div class="case-question">
+      <div class="cq-head"><span class="cq-tag">Q1</span></div>
+      <p class="cq-text">Quel diagnostic retenez-vous ?</p>
+      <ul class="options">
+        <li><span class="opt-letter">A</span>Infertilité tubaire.</li>
+        <li><span class="opt-letter">B</span>Infertilité inexpliquée.</li>
+        <li><span class="opt-letter">C</span>SOPK.</li>
+        <li><span class="opt-letter">D</span>Insuffisance ovarienne prématurée.</li>
+        <li><span class="opt-letter">E</span>Endométriose profonde.</li>
+      </ul>
+      <details class="correction">
+        <summary>🔍 Correction</summary>
+        <div class="corr-body">
+          <span class="answer-line">Réponse : B</span>
+          <p>Bilan standard normal : ovulation, trompes, utérus et sperme sans anomalie. Il s'agit d'une infertilité inexpliquée, diagnostic d'exclusion.</p>
+          <ul class="why-list">
+            <li>Les trompes sont perméables.</li>
+            <li class="ok">Aucune cause identifiée après bilan standard.</li>
+            <li>Pas d'hyperandrogénie ni de cycles irréguliers.</li>
+            <li>L'IOP est improbable à 28 ans avec cycles réguliers.</li>
+            <li>Pas de signe clinique d'endométriose.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <div class="case-question">
+      <div class="cq-head"><span class="cq-tag">Q2</span></div>
+      <p class="cq-text">Quelle est la conduite à tenir la plus appropriée ?</p>
+      <ul class="options">
+        <li><span class="opt-letter">A</span>Cœlioscopie diagnostique systématique.</li>
+        <li><span class="opt-letter">B</span>Proposer une prise en charge progressive, éventuellement IIU après information.</li>
+        <li><span class="opt-letter">C</span>FIV avec ICSI d'emblée.</li>
+        <li><span class="opt-letter">D</span>Prescrire des antioxydants seuls.</li>
+        <li><span class="opt-letter">E</span>Aucune prise en charge, attendre 5 ans.</li>
+      </ul>
+      <details class="correction">
+        <summary>🔍 Correction</summary>
+        <div class="corr-body">
+          <span class="answer-line">Réponse : B</span>
+          <p>Dans l'infertilité inexpliquée, la prise en charge est progressive : information, optimisation de l'hygiène de vie, puis IIU ou FIV selon l'évolution et le pronostic.</p>
+          <ul class="why-list">
+            <li>La cœlioscopie systématique n'est pas recommandée.</li>
+            <li class="ok">La prise en charge progressive est la bonne attitude.</li>
+            <li>La FIV avec ICSI n'est pas indiquée d'emblée.</li>
+            <li>Les antioxydants seuls n'ont pas de bénéfice démontré.</li>
+            <li>L'attente prolongée est injustifiée.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <div class="case-question">
+      <div class="cq-head"><span class="cq-tag">Q3</span></div>
+      <p class="cq-text">Quelle information doit être donnée au couple ?</p>
+      <ul class="options">
+        <li><span class="opt-letter">A</span>L'infertilité inexpliquée signifie qu'aucune grossesse n'est possible.</li>
+        <li><span class="opt-letter">B</span>Le diagnostic n'exclut pas l'existence de mécanismes non encore explorés et des grossesses spontanées restent possibles.</li>
+        <li><span class="opt-letter">C</span>Il faut arrêter les rapports pendant la période fertile.</li>
+        <li><span class="opt-letter">D</span>La FIV est obligatoire immédiatement.</li>
+        <li><span class="opt-letter">E</span>Le spermogramme doit être répété 10 fois.</li>
+      </ul>
+      <details class="correction">
+        <summary>🔍 Correction</summary>
+        <div class="corr-body">
+          <span class="answer-line">Réponse : B</span>
+          <p>L'infertilité inexpliquée est un diagnostic d'exclusion : des grossesses spontanées restent possibles, et certaines causes ne sont pas encore accessibles au bilan standard.</p>
+          <ul class="why-list">
+            <li>Une grossesse reste possible.</li>
+            <li class="ok">L'information doit être nuancée et honnête.</li>
+            <li>Les rapports doivent au contraire être optimisés.</li>
+            <li>La FIV n'est pas obligatoire immédiatement.</li>
+            <li>Répéter 10 fois le spermogramme n'a aucun sens.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+  </article>
+
+  <!-- CAS 5 -->
+  <article class="card case-card">
+    <div class="case-header">
+      <span class="case-num">CAS 5</span>
+      <span class="case-loc">Consultation de médecine de la reproduction — CHU d'Oran</span>
+    </div>
+    <div class="vignette">
+      <p><span class="vlabel">Motif :</span>Désir de grossesse chez une femme de 41 ans.</p>
+      <p><span class="vlabel">Femme :</span>Mme R., 41 ans, sans enfant, mariée depuis 1 an. Cycles réguliers mais plus courts (24–26 jours) depuis 6 mois. Pas d'antécédent chirurgical. AMH à 0,6 ng/mL, compte des follicules antraux à 4. FSH à 12 UI/L.</p>
+      <p><span class="vlabel">Homme :</span>M. R., 43 ans, spermogramme normal.</p>
+      <p><span class="vlabel">Imagerie :</span>HSG : trompes perméables. Échographie : utérus normal.</p>
+      <div class="vitals">
+        <span class="vital-pill">41 ans</span>
+        <span class="vital-pill">AMH 0,6 ng/mL</span>
+        <span class="vital-pill">CFA 4</span>
+        <span class="vital-pill">FSH 12 UI/L</span>
+      </div>
+    </div>
+
+    <div class="case-question">
+      <div class="cq-head"><span class="cq-tag">Q1</span></div>
+      <p class="cq-text">Quelle est l'interprétation la plus juste du bilan ?</p>
+      <ul class="options">
+        <li><span class="opt-letter">A</span>Réserve ovarienne normale pour l'âge.</li>
+        <li><span class="opt-letter">B</span>Diminution de la réserve ovarienne associée à l'âge.</li>
+        <li><span class="opt-letter">C</span>Insuffisance ovarienne prématurée certaine.</li>
+        <li><span class="opt-letter">D</span>SOPK.</li>
+        <li><span class="opt-letter">E</span>Hyperprolactinémie.</li>
+      </ul>
+      <details class="correction">
+        <summary>🔍 Correction</summary>
+        <div class="corr-body">
+          <span class="answer-line">Réponse : B</span>
+          <p>AMH basse, CFA bas et FSH modérément élevée à 41 ans traduisent une diminution de la réserve ovarienne liée à l'âge. Le pronostic reproductif est diminué.</p>
+          <ul class="why-list">
+            <li>La réserve est basse, pas normale.</li>
+            <li class="ok">Diminution de la réserve ovarienne liée à l'âge.</li>
+            <li>L'IOP survient avant 40 ans : ici la patiente a 41 ans.</li>
+            <li>Le SOPK donnerait plutôt une AMH élevée.</li>
+            <li>L'hyperprolactinémie n'est pas évoquée.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <div class="case-question">
+      <div class="cq-head"><span class="cq-tag">Q2</span></div>
+      <p class="cq-text">Quelle est la conduite à tenir ?</p>
+      <ul class="options">
+        <li><span class="opt-letter">A</span>Attendre 12 mois avant toute exploration.</li>
+        <li><span class="opt-letter">B</span>Prise en charge rapide, information sur le pronostic et discussion de l'AMP.</li>
+        <li><span class="opt-letter">C</span>Prescrire une contraception pour réguler les cycles.</li>
+        <li><span class="opt-letter">D</span>Rassurer sans bilan complémentaire.</li>
+        <li><span class="opt-letter">E</span>Traiter par testostérone.</li>
+      </ul>
+      <details class="correction">
+        <summary>🔍 Correction</summary>
+        <div class="corr-body">
+          <span class="answer-line">Réponse : B</span>
+          <p>À 41 ans avec réserve ovarienne basse, le temps est un facteur pronostique majeur : la prise en charge doit être rapide, avec information claire et discussion des options d'AMP.</p>
+          <ul class="why-list">
+            <li>Attendre 12 mois ferait perdre un temps précieux.</li>
+            <li class="ok">La prise en charge rapide est justifiée.</li>
+            <li>La contraception est contraire au projet.</li>
+            <li>Rassurer sans bilan est une erreur.</li>
+            <li>La testostérone est proscrite.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+
+    <div class="case-question">
+      <div class="cq-head"><span class="cq-tag">Q3</span></div>
+      <p class="cq-text">Quelle information doit être délivrée au couple ?</p>
+      <ul class="options">
+        <li><span class="opt-letter">A</span>Les chances de grossesse spontanée sont identiques à celles d'une femme de 25 ans.</li>
+        <li><span class="opt-letter">B</span>L'âge et la réserve ovarienne diminuent le pronostic, sans rendre la grossesse impossible.</li>
+        <li><span class="opt-letter">C</span>La FIV garantit une grossesse à 100 %.</li>
+        <li><span class="opt-letter">D</span>L'AMH prédit à elle seule la fertilité spontanée.</li>
+        <li><span class="opt-letter">E</span>Il faut arrêter tout projet de grossesse.</li>
+      </ul>
+      <details class="correction">
+        <summary>🔍 Correction</summary>
+        <div class="corr-body">
+          <span class="answer-line">Réponse : B</span>
+          <p>Le pronostic est diminué mais non nul. L'AMH renseigne sur la réserve, pas sur la fertilité spontanée. L'information doit rester honnête et nuancée.</p>
+          <ul class="why-list">
+            <li>Le pronostic n'est pas identique à celui d'une femme de 25 ans.</li>
+            <li class="ok">Information juste et nuancée.</li>
+            <li>Aucune technique ne garantit 100 % de grossesse.</li>
+            <li>L'AMH ne prédit pas seule la fertilité spontanée.</li>
+            <li>Il n'y a pas lieu d'arrêter le projet.</li>
+          </ul>
+        </div>
+      </details>
+    </div>
+  </article>
+</section>
+
+<!-- ================= SECTION 3 : CARTE CONCEPTUELLE ================= -->
+<section class="section" id="carte">
+  <div class="section-head">
+    <div class="section-icon">🗺️</div>
+    <div>
+      <h2>3. Carte conceptuelle & synthèse visuelle</h2>
+      <span class="sub">Algorithme diagnostique, trois piliers, étiologies et prise en charge</span>
+    </div>
+  </div>
+
+  <!-- Trois piliers -->
+  <div class="map-grid">
+    <div class="map-box">
+      <h3><span class="num">1</span>Ovulation & fonction ovarienne</h3>
+      <ul class="map-list">
+        <li>Cycles réguliers de 21–35 jours : ovulation probable</li>
+        <li>Progestérone ~7 jours avant les règles présumées si doute</li>
+        <li>AMH + compte des follicules antraux = réserve</li>
+        <li>Échographie pelvienne : utérus, ovaires, annexes</li>
+        <li>FSH, estradiol si contexte particulier</li>
+      </ul>
+    </div>
+    <div class="map-box">
+      <h3><span class="num">2</span>Fonction reproductive masculine</h3>
+      <ul class="map-list">
+        <li>Interrogatoire : cryptorchidie, orchite, torsion, IST</li>
+        <li>Examen : volume testiculaire, épididymes, déférents, varicocèle</li>
+        <li>Spermogramme : examen de première intention</li>
+        <li>FSH, testostérone selon contexte</li>
+        <li>Bilan génétique si azoospermie/oligospermie sévère</li>
+      </ul>
+    </div>
+    <div class="map-box">
+      <h3><span class="num">3</span>Tractus génital féminin</h3>
+      <ul class="map-list">
+        <li>HSG : perméabilité tubaire + cavité utérine</li>
+        <li>Échographie avec contraste : alternative</li>
+        <li>Hystéroscopie si anomalie de la cavité</li>
+        <li>Cœlioscopie non systématique</li>
+        <li>Rechercher hydrosalpinx, synéchies, fibromes, polypes</li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- Algorithme 5 étapes -->
+  <div class="card" style="margin-top:24px;">
+    <h3 style="margin:0 0 16px;color:var(--navy);font-size:1.1rem;">Algorithme de la démarche diagnostique en 5 étapes</h3>
+    <div class="flow">
+      <div class="flow-step">
+        <div class="flow-dot">1</div>
+        <div class="flow-content">
+          <strong>Confirmer l'indication du bilan</strong>
+          <span>Durée de l'infertilité, âge féminin, antécédents, facteurs de risque → exploration précoce si indiquée.</span>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-dot">2</div>
+        <div class="flow-content">
+          <strong>Explorer simultanément les deux partenaires</strong>
+          <span>Interrogatoire, examen clinique, spermogramme et évaluation gynécologique initiale.</span>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-dot">3</div>
+        <div class="flow-content">
+          <strong>Identifier les trois fonctions essentielles</strong>
+          <span>Ovulation, paramètres spermatiques, perméabilité tubaire et cavité utérine.</span>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-dot">4</div>
+        <div class="flow-content">
+          <strong>Rechercher les facteurs contributifs</strong>
+          <span>Compléter le bilan en fonction des anomalies, sans multiplier les examens non indiqués.</span>
+        </div>
+      </div>
+      <div class="flow-step">
+        <div class="flow-dot">5</div>
+        <div class="flow-content">
+          <strong>Établir une stratégie thérapeutique partagée</strong>
+          <span>Étiologie, âge, durée, pronostic, souhaits du couple, risques et ressources disponibles.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Tableau étiologies -->
+  <div class="card">
+    <h3 style="margin:0 0 6px;color:var(--navy);font-size:1.1rem;">Étiologies en un coup d'œil</h3>
+    <div class="table-wrap">
+      <table class="mini">
+        <thead>
+          <tr>
+            <th>Compartiment</th>
+            <th>Exemples clés</th>
+            <th>Orientation diagnostique</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Ovulatoire</strong></td>
+            <td>SOPK, IOP, hyperprolactinémie, dysthyroïdie, troubles hypothalamiques</td>
+            <td>Cycles irréguliers, aménorrhée, hyperandrogénie</td>
+          </tr>
+          <tr>
+            <td><strong>Tubo-péritonéal</strong></td>
+            <td>MIP, GEU, hydrosalpinx, adhérences, endométriose</td>
+            <td>HSG, antécédents d'IST/chirurgie pelvienne</td>
+          </tr>
+          <tr>
+            <td><strong>Utérin</strong></td>
+            <td>Polypes, fibromes sous-muqueux, synéchies, malformations</td>
+            <td>Échographie, HSG, hystéroscopie</td>
+          </tr>
+          <tr>
+            <td><strong>Réserve ovarienne</strong></td>
+            <td>Âge, IOP, chirurgie ovarienne, gonadotoxiques</td>
+            <td>AMH, CFA, FSH/estradiol</td>
+          </tr>
+          <tr>
+            <td><strong>Masculin testiculaire</strong></td>
+            <td>Cryptorchidie, orchite, toxiques, génétique</td>
+            <td>Azoospermie/oligospermie, FSH élevée, testicules hypotrophiques</td>
+          </tr>
+          <tr>
+            <td><strong>Masculin obstructif</strong></td>
+            <td>Infections, chirurgie, anomalies congénitales</td>
+            <td>FNS normale, volume testiculaire normal</td>
+          </tr>
+          <tr>
+            <td><strong>Masculin endocrinien</strong></td>
+            <td>Déficit gonadotrope, testostérone exogène</td>
+            <td>FSH/LH basses, contexte médicamenteux</td>
+          </tr>
+          <tr>
+            <td><strong>Mixte / inexpliquée</strong></td>
+            <td>Facteurs chez les deux partenaires ou bilan normal</td>
+            <td>Diagnostic d'exclusion, prise en charge progressive</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- Carte prise en charge -->
+  <div class="card">
+    <h3 style="margin:0 0 14px;color:var(--navy);font-size:1.1rem;">Prise en charge — logique décisionnelle</h3>
+    <div class="map-grid">
+      <div class="map-box">
+        <h3><span class="num">A</span>Mesures générales</h3>
+        <ul class="map-list">
+          <li>Arrêt du tabac, limitation de l'alcool</li>
+          <li>Correction du poids, alimentation équilibrée</li>
+          <li>Acide folique préconceptionnel</li>
+          <li>Prévention des IST</li>
+          <li>Révision des traitements gonadotoxiques</li>
+        </ul>
+      </div>
+      <div class="map-box">
+        <h3><span class="num">B</span>Femme</h3>
+        <ul class="map-list">
+          <li>SOPK : létrozole en première intention</li>
+          <li>Gonadotrophines : surveillance (OHSS, grossesse multiple)</li>
+          <li>Tubaire : chirurgie sélectionnée ou FIV</li>
+          <li>Endométriose : décision individualisée</li>
+          <li>Hyperprolactinémie/dysthyroïdie : traitement étiologique</li>
+        </ul>
+      </div>
+      <div class="map-box">
+        <h3><span class="num">C</span>Homme</h3>
+        <ul class="map-list">
+          <li>Correction d'un trouble endocrinien</li>
+          <li>Traitement d'une infection documentée</li>
+          <li>Chirurgie sélectionnée (obstruction, varicocèle)</li>
+          <li>Avis spécialisé si azoospermie/anomalie génétique</li>
+          <li>TESE + ICSI dans certaines situations</li>
+        </ul>
+      </div>
+      <div class="map-box">
+        <h3><span class="num">D</span>AMP</h3>
+        <ul class="map-list">
+          <li>IIU : perméabilité tubaire requise</li>
+          <li>FIV : atteinte tubaire, échecs, indications sélectionnées</li>
+          <li>ICSI : infertilité masculine sévère ou échecs de fécondation</li>
+          <li>Préservation de la fertilité avant gonadotoxiques</li>
+          <li>Transfert électif d'un embryon : réduction des risques</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="alert teal">
+    <span class="icon">💡</span>
+    <div><strong>Point de synthèse.</strong> Le bilan initial doit répondre à trois questions : l'ovulation est-elle présente ? Les paramètres spermatiques sont-ils satisfaisants ? Le tractus génital féminin permet-il la rencontre des gamètes et l'implantation ?</div>
+  </div>
+</section>
+
+<!-- ================= SECTION 4 : MNÉMOTECHNIQUES ================= -->
+<section class="section" id="mnemo">
+  <div class="section-head">
+    <div class="section-icon">🧠</div>
+    <div>
+      <h2>4. Mnémotechniques & trucs d'examen</h2>
+      <span class="sub">Moyens mnésiques, pièges docimologiques et discriminants clés</span>
+    </div>
+  </div>
+
+  <div class="mnemo-grid">
+    <div class="mnemo">
+      <div class="m-title"><span class="m-icon">⏱️</span>Les délais en 4 chiffres</div>
+      <span class="m-code">12 — 6 — 0 — 40</span>
+      <ul>
+        <li><strong>12</strong> mois : femme &lt; 35 ans sans facteur de risque</li>
+        <li><strong>6</strong> mois : femme ≥ 35 ans</li>
+        <li><strong>0</strong> délai : facteur de risque connu (GEU, MIP, endométriose, chimiothérapie…)</li>
+        <li><strong>40</strong> ans : exploration sans délai excessif, pronostic en jeu</li>
+      </ul>
+    </div>
+
+    <div class="mnemo">
+      <div class="m-title"><span class="m-icon">🏛️</span>Les 3 piliers du bilan</div>
+      <span class="m-code">O.S.T.</span>
+      <ul>
+        <li><strong>O</strong>vulation et fonction ovarienne</li>
+        <li><strong>S</strong>perme et fonction masculine</li>
+        <li><strong>T</strong>rompes et tractus génital féminin</li>
+      </ul>
+    </div>
+
+    <div class="mnemo">
+      <div class="m-title"><span class="m-icon">♀️</span>Causes féminines</div>
+      <span class="m-code">O.T.U.</span>
+      <ul>
+        <li><strong>O</strong>vulatoires : SOPK, IOP, hyperprolactinémie, dysthyroïdie</li>
+        <li><strong>T</strong>ubo-péritonéales : MIP, GEU, hydrosalpinx, endométriose</li>
+        <li><strong>U</strong>térines : polypes, fibromes, synéchies, malformations</li>
+      </ul>
+    </div>
+
+    <div class="mnemo">
+      <div class="m-title"><span class="m-icon">♂️</span>Causes masculines</div>
+      <span class="m-code">T.O.E.</span>
+      <ul>
+        <li><strong>T</strong>esticulaires : cryptorchidie, orchite, toxiques, génétique</li>
+        <li><strong>O</strong>bstructives : infections, chirurgie, congénital</li>
+        <li><strong>E</strong>ndocriniennes et médicamenteuses : déficit gonadotrope, testostérone exogène</li>
+      </ul>
+    </div>
+
+    <div class="mnemo">
+      <div class="m-title"><span class="m-icon">🔤</span>Spermogramme</div>
+      <span class="m-code">C. M. M.</span>
+      <ul>
+        <li><strong>C</strong>oncentration → oligozoospermie</li>
+        <li><strong>M</strong>obilité → asthénozoospermie</li>
+        <li><strong>M</strong>orphologie → tératozoospermie</li>
+        <li>Absence de spermatozoïdes → azoospermie</li>
+      </ul>
+    </div>
+
+    <div class="mnemo">
+      <div class="m-title"><span class="m-icon">💊</span>SOPK : première ligne</div>
+      <span class="m-code">LETROZOLE</span>
+      <ul>
+        <li>Létrozole = induction de l'ovulation de 1re intention</li>
+        <li>Gonadotrophines = 2e ligne, surveillance obligatoire</li>
+        <li>Risque d'hyperstimulation ovarienne (OHSS)</li>
+        <li>Grossesse multiple : prévenir par monitorage</li>
+      </ul>
+    </div>
+
+    <div class="mnemo">
+      <div class="m-title"><span class="m-icon">🚫</span>Testostérone exogène</div>
+      <span class="m-code">STOP SPERM</span>
+      <ul>
+        <li>Rétrocontrôle négatif sur GnRH, FSH et LH</li>
+        <li>Oligospermie voire azoospermie</li>
+        <li>Proscrite chez l'homme souhaitant concevoir</li>
+        <li>Piège classique des stéroïdes anabolisants</li>
+      </ul>
+    </div>
+
+    <div class="mnemo">
+      <div class="m-title"><span class="m-icon">🧪</span>AMH : ce qu'elle est / n'est pas</div>
+      <span class="m-code">RÉSERVE ≠ FERTILITÉ</span>
+      <ul>
+        <li>Elle évalue la réserve ovarienne et la réponse à la stimulation</li>
+        <li>Elle ne prédit pas seule la grossesse spontanée</li>
+        <li>Elle doit toujours être interprétée avec l'âge</li>
+        <li>AMH basse ≠ impossibilité de grossesse</li>
+      </ul>
+    </div>
+
+    <div class="mnemo">
+      <div class="m-title"><span class="m-icon">📅</span>Progestérone : pas de J21 fixe</div>
+      <span class="m-code">−7 JOURS</span>
+      <ul>
+        <li>Dosage environ 7 jours avant la date présumée des règles</li>
+        <li>Adapter au lieu de la durée réelle du cycle</li>
+        <li>Le J21 fixe est un piège docimologique classique</li>
+      </ul>
+    </div>
+
+    <div class="mnemo">
+      <div class="m-title"><span class="m-icon">🔬</span>AMP en 3 lettres</div>
+      <span class="m-code">I. F. I.</span>
+      <ul>
+        <li><strong>I</strong>IU : trompes perméables obligatoires</li>
+        <li><strong>F</strong>IV : atteinte tubaire, échecs, indications sélectionnées</li>
+        <li><strong>I</strong>CSI : infertilité masculine sévère ou échec de fécondation</li>
+        <li>ICSI ≠ systématiquement supérieure à la FIV</li>
+      </ul>
+    </div>
+
+    <div class="mnemo">
+      <div class="m-title"><span class="m-icon">🧭</span>Varicocèle</div>
+      <span class="m-code">DEBOUT + VALSALVA</span>
+      <ul>
+        <li>Recherche en position debout, manœuvre de Valsalva</li>
+        <li>Dilatation du plexus pampiniforme, prédominance gauche</li>
+        <li>Traitement non systématique : cas sélectionnés</li>
+        <li>Peut altérer les paramètres spermatiques</li>
+      </ul>
+    </div>
+
+    <div class="mnemo">
+      <div class="m-title"><span class="m-icon">🩺</span>Examens NON systématiques</div>
+      <span class="m-code">P.I.E.D.</span>
+      <ul>
+        <li><strong>P</strong>ost-coïtaux</li>
+        <li><strong>I</strong>mmunologiques et thrombophiliques</li>
+        <li><strong>E</strong>ndométriales (biopsies systématiques)</li>
+        <li><strong>D</strong>iagnostique cœlioscopie systématique</li>
+      </ul>
+    </div>
+
+    <div class="mnemo">
+      <div class="m-title"><span class="m-icon">🧩</span>Infertilité inexpliquée</div>
+      <span class="m-code">EXCLUSION</span>
+      <ul>
+        <li>Diagnostic d'exclusion après bilan standard normal</li>
+        <li>Ne signifie pas absence de cause biologique</li>
+        <li>Grossesses spontanées possibles</li>
+        <li>Prise en charge progressive (IIU, FIV selon évolution)</li>
+      </ul>
+    </div>
+
+    <div class="mnemo">
+      <div class="m-title"><span class="m-icon">❤️</span>Dimension humaine</div>
+      <span class="m-code">ÉCOUTE + INFO</span>
+      <ul>
+        <li>Accueillir la souffrance sans jugement</li>
+        <li>Préserver la confidentialité</li>
+        <li>Consentement libre et éclairé des deux partenaires</li>
+        <li>Pas de promesses irréalistes de grossesse</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="trap">
+    <strong>⚠️ Pièges docimologiques fréquents.</strong>
+    <ul style="margin:8px 0 0;padding-left:18px;">
+      <li>Confondre oligozoospermie, asthénozoospermie et tératozoospermie.</li>
+      <li>Oublier que le spermogramme normal n'élimine pas un bilan féminin.</li>
+      <li>Croire que l'AMH prédit la fertilité spontanée.</li>
+      <li>Systématiser la cœlioscopie ou les tests post-coïtaux.</li>
+      <li>Prescrire de la testostérone chez un homme désirant concevoir.</li>
+      <li>Opérer systématiquement une varicocèle.</li>
+      <li>Doser la progestérone à J21 fixe.</li>
+      <li>Considérer l'ICSI comme supérieure à la FIV dans toutes les situations.</li>
+      <li>Attendre 12 mois chez une femme de plus de 35 ans ou avec facteur de risque.</li>
+      <li>Conclure à une infertilité inexpliquée sans exploration tubaire et sans spermogramme.</li>
+    </ul>
+  </div>
+
+  <div class="alert">
+    <span class="icon">🎯</span>
+    <div><strong>Discriminants à retenir pour l'examen.</strong> FSH élevée + testicules hypotrophiques = atteinte testiculaire. FSH basse + contexte médicamenteux = cause endocrinienne. HSG anormale + antécédent de GEU = facteur tubaire. Cycles irréguliers + hyperandrogénie = SOPK. AMH basse + âge avancé = réserve ovarienne diminuée.</div>
+  </div>
+</section>
+
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer>
+  <div class="foot-inner">
+    <p class="motivation">
+      Vous avez maintenant entre les mains une <span class="em">boîte à outils clinique</span> complète : définitions, réflexes diagnostiques, pièges et prises en charge.
+      <br>Relisez, testez-vous, expliquez à voix haute — c'est ainsi que la connaissance devient un réflexe.
+    </p>
+    <p class="motivation">
+      Chaque QCM est une occasion de <span class="em">penser comme un médecin</span>, pas seulement de cocher une case.
+      <br>Bonne révision, et souvenez-vous : derrière chaque couple infertile, il y a une histoire humaine à écouter autant qu'un bilan à conduire. 💙
+    </p>
+    <p class="sign">
+      Support pédagogique de révision — Module de médecine de la reproduction · 4<sup>e</sup> année<br>
+      Contenu aligné sur le polycopié « Conduite à tenir devant un couple infertile » et les recommandations OMS 2025 / AUA-ASRM 2024.
+    </p>
+  </div>
+</footer>
+
+</body>
+</html>

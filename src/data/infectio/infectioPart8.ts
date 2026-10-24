@@ -486,16 +486,16 @@ export const INFECTIO_LESSON_20_RESOURCES: CourseResource[] = [
 # ASTUCES & PIÈGES AU CONCOURS (PALUDISME)
 *Par Dr. LAIDANI.M - Médecine Tropicale & Maladies Infectieuses*
 
-### ⚠️ PIÈGE N°1 : La règle d'or du voyageur fébrile
+### Piège : PIÈGE N°1 : La règle d'or du voyageur fébrile
 - « Toute fièvre au retour d'un pays tropical d'endémie est un paludisme à Plasmodium falciparum jusqu'à preuve du contraire ». Un QCM proposant une attente ou un traitement antibiotique d'emblée sans frottis est FAUX.
 
-### ⚠️ PIÈGE N°2 : Le traitement de 1ère intention du paludisme grave
+### Piège : PIÈGE N°2 : Le traitement de 1ère intention du paludisme grave
 - L'Artésunate IV est le premier choix mondial depuis les essais SEAQUAMAT et AQUAMAT (supérieur à la quinine). Ne pas hésiter à cocher l'Artésunate en 1ère intention.
 
-### ⚠️ PIÈGE N°3 : Le danger de la Primaquine sans test G6PD
+### Piège : PIÈGE N°3 : Le danger de la Primaquine sans test G6PD
 - Ne JAMAIS administrer de la Primaquine sans dosage préalable de la G6PD : risque d'anémie hémolytique aiguë médicamenteuse foudroyante.
 
-### ⚠️ PIÈGE N°4 : Quinine et hypoglycémie
+### Piège : PIÈGE N°4 : Quinine et hypoglycémie
 - Tout patient sous Quinine IV doit recevoir des perfusions de sérum glucosé (G10%) en continu car la quinine stimule directement l'insuline pancréatique.
 `
   }
@@ -982,14 +982,14 @@ export const INFECTIO_LESSON_21_RESOURCES: CourseResource[] = [
 # ASTUCES & PIÈGES AU CONCOURS (VARICELLE & ZONA)
 *Par Dr. LAIDANI.M - Pédiatrie & Maladies Infectieuses*
 
-### ⚠️ PIÈGE N°1 : L'Ibuprofène dans la varicelle
+### Piège : PIÈGE N°1 : L'Ibuprofène dans la varicelle
 - Question favorite de tous les concours de Résidanat : « Quel médicament est formellement contre-indiqué dans la varicelle de l'enfant ? »
 - **Réponse réflexe** : Les AINS (Ibuprofène) en raison du risque de fascite nécrosante fulminante à SGA.
 
-### ⚠️ PIÈGE N°2 : Le signe de Hutchinson
+### Piège : PIÈGE N°2 : Le signe de Hutchinson
 - Ne pas confondre le signe de Hutchinson de la syphilis congénitale (dents en tournevis) et le **signe de Hutchinson du zona ophtalmique** (vésicules sur l'aile et la pointe du nez traduisant l'atteinte du nerf nasociliaire).
 
-### ⚠️ PIÈGE N°3 : Le traitement de la varicelle simple de l'enfant
+### Piège : PIÈGE N°3 : Le traitement de la varicelle simple de l'enfant
 - L'Aciclovir n'est PAS indiqué dans la varicelle simple d'un enfant en bonne santé. Ne pas cocher d'antiviral systématique ! Le traitement est purement symptomatique.
 `
   }

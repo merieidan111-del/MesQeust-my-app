@@ -33,9 +33,15 @@ import {
   Layers,
   ShieldAlert,
   GraduationCap,
+  Microscope,
+  Folder,
 } from 'lucide-react';
 import { Question, QuestionType, Module, AcademicYear } from '../types/medical';
 import { MEDICAL_COURSES } from '../data/mockMedicalData';
+import {
+  saveModuleQuestionActivity,
+  markQuestionCompletedInModule,
+} from '../services/studyProgressManager';
 
 export interface LastSolvedQCMRecord {
   id: string;
@@ -56,6 +62,8 @@ interface QCMEngineProps {
   initialTypeFilter?: QuestionType | 'all';
   courseName?: string;
   activeModuleName?: string;
+  initialQuestionId?: string | null;
+  initialQuestionIndex?: number | null;
   onAwardXp: (amount: number, reason: string) => void;
   onQuestionCompleted: (isCorrect: boolean) => void;
   onExitSession?: () => void;
@@ -68,6 +76,8 @@ export const QCMEngine: React.FC<QCMEngineProps> = ({
   initialTypeFilter = 'all',
   courseName,
   activeModuleName,
+  initialQuestionId,
+  initialQuestionIndex,
   onAwardXp,
   onQuestionCompleted,
   onExitSession,
@@ -86,8 +96,19 @@ export const QCMEngine: React.FC<QCMEngineProps> = ({
   });
   const hasInitializedFromLastSolvedRef = useRef<boolean>(false);
 
-  // Initialize with the index of the last solved QCM if available
+  // Initialize with the index of the requested question or last solved QCM if available
   const [currentIndex, setCurrentIndex] = useState<number>(() => {
+    if (initialQuestionId) {
+      const idx = questions.findIndex((q) => q.id === initialQuestionId);
+      if (idx !== -1) return idx;
+    }
+    if (
+      typeof initialQuestionIndex === 'number' &&
+      initialQuestionIndex >= 0 &&
+      initialQuestionIndex < questions.length
+    ) {
+      return initialQuestionIndex;
+    }
     try {
       const raw = localStorage.getItem(LAST_SOLVED_STORAGE_KEY);
       if (raw) {
@@ -220,10 +241,30 @@ export const QCMEngine: React.FC<QCMEngineProps> = ({
     return list;
   }, [questions, selectedType, selectedSubdivision]);
 
-  // Requirement 1: Make the QCM that first appears is the last QCM the user solved
+  // Requirement: Prioritize explicit resume target from 'Continuer l\'entraînement', otherwise fallback to last solved QCM
   useEffect(() => {
-    if (hasInitializedFromLastSolvedRef.current) return;
     if (!filteredQuestions || filteredQuestions.length === 0) return;
+
+    if (initialQuestionId) {
+      const idx = filteredQuestions.findIndex((q) => q.id === initialQuestionId);
+      if (idx !== -1) {
+        setCurrentIndex(idx);
+        hasInitializedFromLastSolvedRef.current = true;
+        return;
+      }
+    }
+
+    if (
+      typeof initialQuestionIndex === 'number' &&
+      initialQuestionIndex >= 0 &&
+      initialQuestionIndex < filteredQuestions.length
+    ) {
+      setCurrentIndex(initialQuestionIndex);
+      hasInitializedFromLastSolvedRef.current = true;
+      return;
+    }
+
+    if (hasInitializedFromLastSolvedRef.current) return;
 
     try {
       const raw = localStorage.getItem(LAST_SOLVED_STORAGE_KEY);
@@ -242,7 +283,7 @@ export const QCMEngine: React.FC<QCMEngineProps> = ({
       }
     } catch {}
     hasInitializedFromLastSolvedRef.current = true;
-  }, [filteredQuestions]);
+  }, [filteredQuestions, initialQuestionId, initialQuestionIndex]);
 
   // Handle case where filteredQuestions is empty or changes size
   useEffect(() => {
@@ -252,6 +293,26 @@ export const QCMEngine: React.FC<QCMEngineProps> = ({
   }, [filteredQuestions.length, currentIndex]);
 
   const currentQ = filteredQuestions[currentIndex] || questions[0];
+
+  // Record stopped question activity whenever the active question changes
+  useEffect(() => {
+    if (currentQ) {
+      const resolvedCourse = MEDICAL_COURSES.find((c) => c.id === currentQ.courseId);
+      const modId = currentModule?.id || resolvedCourse?.moduleId || 'mod-cardio';
+      saveModuleQuestionActivity({
+        id: currentQ.id,
+        questionNumber: currentQ.questionNumber || currentIndex + 1,
+        moduleId: modId,
+        moduleTitle: currentModule?.title || 'Cardiologie & Vasculaire',
+        courseId: currentQ.courseId || resolvedCourse?.id || '',
+        courseTitle: courseName || resolvedCourse?.title || 'Cours Clinique',
+        level: currentQ.academicYear || currentModule?.academicYear || selectedYear,
+        type: currentQ.type,
+        timestamp: Date.now(),
+        isSolved: false,
+      });
+    }
+  }, [currentIndex, currentQ, currentModule, courseName, selectedYear]);
 
   // Initialize default last solved record if empty so user always has persistent tracking
   useEffect(() => {
@@ -367,6 +428,23 @@ export const QCMEngine: React.FC<QCMEngineProps> = ({
       // ignore
     }
     setLastSolvedQCM(solvedRecord);
+
+    // Save solved activity to studyProgressManager
+    const resolvedCourse = MEDICAL_COURSES.find((c) => c.id === currentQ.courseId);
+    const modId = currentModule?.id || resolvedCourse?.moduleId || 'mod-cardio';
+    saveModuleQuestionActivity({
+      id: currentQ.id,
+      questionNumber: currentQ.questionNumber || currentIndex + 1,
+      moduleId: modId,
+      moduleTitle: currentModule?.title || 'Cardiologie & Vasculaire',
+      courseId: currentQ.courseId || resolvedCourse?.id || '',
+      courseTitle: courseName || resolvedCourse?.title || 'Cours Clinique',
+      level: currentQ.academicYear || currentModule?.academicYear || selectedYear,
+      type: currentQ.type,
+      timestamp: Date.now(),
+      isSolved: true,
+    });
+    markQuestionCompletedInModule(modId, currentQ.id);
 
     if (isAllCorrect) {
       const xpEarned = currentQ.type === 'CasClinique' ? 30 : 20;
@@ -626,7 +704,7 @@ export const QCMEngine: React.FC<QCMEngineProps> = ({
                       setSelectedSubdivision(sub);
                       setCurrentIndex(0);
                     }}
-                    className={`px-2.5 py-1 rounded-full text-[11px] font-extrabold whitespace-nowrap transition-all cursor-pointer ${
+                    className={`px-2.5 py-1 rounded-full text-[11px] font-extrabold whitespace-nowrap transition-all cursor-pointer flex items-center gap-1 ${
                       isSelected
                         ? isHem
                           ? 'bg-rose-600 text-white shadow-xs'
@@ -636,7 +714,17 @@ export const QCMEngine: React.FC<QCMEngineProps> = ({
                         : 'text-purple-700 hover:bg-purple-50'
                     }`}
                   >
-                    {isHem ? '🩸 Hématologie' : '🎗️ Oncologie'}
+                    {isHem ? (
+                      <>
+                        <Droplets className="w-3 h-3" />
+                        <span>Hématologie</span>
+                      </>
+                    ) : (
+                      <>
+                        <Award className="w-3 h-3" />
+                        <span>Oncologie</span>
+                      </>
+                    )}
                   </button>
                 );
               })}
@@ -829,30 +917,30 @@ export const QCMEngine: React.FC<QCMEngineProps> = ({
             {currentCourse?.subdivision && (() => {
               const sub = currentCourse.subdivision;
               const lower = sub.toLowerCase();
-              let icon = '📁';
+              let IconComponent = Folder;
               let badgeStyle = 'bg-sky-50 text-sky-700 border-sky-200';
               if (lower.includes('anapath')) {
-                icon = '🔬';
+                IconComponent = Microscope;
                 badgeStyle = 'bg-teal-50 text-teal-800 border-teal-200';
               } else if (lower.includes('cancer')) {
-                icon = '🎗️';
+                IconComponent = Award;
                 badgeStyle = 'bg-purple-50 text-purple-700 border-purple-200';
               } else if (lower.includes('urgence')) {
-                icon = '🚨';
+                IconComponent = ShieldAlert;
                 badgeStyle = 'bg-rose-50 text-rose-700 border-rose-200';
               } else if (lower.includes('gastro')) {
-                icon = '🩺';
+                IconComponent = Stethoscope;
                 badgeStyle = 'bg-amber-50 text-amber-800 border-amber-200';
               } else if (lower.includes('hémato') || lower.includes('hemato')) {
-                icon = '🩸';
+                IconComponent = Droplets;
                 badgeStyle = 'bg-rose-50 text-rose-700 border-rose-200';
               } else if (lower.includes('onco')) {
-                icon = '🎗️';
+                IconComponent = Award;
                 badgeStyle = 'bg-purple-50 text-purple-700 border-purple-200';
               }
               return (
                 <span className={`px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase border flex items-center gap-1 ${badgeStyle}`}>
-                  <span>{icon}</span>
+                  <IconComponent className="w-3 h-3" />
                   <span>{sub}</span>
                 </span>
               );
