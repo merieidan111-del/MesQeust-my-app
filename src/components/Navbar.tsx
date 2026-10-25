@@ -43,7 +43,7 @@ interface NavbarProps {
   ) => void;
   selectedYear: AcademicYear;
   setSelectedYear: (year: AcademicYear) => void;
-  userProfile: UserProfile;
+  userProfile?: UserProfile | null;
   isGoogleConnected: boolean;
   googleUserEmail?: string;
   onGoogleSignIn: () => void;
@@ -179,20 +179,20 @@ export const Navbar: React.FC<NavbarProps> = ({
           <div
             onClick={() => setCurrentTab('gamification')}
             className="cursor-pointer flex items-center gap-1 px-2 sm:px-2.5 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-700 hover:bg-amber-100 transition-colors shadow-2xs shrink-0"
-            title={`${userProfile.streakCount} jours de série active`}
+            title={`${userProfile?.streakCount ?? 0} jours de série active`}
           >
             <Flame className="w-3.5 h-3.5 fill-amber-500 text-amber-500 animate-pulse" />
-            <span className="font-black text-[11px] sm:text-xs">{userProfile.streakCount}j</span>
+            <span className="font-black text-[11px] sm:text-xs">{userProfile?.streakCount ?? 0}j</span>
           </div>
 
           {/* XP Badge Pill */}
           <div
             onClick={() => setCurrentTab('gamification')}
             className="cursor-pointer flex items-center gap-1 px-2 sm:px-2.5 py-1 rounded-full bg-indigo-50 border border-indigo-200 text-indigo-700 hover:bg-indigo-100 transition-colors shadow-2xs shrink-0"
-            title={`${userProfile.totalXp} XP cumulés`}
+            title={`${userProfile?.totalXp ?? 0} XP cumulés`}
           >
             <Award className="w-3.5 h-3.5 text-indigo-600" />
-            <span className="font-black text-[11px] sm:text-xs">{userProfile.totalXp} XP</span>
+            <span className="font-black text-[11px] sm:text-xs">{userProfile?.totalXp ?? 0} XP</span>
           </div>
 
           {/* Device Mockup Toggle */}
@@ -225,12 +225,16 @@ export const Navbar: React.FC<NavbarProps> = ({
             title="Profil étudiant"
           >
             <img
-              src={userProfile.avatarUrl}
-              alt={userProfile.fullName}
+              src={
+                userProfile?.customAvatarDataUrl ||
+                userProfile?.avatarUrl ||
+                `https://api.dicebear.com/7.x/bottts/svg?seed=${encodeURIComponent(userProfile?.username || 'externe')}`
+              }
+              alt={userProfile?.fullName || 'Externe'}
               className="w-6 h-6 sm:w-7 sm:h-7 rounded-full object-cover border border-indigo-200"
             />
             <span className="text-xs font-bold hidden lg:inline text-slate-800">
-              @{userProfile.username || 'externe'}
+              @{userProfile?.username || 'externe'}
             </span>
           </button>
 

@@ -166,7 +166,7 @@ export const StudentAvatar: React.FC<StudentAvatarProps> = ({
     : 'stethoscope';
 
   const preset = AVATAR_PRESETS[presetKey] || AVATAR_PRESETS.stethoscope;
-  const IconComponent = preset.icon;
+  const IconComponent = preset?.icon || Sparkles;
 
   const sizeClasses = {
     sm: 'w-8 h-8 rounded-xl',
@@ -185,12 +185,16 @@ export const StudentAvatar: React.FC<StudentAvatarProps> = ({
   return (
     <div
       onClick={onClick}
-      className={`relative shrink-0 flex items-center justify-center bg-gradient-to-tr ${preset.gradient} ${preset.borderColor} border shadow-xs select-none ${sizeClasses} ${
+      className={`relative shrink-0 flex items-center justify-center bg-gradient-to-tr ${preset?.gradient || 'from-indigo-600 to-purple-600'} ${preset?.borderColor || 'border-slate-300'} border shadow-xs select-none ${sizeClasses} ${
         onClick ? 'cursor-pointer hover:scale-105 active:scale-95 transition-transform' : ''
       } ${className}`}
-      title={isAnonymous ? 'Profil Anonyme' : preset.name}
+      title={isAnonymous ? 'Profil Anonyme' : (preset?.name || 'Avatar')}
     >
-      <IconComponent className={`${iconSizes} ${preset.iconColor} drop-shadow-xs`} />
+      {IconComponent ? (
+        <IconComponent className={`${iconSizes} ${preset?.iconColor || 'text-white'} drop-shadow-xs`} />
+      ) : (
+        <Sparkles className={`${iconSizes} text-white drop-shadow-xs`} />
+      )}
 
       {showBadge && isAnonymous && (
         <span

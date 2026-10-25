@@ -615,10 +615,30 @@ export function logoutAccount(): void {
 export function updateRegisteredAccount(
   email: string,
   updates: Partial<RegisteredAccount>
-): RegisteredAccount | null {
+): RegisteredAccount {
   const accounts = getRegisteredAccounts();
-  const index = accounts.findIndex((a) => a.email.toLowerCase() === email.toLowerCase());
-  if (index === -1) return null;
+  const cleanEmail = email.toLowerCase().trim();
+  const index = accounts.findIndex((a) => a.email.toLowerCase() === cleanEmail);
+
+  if (index === -1) {
+    const newAcc: RegisteredAccount = {
+      id: `usr_${Date.now()}`,
+      fullName: updates.fullName || 'Externe en Médecine',
+      email: cleanEmail,
+      username: updates.username || cleanEmail.split('@')[0],
+      password: '',
+      academicYear: updates.academicYear || '4ème Année',
+      createdAt: new Date().toISOString(),
+      avatarUrl:
+        updates.avatarUrl ||
+        `https://api.dicebear.com/7.x/bottts/svg?seed=${encodeURIComponent(cleanEmail)}`,
+      ...updates,
+    };
+    accounts.push(newAcc);
+    saveRegisteredAccounts(accounts);
+    return newAcc;
+  }
+
   accounts[index] = { ...accounts[index], ...updates };
   saveRegisteredAccounts(accounts);
   return accounts[index];

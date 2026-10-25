@@ -53,42 +53,50 @@ export const GamificationDashboard: React.FC<GamificationDashboardProps> = ({
   // Leaderboard Customization & Privacy State
   const [currentNickname, setCurrentNickname] = useState<string>(() => {
     try {
-      const saved = localStorage.getItem(`syndromed_nick_${userProfile.userId}`);
-      if (saved) return saved;
+      if (userProfile?.userId) {
+        const saved = localStorage.getItem(`syndromed_nick_${userProfile.userId}`);
+        if (saved) return saved;
+      }
     } catch {
       // ignore
     }
-    return userProfile.nickname || userProfile.fullName || userProfile.username || 'Externe';
+    return userProfile?.nickname || userProfile?.fullName || userProfile?.username || 'Externe';
   });
 
   const [isAnonymous, setIsAnonymous] = useState<boolean>(() => {
     try {
-      const saved = localStorage.getItem(`syndromed_anon_${userProfile.userId}`);
-      if (saved !== null) return saved === 'true';
+      if (userProfile?.userId) {
+        const saved = localStorage.getItem(`syndromed_anon_${userProfile.userId}`);
+        if (saved !== null) return saved === 'true';
+      }
     } catch {
       // ignore
     }
-    return Boolean(userProfile.isAnonymous);
+    return Boolean(userProfile?.isAnonymous);
   });
 
   const [optOutRanking, setOptOutRanking] = useState<boolean>(() => {
     try {
-      const saved = localStorage.getItem(`syndromed_optout_${userProfile.userId}`);
-      if (saved !== null) return saved === 'true';
+      if (userProfile?.userId) {
+        const saved = localStorage.getItem(`syndromed_optout_${userProfile.userId}`);
+        if (saved !== null) return saved === 'true';
+      }
     } catch {
       // ignore
     }
-    return Boolean(userProfile.optOutRanking);
+    return Boolean(userProfile?.optOutRanking);
   });
 
   const [userAvatarId, setUserAvatarId] = useState<string>(() => {
     try {
-      const saved = localStorage.getItem(`syndromed_avatar_${userProfile.userId}`);
-      if (saved) return saved;
+      if (userProfile?.userId) {
+        const saved = localStorage.getItem(`syndromed_avatar_${userProfile.userId}`);
+        if (saved) return saved;
+      }
     } catch {
       // ignore
     }
-    return userProfile.avatarId || 'stethoscope';
+    return userProfile?.avatarId || 'stethoscope';
   });
 
   // Modal / Form states
@@ -351,8 +359,8 @@ export const GamificationDashboard: React.FC<GamificationDashboardProps> = ({
             <div className="flex items-center gap-4 min-w-0">
               <div className="relative shrink-0">
                 <img
-                  src={userProfile.customAvatarDataUrl || userProfile.avatarUrl}
-                  alt={userProfile.fullName}
+                  src={userProfile?.customAvatarDataUrl || userProfile?.avatarUrl || `https://api.dicebear.com/7.x/bottts/svg?seed=${encodeURIComponent(userProfile?.username || 'med')}`}
+                  alt={userProfile?.fullName || 'Externe'}
                   className="w-16 h-16 sm:w-18 sm:h-18 rounded-2xl object-cover border-2 border-indigo-200 shadow-2xs bg-slate-50"
                 />
                 <div
@@ -366,13 +374,13 @@ export const GamificationDashboard: React.FC<GamificationDashboardProps> = ({
               <div className="min-w-0">
                 <div className="flex items-center gap-2 flex-wrap">
                   <h3 className="text-lg sm:text-xl font-black text-slate-900 tracking-tight truncate">
-                    {userProfile.fullName}
+                    {userProfile?.fullName || 'Externe'}
                   </h3>
                   <span className="text-xs font-bold text-slate-400">
-                    @{userProfile.username || 'externe'}
+                    @{userProfile?.username || 'externe'}
                   </span>
                   <span className="px-2.5 py-0.5 rounded-full text-[10px] font-black bg-indigo-50 text-indigo-700 border border-indigo-200">
-                    {userProfile.academicYear.replace('ème Année', 'eme')}
+                    {(userProfile?.academicYear || selectedYear || '4ème Année').replace('ème Année', 'eme')}
                   </span>
                 </div>
 

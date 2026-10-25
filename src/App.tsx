@@ -701,36 +701,49 @@ export default function App() {
         userProfile={userProfile}
         onLogout={handleLogout}
         onUpdateProfile={(updated) => {
-          if (!currentUserAccount) return;
-          updateRegisteredAccount(currentUserAccount.email, {
-            fullName: updated.fullName,
-            username: updated.username,
-            avatarUrl: updated.avatarUrl,
-            academicYear: updated.academicYear,
-            bio: updated.bio,
-            faculty: updated.faculty,
-            targetSpecialty: updated.targetSpecialty,
-            customAvatarDataUrl: updated.customAvatarDataUrl,
-          });
+          const targetEmail = currentUserAccount?.email || userProfile?.email;
+          if (targetEmail) {
+            const updatedAcc = updateRegisteredAccount(targetEmail, {
+              fullName: updated.fullName,
+              username: updated.username,
+              avatarUrl: updated.avatarUrl,
+              academicYear: updated.academicYear,
+              bio: updated.bio,
+              faculty: updated.faculty,
+              targetSpecialty: updated.targetSpecialty,
+              customAvatarDataUrl: updated.customAvatarDataUrl,
+            });
+            if (updatedAcc) {
+              setCurrentUserAccount(updatedAcc);
+            }
 
-          const existingProgress = getUserProgress(currentUserAccount);
-          saveUserProgress(currentUserAccount.email, {
-            ...existingProgress,
-            totalXp: updated.totalXp !== undefined ? updated.totalXp : existingProgress.totalXp,
-            streakCount: updated.streakCount !== undefined ? updated.streakCount : existingProgress.streakCount,
-            bio: updated.bio !== undefined ? updated.bio : existingProgress.bio,
-            faculty: updated.faculty !== undefined ? updated.faculty : existingProgress.faculty,
-            targetSpecialty: updated.targetSpecialty !== undefined ? updated.targetSpecialty : existingProgress.targetSpecialty,
-            customAvatarDataUrl: updated.customAvatarDataUrl !== undefined ? updated.customAvatarDataUrl : existingProgress.customAvatarDataUrl,
-          });
+            if (currentUserAccount) {
+              const existingProgress = getUserProgress(currentUserAccount);
+              saveUserProgress(currentUserAccount.email, {
+                ...existingProgress,
+                totalXp: updated.totalXp !== undefined ? updated.totalXp : existingProgress.totalXp,
+                streakCount: updated.streakCount !== undefined ? updated.streakCount : existingProgress.streakCount,
+                bio: updated.bio !== undefined ? updated.bio : existingProgress.bio,
+                faculty: updated.faculty !== undefined ? updated.faculty : existingProgress.faculty,
+                targetSpecialty: updated.targetSpecialty !== undefined ? updated.targetSpecialty : existingProgress.targetSpecialty,
+                customAvatarDataUrl: updated.customAvatarDataUrl !== undefined ? updated.customAvatarDataUrl : existingProgress.customAvatarDataUrl,
+              });
+            }
+          }
 
           setUserProfile((prev) => {
             if (!prev) return prev;
-            return { ...prev, ...updated };
+            return {
+              ...prev,
+              ...updated,
+              fullName: updated.fullName || prev.fullName,
+              username: updated.username || prev.username,
+              avatarUrl: updated.customAvatarDataUrl || updated.avatarUrl || prev.avatarUrl,
+            };
           });
 
           if (updated.academicYear) setSelectedYear(updated.academicYear);
-          showToast(`Profil mis à jour : ${updated.fullName || updated.username || userProfile.fullName}`, 'success');
+          showToast(`Profil mis à jour : ${updated.fullName || updated.username || userProfile?.fullName || 'Externe'}`, 'success');
         }}
       />
 
@@ -739,8 +752,8 @@ export default function App() {
         isOpen={isApkOrderModalOpen}
         onClose={() => setIsApkOrderModalOpen(false)}
         defaultAcademicYear={selectedYear}
-        userEmail={userProfile.email}
-        userName={userProfile.fullName}
+        userEmail={userProfile?.email || currentUserAccount?.email || ''}
+        userName={userProfile?.fullName || currentUserAccount?.fullName || 'Externe'}
         onOrderSuccess={(order) => {
           showToast(`Commande APK enregistrée dans Supabase : ${order.pack_selected}`, 'success');
         }}

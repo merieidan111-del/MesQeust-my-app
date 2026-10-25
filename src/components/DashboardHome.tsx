@@ -390,7 +390,7 @@ export const DashboardHome: React.FC<DashboardHomeProps> = ({
         <div>
           <div className="flex items-center gap-2">
             <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
-              Bonjour, {userProfile.fullName.split(' ')[0]}
+              Bonjour, {(userProfile?.fullName || 'Externe').split(' ')[0]}
             </h1>
           </div>
           <p className="text-sm text-slate-600 font-medium mt-1">

@@ -32,7 +32,7 @@ import { AVATAR_PRESETS } from './StudentAvatar';
 interface AuthModalProps {
   isOpen: boolean;
   onClose: () => void;
-  userProfile: UserProfile;
+  userProfile?: UserProfile | null;
   onUpdateProfile: (updated: Partial<UserProfile>) => void;
   onLogout?: () => void;
 }
@@ -183,7 +183,12 @@ export const AuthModal: React.FC<AuthModalProps> = ({
     setIsLoading(true);
 
     try {
-      const finalAvatar = editCustomAvatar || userProfile.avatarUrl;
+      const finalAvatar =
+        editCustomAvatar ||
+        editAvatarUrl ||
+        userProfile?.customAvatarDataUrl ||
+        userProfile?.avatarUrl ||
+        `https://api.dicebear.com/7.x/bottts/svg?seed=${encodeURIComponent(cleanUser || 'med')}`;
 
       // Update in parent (persists to localStorage and state)
       onUpdateProfile({
@@ -199,13 +204,14 @@ export const AuthModal: React.FC<AuthModalProps> = ({
       });
 
       // Save to localStorage auxiliary keys for instant recovery
+      const activeUserId = userProfile?.userId || `usr_${cleanUser}`;
       try {
-        localStorage.setItem(`syndromed_nick_${userProfile.userId}`, cleanUser);
-        localStorage.setItem(`syndromed_avatar_${userProfile.userId}`, editAvatarId);
+        localStorage.setItem(`syndromed_nick_${activeUserId}`, cleanUser);
+        localStorage.setItem(`syndromed_avatar_${activeUserId}`, editAvatarId);
         if (editCustomAvatar) {
-          localStorage.setItem(`syndromed_custom_photo_${userProfile.userId}`, editCustomAvatar);
+          localStorage.setItem(`syndromed_custom_photo_${activeUserId}`, editCustomAvatar);
         } else {
-          localStorage.removeItem(`syndromed_custom_photo_${userProfile.userId}`);
+          localStorage.removeItem(`syndromed_custom_photo_${activeUserId}`);
         }
       } catch {
         // ignore
@@ -322,7 +328,12 @@ export const AuthModal: React.FC<AuthModalProps> = ({
     }
   };
 
-  const currentDisplayAvatar = editCustomAvatar || userProfile.avatarUrl;
+  const currentDisplayAvatar =
+    editCustomAvatar ||
+    editAvatarUrl ||
+    userProfile?.customAvatarDataUrl ||
+    userProfile?.avatarUrl ||
+    `https://api.dicebear.com/7.x/bottts/svg?seed=${encodeURIComponent(editUsername || 'med')}`;
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-4 bg-slate-900/60 backdrop-blur-xs animate-in fade-in duration-200 overflow-y-auto">
@@ -481,8 +492,9 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                 </span>
                 <div className="grid grid-cols-6 gap-2">
                   {Object.values(AVATAR_PRESETS).slice(0, 6).map((preset) => {
+                    if (!preset) return null;
                     const isSelected = editAvatarId === preset.id && !editCustomAvatar;
-                    const Icon = preset.icon;
+                    const PresetIcon = preset.icon || Sparkles;
 
                     return (
                       <button
@@ -502,13 +514,13 @@ export const AuthModal: React.FC<AuthModalProps> = ({
                             ? 'bg-indigo-50 border-indigo-500 ring-2 ring-indigo-200'
                             : 'bg-white border-slate-200 hover:border-slate-300 hover:bg-slate-50'
                         }`}
-                        title={preset.name}
+                        title={preset.name || 'Avatar'}
                       >
-                        <div className={`w-7 h-7 rounded-lg bg-gradient-to-br ${preset.gradient} flex items-center justify-center text-white shadow-2xs`}>
-                          <Icon className="w-4 h-4" />
+                        <div className={`w-7 h-7 rounded-lg bg-gradient-to-br ${preset.gradient || 'from-indigo-600 to-purple-600'} flex items-center justify-center text-white shadow-2xs`}>
+                          {PresetIcon ? <PresetIcon className="w-4 h-4" /> : <Sparkles className="w-4 h-4" />}
                         </div>
                         <span className="text-[9px] font-bold text-slate-600 truncate max-w-full">
-                          {preset.name.split(' ')[0]}
+                          {(preset.name || 'Avatar').split(' ')[0]}
                         </span>
                       </button>
                     );
