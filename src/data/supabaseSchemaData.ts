@@ -942,6 +942,34 @@ CREATE POLICY "Permettre la mise à jour de son profil"
     TO authenticated, anon
     USING (true)
     WITH CHECK (true);
+
+-- ==============================================================================
+-- AUTOMATIC TRIGGER FOR GOOGLE OAUTH & EMAIL SIGN-UP (auth.users -> public.profiles)
+-- Automatically inserts/syncs the profile row whenever a new user logs in or registers
+-- ==============================================================================
+CREATE OR REPLACE FUNCTION public.handle_new_user()
+RETURNS trigger AS $$
+BEGIN
+  INSERT INTO public.profiles (id, username, academic_year, total_xp, streak_count, avatar_url)
+  VALUES (
+    new.id,
+    COALESCE(new.raw_user_meta_data->>'username', split_part(new.email, '@', 1)),
+    COALESCE((new.raw_user_meta_data->>'academic_year')::academic_year_enum, '4ème Année'::academic_year_enum),
+    0,
+    0,
+    COALESCE(new.raw_user_meta_data->>'avatar_url', new.raw_user_meta_data->>'picture', 'https://images.unsplash.com/photo-1559839734-2b71ea197ec2?w=120')
+  )
+  ON CONFLICT (id) DO UPDATE SET
+    avatar_url = COALESCE(EXCLUDED.avatar_url, public.profiles.avatar_url);
+  RETURN new;
+END;
+$$ LANGUAGE plpgsql SECURITY DEFINER;
+
+-- Attach trigger to Supabase auth.users
+DROP TRIGGER IF EXISTS on_auth_user_created ON auth.users;
+CREATE TRIGGER on_auth_user_created
+  AFTER INSERT ON auth.users
+  FOR EACH ROW EXECUTE FUNCTION public.handle_new_user();
 `;
 
 // ==============================================================================
@@ -1123,53 +1151,53 @@ class AuthController with ChangeNotifier {
     }
   }
 
-  /// Sign In: Authenticates via Supabase Auth backend and restores profile across devices
-  Future<bool> signIn({
-    required String emailOrUsername,
+  /// Sign In directly via Supabase Auth backend (cross-device, no local-only blockers)
+  Future<bool> signInWithPassword({
+    required String email,
     required String password,
   }) async {
     _setLoading(true);
     _clearError();
 
-    final input = emailOrUsername.trim().toLowerCase();
+    final cleanInput = email.trim().toLowerCase();
+    final cleanPass = password.trim();
 
-    if (input.isEmpty || password.isEmpty) {
-      _setError('Veuillez renseigner votre email/identifiant et mot de passe.');
+    if (cleanInput.isEmpty || cleanPass.isEmpty) {
+      _setError('Veuillez renseigner votre email et mot de passe.');
       _setLoading(false);
       return false;
     }
 
     try {
-      String resolvedEmail = input;
+      String resolvedEmail = cleanInput;
 
-      // If user typed username without @, resolve email from profiles table
-      if (!input.contains('@')) {
+      // If user typed username without @, resolve email from profiles table or virtual domain
+      if (!cleanInput.contains('@')) {
         final profileMatch = await _supabase
             .from('profiles')
             .select('email, id')
-            .eq('username', input)
+            .eq('username', cleanInput)
             .maybeSingle();
 
         if (profileMatch != null && profileMatch['email'] != null) {
           resolvedEmail = profileMatch['email'] as String;
         } else {
-          // Virtual fallback domain if registered previously via username
-          resolvedEmail = '\$input@medquest.app';
+          resolvedEmail = '\$cleanInput@medquest.app';
         }
       }
 
-      // 1. Authenticate against Supabase Auth backend
+      // 1. Direct Supabase Auth call
       final authResponse = await _supabase.auth.signInWithPassword(
         email: resolvedEmail,
-        password: password,
+        password: cleanPass,
       );
 
       final user = authResponse.user;
       if (user == null) {
-        throw const AuthException('Identifiant ou mot de passe invalide.');
+        throw const AuthException('Impossible de récupérer la session utilisateur.');
       }
 
-      // 2. Load synced profile row from public.profiles
+      // 2. Fetch the synchronized profile from public.profiles
       final response = await _supabase
           .from('profiles')
           .select()
@@ -1181,21 +1209,80 @@ class AuthController with ChangeNotifier {
       } else {
         _currentProfile = UserProfileModel(
           id: user.id,
-          username: input.contains('@') ? input.split('@')[0] : input,
-          academicYear: '4ème Année',
+          username: user.userMetadata?['username'] ?? (cleanInput.contains('@') ? cleanInput.split('@')[0] : cleanInput),
+          academicYear: user.userMetadata?['academic_year'] ?? '4ème Année',
         );
       }
 
+      // 3. Persist session for seamless restart
       await _persistSession(_currentProfile!.username, _currentProfile!.academicYear);
 
       _setLoading(false);
       return true;
     } on AuthException catch (e) {
-      _setError(e.message);
+      final msg = e.message.toLowerCase();
+      if (msg.contains('invalid login credentials') || msg.contains('invalid_grant')) {
+        _setError('Email ou mot de passe incorrect. Veuillez vérifier vos identifiants.');
+      } else if (msg.contains('email not confirmed')) {
+        _setError('Votre adresse email doit être confirmée avant de vous connecter.');
+      } else if (msg.contains('user not found')) {
+        _setError('Aucun compte associé à cette adresse email sur le serveur Supabase.');
+      } else {
+        _setError(e.message);
+      }
       _setLoading(false);
       return false;
     } catch (e) {
-      _setError('Connexion impossible: identifiants incorrects.');
+      _setError('Erreur de connexion au serveur Supabase. Vérifiez votre connexion.');
+      _setLoading(false);
+      return false;
+    }
+  }
+
+  // Backward compatible alias
+  Future<bool> signIn({
+    required String username,
+    required String password,
+  }) =>
+      signInWithPassword(email: username, password: password);
+
+  /// Continuer avec Google: authenticates with Google OAuth and syncs profile across all devices
+  Future<bool> signInWithGoogle({String defaultAcademicYear = '4ème Année'}) async {
+    _setLoading(true);
+    _clearError();
+
+    try {
+      // Initiate OAuth flow (automatically routes to Google on Web and deep-links on Mobile)
+      await _supabase.auth.signInWithOAuth(
+        OAuthProvider.google,
+        redirectTo: kIsWeb ? null : 'io.supabase.syndromed://login-callback/',
+      );
+
+      final user = _supabase.auth.currentUser;
+      if (user != null) {
+        final response = await _supabase
+            .from('profiles')
+            .select()
+            .eq('id', user.id)
+            .maybeSingle();
+
+        if (response != null) {
+          _currentProfile = UserProfileModel.fromMap(response);
+        } else {
+          final googleName = user.userMetadata?['full_name'] ?? user.email?.split('@')[0] ?? 'Externe';
+          _currentProfile = UserProfileModel(
+            id: user.id,
+            username: user.email?.split('@')[0] ?? 'externe',
+            academicYear: defaultAcademicYear,
+          );
+        }
+        await _persistSession(_currentProfile!.username, _currentProfile!.academicYear);
+      }
+
+      _setLoading(false);
+      return true;
+    } catch (e) {
+      _setError('Erreur lors de la connexion Google: \$e');
       _setLoading(false);
       return false;
     }
@@ -1309,15 +1396,23 @@ class _LoginRegisterScreenState extends State<LoginRegisterScreen> {
         );
       }
     } else {
-      final success = await auth.signIn(
-        username: _usernameController.text,
-        password: _passwordController.text,
+      // Direct Supabase Auth backend call (bypasses any local array check)
+      final success = await auth.signInWithPassword(
+        email: _usernameController.text.trim(),
+        password: _passwordController.text.trim(),
       );
       if (success && mounted) {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(
-            content: Text('Connexion réussie !'),
+            content: Text('Connexion réussie ! Bon retour sur Syndromed.'),
             backgroundColor: Color(0xFF2A75D3),
+          ),
+        );
+      } else if (mounted && auth.errorMessage != null) {
+        ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(
+            content: Text(auth.errorMessage!),
+            backgroundColor: const Color(0xFFDC2626),
           ),
         );
       }
@@ -1491,6 +1586,57 @@ class _LoginRegisterScreenState extends State<LoginRegisterScreen> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
+                      // Continue with Google Button (OAuth with cross-device sync)
+                      SizedBox(
+                        width: double.infinity,
+                        height: 50,
+                        child: OutlinedButton(
+                          onPressed: auth.isLoading ? null : () => auth.signInWithGoogle(defaultAcademicYear: _selectedYear),
+                          style: OutlinedButton.styleFrom(
+                            side: const BorderSide(color: Color(0xFFE2E8F0), width: 1.5),
+                            shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
+                            backgroundColor: Colors.white,
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Image.network(
+                                'https://www.gstatic.com/images/branding/product/2x/googleg_48dp.png',
+                                width: 20,
+                                height: 20,
+                                errorBuilder: (_, __, ___) => const Icon(Icons.g_mobiledata_rounded, color: primaryBlue, size: 24),
+                              ),
+                              const SizedBox(width: 10),
+                              const Text(
+                                'Continuer avec Google',
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w800,
+                                  fontSize: 13,
+                                  color: Color(0xFF1E293B),
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 16),
+
+                      // Visual Divider
+                      Row(
+                        children: const [
+                          Expanded(child: Divider(color: Color(0xFFE2E8F0))),
+                          Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 10),
+                            child: Text(
+                              'OU AVEC VOS IDENTIFIANTS',
+                              style: TextStyle(fontSize: 10, fontWeight: FontWeight.w800, color: Color(0xFF94A3B8)),
+                            ),
+                          ),
+                          Expanded(child: Divider(color: Color(0xFFE2E8F0))),
+                        ],
+                      ),
+                      const SizedBox(height: 16),
+
                       // Username Input Field
                       const Text(
                         'IDENTIFIANT / USERNAME',

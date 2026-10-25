@@ -1,4 +1,6 @@
 import { AcademicYear, UserProfile, StreakDayStatus, LeaderboardPrivacySettings } from '../types/medical';
+import { supabase } from './supabaseClient';
+import { googleSignIn } from './firebaseAuth';
 
 export interface RegisteredAccount {
   id: string;
@@ -273,11 +275,164 @@ export function registerAccount(params: {
   // 3. Set active session
   setCurrentSessionEmail(newAccount.email);
 
+  // 4. Background cloud sync to Supabase so user can log in from any device
+  syncAccountToCloud(newAccount, freshProgress).catch(() => {});
+  registerInSupabaseAuth(newAccount.email, cleanPass, newAccount.fullName, newAccount.academicYear).catch(() => {});
+
   return { success: true, account: newAccount };
 }
 
 /**
+ * Helper to sync user account & profile state to Supabase cloud.
+ * Ensures the account is saved in the cloud database so the user can log in
+ * anytime from any device (phone, tablet, PC).
+ */
+export async function syncAccountToCloud(
+  account: RegisteredAccount,
+  progress?: UserProgressData
+): Promise<void> {
+  try {
+    const payload = {
+      id: account.id,
+      username: account.username,
+      full_name: account.fullName,
+      academic_year: account.academicYear,
+      avatar_url: account.customAvatarDataUrl || account.avatarUrl,
+      total_xp: progress?.totalXp ?? 0,
+      streak_count: progress?.streakCount ?? 1,
+      updated_at: new Date().toISOString(),
+    };
+
+    // Try upserting to Supabase public.profiles
+    await supabase.from('profiles').upsert(payload, { onConflict: 'id' });
+  } catch (err) {
+    // Non-blocking: local isolation and offline state remain intact
+    console.warn('Supabase cloud sync notification:', err);
+  }
+}
+
+/**
+ * Registers user in Supabase auth.users for cross-device authentication.
+ */
+async function registerInSupabaseAuth(
+  email: string,
+  pass: string,
+  fullName: string,
+  year: AcademicYear
+): Promise<void> {
+  try {
+    await supabase.auth.signUp({
+      email,
+      password: pass,
+      options: {
+        data: {
+          full_name: fullName,
+          academic_year: year,
+        },
+      },
+    });
+  } catch (err) {
+    console.warn('Supabase auth.signUp note:', err);
+  }
+}
+
+/**
+ * "Continue with Google" Authentication flow.
+ * Authenticates the user with their Google Account, persists their credentials in the cloud,
+ * and enables instantaneous login from any device without needing to remember a separate password.
+ */
+export async function continueWithGoogle(
+  selectedYear: AcademicYear = '4ème Année'
+): Promise<{ success: boolean; error?: string; account?: RegisteredAccount }> {
+  try {
+    const googleRes = await googleSignIn();
+    if (!googleRes || !googleRes.user) {
+      return {
+        success: false,
+        error: 'Connexion Google annulée ou fermée avant validation.',
+      };
+    }
+
+    const { user } = googleRes;
+    const userEmail = (user.email || '').toLowerCase().trim();
+    if (!userEmail) {
+      return {
+        success: false,
+        error: 'Adresse email Google introuvable.',
+      };
+    }
+
+    const accounts = getRegisteredAccounts();
+    const existing = accounts.find((a) => a.email.toLowerCase() === userEmail);
+
+    if (existing) {
+      // User has logged in before on this or another device
+      if (user.photoURL && !existing.customAvatarDataUrl) {
+        existing.avatarUrl = user.photoURL;
+      }
+      if (user.displayName && !existing.fullName) {
+        existing.fullName = user.displayName;
+      }
+      saveRegisteredAccounts(accounts);
+      setCurrentSessionEmail(existing.email);
+
+      // Cloud sync
+      const progress = getUserProgress(existing);
+      syncAccountToCloud(existing, progress).catch(() => {});
+
+      return { success: true, account: existing };
+    }
+
+    // New user signing in with Google
+    const baseName = user.displayName || userEmail.split('@')[0] || 'Externe';
+    const cleanUsername = (
+      userEmail.split('@')[0].replace(/[^a-z0-9_]/g, '_') || 'externe'
+    ).slice(0, 24);
+
+    const newGoogleAccount: RegisteredAccount = {
+      id: user.uid || `g_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`,
+      fullName: baseName,
+      email: userEmail,
+      username: cleanUsername,
+      password: 'GOOGLE_OAUTH_ACCOUNT',
+      academicYear: selectedYear,
+      createdAt: new Date().toISOString(),
+      avatarUrl:
+        user.photoURL ||
+        `https://api.dicebear.com/7.x/bottts/svg?seed=${encodeURIComponent(cleanUsername)}`,
+    };
+
+    // Save to accounts
+    accounts.push(newGoogleAccount);
+    saveRegisteredAccounts(accounts);
+
+    // Initialize clean progress
+    const freshProgress = getFreshDefaultProgress(
+      newGoogleAccount.id,
+      newGoogleAccount.email,
+      newGoogleAccount.academicYear
+    );
+    saveUserProgress(newGoogleAccount.email, freshProgress);
+
+    // Set active session
+    setCurrentSessionEmail(newGoogleAccount.email);
+
+    // Sync to Supabase cloud database for cross-device persistence
+    syncAccountToCloud(newGoogleAccount, freshProgress).catch(() => {});
+
+    return { success: true, account: newGoogleAccount };
+  } catch (err: any) {
+    console.error('Error during continueWithGoogle:', err);
+    return {
+      success: false,
+      error: err?.message || 'Erreur lors de la connexion Google.',
+    };
+  }
+}
+
+/**
  * Authenticates an existing user and sets active session.
+ * Checks local storage first for instant response.
  */
 export function loginAccount(
   identifier: string,
@@ -317,6 +472,137 @@ export function loginAccount(
   setCurrentSessionEmail(matched.email);
 
   return { success: true, account: matched };
+}
+
+/**
+ * Cross-device login: Checks local account first; if not found locally (e.g. user is on a new device,
+ * new browser, phone, or tablet), queries Supabase Cloud Auth & profiles to restore their account seamlessly.
+ */
+export async function loginAccountAsync(
+  identifier: string,
+  password: string
+): Promise<{ success: boolean; error?: string; account?: RegisteredAccount }> {
+  const cleanId = identifier.toLowerCase().trim();
+  const cleanPass = password.trim();
+
+  if (!cleanId) {
+    return { success: false, error: 'Veuillez saisir votre email ou identifiant.' };
+  }
+  if (!cleanPass) {
+    return { success: false, error: 'Veuillez saisir votre mot de passe.' };
+  }
+
+  // 1. DIRECT SUPABASE AUTHENTICATION FIRST (Cross-device real backend)
+  try {
+    const isEmail = cleanId.includes('@');
+    let emailToAuth = cleanId;
+
+    if (!isEmail) {
+      // Find email from profiles by username
+      const { data: profileData } = await supabase
+        .from('profiles')
+        .select('*')
+        .eq('username', cleanId)
+        .maybeSingle();
+
+      if (profileData && profileData.email) {
+        emailToAuth = profileData.email;
+      } else {
+        emailToAuth = `${cleanId}@medquest.app`;
+      }
+    }
+
+    const { data: authData, error: authError } = await supabase.auth.signInWithPassword({
+      email: emailToAuth,
+      password: cleanPass,
+    });
+
+    if (authData?.user) {
+      const u = authData.user;
+      const userMeta = u.user_metadata || {};
+      const cloudEmail = (u.email || cleanId).toLowerCase();
+
+      // Retrieve full profile from Supabase
+      const { data: profile } = await supabase
+        .from('profiles')
+        .select('*')
+        .eq('id', u.id)
+        .maybeSingle();
+
+      const restoredAccount: RegisteredAccount = {
+        id: u.id,
+        fullName: profile?.full_name || userMeta.full_name || 'Externe en Médecine',
+        email: cloudEmail,
+        username: profile?.username || userMeta.username || cloudEmail.split('@')[0],
+        password: cleanPass,
+        academicYear: (profile?.academic_year as AcademicYear) || userMeta.academic_year || '4ème Année',
+        createdAt: u.created_at || new Date().toISOString(),
+        avatarUrl:
+          profile?.avatar_url ||
+          `https://api.dicebear.com/7.x/bottts/svg?seed=${encodeURIComponent(cloudEmail)}`,
+      };
+
+      // Save into this device's storage
+      const accounts = getRegisteredAccounts();
+      const existingIdx = accounts.findIndex((a) => a.email.toLowerCase() === cloudEmail);
+      if (existingIdx >= 0) {
+        accounts[existingIdx] = restoredAccount;
+      } else {
+        accounts.push(restoredAccount);
+      }
+      saveRegisteredAccounts(accounts);
+
+      // Restore progress
+      const progress = getFreshDefaultProgress(restoredAccount.id, restoredAccount.email, restoredAccount.academicYear);
+      if (profile?.total_xp) progress.totalXp = profile.total_xp;
+      if (profile?.streak_count) progress.streakCount = profile.streak_count;
+      saveUserProgress(restoredAccount.email, progress);
+
+      setCurrentSessionEmail(restoredAccount.email);
+      return { success: true, account: restoredAccount };
+    }
+
+    if (authError) {
+      const msg = authError.message.toLowerCase();
+      if (msg.includes('invalid login credentials') || msg.includes('invalid_grant')) {
+        return {
+          success: false,
+          error: 'Email ou mot de passe incorrect. Veuillez vérifier vos identifiants.',
+        };
+      }
+      if (msg.includes('email not confirmed')) {
+        return {
+          success: false,
+          error: 'Veuillez confirmer votre adresse email avant de vous connecter.',
+        };
+      }
+    }
+  } catch (err: any) {
+    console.warn('Remote Supabase auth attempt note:', err);
+  }
+
+  // 2. Local fallback only if network/cloud was unreachable and account exists locally
+  const accounts = getRegisteredAccounts();
+  const matched = accounts.find(
+    (acc) =>
+      acc.email.toLowerCase() === cleanId || acc.username.toLowerCase() === cleanId
+  );
+
+  if (matched) {
+    if (matched.password === cleanPass) {
+      setCurrentSessionEmail(matched.email);
+      return { success: true, account: matched };
+    }
+    return {
+      success: false,
+      error: 'Mot de passe incorrect. Veuillez réessayer.',
+    };
+  }
+
+  return {
+    success: false,
+    error: 'Email ou mot de passe incorrect.',
+  };
 }
 
 /**

@@ -16,11 +16,16 @@ import {
   Target,
   Flame,
   Award,
+  Loader2,
+  Smartphone,
+  Globe,
 } from 'lucide-react';
 import { AcademicYear } from '../types/medical';
 import {
   registerAccount,
   loginAccount,
+  loginAccountAsync,
+  continueWithGoogle,
   RegisteredAccount,
   getRegisteredAccounts,
 } from '../services/authSessionManager';
@@ -48,6 +53,7 @@ export const AuthLandingScreen: React.FC<AuthLandingScreenProps> = ({ onAuthenti
   const [errorMsg, setErrorMsg] = useState<string | null>(null);
   const [successMsg, setSuccessMsg] = useState<string | null>(null);
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
+  const [isGoogleSubmitting, setIsGoogleSubmitting] = useState<boolean>(false);
 
   const existingAccounts = getRegisteredAccounts();
 
@@ -81,6 +87,28 @@ export const AuthLandingScreen: React.FC<AuthLandingScreenProps> = ({ onAuthenti
     },
   ];
 
+  const handleContinueWithGoogle = async () => {
+    setErrorMsg(null);
+    setSuccessMsg(null);
+    setIsGoogleSubmitting(true);
+
+    try {
+      const res = await continueWithGoogle(academicYear);
+      if (res.success && res.account) {
+        setSuccessMsg(`Connecté avec succès via Google ! Bienvenue, ${res.account.fullName}.`);
+        setTimeout(() => {
+          onAuthenticated(res.account!);
+        }, 500);
+      } else {
+        setErrorMsg(res.error || 'Connexion avec Google interrompue.');
+      }
+    } catch (err: any) {
+      setErrorMsg(err?.message || 'Erreur lors de la connexion Google.');
+    } finally {
+      setIsGoogleSubmitting(false);
+    }
+  };
+
   const handleRegister = (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMsg(null);
@@ -97,7 +125,7 @@ export const AuthLandingScreen: React.FC<AuthLandingScreenProps> = ({ onAuthenti
     setIsSubmitting(false);
 
     if (res.success && res.account) {
-      setSuccessMsg(`Compte créé avec succès ! Bienvenue, ${res.account.fullName}.`);
+      setSuccessMsg(`Compte créé avec succès ! Bienvenue, ${res.account.fullName}. Sauvegardé pour tous vos appareils.`);
       setTimeout(() => {
         onAuthenticated(res.account!);
       }, 600);
@@ -106,13 +134,13 @@ export const AuthLandingScreen: React.FC<AuthLandingScreenProps> = ({ onAuthenti
     }
   };
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     setErrorMsg(null);
     setSuccessMsg(null);
     setIsSubmitting(true);
 
-    const res = loginAccount(loginIdentifier, loginPassword);
+    const res = await loginAccountAsync(loginIdentifier, loginPassword);
     setIsSubmitting(false);
 
     if (res.success && res.account) {
@@ -325,6 +353,53 @@ export const AuthLandingScreen: React.FC<AuthLandingScreenProps> = ({ onAuthenti
             </div>
           )}
 
+          {/* Continue with Google Button */}
+          <div className="mb-4">
+            <button
+              type="button"
+              onClick={handleContinueWithGoogle}
+              disabled={isGoogleSubmitting || isSubmitting}
+              className="w-full py-3 px-4 rounded-2xl border border-slate-200 hover:border-slate-300 bg-white hover:bg-slate-50 text-slate-700 text-xs font-black flex items-center justify-center gap-3 shadow-xs hover:shadow-sm transition-all cursor-pointer disabled:opacity-50"
+            >
+              {isGoogleSubmitting ? (
+                <>
+                  <Loader2 className="w-4 h-4 animate-spin text-[#2A75D3]" />
+                  <span>Connexion avec Google en cours...</span>
+                </>
+              ) : (
+                <>
+                  <svg className="w-4 h-4 shrink-0" viewBox="0 0 24 24">
+                    <path
+                      fill="#4285F4"
+                      d="M23.745 12.27c0-.7-.06-1.4-.19-2.07H12v4.51h6.6c-.29 1.52-1.14 2.82-2.4 3.68v3.05h3.88c2.27-2.09 3.66-5.17 3.66-9.17z"
+                    />
+                    <path
+                      fill="#34A853"
+                      d="M12 24c3.24 0 5.95-1.08 7.93-2.91l-3.88-3.05c-1.08.72-2.45 1.16-4.05 1.16-3.12 0-5.77-2.1-6.72-4.93H1.25v3.15C3.26 21.36 7.33 24 12 24z"
+                    />
+                    <path
+                      fill="#FBBC05"
+                      d="M5.28 14.27c-.25-.72-.38-1.49-.38-2.27s.13-1.55.38-2.27V6.58H1.25C.45 8.18 0 9.99 0 12s.45 3.82 1.25 5.42l4.03-3.15z"
+                    />
+                    <path
+                      fill="#EA4335"
+                      d="M12 4.75c1.77 0 3.35.61 4.6 1.8l3.42-3.42C17.95 1.19 15.24 0 12 0 7.33 0 3.26 2.64 1.25 6.58l4.03 3.15c.95-2.83 3.6-4.98 6.72-4.98z"
+                    />
+                  </svg>
+                  <span>Continuer avec Google</span>
+                </>
+              )}
+            </button>
+
+            {/* Visual Divider */}
+            <div className="relative my-4 flex items-center justify-center">
+              <div className="border-t border-slate-200 w-full" />
+              <span className="bg-white px-3 text-[10px] font-bold uppercase tracking-wider text-slate-400 absolute">
+                {isSignUp ? "ou créer avec email" : "ou se connecter avec email"}
+              </span>
+            </div>
+          </div>
+
           {/* SIGN UP FORM */}
           {isSignUp ? (
             <form onSubmit={handleRegister} className="space-y-4">
@@ -490,29 +565,10 @@ export const AuthLandingScreen: React.FC<AuthLandingScreenProps> = ({ onAuthenti
                 </div>
               </div>
 
-              {existingAccounts.length > 0 && (
-                <div className="pt-1">
-                  <div className="text-[11px] font-semibold text-slate-500 mb-1.5">
-                    Comptes enregistrés sur cet appareil ({existingAccounts.length}) :
-                  </div>
-                  <div className="space-y-1 max-h-28 overflow-y-auto pr-1">
-                    {existingAccounts.map((acc) => (
-                      <button
-                        key={acc.id}
-                        type="button"
-                        onClick={() => {
-                          setLoginIdentifier(acc.email);
-                          setLoginPassword(acc.password);
-                        }}
-                        className="w-full text-left px-2.5 py-1.5 rounded-lg bg-slate-50 hover:bg-slate-100 border border-slate-200/70 text-[11px] flex items-center justify-between transition-colors"
-                      >
-                        <span className="font-bold text-slate-800">{acc.fullName}</span>
-                        <span className="text-slate-500 text-[10px]">{acc.email}</span>
-                      </button>
-                    ))}
-                  </div>
-                </div>
-              )}
+              <div className="pt-1 text-[11px] text-slate-500 font-medium flex items-center gap-1.5">
+                <ShieldCheck className="w-3.5 h-3.5 text-[#2A75D3]" />
+                <span>Connexion sécurisée directe avec le serveur Supabase.</span>
+              </div>
 
               <button
                 type="submit"
@@ -525,10 +581,13 @@ export const AuthLandingScreen: React.FC<AuthLandingScreenProps> = ({ onAuthenti
             </form>
           )}
 
-          {/* Isolation & Security note */}
-          <div className="mt-5 pt-4 border-t border-slate-100 flex items-center justify-center gap-1.5 text-[11px] text-slate-500 font-medium">
-            <ShieldCheck className="w-3.5 h-3.5 text-[#2A75D3]" />
-            <span>Session partitionnée localement par ID utilisateur</span>
+          {/* Isolation & Multi-Device Cloud Persistence Note */}
+          <div className="mt-5 pt-4 border-t border-slate-100 flex flex-col items-center justify-center gap-1.5 text-center text-[11px] text-slate-500 font-medium">
+            <div className="flex items-center gap-1.5 text-[#2A75D3] font-bold">
+              <Globe className="w-3.5 h-3.5" />
+              <span>Sauvegarde Cloud Supabase & Accès Multi-Appareils</span>
+            </div>
+            <span>Connectez-vous à tout moment depuis votre PC, smartphone ou tablette. Vos scores et séries sont préservés.</span>
           </div>
         </div>
       </main>
