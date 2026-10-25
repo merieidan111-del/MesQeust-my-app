@@ -1048,20 +1048,23 @@ class AuthController with ChangeNotifier {
     }
   }
 
-  /// Sign Up: Validates username, checks availability, creates auth & profile row
+  /// Sign Up: Creates permanent account in Supabase auth.users & public.profiles
   Future<bool> signUp({
-    required String username,
+    required String email,
     required String password,
     required String academicYear,
+    String? username,
+    String? fullName,
   }) async {
     _setLoading(true);
     _clearError();
 
-    final cleanUsername = username.trim().toLowerCase();
+    final cleanEmail = email.trim().toLowerCase();
+    final cleanUsername = (username ?? cleanEmail.split('@')[0]).trim().toLowerCase();
 
     // 1. Validation
-    if (cleanUsername.length < 3) {
-      _setError("Le nom d'utilisateur doit contenir au moins 3 caractères.");
+    if (!cleanEmail.contains('@') || !cleanEmail.contains('.')) {
+      _setError('Veuillez renseigner une adresse email valide.');
       _setLoading(false);
       return false;
     }
@@ -1072,105 +1075,133 @@ class AuthController with ChangeNotifier {
     }
 
     try {
-      // 2. Check if username already exists in Supabase
-      final existing = await _supabase
-          .from('profiles')
-          .select('username')
-          .eq('username', cleanUsername)
-          .maybeSingle();
-
-      if (existing != null) {
-        _setError('Username already taken. Veuillez en choisir un autre.');
-        _setLoading(false);
-        return false;
-      }
-
-      // 3. Supabase Auth with internal virtual domain (no real email needed)
-      final virtualEmail = '\$cleanUsername@medquest.app';
+      // 2. Real Supabase Auth: user permanently stored in auth.users
       final authResponse = await _supabase.auth.signUp(
-        email: virtualEmail,
+        email: cleanEmail,
         password: password,
+        data: {
+          'username': cleanUsername,
+          'academic_year': academicYear,
+          'full_name': fullName ?? cleanUsername,
+        },
       );
 
-      final userId = authResponse.user?.id ?? DateTime.now().millisecondsSinceEpoch.toString();
+      final user = authResponse.user;
+      if (user == null) {
+        throw const AuthException("Échec de création du compte dans Supabase Auth.");
+      }
 
-      // 4. Insert into 'profiles' table
+      // 3. Upsert profile row in public.profiles table
       final newProfileData = {
-        'id': userId,
+        'id': user.id,
+        'email': cleanEmail,
         'username': cleanUsername,
         'academic_year': academicYear,
+        'full_name': fullName ?? cleanUsername,
         'total_xp': 0,
         'streak_count': 0,
+        'updated_at': DateTime.now().toUtc().toIso8601String(),
       };
 
-      await _supabase.from('profiles').insert(newProfileData);
+      await _supabase.from('profiles').upsert(newProfileData);
 
       _currentProfile = UserProfileModel.fromMap(newProfileData);
 
-      // 5. Store session locally
+      // 4. Session is automatically managed by supabase_flutter, also save locally
       await _persistSession(cleanUsername, academicYear);
 
       _setLoading(false);
       return true;
+    } on AuthException catch (e) {
+      _setError(e.message);
+      _setLoading(false);
+      return false;
     } catch (e) {
-      _setError("Erreur lors de l'inscription: \${e.toString()}");
+      _setError("Erreur d'inscription: \${e.toString()}");
       _setLoading(false);
       return false;
     }
   }
 
-  /// Sign In: Authenticates via virtual email and loads profile
+  /// Sign In: Authenticates via Supabase Auth backend and restores profile across devices
   Future<bool> signIn({
-    required String username,
+    required String emailOrUsername,
     required String password,
   }) async {
     _setLoading(true);
     _clearError();
 
-    final cleanUsername = username.trim().toLowerCase();
+    final input = emailOrUsername.trim().toLowerCase();
 
-    if (cleanUsername.isEmpty || password.isEmpty) {
-      _setError('Veuillez renseigner votre identifiant et mot de passe.');
+    if (input.isEmpty || password.isEmpty) {
+      _setError('Veuillez renseigner votre email/identifiant et mot de passe.');
       _setLoading(false);
       return false;
     }
 
     try {
-      final virtualEmail = '\$cleanUsername@medquest.app';
-      
-      await _supabase.auth.signInWithPassword(
-        email: virtualEmail,
+      String resolvedEmail = input;
+
+      // If user typed username without @, resolve email from profiles table
+      if (!input.contains('@')) {
+        final profileMatch = await _supabase
+            .from('profiles')
+            .select('email, id')
+            .eq('username', input)
+            .maybeSingle();
+
+        if (profileMatch != null && profileMatch['email'] != null) {
+          resolvedEmail = profileMatch['email'] as String;
+        } else {
+          // Virtual fallback domain if registered previously via username
+          resolvedEmail = '\$input@medquest.app';
+        }
+      }
+
+      // 1. Authenticate against Supabase Auth backend
+      final authResponse = await _supabase.auth.signInWithPassword(
+        email: resolvedEmail,
         password: password,
       );
 
-      // Fetch profile
+      final user = authResponse.user;
+      if (user == null) {
+        throw const AuthException('Identifiant ou mot de passe invalide.');
+      }
+
+      // 2. Load synced profile row from public.profiles
       final response = await _supabase
           .from('profiles')
           .select()
-          .eq('username', cleanUsername)
+          .eq('id', user.id)
           .maybeSingle();
 
       if (response != null) {
         _currentProfile = UserProfileModel.fromMap(response);
-        await _persistSession(_currentProfile!.username, _currentProfile!.academicYear);
       } else {
         _currentProfile = UserProfileModel(
-          id: 'user_id',
-          username: cleanUsername,
+          id: user.id,
+          username: input.contains('@') ? input.split('@')[0] : input,
           academicYear: '4ème Année',
         );
       }
 
+      await _persistSession(_currentProfile!.username, _currentProfile!.academicYear);
+
       _setLoading(false);
       return true;
+    } on AuthException catch (e) {
+      _setError(e.message);
+      _setLoading(false);
+      return false;
     } catch (e) {
-      _setError('Identifiant ou mot de passe incorrect.');
+      _setError('Connexion impossible: identifiants incorrects.');
       _setLoading(false);
       return false;
     }
   }
 
-  /// Sign out and clear stored session
+  /// Sign out: revokes session in Supabase backend and clears local storage
   Future<void> signOut() async {
     try {
       await _supabase.auth.signOut();
