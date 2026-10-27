@@ -29,7 +29,12 @@ import {
   purgeObsoleteMockData,
   RegisteredAccount,
   updateRegisteredAccount,
+  fetchUserProgressFromCloud,
+  recordQuestionChoiceToCloud,
+  getRegisteredAccounts,
+  UserProgressData,
 } from './services/authSessionManager';
+import { supabase } from './services/supabaseClient';
 import {
   AcademicYear,
   UserProfile,
@@ -182,17 +187,73 @@ export default function App() {
     return () => unsubscribe();
   }, []);
 
+  // Real-time Supabase Cloud Hydration on Startup and Re-open
+  useEffect(() => {
+    // 1. Immediately hydrate active session stats from Supabase Database
+    if (currentUserAccount) {
+      fetchUserProgressFromCloud(currentUserAccount)
+        .then(({ account: freshAcc, progress: freshProgress }) => {
+          setCurrentUserAccount(freshAcc);
+          setUserProfile(buildUserProfile(freshAcc, freshProgress));
+          if (freshAcc.academicYear) setSelectedYear(freshAcc.academicYear);
+        })
+        .catch((err) => {
+          console.warn('Startup Supabase sync notice:', err);
+        });
+    }
+
+    // 2. Synchronize Supabase Auth Session
+    const { data: authSub } = supabase.auth.onAuthStateChange(async (event, session) => {
+      if (session?.user && (!currentUserAccount || currentUserAccount.id !== session.user.id)) {
+        const u = session.user;
+        const cloudEmail = (u.email || '').toLowerCase();
+        const existing = getRegisteredAccounts().find((a) => a.email.toLowerCase() === cloudEmail);
+        const baseAcc: RegisteredAccount = existing || {
+          id: u.id,
+          fullName: u.user_metadata?.full_name || 'Externe en Médecine',
+          email: cloudEmail,
+          username: u.user_metadata?.username || cloudEmail.split('@')[0],
+          password: '',
+          academicYear: (u.user_metadata?.academic_year as AcademicYear) || '4ème Année',
+          createdAt: u.created_at || new Date().toISOString(),
+          avatarUrl: `https://api.dicebear.com/7.x/bottts/svg?seed=${encodeURIComponent(cloudEmail)}`,
+        };
+        fetchUserProgressFromCloud(baseAcc).then(({ account: freshAcc, progress: freshProgress }) => {
+          setCurrentUserAccount(freshAcc);
+          setUserProfile(buildUserProfile(freshAcc, freshProgress));
+          if (freshAcc.academicYear) setSelectedYear(freshAcc.academicYear);
+        });
+      }
+    });
+
+    return () => {
+      authSub?.subscription?.unsubscribe();
+    };
+  }, []);
+
   const handleAuthenticated = (account: RegisteredAccount) => {
     setCurrentUserAccount(account);
-    const progress = getUserProgress(account);
-    const profile = buildUserProfile(account, progress);
-    setUserProfile(profile);
+    const initialProgress = getUserProgress(account);
+    const initialProfile = buildUserProfile(account, initialProgress);
+    setUserProfile(initialProfile);
     setSelectedYear(account.academicYear);
     setCurrentTab('home');
     showToast(`Bienvenue, ${account.fullName} !`, 'success');
+
+    // Immediately fetch live user progress, streaks, and XP from Supabase Cloud
+    fetchUserProgressFromCloud(account)
+      .then(({ account: freshAcc, progress: freshProgress }) => {
+        setCurrentUserAccount(freshAcc);
+        setUserProfile(buildUserProfile(freshAcc, freshProgress));
+        if (freshAcc.academicYear) setSelectedYear(freshAcc.academicYear);
+      })
+      .catch((err) => console.warn('Supabase profile hydration notice:', err));
   };
 
-  const handleLogout = () => {
+  const handleLogout = async () => {
+    try {
+      await supabase.auth.signOut();
+    } catch {}
     logoutAccount();
     setCurrentUserAccount(null);
     setUserProfile(null);
@@ -262,14 +323,18 @@ export default function App() {
         dailyActivity: updatedDaily,
       };
 
-      saveUserProgress(currentUserAccount.email, {
-        ...existingProgress,
-        totalXp: updated.totalXp,
-        level: updated.level,
-        title: updated.title,
-        questionsSolvedToday: updated.questionsSolvedToday,
-        dailyActivity: updatedDaily,
-      });
+      saveUserProgress(
+        currentUserAccount.email,
+        {
+          ...existingProgress,
+          totalXp: updated.totalXp,
+          level: updated.level,
+          title: updated.title,
+          questionsSolvedToday: updated.questionsSolvedToday,
+          dailyActivity: updatedDaily,
+        },
+        currentUserAccount
+      );
 
       return updated;
     });
@@ -289,11 +354,15 @@ export default function App() {
     });
 
     const existingProgress = getUserProgress(currentUserAccount);
-    saveUserProgress(currentUserAccount.email, {
-      ...existingProgress,
-      totalXp: newXp,
-      purchasedItemIds: [...existingProgress.purchasedItemIds, itemName],
-    });
+    saveUserProgress(
+      currentUserAccount.email,
+      {
+        ...existingProgress,
+        totalXp: newXp,
+        purchasedItemIds: [...existingProgress.purchasedItemIds, itemName],
+      },
+      currentUserAccount
+    );
 
     showToast(`Débloqué avec succès : ${itemName} (-${amount} XP)`, 'success');
     return true;
@@ -305,31 +374,62 @@ export default function App() {
       if (!prev) return prev;
       const newFreezes = prev.streakFreezesCount + 1;
       const existingProgress = getUserProgress(currentUserAccount);
-      saveUserProgress(currentUserAccount.email, {
-        ...existingProgress,
-        streakFreezesCount: newFreezes,
-      });
+      saveUserProgress(
+        currentUserAccount.email,
+        {
+          ...existingProgress,
+          streakFreezesCount: newFreezes,
+        },
+        currentUserAccount
+      );
       return { ...prev, streakFreezesCount: newFreezes };
     });
     showToast('Gel de Série ajouté à votre inventaire avec succès', 'success');
   };
 
-  const handleQuestionCompleted = (isCorrect: boolean) => {
+  const handleQuestionCompleted = (
+    isCorrect: boolean,
+    questionId?: string,
+    selectedOptions?: number[]
+  ) => {
     if (!currentUserAccount) return;
     const existingProgress = getUserProgress(currentUserAccount);
     const newStreak = isCorrect
-      ? (existingProgress.streakCount === 0 ? 1 : existingProgress.streakCount)
+      ? (existingProgress.streakCount === 0 ? 1 : existingProgress.streakCount + 1)
       : existingProgress.streakCount;
 
-    saveUserProgress(currentUserAccount.email, {
+    const completed = questionId
+      ? Array.from(new Set([...existingProgress.completedQuestions, questionId]))
+      : existingProgress.completedQuestions;
+
+    const correct = questionId && isCorrect
+      ? Array.from(new Set([...existingProgress.correctQuestions, questionId]))
+      : existingProgress.correctQuestions;
+
+    const updatedProgress = {
       ...existingProgress,
       streakCount: newStreak,
-    });
+      completedQuestions: completed,
+      correctQuestions: correct,
+      lastActiveDate: new Date().toISOString().split('T')[0],
+    };
+
+    saveUserProgress(currentUserAccount.email, updatedProgress, currentUserAccount);
 
     setUserProfile((prev) => {
       if (!prev) return prev;
       return { ...prev, streakCount: newStreak };
     });
+
+    // Record question attempt and selected options directly to Supabase cloud
+    if (questionId && currentUserAccount) {
+      recordQuestionChoiceToCloud({
+        userId: currentUserAccount.id,
+        questionId,
+        isCorrect,
+        selectedOptions,
+      });
+    }
   };
 
   // Drive integration actions

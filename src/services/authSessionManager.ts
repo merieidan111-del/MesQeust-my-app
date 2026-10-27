@@ -192,13 +192,30 @@ export function getUserProgress(account: RegisteredAccount): UserProgressData {
 
 /**
  * Saves updated isolated progress for a specific user.
+ * Immediately caches in local storage, and synchronizes to Supabase cloud database.
  */
-export function saveUserProgress(email: string, progress: UserProgressData): void {
-  const key = getPartitionedProgressKey(email);
+export function saveUserProgress(
+  email: string,
+  progress: UserProgressData,
+  account?: RegisteredAccount
+): void {
+  const cleanEmail = email.toLowerCase().trim();
+  const key = getPartitionedProgressKey(cleanEmail);
   try {
     localStorage.setItem(key, JSON.stringify(progress));
   } catch (err) {
-    console.error(`Failed to save progress for ${email}:`, err);
+    console.error(`Failed to save progress locally for ${cleanEmail}:`, err);
+  }
+
+  // Asynchronously synchronize to Supabase Cloud Database
+  const targetAccount =
+    account ||
+    getRegisteredAccounts().find((a) => a.email.toLowerCase() === cleanEmail);
+
+  if (targetAccount) {
+    syncAccountToCloud(targetAccount, progress).catch((err) => {
+      console.warn('Background Supabase progress sync warning:', err);
+    });
   }
 }
 
@@ -270,7 +287,7 @@ export function registerAccount(params: {
 
   // 2. Initialize pristine zeroed-out progress state partitioned strictly by user email
   const freshProgress = getFreshDefaultProgress(newAccount.id, newAccount.email, newAccount.academicYear);
-  saveUserProgress(newAccount.email, freshProgress);
+  saveUserProgress(newAccount.email, freshProgress, newAccount);
 
   // 3. Set active session
   setCurrentSessionEmail(newAccount.email);
@@ -283,31 +300,200 @@ export function registerAccount(params: {
 }
 
 /**
- * Helper to sync user account & profile state to Supabase cloud.
- * Ensures the account is saved in the cloud database so the user can log in
- * anytime from any device (phone, tablet, PC).
+ * Helper to sync user account & profile state directly to Supabase cloud database.
+ * Ensures XP, Streaks, Levels, Exam Countdown, and Metadata persist permanently across all devices.
  */
 export async function syncAccountToCloud(
   account: RegisteredAccount,
   progress?: UserProgressData
 ): Promise<void> {
   try {
-    const payload = {
+    const totalXp = progress?.totalXp ?? 0;
+    const streakCount = progress?.streakCount ?? 1;
+    const level = progress?.level ?? (Math.floor(totalXp / 1000) + 1);
+    const title = progress?.title || 'Externe en Médecine';
+    const freezes = progress?.streakFreezesCount ?? 0;
+    const lastActive = progress?.lastActiveDate || new Date().toISOString().split('T')[0];
+    const customExamDate = progress?.customExamDate || new Date(Date.now() + 18 * 86400000).toISOString();
+    const examTitle = progress?.examTitle || 'Examen Clinique';
+    const examModule = progress?.examModule || 'Cardiologie';
+    const avatar =
+      account.customAvatarDataUrl ||
+      account.avatarUrl ||
+      progress?.customAvatarDataUrl ||
+      `https://api.dicebear.com/7.x/bottts/svg?seed=${encodeURIComponent(account.username || 'med')}`;
+
+    const payload: any = {
       id: account.id,
       username: account.username,
       full_name: account.fullName,
       academic_year: account.academicYear,
-      avatar_url: account.customAvatarDataUrl || account.avatarUrl,
-      total_xp: progress?.totalXp ?? 0,
-      streak_count: progress?.streakCount ?? 1,
+      avatar_url: avatar,
+      total_xp: totalXp,
+      streak_count: streakCount,
+      level: level,
+      title: title,
+      streak_freezes_count: freezes,
+      last_active_date: lastActive,
+      custom_exam_date: customExamDate,
+      exam_title: examTitle,
+      exam_module: examModule,
       updated_at: new Date().toISOString(),
     };
 
-    // Try upserting to Supabase public.profiles
-    await supabase.from('profiles').upsert(payload, { onConflict: 'id' });
+    // Try full schema upsert
+    const { error } = await supabase.from('profiles').upsert(payload, { onConflict: 'id' });
+
+    if (error) {
+      // If table lacks certain optional columns, fallback to core schema
+      if (error.code === '42703' || error.message?.includes('column')) {
+        const corePayload = {
+          id: account.id,
+          username: account.username,
+          full_name: account.fullName,
+          academic_year: account.academicYear,
+          avatar_url: avatar,
+          total_xp: totalXp,
+          streak_count: streakCount,
+          updated_at: new Date().toISOString(),
+        };
+        await supabase.from('profiles').upsert(corePayload, { onConflict: 'id' });
+      } else {
+        console.warn('Supabase profiles upsert notice:', error.message);
+      }
+    }
   } catch (err) {
-    // Non-blocking: local isolation and offline state remain intact
     console.warn('Supabase cloud sync notification:', err);
+  }
+}
+
+/**
+ * Fetches user profile, XP, streaks, and progress directly from Supabase Cloud.
+ * Supabase acts as the single source of truth for cross-device persistence.
+ */
+export async function fetchUserProgressFromCloud(
+  account: RegisteredAccount
+): Promise<{ account: RegisteredAccount; progress: UserProgressData }> {
+  try {
+    const localProgress = getUserProgress(account);
+
+    // 1. Query Supabase profiles table
+    const { data: profile, error } = await supabase
+      .from('profiles')
+      .select('*')
+      .or(`id.eq.${account.id},username.eq.${account.username}`)
+      .maybeSingle();
+
+    if (error) {
+      console.warn('Notice querying Supabase profiles:', error.message);
+    }
+
+    if (profile) {
+      // Cloud has existing profile: populate stats (taking max to never lose offline progress)
+      const cloudXp = typeof profile.total_xp === 'number' ? profile.total_xp : 0;
+      const finalXp = Math.max(cloudXp, localProgress.totalXp);
+
+      const cloudStreak = typeof profile.streak_count === 'number' ? profile.streak_count : 1;
+      const finalStreak = Math.max(cloudStreak, localProgress.streakCount);
+
+      const updatedAccount: RegisteredAccount = {
+        ...account,
+        fullName: profile.full_name || account.fullName,
+        academicYear: (profile.academic_year as AcademicYear) || account.academicYear,
+        avatarUrl: profile.avatar_url || account.avatarUrl,
+      };
+
+      const updatedProgress: UserProgressData = {
+        ...localProgress,
+        userId: updatedAccount.id,
+        email: updatedAccount.email,
+        totalXp: finalXp,
+        streakCount: finalStreak,
+        level: profile.level || Math.floor(finalXp / 1000) + 1,
+        title: profile.title || localProgress.title,
+        streakFreezesCount:
+          typeof profile.streak_freezes_count === 'number'
+            ? profile.streak_freezes_count
+            : localProgress.streakFreezesCount,
+        customExamDate: profile.custom_exam_date || localProgress.customExamDate,
+        examTitle: profile.exam_title || localProgress.examTitle,
+        examModule: profile.exam_module || localProgress.examModule,
+        lastActiveDate: profile.last_active_date || localProgress.lastActiveDate,
+      };
+
+      // 2. Fetch answered questions and choices from user_progress table if present
+      try {
+        const { data: qProgress } = await supabase
+          .from('user_progress')
+          .select('question_id, is_correct, selected_options')
+          .eq('user_id', account.id);
+
+        if (qProgress && qProgress.length > 0) {
+          const completedSet = new Set(updatedProgress.completedQuestions);
+          const correctSet = new Set(updatedProgress.correctQuestions);
+
+          qProgress.forEach((qp) => {
+            if (qp.question_id) {
+              completedSet.add(qp.question_id);
+              if (qp.is_correct) correctSet.add(qp.question_id);
+            }
+          });
+
+          updatedProgress.completedQuestions = Array.from(completedSet);
+          updatedProgress.correctQuestions = Array.from(correctSet);
+        }
+      } catch (qErr) {
+        // non-blocking
+      }
+
+      // Save fresh data to local cache
+      const key = getPartitionedProgressKey(account.email);
+      try {
+        localStorage.setItem(key, JSON.stringify(updatedProgress));
+      } catch {}
+
+      const accounts = getRegisteredAccounts();
+      const idx = accounts.findIndex(
+        (a) => a.email.toLowerCase() === account.email.toLowerCase()
+      );
+      if (idx >= 0) {
+        accounts[idx] = updatedAccount;
+        saveRegisteredAccounts(accounts);
+      }
+
+      return { account: updatedAccount, progress: updatedProgress };
+    }
+
+    // If profile not yet in cloud, sync local up to Supabase now
+    syncAccountToCloud(account, localProgress).catch(() => {});
+    return { account, progress: localProgress };
+  } catch (err) {
+    console.warn('Using local fallback for progress:', err);
+    return { account, progress: getUserProgress(account) };
+  }
+}
+
+/**
+ * Records individual question answers and option choices directly to Supabase user_progress table.
+ */
+export async function recordQuestionChoiceToCloud(params: {
+  userId: string;
+  questionId: string;
+  isCorrect: boolean;
+  selectedOptions?: number[];
+}): Promise<void> {
+  try {
+    await supabase.from('user_progress').insert([
+      {
+        user_id: params.userId,
+        question_id: params.questionId,
+        is_correct: params.isCorrect,
+        selected_options: params.selectedOptions || [],
+        answered_at: new Date().toISOString(),
+      },
+    ]);
+  } catch (err) {
+    // Non-blocking
   }
 }
 
@@ -376,11 +562,9 @@ export async function continueWithGoogle(
       saveRegisteredAccounts(accounts);
       setCurrentSessionEmail(existing.email);
 
-      // Cloud sync
-      const progress = getUserProgress(existing);
-      syncAccountToCloud(existing, progress).catch(() => {});
-
-      return { success: true, account: existing };
+      // Hydrate all user stats from Supabase Cloud
+      const { account: hydrated } = await fetchUserProgressFromCloud(existing);
+      return { success: true, account: hydrated };
     }
 
     // New user signing in with Google
@@ -406,21 +590,13 @@ export async function continueWithGoogle(
     accounts.push(newGoogleAccount);
     saveRegisteredAccounts(accounts);
 
-    // Initialize clean progress
-    const freshProgress = getFreshDefaultProgress(
-      newGoogleAccount.id,
-      newGoogleAccount.email,
-      newGoogleAccount.academicYear
-    );
-    saveUserProgress(newGoogleAccount.email, freshProgress);
+    // Hydrate existing progress or initialize clean progress from Supabase Cloud
+    const { account: hydratedGoogleAcc } = await fetchUserProgressFromCloud(newGoogleAccount);
 
     // Set active session
-    setCurrentSessionEmail(newGoogleAccount.email);
+    setCurrentSessionEmail(hydratedGoogleAcc.email);
 
-    // Sync to Supabase cloud database for cross-device persistence
-    syncAccountToCloud(newGoogleAccount, freshProgress).catch(() => {});
-
-    return { success: true, account: newGoogleAccount };
+    return { success: true, account: hydratedGoogleAcc };
   } catch (err: any) {
     console.error('Error during continueWithGoogle:', err);
     return {
@@ -552,14 +728,11 @@ export async function loginAccountAsync(
       }
       saveRegisteredAccounts(accounts);
 
-      // Restore progress
-      const progress = getFreshDefaultProgress(restoredAccount.id, restoredAccount.email, restoredAccount.academicYear);
-      if (profile?.total_xp) progress.totalXp = profile.total_xp;
-      if (profile?.streak_count) progress.streakCount = profile.streak_count;
-      saveUserProgress(restoredAccount.email, progress);
+      // Hydrate all user stats, XP, streaks, and progress directly from Supabase Cloud
+      const { account: hydratedAccount } = await fetchUserProgressFromCloud(restoredAccount);
 
-      setCurrentSessionEmail(restoredAccount.email);
-      return { success: true, account: restoredAccount };
+      setCurrentSessionEmail(hydratedAccount.email);
+      return { success: true, account: hydratedAccount };
     }
 
     if (authError) {

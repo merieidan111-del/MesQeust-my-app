@@ -89,6 +89,7 @@ export const AuthModal: React.FC<AuthModalProps> = ({
 
   // UI state
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isGoogleLoading, setIsGoogleLoading] = useState<boolean>(false);
   const [errorMessage, setErrorMessage] = useState<string | null>(null);
   const [successMessage, setSuccessMessage] = useState<string | null>(null);
 
@@ -296,8 +297,6 @@ export const AuthModal: React.FC<AuthModalProps> = ({
       setIsLoading(false);
     }
   };
-
-  const [isGoogleLoading, setIsGoogleLoading] = useState<boolean>(false);
 
   const handleGoogleAuth = async () => {
     setIsGoogleLoading(true);

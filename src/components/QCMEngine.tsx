@@ -65,7 +65,7 @@ interface QCMEngineProps {
   initialQuestionId?: string | null;
   initialQuestionIndex?: number | null;
   onAwardXp: (amount: number, reason: string) => void;
-  onQuestionCompleted: (isCorrect: boolean) => void;
+  onQuestionCompleted: (isCorrect: boolean, questionId?: string, selectedOptions?: number[]) => void;
   onExitSession?: () => void;
 }
 
@@ -449,9 +449,9 @@ export const QCMEngine: React.FC<QCMEngineProps> = ({
     if (isAllCorrect) {
       const xpEarned = currentQ.type === 'CasClinique' ? 30 : 20;
       onAwardXp(xpEarned, `Réponse exacte : ${currentQ.type} n°${currentQ.questionNumber}`);
-      onQuestionCompleted(true);
+      onQuestionCompleted(true, currentQ.id, selectedOptions);
     } else {
-      onQuestionCompleted(false);
+      onQuestionCompleted(false, currentQ.id, selectedOptions);
     }
   };
 

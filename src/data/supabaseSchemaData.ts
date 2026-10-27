@@ -1302,6 +1302,49 @@ class AuthController with ChangeNotifier {
     notifyListeners();
   }
 
+  /// Real-time Supabase sync for XP, Streaks & Levels
+  Future<void> awardXpAndSync({required int amount, required String reason}) async {
+    if (_currentProfile == null) return;
+    final newXp = _currentProfile!.totalXp + amount;
+    final newLevel = (newXp / 1000).floor() + 1;
+
+    _currentProfile = _currentProfile!.copyWith(
+      totalXp: newXp,
+      level: newLevel,
+    );
+    notifyListeners();
+
+    try {
+      await _supabase.from('profiles').update({
+        'total_xp': newXp,
+        'level': newLevel,
+        'updated_at': DateTime.now().toUtc().toIso8601String(),
+      }).eq('id', _currentProfile!.id);
+    } catch (e) {
+      debugPrint('Supabase progress sync error: \$e');
+    }
+  }
+
+  /// Save student question answers & option choices directly to Supabase user_progress
+  Future<void> recordQuestionChoice({
+    required String questionId,
+    required bool isCorrect,
+    List<int>? selectedOptions,
+  }) async {
+    if (_currentProfile == null) return;
+    try {
+      await _supabase.from('user_progress').insert({
+        'user_id': _currentProfile!.id,
+        'question_id': questionId,
+        'is_correct': isCorrect,
+        'selected_options': selectedOptions ?? [],
+        'answered_at': DateTime.now().toUtc().toIso8601String(),
+      });
+    } catch (e) {
+      debugPrint('Supabase user_progress insert error: \$e');
+    }
+  }
+
   Future<void> _persistSession(String username, String year) async {
     final prefs = await SharedPreferences.getInstance();
     await prefs.setString(_prefUsernameKey, username);
