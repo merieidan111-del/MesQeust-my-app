@@ -90,8 +90,8 @@ export const YearsSidebar: React.FC<YearsSidebarProps> = ({
 
       {/* Sidebar Container */}
       <aside
-        className={`fixed lg:sticky top-0 lg:top-24 left-0 h-full lg:h-[calc(100vh-7rem)] w-72 sm:w-80 bg-white border-r lg:border border-slate-200/80 lg:rounded-3xl flex flex-col p-5 z-50 lg:z-10 transition-transform duration-300 ease-out shadow-xl lg:shadow-[0_8px_30px_rgb(0,0,0,0.04)] shrink-0 ${
-          isOpenMobile ? 'translate-x-0' : '-translate-x-full lg:translate-x-0'
+        className={`fixed lg:sticky top-0 lg:top-24 left-0 h-full lg:h-[calc(100vh-7rem)] w-72 sm:w-80 max-w-[85vw] bg-white border-r lg:border border-slate-200/80 lg:rounded-3xl flex flex-col p-5 z-50 lg:z-10 transition-transform duration-300 ease-out shadow-xl lg:shadow-[0_8px_30px_rgb(0,0,0,0.04)] shrink-0 ${
+          isOpenMobile ? 'translate-x-0' : '-translate-x-full lg:translate-x-0 invisible lg:visible pointer-events-none lg:pointer-events-auto'
         }`}
       >
         {/* Top Header */}

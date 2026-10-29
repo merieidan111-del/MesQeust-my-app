@@ -2075,3 +2075,379 @@ class _MainMobileScaffoldState extends State<MainMobileScaffold> {
   }
 }
 `;
+
+// ==============================================================================
+// 11. DART & SUPABASE STREAK & FREEZE MANAGER SERVICE
+// ==============================================================================
+export const FLUTTER_STREAK_FREEZE_SERVICE_CODE = `import 'package:flutter/foundation.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+
+/// Result summary of streak evaluation
+class StreakEvaluationResult {
+  final int streakCount;
+  final int streakFreezesCount;
+  final String lastActiveDate;
+  final bool usedFreeze;
+  final bool streakReset;
+  final int daysSkipped;
+  final String message;
+
+  StreakEvaluationResult({
+    required this.streakCount,
+    required this.streakFreezesCount,
+    required this.lastActiveDate,
+    required this.usedFreeze,
+    required this.streakReset,
+    required this.daysSkipped,
+    required this.message,
+  });
+
+  @override
+  String toString() => 'Streak: \$streakCount j (Freezes: \$streakFreezesCount) - \$message';
+}
+
+/// Robust, Production-Ready Streak & Streak Freeze Manager for Flutter & Supabase
+/// Handles:
+/// 1. Consecutive day increment (studied yesterday -> streak + 1)
+/// 2. Same-day idempotency (studied today -> keep streak)
+/// 3. Exactly 1 missed day protected by freeze (freezes - 1, streak preserved)
+/// 4. Multiple missed days covered if sufficient freezes exist
+/// 5. Streak reset to 1 if user missed days without available freezes
+class StreakManager {
+  static final SupabaseClient _supabase = Supabase.instance.client;
+
+  /// Returns YYYY-MM-DD in local time
+  static String formatLocalDate(DateTime dt) {
+    final y = dt.year.toString().padLeft(4, '0');
+    final m = dt.month.toString().padLeft(2, '0');
+    final d = dt.day.toString().padLeft(2, '0');
+    return '\$y-\$m-\$d';
+  }
+
+  /// Calculates difference in calendar days between two YYYY-MM-DD strings
+  static int daysDifference(String olderDateStr, String newerDateStr) {
+    try {
+      final parts1 = olderDateStr.split('-').map(int.parse).toList();
+      final parts2 = newerDateStr.split('-').map(int.parse).toList();
+      final d1 = DateTime.utc(parts1[0], parts1[1], parts1[2]);
+      final d2 = DateTime.utc(parts2[0], parts2[1], parts2[2]);
+      return d2.difference(d1).inDays;
+    } catch (e) {
+      debugPrint('StreakManager date parse warning: \$e');
+      return 0;
+    }
+  }
+
+  /// Main method: evaluates and updates user streak in Supabase on app startup or task completion
+  static Future<StreakEvaluationResult> evaluateAndRecordActivity({
+    required String userId,
+    DateTime? currentDate,
+  }) async {
+    final now = currentDate ?? DateTime.now();
+    final todayStr = formatLocalDate(now);
+
+    // 1. Fetch current user streak info from Supabase profiles table
+    final data = await _supabase
+        .from('profiles')
+        .select('streak_count, streak_freezes_count, last_active_date')
+        .eq('id', userId)
+        .maybeSingle();
+
+    if (data == null) {
+      throw Exception('Profil introuvable dans Supabase pour userId: \$userId');
+    }
+
+    final int currentStreak = (data['streak_count'] as num?)?.toInt() ?? 0;
+    int freezes = (data['streak_freezes_count'] as num?)?.toInt() ?? 0;
+    final String? lastActiveStr = data['last_active_date'] as String?;
+
+    // Initial visit / brand new account
+    if (lastActiveStr == null || lastActiveStr.isEmpty) {
+      const initialStreak = 1;
+      await _supabase.from('profiles').update({
+        'streak_count': initialStreak,
+        'last_active_date': todayStr,
+        'updated_at': DateTime.now().toUtc().toIso8601String(),
+      }).eq('id', userId);
+
+      return StreakEvaluationResult(
+        streakCount: initialStreak,
+        streakFreezesCount: freezes,
+        lastActiveDate: todayStr,
+        usedFreeze: false,
+        streakReset: false,
+        daysSkipped: 0,
+        message: 'Bienvenue ! Votre série débute aujourd\\'hui (1 jour).',
+      );
+    }
+
+    final int daysDiff = daysDifference(lastActiveStr, todayStr);
+
+    int newStreak = currentStreak;
+    bool usedFreeze = false;
+    bool streakReset = false;
+    int daysSkipped = 0;
+    String message = '';
+
+    if (daysDiff <= 0) {
+      // Studied already today! Keep streak unchanged (idempotent)
+      newStreak = currentStreak > 0 ? currentStreak : 1;
+      message = 'Activité déjà enregistrée aujourd\\'hui ! Série : \$newStreak j.';
+    } else if (daysDiff == 1) {
+      // Studied yesterday: Streak increases consecutively
+      newStreak = currentStreak + 1;
+      message = 'Série prolongée avec succès ! Vous êtes à \$newStreak jours consécutifs.';
+    } else if (daysDiff == 2) {
+      // Missed EXACTLY 1 day (yesterday)
+      daysSkipped = 1;
+      if (freezes > 0) {
+        // Streak Freeze consumed to protect streak!
+        freezes -= 1;
+        usedFreeze = true;
+        newStreak = currentStreak + 1; // Preserved and continued today
+        message = 'Gel de Série activé ! Votre journée manquée a été protégée. Série : \$newStreak j.';
+      } else {
+        // No freeze available: streak resets to 1
+        newStreak = 1;
+        streakReset = true;
+        message = 'Vous avez manqué une journée sans Gel de Série. Votre série redémarre à 1 jour.';
+      }
+    } else {
+      // Missed 2 or more days (daysDiff > 2)
+      daysSkipped = daysDiff - 1;
+      if (freezes >= daysSkipped) {
+        // Sufficient freezes to cover all missed days
+        freezes -= daysSkipped;
+        usedFreeze = true;
+        newStreak = currentStreak + 1;
+        message = '\$daysSkipped Gels de Série utilisés pour protéger vos absences. Série : \$newStreak j.';
+      } else {
+        // Not enough freezes to cover the gap
+        newStreak = 1;
+        streakReset = true;
+        message = 'Absence de \$daysSkipped jours sans assez de gels : votre série redémarre à 1 jour.';
+      }
+    }
+
+    // 2. Persist updated streak and last active date to Supabase
+    await _supabase.from('profiles').update({
+      'streak_count': newStreak,
+      'streak_freezes_count': freezes,
+      'last_active_date': todayStr,
+      'updated_at': DateTime.now().toUtc().toIso8601String(),
+    }).eq('id', userId);
+
+    return StreakEvaluationResult(
+      streakCount: newStreak,
+      streakFreezesCount: freezes,
+      lastActiveDate: todayStr,
+      usedFreeze: usedFreeze,
+      streakReset: streakReset,
+      daysSkipped: daysSkipped,
+      message: message,
+    );
+  }
+
+  /// Purchase or award a streak freeze
+  static Future<int> buyOrAddFreeze({
+    required String userId,
+    int count = 1,
+  }) async {
+    final data = await _supabase
+        .from('profiles')
+        .select('streak_freezes_count')
+        .eq('id', userId)
+        .single();
+
+    final current = (data['streak_freezes_count'] as num?)?.toInt() ?? 0;
+    final updated = current + count;
+
+    await _supabase.from('profiles').update({
+      'streak_freezes_count': updated,
+      'updated_at': DateTime.now().toUtc().toIso8601String(),
+    }).eq('id', userId);
+
+    return updated;
+  }
+}
+`;
+
+// ==============================================================================
+// 12. DART LEADERBOARD SERVICE & COMPETITION RANKING
+// ==============================================================================
+export const FLUTTER_LEADERBOARD_SERVICE_CODE = `import 'package:flutter/foundation.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
+
+/// Representation of a ranked medical student on the leaderboard
+class LeaderboardEntry {
+  final int rank;
+  final String userId;
+  final String username;
+  final String fullName;
+  final int totalXp;
+  final int streakCount;
+  final int level;
+  final String title;
+  final String academicYear;
+  final String? avatarUrl;
+  final bool isCurrentUser;
+
+  LeaderboardEntry({
+    required this.rank,
+    required this.userId,
+    required this.username,
+    required this.fullName,
+    required this.totalXp,
+    required this.streakCount,
+    required this.level,
+    required this.title,
+    required this.academicYear,
+    this.avatarUrl,
+    this.isCurrentUser = false,
+  });
+
+  factory LeaderboardEntry.fromJson(
+    Map<String, dynamic> json, {
+    required int rank,
+    String? currentUserId,
+  }) {
+    final id = json['id'] as String? ?? '';
+    final username = json['username'] as String? ?? 'externe';
+    final fullName = json['full_name'] as String? ?? username;
+    final xp = (json['total_xp'] as num?)?.toInt() ?? 0;
+    final streak = (json['streak_count'] as num?)?.toInt() ?? 1;
+    final level = (json['level'] as num?)?.toInt() ?? (xp ~/ 1000 + 1);
+    final title = json['title'] as String? ?? 'Externe en Médecine';
+    final year = json['academic_year'] as String? ?? '4ème Année';
+    final avatar = json['avatar_url'] as String?;
+
+    return LeaderboardEntry(
+      rank: rank,
+      userId: id,
+      username: username,
+      fullName: fullName,
+      totalXp: xp,
+      streakCount: streak,
+      level: level,
+      title: title,
+      academicYear: year,
+      avatarUrl: avatar,
+      isCurrentUser: currentUserId != null && id == currentUserId,
+    );
+  }
+}
+
+/// Global Leaderboard Service for Flutter Web & Mobile
+class LeaderboardService {
+  static final SupabaseClient _supabase = Supabase.instance.client;
+
+  /// Fetches top students globally or filtered by academic year.
+  /// IMPORTANT: Ensure Supabase RLS SELECT policy is enabled for public/authenticated read!
+  static Future<List<LeaderboardEntry>> fetchLeaderboard({
+    String? academicYear,
+    int limit = 50,
+  }) async {
+    final currentUserId = _supabase.auth.currentUser?.id;
+
+    var query = _supabase
+        .from('profiles')
+        .select('id, username, full_name, total_xp, streak_count, level, title, avatar_url, academic_year');
+
+    // Optional cohort filtering (e.g. '4ème Année', '5ème Année')
+    if (academicYear != null && academicYear.isNotEmpty) {
+      query = query.eq('academic_year', academicYear);
+    }
+
+    // Sort by Total XP descending
+    final response = await query
+        .order('total_xp', ascending: false)
+        .limit(limit);
+
+    final List<dynamic> rows = response as List<dynamic>;
+
+    return rows.asMap().entries.map((entry) {
+      final int index = entry.key;
+      final Map<String, dynamic> json = entry.value as Map<String, dynamic>;
+      return LeaderboardEntry.fromJson(
+        json,
+        rank: index + 1,
+        currentUserId: currentUserId,
+      );
+    }).toList();
+  }
+
+  /// Real-time stream of the leaderboard using Supabase Realtime
+  static Stream<List<LeaderboardEntry>> streamLeaderboard({
+    String? academicYear,
+    int limit = 50,
+  }) {
+    final currentUserId = _supabase.auth.currentUser?.id;
+
+    return _supabase
+        .from('profiles')
+        .stream(primaryKey: ['id'])
+        .order('total_xp', ascending: false)
+        .limit(limit)
+        .map((rows) {
+          final filtered = academicYear != null
+              ? rows.where((r) => r['academic_year'] == academicYear).toList()
+              : rows;
+
+          return filtered.asMap().entries.map((entry) {
+            return LeaderboardEntry.fromJson(
+              entry.value,
+              rank: entry.key + 1,
+              currentUserId: currentUserId,
+            );
+          }).toList();
+        });
+  }
+}
+`;
+
+// ==============================================================================
+// 13. SUPABASE LEADERBOARD ROW LEVEL SECURITY (RLS) POLICIES (SQL)
+// ==============================================================================
+export const SUPABASE_LEADERBOARD_RLS_SQL = `-- ==============================================================================
+-- SUPABASE ROW LEVEL SECURITY (RLS) FOR PUBLIC LEADERBOARD & STREAKS
+-- Fixes: Empty Leaderboard bug caused by default restrictive RLS policies
+-- ==============================================================================
+
+-- 1. Ensure RLS is enabled on profiles table
+ALTER TABLE public.profiles ENABLE ROW LEVEL SECURITY;
+
+-- 2. Clean up any restrictive SELECT policies that restrict read to auth.uid() = id
+DROP POLICY IF EXISTS "Users can only read own profile" ON public.profiles;
+DROP POLICY IF EXISTS "Public profiles are viewable by everyone" ON public.profiles;
+DROP POLICY IF EXISTS "Authenticated users can view profiles" ON public.profiles;
+
+-- 3. PERMISSIVE SELECT POLICY (CRITICAL FOR LEADERBOARDS):
+-- Allows all users (authenticated & anonymous) to read public stats:
+-- (username, full_name, total_xp, streak_count, level, title, avatar_url, academic_year)
+CREATE POLICY "Public profiles are viewable by everyone"
+ON public.profiles
+FOR SELECT
+USING (true);
+
+-- 4. RESTRICTIVE UPDATE POLICY:
+-- Users can only modify their own row (streak, XP, nickname, avatar)
+DROP POLICY IF EXISTS "Users can update own profile only" ON public.profiles;
+CREATE POLICY "Users can update own profile only"
+ON public.profiles
+FOR UPDATE
+USING (auth.uid() = id)
+WITH CHECK (auth.uid() = id);
+
+-- 5. RESTRICTIVE INSERT POLICY:
+-- Triggered on signup or when user creates their profile row
+DROP POLICY IF EXISTS "Users can insert own profile" ON public.profiles;
+CREATE POLICY "Users can insert own profile"
+ON public.profiles
+FOR INSERT
+WITH CHECK (auth.uid() = id);
+
+-- 6. Add optimized indexes for fast Leaderboard sorting
+CREATE INDEX IF NOT EXISTS idx_profiles_total_xp_desc ON public.profiles (total_xp DESC);
+CREATE INDEX IF NOT EXISTS idx_profiles_cohort_xp ON public.profiles (academic_year, total_xp DESC);
+`;
+

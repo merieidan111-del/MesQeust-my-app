@@ -562,7 +562,7 @@ export default function App() {
   }
 
   return (
-    <div className="min-h-screen bg-[#F8FAFD] text-slate-900 flex flex-col font-sans selection:bg-[#10B981]/20 selection:text-[#0F172A]">
+    <div className="min-h-screen w-full max-w-full overflow-x-hidden bg-[#F8FAFD] text-slate-900 flex flex-col font-sans selection:bg-[#10B981]/20 selection:text-[#0F172A]">
       {/* Toast Notification Container */}
       {toastMessage && (
         <div className="fixed bottom-6 right-6 z-50 animate-in fade-in slide-in-from-bottom-5 duration-300">
@@ -608,7 +608,7 @@ export default function App() {
       />
 
       {/* App Body Layout: Dedicated Left Years Sidebar + Main View Area */}
-      <div className="flex-1 max-w-7xl w-full mx-auto p-3 sm:p-6 flex flex-col lg:flex-row gap-6 items-start">
+      <div className="flex-1 max-w-7xl w-full mx-auto p-2 sm:p-4 md:p-6 flex flex-col lg:flex-row gap-4 sm:gap-6 items-stretch lg:items-start min-w-0">
         {/* Dedicated Academic Years Sidebar */}
         <YearsSidebar
           selectedYear={selectedYear}
@@ -860,8 +860,8 @@ export default function App() {
       />
 
       {/* Minimal Clean Medical Footer */}
-      <footer className="py-5 px-6 border-t border-slate-200/80 bg-white/80 backdrop-blur-sm text-center text-xs text-slate-500 mt-auto">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
+      <footer className="py-5 px-4 sm:px-6 border-t border-slate-200/80 bg-white/80 backdrop-blur-sm text-center text-xs text-slate-500 mt-auto w-full max-w-full">
+        <div className="max-w-7xl w-full mx-auto flex flex-col sm:flex-row items-center justify-between gap-3">
           <div className="flex items-center gap-2 text-slate-600">
             <div className="w-6 h-6 rounded-lg bg-emerald-50 border border-emerald-100 flex items-center justify-center text-emerald-600">
               <Stethoscope className="w-3.5 h-3.5" />

@@ -20,19 +20,19 @@ export const FixedBottomNavBar: React.FC<FixedBottomNavBarProps> = ({
         isMobilePreview
           ? 'w-full'
           : 'fixed bottom-0 left-0 right-0 z-40 xl:hidden'
-      } select-none`}
+      } select-none w-full max-w-full`}
     >
       {/* Bottom Navigation Bar fitted perfectly to bottom in mobile version */}
       <nav
-        className={`w-full bg-white/95 backdrop-blur-md border-t border-slate-200/90 flex items-center justify-between pointer-events-auto transition-all ${
+        className={`w-full max-w-full bg-white/95 backdrop-blur-md border-t border-slate-200/90 flex items-center justify-between pointer-events-auto transition-all ${
           isMobilePreview
             ? 'px-3 py-1.5 shadow-xs'
-            : 'px-4 py-1.5 pb-[max(0.6rem,env(safe-area-inset-bottom,0.6rem))] shadow-[0_-4px_25px_rgba(15,23,42,0.08)]'
+            : 'px-2 sm:px-4 py-1.5 pb-[max(0.6rem,env(safe-area-inset-bottom,0.6rem))] shadow-[0_-4px_25px_rgba(15,23,42,0.08)]'
         }`}
         role="navigation"
         aria-label="Barre de navigation principale"
       >
-        <div className="max-w-md mx-auto w-full flex items-center justify-between">
+        <div className="w-full max-w-xl mx-auto flex items-center justify-between">
           {/* 1. Home / Accueil */}
           <button
             type="button"

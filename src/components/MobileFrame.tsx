@@ -13,7 +13,7 @@ export const MobileFrame: React.FC<MobileFrameProps> = ({
   bottomBar,
 }) => {
   if (!isMobilePreview) {
-    return <div className="w-full">{children}</div>;
+    return <div className="w-full max-w-full min-w-0">{children}</div>;
   }
 
   return (

@@ -68,16 +68,16 @@ export const Navbar: React.FC<NavbarProps> = ({
   onLogout,
 }) => {
   return (
-    <header className="sticky top-0 z-40 bg-white/90 backdrop-blur-md border-b border-slate-100 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.03)]">
-      <div className="max-w-7xl mx-auto px-2 sm:px-6 h-16 sm:h-18 flex items-center justify-between gap-1.5 sm:gap-3">
-        {/* Left: Brand with cute Vector Organ + Years Sidebar Button */}
-        <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
+    <header className="sticky top-0 z-40 w-full max-w-full bg-white/95 backdrop-blur-md border-b border-slate-100 shadow-[0_2px_15px_-3px_rgba(0,0,0,0.03)]">
+      <div className="max-w-7xl w-full mx-auto px-2 sm:px-6 h-15 sm:h-18 flex items-center justify-between gap-1 sm:gap-3">
+        {/* Left: Brand with cute Vector Mascot + Years Sidebar Button */}
+        <div className="flex items-center gap-1 sm:gap-2 shrink-0 min-w-0">
           <div
             onClick={() => setCurrentTab('home')}
             className="flex items-center gap-1.5 sm:gap-2.5 cursor-pointer group shrink-0"
           >
-            <div className="w-10 h-10 sm:w-12 sm:h-12 rounded-xl sm:rounded-2xl bg-white border border-purple-100/90 p-0.5 flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform overflow-hidden shrink-0">
-              <SyndromedLogo size={38} useImage={true} />
+            <div className="w-9 h-9 sm:w-11 sm:h-11 rounded-xl sm:rounded-2xl bg-white border border-purple-100/90 p-0.5 flex items-center justify-center shadow-xs group-hover:scale-105 transition-transform overflow-hidden shrink-0">
+              <SyndromedLogo size={32} useImage={false} />
             </div>
             <div>
               <SyndromedWordmark size="sm" showSlogan={false} className="sm:hidden" />
@@ -89,11 +89,12 @@ export const Navbar: React.FC<NavbarProps> = ({
           {onToggleYearsSidebar && (
             <button
               onClick={onToggleYearsSidebar}
-              className="flex items-center gap-1 px-2 sm:px-3 py-1 sm:py-1.5 text-xs font-black rounded-full bg-indigo-50/80 border border-indigo-100 text-indigo-700 hover:bg-indigo-100 transition-all shadow-2xs ml-0.5 sm:ml-2 group shrink-0"
+              className="flex items-center gap-1 px-1.5 sm:px-3 py-1 sm:py-1.5 text-[10px] sm:text-xs font-black rounded-full bg-indigo-50/80 border border-indigo-100 text-indigo-700 hover:bg-indigo-100 transition-all shadow-2xs ml-0.5 sm:ml-2 group shrink-0"
               title={`Année d'études : ${selectedYear}`}
             >
               <GraduationCap className="w-3.5 h-3.5 text-indigo-600 group-hover:rotate-12 transition-transform shrink-0" />
-              <span className="font-extrabold">{selectedYear.replace('ème Année', 'eme').replace(' Année', '').replace('ème', 'eme')}</span>
+              <span className="font-extrabold sm:hidden">{selectedYear.replace('ème Année', 'e').replace(' Année', '').replace('ème', 'e')}</span>
+              <span className="font-extrabold hidden sm:inline">{selectedYear.replace('ème Année', 'eme').replace(' Année', '').replace('ème', 'eme')}</span>
             </button>
           )}
         </div>
@@ -178,21 +179,21 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Daily Streak Flame Pill */}
           <div
             onClick={() => setCurrentTab('gamification')}
-            className="cursor-pointer flex items-center gap-1 px-2 sm:px-2.5 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-700 hover:bg-amber-100 transition-colors shadow-2xs shrink-0"
+            className="cursor-pointer flex items-center gap-1 px-1.5 sm:px-2.5 py-1 rounded-full bg-amber-50 border border-amber-200 text-amber-700 hover:bg-amber-100 transition-colors shadow-2xs shrink-0"
             title={`${userProfile?.streakCount ?? 0} jours de série active`}
           >
             <Flame className="w-3.5 h-3.5 fill-amber-500 text-amber-500 animate-pulse" />
-            <span className="font-black text-[11px] sm:text-xs">{userProfile?.streakCount ?? 0}j</span>
+            <span className="font-black text-[10px] sm:text-xs">{userProfile?.streakCount ?? 0}j</span>
           </div>
 
           {/* XP Badge Pill */}
           <div
             onClick={() => setCurrentTab('gamification')}
-            className="cursor-pointer flex items-center gap-1 px-2 sm:px-2.5 py-1 rounded-full bg-indigo-50 border border-indigo-200 text-indigo-700 hover:bg-indigo-100 transition-colors shadow-2xs shrink-0"
+            className="cursor-pointer flex items-center gap-1 px-1.5 sm:px-2.5 py-1 rounded-full bg-indigo-50 border border-indigo-200 text-indigo-700 hover:bg-indigo-100 transition-colors shadow-2xs shrink-0"
             title={`${userProfile?.totalXp ?? 0} XP cumulés`}
           >
             <Award className="w-3.5 h-3.5 text-indigo-600" />
-            <span className="font-black text-[11px] sm:text-xs">{userProfile?.totalXp ?? 0} XP</span>
+            <span className="font-black text-[10px] sm:text-xs">{userProfile?.totalXp ?? 0} XP</span>
           </div>
 
           {/* Device Mockup Toggle */}
@@ -221,7 +222,7 @@ export const Navbar: React.FC<NavbarProps> = ({
           {/* Username / Profile Button */}
           <button
             onClick={onOpenAuthModal}
-            className="flex items-center gap-1.5 p-1 sm:pl-1.5 sm:pr-2.5 sm:py-1 rounded-full bg-white border border-slate-200 text-slate-700 hover:border-indigo-400 hover:shadow-2xs transition-all cursor-pointer shrink-0"
+            className="flex items-center gap-1.5 p-0.5 sm:pl-1.5 sm:pr-2.5 sm:py-1 rounded-full bg-white border border-slate-200 text-slate-700 hover:border-indigo-400 hover:shadow-2xs transition-all cursor-pointer shrink-0"
             title="Profil étudiant"
           >
             <img
@@ -238,25 +239,25 @@ export const Navbar: React.FC<NavbarProps> = ({
             </span>
           </button>
 
-          {/* Log out Button */}
+          {/* Log out Button - compact on mobile */}
           {onLogout && (
             <button
               onClick={onLogout}
-              className="flex items-center gap-1 px-2 sm:px-2.5 py-1 rounded-full bg-rose-50 hover:bg-rose-100 border border-rose-200/80 text-rose-700 text-xs font-black shadow-2xs transition-all cursor-pointer shrink-0"
+              className="flex items-center gap-1 p-1.5 sm:px-2.5 sm:py-1 rounded-full bg-rose-50 hover:bg-rose-100 border border-rose-200/80 text-rose-700 text-xs font-black shadow-2xs transition-all cursor-pointer shrink-0"
               title="Log out (fermer la session)"
             >
               <LogOut className="w-3.5 h-3.5 text-rose-600 shrink-0" />
-              <span className="text-[11px] sm:text-xs">Log out</span>
+              <span className="hidden sm:inline text-[11px] sm:text-xs">Log out</span>
             </button>
           )}
         </div>
       </div>
 
-      {/* Mobile Secondary Tab Navigation (Floating soft scrollbar) */}
-      <div className="flex xl:hidden overflow-x-auto px-4 py-2.5 gap-2 border-t border-slate-100 bg-slate-50/70 scrollbar-none">
+      {/* Mobile Secondary Tab Navigation (Contained horizontal scroller) */}
+      <div className="flex xl:hidden overflow-x-auto w-full max-w-full px-3 py-2 gap-1.5 border-t border-slate-100 bg-slate-50/70 scrollbar-none min-w-0 shrink-0">
         <button
           onClick={() => setCurrentTab('home')}
-          className={`px-3.5 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-colors ${
+          className={`px-3 py-1 rounded-full text-xs font-bold whitespace-nowrap transition-colors shrink-0 ${
             currentTab === 'home' ? 'bg-indigo-600 text-white shadow-sm' : 'bg-white border border-slate-200 text-slate-600'
           }`}
         >
@@ -264,7 +265,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         </button>
         <button
           onClick={() => setCurrentTab('directory')}
-          className={`px-3.5 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-colors ${
+          className={`px-3 py-1 rounded-full text-xs font-bold whitespace-nowrap transition-colors shrink-0 ${
             currentTab === 'directory' ? 'bg-indigo-600 text-white shadow-sm' : 'bg-white border border-slate-200 text-slate-600'
           }`}
         >
@@ -272,7 +273,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         </button>
         <button
           onClick={() => setCurrentTab('qcm')}
-          className={`px-3.5 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-colors ${
+          className={`px-3 py-1 rounded-full text-xs font-bold whitespace-nowrap transition-colors shrink-0 ${
             currentTab === 'qcm' ? 'bg-rose-500 text-white shadow-sm' : 'bg-white border border-slate-200 text-slate-600'
           }`}
         >
@@ -280,7 +281,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         </button>
         <button
           onClick={() => setCurrentTab('repository')}
-          className={`px-3.5 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-colors ${
+          className={`px-3 py-1 rounded-full text-xs font-bold whitespace-nowrap transition-colors shrink-0 ${
             currentTab === 'repository' ? 'bg-indigo-600 text-white shadow-sm' : 'bg-white border border-slate-200 text-slate-600'
           }`}
         >
@@ -288,7 +289,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         </button>
         <button
           onClick={() => setCurrentTab('ai')}
-          className={`px-3.5 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-colors ${
+          className={`px-3 py-1 rounded-full text-xs font-bold whitespace-nowrap transition-colors shrink-0 ${
             currentTab === 'ai' ? 'bg-purple-600 text-white shadow-sm' : 'bg-white border border-slate-200 text-slate-600'
           }`}
         >
@@ -296,7 +297,7 @@ export const Navbar: React.FC<NavbarProps> = ({
         </button>
         <button
           onClick={() => setCurrentTab('gamification')}
-          className={`px-3.5 py-1.5 rounded-full text-xs font-bold whitespace-nowrap transition-colors ${
+          className={`px-3 py-1 rounded-full text-xs font-bold whitespace-nowrap transition-colors shrink-0 ${
             currentTab === 'gamification' ? 'bg-emerald-600 text-white shadow-sm' : 'bg-white border border-slate-200 text-slate-600'
           }`}
         >

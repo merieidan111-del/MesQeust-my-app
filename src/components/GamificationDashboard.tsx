@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useEffect } from 'react';
 import confetti from 'canvas-confetti';
 import {
   Flame,
@@ -28,6 +28,7 @@ import { UserProfile, LeaderboardEntry, ShopItem, AcademicYear } from '../types/
 import { INITIAL_LEADERBOARD, SHOP_ITEMS } from '../data/mockMedicalData';
 import { StudentAvatar, AVATAR_PRESETS } from './StudentAvatar';
 import { ClinicalProgressDiagram } from './ClinicalProgressDiagram';
+import { supabase } from '../services/supabaseClient';
 
 interface GamificationDashboardProps {
   userProfile: UserProfile;
@@ -210,13 +211,65 @@ export const GamificationDashboard: React.FC<GamificationDashboardProps> = ({
     { label: 'Auj', completed: userProfile.questionsSolvedToday >= userProfile.dailyGoal && userProfile.dailyGoal > 0, count: userProfile.questionsSolvedToday },
   ];
 
-  // Dynamic leaderboard merging peers and the active user with their real isolated stats
+  // Cloud Profiles State from Supabase
+  const [cloudProfiles, setCloudProfiles] = useState<LeaderboardEntry[]>([]);
+
+  // Fetch real registered medical students from Supabase profiles table
+  useEffect(() => {
+    let isMounted = true;
+    const loadCloudProfiles = async () => {
+      try {
+        const { data, error } = await supabase
+          .from('profiles')
+          .select('id, username, full_name, academic_year, total_xp, streak_count, level, title, avatar_url')
+          .order('total_xp', { ascending: false })
+          .limit(50);
+
+        if (!error && data && isMounted) {
+          const mapped: LeaderboardEntry[] = data.map((row) => ({
+            rank: 0,
+            userId: row.id,
+            username: row.username || 'externe',
+            fullName: row.full_name || row.username || 'Externe en Médecine',
+            academicYear: (row.academic_year as AcademicYear) || '4ème Année',
+            faculty: 'Faculté de Médecine',
+            totalXp: typeof row.total_xp === 'number' ? row.total_xp : 0,
+            streakCount: typeof row.streak_count === 'number' ? row.streak_count : 1,
+            title: row.title || 'Externe en Médecine',
+            avatarId: 'stethoscope',
+            isAnonymous: false,
+            isCurrentUser: row.id === userProfile.userId || row.username === userProfile.username,
+          }));
+          setCloudProfiles(mapped);
+        }
+      } catch (err) {
+        console.warn('Leaderboard cloud fetch notice:', err);
+      }
+    };
+
+    loadCloudProfiles();
+    return () => {
+      isMounted = false;
+    };
+  }, [userProfile.userId, userProfile.username]);
+
+  // Dynamic leaderboard merging cloud profiles, peers and the active user with real isolated stats
   const dynamicLeaderboard: LeaderboardEntry[] = useMemo(() => {
-    const cohortPeers = INITIAL_LEADERBOARD.filter(
+    // 1. Gather all peers from Supabase cloud profiles
+    const cloudPeers = cloudProfiles.filter(
       (s) => s.academicYear === cohortFilter && s.userId !== userProfile.userId
     );
 
-    const list: LeaderboardEntry[] = [...cohortPeers];
+    // 2. Gather mock peers for fallback if cloud has few entries
+    const existingUsernames = new Set(cloudPeers.map((p) => p.username.toLowerCase()));
+    const mockPeers = INITIAL_LEADERBOARD.filter(
+      (s) =>
+        s.academicYear === cohortFilter &&
+        s.userId !== userProfile.userId &&
+        !existingUsernames.has(s.username.toLowerCase())
+    );
+
+    const list: LeaderboardEntry[] = [...cloudPeers, ...mockPeers];
 
     // Only include user if they have not opted out, and match this cohort
     if (!optOutRanking && userProfile.academicYear === cohortFilter) {
@@ -245,6 +298,7 @@ export const GamificationDashboard: React.FC<GamificationDashboardProps> = ({
         rank: index + 1,
       }));
   }, [
+    cloudProfiles,
     cohortFilter,
     userProfile.academicYear,
     userProfile.userId,

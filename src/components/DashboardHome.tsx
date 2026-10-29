@@ -384,9 +384,9 @@ export const DashboardHome: React.FC<DashboardHomeProps> = ({
   }, [userProfile.dailyActivity, userProfile.questionsSolvedToday, userProfile.totalXp]);
 
   return (
-    <div className="space-y-6 max-w-6xl mx-auto pb-12">
+    <div className="space-y-6 w-full max-w-6xl mx-auto pb-12 min-w-0">
       {/* 1. Header Greeting with Soft Pastel Vibe */}
-      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-1">
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pt-1 w-full">
         <div>
           <div className="flex items-center gap-2">
             <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 tracking-tight">
@@ -401,20 +401,20 @@ export const DashboardHome: React.FC<DashboardHomeProps> = ({
 
       {/* 2. Big Board: Current Study Module Synchronized with Exam Countdown */}
       <div
-        className={`relative rounded-3xl bg-gradient-to-r ${getModuleGradient(
+        className={`relative w-full max-w-full rounded-3xl bg-gradient-to-r ${getModuleGradient(
           currentStudyModule.id
-        )} p-6 sm:p-8 text-white shadow-xl shadow-indigo-500/15 overflow-hidden transition-all duration-500`}
+        )} p-4 sm:p-6 md:p-8 text-white shadow-xl shadow-indigo-500/15 overflow-hidden transition-all duration-500`}
       >
         {/* Soft background glow circles */}
         <div className="absolute -top-12 -right-12 w-64 h-64 bg-white/10 rounded-full blur-2xl pointer-events-none" />
         <div className="absolute -bottom-12 -left-12 w-64 h-64 bg-white/10 rounded-full blur-2xl pointer-events-none" />
 
-        <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6">
-          <div className="space-y-3.5 max-w-xl">
+        <div className="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-6 w-full">
+          <div className="space-y-3.5 w-full max-w-full md:max-w-xl min-w-0">
             {/* Header Synchronized Badge */}
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-xs font-bold text-white border border-white/30">
-              <Sparkles className="w-3.5 h-3.5 text-white/90" />
-              <span>Module d'étude actif • Échéance d'examen synchronisée</span>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/20 backdrop-blur-md text-xs font-bold text-white border border-white/30 max-w-full">
+              <Sparkles className="w-3.5 h-3.5 text-white/90 shrink-0" />
+              <span className="truncate">Module d'étude actif • Échéance d'examen synchronisée</span>
             </div>
 
             {/* Dynamic Module Title */}
@@ -429,7 +429,7 @@ export const DashboardHome: React.FC<DashboardHomeProps> = ({
 
             {/* Dynamic Resume or Next Lesson Indicator */}
             {resumeTarget && (
-              <div className="p-2.5 sm:p-3 rounded-2xl bg-black/20 backdrop-blur-md border border-white/20 text-xs text-white/95 flex items-center gap-2.5">
+              <div className="p-2.5 sm:p-3 rounded-2xl bg-black/20 backdrop-blur-md border border-white/20 text-xs text-white/95 flex items-center gap-2.5 max-w-full">
                 <div className="w-7 h-7 rounded-xl bg-white/20 flex items-center justify-center shrink-0">
                   {resumeTarget.reason === 'stopped_in_lesson' ? (
                     <Clock className="w-4 h-4 text-white" />
@@ -437,8 +437,8 @@ export const DashboardHome: React.FC<DashboardHomeProps> = ({
                     <BookOpen className="w-4 h-4 text-white" />
                   )}
                 </div>
-                <div className="min-w-0">
-                  <div className="text-[10px] uppercase font-black tracking-wider text-white/80">
+                <div className="min-w-0 flex-1">
+                  <div className="text-[10px] uppercase font-black tracking-wider text-white/80 truncate">
                     {resumeTarget.reason === 'stopped_in_lesson'
                       ? 'Dernier QCM interrompu'
                       : resumeTarget.reason === 'next_lesson'
@@ -455,12 +455,12 @@ export const DashboardHome: React.FC<DashboardHomeProps> = ({
             )}
 
             {/* Module Specific Progress Bar */}
-            <div className="space-y-1.5 pt-0.5">
+            <div className="space-y-1.5 pt-0.5 w-full">
               <div className="flex justify-between text-xs font-bold text-white/95">
-                <span>Progression : {currentStudyModule.title.split('&')[0].trim()}</span>
-                <span>
-                  {currentModuleProgress.progressPercent}% complété ({currentModuleProgress.solvedCount} /{' '}
-                  {currentModuleProgress.totalCount} QCMs)
+                <span className="truncate pr-2">Progression : {currentStudyModule.title.split('&')[0].trim()}</span>
+                <span className="shrink-0">
+                  {currentModuleProgress.progressPercent}% ({currentModuleProgress.solvedCount} /{' '}
+                  {currentModuleProgress.totalCount})
                 </span>
               </div>
               <div className="w-full h-2.5 rounded-full bg-black/25 overflow-hidden p-0.5 border border-white/10">
@@ -472,11 +472,11 @@ export const DashboardHome: React.FC<DashboardHomeProps> = ({
             </div>
 
             {/* Action Buttons */}
-            <div className="pt-2 flex flex-wrap items-center gap-2.5 sm:gap-3">
+            <div className="pt-2 flex flex-col sm:flex-row sm:flex-wrap items-stretch sm:items-center gap-2 sm:gap-3 w-full">
               <button
                 type="button"
                 onClick={handleContinueClick}
-                className="px-5 py-2.5 rounded-full bg-white text-slate-900 font-extrabold text-xs sm:text-sm hover:bg-slate-100 shadow-md hover:shadow-lg transition-all flex items-center gap-2 group cursor-pointer"
+                className="w-full sm:w-auto px-5 py-2.5 rounded-full bg-white text-slate-900 font-extrabold text-xs sm:text-sm hover:bg-slate-100 shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 group cursor-pointer"
               >
                 <span>Continuer l'entraînement</span>
                 <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -485,7 +485,7 @@ export const DashboardHome: React.FC<DashboardHomeProps> = ({
               <button
                 type="button"
                 onClick={() => onSelectModule(currentStudyModule)}
-                className="px-4 py-2.5 rounded-full bg-white/15 hover:bg-white/25 text-white font-bold text-xs sm:text-sm border border-white/20 transition-all cursor-pointer"
+                className="w-full sm:w-auto px-4 py-2.5 rounded-full bg-white/15 hover:bg-white/25 text-white font-bold text-xs sm:text-sm border border-white/20 transition-all cursor-pointer text-center"
               >
                 Voir les {currentModuleCourses.length} Cours
               </button>
@@ -493,7 +493,7 @@ export const DashboardHome: React.FC<DashboardHomeProps> = ({
               <button
                 type="button"
                 onClick={() => setIsInlineEditing(true)}
-                className="px-3.5 py-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white font-semibold text-xs border border-white/15 transition-all cursor-pointer flex items-center gap-1.5"
+                className="w-full sm:w-auto px-3.5 py-2.5 rounded-full bg-white/10 hover:bg-white/20 text-white font-semibold text-xs border border-white/15 transition-all cursor-pointer flex items-center justify-center gap-1.5"
                 title="Régler ou synchroniser le module d'examen"
               >
                 <Edit2 className="w-3 h-3" />
@@ -527,7 +527,7 @@ export const DashboardHome: React.FC<DashboardHomeProps> = ({
       </div>
 
       {/* 3. Bento Grid of 4 Soft Pastel Stat Cards (Inspired by Reference Images) */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 w-full max-w-full">
         {/* Card 1: Objectif du Jour (Soft Pastel Peach) */}
         <div className="p-5 rounded-3xl bg-[#FFF5F2] border border-rose-100 shadow-[0_4px_20px_-4px_rgba(244,63,94,0.05)] flex flex-col justify-between transition-transform hover:-translate-y-0.5">
           <div className="flex items-center justify-between">
@@ -1187,7 +1187,7 @@ export const DashboardHome: React.FC<DashboardHomeProps> = ({
           <span className="text-xs font-bold text-indigo-600">Accès Direct</span>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 w-full max-w-full">
           {/* Tile 1: QCMs */}
           <div
             onClick={onStartQuickPractice}
@@ -1258,7 +1258,7 @@ export const DashboardHome: React.FC<DashboardHomeProps> = ({
       </div>
 
       {/* 5. Modules List with Studious Vector Organ Avatars */}
-      <div className="space-y-4 pt-2">
+      <div className="space-y-4 pt-2 w-full max-w-full">
         <div className="flex items-center justify-between">
           <div>
             <h3 className="font-extrabold text-base text-slate-900 tracking-tight">
@@ -1270,14 +1270,14 @@ export const DashboardHome: React.FC<DashboardHomeProps> = ({
           </div>
           <button
             onClick={onNavigateToDirectory}
-            className="text-xs font-bold text-indigo-600 hover:text-indigo-800 flex items-center gap-1 cursor-pointer"
+            className="text-xs font-bold text-indigo-600 hover:text-indigo-800 flex items-center gap-1 cursor-pointer shrink-0"
           >
             <span>Voir tout le catalogue</span>
             <ChevronRight className="w-3.5 h-3.5" />
           </button>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-full">
           {filteredModules.map((module) => {
             // Assign custom matching organ/medical icon according to module domain
             const isCardio = module.id === 'mod-cardio';

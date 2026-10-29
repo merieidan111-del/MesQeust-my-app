@@ -12,6 +12,8 @@ import {
   Hourglass,
   LayoutGrid,
   CheckSquare,
+  Flame,
+  Trophy,
 } from 'lucide-react';
 import {
   SUPABASE_SQL_SCHEMA,
@@ -23,6 +25,9 @@ import {
   FLUTTER_AUTH_CONTROLLER_CODE,
   FLUTTER_LOGIN_REGISTER_SCREEN_CODE,
   FLUTTER_FIXED_BOTTOM_NAV_BAR_CODE,
+  FLUTTER_STREAK_FREEZE_SERVICE_CODE,
+  FLUTTER_LEADERBOARD_SERVICE_CODE,
+  SUPABASE_LEADERBOARD_RLS_SQL,
 } from '../data/supabaseSchemaData';
 import {
   APK_ORDERS_SQL_SCHEMA,
@@ -42,19 +47,46 @@ export const SupabaseFlutterStudio: React.FC<SupabaseFlutterStudioProps> = ({
     | 'username_auth_sql'
     | 'flutter_auth_controller'
     | 'flutter_login_screen'
+    | 'flutter_streak_freeze'
+    | 'flutter_leaderboard'
+    | 'leaderboard_rls_sql'
     | 'flutter_bottom_nav'
     | 'apk_orders'
     | 'dashboard'
     | 'mode_selector'
     | 'qcm_jumplist'
     | 'directory'
-  >('username_auth_sql');
+  >('flutter_streak_freeze');
   const [copied, setCopied] = useState<boolean>(false);
 
   const tabs = [
     {
+      id: 'flutter_streak_freeze',
+      name: '1. Streak & Freeze Logic (Dart)',
+      icon: Flame,
+      badge: 'Calcul J/J-1 + Gel',
+      content: FLUTTER_STREAK_FREEZE_SERVICE_CODE,
+      filename: 'streak_manager.dart',
+    },
+    {
+      id: 'flutter_leaderboard',
+      name: '2. Leaderboard & Classement (Dart)',
+      icon: Trophy,
+      badge: 'Multi-User Ranking',
+      content: FLUTTER_LEADERBOARD_SERVICE_CODE,
+      filename: 'leaderboard_service.dart',
+    },
+    {
+      id: 'leaderboard_rls_sql',
+      name: '3. Supabase RLS Policies (SQL)',
+      icon: Database,
+      badge: 'Fix Empty Ranking',
+      content: SUPABASE_LEADERBOARD_RLS_SQL,
+      filename: 'profiles_leaderboard_rls.sql',
+    },
+    {
       id: 'username_auth_sql',
-      name: '1. Supabase Auth & Google Trigger (SQL)',
+      name: '4. Supabase Auth & Google Trigger (SQL)',
       icon: Database,
       badge: 'Google OAuth + profiles',
       content: SUPABASE_PROFILES_USERNAME_AUTH_SQL,
