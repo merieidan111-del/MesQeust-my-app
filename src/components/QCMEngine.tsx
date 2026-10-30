@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef, useMemo } from 'react';
 import {
   Check,
   RotateCcw,
@@ -366,6 +366,21 @@ export const QCMEngine: React.FC<QCMEngineProps> = ({
     }
   };
 
+  const isMulti = useMemo(() => {
+    if (!currentQ) return false;
+    if ((currentQ.correctAnswers || []).length > 1) return true;
+    const text = (currentQ.questionText || currentQ.content || '').toLowerCase();
+    return (
+      text.includes('choix multiple') ||
+      text.includes('plusieurs réponses') ||
+      text.includes('2 à 3 réponses') ||
+      text.includes('2-3 réponses') ||
+      text.includes('quelles sont les propositions') ||
+      text.includes('quelles propositions') ||
+      text.includes('lesquelles')
+    );
+  }, [currentQ]);
+
   const toggleOption = (idx: number) => {
     if (hasSubmitted) return;
 
@@ -381,9 +396,7 @@ export const QCMEngine: React.FC<QCMEngineProps> = ({
 
     if (eliminatedOptions.includes(idx)) return;
 
-    const isMultiChoice = (currentQ?.correctAnswers || []).length > 1;
-
-    if (isMultiChoice) {
+    if (isMulti) {
       if (selectedOptions.includes(idx)) {
         setSelectedOptions(selectedOptions.filter((i) => i !== idx));
       } else {
@@ -585,7 +598,6 @@ export const QCMEngine: React.FC<QCMEngineProps> = ({
   }
 
   const isBookmarked = bookmarkedIds.includes(currentQ.id);
-  const isMulti = (currentQ.correctAnswers || []).length > 1;
 
   return (
     <div className="space-y-4 max-w-4xl mx-auto">
@@ -984,8 +996,15 @@ export const QCMEngine: React.FC<QCMEngineProps> = ({
           </p>
         </div>
 
-        {/* Options List (Tactile clean cards inspired by Lingua) */}
+        {/* Options List with Checkboxes (Multiple Choice) or Radio Buttons (Single Choice) */}
         <div className="space-y-3">
+          {isMulti && (
+            <div className="flex items-center gap-2.5 px-4 py-2.5 rounded-2xl bg-purple-50/90 border border-purple-200 text-purple-900 text-xs font-bold shadow-2xs">
+              <CheckSquare className="w-4 h-4 text-purple-700 shrink-0" />
+              <span>Question à choix multiples : Cochez toutes les réponses exactes à l'aide des cases à cocher ci-dessous.</span>
+            </div>
+          )}
+
           {currentQ.options.map((option, idx) => {
             const letter = String.fromCharCode(65 + idx);
             const isSelected = selectedOptions.includes(idx);
@@ -994,26 +1013,21 @@ export const QCMEngine: React.FC<QCMEngineProps> = ({
 
             let cardStyle =
               'border-slate-200 hover:border-indigo-300 bg-white hover:bg-indigo-50/20 text-slate-800 shadow-2xs';
-            let circleStyle = 'bg-slate-100 text-slate-600 border-slate-200';
 
             if (isSelected && !hasSubmitted) {
               cardStyle = 'border-indigo-600 bg-indigo-50/80 text-indigo-950 font-bold shadow-sm ring-2 ring-indigo-200/60';
-              circleStyle = 'bg-indigo-600 text-white font-extrabold border-indigo-600';
             }
 
             if (hasSubmitted) {
               if (isCorrectAnswer) {
                 cardStyle = 'border-emerald-500 bg-emerald-50 text-emerald-950 ring-2 ring-emerald-200 font-bold';
-                circleStyle = 'bg-emerald-500 text-white font-extrabold border-emerald-500';
               } else if (isSelected && !isCorrectAnswer) {
                 cardStyle = 'border-rose-500 bg-rose-50 text-rose-950 ring-2 ring-rose-200';
-                circleStyle = 'bg-rose-500 text-white font-extrabold border-rose-500';
               } else {
                 cardStyle = 'border-slate-100 bg-slate-50/50 text-slate-400 opacity-60';
               }
             } else if (isEliminated) {
               cardStyle = 'border-slate-200 bg-slate-50 text-slate-400 line-through opacity-50';
-              circleStyle = 'bg-slate-200 text-slate-500';
             }
 
             return (
@@ -1022,22 +1036,85 @@ export const QCMEngine: React.FC<QCMEngineProps> = ({
                 onClick={() => toggleOption(idx)}
                 className={`flex items-start gap-3.5 p-4 rounded-2xl border-2 transition-all cursor-pointer select-none ${cardStyle}`}
               >
-                <div
-                  className={`w-7 h-7 rounded-full flex items-center justify-center shrink-0 text-xs font-extrabold border transition-colors mt-0.5 ${circleStyle}`}
-                >
-                  {hasSubmitted && isCorrectAnswer ? (
-                    <Check className="w-4 h-4 stroke-[3]" />
-                  ) : hasSubmitted && isSelected && !isCorrectAnswer ? (
-                    <XCircle className="w-4 h-4" />
+                {/* Checkbox (for multiple choice) or Radio (for single choice) */}
+                <div className="flex items-center gap-2.5 shrink-0 mt-0.5">
+                  {isMulti ? (
+                    // CHECKBOX FOR MULTIPLE CHOICE
+                    <div
+                      className={`w-6 h-6 rounded-lg flex items-center justify-center border-2 transition-all ${
+                        hasSubmitted && isCorrectAnswer
+                          ? 'border-emerald-600 bg-emerald-500 text-white shadow-xs'
+                          : hasSubmitted && isSelected && !isCorrectAnswer
+                          ? 'border-rose-600 bg-rose-500 text-white shadow-xs'
+                          : isSelected
+                          ? 'border-indigo-600 bg-indigo-600 text-white shadow-xs'
+                          : 'border-slate-300 bg-white text-transparent hover:border-indigo-400'
+                      }`}
+                      title={isSelected ? 'Décocher' : 'Cocher'}
+                    >
+                      {hasSubmitted && isCorrectAnswer ? (
+                        <Check className="w-4 h-4 stroke-[3]" />
+                      ) : hasSubmitted && isSelected && !isCorrectAnswer ? (
+                        <XCircle className="w-4 h-4 stroke-[2.5]" />
+                      ) : isSelected ? (
+                        <Check className="w-4 h-4 stroke-[3]" />
+                      ) : null}
+                    </div>
                   ) : (
-                    letter
+                    // RADIO BUTTON FOR SINGLE CHOICE
+                    <div
+                      className={`w-6 h-6 rounded-full flex items-center justify-center border-2 transition-all ${
+                        hasSubmitted && isCorrectAnswer
+                          ? 'border-emerald-600 bg-emerald-500 text-white shadow-xs'
+                          : hasSubmitted && isSelected && !isCorrectAnswer
+                          ? 'border-rose-600 bg-rose-500 text-white shadow-xs'
+                          : isSelected
+                          ? 'border-indigo-600 bg-white shadow-xs'
+                          : 'border-slate-300 bg-white hover:border-indigo-400'
+                      }`}
+                    >
+                      {hasSubmitted && isCorrectAnswer ? (
+                        <Check className="w-3.5 h-3.5 stroke-[3]" />
+                      ) : hasSubmitted && isSelected && !isCorrectAnswer ? (
+                        <XCircle className="w-3.5 h-3.5" />
+                      ) : isSelected ? (
+                        <div className="w-2.5 h-2.5 rounded-full bg-indigo-600" />
+                      ) : null}
+                    </div>
                   )}
+
+                  {/* Letter Badge (A, B, C, D, E) */}
+                  <span
+                    className={`px-2 py-0.5 rounded-md text-xs font-black border transition-colors ${
+                      isSelected && !hasSubmitted
+                        ? 'bg-indigo-600 text-white border-indigo-600'
+                        : 'bg-slate-100 text-slate-700 border-slate-200'
+                    }`}
+                  >
+                    {letter}
+                  </span>
                 </div>
 
                 <div className="flex-1 text-sm sm:text-base leading-snug pt-0.5">
                   {option}
                 </div>
 
+                {/* Status Badges */}
+                {hasSubmitted && isCorrectAnswer && isSelected && (
+                  <span className="text-[10px] font-black text-emerald-800 bg-emerald-100/90 border border-emerald-200 px-2 py-0.5 rounded-full shrink-0">
+                    Exact ✓
+                  </span>
+                )}
+                {hasSubmitted && isCorrectAnswer && !isSelected && (
+                  <span className="text-[10px] font-black text-emerald-800 bg-emerald-100/90 border border-emerald-200 px-2 py-0.5 rounded-full shrink-0">
+                    Réponse attendue
+                  </span>
+                )}
+                {hasSubmitted && !isCorrectAnswer && isSelected && (
+                  <span className="text-[10px] font-black text-rose-800 bg-rose-100/90 border border-rose-200 px-2 py-0.5 rounded-full shrink-0">
+                    Inexact ✗
+                  </span>
+                )}
                 {isEliminated && !hasSubmitted && (
                   <span className="text-[10px] font-bold text-amber-700 bg-amber-100 px-2 py-0.5 rounded-full shrink-0">
                     Biffé
@@ -1071,13 +1148,28 @@ export const QCMEngine: React.FC<QCMEngineProps> = ({
               </div>
             )}
 
-            {/* Explanation text */}
-            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200/80">
-              <h4 className="font-extrabold text-xs text-slate-800 uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
-                <Stethoscope className="w-3.5 h-3.5 text-indigo-600" />
-                <span>Justification & Recommandations :</span>
-              </h4>
-              <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-medium">
+            {/* Explanation text with prominent correct answers badges */}
+            <div className="p-5 rounded-2xl bg-slate-50 border border-slate-200/80 space-y-2.5">
+              <div className="flex items-center justify-between flex-wrap gap-2 border-b border-slate-200/70 pb-2">
+                <h4 className="font-extrabold text-xs text-slate-800 uppercase tracking-wider flex items-center gap-1.5">
+                  <Stethoscope className="w-3.5 h-3.5 text-indigo-600" />
+                  <span>Correction & Explication Détaillée :</span>
+                </h4>
+                <div className="flex items-center gap-1.5">
+                  <span className="text-xs font-extrabold text-slate-600">
+                    {isMulti ? 'Réponses exactes :' : 'Réponse exacte :'}
+                  </span>
+                  {(currentQ.correctAnswers || []).map((ansIdx) => (
+                    <span
+                      key={ansIdx}
+                      className="px-2.5 py-0.5 rounded-lg text-xs font-black bg-emerald-100 text-emerald-900 border border-emerald-300 shadow-2xs"
+                    >
+                      {String.fromCharCode(65 + ansIdx)}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <p className="text-xs sm:text-sm text-slate-700 leading-relaxed font-medium whitespace-pre-line">
                 {currentQ.explanation}
               </p>
             </div>

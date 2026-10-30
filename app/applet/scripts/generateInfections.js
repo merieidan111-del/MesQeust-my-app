@@ -1,0 +1,500 @@
+import fs from 'fs';
+import path from 'path';
+
+const outDir = '/app/applet/public/assets/aistudio';
+if (!fs.existsSync(outDir)) {
+  fs.mkdirSync(outDir, { recursive: true });
+}
+
+// 1. Infections Génitales
+const infectionsHtml = `<!DOCTYPE html>
+<html lang="fr">
+<head><meta charset="UTF-8"><title>Infections Génitales Basses & Hautes</title></head>
+<body>
+<main>
+<section id="qcm">
+<h2>Banque de 25 QCM exigeants</h2>
+
+<!-- Q1 -->
+<div class="q-card">
+  <p class="q-text">Parmi les propositions suivantes concernant la vaginose bactérienne à Gardnerella vaginalis, quelle est l'affirmation exacte ?</p>
+  <ul class="q-options">
+    <li data-letter="A">Elle se caractérise par des leucorrhées mousseuses, verdâtres et aérées avec prurit intense.</li>
+    <li data-letter="B">Le pH vaginal est acide, habituellement inférieur à 4,5.</li>
+    <li data-letter="C">Le test au KOH 10% (sniff test) dégage une odeur caractéristique d'amines volatiles (poisson pourri).</li>
+    <li data-letter="D">La présence de levures bourgeonnantes à l'examen direct affirme le diagnostic.</li>
+    <li data-letter="E">Le traitement de première intention repose sur les macrolides par voie générale.</li>
+  </ul>
+  <details class="correction">
+    <summary>Correction</summary>
+    <div class="correction-body"><span class="answer-line">Réponse : C</span><p>La vaginose bactérienne associe des pertes grisâtres fluides, un pH vaginal &gt; 4,5, un sniff test positif aux amines et des clue cells à l'état frais. Traitement : Métronidazole.</p></div>
+  </details>
+</div>
+
+<!-- Q2 -->
+<div class="q-card">
+  <p class="q-text">Quel est l'agent étiologique bactérien le plus fréquemment responsable de salpingite aiguë chez la femme jeune ?</p>
+  <ul class="q-options">
+    <li data-letter="A">Candida albicans</li>
+    <li data-letter="B">Chlamydia trachomatis</li>
+    <li data-letter="C">Streptocoque du groupe B</li>
+    <li data-letter="D">Trichomonas vaginalis</li>
+    <li data-letter="E">Treponema pallidum</li>
+  </ul>
+  <details class="correction">
+    <summary>Correction</summary>
+    <div class="correction-body"><span class="answer-line">Réponse : B</span><p>Chlamydia trachomatis est le germe prédominant des infections génitales hautes chez la femme jeune, souvent insidieux et pourvoyeur d'infertilité tubaire.</p></div>
+  </details>
+</div>
+
+<!-- Q3 -->
+<div class="q-card">
+  <p class="q-text">Quels sont les éléments cardinaux du trépied clinique évocateur d'une salpingite aiguë non compliquée ?</p>
+  <ul class="q-options">
+    <li data-letter="A">Douleurs pelviennes bilatérales spontanées ou provoquées à la mobilisation utérine</li>
+    <li data-letter="B">Fièvre variable, parfois modérée ou absente</li>
+    <li data-letter="C">Leucorrhées purulentes ou métrorragies sales associées</li>
+    <li data-letter="D">Masse pelvienne fixée de plus de 10 cm au toucher vaginal</li>
+    <li data-letter="E">Aménorrhée secondaire de plus de 3 mois</li>
+  </ul>
+  <details class="correction">
+    <summary>Correction</summary>
+    <div class="correction-body"><span class="answer-line">Réponses : A, B, C</span><p>Le trépied associe douleurs pelviennes, fièvre (inconstante) et pertes vaginales anormales purulentes.</p></div>
+  </details>
+</div>
+
+<!-- Q4 -->
+<div class="q-card">
+  <p class="q-text">Concernant le syndrome de Fitz-Hugh-Curtis, quelle est la proposition exacte ?</p>
+  <ul class="q-options">
+    <li data-letter="A">Il s'agit d'une périhépatite caractérisée par des adhérences en cordes de violon entre la capsule hépatique et le diaphragme.</li>
+    <li data-letter="B">Il est exclusivement provoqué par le virus Herpes simplex de type 2.</li>
+    <li data-letter="C">La symptomatologie prédomine au niveau de la fosse iliaque gauche.</li>
+    <li data-letter="D">Il nécessite obligatoirement une hépatectomie partielle d'urgence.</li>
+    <li data-letter="E">Les transaminases hépatiques sont constamment augmentées à plus de 50 fois la normale.</li>
+  </ul>
+  <details class="correction">
+    <summary>Correction</summary>
+    <div class="correction-body"><span class="answer-line">Réponse : A</span><p>Périhépatite secondaire à Chlamydia ou au gonocoque avec adhérences péritonéales en « cordes de violon ».</p></div>
+  </details>
+</div>
+
+<!-- Q5 -->
+<div class="q-card">
+  <p class="q-text">Quelle antibiothérapie probabiliste de première intention est recommandée dans la salpingite aiguë non compliquée ?</p>
+  <ul class="q-options">
+    <li data-letter="A">Amoxicilline seule per os pendant 5 jours</li>
+    <li data-letter="B">Ceftriaxone IM (dose unique) + Doxycycline per os (14 jours) + Métronidazole per os (14 jours)</li>
+    <li data-letter="C">Ciprofloxacine en monothérapie pendant 21 jours</li>
+    <li data-letter="D">Gentamicine IV seule en cure courte de 48 heures</li>
+    <li data-letter="E">Pénicilline G IV à forte dose pendant 10 jours</li>
+  </ul>
+  <details class="correction">
+    <summary>Correction</summary>
+    <div class="correction-body"><span class="answer-line">Réponse : B</span><p>Trithérapie ciblant gonocoque (C3G), Chlamydia (cyclines 14j) et anaérobies (métronidazole 14j).</p></div>
+  </details>
+</div>
+
+<!-- Q6 -->
+<div class="q-card">
+  <p class="q-text">Concernant la trichomonase urogénitale à Trichomonas vaginalis, quelle est l'affirmation exacte ?</p>
+  <ul class="q-options">
+    <li data-letter="A">Il s'agit d'une infection non sexuellement transmissible à transmission hydrique exclusive.</li>
+    <li data-letter="B">Les leucorrhées sont typiquement blanches, épaisses et grumeleuses en lait caillé.</li>
+    <li data-letter="C">Le col utérin peut présenter un aspect piqueté framboisé caractéristique (colpitis macularis).</li>
+    <li data-letter="D">L'examen parasitologique direct entre lame et lamelle est constamment négatif.</li>
+    <li data-letter="E">Le traitement du partenaire n'est pas nécessaire.</li>
+  </ul>
+  <details class="correction">
+    <summary>Correction</summary>
+    <div class="correction-body"><span class="answer-line">Réponse : C</span><p>IST à protozoaire flagellé mobile, leucorrhées verdâtres spumeuses, col framboisé. Métronidazole chez les 2 partenaires.</p></div>
+  </details>
+</div>
+
+<!-- Q7 -->
+<div class="q-card">
+  <p class="q-text">Quelle séquelle majeure à long terme complique fréquemment les salpingites aiguës méconnues ou récidivantes ?</p>
+  <ul class="q-options">
+    <li data-letter="A">Sténose de l'artère rénale</li>
+    <li data-letter="B">Infertilité tubaire mécanique et sur-risque majeur de grossesse extra-utérine</li>
+    <li data-letter="C">Cancer de l'endomètre</li>
+    <li data-letter="D">Insuffisance ovarienne prématurée d'origine auto-immune</li>
+    <li data-letter="E">Prolapsus génital de grade 3</li>
+  </ul>
+  <details class="correction">
+    <summary>Correction</summary>
+    <div class="correction-body"><span class="answer-line">Réponse : B</span><p>L'altération de la lumière tubaire et des cils conduit à l'obstruction tubaire (hydrosalpinx, stérilité) et à la GEU.</p></div>
+  </details>
+</div>
+
+<!-- Q8 -->
+<div class="q-card">
+  <p class="q-text">La candidose vulvo-vaginale à Candida albicans se manifeste typiquement par :</p>
+  <ul class="q-options">
+    <li data-letter="A">Des pertes fétides grises sans prurit</li>
+    <li data-letter="B">Un prurit vulvaire féroce avec leucorrhées blanches grumeleuses en « lait caillé » et érythème vulvaire vif</li>
+    <li data-letter="C">Un pH vaginal alcalin supérieur à 6</li>
+    <li data-letter="D">Une fièvre supérieure à 39°C avec frissons</li>
+    <li data-letter="E">Des ulcérations indurées indolores</li>
+  </ul>
+  <details class="correction">
+    <summary>Correction</summary>
+    <div class="correction-body"><span class="answer-line">Réponse : B</span><p>Prurit intense, pertes caillebotées blanches, pH vaginal normal ou acide (&lt; 4,5), pseudo-hyphes à l'examen microscopique direct.</p></div>
+  </details>
+</div>
+
+<!-- Q9 -->
+<div class="q-card">
+  <p class="q-text">Devant toute infection génitale basse ou haute sexuellement transmissible, quelle mesure doit être systématique ?</p>
+  <ul class="q-options">
+    <li data-letter="A">L'abstention thérapeutique chez les partenaires asymptomatiques</li>
+    <li data-letter="B">Le dépistage et traitement conjoint du ou des partenaires sexuels et le dépistage des autres IST (VIH, VHB, Syphilis)</li>
+    <li data-letter="C">Une ovariectomie unilatérale de précaution</li>
+    <li data-letter="D">La pose immédiate d'un dispositif intra-utérin pour drainer la cavité</li>
+    <li data-letter="E">La réalisation d'un scanner thoraco-abdominal</li>
+  </ul>
+  <details class="correction">
+    <summary>Correction</summary>
+    <div class="correction-body"><span class="answer-line">Réponse : B</span><p>Prise en charge du partenaire pour casser la chaîne de transmission et bilan sérologique complet des IST.</p></div>
+  </details>
+</div>
+
+<!-- Q10 -->
+<div class="q-card">
+  <p class="q-text">Quelles sont les indications impératives d'hospitalisation d'une patiente pour infection génitale haute ?</p>
+  <ul class="q-options">
+    <li data-letter="A">Suspicion d'abcès tubo-ovarien ou péritonite pelvienne</li>
+    <li data-letter="B">Grossesse en cours associée</li>
+    <li data-letter="C">Doute diagnostique avec une urgence chirurgicale (appendicite, torsion d'annexe)</li>
+    <li data-letter="D">Forme hyperalgique ou intolérance aux traitements per os</li>
+    <li data-letter="E">Toutes les propositions sus-citées sont exactes</li>
+  </ul>
+  <details class="correction">
+    <summary>Correction</summary>
+    <div class="correction-body"><span class="answer-line">Réponse : E</span><p>Toutes ces situations justifient une hospitalisation en service de gynécologie pour traitement parentéral et surveillance continue.</p></div>
+  </details>
+</div>
+
+<!-- Q11 -->
+<div class="q-card">
+  <p class="q-text">Quel examen d'imagerie de première intention est indispensable pour éliminer un abcès tubo-ovarien ou un pyosalpinx ?</p>
+  <ul class="q-options">
+    <li data-letter="A">Échographie pelvienne par voie endovaginale et sus-pubienne avec Doppler</li>
+    <li data-letter="B">Hystérosalpingographie en phase aiguë fébrile</li>
+    <li data-letter="C">Radiographie du bassin sans préparation</li>
+    <li data-letter="D">Scintigraphie osseuse au technétium</li>
+    <li data-letter="E">Urographie intraveineuse</li>
+  </ul>
+  <details class="correction">
+    <summary>Correction</summary>
+    <div class="correction-body"><span class="answer-line">Réponse : A</span><p>L'échographie pelvienne endovaginale est l'examen clé. L'hystérosalpingographie est formellement contre-indiquée en phase aiguë fébrile (risque de dissémination péritonéale grave).</p></div>
+  </details>
+</div>
+
+<!-- Q12 -->
+<div class="q-card">
+  <p class="q-text">Concernant l'infection génitale à Neisseria gonorrhoeae chez la femme, quelle proposition est exacte ?</p>
+  <ul class="q-options">
+    <li data-letter="A">Elle est constamment symptomatique avec douleurs fulgurantes dès les premières heures.</li>
+    <li data-letter="B">Elle se traduit fréquemment par une cervicite mucopurulente avec col érythémateux et friable.</li>
+    <li data-letter="C">La coloration de Gram montre des bacilles à Gram positif en chaînettes.</li>
+    <li data-letter="D">Elle ne se dissémine jamais aux articulations ou à la peau.</li>
+    <li data-letter="E">Le vaccin anti-gonococcique protège à 100% à vie.</li>
+  </ul>
+  <details class="correction">
+    <summary>Correction</summary>
+    <div class="correction-body"><span class="answer-line">Réponse : B</span><p>Neisseria gonorrhoeae est un diplocoque Gram négatif intra et extra-leucocytaire (« en grains de café »), provoquant cervicite mucopurulente ou urétrite, souvent asymptomatique chez 50% des femmes.</p></div>
+  </details>
+</div>
+
+<!-- Q13 -->
+<div class="q-card">
+  <p class="q-text">Quelle complication oculaire néonatale est prévenue par l'instillation systématique de collyre chez le nouveau-né à la naissance ?</p>
+  <ul class="q-options">
+    <li data-letter="A">La cataracte congénitale rubéoleuse</li>
+    <li data-letter="B">L'ophtalmie purulente néonatale à gonocoque et Chlamydia</li>
+    <li data-letter="C">Le glaucome congénital héréditaire</li>
+    <li data-letter="D">Le rétinoblastome bilatéral</li>
+    <li data-letter="E">Le décollement de rétine spontané</li>
+  </ul>
+  <details class="correction">
+    <summary>Correction</summary>
+    <div class="correction-body"><span class="answer-line">Réponse : B</span><p>Le collyre antibiotique prévient la conjonctivite purulente néonatale qui peut évoluer rapidement vers la cécité par ulcération cornéenne.</p></div>
+  </details>
+</div>
+
+<!-- Q14 -->
+<div class="q-card">
+  <p class="q-text">Dans la vaginose bactérienne, quel test rapide réalisé en consultation permet d'objectiver l'odeur caractéristique d'amines ?</p>
+  <ul class="q-options">
+    <li data-letter="A">Test au lugol (Schiller)</li>
+    <li data-letter="B">Test à la potasse (KOH à 10%) ou Whiff test</li>
+    <li data-letter="C">Test de Fern (cristallisation en feuille de fougère)</li>
+    <li data-letter="D">Test au bleu de méthylène sur frottis</li>
+    <li data-letter="E">Test à l'acide acétique 5%</li>
+  </ul>
+  <details class="correction">
+    <summary>Correction</summary>
+    <div class="correction-body"><span class="answer-line">Réponse : B</span><p>L'addition d'une goutte de KOH 10% aux sécrétions vaginales libère des polyamines (putrescine, cadavérique) produites par les bactéries anaérobies associées à Gardnerella.</p></div>
+  </details>
+</div>
+
+<!-- Q15 -->
+<div class="q-card">
+  <p class="q-text">Quel geste diagnostique et thérapeutique de référence permet de visualiser les trompes et de réaliser un prélèvement bactériologique direct en cas de doute clinique sur une salpingite ?</p>
+  <ul class="q-options">
+    <li data-letter="A">La cœlioscopie (laparoscopie) abdominale</li>
+    <li data-letter="B">La colonoscopie totale</li>
+    <li data-letter="C">La cystoscopie rétrograde</li>
+    <li data-letter="D">La culdocentèse à l'aveugle</li>
+    <li data-letter="E">L'urographie rétrograde</li>
+  </ul>
+  <details class="correction">
+    <summary>Correction</summary>
+    <div class="correction-body"><span class="answer-line">Réponse : A</span><p>La cœlioscopie est l'examen de référence (gold standard) : elle visualise l'œdème tubaire, les fausses membranes, draine d'éventuels abcès et confirme le diagnostic bactériologique.</p></div>
+  </details>
+</div>
+
+<!-- Q16 -->
+<div class="q-card">
+  <p class="q-text">Chez une femme porteuse d'un dispositif intra-utérin (DIU) présentant une salpingite aiguë grave, quelle conduite immédiate est requise ?</p>
+  <ul class="q-options">
+    <li data-letter="A">Laisser le DIU en place indéfiniment sans antibiothérapie</li>
+    <li data-letter="B">Débuter l'antibiothérapie par voie intraveineuse et retirer le DIU après quelques heures sous couverture antibiotique</li>
+    <li data-letter="C">Procéder à une hystérectomie totale immédiate</li>
+    <li data-letter="D">Remplacer le DIU par un autre stérilet au cuivre dans la même séance</li>
+    <li data-letter="E">Injecter du sérum physiologique intra-utérin sous pression</li>
+  </ul>
+  <details class="correction">
+    <summary>Correction</summary>
+    <div class="correction-body"><span class="answer-line">Réponse : B</span><p>Le DIU doit être retiré sous couverture antibiotique (après initiation du traitement) pour supprimer le corps étranger infecté, et envoyé en culture bactériologique (recherche d'Actinomyces notamment).</p></div>
+  </details>
+</div>
+
+<!-- Q17 -->
+<div class="q-card">
+  <p class="q-text">Quel germe anaérobie filamenteux à Gram positif est spécifiquement associé aux infections pelviennes chroniques sur stérilet au long cours ?</p>
+  <ul class="q-options">
+    <li data-letter="A">Actinomyces israelii</li>
+    <li data-letter="B">Pseudomonas aeruginosa</li>
+    <li data-letter="C">Listeria monocytogenes</li>
+    <li data-letter="D">Helicobacter pylori</li>
+    <li data-letter="E">Vibrio cholerae</li>
+  </ul>
+  <details class="correction">
+    <summary>Correction</summary>
+    <div class="correction-body"><span class="answer-line">Réponse : A</span><p>Actinomyces israelii est classiquement retrouvé sur DIU maintenu de nombreuses années, pouvant donner des abcès pelviens pseudotumoraux avec grains jaunes soufrés.</p></div>
+  </details>
+</div>
+
+<!-- Q18 -->
+<div class="q-card">
+  <p class="q-text">Quelle est la durée minimale recommandée de traitement par Doxycycline dans la salpingite aiguë non compliquée à Chlamydia trachomatis ?</p>
+  <ul class="q-options">
+    <li data-letter="A">2 jours</li>
+    <li data-letter="B">5 jours</li>
+    <li data-letter="C">14 jours</li>
+    <li data-letter="D">6 mois</li>
+    <li data-letter="E">1 an</li>
+  </ul>
+  <details class="correction">
+    <summary>Correction</summary>
+    <div class="correction-body"><span class="answer-line">Réponse : C</span><p>14 jours complets sont requis pour éradiquer Chlamydia et prévenir la rechute et les séquelles tubaires.</p></div>
+  </details>
+</div>
+
+<!-- Q19 -->
+<div class="q-card">
+  <p class="q-text">Parmi les signes suivants, lequel plaide le plus en faveur d'un abcès du cul-de-sac de Douglas compliquant une pelvipéritonite ?</p>
+  <ul class="q-options">
+    <li data-letter="A">Cul-de-sac de Douglas souple et indolore</li>
+    <li data-letter="B">Bombement douloureux, rénitent et chaud du cul-de-sac postérieur au toucher vaginal (« cri du Douglas »)</li>
+    <li data-letter="C">Disparition complète des contractions utérines</li>
+    <li data-letter="D">Hypotension isolée sans aucune douleur</li>
+    <li data-letter="E">Échographie pelvienne strictement normale sans aucun épanchement</li>
+  </ul>
+  <details class="correction">
+    <summary>Correction</summary>
+    <div class="correction-body"><span class="answer-line">Réponse : B</span><p>L'abcès du Douglas donne un bombement très douloureux et rénitent accessible au toucher vaginal, justiciable d'un drainage chirurgical ou d'une ponction transvaginale sous échoguidage.</p></div>
+  </details>
+</div>
+
+<!-- Q20 -->
+<div class="q-card">
+  <p class="q-text">Concernant l'infection à Papillomavirus humain (HPV), quelle est l'affirmation exacte ?</p>
+  <ul class="q-options">
+    <li data-letter="A">Les sérotypes 6 et 11 sont à haut risque oncogène pour le col utérin.</li>
+    <li data-letter="B">Les sérotypes 16 et 18 sont responsables de plus de 70% des cancers invasifs du col de l'utérus.</li>
+    <li data-letter="C">L'infection par le HPV est systématiquement définitive et ne guérit jamais spontanément.</li>
+    <li data-letter="D">Le préservatif confère une protection absolue à 100% contre la transmission du HPV.</li>
+    <li data-letter="E">Il n'existe aucun vaccin prophylactique disponible contre le HPV.</li>
+  </ul>
+  <details class="correction">
+    <summary>Correction</summary>
+    <div class="correction-body"><span class="answer-line">Réponse : B</span><p>HPV 16 et 18 sont les deux génotypes majeurs à haut risque oncogène (oncoprotéines E6 dégradant p53 et E7 inactivant pRb). 6 et 11 sont responsables des condylomes acuminés bénins.</p></div>
+  </details>
+</div>
+
+<!-- Q21 -->
+<div class="q-card">
+  <p class="q-text">Quel test moléculaire hautement sensible est aujourd'hui recommandé en première intention pour le dépistage de Chlamydia trachomatis et Neisseria gonorrhoeae ?</p>
+  <ul class="q-options">
+    <li data-letter="A">L'amplification des acides nucléiques (TAAN / PCR) sur premier jet d'urine ou prélèvement endocervical</li>
+    <li data-letter="B">Le dosage des IgG sériques par ELISA</li>
+    <li data-letter="C">La vitesse de sédimentation (VS)</li>
+    <li data-letter="D">Le frottis cervico-vaginal conventionnel de Papanicolaou</li>
+    <li data-letter="E">L'hémoculture sur gélose chocolat</li>
+  </ul>
+  <details class="correction">
+    <summary>Correction</summary>
+    <div class="correction-body"><span class="answer-line">Réponse : A</span><p>Les TAAN (PCR) présentent une sensibilité supérieure à 95% et représentent le test de référence.</p></div>
+  </details>
+</div>
+
+<!-- Q22 -->
+<div class="q-card">
+  <p class="q-text">Une bartholinite aiguë suppurée se présente typiquement comme :</p>
+  <ul class="q-options">
+    <li data-letter="A">Une tuméfaction douloureuse, unilatérale, inflammatoire du tiers postérieur de la grande lèvre</li>
+    <li data-letter="B">Une ulcération indolore du clitoris</li>
+    <li data-letter="C">Une masse rétro-utérine rénitente</li>
+    <li data-letter="D">Une adénopathie sus-claviculaire gauche</li>
+    <li data-letter="E">Une brûlure urétrale sans aucune anomalie vulvaire</li>
+  </ul>
+  <details class="correction">
+    <summary>Correction</summary>
+    <div class="correction-body"><span class="answer-line">Réponse : A</span><p>La glande de Bartholin siège au tiers postérieur de la grande lèvre. L'obstruction de son canal entraîne une surinfection avec abcès hyperalgique nécessitant drainage ou marsupialisation.</p></div>
+  </details>
+</div>
+
+<!-- Q23 -->
+<div class="q-card">
+  <p class="q-text">Dans la vaginite à Trichomonas, quelle est la couleur typique des sécrétions vaginales ?</p>
+  <ul class="q-options">
+    <li data-letter="A">Blanc épais cailleboté</li>
+    <li data-letter="B">Jaune-verdâtre, fluide et spumeuse (mousseuse)</li>
+    <li data-letter="C">Noirâtre goudronneuse</li>
+    <li data-letter="D">Rouge vif hémorragique pure</li>
+    <li data-letter="E">Incolore et visqueuse comme du blanc d'œuf</li>
+  </ul>
+  <details class="correction">
+    <summary>Correction</summary>
+    <div class="correction-body"><span class="answer-line">Réponse : B</span><p>Pertes verdâtres abondantes, spumeuses et malodorantes caractéristiques de Trichomonas.</p></div>
+  </details>
+</div>
+
+<!-- Q24 -->
+<div class="q-card">
+  <p class="q-text">Quel traitement minute (dose unique) est efficace dans la trichomonase urogénitale non compliquée ?</p>
+  <ul class="q-options">
+    <li data-letter="A">Métronidazole 2 g per os en prise unique</li>
+    <li data-letter="B">Pénicilline V per os pendant 30 jours</li>
+    <li data-letter="C">Fluconazole 50 mg par jour pendant 2 mois</li>
+    <li data-letter="D">Gentamicine 160 mg en IM quotidienne pendant 10 jours</li>
+    <li data-letter="E">Aspirine 1 g par jour</li>
+  </ul>
+  <details class="correction">
+    <summary>Correction</summary>
+    <div class="correction-body"><span class="answer-line">Réponse : A</span><p>Le Métronidazole 2g monodose (ou Tinidazole) traite efficacement Trichomonas vaginalis avec traitement simultané du partenaire.</p></div>
+  </details>
+</div>
+
+<!-- Q25 -->
+<div class="q-card">
+  <p class="q-text">Parmi les propositions suivantes concernant la flore vaginale normale (flore de Döderlein), laquelle est exacte ?</p>
+  <ul class="q-options">
+    <li data-letter="A">Elle est dominée par des staphylocoques dorés producteurs d'endotoxines.</li>
+    <li data-letter="B">Elle est constituée de bacilles de Döderlein (Lactobacillus spp.) qui transforment le glycogène en acide lactique et maintiennent un pH acide protecteur (3,8 à 4,5).</li>
+    <li data-letter="C">Elle est totalement absente chez la femme en période d'activité génitale.</li>
+    <li data-letter="D">Son éradication par des douches vaginales quotidiennes est fortement recommandée.</li>
+    <li data-letter="E">Elle est stimulée par la testostérone et inhibée par les œstrogènes.</li>
+  </ul>
+  <details class="correction">
+    <summary>Correction</summary>
+    <div class="correction-body"><span class="answer-line">Réponse : B</span><p>Les lactobacilles maintiennent l'acidité vaginale via la production d'acide lactique et d'H2O2, empêchant la prolifération des pathogènes opportunistes.</p></div>
+  </details>
+</div>
+
+</section>
+
+<!-- CAS 1 -->
+<article class="case">
+  <h3>Cas Clinique N°1 : Salpingite aiguë de la femme jeune</h3>
+  <div class="vignette">Patiente de 24 ans, nulligeste, consulte pour des douleurs pelviennes bilatérales avec fièvre à 38,5°C et leucorrhées jaunâtres depuis 4 jours. Au TV : mobilisation utérine douloureuse et empâtement annexiel bilatéral.</div>
+  <p class="q-text">Quel est le diagnostic le plus probable et quel bilan de première intention réaliser ?</p>
+  <ul class="q-options">
+    <li data-letter="A">Salpingite aiguë non compliquée ; prélèvement bactériologique endocervical avec PCR Chlamydia/Gonocoque, NFS, CRP et échographie pelvienne.</li>
+    <li data-letter="B">Grossesse extra-utérine rompue sans aucun besoin de prélèvement.</li>
+    <li data-letter="C">Endométriose profonde sans rapport avec une infection.</li>
+    <li data-letter="D">Appendicite rétro-cæcale isolée.</li>
+    <li data-letter="E">Pyélonéphrite aiguë obstructive gauche.</li>
+  </ul>
+  <details class="correction"><summary>Correction</summary><div class="correction-body"><span class="answer-line">Réponse : A</span><p>Tableau d'infection génitale haute (salpingite) chez une femme jeune sexuellement active nécessitant bilan bactériologique et imagerie.</p></div></details>
+</article>
+
+<!-- CAS 2 -->
+<article class="case">
+  <h3>Cas Clinique N°2 : Périhépatite de Fitz-Hugh-Curtis</h3>
+  <div class="vignette">Femme de 26 ans traitée pour salpingite il y a 2 semaines, consulte pour des douleurs vives de l'hypochondre droit exacerbées par l'inspiration profonde. Échographie biliaire normale, bilan hépatique subnormal.</div>
+  <p class="q-text">Quelle complication devez-vous évoquer ?</p>
+  <ul class="q-options">
+    <li data-letter="A">Colique hépatique lithiasique</li>
+    <li data-letter="B">Syndrome de Fitz-Hugh-Curtis (périhépatite à Chlamydia trachomatis)</li>
+    <li data-letter="C">Infarctus du myocarde inférieur</li>
+    <li data-letter="D">Ulcère gastrique perforé</li>
+    <li data-letter="E">Kyste hydatique rompu</li>
+  </ul>
+  <details class="correction"><summary>Correction</summary><div class="correction-body"><span class="answer-line">Réponse : B</span><p>Adhérences péri-hépatiques en cordes de violon post-chlamydienne.</p></div></details>
+</article>
+
+<!-- CAS 3 -->
+<article class="case">
+  <h3>Cas Clinique N°3 : Vaginose bactérienne récidivante</h3>
+  <div class="vignette">Patiente de 30 ans gênée par des pertes vaginales grisâtres très fluides et une odeur de poisson pourri accentuée après les rapports sexuels, sans démangeaison ni rougeur. Sniff test positif au KOH.</div>
+  <p class="q-text">Quel diagnostic posez-vous et quel est le traitement adapté ?</p>
+  <ul class="q-options">
+    <li data-letter="A">Vaginose bactérienne ; Métronidazole per os ou en ovules pendant 7 jours.</li>
+    <li data-letter="B">Candidose aiguë ; ovule d'éconazole dose unique.</li>
+    <li data-letter="C">Syphilis secondaire ; Pénicilline G retard.</li>
+    <li data-letter="D">Herpès génital ; Aciclovir pendant 10 jours.</li>
+    <li data-letter="E">Cancer du vagin ; radiothérapie externe.</li>
+  </ul>
+  <details class="correction"><summary>Correction</summary><div class="correction-body"><span class="answer-line">Réponse : A</span><p>Critères d'Amsel vérifiés pour la vaginose bactérienne. Traitement de choix : Métronidazole.</p></div></details>
+</article>
+
+<!-- CAS 4 -->
+<article class="case">
+  <h3>Cas Clinique N°4 : Abcès tubo-ovarien compliquant une salpingite</h3>
+  <div class="vignette">Femme de 32 ans hospitalisée pour pelvipéritonite fébrile à 39,2°C avec masse latéro-utérine droite de 6 cm fluctuante et très douloureuse à l'échographie Doppler.</div>
+  <p class="q-text">Quelle est la stratégie thérapeutique immédiate ?</p>
+  <ul class="q-options">
+    <li data-letter="A">Antibiothérapie intraveineuse triple à large spectre (C3G + Métronidazole + Gentamicine) et drainage écho-guidé ou cœlioscopique en l'absence d'amélioration rapide à 48h.</li>
+    <li data-letter="B">Traitement ambulatoire par comprimés oraux d'ibuprofène.</li>
+    <li data-letter="C">Hystérectomie élargie d'emblée avec curage ganglionnaire lombo-aortique.</li>
+    <li data-letter="D">Surveillance simple sans antibiotiques pendant 15 jours.</li>
+    <li data-letter="E">Radiothérapie pelvienne anti-inflammatoire.</li>
+  </ul>
+  <details class="correction"><summary>Correction</summary><div class="correction-body"><span class="answer-line">Réponse : A</span><p>L'abcès tubo-ovarien est une urgence médico-chirurgicale associant antibiothérapie parentérale et drainage.</p></div></details>
+</article>
+
+<!-- CAS 5 -->
+<article class="case">
+  <h3>Cas Clinique N°5 : Bartholinite aiguë abcédée</h3>
+  <div class="vignette">Femme de 22 ans présentant depuis 48 heures une tuméfaction ovalaire rouge, chaude et insomniante de la grande lèvre gauche, mesurant 4 cm, gênant la marche et la position assise.</div>
+  <p class="q-text">Quel geste thérapeutique permet un soulagement immédiat de la patiente ?</p>
+  <ul class="q-options">
+    <li data-letter="A">Incision-drainage et marsupialisation de la glande de Bartholin sous anesthésie locale ou générale, associée à une antibiothérapie adaptée.</li>
+    <li data-letter="B">Ponction biopsie rénale.</li>
+    <li data-letter="C">Application exclusive de compresses froides pendant un mois.</li>
+    <li data-letter="D">Vulvectomie superficielle radicale.</li>
+    <li data-letter="E">Chimiothérapie systémique.</li>
+  </ul>
+  <details class="correction"><summary>Correction</summary><div class="correction-body"><span class="answer-line">Réponse : A</span><p>L'évacuation de la collection purulente par incision et méchage ou marsupialisation apporte une antalgie spectaculaire.</p></div></details>
+</article>
+
+</main>
+</body>
+</html>`;
+
+fs.writeFileSync(path.join(outDir, 'QCM_-_Infections_Genitales_Basses_Hautes.html'), infectionsHtml);
+console.log('Saved Infections Genitales HTML');

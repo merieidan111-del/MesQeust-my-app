@@ -36,6 +36,10 @@ import {
   ALL_GASTRO_QUESTIONS,
   ALL_GASTRO_RESOURCES,
 } from './gastroMaster';
+import {
+  ALL_GYNECO_COURSES,
+  ALL_GYNECO_QUESTIONS,
+} from './gyneco/gynecoMaster';
 
 export const MEDICAL_MODULES: Module[] = [
   {
@@ -143,9 +147,9 @@ export const MEDICAL_MODULES: Module[] = [
     academicYear: '5ème Année',
     icon: 'HeartHandshake',
     color: 'from-rose-500 to-pink-600',
-    description: 'Suivi de grossesse, accouchement, hémorragies obstétricales, pathologies gynécologiques et dépistage.',
-    totalQuestions: 0,
-    coursesCount: 0,
+    description: 'Programme officiel complet (22 cours & 731 QCMs/Cas dont 154 à choix multiples) structuré en 3 subdivisions : Anapat (Pathologie du col & ovaires), Gynécologie (Fibromes, couple infertile, aménorrhées, endométriose, cycle, infections, contraception) et Obstétrique (Grossesse normale, GHR, GEU, avortement, MAP, diabète, accouchement, délivrance, etc.).',
+    totalQuestions: ALL_GYNECO_QUESTIONS.length,
+    coursesCount: ALL_GYNECO_COURSES.length,
     progressPercent: 0,
   },
   {
@@ -237,9 +241,15 @@ export const MEDICAL_COURSES: Course[] = [
 
   // All 24 Hematology & Oncology courses extracted exactly from the user's files
   ...ALL_HEMATOLOGY_COURSES,
+
+  // All 22 Gynecology, Obstetrics & Anapat courses (Anapat first)
+  ...ALL_GYNECO_COURSES,
 ];
 
 export const INITIAL_QUESTIONS: Question[] = [
+  // All 716 Gyneco-Obstétrique questions with Anapat first
+  ...ALL_GYNECO_QUESTIONS,
+
   // All comprehensive Cardiology questions integrated without skipping any
   ...ALL_CARDIOLOGY_QUESTIONS,
 

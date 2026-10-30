@@ -22,6 +22,8 @@ import {
   Droplets,
   Folder,
   ClipboardList,
+  Baby,
+  HeartHandshake,
 } from 'lucide-react';
 import { Module, Course, CourseResource } from '../types/medical';
 import { MEDICAL_COURSES, COURSE_RESOURCES } from '../data/mockMedicalData';
@@ -31,10 +33,10 @@ export const getSubdivisionMeta = (subdivision: string) => {
   const s = subdivision.trim();
   const lower = s.toLowerCase();
 
-  if (lower.includes('anapath')) {
+  if (lower.includes('anapat')) {
     return {
-      label: 'ANAPATH',
-      name: 'Anatomopathologie Digestive',
+      label: 'Anapat',
+      name: 'Anatomopathologie Gynécologique & Spécialisée',
       icon: Microscope,
       badgeBg: 'bg-teal-50 text-teal-800 border-teal-200',
       activeCardBg: 'bg-teal-50/80 border-teal-400 shadow-md ring-2 ring-teal-200',
@@ -47,7 +49,47 @@ export const getSubdivisionMeta = (subdivision: string) => {
       btnActive: 'bg-teal-600 text-white shadow-xs',
       btnPlay: 'bg-teal-700 hover:bg-teal-800 text-white',
       bannerBg: 'bg-teal-50/90 border-teal-200 text-teal-900',
-      desc: 'Histologie, biopsies digestives, polypes adénomateux, dysplasie, métaplasie et critères microscopiques de malignité.',
+      desc: 'Pathologie du col utérin (CIN 1-2-3, HPV, dépistage FCV, carcinomes épidermoïdes & ADK) et pathologie ovarienne (épithéliales, germinales, stroma, métastases Krukenberg).',
+    };
+  }
+
+  if (lower.includes('gyneco') || lower.includes('gynéco')) {
+    return {
+      label: 'Gynécologie',
+      name: 'Gynécologie Médicale & Chirurgicale',
+      icon: HeartHandshake,
+      badgeBg: 'bg-rose-50 text-rose-800 border-rose-200',
+      activeCardBg: 'bg-rose-50/80 border-rose-400 shadow-md ring-2 ring-rose-200',
+      hoverCardBg: 'bg-white hover:bg-rose-50/30 border-slate-200/80 shadow-xs hover:border-rose-200',
+      iconBg: 'bg-rose-100 text-rose-700',
+      pillActive: 'bg-rose-600 text-white shadow-sm',
+      pillInactive: 'text-rose-700 hover:text-rose-900 hover:bg-rose-50',
+      pillCount: 'bg-rose-100 text-rose-800',
+      pillCountActive: 'bg-rose-700 text-white',
+      btnActive: 'bg-rose-600 text-white shadow-xs',
+      btnPlay: 'bg-rose-700 hover:bg-rose-800 text-white',
+      bannerBg: 'bg-rose-50/90 border-rose-200 text-rose-900',
+      desc: 'Fibrome utérin, couple infertile, aménorrhées primaires & secondaires, endométriose, cycle menstruel, infections génitales et contraception.',
+    };
+  }
+
+  if (lower.includes('obstet') || lower.includes('obstét')) {
+    return {
+      label: 'Obstétrique',
+      name: 'Obstétrique & Périnatalité',
+      icon: Baby,
+      badgeBg: 'bg-amber-50 text-amber-800 border-amber-200',
+      activeCardBg: 'bg-amber-50/80 border-amber-400 shadow-md ring-2 ring-amber-200',
+      hoverCardBg: 'bg-white hover:bg-amber-50/30 border-slate-200/80 shadow-xs hover:border-amber-200',
+      iconBg: 'bg-amber-100 text-amber-800',
+      pillActive: 'bg-amber-600 text-white shadow-sm',
+      pillInactive: 'text-amber-800 hover:text-amber-950 hover:bg-amber-50',
+      pillCount: 'bg-amber-100 text-amber-900',
+      pillCountActive: 'bg-amber-700 text-white',
+      btnActive: 'bg-amber-600 text-white shadow-xs',
+      btnPlay: 'bg-amber-700 hover:bg-amber-800 text-white',
+      bannerBg: 'bg-amber-50/90 border-amber-200 text-amber-900',
+      desc: 'Grossesse normale & GHR, GEU, avortement, MAP, diabète gestationnel, accouchement, présentations défléchies/siège, délivrance, suites de couches & maladies trophoblastiques.',
     };
   }
 
