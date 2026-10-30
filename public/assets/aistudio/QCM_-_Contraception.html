@@ -3,732 +3,937 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Contraception Hormonale & Intra-Utérine | Révision 5ème Année Médecine</title>
+<title>Contraception — Révision 5ème Année</title>
+<style>
+  :root{
+    --navy:#1a3a5c; --navy-2:#2d5580; --slate:#475569; --teal:#0d9488;
+    --teal-l:#14b8a6; --bg:#f1f5f9; --card:#ffffff; --coral:#e11d48;
+    --amber:#d97706; --violet:#7c3aed; --border:#e2e8f0; --text:#1e293b;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{
+    font-family:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;
+    background:linear-gradient(180deg,#eef2f7 0%,#f8fafc 100%);
+    color:var(--text); line-height:1.6; padding:24px 16px 80px;
+  }
+  .wrap{max-width:1100px;margin:0 auto}
+  header.hero{
+    background:linear-gradient(135deg,var(--navy) 0%,var(--navy-2) 60%,var(--teal) 100%);
+    color:#fff; padding:44px 32px; border-radius:22px; margin-bottom:28px;
+    box-shadow:0 18px 40px -18px rgba(26,58,92,.5);
+    position:relative; overflow:hidden;
+  }
+  header.hero::after{
+    content:""; position:absolute; right:-60px; top:-60px; width:260px; height:260px;
+    background:radial-gradient(circle,rgba(20,184,166,.35),transparent 70%);
+    border-radius:50%;
+  }
+  header.hero h1{font-size:2.2rem; font-weight:800; letter-spacing:-.5px; margin-bottom:8px}
+  header.hero .sub{font-size:1.05rem; opacity:.92; max-width:720px}
+  header.hero .pills{margin-top:18px; display:flex; gap:8px; flex-wrap:wrap}
+  header.hero .pills span{
+    background:rgba(255,255,255,.16); padding:6px 14px; border-radius:999px;
+    font-size:.82rem; font-weight:600; backdrop-filter:blur(6px);
+    border:1px solid rgba(255,255,255,.2);
+  }
+  h2.sec{
+    font-size:1.5rem; color:var(--navy); margin:42px 0 20px;
+    display:flex; align-items:center; gap:12px; font-weight:800; letter-spacing:-.3px;
+  }
+  h2.sec .num{
+    background:linear-gradient(135deg,var(--teal),var(--teal-l)); color:#fff;
+    width:40px; height:40px; border-radius:12px; display:grid; place-items:center;
+    font-size:1rem; box-shadow:0 6px 14px -6px rgba(13,148,136,.5);
+  }
+  .badge{
+    display:inline-block; font-size:.72rem; font-weight:700; padding:3px 10px;
+    border-radius:999px; letter-spacing:.3px; text-transform:uppercase;
+  }
+  .b-single{background:#e0f2fe; color:#0369a1}
+  .b-multi{background:#fef3c7; color:#92400e}
+  .b-rf{background:#fce7f3; color:#9d174d}
+  .b-theme{background:#ecfdf5; color:#047857; font-weight:600; text-transform:none; letter-spacing:0}
+  .b-case{background:#ede9fe; color:#5b21b6}
+  .qcm-card{
+    background:var(--card); border-radius:18px; padding:22px 24px; margin-bottom:18px;
+    border:1px solid var(--border); box-shadow:0 4px 16px -8px rgba(15,23,42,.12);
+    transition:transform .2s ease, box-shadow .2s ease;
+  }
+  .qcm-card:hover{transform:translateY(-2px); box-shadow:0 12px 26px -14px rgba(15,23,42,.22)}
+  .qcm-head{display:flex; flex-wrap:wrap; align-items:center; gap:8px; margin-bottom:12px}
+  .qcm-num{
+    background:linear-gradient(135deg,var(--navy),var(--navy-2)); color:#fff;
+    width:34px; height:34px; border-radius:10px; display:grid; place-items:center;
+    font-weight:800; font-size:.9rem; flex-shrink:0;
+  }
+  .qcm-q{font-weight:600; color:var(--navy); margin-bottom:12px; font-size:1.02rem}
+  .options{list-style:none; display:flex; flex-direction:column; gap:7px; margin-bottom:14px}
+  .options li{
+    padding:9px 14px; background:#f8fafc; border:1px solid var(--border);
+    border-radius:10px; font-size:.94rem;
+  }
+  .options li b{color:var(--teal); margin-right:6px}
+  .corr{
+    background:linear-gradient(135deg,#f0fdfa 0%,#ecfdf5 100%);
+    border-left:4px solid var(--teal); border-radius:10px; padding:14px 18px;
+    font-size:.92rem; color:#134e4a;
+  }
+  .corr .ans{
+    display:inline-block; background:var(--teal); color:#fff; padding:2px 10px;
+    border-radius:6px; font-weight:700; font-size:.82rem; margin-bottom:8px;
+  }
+  .corr p{margin-bottom:6px}
+  .corr p:last-child{margin-bottom:0}
+  .corr .why{color:#7f1d1d; background:#fee2e2; padding:2px 6px; border-radius:4px; font-weight:600}
+  .case{
+    background:var(--card); border-radius:20px; padding:0; margin-bottom:26px;
+    border:1px solid var(--border); box-shadow:0 6px 22px -12px rgba(15,23,42,.18);
+    overflow:hidden;
+  }
+  .case-head{
+    background:linear-gradient(135deg,#312e81 0%,#5b21b6 100%); color:#fff;
+    padding:20px 24px;
+  }
+  .case-head h3{font-size:1.15rem; margin-bottom:4px; font-weight:700}
+  .case-head .vignette{font-size:.92rem; opacity:.93; line-height:1.55}
+  .case-body{padding:22px 24px}
+</style>
 </head>
 <body>
-<header>
-  <h1>Contraception Hormonale & Intra-Utérine</h1>
-  <p>Œstroprogestatifs, Progestatifs, DIU, Contraception d'Urgence | 5ème Année</p>
+<div class="wrap">
+
+<header class="hero">
+  <h1>Contraception — Révision Exhaustive</h1>
+  <p class="sub">5<sup>e</sup> Année Médecine · Faculté de Médecine d'Alger · EHS Tipaza · Pr. Kouini</p>
 </header>
-<main>
-<section id="qcm">
-  <h2>Banque de 25 QCM exigeants</h2>
 
-  <!-- Q1 -->
-  <div class="q-card">
-    <div class="q-top">
-      <span class="q-num">Q1</span>
-      <span class="badge">QCM</span>
-    </div>
-    <p class="q-text">Concernant le mécanisme d'action principal de la contraception œstroprogestative combinée, quelle est la proposition exacte ?</p>
-    <ul class="q-options">
-      <li data-letter="A">Inhibition de l'ovulation par blocage du pic de LH et de FSH au niveau hypothalamo-hypophysaire</li>
-      <li data-letter="B">Lésion cytotoxique directe sur les spermatozoïdes dans le vagin</li>
-      <li data-letter="C">Destruction chirurgicale irréversible des ovaires</li>
-      <li data-letter="D">Augmentation massive de la production de FSH hypophysaire</li>
-      <li data-letter="E">Accélération du transit tubaire empêchant la fécondation</li>
-    </ul>
-    <details class="correction">
-      <summary>Voir la correction et l'explication détaillée</summary>
-      <div class="correction-body">
-        <span class="answer-line">Réponse : A</span>
-        <div class="why">L'effet antigonadotrope rétrocontrôle négatif de l'œstrogène et du progestatif bloque le pic ovulatoire de gonadotrophines (LH et FSH), associé à une atrophie endométriale et à l'imperméabilité de la glaire cervicale.</div>
-      </div>
-    </details>
+<h2 class="sec"><span class="num">1</span>Banque de 25 QCM exigeants</h2>
+
+<!-- Q1 -->
+<article class="qcm-card">
+  <div class="qcm-head">
+    <div class="qcm-num">1</div>
+    <span class="badge b-single">QCM Simple</span>
+    <span class="badge b-theme">Mécanisme d'action — Œstroprogestatifs</span>
   </div>
-
-  <!-- Q2 -->
-  <div class="q-card">
-    <div class="q-top">
-      <span class="q-num">Q2</span>
-      <span class="badge">QCM</span>
-    </div>
-    <p class="q-text">Parmi les situations cliniques suivantes, laquelle constitue une contre-indication absolue (Catégorie 4 OMS) à la contraception œstroprogestative ?</p>
-    <ul class="q-options">
-      <li data-letter="A">Antécédent personnel de thrombose veineuse profonde ou d'embolie pulmonaire</li>
-      <li data-letter="B">Dysménorrhée primaire chez une adolescente</li>
-      <li data-letter="C">Acné rétentionnelle modérée</li>
-      <li data-letter="D">Kyste fonctionnel ovarien folliculaire</li>
-      <li data-letter="E">Antécédent familial éloigné de diabète de type 2</li>
-    </ul>
-    <details class="correction">
-      <summary>Voir la correction et l'explication détaillée</summary>
-      <div class="correction-body">
-        <span class="answer-line">Réponse : A</span>
-        <div class="why">Tout antécédent thromboembolique veineux ou artériel, les thrombophilies constitutionnelles et le tabagisme > 35 ans sont des contre-indications absolues aux œstroprogestatifs.</div>
-      </div>
-    </details>
+  <p class="qcm-q">Concernant le mécanisme d'action des contraceptifs œstroprogestatifs, quelle proposition est exacte ?</p>
+  <ul class="options">
+    <li><b>A.</b> Ils bloquent l'ovulation uniquement par rétrocontrôle négatif sur l'axe hypothalamo-hypophysaire</li>
+    <li><b>B.</b> Ils agissent exclusivement par épaississement de la glaire cervicale</li>
+    <li><b>C.</b> Ils associent un blocage de l'ovulation, un épaississement de la glaire cervicale et une modification de l'endomètre</li>
+    <li><b>D.</b> Ils empêchent la nidation en modifiant l'endomètre sans bloquer l'ovulation</li>
+    <li><b>E.</b> Ils détruisent les spermatozoïdes dans les voies génitales</li>
+  </ul>
+  <div class="corr">
+    <span class="ans">Réponse : C</span>
+    <p>Le cours insiste sur le <b>triple mécanisme</b> des œstroprogestatifs : (1) blocage de l'ovulation par rétrocontrôle hypophyso-hypothalamique, (2) épaississement de la glaire cervicale gênant le passage des spermatozoïdes, (3) modification de l'endomètre le rendant impropre à la nidation.</p>
   </div>
+</article>
 
-  <!-- Q3 -->
-  <div class="q-card">
-    <div class="q-top">
-      <span class="q-num">Q3</span>
-      <span class="badge">QCM</span>
-    </div>
-    <p class="q-text">Chez une femme de 38 ans qui fume 15 cigarettes par jour, quelle méthode contraceptive est formellement contre-indiquée ?</p>
-    <ul class="q-options">
-      <li data-letter="A">La pilule œstroprogestative combinée (minidosée)</li>
-      <li data-letter="B">Le dispositif intra-utérin au cuivre</li>
-      <li data-letter="C">L'implant progestatif sous-cutané à l'étonogestrel</li>
-      <li data-letter="D">Les microprogestatifs oraux au lévonorgestrel ou désogestrel</li>
-      <li data-letter="E">Le préservatif masculin</li>
-    </ul>
-    <details class="correction">
-      <summary>Voir la correction et l'explication détaillée</summary>
-      <div class="correction-body">
-        <span class="answer-line">Réponse : A</span>
-        <div class="why">Le tabagisme associé à l'âge supérieur à 35 ans majore dramatiquement le risque d'accidents vasculaires artériels et thromboemboliques veineux, contre-indiquant les œstrogènes.</div>
-      </div>
-    </details>
+<!-- Q2 -->
+<article class="qcm-card">
+  <div class="qcm-head">
+    <div class="qcm-num">2</div>
+    <span class="badge b-multi">QCM Multiple</span>
+    <span class="badge b-theme">Indice de Pearl</span>
   </div>
-
-  <!-- Q4 -->
-  <div class="q-card">
-    <div class="q-top">
-      <span class="q-num">Q4</span>
-      <span class="badge">QCM</span>
-    </div>
-    <p class="q-text">Quel est le mécanisme d'action contraceptif prédominant du dispositif intra-utérin (DIU) au cuivre ?</p>
-    <ul class="q-options">
-      <li data-letter="A">Blocage complet de l'ovulation par suppression de l'axe hypothalamique</li>
-      <li data-letter="B">Réaction inflammatoire aseptique de l'endomètre avec effet spermicide et cytotoxique des ions cuivre</li>
-      <li data-letter="C">Fermeture chirurgicale des trompes de Fallope</li>
-      <li data-letter="D">Destruction enzymatique des corps jaunes ovariens</li>
-      <li data-letter="E">Induction d'une aménorrhée définitive</li>
-    </ul>
-    <details class="correction">
-      <summary>Voir la correction et l'explication détaillée</summary>
-      <div class="correction-body">
-        <span class="answer-line">Réponse : B</span>
-        <div class="why">Le DIU au cuivre induit une réaction à corps étranger inflammatoire aseptique avec libération d'ions cuivre spermicides, empêchant la fécondation et l'implantation.</div>
-      </div>
-    </details>
+  <p class="qcm-q">Concernant l'indice de Pearl, quelles propositions sont exactes ? <em>(2 à 3 réponses)</em></p>
+  <ul class="options">
+    <li><b>A.</b> Il correspond au nombre de grossesses accidentelles pour 100 femmes-années</li>
+    <li><b>B.</b> Un indice bas signifie une meilleure efficacité contraceptive</li>
+    <li><b>C.</b> Le DIU au cuivre a un indice de Pearl inférieur à celui du préservatif masculin</li>
+    <li><b>D.</b> Le préservatif masculin a un indice de Pearl de 0,3</li>
+    <li><b>E.</b> L'indice de Pearl mesure la tolérance d'une méthode</li>
+  </ul>
+  <div class="corr">
+    <span class="ans">Réponses : A, B, C</span>
+    <p><b>A vrai</b> : formule du cours = (nombre de grossesses accidentelles / nombre de cycles observés) × 12 × 100.</p>
+    <p><b>B vrai</b> : un indice bas = peu de grossesses accidentelles = méthode plus efficace.</p>
+    <p><b>C vrai</b> : DIU cuivre 0,6–0,8 vs préservatif masculin 2–15.</p>
   </div>
+</article>
 
-  <!-- Q5 -->
-  <div class="q-card">
-    <div class="q-top">
-      <span class="q-num">Q5</span>
-      <span class="badge">QCM</span>
-    </div>
-    <p class="q-text">Quelle contraception d'urgence non hormonale peut être posée jusqu'à 5 jours après un rapport sexuel non protégé ?</p>
-    <ul class="q-options">
-      <li data-letter="A">La pose d'un dispositif intra-utérin au cuivre</li>
-      <li data-letter="B">L'injection d'un bolus de progestérone retard</li>
-      <li data-letter="C">La pose d'un pessaire vaginal</li>
-      <li data-letter="D">L'application d'un patch œstrogénique</li>
-      <li data-letter="E">L'hystéroscopie diagnostique immédiate</li>
-    </ul>
-    <details class="correction">
-      <summary>Voir la correction et l'explication détaillée</summary>
-      <div class="correction-body">
-        <span class="answer-line">Réponse : A</span>
-        <div class="why">Le DIU au cuivre posé dans les 5 jours (120 heures) est la méthode de contraception d'urgence la plus efficace (> 99%), utilisable ensuite comme contraception régulière.</div>
-      </div>
-    </details>
+<!-- Q3 -->
+<article class="qcm-card">
+  <div class="qcm-head">
+    <div class="qcm-num">3</div>
+    <span class="badge b-rf">Vrai / Faux (RF)</span>
+    <span class="badge b-theme">Contraception progestative orale</span>
   </div>
-
-  <!-- Q6 -->
-  <div class="q-card">
-    <div class="q-top">
-      <span class="q-num">Q6</span>
-      <span class="badge">QCM</span>
-    </div>
-    <p class="q-text">Concernant la contraception d'urgence hormonale par Lévonorgestrel (1,5 mg), quelle est la fenêtre temporelle optimale de prise ?</p>
-    <ul class="q-options">
-      <li data-letter="A">Le plus tôt possible, idéalement dans les 12 à 72 heures suivant le rapport</li>
-      <li data-letter="B">Strictement entre le 10ème et le 14ème jour après le rapport</li>
-      <li data-letter="C">Uniquement pendant la période menstruelle</li>
-      <li data-letter="D">À la 6ème semaine après le retard de règles</li>
-      <li data-letter="E">Exclusivement avant le rapport sexuel</li>
-    </ul>
-    <details class="correction">
-      <summary>Voir la correction et l'explication détaillée</summary>
-      <div class="correction-body">
-        <span class="answer-line">Réponse : A</span>
-        <div class="why">Le lévonorgestrel doit être pris le plus tôt possible, efficace jusqu'à 72 heures (3 jours). L'ulipristal acétate est efficace jusqu'à 120 heures (5 jours).</div>
-      </div>
-    </details>
+  <p class="qcm-q">Concernant la contraception progestative orale, quelle proposition est <b>FAUSSE</b> ?</p>
+  <ul class="options">
+    <li><b>A.</b> Elle contient un progestatif uniquement</li>
+    <li><b>B.</b> Elle épaissit principalement la glaire cervicale</li>
+    <li><b>C.</b> Elle se prend en continu, 28 jours sans arrêt entre deux plaquettes</li>
+    <li><b>D.</b> Elle est contre-indiquée en cas d'antécédent de cancer du sein</li>
+    <li><b>E.</b> Elle bloque l'ovulation de façon aussi systématique que les œstroprogestatifs</li>
+  </ul>
+  <div class="corr">
+    <span class="ans">Réponse : E</span>
+    <p><span class="why">E faux</span> : le blocage ovulatoire de la microprogestative est <b>inconstant</b> et moins systématique que celui des COC.</p>
   </div>
+</article>
 
-  <!-- Q7 -->
-  <div class="q-card">
-    <div class="q-top">
-      <span class="q-num">Q7</span>
-      <span class="badge">QCM</span>
-    </div>
-    <p class="q-text">Quel est l'effet secondaire métabolique ou vasculaire le plus redouté de la composante œstrogénique (éthinylestradiol) ?</p>
-    <ul class="q-options">
-      <li data-letter="A">L'hyperglycémie néonatale immédiate</li>
-      <li data-letter="B">L'activation de la coagulation avec élévation du risque de maladie thrombo-embolique veineuse et artérielle</li>
-      <li data-letter="C">La survenue systématique d'une ostéoporose fracturaire</li>
-      <li data-letter="D">L'insuffisance rénale terminale anurique</li>
-      <li data-letter="E">La pancréatite aiguë auto-immune</li>
-    </ul>
-    <details class="correction">
-      <summary>Voir la correction et l'explication détaillée</summary>
-      <div class="correction-body">
-        <span class="answer-line">Réponse : B</span>
-        <div class="why">L'éthinylestradiol stimule la synthèse hépatique des facteurs de coagulation (fibrinogène, facteurs VII, VIII, X) et diminue l'antithrombine III et la protéine S.</div>
-      </div>
-    </details>
+<!-- Q4 -->
+<article class="qcm-card">
+  <div class="qcm-head">
+    <div class="qcm-num">4</div>
+    <span class="badge b-single">QCM Simple — « SAUF »</span>
+    <span class="badge b-theme">Contre-indications des COC</span>
   </div>
-
-  <!-- Q8 -->
-  <div class="q-card">
-    <div class="q-top">
-      <span class="q-num">Q8</span>
-      <span class="badge">QCM</span>
-    </div>
-    <p class="q-text">Parmi les propositions suivantes concernant l'implant contraceptif sous-cutané à l'étonogestrel, laquelle est exacte ?</p>
-    <ul class="q-options">
-      <li data-letter="A">Il assure une contraception très efficace pendant une durée de 3 ans.</li>
-      <li data-letter="B">Il doit être inséré chirurgicalement dans le péritoine pelvien.</li>
-      <li data-letter="C">Il contient une forte dose d'œstrogènes de synthèse.</li>
-      <li data-letter="D">Il expose à un risque majeur de thrombose veineuse profonde chez la femme jeune.</li>
-      <li data-letter="E">Il ne peut pas être retiré avant l'expiration des 3 ans.</li>
-    </ul>
-    <details class="correction">
-      <summary>Voir la correction et l'explication détaillée</summary>
-      <div class="correction-body">
-        <span class="answer-line">Réponse : A</span>
-        <div class="why">L'implant sous-cutané progestatif (face interne du bras non dominant) a une efficacité de 99,9% pendant 3 ans, avec blocage ovulatoire et atrophie endométriale.</div>
-      </div>
-    </details>
+  <p class="qcm-q">Toutes les propositions suivantes sont des contre-indications aux contraceptifs œstroprogestatifs, <b>SAUF</b> :</p>
+  <ul class="options">
+    <li><b>A.</b> Pathologie cardiaque sévère</li>
+    <li><b>B.</b> Insuffisance hépatique et cirrhose</li>
+    <li><b>C.</b> Cancer du sein ou de l'endomètre</li>
+    <li><b>D.</b> Antécédent personnel de thrombose veineuse</li>
+    <li><b>E.</b> Nulliparité</li>
+  </ul>
+  <div class="corr">
+    <span class="ans">Réponse : E</span>
+    <p><span class="why">E</span> : la nulliparité <b>n'est pas</b> une contre-indication.</p>
   </div>
+</article>
 
-  <!-- Q9 -->
-  <div class="q-card">
-    <div class="q-top">
-      <span class="q-num">Q9</span>
-      <span class="badge">QCM</span>
-    </div>
-    <p class="q-text">En cas d'oubli d'un comprimé d'œstroprogestatif combiné minidosé de plus de 12 heures, quelle est la règle d'or ?</p>
-    <ul class="q-options">
-      <li data-letter="A">Prendre immédiatement le comprimé oublié, continuer la plaquette à l'heure habituelle et utiliser des préservatifs pendant 7 jours consécutifs</li>
-      <li data-letter="B">Arrêter définitivement la contraception pendant 6 mois</li>
-      <li data-letter="C">Prendre 5 comprimés en une seule prise le soir même</li>
-      <li data-letter="D">Réaliser un avortement thérapeutique d'urgence</li>
-      <li data-letter="E">Doubler la dose quotidienne pendant tout le reste du cycle</li>
-    </ul>
-    <details class="correction">
-      <summary>Voir la correction et l'explication détaillée</summary>
-      <div class="correction-body">
-        <span class="answer-line">Réponse : A</span>
-        <div class="why">Règle des 12h : prendre le comprimé oublié dès le constat, poursuivre la plaquette normalement et adopter une contraception mécanique d'appoint pendant 7 jours.</div>
-      </div>
-    </details>
+<!-- Q5 -->
+<article class="qcm-card">
+  <div class="qcm-head">
+    <div class="qcm-num">5</div>
+    <span class="badge b-multi">QCM Multiple</span>
+    <span class="badge b-theme">Dispositifs intra-utérins</span>
   </div>
-
-  <!-- Q10 -->
-  <div class="q-card">
-    <div class="q-top">
-      <span class="q-num">Q10</span>
-      <span class="badge">QCM</span>
-    </div>
-    <p class="q-text">Quel bénéfice non contraceptif prouvé est associé à l'utilisation prolongée des contraceptifs œstroprogestatifs ?</p>
-    <ul class="q-options">
-      <li data-letter="A">Réduction significative du risque de cancer de l'ovaire et de cancer de l'endomètre</li>
-      <li data-letter="B">Disparition complète des céphalées et migraines avec aura</li>
-      <li data-letter="C">Prévention absolue du cancer du sein</li>
-      <li data-letter="D">Protection contre la transmission du VIH</li>
-      <li data-letter="E">Inversion des prolapsus génitaux</li>
-    </ul>
-    <details class="correction">
-      <summary>Voir la correction et l'explication détaillée</summary>
-      <div class="correction-body">
-        <span class="answer-line">Réponse : A</span>
-        <div class="why">La prise de pilule combinée réduit de 50% le risque de cancer de l'ovaire et de l'endomètre, effet protecteur persistant des années après l'arrêt.</div>
-      </div>
-    </details>
+  <p class="qcm-q">Concernant les dispositifs intra-utérins (DIU), quelles propositions sont exactes ?</p>
+  <ul class="options">
+    <li><b>A.</b> Le DIU au cuivre a une durée d'action de 4 à 5 ans</li>
+    <li><b>B.</b> Le DIU au lévonorgestrel agit principalement par effet spermicide local</li>
+    <li><b>C.</b> Le DIU au lévonorgestrel est indiqué dans les ménorragies</li>
+    <li><b>D.</b> Le DIU au cuivre peut être posé par une sage-femme</li>
+    <li><b>E.</b> Le DIU au lévonorgestrel a une durée d'action de 5 ans</li>
+  </ul>
+  <div class="corr">
+    <span class="ans">Réponses : A, C, E</span>
+    <p><b>A vrai</b> : durée 4 à 5 ans. <b>C vrai</b> : indiqué dans les ménorragies. <b>E vrai</b> : durée 5 ans.</p>
   </div>
+</article>
 
-  <!-- Q11 -->
-  <div class="q-card">
-    <div class="q-top">
-      <span class="q-num">Q11</span>
-      <span class="badge">QCM</span>
-    </div>
-    <p class="q-text">Chez une patiente présentant des migraines AVEC aura ophtalmique, la prescription d'un œstroprogestatif est :</p>
-    <ul class="q-options">
-      <li data-letter="A">Contre-indiquée de façon absolue (Catégorie 4 OMS) en raison du sur-risque majeur d'AVC ischémique</li>
-      <li data-letter="B">Fortement recommandée pour guérir l'aura</li>
-      <li data-letter="C">Autorisée uniquement à forte dose d'œstrogène</li>
-      <li data-letter="D">Indiquée en cure continue pendant 10 ans</li>
-      <li data-letter="E">Sans aucune incidence sur le risque neurologique</li>
-    </ul>
-    <details class="correction">
-      <summary>Voir la correction et l'explication détaillée</summary>
-      <div class="correction-body">
-        <span class="answer-line">Réponse : A</span>
-        <div class="why">Les migraines avec aura constituent une contre-indication absolue aux œstroprogestatifs en raison de l'augmentation marquée du risque d'accident vasculaire cérébral.</div>
-      </div>
-    </details>
+<!-- Q6 -->
+<article class="qcm-card">
+  <div class="qcm-head">
+    <div class="qcm-num">6</div>
+    <span class="badge b-rf">Vrai / Faux (RF)</span>
+    <span class="badge b-theme">Implant sous-cutané</span>
   </div>
-
-  <!-- Q12 -->
-  <div class="q-card">
-    <div class="q-top">
-      <span class="q-num">Q12</span>
-      <span class="badge">QCM</span>
-    </div>
-    <p class="q-text">Concernant le DIU au lévonorgestrel (ex: Mirena), quel effet clinique est très fréquemment observé après quelques mois d'utilisation ?</p>
-    <ul class="q-options">
-      <li data-letter="A">Une diminution drastique du flux menstruel voire une aménorrhée de confort bénigne</li>
-      <li data-letter="B">Des hémorragies cataclysmiques permanentes</li>
-      <li data-letter="C">Une augmentation de volume des ovaires avec virilisation</li>
-      <li data-letter="D">Une perforation spontanée dans 90% des cas</li>
-      <li data-letter="E">Une perte de cheveux totale</li>
-    </ul>
-    <details class="correction">
-      <summary>Voir la correction et l'explication détaillée</summary>
-      <div class="correction-body">
-        <span class="answer-line">Réponse : A</span>
-        <div class="why">L'effet progestatif local atrophie fortement l'endomètre, entraînant oligo-ménorrhée ou aménorrhée chez plus de 50% des utilisatrices, très appréciée et protectrice contre l'anémie.</div>
-      </div>
-    </details>
+  <p class="qcm-q">Concernant l'implant sous-cutané à l'étonogestrel, quelle proposition est <b>FAUSSE</b> ?</p>
+  <ul class="options">
+    <li><b>A.</b> Il est inséré par voie sous-cutanée par un médecin</li>
+    <li><b>B.</b> Sa durée d'action est de 3 ans</li>
+    <li><b>C.</b> Son retrait nécessite une incision sous anesthésie</li>
+    <li><b>D.</b> Il agit uniquement par épaississement de la glaire cervicale</li>
+    <li><b>E.</b> Il bloque l'ovulation et épaissit la glaire cervicale</li>
+  </ul>
+  <div class="corr">
+    <span class="ans">Réponse : D</span>
+    <p><span class="why">D faux</span> : il bloque l'ovulation en plus d'épaissir la glaire cervicale.</p>
   </div>
+</article>
 
-  <!-- Q13 -->
-  <div class="q-card">
-    <div class="q-top">
-      <span class="q-num">Q13</span>
-      <span class="badge">QCM</span>
-    </div>
-    <p class="q-text">Quelle méthode contraceptive est particulièrement indiquée chez la femme allaitante dès la 3ème ou 4ème semaine du post-partum ?</p>
-    <ul class="q-options">
-      <li data-letter="A">Les microprogestatifs oraux (ex: désogestrel) ou l'implant progestatif</li>
-      <li data-letter="B">La pilule œstroprogestative normodosée à 50 µg</li>
-      <li data-letter="C">L'abstinence périodique stricte basée sur la température</li>
-      <li data-letter="D">La radiothérapie ovarienne transitoire</li>
-      <li data-letter="E">Le clomifène à visée contraceptive</li>
-    </ul>
-    <details class="correction">
-      <summary>Voir la correction et l'explication détaillée</summary>
-      <div class="correction-body">
-        <span class="answer-line">Réponse : A</span>
-        <div class="why">Les microprogestatifs ne passent pas significativement dans le lait maternel et n'altèrent ni la quantité ni la qualité de la lactation, contrairement aux œstrogènes.</div>
-      </div>
-    </details>
+<!-- Q7 -->
+<article class="qcm-card">
+  <div class="qcm-head">
+    <div class="qcm-num">7</div>
+    <span class="badge b-single">QCM Simple</span>
+    <span class="badge b-theme">Oubli de pilule — moins de 12 h</span>
   </div>
-
-  <!-- Q14 -->
-  <div class="q-card">
-    <div class="q-top">
-      <span class="q-num">Q14</span>
-      <span class="badge">QCM</span>
-    </div>
-    <p class="q-text">Parmi les médicaments suivants, lequel est un inducteur enzymatique hépatique puissant capable de diminuer l'efficacité des pilules contraceptives ?</p>
-    <ul class="q-options">
-      <li data-letter="A">La Rifampicine (et certains antiépileptiques : carbamazépine, phénytoïne)</li>
-      <li data-letter="B">Le paracétamol à dose thérapeutique</li>
-      <li data-letter="C">La vitamine C</li>
-      <li data-letter="D">L'aspirine à 100 mg</li>
-      <li data-letter="E">Le sérum physiologique</li>
-    </ul>
-    <details class="correction">
-      <summary>Voir la correction et l'explication détaillée</summary>
-      <div class="correction-body">
-        <span class="answer-line">Réponse : A</span>
-        <div class="why">Les inducteurs du cytochrome P450 (rifampicine, phénobarbital, carbamazépine, millepertuis) accélèrent le catabolisme des stéroïdes contraceptifs et provoquent des échecs de contraception.</div>
-      </div>
-    </details>
+  <p class="qcm-q">Une patiente sous pilule œstroprogestative a oublié un comprimé. Le retard est de 8 heures. Que faire ?</p>
+  <ul class="options">
+    <li><b>A.</b> Prendre le comprimé oublié et utiliser un préservatif pendant 7 jours</li>
+    <li><b>B.</b> Prendre le comprimé oublié et continuer normalement la plaquette sans méthode supplémentaire</li>
+    <li><b>C.</b> Arrêter la plaquette et attendre les règles</li>
+    <li><b>D.</b> Prendre deux comprimés le lendemain</li>
+    <li><b>E.</b> Prendre une contraception d'urgence</li>
+  </ul>
+  <div class="corr">
+    <span class="ans">Réponse : B</span>
+    <p>Oubli &lt; 12 h → prendre le comprimé oublié et continuer normalement la plaquette sans méthode supplémentaire.</p>
   </div>
+</article>
 
-  <!-- Q15 -->
-  <div class="q-card">
-    <div class="q-top">
-      <span class="q-num">Q15</span>
-      <span class="badge">QCM</span>
-    </div>
-    <p class="q-text">Avant la mise en place d'un dispositif intra-utérin (DIU), quel geste doit être réalisé systématiquement ?</p>
-    <ul class="q-options">
-      <li data-letter="A">Éliminer formellement une grossesse en cours (bêta-hCG ou date des règles) et dépister une infection cervico-vaginale active</li>
-      <li data-letter="B">Réaliser un scanner pelvien injecté</li>
-      <li data-letter="C">Effectuer un curage ganglionnaire iliaque</li>
-      <li data-letter="D">Pratiquer une laparotomie exploratrice</li>
-      <li data-letter="E">Administrer une héparinothérapie à dose curative</li>
-    </ul>
-    <details class="correction">
-      <summary>Voir la correction et l'explication détaillée</summary>
-      <div class="correction-body">
-        <span class="answer-line">Réponse : A</span>
-        <div class="why">Éliminer une grossesse et toute infection génitale active sont les deux prérequis absolus avant la pose d'un DIU pour éviter la dissémination endo-utérine.</div>
-      </div>
-    </details>
+<!-- Q8 -->
+<article class="qcm-card">
+  <div class="qcm-head">
+    <div class="qcm-num">8</div>
+    <span class="badge b-multi">QCM Multiple</span>
+    <span class="badge b-theme">Méthodes naturelles</span>
   </div>
-
-  <!-- Q16 -->
-  <div class="q-card">
-    <div class="q-top">
-      <span class="q-num">Q16</span>
-      <span class="badge">QCM</span>
-    </div>
-    <p class="q-text">Quel est l'indice international utilisé pour évaluer l'efficacité statistique d'une méthode contraceptive ?</p>
-    <ul class="q-options">
-      <li data-letter="A">L'indice de Pearl (nombre de grossesses pour 100 années-femmes)</li>
-      <li data-letter="B">L'indice de Glasgow</li>
-      <li data-letter="C">Le score d'Apgar</li>
-      <li data-letter="D">L'index de Manning</li>
-      <li data-letter="E">L'indice de Bishop</li>
-    </ul>
-    <details class="correction">
-      <summary>Voir la correction et l'explication détaillée</summary>
-      <div class="correction-body">
-        <span class="answer-line">Réponse : A</span>
-        <div class="why">L'indice de Pearl exprime le taux d'échec théorique et pratique d'une méthode contraceptive pour 100 femmes l'utilisant pendant 1 an.</div>
-      </div>
-    </details>
+  <p class="qcm-q">Parmi les méthodes naturelles de contraception, on cite :</p>
+  <ul class="options">
+    <li><b>A.</b> La méthode des températures</li>
+    <li><b>B.</b> La méthode de la glaire cervicale (Billings)</li>
+    <li><b>C.</b> Le coït interrompu</li>
+    <li><b>D.</b> Le diaphragme</li>
+    <li><b>E.</b> La méthode MAMA (allaitement maternel et aménorrhée)</li>
+  </ul>
+  <div class="corr">
+    <span class="ans">Réponses : A, B, C, E</span>
+    <p>Méthodes naturelles = température, Billings, coït interrompu, MAMA. Le diaphragme est mécanique.</p>
   </div>
+</article>
 
-  <!-- Q17 -->
-  <div class="q-card">
-    <div class="q-top">
-      <span class="q-num">Q17</span>
-      <span class="badge">QCM</span>
-    </div>
-    <p class="q-text">Concernant la contraception définitive masculine (vasectomie), quelle affirmation est exacte ?</p>
-    <ul class="q-options">
-      <li data-letter="A">Elle consiste en la section et ligature bilatérale des canaux déférents sous anesthésie locale.</li>
-      <li data-letter="B">Elle provoque une impuissance érectile immédiate et définitive.</li>
-      <li data-letter="C">Elle arrête instantanément la spermatogenèse intra-testiculaire.</li>
-      <li data-letter="D">Le sperme devient azoosperme dès la première heure post-opératoire.</li>
-      <li data-letter="E">Elle protège à 100% contre la transmission du VIH et de la syphilis.</li>
-    </ul>
-    <details class="correction">
-      <summary>Voir la correction et l'explication détaillée</summary>
-      <div class="correction-body">
-        <span class="answer-line">Réponse : A</span>
-        <div class="why">La vasectomie interrompt les canaux déférents. L'azoospermie n'est effective qu'après 3 mois (et une vingtaine d'éjaculations), contrôlée par un spermogramme.</div>
-      </div>
-    </details>
+<!-- Q9 -->
+<article class="qcm-card">
+  <div class="qcm-head">
+    <div class="qcm-num">9</div>
+    <span class="badge b-rf">Vrai / Faux (RF)</span>
+    <span class="badge b-theme">Contraception d'urgence</span>
   </div>
-
-  <!-- Q18 -->
-  <div class="q-card">
-    <div class="q-top">
-      <span class="q-num">Q18</span>
-      <span class="badge">QCM</span>
-    </div>
-    <p class="q-text">Concernant la ligature tubaire chez la femme, quelle est la règle légale et médicale ?</p>
-    <ul class="q-options">
-      <li data-letter="A">Elle nécessite une information claire, un délai de réflexion obligatoire de 4 mois et un consentement écrit libre et éclairé.</li>
-      <li data-letter="B">Elle peut être imposée par le conjoint sans l'accord de la patiente.</li>
-      <li data-letter="C">Elle est réalisable dès l'âge de 14 ans sans autorisation.</li>
-      <li data-letter="D">Elle nécessite l'accord obligatoire d'un comité d'éthique hospitalier.</li>
-      <li data-letter="E">Elle entraîne systématiquement une ménopause précoce chirurgicale.</li>
-    </ul>
-    <details class="correction">
-      <summary>Voir la correction et l'explication détaillée</summary>
-      <div class="correction-body">
-        <span class="answer-line">Réponse : A</span>
-        <div class="why">Méthode de stérilisation à visée contraceptive encadrée par la loi avec délai de réflexion de 4 mois et consentement écrit signé.</div>
-      </div>
-    </details>
+  <p class="qcm-q">Concernant la contraception d'urgence, quelle proposition est <b>FAUSSE</b> ?</p>
+  <ul class="options">
+    <li><b>A.</b> Elle se prend dans les 72 heures suivant le rapport</li>
+    <li><b>B.</b> Certains produits peuvent être pris jusqu'à 5 jours après le rapport</li>
+    <li><b>C.</b> Elle est efficace à 100 %</li>
+    <li><b>D.</b> Le lévonorgestrel est une molécule utilisée</li>
+    <li><b>E.</b> Elle ne protège pas contre les IST</li>
+  </ul>
+  <div class="corr">
+    <span class="ans">Réponse : C</span>
+    <p><span class="why">C faux</span> : aucune contraception d'urgence n'est efficace à 100 %.</p>
   </div>
+</article>
 
-  <!-- Q19 -->
-  <div class="q-card">
-    <div class="q-top">
-      <span class="q-num">Q19</span>
-      <span class="badge">QCM</span>
-    </div>
-    <p class="q-text">Quelle méthode mécanique reste la SEULE capable d'assurer simultanément la contraception et la protection contre les IST ?</p>
-    <ul class="q-options">
-      <li data-letter="A">Le préservatif masculin (ou féminin)</li>
-      <li data-letter="B">Le stérilet au cuivre</li>
-      <li data-letter="C">L'implant sous-cutané</li>
-      <li data-letter="D">Le patch hebdomadaire</li>
-      <li data-letter="E">L'anneau vaginal œstroprogestatif</li>
-    </ul>
-    <details class="correction">
-      <summary>Voir la correction et l'explication détaillée</summary>
-      <div class="correction-body">
-        <span class="answer-line">Réponse : A</span>
-        <div class="why">Le préservatif est la seule barrière physique réduisant la transmission des infections sexuellement transmissibles (VIH, hépatite B, gonococcie, Chlamydia).</div>
-      </div>
-    </details>
+<!-- Q10 -->
+<article class="qcm-card">
+  <div class="qcm-head">
+    <div class="qcm-num">10</div>
+    <span class="badge b-single">QCM Simple</span>
+    <span class="badge b-theme">DIU au cuivre</span>
   </div>
-
-  <!-- Q20 -->
-  <div class="q-card">
-    <div class="q-top">
-      <span class="q-num">Q20</span>
-      <span class="badge">QCM</span>
-    </div>
-    <p class="q-text">Parmi les affirmations suivantes sur la contraception du post-partum immédiat, laquelle est FAUSSE ?</p>
-    <ul class="q-options">
-      <li data-letter="A">La pilule œstroprogestative peut être débutée dès le premier jour suivant l'accouchement chez la femme qui allaite.</li>
-      <li data-letter="B">L'allaitement maternel exclusif (méthode MAMA) confère une protection contraceptive relative jusqu'à 6 mois si aménorrhée persistante.</li>
-      <li data-letter="C">Un microprogestatif peut être débuté dès J21-J28 du post-partum.</li>
-      <li data-letter="D">La pose d'un DIU peut être réalisée à la visite post-natale des 6-8 semaines.</li>
-      <li data-letter="E">Le risque thrombo-embolique est maximal dans les premières semaines du post-partum.</li>
-    </ul>
-    <details class="correction">
-      <summary>Voir la correction et l'explication détaillée</summary>
-      <div class="correction-body">
-        <span class="answer-line">Réponse : A</span>
-        <div class="why">La pilule combinée est formellement contre-indiquée dans les 3 à 6 premières semaines du post-partum en raison du pic majeur de risque thromboembolique veineux et de l'inhibition de la lactation.</div>
-      </div>
-    </details>
+  <p class="qcm-q">Quel est le mécanisme d'action principal du DIU au cuivre ?</p>
+  <ul class="options">
+    <li><b>A.</b> Blocage de l'ovulation</li>
+    <li><b>B.</b> Réaction inflammatoire locale empêchant la fécondation de l'ovule par le spermatozoïde</li>
+    <li><b>C.</b> Épaississement de la glaire cervicale</li>
+    <li><b>D.</b> Modification de l'endomètre par effet hormonal</li>
+    <li><b>E.</b> Destruction des spermatozoïdes par effet osmotique</li>
+  </ul>
+  <div class="corr">
+    <span class="ans">Réponse : B</span>
+    <p>Le cuivre provoque une réaction inflammatoire locale empêchant la fécondation.</p>
   </div>
+</article>
 
-  <!-- Q21 -->
-  <div class="q-card">
-    <div class="q-top">
-      <span class="q-num">Q21</span>
-      <span class="badge">QCM</span>
-    </div>
-    <p class="q-text">Concernant l'anneau vaginal contraceptif (étonogestrel / éthinylestradiol), quelle est sa modalité d'utilisation ?</p>
-    <ul class="q-options">
-      <li data-letter="A">Laissé en place pendant 3 semaines consécutives, puis retiré pendant 1 semaine pour provoquer l'hémorragie de privation</li>
-      <li data-letter="B">Changé chaque matin au réveil</li>
-      <li data-letter="C">Placé dans le canal cervical par un gynécologue chaque mois</li>
-      <li data-letter="D">Conservé pendant 5 années consécutives sans interruption</li>
-      <li data-letter="E">Exclusivement réservé aux femmes ménopausées</li>
-    </ul>
-    <details class="correction">
-      <summary>Voir la correction et l'explication détaillée</summary>
-      <div class="correction-body">
-        <span class="answer-line">Réponse : A</span>
-        <div class="why">L'anneau vaginal diffuse des hormones de façon constante pendant 21 jours, suivi d'une semaine d'arrêt.</div>
-      </div>
-    </details>
+<!-- Q11 -->
+<article class="qcm-card">
+  <div class="qcm-head">
+    <div class="qcm-num">11</div>
+    <span class="badge b-multi">QCM Multiple</span>
+    <span class="badge b-theme">Patch & anneau vaginal</span>
   </div>
-
-  <!-- Q22 -->
-  <div class="q-card">
-    <div class="q-top">
-      <span class="q-num">Q22</span>
-      <span class="badge">QCM</span>
-    </div>
-    <p class="q-text">Dans quel délai un dispositif intra-utérin déplacé ou dont les fils ne sont plus visibles doit-il être investigué ?</p>
-    <ul class="q-options">
-      <li data-letter="A">Par échographie pelvienne rapide pour localiser le DIU (intra-utérin, intramural ou expulsé dans le péritoine)</li>
-      <li data-letter="B">Aucune exploration n'est nécessaire si la patiente ne se plaint de rien</li>
-      <li data-letter="C">Par laparotomie médiane exploratrice d'emblée sans imagerie</li>
-      <li data-letter="D">Par scintigraphie thyroïdienne</li>
-      <li data-letter="E">Par mise sous plâtre du membre inférieur</li>
-    </ul>
-    <details class="correction">
-      <summary>Voir la correction et l'explication détaillée</summary>
-      <div class="correction-body">
-        <span class="answer-line">Réponse : A</span>
-        <div class="why">La disparition des fils au spéculum impose l'échographie endovaginale (ou radiographie de l'abdomen sans préparation en cas de suspicion de perforation péritonéale).</div>
-      </div>
-    </details>
+  <p class="qcm-q">Concernant le patch transdermique et l'anneau vaginal, quelles propositions sont exactes ?</p>
+  <ul class="options">
+    <li><b>A.</b> Le patch se colle 1 fois par semaine pendant 3 semaines</li>
+    <li><b>B.</b> L'anneau vaginal s'insère au fond du vagin pour 3 semaines</li>
+    <li><b>C.</b> Les deux méthodes sont suivies d'une semaine d'arrêt</li>
+    <li><b>D.</b> L'anneau vaginal se change tous les jours</li>
+    <li><b>E.</b> Le patch s'applique sur la muqueuse vaginale</li>
+  </ul>
+  <div class="corr">
+    <span class="ans">Réponses : A, B, C</span>
   </div>
+</article>
 
-  <!-- Q23 -->
-  <div class="q-card">
-    <div class="q-top">
-      <span class="q-num">Q23</span>
-      <span class="badge">QCM</span>
-    </div>
-    <p class="q-text">La présence d'un antécédent de cancer du sein hormonodépendant chez une patiente :</p>
-    <ul class="q-options">
-      <li data-letter="A">Contre-indique formellement toute contraception hormonale, qu'elle soit œstroprogestative ou progestative pure (Catégorie 4 OMS)</li>
-      <li data-letter="B">Nécessite une augmentation des doses d'œstrogène</li>
-      <li data-letter="C">Indique la pose d'un implant progestatif à forte dose</li>
-      <li data-letter="D">Est sans importance vis-à-vis des récepteurs hormonaux</li>
-      <li data-letter="E">Autorise la prise de pilules combinées dès la rémission</li>
-    </ul>
-    <details class="correction">
-      <summary>Voir la correction et l'explication détaillée</summary>
-      <div class="correction-body">
-        <span class="answer-line">Réponse : A</span>
-        <div class="why">Les tumeurs mammaires hormonodépendantes contre-indiquent toute hormonothérapie stéroïdienne. Le DIU au cuivre ou les barrières mécaniques sont alors indiqués.</div>
-      </div>
-    </details>
+<!-- Q12 -->
+<article class="qcm-card">
+  <div class="qcm-head">
+    <div class="qcm-num">12</div>
+    <span class="badge b-rf">Vrai / Faux (RF)</span>
+    <span class="badge b-theme">Anneau vaginal</span>
   </div>
-
-  <!-- Q24 -->
-  <div class="q-card">
-    <div class="q-top">
-      <span class="q-num">Q24</span>
-      <span class="badge">QCM</span>
-    </div>
-    <p class="q-text">Concernant la contraception chez l'adolescente, quelle est la priorité clinique ?</p>
-    <ul class="q-options">
-      <li data-letter="A">Proposer une méthode efficace, accessible, confidentielle et promouvoir la double protection (contraception + préservatif)</li>
-      <li data-letter="B">Exiger obligatoirement la présence des deux parents lors de la délivrance</li>
-      <li data-letter="C">Refuser toute contraception avant 18 ans révolus</li>
-      <li data-letter="D">Imposer la ligature tubaire précoce</li>
-      <li data-letter="E">Interdire l'usage du préservatif</li>
-    </ul>
-    <details class="correction">
-      <summary>Voir la correction et l'explication détaillée</summary>
-      <div class="correction-body">
-        <span class="answer-line">Réponse : A</span>
-        <div class="why">La double protection prévient à la fois les grossesses non prévues et les IST, avec garantie légale du secret et de la gratuité/confidentialité.</div>
-      </div>
-    </details>
+  <p class="qcm-q">Concernant l'anneau vaginal, quelle proposition est <b>FAUSSE</b> ?</p>
+  <ul class="options">
+    <li><b>A.</b> Il est à base d'œstroprogestatifs</li>
+    <li><b>B.</b> Il s'insère au fond du vagin</li>
+    <li><b>C.</b> Il reste en place 3 semaines puis 1 semaine d'arrêt</li>
+    <li><b>D.</b> Il se retire chaque nuit</li>
+    <li><b>E.</b> Il agit par blocage de l'ovulation</li>
+  </ul>
+  <div class="corr">
+    <span class="ans">Réponse : D</span>
+    <p><span class="why">D faux</span> : il reste en place en continu 3 semaines.</p>
   </div>
+</article>
 
-  <!-- Q25 -->
-  <div class="q-card">
-    <div class="q-top">
-      <span class="q-num">Q25</span>
-      <span class="badge">QCM</span>
-    </div>
-    <p class="q-text">Quel bilan biologique minimal préalable est recommandé avant la prescription d'une première pilule œstroprogestative chez une patiente sans antécédents ?</p>
-    <ul class="q-options">
-      <li data-letter="A">Glycémie à jeun et bilan lipidique (cholestérol total, triglycérides), associé à la mesure rigoureuse de la pression artérielle</li>
-      <li data-letter="B">Bilan de thrombophilie génétique complet avec recherche de mutation facteur V de Leiden chez toutes les patientes</li>
-      <li data-letter="C">IRM cérébrale et scanners thoraciques annuels</li>
-      <li data-letter="D">Ponction lombaire et myélogramme</li>
-      <li data-letter="E">Aucun interrogatoire ni mesure de la tension artérielle</li>
-    </ul>
-    <details class="correction">
-      <summary>Voir la correction et l'explication détaillée</summary>
-      <div class="correction-body">
-        <span class="answer-line">Réponse : A</span>
-        <div class="why">Recherche des facteurs de risque à l'interrogatoire, mesure de la TA et bilan lipidique/glycémique à 3-6 mois. Le bilan de thrombophilie n'est indiqué qu'en cas d'antécédents personnels ou familiaux au 1er degré de thrombose inexpliquée ou précoce.</div>
-      </div>
-    </details>
+<!-- Q13 -->
+<article class="qcm-card">
+  <div class="qcm-head">
+    <div class="qcm-num">13</div>
+    <span class="badge b-single">QCM Simple — « SAUF »</span>
+    <span class="badge b-theme">Prescription de contraception</span>
   </div>
+  <p class="qcm-q">La prescription d'une contraception nécessite toutes les étapes suivantes, <b>SAUF</b> :</p>
+  <ul class="options">
+    <li><b>A.</b> Un interrogatoire détaillé</li>
+    <li><b>B.</b> Un examen clinique</li>
+    <li><b>C.</b> Des examens complémentaires ciblés</li>
+    <li><b>D.</b> Une simple rédaction d'ordonnance sans évaluation préalable</li>
+    <li><b>E.</b> Une recherche systématique de contre-indications</li>
+  </ul>
+  <div class="corr">
+    <span class="ans">Réponse : D</span>
+  </div>
+</article>
 
-</section>
-<section id="cas">
-  <h2>5 Cas Cliniques Hospitaliers Algériens</h2>
+<!-- Q14 -->
+<article class="qcm-card">
+  <div class="qcm-head">
+    <div class="qcm-num">14</div>
+    <span class="badge b-multi">QCM Multiple</span>
+    <span class="badge b-theme">Stérilet hormonal</span>
+  </div>
+  <p class="qcm-q">Concernant le stérilet hormonal (DIU au lévonorgestrel), quelles propositions sont exactes ?</p>
+  <ul class="options">
+    <li><b>A.</b> Il libère quotidiennement de très petites quantités d'hormones</li>
+    <li><b>B.</b> Il ralentit l'épaississement de la muqueuse utérine</li>
+    <li><b>C.</b> Il inhibe la mobilité des spermatozoïdes</li>
+    <li><b>D.</b> Il épaissit la glaire cervicale</li>
+    <li><b>E.</b> Sa durée d'action est de 10 ans</li>
+  </ul>
+  <div class="corr">
+    <span class="ans">Réponses : A, B, C, D</span>
+  </div>
+</article>
 
-  <!-- CAS 1 -->
-  <article class="case">
-    <div class="case-head">
-      <h3>Cas Clinique N°1 : Prescription contraceptive chez une fumeuse de 36 ans</h3>
-    </div>
-    <div class="vignette">
-      <p>Mme N., 36 ans, consulte pour renouveler sa contraception. Elle fume 1 paquet de cigarettes par jour depuis 15 ans. Sa tension artérielle est de 125/80 mmHg. Elle demande une pilule combinée.</p>
-    </div>
-    <div class="case-q">
-      <p class="q-text"><strong>Question :</strong> Quelle est votre décision médicale argumentée ?</p>
-      <ul class="q-options">
-      <li data-letter="A">Contre-indication absolue à la pilule œstroprogestative (tabac > 35 ans = risque thromboembolique artériel et veineux majeur) ; orienter vers un DIU (cuivre ou lévonorgestrel) ou un microprogestatif.</li>
-      <li data-letter="B">Prescription d'une pilule combinée normodosée à 50 µg d'œstrogène.</li>
-      <li data-letter="C">Autorisation de la pilule à condition d'associer de l'aspirine à forte dose.</li>
-      <li data-letter="D">Ligature tubaire obligatoire immédiate sans son consentement.</li>
-      <li data-letter="E">Abstention contraceptive totale.</li>
+<!-- Q15 -->
+<article class="qcm-card">
+  <div class="qcm-head">
+    <div class="qcm-num">15</div>
+    <span class="badge b-rf">Vrai / Faux (RF)</span>
+    <span class="badge b-theme">Dosage des COC</span>
+  </div>
+  <p class="qcm-q">Concernant les œstroprogestatifs, quelle proposition est <b>FAUSSE</b> ?</p>
+  <ul class="options">
+    <li><b>A.</b> Les normodosés contiennent 50 µg d'éthinylestradiol</li>
+    <li><b>B.</b> Les minidosés contiennent 15 à 35 µg d'éthinylestradiol</li>
+    <li><b>C.</b> L'indice de Pearl des œstroprogestatifs est inférieur à 0,5</li>
+    <li><b>D.</b> Le blocage de l'ovulation est leur seul mécanisme d'action</li>
+    <li><b>E.</b> Ils modifient l'endomètre</li>
+  </ul>
+  <div class="corr">
+    <span class="ans">Réponse : D</span>
+    <p><span class="why">D faux</span> : triple mécanisme (ovulation + glaire + endomètre).</p>
+  </div>
+</article>
+
+<!-- Q16 -->
+<article class="qcm-card">
+  <div class="qcm-head">
+    <div class="qcm-num">16</div>
+    <span class="badge b-single">QCM Simple</span>
+    <span class="badge b-theme">Définition de l'indice de Pearl</span>
+  </div>
+  <p class="qcm-q">L'indice de Pearl se calcule par :</p>
+  <ul class="options">
+    <li><b>A.</b> Nombre de grossesses accidentelles / nombre de cycles × 12 × 100</li>
+    <li><b>B.</b> Nombre de grossesses accidentelles / nombre de femmes × 100</li>
+    <li><b>C.</b> Nombre de cycles / nombre de grossesses × 100</li>
+    <li><b>D.</b> Nombre de grossesses / nombre d'années × 12</li>
+    <li><b>E.</b> Nombre de femmes enceintes / nombre de rapports × 100</li>
+  </ul>
+  <div class="corr">
+    <span class="ans">Réponse : A</span>
+  </div>
+</article>
+
+<!-- Q17 -->
+<article class="qcm-card">
+  <div class="qcm-head">
+    <div class="qcm-num">17</div>
+    <span class="badge b-multi">QCM Multiple</span>
+    <span class="badge b-theme">Contraception locale</span>
+  </div>
+  <p class="qcm-q">Concernant la contraception locale (barrière), quelles propositions sont exactes ?</p>
+  <ul class="options">
+    <li><b>A.</b> Elle est généralement moins efficace que les méthodes hormonales</li>
+    <li><b>B.</b> Le préservatif masculin protège contre les IST</li>
+    <li><b>C.</b> Les spermicides seuls sont très efficaces</li>
+    <li><b>D.</b> Le diaphragme nécessite l'utilisation conjointe de spermicides</li>
+    <li><b>E.</b> Le préservatif féminin existe</li>
+  </ul>
+  <div class="corr">
+    <span class="ans">Réponses : A, B, D, E</span>
+  </div>
+</article>
+
+<!-- Q18 -->
+<article class="qcm-card">
+  <div class="qcm-head">
+    <div class="qcm-num">18</div>
+    <span class="badge b-rf">Vrai / Faux (RF)</span>
+    <span class="badge b-theme">Stérilisation contraceptive</span>
+  </div>
+  <p class="qcm-q">Concernant la stérilisation à visée contraceptive, quelle proposition est <b>FAUSSE</b> ?</p>
+  <ul class="options">
+    <li><b>A.</b> Elle est définitive</li>
+    <li><b>B.</b> La vasectomie est la stérilisation masculine</li>
+    <li><b>C.</b> Elle est réversible à 100 %</li>
+    <li><b>D.</b> Elle nécessite une information éclairée</li>
+    <li><b>E.</b> La stérilisation féminine existe</li>
+  </ul>
+  <div class="corr">
+    <span class="ans">Réponse : C</span>
+    <p><span class="why">C faux</span> : méthode définitive, non réversible à 100 %.</p>
+  </div>
+</article>
+
+<!-- Q19 -->
+<article class="qcm-card">
+  <div class="qcm-head">
+    <div class="qcm-num">19</div>
+    <span class="badge b-single">QCM Simple</span>
+    <span class="badge b-theme">Composition des COC</span>
+  </div>
+  <p class="qcm-q">Les contraceptifs œstroprogestatifs associent :</p>
+  <ul class="options">
+    <li><b>A.</b> Deux progestatifs</li>
+    <li><b>B.</b> Un œstrogène et un progestatif</li>
+    <li><b>C.</b> Deux œstrogènes</li>
+    <li><b>D.</b> Un progestatif seul</li>
+    <li><b>E.</b> Un œstrogène seul</li>
+  </ul>
+  <div class="corr">
+    <span class="ans">Réponse : B</span>
+  </div>
+</article>
+
+<!-- Q20 -->
+<article class="qcm-card">
+  <div class="qcm-head">
+    <div class="qcm-num">20</div>
+    <span class="badge b-multi">QCM Multiple</span>
+    <span class="badge b-theme">Oubli de pilule — plus de 12 h</span>
+  </div>
+  <p class="qcm-q">En cas d'oubli de pilule de plus de 12 heures, quelles mesures sont correctes ?</p>
+  <ul class="options">
+    <li><b>A.</b> Prendre le comprimé oublié dès que possible</li>
+    <li><b>B.</b> Prendre le comprimé du jour comme d'habitude</li>
+    <li><b>C.</b> Continuer la plaquette normalement jusqu'à la fin</li>
+    <li><b>D.</b> Utiliser une méthode locale jusqu'à la fin de la plaquette</li>
+    <li><b>E.</b> Arrêter immédiatement la plaquette</li>
+  </ul>
+  <div class="corr">
+    <span class="ans">Réponses : A, B, C, D</span>
+  </div>
+</article>
+
+<!-- Q21 -->
+<article class="qcm-card">
+  <div class="qcm-head">
+    <div class="qcm-num">21</div>
+    <span class="badge b-single">QCM Simple</span>
+    <span class="badge b-theme">Rôle de l'éthinylestradiol</span>
+  </div>
+  <p class="qcm-q">Quel est le rôle de l'éthinylestradiol dans un contraceptif œstroprogestatif ?</p>
+  <ul class="options">
+    <li><b>A.</b> Il épaissit la glaire cervicale</li>
+    <li><b>B.</b> Il participe au blocage de l'ovulation par rétrocontrôle négatif</li>
+    <li><b>C.</b> Il provoque une réaction inflammatoire</li>
+    <li><b>D.</b> Il détruit les spermatozoïdes</li>
+    <li><b>E.</b> Il est inactif — seul le progestatif agit</li>
+  </ul>
+  <div class="corr">
+    <span class="ans">Réponse : B</span>
+  </div>
+</article>
+
+<!-- Q22 -->
+<article class="qcm-card">
+  <div class="qcm-head">
+    <div class="qcm-num">22</div>
+    <span class="badge b-single">QCM Simple — « SAUF »</span>
+    <span class="badge b-theme">Classification des méthodes hormonales</span>
+  </div>
+  <p class="qcm-q">Toutes les méthodes suivantes sont des contraceptions hormonales, <b>SAUF</b> :</p>
+  <ul class="options">
+    <li><b>A.</b> Pilule œstroprogestative</li>
+    <li><b>B.</b> Patch transdermique</li>
+    <li><b>C.</b> Anneau vaginal</li>
+    <li><b>D.</b> Diaphragme</li>
+    <li><b>E.</b> Implant sous-cutané</li>
+  </ul>
+  <div class="corr">
+    <span class="ans">Réponse : D</span>
+  </div>
+</article>
+
+<!-- Q23 -->
+<article class="qcm-card">
+  <div class="qcm-head">
+    <div class="qcm-num">23</div>
+    <span class="badge b-multi">QCM Multiple</span>
+    <span class="badge b-theme">Pilule progestative</span>
+  </div>
+  <p class="qcm-q">Concernant la pilule progestative (microprogestative), quelles propositions sont exactes ?</p>
+  <ul class="options">
+    <li><b>A.</b> Elle se prend en continu, sans interruption entre deux plaquettes</li>
+    <li><b>B.</b> Elle doit être prise à heure fixe</li>
+    <li><b>C.</b> Elle épaissit la glaire cervicale</li>
+    <li><b>D.</b> Elle contient de l'éthinylestradiol</li>
+    <li><b>E.</b> Elle est contre-indiquée en cas de cancer du sein</li>
+  </ul>
+  <div class="corr">
+    <span class="ans">Réponses : A, B, C, E</span>
+  </div>
+</article>
+
+<!-- Q24 -->
+<article class="qcm-card">
+  <div class="qcm-head">
+    <div class="qcm-num">24</div>
+    <span class="badge b-rf">Vrai / Faux (RF)</span>
+    <span class="badge b-theme">Comparaison des indices de Pearl</span>
+  </div>
+  <p class="qcm-q">Concernant l'indice de Pearl, quelle proposition est <b>FAUSSE</b> ?</p>
+  <ul class="options">
+    <li><b>A.</b> Le DIU au lévonorgestrel a un indice de Pearl de 0,2</li>
+    <li><b>B.</b> Le préservatif masculin a un indice de Pearl de 2 à 15</li>
+    <li><b>C.</b> Les spermicides ont un indice de Pearl de 18 à 29</li>
+    <li><b>D.</b> Les méthodes naturelles ont un indice de Pearl de 1 à 9</li>
+    <li><b>E.</b> Un indice de Pearl élevé signifie une meilleure efficacité</li>
+  </ul>
+  <div class="corr">
+    <span class="ans">Réponse : E</span>
+    <p><span class="why">E faux</span> : plus l'indice de Pearl est bas, plus la méthode est efficace.</p>
+  </div>
+</article>
+
+<!-- Q25 -->
+<article class="qcm-card">
+  <div class="qcm-head">
+    <div class="qcm-num">25</div>
+    <span class="badge b-single">QCM Simple</span>
+    <span class="badge b-theme">Mécanisme de la contraception d'urgence</span>
+  </div>
+  <p class="qcm-q">La contraception d'urgence hormonale agit principalement par :</p>
+  <ul class="options">
+    <li><b>A.</b> Destruction de l'embryon</li>
+    <li><b>B.</b> Retard ou inhibition de l'ovulation</li>
+    <li><b>C.</b> Effet abortif</li>
+    <li><b>D.</b> Stérilisation temporaire</li>
+    <li><b>E.</b> Action spermicide directe</li>
+  </ul>
+  <div class="corr">
+    <span class="ans">Réponse : B</span>
+  </div>
+</article>
+
+<h2 class="sec"><span class="num">2</span>Cas cliniques hospitaliers algériens</h2>
+
+<!-- CAS 1 -->
+<article class="case">
+  <div class="case-head">
+    <h3>Cas n°1 — Première contraception chez une jeune femme</h3>
+    <p class="vignette">Mme K.L., 22 ans, nulligeste, consulte au <b>EPH de Tipaza</b> pour une première contraception. Cycles réguliers (28 j), règles de 4 jours. TA 110/70 mmHg, IMC 22. Fume 5 cigarettes/jour. Pas de migraine avec aura. Pas d'antécédent personnel ni familial de thrombose. Pas de grossesse en cours.</p>
+  </div>
+  <div class="case-body">
+    <article class="qcm-card" style="margin-bottom:14px">
+      <div class="qcm-head"><span class="badge b-case">Cas 1 · Q1</span></div>
+      <p class="qcm-q">Quelle est la meilleure option de première intention ?</p>
+      <ul class="options">
+        <li><b>A.</b> Œstroprogestatif minidosé</li>
+        <li><b>B.</b> Œstroprogestatif normodosé</li>
+        <li><b>C.</b> Pilule progestative</li>
+        <li><b>D.</b> DIU au cuivre</li>
+        <li><b>E.</b> Stérilisation tubaire</li>
       </ul>
-      <details class="correction">
-        <summary>Correction</summary>
-        <div class="correction-body">
-          <span class="answer-line">Réponse : A</span>
-          <div class="why">L'association âge > 35 ans et tabac est une contre-indication de catégorie 4 de l'OMS aux œstroprogestatifs.</div>
-        </div>
-      </details>
-    </div>
-  </article>
-
-  <!-- CAS 2 -->
-  <article class="case">
-    <div class="case-head">
-      <h3>Cas Clinique N°2 : Oubli de pilule au-delà de 12 heures</h3>
-    </div>
-    <div class="vignette">
-      <p>Jeune femme de 21 ans sous œstroprogestatif minidosé (21 jours). Elle constate à 20h qu'elle a oublié le comprimé de la veille au soir (oubli de plus de 24 heures en première semaine de plaquette). Un rapport non protégé a eu lieu la veille.</p>
-    </div>
-    <div class="case-q">
-      <p class="q-text"><strong>Question :</strong> Quelle conduite à tenir immédiate recommandez-vous ?</p>
-      <ul class="q-options">
-      <li data-letter="A">Prendre immédiatement le comprimé oublié, prendre celui du jour à l'heure normale, prendre une contraception d'urgence hormonale sans délai et utiliser des préservatifs pendant 7 jours.</li>
-      <li data-letter="B">Arrêter la plaquette et attendre les prochaines règles dans un mois.</li>
-      <li data-letter="C">Prendre 10 comprimés en une seule prise.</li>
-      <li data-letter="D">Effectuer une hystérectomie de sécurité.</li>
-      <li data-letter="E">Ne rien faire car un oubli en première semaine est sans danger.</li>
+      <div class="corr">
+        <span class="ans">Réponse : A</span>
+        <p>Chez une femme &lt; 35 ans, tabagisme &lt; 15 cig/j, sans facteur de risque cardiovasculaire, l'œstroprogestatif minidosé est la première intention.</p>
+      </div>
+    </article>
+    <article class="qcm-card" style="margin-bottom:14px">
+      <div class="qcm-head"><span class="badge b-case">Cas 1 · Q2</span></div>
+      <p class="qcm-q">Parmi ces antécédents, lequel constituerait une <b>contre-indication absolue</b> aux œstroprogestatifs ?</p>
+      <ul class="options">
+        <li><b>A.</b> Nulliparité</li>
+        <li><b>B.</b> Tabagisme à 5 cig/jour</li>
+        <li><b>C.</b> Migraine avec aura</li>
+        <li><b>D.</b> Antécédent familial de diabète de type 2</li>
+        <li><b>E.</b> IMC à 22</li>
       </ul>
-      <details class="correction">
-        <summary>Correction</summary>
-        <div class="correction-body">
-          <span class="answer-line">Réponse : A</span>
-          <div class="why">L'oubli en semaine 1 est le plus à risque car il prolonge l'intervalle sans hormones. La contraception d'urgence s'impose vu le rapport récent.</div>
-        </div>
-      </details>
-    </div>
-  </article>
-
-  <!-- CAS 3 -->
-  <article class="case">
-    <div class="case-head">
-      <h3>Cas Clinique N°3 : Disparition des fils de stérilet</h3>
-    </div>
-    <div class="vignette">
-      <p>Patiente de 29 ans porteuse d'un stérilet au cuivre depuis 2 ans. Lors de l'examen de routine au spéculum, le médecin ne retrouve pas les fils de traction au niveau de l'orifice externe du col.</p>
-    </div>
-    <div class="case-q">
-      <p class="q-text"><strong>Question :</strong> Quel examen complémentaire demandez-vous en première intention ?</p>
-      <ul class="q-options">
-      <li data-letter="A">Échographie pelvienne par voie endovaginale pour visualiser l'échogénicité du DIU dans la cavité endométriale ou rechercher une expulsion/perforation.</li>
-      <li data-letter="B">Scintigraphie myocardique au thallium.</li>
-      <li data-letter="C">Biopsie du col utérin aux 4 quadrants.</li>
-      <li data-letter="D">Laparotomie médiane d'urgence au bloc.</li>
-      <li data-letter="E">Cœlioscopie d'emblée sans imagerie préalable.</li>
+      <div class="corr">
+        <span class="ans">Réponse : C</span>
+        <p>La migraine avec aura est une contre-indication formelle aux COC.</p>
+      </div>
+    </article>
+    <article class="qcm-card" style="margin-bottom:14px">
+      <div class="qcm-head"><span class="badge b-case">Cas 1 · Q3</span></div>
+      <p class="qcm-q">Si la patiente avait 38 ans et fumait 20 cigarettes/jour, quelle serait l'attitude la plus adaptée ?</p>
+      <ul class="options">
+        <li><b>A.</b> Prescrire un COC minidosé</li>
+        <li><b>B.</b> Prescrire un COC normodosé</li>
+        <li><b>C.</b> Contre-indiquer les COC et proposer une méthode progestative ou un DIU</li>
+        <li><b>D.</b> Prescrire un patch transdermique</li>
+        <li><b>E.</b> Ne rien prescrire</li>
       </ul>
-      <details class="correction">
-        <summary>Correction</summary>
-        <div class="correction-body">
-          <span class="answer-line">Réponse : A</span>
-          <div class="why">L'échographie pelvienne confirme immédiatement si le stérilet est bien en place, s'il a migré dans le myomètre ou s'il a été expulsé.</div>
-        </div>
-      </details>
-    </div>
-  </article>
-
-  <!-- CAS 4 -->
-  <article class="case">
-    <div class="case-head">
-      <h3>Cas Clinique N°4 : Désir de contraception d'urgence après 4 jours</h3>
-    </div>
-    <div class="vignette">
-      <p>Étudiante de 22 ans consulte 90 heures (près de 4 jours) après un rapport sexuel accidentellement non protégé en milieu de cycle.</p>
-    </div>
-    <div class="case-q">
-      <p class="q-text"><strong>Question :</strong> Quelle option contraceptive d'urgence est la plus efficace à ce stade ?</p>
-      <ul class="q-options">
-      <li data-letter="A">La pose d'un DIU au cuivre (efficace jusqu'à 120 heures) ou la prise d'Ulipristal acétate (EllaOne, efficace jusqu'à 5 jours).</li>
-      <li data-letter="B">Le lévonorgestrel classique qui reste efficace jusqu'à 10 jours.</li>
-      <li data-letter="C">L'injection d'ocytocine en intramusculaire.</li>
-      <li data-letter="D">La prise de 4 comprimés de paracétamol.</li>
-      <li data-letter="E">Il n'existe plus aucune solution après 24 heures.</li>
+      <div class="corr">
+        <span class="ans">Réponse : C</span>
+        <p>Âge ≥ 35 ans + tabac ≥ 15 cig/j = contre-indication absolue aux COC.</p>
+      </div>
+    </article>
+    <article class="qcm-card">
+      <div class="qcm-head"><span class="badge b-case">Cas 1 · Q4</span></div>
+      <p class="qcm-q">Quelle méthode lui garantit, en plus de la contraception, une protection contre les IST ?</p>
+      <ul class="options">
+        <li><b>A.</b> Pilule œstroprogestative</li>
+        <li><b>B.</b> DIU au cuivre</li>
+        <li><b>C.</b> Implant sous-cutané</li>
+        <li><b>D.</b> Préservatif masculin</li>
+        <li><b>E.</b> Anneau vaginal</li>
       </ul>
-      <details class="correction">
-        <summary>Correction</summary>
-        <div class="correction-body">
-          <span class="answer-line">Réponse : A</span>
-          <div class="why">Le DIU au cuivre est efficace jusqu'à 120h (et au-delà de 99%), tout comme l'ulipristal acétate jusqu'à 5 jours. Le lévonorgestrel est inefficace au-delà de 72h.</div>
-        </div>
-      </details>
-    </div>
-  </article>
+      <div class="corr">
+        <span class="ans">Réponse : D</span>
+      </div>
+    </article>
+  </div>
+</article>
 
-  <!-- CAS 5 -->
-  <article class="case">
-    <div class="case-head">
-      <h3>Cas Clinique N°5 : Antécédent de thrombophlébite et choix contraceptif</h3>
-    </div>
-    <div class="vignette">
-      <p>Femme de 31 ans avec antécédent documenté d'embolie pulmonaire post-fracture du fémur il y a 2 ans, porteuse d'une mutation hétérozygote du facteur V de Leiden. Elle souhaite une méthode contraceptive hautement fiable et de longue durée.</p>
-    </div>
-    <div class="case-q">
-      <p class="q-text"><strong>Question :</strong> Quelle méthode est la plus adaptée et sécuritaire ?</p>
-      <ul class="q-options">
-      <li data-letter="A">Dispositif intra-utérin au cuivre (aucun impact hémostatique) ou DIU au Lévonorgestrel (progestatif local sans augmentation du risque thromboembolique).</li>
-      <li data-letter="B">Pilule œstroprogestative de 3ème génération.</li>
-      <li data-letter="C">Anneau vaginal combiné.</li>
-      <li data-letter="D">Patch contraceptif transdermique œstroprogestatif.</li>
-      <li data-letter="E">Pilule séquentielle normodosée.</li>
+<!-- CAS 2 -->
+<article class="case">
+  <div class="case-head">
+    <h3>Cas n°2 — Oubli de pilule et rapport non protégé</h3>
+    <p class="vignette">Mme B.S., 28 ans, G2P1, sous COC minidosée depuis 2 ans. Elle consulte au <b>CHU Mustapha Pacha</b> car elle a oublié 2 comprimés consécutifs en début de plaquette. Elle a eu un rapport non protégé il y a 48 h.</p>
+  </div>
+  <div class="case-body">
+    <article class="qcm-card" style="margin-bottom:14px">
+      <div class="qcm-head"><span class="badge b-case">Cas 2 · Q1</span></div>
+      <p class="qcm-q">Quelle est l'attitude immédiate correcte vis-à-vis de la plaquette ?</p>
+      <ul class="options">
+        <li><b>A.</b> Prendre les 2 comprimés oubliés et continuer sans autre mesure</li>
+        <li><b>B.</b> Prendre 1 comprimé immédiatement et utiliser une méthode locale 7 jours</li>
+        <li><b>C.</b> Prendre les 2 comprimés oubliés, continuer la plaquette ET utiliser une méthode locale jusqu'à la fin de la plaquette</li>
+        <li><b>D.</b> Arrêter la plaquette</li>
+        <li><b>E.</b> Attendre les règles</li>
       </ul>
-      <details class="correction">
-        <summary>Correction</summary>
-        <div class="correction-body">
-          <span class="answer-line">Réponse : A</span>
-          <div class="why">Toute contraception contenant des œstrogènes est formellement contre-indiquée. Le DIU au cuivre est la méthode de choix de première intention sans risque thrombotique.</div>
-        </div>
-      </details>
-    </div>
-  </article>
+      <div class="corr">
+        <span class="ans">Réponse : C</span>
+        <p>Oubli &gt; 12 h : prendre comprimé oublié + comprimé du jour + méthode locale jusqu'à la fin de la plaquette.</p>
+      </div>
+    </article>
+    <article class="qcm-card" style="margin-bottom:14px">
+      <div class="qcm-head"><span class="badge b-case">Cas 2 · Q2</span></div>
+      <p class="qcm-q">Quelle contraception d'urgence peut être proposée ?</p>
+      <ul class="options">
+        <li><b>A.</b> Aucune, le délai est trop long</li>
+        <li><b>B.</b> Lévonorgestrel 1,5 mg dans les 72 h</li>
+        <li><b>C.</b> DIU au cuivre dans les 5 jours</li>
+        <li><b>D.</b> Ulipristal acétate dans les 120 h</li>
+        <li><b>E.</b> Toutes les options B, C et D sont possibles</li>
+      </ul>
+      <div class="corr">
+        <span class="ans">Réponse : E</span>
+      </div>
+    </article>
+    <article class="qcm-card" style="margin-bottom:14px">
+      <div class="qcm-head"><span class="badge b-case">Cas 2 · Q3</span></div>
+      <p class="qcm-q">Jusqu'à quand le préservatif doit-il être utilisé en complément ?</p>
+      <ul class="options">
+        <li><b>A.</b> 24 h</li>
+        <li><b>B.</b> 48 h</li>
+        <li><b>C.</b> 7 jours</li>
+        <li><b>D.</b> Jusqu'à la fin de la plaquette</li>
+        <li><b>E.</b> Jusqu'au cycle suivant</li>
+      </ul>
+      <div class="corr">
+        <span class="ans">Réponse : D</span>
+      </div>
+    </article>
+    <article class="qcm-card">
+      <div class="qcm-head"><span class="badge b-case">Cas 2 · Q4</span></div>
+      <p class="qcm-q">Quel est le risque principal en l'absence de prise en charge ?</p>
+      <ul class="options">
+        <li><b>A.</b> Grossesse non désirée</li>
+        <li><b>B.</b> Ménopause précoce</li>
+        <li><b>C.</b> Cancer ovarien</li>
+        <li><b>D.</b> Ostéoporose</li>
+        <li><b>E.</b> Thrombose veineuse</li>
+      </ul>
+      <div class="corr">
+        <span class="ans">Réponse : A</span>
+      </div>
+    </article>
+  </div>
+</article>
 
-</section>
-</main>
+<!-- CAS 3 -->
+<article class="case">
+  <div class="case-head">
+    <h3>Cas n°3 — Ménorragies et choix contraceptif</h3>
+    <p class="vignette">Mme H.M., 35 ans, G3P3, consulte au <b>CHU de Blida</b> pour ménorragies depuis 1 an avec asthénie. Hb = 9 g/dL, ferritine basse. Échographie : utérus augmenté de volume avec petit fibrome sous-muqueux de 2 cm. Souhaite une contraception fiable.</p>
+  </div>
+  <div class="case-body">
+    <article class="qcm-card" style="margin-bottom:14px">
+      <div class="qcm-head"><span class="badge b-case">Cas 3 · Q1</span></div>
+      <p class="qcm-q">Quelle méthode contraceptive est la plus adaptée ?</p>
+      <ul class="options">
+        <li><b>A.</b> COC normodosé</li>
+        <li><b>B.</b> DIU au cuivre</li>
+        <li><b>C.</b> DIU au lévonorgestrel</li>
+        <li><b>D.</b> Préservatif seul</li>
+        <li><b>E.</b> Spermicides</li>
+      </ul>
+      <div class="corr">
+        <span class="ans">Réponse : C</span>
+        <p>Le DIU au lévonorgestrel est la méthode de choix pour contraception et réduction des ménorragies.</p>
+      </div>
+    </article>
+    <article class="qcm-card" style="margin-bottom:14px">
+      <div class="qcm-head"><span class="badge b-case">Cas 3 · Q2</span></div>
+      <p class="qcm-q">Quel mécanisme explique l'effet sur les ménorragies ?</p>
+      <ul class="options">
+        <li><b>A.</b> Destruction de l'endomètre</li>
+        <li><b>B.</b> Ralentissement de l'épaississement de la muqueuse utérine</li>
+        <li><b>C.</b> Action spermicide directe</li>
+        <li><b>D.</b> Blocage de l'ovulation</li>
+        <li><b>E.</b> Effet abortif</li>
+      </ul>
+      <div class="corr">
+        <span class="ans">Réponse : B</span>
+      </div>
+    </article>
+    <article class="qcm-card">
+      <div class="qcm-head"><span class="badge b-case">Cas 3 · Q3</span></div>
+      <p class="qcm-q">Quelle est la durée d'action du DIU au lévonorgestrel selon le cours ?</p>
+      <ul class="options">
+        <li><b>A.</b> 1 an</li>
+        <li><b>B.</b> 3 ans</li>
+        <li><b>C.</b> 5 ans</li>
+        <li><b>D.</b> 10 ans</li>
+        <li><b>E.</b> 15 ans</li>
+      </ul>
+      <div class="corr">
+        <span class="ans">Réponse : C</span>
+      </div>
+    </article>
+  </div>
+</article>
+
+<!-- CAS 4 -->
+<article class="case">
+  <div class="case-head">
+    <h3>Cas n°4 — Antécédent thromboembolique</h3>
+    <p class="vignette">Mme S.A., 30 ans, G1P1, antécédent de thrombose veineuse profonde il y a 2 ans (sous AVK). Consulte au <b>CHU d'Oran</b> pour contraception.</p>
+  </div>
+  <div class="case-body">
+    <article class="qcm-card" style="margin-bottom:14px">
+      <div class="qcm-head"><span class="badge b-case">Cas 4 · Q1</span></div>
+      <p class="qcm-q">Quelle contraception est <b>formellement contre-indiquée</b> ?</p>
+      <ul class="options">
+        <li><b>A.</b> DIU au cuivre</li>
+        <li><b>B.</b> DIU au lévonorgestrel</li>
+        <li><b>C.</b> COC</li>
+        <li><b>D.</b> Pilule progestative</li>
+        <li><b>E.</b> Implant</li>
+      </ul>
+      <div class="corr">
+        <span class="ans">Réponse : C</span>
+      </div>
+    </article>
+    <article class="qcm-card" style="margin-bottom:14px">
+      <div class="qcm-head"><span class="badge b-case">Cas 4 · Q2</span></div>
+      <p class="qcm-q">Quelle alternative est la plus appropriée ?</p>
+      <ul class="options">
+        <li><b>A.</b> COC minidosé</li>
+        <li><b>B.</b> Patch transdermique</li>
+        <li><b>C.</b> DIU au cuivre ou contraception progestative seule</li>
+        <li><b>D.</b> Anneau vaginal</li>
+        <li><b>E.</b> Aucune contraception</li>
+      </ul>
+      <div class="corr">
+        <span class="ans">Réponse : C</span>
+      </div>
+    </article>
+    <article class="qcm-card">
+      <div class="qcm-head"><span class="badge b-case">Cas 4 · Q3</span></div>
+      <p class="qcm-q">Pourquoi les œstroprogestatifs sont-ils contre-indiqués dans ce contexte ?</p>
+      <ul class="options">
+        <li><b>A.</b> Risque hémorragique</li>
+        <li><b>B.</b> Risque thromboembolique veineux et artériel</li>
+        <li><b>C.</b> Risque d'infertilité définitive</li>
+        <li><b>D.</b> Risque de cancer ovarien</li>
+        <li><b>E.</b> Risque d'ostéoporose</li>
+      </ul>
+      <div class="corr">
+        <span class="ans">Réponse : B</span>
+      </div>
+    </article>
+  </div>
+</article>
+
+<!-- CAS 5 -->
+<article class="case">
+  <div class="case-head">
+    <h3>Cas n°5 — Contraception d'urgence aux urgences</h3>
+    <p class="vignette">Mme R.N., 19 ans, étudiante, consulte aux <b>urgences gynécologiques du CHU de Constantine</b> 2 h après un rapport non protégé. Pas de contraception. Dernières règles il y a 14 jours.</p>
+  </div>
+  <div class="case-body">
+    <article class="qcm-card" style="margin-bottom:14px">
+      <div class="qcm-head"><span class="badge b-case">Cas 5 · Q1</span></div>
+      <p class="qcm-q">Quelle contraception d'urgence peut être proposée ?</p>
+      <ul class="options">
+        <li><b>A.</b> Lévonorgestrel 1,5 mg dans les 72 h</li>
+        <li><b>B.</b> Ulipristal acétate dans les 120 h</li>
+        <li><b>C.</b> DIU au cuivre dans les 5 jours</li>
+        <li><b>D.</b> Toutes les propositions A, B et C sont possibles</li>
+        <li><b>E.</b> Aucune</li>
+      </ul>
+      <div class="corr">
+        <span class="ans">Réponse : D</span>
+      </div>
+    </article>
+    <article class="qcm-card" style="margin-bottom:14px">
+      <div class="qcm-head"><span class="badge b-case">Cas 5 · Q2</span></div>
+      <p class="qcm-q">Quel est le délai maximal pour le lévonorgestrel selon le cours ?</p>
+      <ul class="options">
+        <li><b>A.</b> 12 h</li>
+        <li><b>B.</b> 24 h</li>
+        <li><b>C.</b> 48 h</li>
+        <li><b>D.</b> 72 h</li>
+        <li><b>E.</b> 120 h</li>
+      </ul>
+      <div class="corr">
+        <span class="ans">Réponse : D</span>
+      </div>
+    </article>
+    <article class="qcm-card" style="margin-bottom:14px">
+      <div class="qcm-head"><span class="badge b-case">Cas 5 · Q3</span></div>
+      <p class="qcm-q">Après la contraception d'urgence, que doit-on recommander ?</p>
+      <ul class="options">
+        <li><b>A.</b> Débuter une contraception régulière</li>
+        <li><b>B.</b> Utiliser un préservatif en attendant</li>
+        <li><b>C.</b> Faire un test de grossesse si retard de règles</li>
+        <li><b>D.</b> Proposer un dépistage des IST</li>
+        <li><b>E.</b> Toutes les propositions</li>
+      </ul>
+      <div class="corr">
+        <span class="ans">Réponse : E</span>
+      </div>
+    </article>
+    <article class="qcm-card">
+      <div class="qcm-head"><span class="badge b-case">Cas 5 · Q4</span></div>
+      <p class="qcm-q">La contraception d'urgence protège-t-elle contre les IST ?</p>
+      <ul class="options">
+        <li><b>A.</b> Oui, totalement</li>
+        <li><b>B.</b> Oui, partiellement</li>
+        <li><b>C.</b> Non</li>
+        <li><b>D.</b> Seulement contre le VIH</li>
+        <li><b>E.</b> Seulement contre la syphilis</li>
+      </ul>
+      <div class="corr">
+        <span class="ans">Réponse : C</span>
+      </div>
+    </article>
+  </div>
+</article>
+
+</div>
 </body>
 </html>
