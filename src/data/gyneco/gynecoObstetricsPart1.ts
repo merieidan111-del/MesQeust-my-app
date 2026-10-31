@@ -4325,18 +4325,18 @@ export const OBSTETRICS_QUESTIONS_PART1: Question[] = [
     "courseId": "c-gyn-diabete",
     "questionNumber": 1,
     "type": "QCM",
-    "questionText": "Concernant le dépistage du diabète gestationnel au premier trimestre selon les critères IADPSG / OMS, quel seuil de glycémie à jeun permet d'affirmer le diagnostic ?",
+    "questionText": "Concernant la définition du diabète gestationnel (DG) selon l'OMS, quelle est la proposition exacte ?",
     "options": [
-      "Glycémie veineuse à jeun ≥ 0,92 g/L (5,1 mmol/L)",
-      "Glycémie à jeun ≥ 0,70 g/L",
-      "Glycémie à jeun ≥ 1,40 g/L",
-      "Glycémie post-prandiale ≥ 0,80 g/L",
-      "Glycosurie isolée sans glycémie veineuse"
+      "Il est défini par une glycémie à jeun ≥ 1,26 g/L à deux reprises avant la grossesse",
+      "Il s'agit d'un trouble de la tolérance glucidique de sévérité variable, débutant ou diagnostiqué pour la première fois pendant la grossesse",
+      "Il inclut exclusivement les femmes dont la glycémie se normalise après l'accouchement",
+      "Il exclut les diabètes de type 2 méconnus découverts fortuitement lors de la grossesse",
+      "Il est systématiquement asymptomatique et ne présente aucun risque fœtal s'il n'est pas traité"
     ],
     "correctAnswers": [
-      0
+      1
     ],
-    "explanation": "u premier trimestre chez une patiente à risque, une glycémie veineuse à jeun entre 0,92 et 1,25 g/L pose le diagnostic de diabète gestationnel. ≥ 1,26 g/L signe un diabète avéré préexistant.",
+    "explanation": "La définition de l'OMS englobe toute hyperglycémie découverte pendant la grossesse.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -4346,18 +4346,21 @@ export const OBSTETRICS_QUESTIONS_PART1: Question[] = [
     "courseId": "c-gyn-diabete",
     "questionNumber": 2,
     "type": "QCM",
-    "questionText": "Quels sont les facteurs de risque justifiant un dépistage ciblé du diabète gestationnel dès la première consultation prénatale ?",
+    "questionText": "Quels sont les facteurs hormonaux placentaires responsables de l'insulino-résistance lors de la 2ème moitié de la grossesse ?",
     "options": [
-      "Âge maternel ≥ 35 ans",
-      "Indice de masse corporelle (IMC) prégestationnel ≥ 25 kg/m²",
-      "Antécédent personnel de diabète gestationnel ou de macrosomie fœtale (poids de naissance ≥ 4000 g)",
-      "Antécédent de diabète de type 2 chez un apparenté au premier degré",
-      "Toutes les propositions sus-citées sont des facteurs de risque reconnus"
+      "L'hormone lactogène placentaire (HPL)",
+      "L'insuline fœtale",
+      "Le cortisol",
+      "La progestérone",
+      "Les hormones de croissance"
     ],
     "correctAnswers": [
+      0,
+      2,
+      3,
       4
     ],
-    "explanation": "L'âge ≥ 35 ans, le surpoids/obésité, les antécédents familiaux de T2D et personnels de diabète gestationnel ou macrosomie imposent le dépistage.",
+    "explanation": "Voir la correction et l'explication Réponses : A, C, D, E",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -4367,18 +4370,18 @@ export const OBSTETRICS_QUESTIONS_PART1: Question[] = [
     "courseId": "c-gyn-diabete",
     "questionNumber": 3,
     "type": "QCM",
-    "questionText": "Lors de l'HGPO avec 75 g de glucose réalisée entre 24 et 28 SA, quelles sont les valeurs seuils pathologiques (1 seule valeur anormale suffit) ?",
+    "questionText": "Concernant la distinction entre diabète pré-gestationnel (DTE) et diabète gestationnel (DG) :",
     "options": [
-      "À jeun ≥ 0,92 g/L ; à 1 heure ≥ 1,80 g/L ; à 2 heures ≥ 1,53 g/L",
-      "À jeun ≥ 1,26 g/L ; à 1 heure ≥ 2,50 g/L ; à 2 heures ≥ 2,00 g/L",
-      "À jeun ≥ 0,80 g/L ; à 1 heure ≥ 1,20 g/L ; à 2 heures ≥ 1,00 g/L",
-      "À jeun ≥ 1,50 g/L uniquement",
-      "À jeun ≥ 2,00 g/L quelle que soit la valeur post-charge"
+      "Le DTE est défini par une glycémie à jeun ≥ 1,26 g/L avant la grossesse",
+      "Le DTE est responsable de malformations fœtales si l'équilibre glycémique est mauvais au 1er trimestre",
+      "Le DG apparaît généralement au 1er trimestre de la grossesse",
+      "Le DG est associé à un risque de macrosomie fœtale surtout au 2ème et 3ème trimestre",
+      "Le DTE regroupe le DT1 (10%) et le DT2 (90%)"
     ],
     "correctAnswers": [
-      0
+      2
     ],
-    "explanation": "Seuils IADPSG : T0 ≥ 0,92 g/L, T1h ≥ 1,80 g/L, T2h ≥ 1,53 g/L. Un seul critère au-dessus du seuil affirme le diagnostic de diabète gestationnel.",
+    "explanation": "Voir la correction et l'explication Réponse : C",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -4388,18 +4391,18 @@ export const OBSTETRICS_QUESTIONS_PART1: Question[] = [
     "courseId": "c-gyn-diabete",
     "questionNumber": 4,
     "type": "QCM",
-    "questionText": "Quels sont les objectifs glycémiques stricts recommandés sous autosurveillance pluriquotidienne au cours de la grossesse diabétique ?",
+    "questionText": "Concernant le dépistage et le diagnostic du diabète gestationnel :",
     "options": [
-      "Glycémie à jeun ≤ 0,95 g/L et glycémie 2 heures post-prandiale < 1,20 g/L",
-      "Glycémie à jeun ≤ 1,40 g/L et post-prandiale < 2,00 g/L",
-      "Glycémie à jeun ≤ 0,50 g/L",
-      "Glycémie constante à 2,50 g/L",
-      "Aucun objectif chiffré n'est nécessaire"
+      "Le dépistage systématique par HGPO est recommandé entre 24 et 28 SA",
+      "Une glycémie à jeun ≥ 0,92 g/L au 1er trimestre permet de poser le diagnostic de DG",
+      "L'HGPO avec 75g de glucose est la méthode de référence selon le CNGOF",
+      "Le seuil de la glycémie à la 1ère heure de l'HGPO est ≥ 1,80 g/L",
+      "La mesure de l'HbA1c est recommandée en première intention pour le diagnostic du DG"
     ],
     "correctAnswers": [
-      0
+      4
     ],
-    "explanation": "Objectifs stricts pour prévenir la macrosomie : ≤ 0,95 g/L à jeun et < 1,20 g/L à 2 heures post-prandiale (ou < 1,40 g/L à 1 heure).",
+    "explanation": "Voir la correction et l'explication Réponse : E",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -4409,18 +4412,21 @@ export const OBSTETRICS_QUESTIONS_PART1: Question[] = [
     "courseId": "c-gyn-diabete",
     "questionNumber": 5,
     "type": "QCM",
-    "questionText": "Quelle complication néonatale majeure immédiate menace le nouveau-né de mère diabétique dans les premières heures suivant l'accouchement ?",
+    "questionText": "Parmi les facteurs de risque suivants, lesquels sont des indications de dépistage ciblé du diabète gestationnel ?",
     "options": [
-      "L'hypoglycémie néonatale par hyperinsulinisme réactionnel fœtal",
-      "L'hyperglycémie maligne cétosique fœtale",
-      "La sténose du pylore néonatale",
-      "L'atrésie de l'œsophage",
-      "La surdité de perception bilatérale"
+      "Âge maternel > 35 ans",
+      "IMC > 25 kg/m²",
+      "Antécédent familial de diabète au 1er degré",
+      "Antécédent personnel d'avortements à répétition",
+      "Origine ethnique européenne"
     ],
     "correctAnswers": [
-      0
+      0,
+      1,
+      2,
+      3
     ],
-    "explanation": "L'hyperglycémie maternelle stimule le pancréas fœtal (hyperinsulinisme fœtal). À la naissance, l'apport maternel en glucose est coupé alors que l'insuline fœtale reste élevée, provoquant une hypoglycémie précoce sévère.",
+    "explanation": "Voir la correction et l'explication Réponses : A, B, C, D",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -4430,18 +4436,18 @@ export const OBSTETRICS_QUESTIONS_PART1: Question[] = [
     "courseId": "c-gyn-diabete",
     "questionNumber": 6,
     "type": "QCM",
-    "questionText": "Parmi les complications fœtales suivantes, laquelle est spécifiquement attribuable au mauvais équilibre glycémique périconceptionnel du diabète préexistant ?",
+    "questionText": "Toutes les propositions suivantes sont des complications maternelles du diabète et de la grossesse, SAUF une. Laquelle ?",
     "options": [
-      "Malformations congénitales cardiaques (transposition, CIV) et neurologiques (spina bifida, syndrome de régression caudale)",
-      "Trisomie 21 par non-disjonction méiotique",
-      "Syndrome de Turner 45,X0",
-      "Maladie des membranes hyalines du post-terme",
-      "Hémophilie A liée à l'X"
+      "Pré-éclampsie",
+      "Hydramnios",
+      "Inertie utérine",
+      "Malformations cardiaques",
+      "Infections urinaires"
     ],
     "correctAnswers": [
-      0
+      3
     ],
-    "explanation": "L'hyperglycémie pendant l'organogenèse (T1) est tératogène, multipliant par 3 à 5 le risque de cardiopathies congénitales et d'anomalies du tube neural.",
+    "explanation": "Voir la correction et l'explication Réponse : D",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -4451,18 +4457,18 @@ export const OBSTETRICS_QUESTIONS_PART1: Question[] = [
     "courseId": "c-gyn-diabete",
     "questionNumber": 7,
     "type": "QCM",
-    "questionText": "Quelle complication mécanique redoutée lors de l'accouchement par voie basse d'un fœtus macrosome chez une mère diabétique ?",
+    "questionText": "Chez une femme enceinte avec facteurs de risque, quelle est la démarche de dépistage recommandée au 1er trimestre ?",
     "options": [
-      "La dystocie des épaules avec risque d'élongation du plexus brachial (lésion de C5-C6)",
-      "La rétention de tête dernière dans la présentation céphalique",
-      "L'inversion utérine spontanée à l'engagement",
-      "La rupture prématurée de la trompe droite",
-      "L'apoplexie utéro-placentaire"
+      "HGPO avec 75g de glucose entre 24 et 28 SA",
+      "Glycémie à jeun (GAJ) dès la 1ère consultation prénatale",
+      "Dosage de l'HbA1c",
+      "Test d'O'Sullivan (50g de glucose)",
+      "Échographie morphologique à 12 SA"
     ],
     "correctAnswers": [
-      0
+      1
     ],
-    "explanation": "La macrosomie diabétique prédomine sur le tronc et le diamètre bi-acromial, augmentant le risque d'enclavement des épaules sous la symphyse pubienne.",
+    "explanation": "Voir la correction et l'explication Réponse : B",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -4472,18 +4478,18 @@ export const OBSTETRICS_QUESTIONS_PART1: Question[] = [
     "courseId": "c-gyn-diabete",
     "questionNumber": 8,
     "type": "QCM",
-    "questionText": "Quelle est la mesure thérapeutique de première intention indispensable dès le diagnostic de diabète gestationnel ?",
+    "questionText": "Concernant la classification de Priscilla White, quelle proposition est erronée ?",
     "options": [
-      "Prise en charge diététique adaptée (1600-2000 kcal/j, fractionnement en 3 repas + 2 collations) et activité physique régulière adaptée",
-      "Insulinothérapie intraveineuse à forte dose d'emblée chez toutes les patientes",
-      "Prescription de sulfamides hypoglycémiants oraux à forte dose",
-      "Déclenchement immédiat du travail quel que soit l'âge gestationnel",
-      "Jeûne complet jusqu'au terme"
+      "La classe A correspond au diabète gestationnel",
+      "La classe B correspond à un diabète découvert après 20 ans, évoluant depuis moins de 10 ans",
+      "La classe C correspond à un diabète découvert avant 20 ans, évoluant depuis plus de 10 ans",
+      "La classe F correspond à une rétinopathie proliférative ou une néphropathie",
+      "La classe H correspond à une cardiopathie congénitale fœtale"
     ],
     "correctAnswers": [
-      0
+      4
     ],
-    "explanation": "Les règles hygiéno-diététiques normalisent la glycémie dans 70 à 80% des diabètes gestationnels. L'insuline n'est débutée qu'en cas d'échec des objectifs après 7 à 10 jours de diététique.",
+    "explanation": "Voir la correction et l'explication Réponse : E",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -4493,18 +4499,21 @@ export const OBSTETRICS_QUESTIONS_PART1: Question[] = [
     "courseId": "c-gyn-diabete",
     "questionNumber": 9,
     "type": "QCM",
-    "questionText": "Les antidiabétiques oraux (metformine, sulfamides) au cours de la grossesse en pratique obstétricale courante de référence :",
+    "questionText": "Quelles sont les complications néonatales fréquentes chez un enfant né d'une mère diabétique (ENMD) ?",
     "options": [
-      "Sont généralement contre-indiqués ou évités, l'insuline étant le traitement de référence incontesté ne traversant pas la barrière placentaire",
-      "Sont le traitement obligatoire de première intention",
-      "Sont autorisés uniquement à dose double",
-      "Doivent remplacer l'insuline chez les diabétiques de type 1",
-      "Sont injectés en intra-amniotique"
+      "Hypoglycémie",
+      "Hypocalcémie",
+      "Polyglobulie",
+      "Hyperbilirubinémie",
+      "Hypercalcémie"
     ],
     "correctAnswers": [
-      0
+      0,
+      1,
+      2,
+      3
     ],
-    "explanation": "L'insuline humaine ne passe pas la barrière fœto-placentaire et reste le traitement médicamenteux de référence de tout diabète gestationnel ou préexistant non équilibré par le régime.",
+    "explanation": "Voir la correction et l'explication Réponses : A, B, C, D",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -4514,18 +4523,18 @@ export const OBSTETRICS_QUESTIONS_PART1: Question[] = [
     "courseId": "c-gyn-diabete",
     "questionNumber": 10,
     "type": "QCM",
-    "questionText": "Concernant l'hydramnios au cours de la grossesse diabétique, quel est son mécanisme physiopathologique principal ?",
+    "questionText": "Quel est le mécanisme principal de l'hypoglycémie néonatale chez le nouveau-né de mère diabétique ?",
     "options": [
-      "Polyurie fœtale induite par l'hyperglycémie et la diurèse osmotique du fœtus",
-      "Sécrétion excessive de liquide amniotique par les bronches maternelles",
-      "Absence congénitale de déglutition fœtale par atrésie bilatérale des trompes d'Eustache",
-      "Rupture de la vessie maternelle dans l'utérus",
-      "Transsudation de liquide ascitique maternel"
+      "Une immaturité hépatique de la néoglucogenèse",
+      "Un hyperinsulinisme fœtal réactionnel à l'hyperglycémie maternelle",
+      "Une insuffisance surrénalienne transitoire",
+      "Une mauvaise alimentation précoce",
+      "Une hyperglycémie maternelle per-partum"
     ],
     "correctAnswers": [
-      0
+      1
     ],
-    "explanation": "L'hyperglycémie fœtale entraîne une diurèse osmotique avec polyurie fœtale massive, gonflant le volume du liquide amniotique (index amniotique > 24 cm).",
+    "explanation": "Voir la correction et l'explication Réponse : B",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -4535,18 +4544,18 @@ export const OBSTETRICS_QUESTIONS_PART1: Question[] = [
     "courseId": "c-gyn-diabete",
     "questionNumber": 11,
     "type": "QCM",
-    "questionText": "Quelle cardiopathie hypertrophique fœtale réversible est classiquement observée chez le nouveau-né de mère diabétique mal équilibrée ?",
+    "questionText": "Concernant la glycerégulation chez la femme enceinte non diabétique :",
     "options": [
-      "Hypertrophie septale asymétrique sous-aortique",
-      "Tétralogie de Fallot complète",
-      "Coarctation de l'aorte serrée",
-      "Atrésie tricuspide avec tronc artériel commun",
-      "Communication inter-auriculaire type ostium secundum"
+      "La 1ère moitié de la grossesse est une phase de catabolisme",
+      "Il existe une tendance hypoglycémique au 1er trimestre, surtout la nuit et au réveil",
+      "La 2ème moitié de la grossesse est marquée par une augmentation de la tolérance au glucose",
+      "L'insulino-résistance est médiée par les hormones placentaires",
+      "En fin de grossesse, la glycémie post-prandiale a tendance à être plus élevée"
     ],
     "correctAnswers": [
-      0
+      2
     ],
-    "explanation": "L'hyperinsulinisme fœtal stimule la synthèse myocardique et provoque une hypertrophie septale asymétrique qui régresse spontanément en quelques semaines à mois après la naissance.",
+    "explanation": "Voir la correction et l'explication Réponse : C",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -4556,18 +4565,18 @@ export const OBSTETRICS_QUESTIONS_PART1: Question[] = [
     "courseId": "c-gyn-diabete",
     "questionNumber": 12,
     "type": "QCM",
-    "questionText": "Quelle surveillance échographique spécifique est recommandée chez la femme enceinte diabétique au 3ème trimestre ?",
+    "questionText": "Lors d'une HGPO avec 75g de glucose à 24-28 SA, quel seuil définit un diabète gestationnel ?",
     "options": [
-      "Évaluation mensuelle de la biométrie fœtale (diamètre bipariétal, circonférence abdominale CA > 90e percentile) et de la quantité de liquide amniotique",
-      "Radiographie du bassin chaque semaine",
-      "Échographie des glandes surrénales maternelles",
-      "Mesure de la longueur du fémur toutes les 48 heures",
-      "Arrêt total des échographies après 28 SA"
+      "Glycémie à jeun ≥ 0,92 g/L",
+      "Glycémie à 1 heure ≥ 1,80 g/L",
+      "Glycémie à 2 heures ≥ 1,53 g/L",
+      "Toutes ces réponses sont exactes",
+      "Seule la glycémie à jeun ≥ 1,26 g/L est diagnostique"
     ],
     "correctAnswers": [
-      0
+      3
     ],
-    "explanation": "La circonférence abdominale (CA) reflète directement la taille hépatique et le dépôt adipeux fœtal sous l'effet de l'insuline fœtale, alertant sur la macrosomie.",
+    "explanation": "Voir la correction et l'explication Réponse : D",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -4577,18 +4586,21 @@ export const OBSTETRICS_QUESTIONS_PART1: Question[] = [
     "courseId": "c-gyn-diabete",
     "questionNumber": 13,
     "type": "QCM",
-    "questionText": "À quel seuil de poids fœtal estimé (PFE) à l'échographie du terme la césarienne prophylactique programmée est-elle recommandée chez la patiente diabétique pour prévenir la dystocie des épaules ?",
+    "questionText": "Quelles sont les mesures de prise en charge pré-conceptionnelle chez une femme diabétique de type 1 ?",
     "options": [
-      "PFE ≥ 4500 g (ou 4250-4500 g selon les recommandations)",
-      "PFE ≥ 3000 g",
-      "PFE ≥ 2500 g",
-      "PFE ≥ 6000 g uniquement",
-      "Le poids fœtal n'a aucune influence sur la voie d'accouchement"
+      "Obtenir une HbA1c < 6,5%",
+      "Arrêter les antidiabétiques oraux et passer à l'insuline",
+      "Réaliser un fond d'œil et une consultation de cardiologie",
+      "Supplémenter en acide folique (B9)",
+      "Démarrer systématiquement une HGPO"
     ],
     "correctAnswers": [
-      0
+      0,
+      1,
+      2,
+      3
     ],
-    "explanation": "hez la femme diabétique, le risque de dystocie des épaules augmente considérablement dès 4250-4500 g justifiant la proposition d'une césarienne prophylactique.",
+    "explanation": "Voir la correction et l'explication Réponses : A, B, C, D",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -4598,18 +4610,18 @@ export const OBSTETRICS_QUESTIONS_PART1: Question[] = [
     "courseId": "c-gyn-diabete",
     "questionNumber": 14,
     "type": "QCM",
-    "questionText": "Concernant la surveillance du post-partum immédiat chez la patiente ayant présenté un diabète gestationnel pur :",
+    "questionText": "Toutes les propositions suivantes font partie du bilan pré-conceptionnel chez une diabétique, SAUF une. Laquelle ?",
     "options": [
-      "Arrêt immédiat de l'insulinothérapie dès la délivrance et surveillance de la glycémie capillaire",
-      "Maintien de l'insuline à double dose pendant 1 an",
-      "Interdiction formelle de l'allaitement maternel",
-      "Hospitalisation en réanimation pendant 3 semaines",
-      "Pose systématique d'une pompe à insuline définitive"
+      "Bilan rénal",
+      "Fond d'œil",
+      "Échographie cardiaque et ECG",
+      "HGPO avec 75g de glucose",
+      "Recherche et traitement d'une infection urinaire"
     ],
     "correctAnswers": [
-      0
+      3
     ],
-    "explanation": "La délivrance du placenta (source d'hormones placentaires hyperglycémiantes comme l'hPL) entraîne une chute brutale de l'insulinorésistance, permettant l'arrêt immédiat de l'insuline.",
+    "explanation": "Voir la correction et l'explication Réponse : D",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -4619,18 +4631,18 @@ export const OBSTETRICS_QUESTIONS_PART1: Question[] = [
     "courseId": "c-gyn-diabete",
     "questionNumber": 15,
     "type": "QCM",
-    "questionText": "Quel test de dépistage à distance de l'accouchement (3 mois du post-partum) doit être prescrit à toute femme ayant eu un diabète gestationnel ?",
+    "questionText": "Quels sont les objectifs glycémiques chez la femme enceinte diabétique ?",
     "options": [
-      "Une glycémie à jeun ou une HGPO 75g pour dépister un diabète de type 2 ou une intolérance au glucose persistante",
-      "Une scintigraphie des îlots de Langerhans",
-      "Une biopsie pancréatique par laparotomie",
-      "Un scanner cérébral avec perfusion",
-      "Une coronarographie sélective"
+      "À jeun < 0,95 g/L et post-prandial < 1,20 g/L",
+      "À jeun < 1,20 g/L et post-prandial < 1,50 g/L",
+      "À jeun < 0,92 g/L et post-prandial < 1,80 g/L",
+      "À jeun < 1,26 g/L et post-prandial < 2,00 g/L",
+      "À jeun < 0,80 g/L et post-prandial < 1,00 g/L"
     ],
     "correctAnswers": [
       0
     ],
-    "explanation": "Les femmes ayant eu un diabète gestationnel ont un risque de 50% de développer un diabète de type 2 dans les 10 à 20 ans, justifiant une HGPO à 3 mois puis un contrôle annuel.",
+    "explanation": "Voir la correction et l'explication Réponse : A",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -4640,18 +4652,18 @@ export const OBSTETRICS_QUESTIONS_PART1: Question[] = [
     "courseId": "c-gyn-diabete",
     "questionNumber": 16,
     "type": "QCM",
-    "questionText": "Quelle hormone placentaire principale est responsable du pic d'insulinorésistance maternelle physiologique au 2ème et 3ème trimestre ?",
+    "questionText": "Concernant le traitement du diabète gestationnel :",
     "options": [
-      "L'hormone lactogène placentaire (hPL ou hCS)",
-      "La thyréostimuline hypophysaire (TSH)",
-      "L'hormone antidiurétique (ADH)",
-      "L'érythropoïétine placentaire",
-      "La parathormone (PTH)"
+      "Les règles hygiéno-diététiques (RHD) sont la première étape",
+      "L'insuline est le seul traitement médicamenteux autorisé pendant la grossesse",
+      "Les antidiabétiques oraux ont une AMM en France pour le DG",
+      "L'insulinothérapie est indiquée si les RHD ne suffisent pas après 7 à 15 jours",
+      "L'apport calorique recommandé est de 25 à 35 kcal/kg/jour"
     ],
     "correctAnswers": [
-      0
+      2
     ],
-    "explanation": "L'hPL, la progestérone, le cortisol et l'œstriol créent une insulinorésistance périphérique physiologique pour détourner le glucose vers la croissance fœtale.",
+    "explanation": "Voir la correction et l'explication Réponse : C",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -4661,18 +4673,20 @@ export const OBSTETRICS_QUESTIONS_PART1: Question[] = [
     "courseId": "c-gyn-diabete",
     "questionNumber": 17,
     "type": "QCM",
-    "questionText": "Dans le diabète prégestationnel mal équilibré, quel est le risque placentaire et vasculaire maternel accru au 3ème trimestre ?",
+    "questionText": "Quelles sont les indications de césarienne programmée chez une femme enceinte diabétique ?",
     "options": [
-      "Prééclampsie et hypertension artérielle gravidique",
-      "Cancer du placenta",
-      "Hypotension artérielle chronique orthostatique sans protéinurie",
-      "Insuffisance surrénalienne aiguë",
-      "Kyste de l'ovaire géant"
+      "Poids fœtal estimé (PFE) ≥ 4250 - 4500 g",
+      "Diabète pré-gestationnel avec classification de Priscilla White > classe D",
+      "Tout diabète gestationnel sous insuline",
+      "Antécédent d'utérus cicatriciel avec DG bien équilibré",
+      "Présence d'une pré-éclampsie sévère"
     ],
     "correctAnswers": [
-      0
+      0,
+      1,
+      4
     ],
-    "explanation": "Le diabète préexistant avec vasculopathie multiplie par 3 à 4 le risque de prééclampsie, de retard de croissance intra-utérin vasculaire et d'hématome rétroplacentaire.",
+    "explanation": "Voir la correction et l'explication Réponses : A, B, E",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -4682,18 +4696,18 @@ export const OBSTETRICS_QUESTIONS_PART1: Question[] = [
     "courseId": "c-gyn-diabete",
     "questionNumber": 18,
     "type": "QCM",
-    "questionText": "Quelle anomalie hématologique néonatale fréquente résulte de l'hypoxie tissulaire chronique chez le fœtus de mère diabétique mal équilibrée ?",
+    "questionText": "Quel est le mécanisme de la détresse respiratoire (maladie des membranes hyalines) chez le nouveau-né de mère diabétique ?",
     "options": [
-      "Polyglobulie néonatale (hématocrite > 65%) avec risque d'hyperviscosité et d'ictère à bilirubine libre",
-      "Aplasie médullaire néonatale aiguë",
-      "Agranulocytose congénitale pure",
-      "Thrombocytémie essentielle clonale",
-      "Anémie hémolytique auto-immune à anticorps chauds"
+      "Une immaturité pulmonaire anatomique",
+      "Une inhibition de la synthèse du surfactant par l'hyperinsulinisme fœtal",
+      "Une hypoxie fœtale chronique",
+      "Un retard de croissance intra-utérin",
+      "Une infection pulmonaire néonatale"
     ],
     "correctAnswers": [
-      0
+      1
     ],
-    "explanation": "L'hyperglycémie et l'hyperinsulinisme fœtal majorent la consommation d'O2 fœtale, stimulant l'érythropoïétine fœtale avec polyglobulie et ictère néonatal précoce.",
+    "explanation": "Voir la correction et l'explication Réponse : B",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -4703,18 +4717,18 @@ export const OBSTETRICS_QUESTIONS_PART1: Question[] = [
     "courseId": "c-gyn-diabete",
     "questionNumber": 19,
     "type": "QCM",
-    "questionText": "Chez une diabétique de type 1 envisageant une grossesse, quelle valeur cible d'hémoglobine glyquée (HbA1c) périconceptionnelle est recommandée ?",
+    "questionText": "Concernant la prise en charge dans le post-partum immédiat :",
     "options": [
-      "HbA1c < 6,5% (idéalement < 6,0%) sans hypoglycémies sévères",
-      "HbA1c entre 9% et 12%",
-      "HbA1c > 14%",
-      "L'HbA1c n'a aucune valeur d'évaluation",
-      "HbA1c à 0%"
+      "L'insuline est arrêtée immédiatement en cas de DG",
+      "Les doses d'insuline sont diminuées de moitié en cas de diabète pré-gestationnel",
+      "L'allaitement maternel est formellement contre-indiqué",
+      "Une surveillance glycémique est poursuivie",
+      "Un contrôle de la tolérance glucidique est réalisé 6 à 12 semaines après l'accouchement"
     ],
     "correctAnswers": [
-      0
+      2
     ],
-    "explanation": "Obtenir une HbA1c < 6,5% en période périconceptionnelle ramène le taux de malformations congénitales proches de celui de la population générale.",
+    "explanation": "Voir la correction et l'explication Réponse : C",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -4724,18 +4738,21 @@ export const OBSTETRICS_QUESTIONS_PART1: Question[] = [
     "courseId": "c-gyn-diabete",
     "questionNumber": 20,
     "type": "QCM",
-    "questionText": "Quel est l'effet de l'allaitement maternel chez la patiente diabétique de type 1 dans le post-partum ?",
+    "questionText": "Quelles sont les options contraceptives recommandées chez une femme diabétique avec complications vasculaires (rétinopathie, néphropathie) ?",
     "options": [
-      "Il diminue les besoins en insuline exogène et expose au risque d'hypoglycémies maternelles si les apports glucidiques ne sont pas augmentés",
-      "Il double immédiatement les besoins en insuline",
-      "Il est formellement contre-indiqué car le lait est toxique",
-      "Il supprime totalement le diabète de type 1 à vie",
-      "Il induit un coma acido-cétosique immédiat"
+      "Microprogestatifs",
+      "Méthodes barrières",
+      "Dispositif intra-utérin (DIU)",
+      "Contraception œstro-progestative",
+      "Ligature des trompes (si projet parental terminé)"
     ],
     "correctAnswers": [
-      0
+      0,
+      1,
+      2,
+      4
     ],
-    "explanation": "L'allaitement consomme du glucose pour la synthèse du lactose, réduisant les besoins insuliniques maternels de 20 à 30% et exigeant une collation avant chaque tétée.",
+    "explanation": "Voir la correction et l'explication Réponses : A, B, C, E",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -4745,18 +4762,18 @@ export const OBSTETRICS_QUESTIONS_PART1: Question[] = [
     "courseId": "c-gyn-diabete",
     "questionNumber": 21,
     "type": "QCM",
-    "questionText": "Concernant la détresse respiratoire néonatale chez le nouveau-né de mère diabétique, quel mécanisme est en cause ?",
+    "questionText": "Chez une femme présentant un diabète gestationnel mal équilibré avec retentissement fœtal (macrosomie), à quel terme doit-on déclencher l'accouchement ?",
     "options": [
-      "Retard de maturation du surfactant alvéolaire pulmonaire lié à l'effet inhibiteur de l'hyperinsulinisme sur les pneumocytes de type II",
-      "Absence congénitale des deux poumons",
-      "Inhalation systématique de liquide méconial",
-      "Sténose trachéale membraneuse",
-      "Emphysème sous-cutané spontané"
+      "34-36 SA",
+      "36-37 SA",
+      "38-39 SA",
+      "40-41 SA",
+      "41-42 SA"
     ],
     "correctAnswers": [
-      0
+      2
     ],
-    "explanation": "L'insuline inhibe la synthèse du surfactant médiée par les corticoïdes fœtaux, favorisant la maladie des membranes hyalines même à terme proche.",
+    "explanation": "Voir la correction et l'explication Réponse : C",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -4766,18 +4783,18 @@ export const OBSTETRICS_QUESTIONS_PART1: Question[] = [
     "courseId": "c-gyn-diabete",
     "questionNumber": 22,
     "type": "QCM",
-    "questionText": "Quelle malformation squelettique caudale rare mais hautement spécifique du diabète maternel très déséquilibré ?",
+    "questionText": "Toutes les malformations suivantes sont classiquement associées au diabète pré-gestationnel mal équilibré, SAUF une. Laquelle ?",
     "options": [
-      "Syndrome de régression caudale (agénésie sacrée avec hypoplasie des membres inférieurs)",
-      "Luxation congénitale de hanche unilatérale",
-      "Pied bot varus équin isolé",
-      "Polydactylie pré-axiale",
-      "Craniosténose scaphoïde"
+      "Cardiaques",
+      "Squelettiques",
+      "Cérébrales",
+      "Digestives",
+      "Rénales"
     ],
     "correctAnswers": [
-      0
+      4
     ],
-    "explanation": "Le syndrome de régression caudale est exceptionnel dans la population générale mais multiplié par 200 à 400 chez les mères diabétiques sévèrement déséquilibrées au premier trimestre.",
+    "explanation": "Voir la correction et l'explication Réponse : E",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -4787,18 +4804,21 @@ export const OBSTETRICS_QUESTIONS_PART1: Question[] = [
     "courseId": "c-gyn-diabete",
     "questionNumber": 23,
     "type": "QCM",
-    "questionText": "Quel est le risque majeur d'un diabète de type 1 déséquilibré aigu pendant le deuxième ou troisième trimestre pour le fœtus ?",
+    "questionText": "Concernant la macrosomie fœtale dans le cadre du diabète maternel :",
     "options": [
-      "Mort fœtale in utero (MFIU) brutale par acidose lactique fœtale et hypoxie sévère",
-      "Développement précoce d'une intelligence supérieure",
-      "Infection à CMV congénitale",
-      "Mutation génétique trisomique de novo",
-      "Fusion des deux reins en fer à cheval"
+      "Elle est définie par un poids de naissance ≥ 4 kg",
+      "Elle est liée à l'hyperinsulinisme fœtal",
+      "Elle peut être responsable d'une dystocie des épaules",
+      "Elle peut causer une hypertrophie du septum interventriculaire",
+      "Elle est plus fréquente dans le diabète gestationnel que dans le diabète pré-gestationnel"
     ],
     "correctAnswers": [
-      0
+      0,
+      1,
+      2,
+      3
     ],
-    "explanation": "L'acidocétose maternelle s'accompagne d'une acidose fœtale grave avec un risque d'arrêt cardiaque fœtal et de MFIU de 10 à 30%.",
+    "explanation": "Voir la correction et l'explication Réponses : A, B, C, D",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -4808,18 +4828,18 @@ export const OBSTETRICS_QUESTIONS_PART1: Question[] = [
     "courseId": "c-gyn-diabete",
     "questionNumber": 24,
     "type": "QCM",
-    "questionText": "Dans le cadre de la surveillance du diabète gestationnel sous insuline, quel rythme de surveillance du bien-être fœtal est préconisé à partir de 36-38 SA ?",
+    "questionText": "Concernant la physiopathologie du diabète gestationnel :",
     "options": [
-      "Enregistrement cardiotocographique (RCF) hebdomadaire ou bimensuel et profil biophysique de Manning",
-      "Aucune surveillance jusqu'au terme de 42 SA",
-      "Biopsie de trophoblaste hebdomadaire",
-      "Amniocentèse systématique toutes les 48 heures",
-      "Radiographie du crâne fœtal"
+      "Il résulte d'une insuffisance de sécrétion d'insuline face à l'insulino-résistance",
+      "L'insulino-résistance est physiologique chez la femme enceinte",
+      "Les femmes avec un pancréas fonctionnel développent une hyperinsulinémie réactionnelle",
+      "Les hormones placentaires ont un effet hypo-glycémiant",
+      "Le DG apparaît lorsque la fonction pancréatique est insuffisante"
     ],
     "correctAnswers": [
-      0
+      3
     ],
-    "explanation": "Surveillance renforcée du RCF et de la quantité de liquide amniotique au 9ème mois pour dépister une défaillance placentaire ou une souffrance fœtale.",
+    "explanation": "Voir la correction et l'explication Réponse : D",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -4829,18 +4849,21 @@ export const OBSTETRICS_QUESTIONS_PART1: Question[] = [
     "courseId": "c-gyn-diabete",
     "questionNumber": 25,
     "type": "QCM",
-    "questionText": "Quelle supplémentation vitaminique périconceptionnelle à forte dose (5 mg/jour) est recommandée chez la femme diabétique de type 1 ou 2 ?",
+    "questionText": "Quels professionnels de santé font partie de l'équipe multidisciplinaire nécessaire à la prise en charge du diabète et de la grossesse ?",
     "options": [
-      "Acide folique (vitamine B9) débuté au moins 1 mois avant la conception pour prévenir les anomalies de fermeture du tube neural",
-      "Vitamine A à forte dose",
-      "Vitamine D à dose toxique",
-      "Vitamine K1 intraveineuse quotidienne",
-      "Aucune vitamine n'est utile"
+      "Diabétologue",
+      "Obstétricien",
+      "Néonatologiste",
+      "Diététicien",
+      "Rhumatologue"
     ],
     "correctAnswers": [
-      0
+      0,
+      1,
+      2,
+      3
     ],
-    "explanation": "La dose d'acide folique recommandée chez les femmes diabétiques à haut risque d'anomalies de fermeture du tube neural est de 5 mg/jour (au lieu de 0,4 mg/jour).",
+    "explanation": "Voir la correction et l'explication Réponses : A, B, C, D",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -4851,18 +4874,18 @@ export const OBSTETRICS_QUESTIONS_PART1: Question[] = [
     "questionNumber": 26,
     "type": "Cas Clinique",
     "clinicalCaseNumber": 1,
-    "questionText": "[Cas Clinique N°1 : Dépistage du diabète gestationnel au premier trimestre]\nPatiente de 36 ans, G2P1 (premier enfant pesait 4200 g à terme), IMC prégestationnel à 29 kg/m². À 10 SA, la glycémie veineuse à jeun revient à 1,02 g/L.\n\nQuestion : Question : Quelle est votre interprétation et quelle attitude médicale immédiate adoptez-vous ?",
+    "questionText": "[Cas Clinique N°1]\nMme B., 32 ans, G2P1, se présente à l'EPH pour sa consultation prénatale du 2ème trimestre. Elle a un IMC à 28 kg/m². Sa mère est diabétique de type 2. Elle a accouché il y a 3 ans d'un bébé de 4,2 kg. À 26 SA, la glycémie à jeun est à 0,95 g/L. Une HGPO avec 75g de glucose est réalisée : H0 = 0,98 g/L ; H1 = 1,85 g/L ; H2 = 1,60 g/L.\n\nQuestion : 1.1 Quel est votre diagnostic ?",
     "options": [
-      "Diabète gestationnel confirmé (seuil ≥ 0,92 g/L) ; mise en place immédiate de règles hygiéno-diététiques avec autosurveillance glycémique capillaire 6 fois par jour.",
-      "Glycémie normale pour la grossesse ; aucun suivi particulier.",
-      "Diabète de type 1 décompensé imposant une dialyse péritonéale d'urgence.",
-      "Prescription immédiate d'antidiabétiques oraux à dose maximale.",
-      "Interruption médicale de grossesse obligatoire."
+      "Diabète de type 1 pré-gestationnel méconnu",
+      "Diabète gestationnel",
+      "Intolérance au glucose isolée de la grossesse",
+      "Diabète de type 2 pré-gestationnel",
+      "Glycémies normales pour le terme"
     ],
     "correctAnswers": [
-      0
+      1
     ],
-    "explanation": "La glycémie à jeun de 1,02 g/L au 1er trimestre chez une patiente à risque affirme le diabète gestationnel. Première étape : diététique et autosurveillance.",
+    "explanation": "Voir la correction et l'explication Réponse : B",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -4873,18 +4896,18 @@ export const OBSTETRICS_QUESTIONS_PART1: Question[] = [
     "questionNumber": 27,
     "type": "Cas Clinique",
     "clinicalCaseNumber": 2,
-    "questionText": "[Cas Clinique N°2 : Échec des mesures hygiéno-diététiques et indication d'insuline]\nPatiente de 31 ans suivie pour diabète gestationnel depuis 2 semaines. Malgré un régime diététique bien conduit de 1800 kcal/j, ses glycémies à jeun restent entre 1,05 et 1,15 g/L et ses post-prandiales à 1,35 g/L.\n\nQuestion : Question : Quelle modification thérapeutique s'impose ?",
+    "questionText": "[Cas Clinique N°2]\nMme K., 28 ans, diabétique de type 1 depuis 10 ans, se présente à 8 SA pour sa première consultation. Sa grossesse n'était pas planifiée. Son HbA1c est à 8,5%. Elle présente une rétinopathie non proliférative connue. Elle n'a pas pris d'acide folique.\n\nQuestion : 2.1 Quel est le risque principal pour le fœtus lié au déséquilibre glycémique au 1er trimestre ?",
     "options": [
-      "Introduction d'une insulinothérapie sous-cutanée (schéma basal-bolus ou insuline basale au coucher) adaptée aux glycémies capillaires.",
-      "Jeûne hydrique strict sans aucun glucide pendant 10 jours.",
-      "Prescription de glibenclamide à forte dose.",
-      "Césarienne d'urgence à 26 SA.",
-      "Arrêt de tout contrôle glycémique."
+      "Macrosomie fœtale",
+      "Malformations congénitales",
+      "Détresse respiratoire néonatale",
+      "Hypoglycémie néonatale",
+      "Polyglobulie"
     ],
     "correctAnswers": [
-      0
+      1
     ],
-    "explanation": "L'échec des objectifs glycémiques (à jeun ≤ 0,95 g/L) après 7-10 jours de régime bien suivi pose l'indication formelle de l'insulinothérapie.",
+    "explanation": "Voir la correction et l'explication Réponse : B",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -4895,18 +4918,18 @@ export const OBSTETRICS_QUESTIONS_PART1: Question[] = [
     "questionNumber": 28,
     "type": "Cas Clinique",
     "clinicalCaseNumber": 3,
-    "questionText": "[Cas Clinique N°3 : Suspicion de macrosomie fœtale à 36 SA]\nFemme de 33 ans, diabète gestationnel sous insuline. Échographie à 36 SA : circonférence abdominale fœtale au-delà du 95ème percentile, poids fœtal estimé à 3700 g, index amniotique à 22 cm.\n\nQuestion : Question : Quelle conduite obstétricale devez-vous programmer pour le terme ?",
+    "questionText": "[Cas Clinique N°3]\nMme L., 36 ans, G4P3, diabétique gestationnelle sous insuline depuis 28 SA. Elle est à 38 SA. L'échographie de croissance révèle un PFE (Poids Fœtal Estimé) à 4500 g. La patiente a un antécédent de dystocie des épaules lors de son accouchement précédent. Le col est défavorable.\n\nQuestion : 3.1 Quelle est la voie d'accouchement la plus appropriée ?",
     "options": [
-      "Surveillance fœtale rapprochée (RCF 2 fois/semaine) ; réévaluation échographique du poids fœtal à 38-39 SA et discussion de césarienne programmée si PFE ≥ 4500 g.",
-      "Déclenchement immédiat dans l'heure par voie haute sans surveillance.",
-      "Imposition d'une césarienne quel que soit le poids estimé.",
-      "Administration d'un bolus de glucose hypertonique à la mère.",
-      "Extraction instrumentale par forceps à domicile."
+      "Voie basse avec déclenchement par ocytocine",
+      "Voie basse avec extraction instrumentale",
+      "Césarienne programmée",
+      "Attendre 40 SA pour une voie basse",
+      "Déclenchement par prostaglandines"
     ],
     "correctAnswers": [
-      0
+      2
     ],
-    "explanation": "La surveillance du bien-être fœtal et l'estimation pondérale guident la voie d'accouchement pour éviter la dystocie des épaules.",
+    "explanation": "Voir la correction et l'explication Réponse : C",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -4917,18 +4940,18 @@ export const OBSTETRICS_QUESTIONS_PART1: Question[] = [
     "questionNumber": 29,
     "type": "Cas Clinique",
     "clinicalCaseNumber": 4,
-    "questionText": "[Cas Clinique N°4 : Prise en charge néonatale immédiate d'un nouveau-né macrosome]\nNouveau-né de mère diabétique né par voie basse à 39 SA, poids de naissance 4350 g, Apgar 9 à 1 min et 10 à 5 min. À H1 de vie, le nouveau-né est trémulant et somnolent.\n\nQuestion : Question : Quelle complication néonatale devez-vous rechercher et traiter en urgence ?",
+    "questionText": "[Cas Clinique N°4]\nUn nouveau-né de sexe masculin, né à 39 SA d'une mère diabétique gestationnelle mal équilibrée. Poids de naissance : 4,3 kg. À 1 heure de vie, le nouveau-né présente des trémulations et une hypotonie. La glycémie capillaire est à 0,30 g/L. L'examen clinique note une fréquence respiratoire à 70/min avec un geignement expiratoire.\n\nQuestion : 4.1 Quel est le diagnostic le plus probable pour la détresse respiratoire ?",
     "options": [
-      "Hypoglycémie néonatale précoce ; contrôle immédiat de la glycémie capillaire et alimentation précoce (sein ou lait maternisé) ou perfusion de glucosé 10% si sévère.",
-      "Fracture isolée du sternum.",
-      "Méningite bactérienne foudroyante.",
-      "Hémorragie cérébro-méningée spontanée.",
-      "Péritonite méconiale."
+      "Une infection materno-fœtale",
+      "Une maladie des membranes hyalines",
+      "Une inhalation méconiale",
+      "Une hernie diaphragmatique",
+      "Une cardiopathie congénitale"
     ],
     "correctAnswers": [
-      0
+      1
     ],
-    "explanation": "L'hyperinsulinisme fœtal réactionnel provoque une hypoglycémie néonatale symptomatique précoce nécessitant glycémie immédiate et resucrage rapide.",
+    "explanation": "Voir la correction et l'explication Réponse : B",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -4939,18 +4962,18 @@ export const OBSTETRICS_QUESTIONS_PART1: Question[] = [
     "questionNumber": 30,
     "type": "Cas Clinique",
     "clinicalCaseNumber": 5,
-    "questionText": "[Cas Clinique N°5 : Post-partum et suivi à distance du diabète gestationnel]\nPatiente de 32 ans qui a accouché hier à terme d'un garçon de 3800 g. Son diabète gestationnel avait nécessité 20 UI d'insuline par jour au 3ème trimestre. Elle allaite exclusivement.\n\nQuestion : Question : Quelle est la conduite à tenir thérapeutique en maternité et à 3 mois du post-partum ?",
+    "questionText": "[Cas Clinique N°5]\nMme S., 30 ans, vient pour sa visite post-natale à 6 semaines. Elle a accouché d'un bébé de 3,9 kg. Elle a eu un diabète gestationnel traité par insuline. Elle allaite son enfant. Elle souhaite des conseils sur la contraception et s'inquiète pour l'avenir.\n\nQuestion : 5.1 Quand et comment doit-on réaliser le dépistage post-partum du diabète ?",
     "options": [
-      "Arrêt immédiat de l'insuline dès la délivrance, contrôle glycémique capillaire avant la sortie, et prescription d'une HGPO 75g de contrôle à 3 mois du post-partum.",
-      "Maintien de l'insuline à la même dose pendant 2 ans.",
-      "Contre-indication de l'allaitement maternel.",
-      "Prescription de metformine à vie sans bilan.",
-      "Aucun suivi à distance."
+      "Immédiatement après l'accouchement par GAJ",
+      "À 6-12 semaines post-partum par une HGPO 75g ou GAJ",
+      "À 1 an post-partum par une HbA1c",
+      "Il n'est pas nécessaire si le DG était sous insuline",
+      "À 3 mois post-partum par une glycosurie"
     ],
     "correctAnswers": [
-      0
+      1
     ],
-    "explanation": "La chute des hormones placentaires guérit immédiatement le diabète gestationnel dans la majorité des cas, justifiant l'arrêt de l'insuline et un dépistage à distance du T2D.",
+    "explanation": "Voir la correction et l'explication Réponse : B",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"

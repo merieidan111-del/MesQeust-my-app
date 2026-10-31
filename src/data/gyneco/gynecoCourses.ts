@@ -104,7 +104,7 @@ export const ALL_GYNECO_COURSES: Course[] = [
     "orderIndex": 9,
     "subdivision": "Gynecology",
     "qcmCount": 25,
-    "casCliniqueCount": 5,
+    "casCliniqueCount": 18,
     "resumesCount": 1,
     "astucesCount": 1,
     "completedPercent": 0

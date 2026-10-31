@@ -3484,18 +3484,18 @@ export const GYNECOLOGY_QUESTIONS: Question[] = [
     "courseId": "c-gyn-infections",
     "questionNumber": 1,
     "type": "QCM",
-    "questionText": "Parmi les propositions suivantes concernant la vaginose bactérienne à Gardnerella vaginalis, quelle est l'affirmation exacte ?",
+    "questionText": "Concernant les vulvo-vaginites mycosiques, choisissez la réponse juste :",
     "options": [
-      "Elle se caractérise par des leucorrhées mousseuses, verdâtres et aérées avec prurit intense.",
-      "Le pH vaginal est acide, habituellement inférieur à 4,5.",
-      "Le test au KOH 10% (sniff test) dégage une odeur caractéristique d'amines volatiles (poisson pourri).",
-      "La présence de levures bourgeonnantes à l'examen direct affirme le diagnostic.",
-      "Le traitement de première intention repose sur les macrolides par voie générale."
+      "AL'agent pathogène responsable est Candida glabrata dans 85 % des cas",
+      "BLe prurit est habituellement absent, le tableau se résumant à des leucorrhées",
+      "CLes leucorrhées sont typiquement verdâtres, mousseuses et nauséabondes",
+      "DUne dysurie et une dyspareunie superficielle sont souvent retrouvées",
+      "ELe traitement per os n'a aucun intérêt dans la prévention des récidives"
     ],
     "correctAnswers": [
-      2
+      3
     ],
-    "explanation": "La vaginose bactérienne associe des pertes grisâtres fluides, un pH vaginal > 4,5, un sniff test positif aux amines et la présence de clue cells à l'état frais. Le traitement de référence est le Métronidazole.",
+    "explanation": "Correction détaillée Réponse : D",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -3505,18 +3505,20 @@ export const GYNECOLOGY_QUESTIONS: Question[] = [
     "courseId": "c-gyn-infections",
     "questionNumber": 2,
     "type": "QCM",
-    "questionText": "Quel est l'agent étiologique bactérien le plus fréquemment responsable de salpingite aiguë chez la femme jeune ?",
+    "questionText": "Parmi les propositions suivantes concernant la vulvo-vaginite à Trichomonas vaginalis, lesquelles sont exactes ? (2 à 3 réponses)",
     "options": [
-      "Candida albicans",
-      "Chlamydia trachomatis",
-      "Streptocoque du groupe B",
-      "Trichomonas vaginalis",
-      "Treponema pallidum"
+      "ALes leucorrhées sont abondantes, verdâtres, mousseuses, spumeuses et nauséabondes",
+      "BLe piqueté vulvaire est quasi-caractéristique",
+      "CLe diagnostic est confirmé par le test à la potasse à 5 % au microscope",
+      "DUn traitement local par ovule de métronidazole suffit à obtenir la guérison",
+      "ELe partenaire ne nécessite aucun traitement dès lors qu'il est asymptomatique"
     ],
     "correctAnswers": [
-      1
+      0,
+      1,
+      2
     ],
-    "explanation": "hlamydia trachomatis est le germe prédominant des infections génitales hautes chez la femme jeune, souvent insidieux et pourvoyeur d'infertilité tubaire secondaire.",
+    "explanation": "Correction détaillée Réponses : A, B, C",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -3526,20 +3528,18 @@ export const GYNECOLOGY_QUESTIONS: Question[] = [
     "courseId": "c-gyn-infections",
     "questionNumber": 3,
     "type": "QCM",
-    "questionText": "Quels sont les éléments cardinaux du trépied clinique évocateur d'une salpingite aiguë non compliquée ?",
+    "questionText": "Toutes les propositions suivantes concernant la vaginose à Gardnerella vaginalis sont exactes, SAUF :",
     "options": [
-      "Douleurs pelviennes bilatérales spontanées ou provoquées à la mobilisation utérine",
-      "Fièvre variable, parfois modérée ou absente",
-      "Leucorrhées purulentes ou métrorragies sales associées",
-      "Masse pelvienne fixée de plus de 10 cm au toucher vaginal",
-      "Aménorrhée secondaire de plus de 3 mois"
+      "AC'est un hôte normal du vagin",
+      "BIl devient pathogène lorsqu'il est associé à des germes anaérobies",
+      "CLes leucorrhées sont abondantes, grisâtres, de mauvaise odeur, associées à une vulvite",
+      "DLe traitement associe des ovules pendant 7 jours, un traitement per os et le traitement du partenaire",
+      "EIl s'agit d'une infection sexuellement transmissible à déclaration obligatoire"
     ],
     "correctAnswers": [
-      0,
-      1,
-      2
+      4
     ],
-    "explanation": "Le trépied associe douleurs pelviennes, fièvre (inconstante) et pertes vaginales anormales purulentes.",
+    "explanation": "Correction détaillée Réponse : E",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -3549,18 +3549,18 @@ export const GYNECOLOGY_QUESTIONS: Question[] = [
     "courseId": "c-gyn-infections",
     "questionNumber": 4,
     "type": "QCM",
-    "questionText": "Concernant le syndrome de Fitz-Hugh-Curtis, quelle est la proposition exacte ?",
+    "questionText": "Concernant les vulvo-vaginites à Chlamydia trachomatis, quelle proposition est exacte ?",
     "options": [
-      "Il s'agit d'une périhépatite caractérisée par des adhérences en cordes de violon entre la capsule hépatique et le diaphragme.",
-      "Il est exclusivement provoqué par le virus Herpes simplex de type 2.",
-      "La symptomatologie prédomine au niveau de la fosse iliaque gauche.",
-      "Il nécessite obligatoirement une hépatectomie partielle d'urgence.",
-      "Les transaminases hépatiques sont constamment augmentées à plus de 50 fois la normale."
+      "AElles sont habituellement bruyantes, avec des leucorrhées purulentes abondantes",
+      "BLe diagnostic repose sur l'examen direct après test à la potasse à 5 %",
+      "CElles sont volontiers asymptomatiques et peuvent être responsables d'une stérilité tubaire",
+      "DLe traitement de référence est le métronidazole en dose unique",
+      "ELe sérodiagnostic n'a aucun intérêt dans cette indication"
     ],
     "correctAnswers": [
-      0
+      2
     ],
-    "explanation": "Périhépatite secondaire à Chlamydia ou au gonocoque avec adhérences péritonéales en « cordes de violon » à la cœlioscopie.",
+    "explanation": "Correction détaillée Réponse : C",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -3570,18 +3570,20 @@ export const GYNECOLOGY_QUESTIONS: Question[] = [
     "courseId": "c-gyn-infections",
     "questionNumber": 5,
     "type": "QCM",
-    "questionText": "Quelle antibiothérapie probabiliste de première intention est recommandée dans la salpingite aiguë non compliquée ?",
+    "questionText": "Concernant les cervicites, quelles propositions sont exactes ? (2 à 3 réponses)",
     "options": [
-      "Amoxicilline seule per os pendant 5 jours",
-      "Ceftriaxone IM (dose unique) + Doxycycline per os (14 jours) + Métronidazole per os (14 jours)",
-      "Ciprofloxacine en monothérapie pendant 21 jours",
-      "Gentamicine IV seule en cure courte de 48 heures",
-      "Pénicilline G IV à forte dose pendant 10 jours"
+      "ALes cervicites aiguës se manifestent par des leucorrhées purulentes",
+      "BAu spéculum, le col est congestif et œdématié",
+      "CLe traitement de première intention est exclusivement local",
+      "DLes cervicites chroniques sont des cervicites aiguës récidivantes dont le traitement dure 21 jours",
+      "EAu toucher vaginal, l'utérus est indolore à la mobilisation"
     ],
     "correctAnswers": [
-      1
+      0,
+      1,
+      3
     ],
-    "explanation": "Trithérapie ciblant gonocoque (C3G), Chlamydia (cyclines 14j) et anaérobies (métronidazole 14j).",
+    "explanation": "Correction détaillée Réponses : A, B, D",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -3591,18 +3593,18 @@ export const GYNECOLOGY_QUESTIONS: Question[] = [
     "courseId": "c-gyn-infections",
     "questionNumber": 6,
     "type": "QCM",
-    "questionText": "Concernant la trichomonase urogénitale à Trichomonas vaginalis, quelle est l'affirmation exacte ?",
+    "questionText": "Concernant la syphilis, choisissez la réponse fausse :",
     "options": [
-      "Il s'agit d'une infection non sexuellement transmissible à transmission hydrique exclusive.",
-      "Les leucorrhées sont typiquement blanches, épaisses et grumeleuses en lait caillé.",
-      "Le col utérin peut présenter un aspect piqueté framboisé caractéristique (colpitis macularis).",
-      "L'examen parasitologique direct entre lame et lamelle est constamment négatif.",
-      "Le traitement du partenaire n'est pas nécessaire."
+      "AL'agent pathogène est Treponema pallidum",
+      "BC'est une maladie à déclaration obligatoire",
+      "CLe chancre est une ulcération superficielle, indolore, à limites nettes et bordures indurées",
+      "DLes adénopathies siègent au niveau du pli de l'aine",
+      "ELa syphilis secondaire s'installe habituellement dans les 6 à 10 jours suivant le chancre"
     ],
     "correctAnswers": [
-      2
+      4
     ],
-    "explanation": "IST à protozoaire flagellé mobile, leucorrhées verdâtres spumeuses, col framboisé. Métronidazole chez les 2 partenaires.",
+    "explanation": "Correction détaillée Réponse : E",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -3612,18 +3614,18 @@ export const GYNECOLOGY_QUESTIONS: Question[] = [
     "courseId": "c-gyn-infections",
     "questionNumber": 7,
     "type": "QCM",
-    "questionText": "Quelle séquelle majeure à long terme complique fréquemment les salpingites aiguës méconnues ou récidivantes ?",
+    "questionText": "Concernant l'herpès génital, quelle proposition est exacte ?",
     "options": [
-      "Sténose de l'artère rénale",
-      "Infertilité tubaire mécanique et sur-risque majeur de grossesse extra-utérine",
-      "Cancer de l'endomètre",
-      "Insuffisance ovarienne prématurée d'origine auto-immune",
-      "Prolapsus génital de grade 3"
+      "AIl se manifeste par des ulcérations à bords indurés et indolores",
+      "BLa guérison est spontanée en 3 semaines environ",
+      "CLes récidives siègent toujours à des localisations différentes",
+      "DLe risque obstétrical est nul lors du passage de l'enfant",
+      "ELe diagnostic repose sur le test à la potasse à 5 %"
     ],
     "correctAnswers": [
       1
     ],
-    "explanation": "L'altération de la lumière tubaire et des cils conduit à l'obstruction tubaire (hydrosalpinx, stérilité) et à la GEU.",
+    "explanation": "Correction détaillée Réponse : B",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -3633,18 +3635,20 @@ export const GYNECOLOGY_QUESTIONS: Question[] = [
     "courseId": "c-gyn-infections",
     "questionNumber": 8,
     "type": "QCM",
-    "questionText": "La candidose vulvo-vaginale à Candida albicans se manifeste typiquement par :",
+    "questionText": "Concernant l'infection génitale à papillomavirus humain (HPV), quelles propositions sont exactes ? (2 à 3 réponses)",
     "options": [
-      "Des pertes fétides grises sans prurit",
-      "Un prurit vulvaire féroce avec leucorrhées blanches grumeleuses en « lait caillé » et érythème vulvaire vif",
-      "Un pH vaginal alcalin supérieur à 6",
-      "Une fièvre supérieure à 39°C avec frissons",
-      "Des ulcérations indurées indolores"
+      "AL'HPV est un virus à ADN dont il existe environ 70 génotypes différents",
+      "BLes condylomes acuminés sont habituellement provoqués par les types HPV 6 et HPV 11",
+      "CLe délai d'incubation est court, inférieur à 15 jours",
+      "DL'examen du partenaire est indispensable",
+      "ELe traitement de référence est la laparotomie exploratrice"
     ],
     "correctAnswers": [
-      1
+      0,
+      1,
+      3
     ],
-    "explanation": "Prurit intense, pertes caillebotées blanches, pH vaginal normal ou acide (< 4,5), pseudo-hyphes à l'examen microscopique direct.",
+    "explanation": "Correction détaillée Réponses : A, B, D",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -3654,18 +3658,18 @@ export const GYNECOLOGY_QUESTIONS: Question[] = [
     "courseId": "c-gyn-infections",
     "questionNumber": 9,
     "type": "QCM",
-    "questionText": "Devant toute infection génitale basse ou haute sexuellement transmissible, quelle mesure doit être systématique ?",
+    "questionText": "Concernant l'oxyurose, choisissez la réponse juste :",
     "options": [
-      "L'abstention thérapeutique chez les partenaires asymptomatiques",
-      "Le dépistage et traitement conjoint du ou des partenaires sexuels et le dépistage des autres IST (VIH, VHB, Syphilis)",
-      "Une ovariectomie unilatérale de précaution",
-      "La pose immédiate d'un dispositif intra-utérin pour drainer la cavité",
-      "La réalisation d'un scanner thoraco-abdominal"
+      "AElle atteint préférentiellement l'adulte jeune sexuellement actif",
+      "BLe prurit est maximal le matin au réveil",
+      "CLe diagnostic de certitude repose sur le « scotch test »",
+      "DLe traitement repose sur le benzoate de benzyle en application locale",
+      "ELa contamination se fait exclusivement par voie hématogène"
     ],
     "correctAnswers": [
-      1
+      2
     ],
-    "explanation": "Prise en charge du partenaire pour casser la chaîne de transmission et bilan sérologique complet des IST.",
+    "explanation": "Correction détaillée Réponse : C",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -3675,18 +3679,18 @@ export const GYNECOLOGY_QUESTIONS: Question[] = [
     "courseId": "c-gyn-infections",
     "questionNumber": 10,
     "type": "QCM",
-    "questionText": "Quelles sont les indications impératives d'hospitalisation d'une patiente pour infection génitale haute ?",
+    "questionText": "Quel élément est pathognomonique de la gale ?",
     "options": [
-      "Suspicion d'abcès tubo-ovarien ou péritonite pelvienne",
-      "Grossesse en cours associée",
-      "Doute diagnostique avec une urgence chirurgicale (appendicite, torsion d'annexe)",
-      "Forme hyperalgique ou intolérance aux traitements per os",
-      "Toutes les propositions sus-citées sont exactes"
+      "ALe « scotch test » positif",
+      "BLes sillons",
+      "CLes taches bleuâtres de la région pubo-périnéale",
+      "DLes adénopathies du pli de l'aine",
+      "ELe piqueté vulvaire"
     ],
     "correctAnswers": [
-      4
+      1
     ],
-    "explanation": "Toutes ces situations justifient une hospitalisation en service de gynécologie pour traitement parentéral et surveillance continue.",
+    "explanation": "Correction détaillée Réponse : B",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -3696,18 +3700,18 @@ export const GYNECOLOGY_QUESTIONS: Question[] = [
     "courseId": "c-gyn-infections",
     "questionNumber": 11,
     "type": "QCM",
-    "questionText": "Quel examen d'imagerie de première intention est indispensable pour éliminer un abcès tubo-ovarien ou un pyosalpinx ?",
+    "questionText": "Concernant les ectoparasites vénériens, choisissez la réponse fausse :",
     "options": [
-      "Échographie pelvienne par voie endovaginale et sus-pubienne avec Doppler",
-      "Hystérosalpingographie en phase aiguë fébrile",
-      "Radiographie du bassin sans préparation",
-      "Scintigraphie osseuse au technétium",
-      "Urographie intraveineuse"
+      "ALa gale est due à Sarcoptes scabiei, acarien parasite strict de l'homme",
+      "BLe prurit de la gale est exacerbé la nuit",
+      "CLes sillons sont pathognomoniques de la gale",
+      "DLa pédiculose pubienne se manifeste par des taches bleuâtres de la région pubo-périnéale",
+      "ELe benzoate de benzyle (Ascabiol) est le traitement de référence de la pédiculose pubienne"
     ],
     "correctAnswers": [
-      0
+      4
     ],
-    "explanation": "L'échographie pelvienne endovaginale est l'examen clé. L'hystérosalpingographie est formellement contre-indiquée en phase aiguë fébrile.",
+    "explanation": "Correction détaillée Réponse : E",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -3717,18 +3721,20 @@ export const GYNECOLOGY_QUESTIONS: Question[] = [
     "courseId": "c-gyn-infections",
     "questionNumber": 12,
     "type": "QCM",
-    "questionText": "Concernant l'infection génitale à Neisseria gonorrhoeae chez la femme, quelle proposition est exacte ?",
+    "questionText": "Concernant les infections génitales basses, quelles propositions sont exactes ? (2 à 3 réponses)",
     "options": [
-      "Elle est constamment symptomatique avec douleurs fulgurantes dès les premières heures.",
-      "Elle se traduit fréquemment par une cervicite mucopurulente avec col érythémateux et friable.",
-      "La coloration de Gram montre des bacilles à Gram positif en chaînettes.",
-      "Elle ne se dissémine jamais aux articulations ou à la peau.",
-      "Le vaccin anti-gonococcique protège à 100% à vie."
+      "AElles comprennent les cervicites, les vaginites, les bartholinites et les vulvites",
+      "BLeur diagnostic est souvent aisé et les récidives sont fréquentes",
+      "CElles peuvent constituer la première phase d'une infection génitale haute, dont les conséquences sont plus graves",
+      "DElles sont exceptionnelles en pratique gynécologique",
+      "ELa bartholinite se présente comme une tuméfaction bilatérale et indolore"
     ],
     "correctAnswers": [
-      1
+      0,
+      1,
+      2
     ],
-    "explanation": "Neisseria gonorrhoeae est un diplocoque Gram négatif en grains de café, provoquant une cervicite mucopurulente, asymptomatique chez 50% des femmes.",
+    "explanation": "Correction détaillée Réponses : A, B, C",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -3738,18 +3744,18 @@ export const GYNECOLOGY_QUESTIONS: Question[] = [
     "courseId": "c-gyn-infections",
     "questionNumber": 13,
     "type": "QCM",
-    "questionText": "Quelle complication oculaire néonatale est prévenue par l'instillation systématique de collyre chez le nouveau-né à la naissance ?",
+    "questionText": "Parmi les signes suivants, lequel est considéré comme un signe cardinal le plus évocateur d'une infection génitale haute ?",
     "options": [
-      "La cataracte congénitale rubéoleuse",
-      "L'ophtalmie purulente néonatale à gonocoque et Chlamydia",
-      "Le glaucome congénital héréditaire",
-      "Le rétinoblastome bilatéral",
-      "Le décollement de rétine spontané"
+      "AUne température ≥ 38,3 °C",
+      "BUne douleur à la mobilisation du col utérin",
+      "CDes métrorragies",
+      "DUne douleur au dos",
+      "EDes leucorrhées abondantes et purulentes"
     ],
     "correctAnswers": [
       1
     ],
-    "explanation": "Le collyre antibiotique prévient la conjonctivite purulente néonatale qui peut évoluer rapidement vers la cécité par perforation cornéenne.",
+    "explanation": "Correction détaillée Réponse : B",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -3759,18 +3765,20 @@ export const GYNECOLOGY_QUESTIONS: Question[] = [
     "courseId": "c-gyn-infections",
     "questionNumber": 14,
     "type": "QCM",
-    "questionText": "Dans la vaginose bactérienne, quel test rapide réalisé en consultation permet d'objectiver l'odeur caractéristique d'amines ?",
+    "questionText": "Concernant la microbiologie des infections génitales hautes, quelles propositions sont exactes ? (2 à 3 réponses)",
     "options": [
-      "Test au lugol (Schiller)",
-      "Test à la potasse (KOH à 10%) ou Whiff test",
-      "Test de Fern (cristallisation en feuille de fougère)",
-      "Test au bleu de méthylène sur frottis",
-      "Test à l'acide acétique 5%"
+      "AL'IGH est habituellement une infection polymicrobienne",
+      "BChlamydia trachomatis est impliquée dans 50 à 60 % des cas",
+      "CNeisseria gonorrhoeae est retrouvée dans environ 10 % des cas",
+      "DLes mycoplasmes génitaux appartiennent au groupe des agents à transmission strictement sexuelle",
+      "EGardnerella vaginalis est une bactérie à Gram positif"
     ],
     "correctAnswers": [
-      1
+      0,
+      1,
+      2
     ],
-    "explanation": "L'addition d'une goutte de KOH 10% libère des polyamines volatiles (putrescine, cadavérique) produites par les bactéries anaérobies associées.",
+    "explanation": "Correction détaillée Réponses : A, B, C",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -3780,18 +3788,18 @@ export const GYNECOLOGY_QUESTIONS: Question[] = [
     "courseId": "c-gyn-infections",
     "questionNumber": 15,
     "type": "QCM",
-    "questionText": "Quel geste diagnostique et thérapeutique de référence permet de visualiser les trompes et de réaliser un prélèvement bactériologique direct en cas de doute clinique sur une salpingite ?",
+    "questionText": "Concernant la laparoscopie dans les infections génitales hautes, choisissez la réponse juste :",
     "options": [
-      "La cœlioscopie (laparoscopie) abdominale",
-      "La colonoscopie totale",
-      "La cystoscopie rétrograde",
-      "La culdocentèse à l'aveugle",
-      "L'urographie rétrograde"
+      "AElle doit toujours être réalisée en première intention, avant toute antibiothérapie",
+      "BElle permet d'affirmer ou d'infirmer le diagnostic de salpingite aiguë, porté à tort dans près d'un quart des cas",
+      "CElle ne permet pas de réaliser de prélèvements bactériologiques intra-abdominaux",
+      "DElle est formellement contre-indiquée chez la femme nulligeste",
+      "EElle n'a aucun rôle dans l'évaluation du pronostic tubaire"
     ],
     "correctAnswers": [
-      0
+      1
     ],
-    "explanation": "La cœlioscopie est l'examen de référence : elle visualise l'œdème tubaire, les fausses membranes, draine d'éventuels abcès et confirme la bactériologie.",
+    "explanation": "Correction détaillée Réponse : B",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -3801,18 +3809,18 @@ export const GYNECOLOGY_QUESTIONS: Question[] = [
     "courseId": "c-gyn-infections",
     "questionNumber": 16,
     "type": "QCM",
-    "questionText": "Chez une femme porteuse d'un dispositif intra-utérin (DIU) présentant une salpingite aiguë grave, quelle conduite immédiate est requise ?",
+    "questionText": "Toutes les propositions suivantes concernant les formes cliniques des infections génitales hautes sont exactes, SAUF :",
     "options": [
-      "Laisser le DIU en place indéfiniment sans antibiothérapie",
-      "Débuter l'antibiothérapie par voie intraveineuse et retirer le DIU après quelques heures sous couverture antibiotique",
-      "Procéder à une hystérectomie totale immédiate",
-      "Remplacer le DIU par un autre stérilet au cuivre dans la même séance",
-      "Injecter du sérum physiologique intra-utérin sous pression"
+      "ALes formes frustes peuvent être totalement silencieuses et aboutir à une stérilité tubaire",
+      "BLes formes atypiques peuvent mimer une appendicite ou une colique néphrétique",
+      "CLes formes graves associent fièvre > 39 °C, défense pelvienne et arrêt réflexe du transit",
+      "DLes endométrites isolées du post-partum relèvent d'emblée d'une cœlioscopie",
+      "ELa périhépatite de Fitz-Hugh-Curtis se traduit par des douleurs de l'hypochondre droit"
     ],
     "correctAnswers": [
-      1
+      3
     ],
-    "explanation": "Le DIU doit être retiré sous couverture antibiotique (après initiation du traitement) pour supprimer le corps étranger infecté, et envoyé en culture bactériologique.",
+    "explanation": "Correction détaillée Réponse : D",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -3822,18 +3830,20 @@ export const GYNECOLOGY_QUESTIONS: Question[] = [
     "courseId": "c-gyn-infections",
     "questionNumber": 17,
     "type": "QCM",
-    "questionText": "Quel germe anaérobie filamenteux à Gram positif est spécifiquement associé aux infections pelviennes chroniques sur stérilet au long cours ?",
+    "questionText": "Parmi les éléments suivants, lesquels constituent des facteurs de risque d'infection génitale haute ? (2 à 3 réponses)",
     "options": [
-      "Actinomyces israelii",
-      "Pseudomonas aeruginosa",
-      "Listeria monocytogenes",
-      "Helicobacter pylori",
-      "Vibrio cholerae"
+      "APartenaires sexuels multiples",
+      "BÂge compris entre 15 et 25 ans",
+      "CAntécédent d'interruption thérapeutique de grossesse",
+      "DMénopause précoce",
+      "ECésarienne itérative"
     ],
     "correctAnswers": [
-      0
+      0,
+      1,
+      2
     ],
-    "explanation": "tinomyces israelii est classiquement retrouvé sur DIU maintenu de nombreuses années, pouvant donner des abcès pelviens pseudotumoraux avec grains jaunes soufrés.",
+    "explanation": "Correction détaillée Réponses : A, B, C",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -3843,18 +3853,18 @@ export const GYNECOLOGY_QUESTIONS: Question[] = [
     "courseId": "c-gyn-infections",
     "questionNumber": 18,
     "type": "QCM",
-    "questionText": "Quelle est la durée minimale recommandée de traitement par Doxycycline dans la salpingite aiguë non compliquée à Chlamydia trachomatis ?",
+    "questionText": "Concernant l'antibiothérapie des infections génitales hautes, choisissez la réponse fausse :",
     "options": [
-      "2 jours",
-      "5 jours",
-      "14 jours",
-      "6 mois",
-      "1 an"
+      "AElle doit être à large spectre, active sur Chlamydia, le gonocoque, les anaérobies et les entérobactéries",
+      "BLe traitement débute par voie parentérale 2 à 3 jours, puis relais per os pour une durée totale de 21 jours",
+      "CL'amoxicilline–acide clavulanique est devenue l'antibiotique de référence, mais ne couvre pas Chlamydia",
+      "DLes aminosides sont de plus en plus utilisés en première intention en raison de leur excellente tolérance",
+      "ELe métronidazole est utilisé en association pour son efficacité sur les germes anaérobies"
     ],
     "correctAnswers": [
-      2
+      3
     ],
-    "explanation": "14 jours complets sont requis pour éradiquer Chlamydia et prévenir la rechute et les séquelles tubaires.",
+    "explanation": "Correction détaillée Réponse : D",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -3864,18 +3874,18 @@ export const GYNECOLOGY_QUESTIONS: Question[] = [
     "courseId": "c-gyn-infections",
     "questionNumber": 19,
     "type": "QCM",
-    "questionText": "Parmi les signes suivants, lequel plaide le plus en faveur d'un abcès du cul-de-sac de Douglas compliquant une pelvipéritonite ?",
+    "questionText": "Concernant le syndrome de Fitz-Hugh-Curtis (périhépatite), quelle proposition est exacte ?",
     "options": [
-      "Cul-de-sac de Douglas souple et indolore",
-      "Bombement douloureux, rénitent et chaud du cul-de-sac postérieur au toucher vaginal (« cri du Douglas »)",
-      "Disparition complète des contractions utérines",
-      "Hypotension isolée sans aucune douleur",
-      "Échographie pelvienne strictement normale sans aucun épanchement"
+      "ALe germe responsable est toujours Neisseria gonorrhoeae",
+      "BLes adhérences en « cordes de violon » unissent la capsule de Glisson à la paroi abdominale antérieure",
+      "CLe pronostic de l'affection dépend de l'atteinte hépatique",
+      "DIl s'agit d'une atteinte hépatique hématogène isolée, sans lien avec une salpingite",
+      "EIl impose une chirurgie hépatique d'exérèse"
     ],
     "correctAnswers": [
       1
     ],
-    "explanation": "L'abcès du Douglas donne un bombement très douloureux et rénitent accessible au toucher vaginal, justiciable d'un drainage chirurgical ou d'une ponction transvaginale sous échoguidage.",
+    "explanation": "Correction détaillée Réponse : B",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -3885,18 +3895,20 @@ export const GYNECOLOGY_QUESTIONS: Question[] = [
     "courseId": "c-gyn-infections",
     "questionNumber": 20,
     "type": "QCM",
-    "questionText": "Concernant l'infection à Papillomavirus humain (HPV), quelle est l'affirmation exacte ?",
+    "questionText": "Concernant la prise en charge des IGH dans les populations particulières, quelles propositions sont exactes ? (2 à 3 réponses)",
     "options": [
-      "Les sérotypes 6 et 11 sont à haut risque oncogène pour le col utérin.",
-      "Les sérotypes 16 et 18 sont responsables de plus de 70% des cancers invasifs du col de l'utérus.",
-      "L'infection par le HPV est systématiquement définitive et ne guérit jamais spontanément.",
-      "Le préservatif confère une protection absolue à 100% contre la transmission du HPV.",
-      "Il n'existe aucun vaccin prophylactique disponible contre le HPV."
+      "AChez l'adolescente, il n'y a pas de données en faveur d'une hospitalisation d'emblée",
+      "BL'innocuité et l'efficacité des quinolones ne sont pas établies chez les patients de moins de 18 ans",
+      "CEn cas de grossesse, l'hospitalisation est indispensable avec mise en route d'une antibiothérapie parentérale",
+      "DChez la femme VIH séropositive, le choix de la thérapie doit être guidé par le statut sérologique",
+      "EEn cas de DIU, il faut le laisser en place et le retirer à distance du diagnostic"
     ],
     "correctAnswers": [
-      1
+      0,
+      1,
+      2
     ],
-    "explanation": "HPV 16 et 18 sont les deux génotypes majeurs à haut risque oncogène (oncoprotéines E6 dégradant p53 et E7 inactivant pRb). 6 et 11 sont responsables des condylomes acuminés bénins.",
+    "explanation": "Correction détaillée Réponses : A, B, C",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -3906,18 +3918,18 @@ export const GYNECOLOGY_QUESTIONS: Question[] = [
     "courseId": "c-gyn-infections",
     "questionNumber": 21,
     "type": "QCM",
-    "questionText": "Quel test moléculaire hautement sensible est aujourd'hui recommandé en première intention pour le dépistage de Chlamydia trachomatis et Neisseria gonorrhoeae ?",
+    "questionText": "Toutes les propositions suivantes concernant le diagnostic des infections génitales hautes sont exactes, SAUF :",
     "options": [
-      "L'amplification des acides nucléiques (TAAN / PCR) sur premier jet d'urine ou prélèvement endocervical",
-      "Le dosage des IgG sériques par ELISA",
-      "La vitesse de sédimentation (VS)",
-      "Le frottis cervico-vaginal conventionnel de Papanicolaou",
-      "L'hémoculture sur gélose chocolat"
+      "ALe dosage des β-HCG plasmatiques permet d'éliminer une GEU atypique",
+      "BLa laparoscopie permet d'infirmer une salpingite portée à tort dans près d'un quart des cas",
+      "CLes prélèvements tubaires ont une meilleure sensibilité que les prélèvements cervicaux",
+      "DLa biopsie de l'endomètre démontrant une endométrite constitue un critère diagnostique définitif",
+      "EL'échographie transvaginale peut montrer un épaississement des trompes ou un épanchement pelvien"
     ],
     "correctAnswers": [
-      0
+      2
     ],
-    "explanation": "Les TAAN (PCR) présentent une sensibilité supérieure à 95% et représentent le test de référence.",
+    "explanation": "Correction détaillée Réponse : C",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -3927,18 +3939,18 @@ export const GYNECOLOGY_QUESTIONS: Question[] = [
     "courseId": "c-gyn-infections",
     "questionNumber": 22,
     "type": "QCM",
-    "questionText": "Une bartholinite aiguë suppurée se présente typiquement comme :",
+    "questionText": "Concernant l'évolution des infections génitales hautes, choisissez la réponse fausse :",
     "options": [
-      "Une tuméfaction douloureuse, unilatérale, inflammatoire du tiers postérieur de la grande lèvre",
-      "Une ulcération indolore du clitoris",
-      "Une masse rétro-utérine rénitente",
-      "Une adénopathie sus-claviculaire gauche",
-      "Une brûlure urétrale sans aucune anomalie vulvaire"
+      "ALa guérison est possible, avec ou sans traitement",
+      "BÀ court terme, l'évolution peut se faire vers un abcès tubo-ovarien",
+      "CÀ long terme, on redoute l'infertilité, la GEU et la douleur pelvienne chronique",
+      "DLe risque de séquelles diminue avec la répétition des épisodes infectieux",
+      "ELe syndrome de Fitz-Hugh-Curtis est une complication possible à court terme"
     ],
     "correctAnswers": [
-      0
+      3
     ],
-    "explanation": "La glande de Bartholin siège au tiers postérieur de la grande lèvre. L'obstruction de son canal entraîne une surinfection avec abcès hyperalgique nécessitant drainage ou marsupialisation.",
+    "explanation": "Correction détaillée Réponse : D",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -3948,18 +3960,20 @@ export const GYNECOLOGY_QUESTIONS: Question[] = [
     "courseId": "c-gyn-infections",
     "questionNumber": 23,
     "type": "QCM",
-    "questionText": "Dans la vaginite à Trichomonas, quelle est la couleur typique des sécrétions vaginales ?",
+    "questionText": "Concernant la prévention et le traitement cœlioscopique des IGH, quelles propositions sont exactes ? (2 à 3 réponses)",
     "options": [
-      "Blanc épais cailleboté",
-      "Jaune-verdâtre, fluide et spumeuse (mousseuse)",
-      "Noirâtre goudronneuse",
-      "Rouge vif hémorragique pure",
-      "Incolore et visqueuse comme du blanc d'œuf"
+      "ALa prévention primaire repose sur l'éducation sanitaire et les campagnes de sensibilisation des adolescents et jeunes adultes",
+      "BLe dépistage par amplification génique sur le premier jet d'urine constitue un outil de prévention",
+      "CEn phase aiguë, la dissection cœlioscopique des organes doit être large et audacieuse",
+      "DLes lésions abcédées de type yposalpinx peuvent être mises à plat par cœlioscopie",
+      "ELa prévention tertiaire est l'étape la plus efficace pour prévenir l'infertilité"
     ],
     "correctAnswers": [
-      1
+      0,
+      1,
+      3
     ],
-    "explanation": "Pertes verdâtres abondantes, spumeuses et malodorantes caractéristiques de Trichomonas.",
+    "explanation": "Correction détaillée Réponses : A, B, D",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -3969,18 +3983,18 @@ export const GYNECOLOGY_QUESTIONS: Question[] = [
     "courseId": "c-gyn-infections",
     "questionNumber": 24,
     "type": "QCM",
-    "questionText": "Quel traitement minute (dose unique) est efficace dans la trichomonase urogénitale non compliquée ?",
+    "questionText": "Devant des leucorrhées, quel élément de l'interrogatoire oriente le plus vers une maladie sexuellement transmissible ?",
     "options": [
-      "Métronidazole 2 g per os en prise unique",
-      "Pénicilline V per os pendant 30 jours",
-      "Fluconazole 50 mg par jour pendant 2 mois",
-      "Gentamicine 160 mg en IM quotidienne pendant 10 jours",
-      "Aspirine 1 g par jour"
+      "AUn aspect blanchâtre et grumeleux « en lait caillé »",
+      "BUne odeur de poisson",
+      "CUne apparition post-coïtale",
+      "DUn caractère récidivant",
+      "EUne abondance modérée"
     ],
     "correctAnswers": [
-      0
+      2
     ],
-    "explanation": "Le Métronidazole 2g monodose (ou Tinidazole) traite efficacement Trichomonas vaginalis avec traitement simultané du partenaire.",
+    "explanation": "Correction détaillée Réponse : C",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -3990,18 +4004,18 @@ export const GYNECOLOGY_QUESTIONS: Question[] = [
     "courseId": "c-gyn-infections",
     "questionNumber": 25,
     "type": "QCM",
-    "questionText": "Parmi les propositions suivantes concernant la flore vaginale normale (flore de Döderlein), laquelle est exacte ?",
+    "questionText": "Dans les infections génitales basses, quel élément suffit le plus souvent pour poser le diagnostic étiologique et instaurer le traitement adéquat ?",
     "options": [
-      "Elle est dominée par des staphylocoques dorés producteurs d'endotoxines.",
-      "Elle est constituée de bacilles de Döderlein (Lactobacillus spp.) qui transforment le glycogène en acide lactique et maintiennent un pH acide protecteur (3,8 à 4,5).",
-      "Elle est totalement absente chez la femme en période d'activité génitale.",
-      "Son éradication par des douches vaginales quotidiennes est fortement recommandée.",
-      "Elle est stimulée par la testostérone et inhibée par les œstrogènes."
+      "ALes sérologies systématiques",
+      "BLes données de l'examen clinique et de l'examen direct",
+      "CLa cœlioscopie diagnostique",
+      "DL'IRM pelvienne",
+      "ELa biopsie d'endomètre"
     ],
     "correctAnswers": [
       1
     ],
-    "explanation": "Les lactobacilles maintiennent l'acidité vaginale via la production d'acide lactique et d'H2O2, empêchant la prolifération des pathogènes opportunistes.",
+    "explanation": "Correction détaillée Réponse : B",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -4012,18 +4026,18 @@ export const GYNECOLOGY_QUESTIONS: Question[] = [
     "questionNumber": 26,
     "type": "Cas Clinique",
     "clinicalCaseNumber": 1,
-    "questionText": "[Cas Clinique N°1 : Salpingite aiguë de la femme jeune]\nPatiente de 24 ans, nulligeste, consulte pour des douleurs pelviennes bilatérales avec fièvre à 38,5°C et leucorrhées jaunâtres depuis 4 jours. Au TV : mobilisation utérine douloureuse et empâtement annexiel bilatéral.\n\nQuestion : Question : Quel est le diagnostic le plus probable et quel bilan de première intention réaliser ?",
+    "questionText": "[Mme B., 31 ans — Consultation externe de Gynécologie-Obstétrique (CHU)]\nMme B., 31 ans, G2P1, 30 SA, diabète gestationnel. Prurit vulvaire intense, leucorrhées blanchâtres épaisses en lait caillé. Spéculum : enduit blanchâtre adhérent.\n\nQuestion : Quel est le diagnostic le plus probable ?",
     "options": [
-      "Salpingite aiguë non compliquée ; prélèvement bactériologique endocervical avec PCR Chlamydia/Gonocoque, NFS, CRP et échographie pelvienne.",
-      "Grossesse extra-utérine rompue sans aucun besoin de prélèvement.",
-      "Endométriose profonde sans rapport avec une infection.",
-      "Appendicite rétro-cæcale isolée.",
-      "Pyélonéphrite aiguë obstructive gauche."
+      "AVulvo-vaginite à Trichomonas vaginalis",
+      "BVulvo-vaginite mycosique à Candida albicans",
+      "CVaginose à Gardnerella vaginalis",
+      "DCervicite gonococcique",
+      "EHerpès génital"
     ],
     "correctAnswers": [
-      0
+      1
     ],
-    "explanation": "Tableau d'infection génitale haute (salpingite) chez une femme jeune sexuellement active nécessitant bilan bactériologique et imagerie.",
+    "explanation": "CorrectionRéponse : B",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -4034,18 +4048,18 @@ export const GYNECOLOGY_QUESTIONS: Question[] = [
     "questionNumber": 27,
     "type": "Cas Clinique",
     "clinicalCaseNumber": 2,
-    "questionText": "[Cas Clinique N°2 : Périhépatite de Fitz-Hugh-Curtis]\nFemme de 26 ans traitée pour salpingite il y a 2 semaines, consulte pour des douleurs vives de l'hypochondre droit exacerbées par l'inspiration profonde. Échographie biliaire normale, bilan hépatique subnormal.\n\nQuestion : Question : Quelle complication devez-vous évoquer ?",
+    "questionText": "[Mlle K., 23 ans — Consultation EPH]\nMlle K., 23 ans, 2 partenaires sexuels. Leucorrhées abondantes, verdâtres, mousseuses, spumeuses et nauséabondes. Piqueté vulvaire.\n\nQuestion : Quel est le diagnostic retenu ?",
     "options": [
-      "Colique hépatique lithiasique",
-      "Syndrome de Fitz-Hugh-Curtis (périhépatite à Chlamydia trachomatis)",
-      "Infarctus du myocarde inférieur",
-      "Ulcère gastrique perforé",
-      "Kyste hydatique rompu"
+      "ACandidose vulvo-vaginale",
+      "BTrichomonase vaginale",
+      "CVaginose bactérienne à Gardnerella",
+      "DOxyurose",
+      "EPhtiriase pubienne"
     ],
     "correctAnswers": [
       1
     ],
-    "explanation": "hérences péri-hépatiques en cordes de violon post-chlamydienne.",
+    "explanation": "CorrectionRéponse : B",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -4056,18 +4070,18 @@ export const GYNECOLOGY_QUESTIONS: Question[] = [
     "questionNumber": 28,
     "type": "Cas Clinique",
     "clinicalCaseNumber": 3,
-    "questionText": "[Cas Clinique N°3 : Vaginose bactérienne récidivante]\nPatiente de 30 ans gênée par des pertes vaginales grisâtres très fluides et une odeur de poisson pourri accentuée après les rapports sexuels, sans démangeaison ni rougeur. Sniff test positif au KOH.\n\nQuestion : Question : Quel diagnostic posez-vous et quel est le traitement adapté ?",
+    "questionText": "[Mme L., 29 ans — Urgences gynécologiques, CHU]\nMme L., 29 ans, DIU au cuivre depuis 2 ans. Douleurs pelviennes bilatérales, fièvre à 38,7 °C, leucorrhées purulentes, douleur à la mobilisation du col, culs-de-sac empâtés.\n\nQuestion : Quel est le diagnostic le plus probable ?",
     "options": [
-      "Vaginose bactérienne ; Métronidazole per os ou en ovules pendant 7 jours.",
-      "Candidose aiguë ; ovule d'éconazole dose unique.",
-      "Syphilis secondaire ; Pénicilline G retard.",
-      "Herpès génital ; Aciclovir pendant 10 jours.",
-      "Cancer du vagin ; radiothérapie externe."
+      "ACervicite aiguë isolée",
+      "BSalpingite aiguë (infection génitale haute)",
+      "CGrossesse extra-utérine",
+      "DKyste ovarien compliqué",
+      "EInfection urinaire basse"
     ],
     "correctAnswers": [
-      0
+      1
     ],
-    "explanation": "ritères d'Amsel vérifiés pour la vaginose bactérienne. Traitement de choix : Métronidazole.",
+    "explanation": "CorrectionRéponse : B",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -4078,18 +4092,18 @@ export const GYNECOLOGY_QUESTIONS: Question[] = [
     "questionNumber": 29,
     "type": "Cas Clinique",
     "clinicalCaseNumber": 4,
-    "questionText": "[Cas Clinique N°4 : Abcès tubo-ovarien compliquant une salpingite]\nFemme de 32 ans hospitalisée pour pelvipéritonite fébrile à 39,2°C avec masse latéro-utérine droite de 6 cm fluctuante et très douloureuse à l'échographie Doppler.\n\nQuestion : Question : Quelle est la stratégie thérapeutique immédiate ?",
+    "questionText": "[M. S., 25 ans — Consultation de dermatologie-vénéréologie (EPH)]\nM. S., 25 ans, ulcération superficielle unique indolore du pénis à bordures indurées, adénopathie inguinale indolore. VDRL positif, TPHA positif.\n\nQuestion : Quel est le diagnostic ?",
     "options": [
-      "Antibiothérapie intraveineuse triple à large spectre (C3G + Métronidazole + Gentamicine) et drainage écho-guidé ou cœlioscopique en l'absence d'amélioration rapide à 48h.",
-      "Traitement ambulatoire par comprimés oraux d'ibuprofène.",
-      "Hystérectomie élargie d'emblée avec curage ganglionnaire lombo-aortique.",
-      "Surveillance simple sans antibiotiques pendant 15 jours.",
-      "Radiothérapie pelvienne anti-inflammatoire."
+      "AHerpès génital",
+      "BSyphilis primaire",
+      "CChancre mou (Haemophilus ducreyi)",
+      "DAphte génital",
+      "EGale avec chancre scabieux"
     ],
     "correctAnswers": [
-      0
+      1
     ],
-    "explanation": "L'abcès tubo-ovarien est une urgence médico-chirurgicale associant antibiothérapie parentérale et drainage.",
+    "explanation": "CorrectionRéponse : B",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -4100,18 +4114,20 @@ export const GYNECOLOGY_QUESTIONS: Question[] = [
     "questionNumber": 30,
     "type": "Cas Clinique",
     "clinicalCaseNumber": 5,
-    "questionText": "[Cas Clinique N°5 : Bartholinite aiguë abcédée]\nFemme de 22 ans présentant depuis 48 heures une tuméfaction ovalaire rouge, chaude et insomniante de la grande lèvre gauche, mesurant 4 cm, gênant la marche et la position assise.\n\nQuestion : Question : Quel geste thérapeutique permet un soulagement immédiat de la patiente ?",
+    "questionText": "[Mme R., 27 ans — Urgences, CHU (forme grave)]\nMme R., 27 ans, fièvre à 39,2 °C, défense pelvienne, douleur de l'hypochondre droit. Cœlioscopie : adhérences en cordes de violon entre la capsule de Glisson et la paroi abdominale antérieure.\n\nQuestion : Quels diagnostics retenez-vous ? (2 à 3 réponses)",
     "options": [
-      "Incision-drainage et marsupialisation de la glande de Bartholin sous anesthésie locale ou générale, associée à une antibiothérapie adaptée.",
-      "Ponction biopsie rénale.",
-      "Application exclusive de compresses froides pendant un mois.",
-      "Vulvectomie superficielle radicale.",
-      "Chimiothérapie systémique."
+      "APelvipéritonite purulente",
+      "BPérihépatite (syndrome de Fitz-Hugh-Curtis)",
+      "CSalpingite aiguë bilatérale",
+      "DCholécystite aiguë lithiasique",
+      "EAppendicite aiguë"
     ],
     "correctAnswers": [
-      0
+      0,
+      1,
+      2
     ],
-    "explanation": "L'évacuation de la collection purulente par incision et méchage ou marsupialisation apporte une antalgie spectaculaire.",
+    "explanation": "CorrectionRéponses : A, B, C",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -4121,18 +4137,18 @@ export const GYNECOLOGY_QUESTIONS: Question[] = [
     "courseId": "c-gyn-contraception",
     "questionNumber": 1,
     "type": "QCM",
-    "questionText": "Concernant le mécanisme d'action principal de la contraception œstroprogestative combinée, quelle est la proposition exacte ?",
+    "questionText": "Concernant le mécanisme d'action des contraceptifs œstroprogestatifs, quelle proposition est exacte ?",
     "options": [
-      "Inhibition de l'ovulation par blocage du pic de LH et de FSH au niveau hypothalamo-hypophysaire",
-      "Lésion cytotoxique directe sur les spermatozoïdes dans le vagin",
-      "Destruction chirurgicale irréversible des ovaires",
-      "Augmentation massive de la production de FSH hypophysaire",
-      "Accélération du transit tubaire empêchant la fécondation"
+      "Ils bloquent l'ovulation uniquement par rétrocontrôle négatif sur l'axe hypothalamo-hypophysaire",
+      "Ils agissent exclusivement par épaississement de la glaire cervicale",
+      "Ils associent un blocage de l'ovulation, un épaississement de la glaire cervicale et une modification de l'endomètre",
+      "Ils empêchent la nidation en modifiant l'endomètre sans bloquer l'ovulation",
+      "Ils détruisent les spermatozoïdes dans les voies génitales"
     ],
     "correctAnswers": [
-      0
+      2
     ],
-    "explanation": "L'effet antigonadotrope rétrocontrôle négatif de l'œstrogène et du progestatif bloque le pic ovulatoire de gonadotrophines (LH et FSH), associé à une atrophie endométriale et à l'imperméabilité de la glaire cervicale.",
+    "explanation": "Le cours insiste sur le triple mécanisme des œstroprogestatifs : (1) blocage de l'ovulation par rétrocontrôle hypophyso-hypothalamique, (2) épaississement de la glaire cervicale gênant le passage des spermatozoïdes, (3) modification de l'endomètre le rendant impropre à la nidation.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -4142,18 +4158,20 @@ export const GYNECOLOGY_QUESTIONS: Question[] = [
     "courseId": "c-gyn-contraception",
     "questionNumber": 2,
     "type": "QCM",
-    "questionText": "Parmi les situations cliniques suivantes, laquelle constitue une contre-indication absolue (Catégorie 4 OMS) à la contraception œstroprogestative ?",
+    "questionText": "Concernant l'indice de Pearl, quelles propositions sont exactes ? (2 à 3 réponses)",
     "options": [
-      "Antécédent personnel de thrombose veineuse profonde ou d'embolie pulmonaire",
-      "Dysménorrhée primaire chez une adolescente",
-      "Acné rétentionnelle modérée",
-      "Kyste fonctionnel ovarien folliculaire",
-      "Antécédent familial éloigné de diabète de type 2"
+      "Il correspond au nombre de grossesses accidentelles pour 100 femmes-années",
+      "Un indice bas signifie une meilleure efficacité contraceptive",
+      "Le DIU au cuivre a un indice de Pearl inférieur à celui du préservatif masculin",
+      "Le préservatif masculin a un indice de Pearl de 0,3",
+      "L'indice de Pearl mesure la tolérance d'une méthode"
     ],
     "correctAnswers": [
-      0
+      0,
+      1,
+      2
     ],
-    "explanation": "Tout antécédent thromboembolique veineux ou artériel, les thrombophilies constitutionnelles et le tabagisme > 35 ans sont des contre-indications absolues aux œstroprogestatifs.",
+    "explanation": "vrai : formule du cours = (nombre de grossesses accidentelles / nombre de cycles observés) × 12 × 100. B vrai : un indice bas = peu de grossesses accidentelles = méthode plus efficace. C vrai : DIU cuivre 0,6–0,8 vs préservatif masculin 2–15.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -4163,18 +4181,18 @@ export const GYNECOLOGY_QUESTIONS: Question[] = [
     "courseId": "c-gyn-contraception",
     "questionNumber": 3,
     "type": "QCM",
-    "questionText": "Chez une femme de 38 ans qui fume 15 cigarettes par jour, quelle méthode contraceptive est formellement contre-indiquée ?",
+    "questionText": "Concernant la contraception progestative orale, quelle proposition est FAUSSE ?",
     "options": [
-      "La pilule œstroprogestative combinée (minidosée)",
-      "Le dispositif intra-utérin au cuivre",
-      "L'implant progestatif sous-cutané à l'étonogestrel",
-      "Les microprogestatifs oraux au lévonorgestrel ou désogestrel",
-      "Le préservatif masculin"
+      "Elle contient un progestatif uniquement",
+      "Elle épaissit principalement la glaire cervicale",
+      "Elle se prend en continu, 28 jours sans arrêt entre deux plaquettes",
+      "Elle est contre-indiquée en cas d'antécédent de cancer du sein",
+      "Elle bloque l'ovulation de façon aussi systématique que les œstroprogestatifs"
     ],
     "correctAnswers": [
-      0
+      4
     ],
-    "explanation": "Le tabagisme associé à l'âge supérieur à 35 ans majore dramatiquement le risque d'accidents vasculaires artériels et thromboemboliques veineux, contre-indiquant les œstrogènes.",
+    "explanation": "faux : le blocage ovulatoire de la microprogestative est inconstant et moins systématique que celui des COC.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -4184,18 +4202,18 @@ export const GYNECOLOGY_QUESTIONS: Question[] = [
     "courseId": "c-gyn-contraception",
     "questionNumber": 4,
     "type": "QCM",
-    "questionText": "Quel est le mécanisme d'action contraceptif prédominant du dispositif intra-utérin (DIU) au cuivre ?",
+    "questionText": "Toutes les propositions suivantes sont des contre-indications aux contraceptifs œstroprogestatifs, SAUF :",
     "options": [
-      "Blocage complet de l'ovulation par suppression de l'axe hypothalamique",
-      "Réaction inflammatoire aseptique de l'endomètre avec effet spermicide et cytotoxique des ions cuivre",
-      "Fermeture chirurgicale des trompes de Fallope",
-      "Destruction enzymatique des corps jaunes ovariens",
-      "Induction d'une aménorrhée définitive"
+      "Pathologie cardiaque sévère",
+      "Insuffisance hépatique et cirrhose",
+      "Cancer du sein ou de l'endomètre",
+      "Antécédent personnel de thrombose veineuse",
+      "Nulliparité"
     ],
     "correctAnswers": [
-      1
+      4
     ],
-    "explanation": "Le DIU au cuivre induit une réaction à corps étranger inflammatoire aseptique avec libération d'ions cuivre spermicides, empêchant la fécondation et l'implantation.",
+    "explanation": ": la nulliparité n'est pas une contre-indication.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -4205,18 +4223,20 @@ export const GYNECOLOGY_QUESTIONS: Question[] = [
     "courseId": "c-gyn-contraception",
     "questionNumber": 5,
     "type": "QCM",
-    "questionText": "Quelle contraception d'urgence non hormonale peut être posée jusqu'à 5 jours après un rapport sexuel non protégé ?",
+    "questionText": "Concernant les dispositifs intra-utérins (DIU), quelles propositions sont exactes ?",
     "options": [
-      "La pose d'un dispositif intra-utérin au cuivre",
-      "L'injection d'un bolus de progestérone retard",
-      "La pose d'un pessaire vaginal",
-      "L'application d'un patch œstrogénique",
-      "L'hystéroscopie diagnostique immédiate"
+      "Le DIU au cuivre a une durée d'action de 4 à 5 ans",
+      "Le DIU au lévonorgestrel agit principalement par effet spermicide local",
+      "Le DIU au lévonorgestrel est indiqué dans les ménorragies",
+      "Le DIU au cuivre peut être posé par une sage-femme",
+      "Le DIU au lévonorgestrel a une durée d'action de 5 ans"
     ],
     "correctAnswers": [
-      0
+      0,
+      2,
+      4
     ],
-    "explanation": "Le DIU au cuivre posé dans les 5 jours (120 heures) est la méthode de contraception d'urgence la plus efficace (> 99%), utilisable ensuite comme contraception régulière.",
+    "explanation": "vrai : durée 4 à 5 ans. C vrai : indiqué dans les ménorragies. E vrai : durée 5 ans.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -4226,18 +4246,18 @@ export const GYNECOLOGY_QUESTIONS: Question[] = [
     "courseId": "c-gyn-contraception",
     "questionNumber": 6,
     "type": "QCM",
-    "questionText": "Concernant la contraception d'urgence hormonale par Lévonorgestrel (1,5 mg), quelle est la fenêtre temporelle optimale de prise ?",
+    "questionText": "Concernant l'implant sous-cutané à l'étonogestrel, quelle proposition est FAUSSE ?",
     "options": [
-      "Le plus tôt possible, idéalement dans les 12 à 72 heures suivant le rapport",
-      "Strictement entre le 10ème et le 14ème jour après le rapport",
-      "Uniquement pendant la période menstruelle",
-      "À la 6ème semaine après le retard de règles",
-      "Exclusivement avant le rapport sexuel"
+      "Il est inséré par voie sous-cutanée par un médecin",
+      "Sa durée d'action est de 3 ans",
+      "Son retrait nécessite une incision sous anesthésie",
+      "Il agit uniquement par épaississement de la glaire cervicale",
+      "Il bloque l'ovulation et épaissit la glaire cervicale"
     ],
     "correctAnswers": [
-      0
+      3
     ],
-    "explanation": "Le lévonorgestrel doit être pris le plus tôt possible, efficace jusqu'à 72 heures (3 jours). L'ulipristal acétate est efficace jusqu'à 120 heures (5 jours).",
+    "explanation": "faux : il bloque l'ovulation en plus d'épaissir la glaire cervicale.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -4247,18 +4267,18 @@ export const GYNECOLOGY_QUESTIONS: Question[] = [
     "courseId": "c-gyn-contraception",
     "questionNumber": 7,
     "type": "QCM",
-    "questionText": "Quel est l'effet secondaire métabolique ou vasculaire le plus redouté de la composante œstrogénique (éthinylestradiol) ?",
+    "questionText": "Une patiente sous pilule œstroprogestative a oublié un comprimé. Le retard est de 8 heures. Que faire ?",
     "options": [
-      "L'hyperglycémie néonatale immédiate",
-      "L'activation de la coagulation avec élévation du risque de maladie thrombo-embolique veineuse et artérielle",
-      "La survenue systématique d'une ostéoporose fracturaire",
-      "L'insuffisance rénale terminale anurique",
-      "La pancréatite aiguë auto-immune"
+      "Prendre le comprimé oublié et utiliser un préservatif pendant 7 jours",
+      "Prendre le comprimé oublié et continuer normalement la plaquette sans méthode supplémentaire",
+      "Arrêter la plaquette et attendre les règles",
+      "Prendre deux comprimés le lendemain",
+      "Prendre une contraception d'urgence"
     ],
     "correctAnswers": [
       1
     ],
-    "explanation": "L'éthinylestradiol stimule la synthèse hépatique des facteurs de coagulation (fibrinogène, facteurs VII, VIII, X) et diminue l'antithrombine III et la protéine S.",
+    "explanation": "Oubli < 12 h → prendre le comprimé oublié et continuer normalement la plaquette sans méthode supplémentaire.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -4268,18 +4288,21 @@ export const GYNECOLOGY_QUESTIONS: Question[] = [
     "courseId": "c-gyn-contraception",
     "questionNumber": 8,
     "type": "QCM",
-    "questionText": "Parmi les propositions suivantes concernant l'implant contraceptif sous-cutané à l'étonogestrel, laquelle est exacte ?",
+    "questionText": "Parmi les méthodes naturelles de contraception, on cite :",
     "options": [
-      "Il assure une contraception très efficace pendant une durée de 3 ans.",
-      "Il doit être inséré chirurgicalement dans le péritoine pelvien.",
-      "Il contient une forte dose d'œstrogènes de synthèse.",
-      "Il expose à un risque majeur de thrombose veineuse profonde chez la femme jeune.",
-      "Il ne peut pas être retiré avant l'expiration des 3 ans."
+      "La méthode des températures",
+      "La méthode de la glaire cervicale (Billings)",
+      "Le coït interrompu",
+      "Le diaphragme",
+      "La méthode MAMA (allaitement maternel et aménorrhée)"
     ],
     "correctAnswers": [
-      0
+      0,
+      1,
+      2,
+      4
     ],
-    "explanation": "L'implant sous-cutané progestatif (face interne du bras non dominant) a une efficacité de 99,9% pendant 3 ans, avec blocage ovulatoire et atrophie endométriale.",
+    "explanation": "Méthodes naturelles = température, Billings, coït interrompu, MAMA. Le diaphragme est mécanique.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -4289,18 +4312,18 @@ export const GYNECOLOGY_QUESTIONS: Question[] = [
     "courseId": "c-gyn-contraception",
     "questionNumber": 9,
     "type": "QCM",
-    "questionText": "En cas d'oubli d'un comprimé d'œstroprogestatif combiné minidosé de plus de 12 heures, quelle est la règle d'or ?",
+    "questionText": "Concernant la contraception d'urgence, quelle proposition est FAUSSE ?",
     "options": [
-      "Prendre immédiatement le comprimé oublié, continuer la plaquette à l'heure habituelle et utiliser des préservatifs pendant 7 jours consécutifs",
-      "Arrêter définitivement la contraception pendant 6 mois",
-      "Prendre 5 comprimés en une seule prise le soir même",
-      "Réaliser un avortement thérapeutique d'urgence",
-      "Doubler la dose quotidienne pendant tout le reste du cycle"
+      "Elle se prend dans les 72 heures suivant le rapport",
+      "Certains produits peuvent être pris jusqu'à 5 jours après le rapport",
+      "Elle est efficace à 100 %",
+      "Le lévonorgestrel est une molécule utilisée",
+      "Elle ne protège pas contre les IST"
     ],
     "correctAnswers": [
-      0
+      2
     ],
-    "explanation": "Règle des 12h : prendre le comprimé oublié dès le constat, poursuivre la plaquette normalement et adopter une contraception mécanique d'appoint pendant 7 jours.",
+    "explanation": "faux : aucune contraception d'urgence n'est efficace à 100 %.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -4310,18 +4333,18 @@ export const GYNECOLOGY_QUESTIONS: Question[] = [
     "courseId": "c-gyn-contraception",
     "questionNumber": 10,
     "type": "QCM",
-    "questionText": "Quel bénéfice non contraceptif prouvé est associé à l'utilisation prolongée des contraceptifs œstroprogestatifs ?",
+    "questionText": "Quel est le mécanisme d'action principal du DIU au cuivre ?",
     "options": [
-      "Réduction significative du risque de cancer de l'ovaire et de cancer de l'endomètre",
-      "Disparition complète des céphalées et migraines avec aura",
-      "Prévention absolue du cancer du sein",
-      "Protection contre la transmission du VIH",
-      "Inversion des prolapsus génitaux"
+      "Blocage de l'ovulation",
+      "Réaction inflammatoire locale empêchant la fécondation de l'ovule par le spermatozoïde",
+      "Épaississement de la glaire cervicale",
+      "Modification de l'endomètre par effet hormonal",
+      "Destruction des spermatozoïdes par effet osmotique"
     ],
     "correctAnswers": [
-      0
+      1
     ],
-    "explanation": "La prise de pilule combinée réduit de 50% le risque de cancer de l'ovaire et de l'endomètre, effet protecteur persistant des années après l'arrêt.",
+    "explanation": "Le cuivre provoque une réaction inflammatoire locale empêchant la fécondation.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -4331,18 +4354,20 @@ export const GYNECOLOGY_QUESTIONS: Question[] = [
     "courseId": "c-gyn-contraception",
     "questionNumber": 11,
     "type": "QCM",
-    "questionText": "Chez une patiente présentant des migraines AVEC aura ophtalmique, la prescription d'un œstroprogestatif est :",
+    "questionText": "Concernant le patch transdermique et l'anneau vaginal, quelles propositions sont exactes ?",
     "options": [
-      "Contre-indiquée de façon absolue (Catégorie 4 OMS) en raison du sur-risque majeur d'AVC ischémique",
-      "Fortement recommandée pour guérir l'aura",
-      "Autorisée uniquement à forte dose d'œstrogène",
-      "Indiquée en cure continue pendant 10 ans",
-      "Sans aucune incidence sur le risque neurologique"
+      "Le patch se colle 1 fois par semaine pendant 3 semaines",
+      "L'anneau vaginal s'insère au fond du vagin pour 3 semaines",
+      "Les deux méthodes sont suivies d'une semaine d'arrêt",
+      "L'anneau vaginal se change tous les jours",
+      "Le patch s'applique sur la muqueuse vaginale"
     ],
     "correctAnswers": [
-      0
+      0,
+      1,
+      2
     ],
-    "explanation": "Les migraines avec aura constituent une contre-indication absolue aux œstroprogestatifs en raison de l'augmentation marquée du risque d'accident vasculaire cérébral.",
+    "explanation": "Explication détaillée tirée du document de référence officiel de la Faculté de Médecine.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -4352,18 +4377,18 @@ export const GYNECOLOGY_QUESTIONS: Question[] = [
     "courseId": "c-gyn-contraception",
     "questionNumber": 12,
     "type": "QCM",
-    "questionText": "Concernant le DIU au lévonorgestrel (ex: Mirena), quel effet clinique est très fréquemment observé après quelques mois d'utilisation ?",
+    "questionText": "Concernant l'anneau vaginal, quelle proposition est FAUSSE ?",
     "options": [
-      "Une diminution drastique du flux menstruel voire une aménorrhée de confort bénigne",
-      "Des hémorragies cataclysmiques permanentes",
-      "Une augmentation de volume des ovaires avec virilisation",
-      "Une perforation spontanée dans 90% des cas",
-      "Une perte de cheveux totale"
+      "Il est à base d'œstroprogestatifs",
+      "Il s'insère au fond du vagin",
+      "Il reste en place 3 semaines puis 1 semaine d'arrêt",
+      "Il se retire chaque nuit",
+      "Il agit par blocage de l'ovulation"
     ],
     "correctAnswers": [
-      0
+      3
     ],
-    "explanation": "L'effet progestatif local atrophie fortement l'endomètre, entraînant oligo-ménorrhée ou aménorrhée chez plus de 50% des utilisatrices, très appréciée et protectrice contre l'anémie.",
+    "explanation": "faux : il reste en place en continu 3 semaines.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -4373,18 +4398,18 @@ export const GYNECOLOGY_QUESTIONS: Question[] = [
     "courseId": "c-gyn-contraception",
     "questionNumber": 13,
     "type": "QCM",
-    "questionText": "Quelle méthode contraceptive est particulièrement indiquée chez la femme allaitante dès la 3ème ou 4ème semaine du post-partum ?",
+    "questionText": "La prescription d'une contraception nécessite toutes les étapes suivantes, SAUF :",
     "options": [
-      "Les microprogestatifs oraux (ex: désogestrel) ou l'implant progestatif",
-      "La pilule œstroprogestative normodosée à 50 µg",
-      "L'abstinence périodique stricte basée sur la température",
-      "La radiothérapie ovarienne transitoire",
-      "Le clomifène à visée contraceptive"
+      "Un interrogatoire détaillé",
+      "Un examen clinique",
+      "Des examens complémentaires ciblés",
+      "Une simple rédaction d'ordonnance sans évaluation préalable",
+      "Une recherche systématique de contre-indications"
     ],
     "correctAnswers": [
-      0
+      3
     ],
-    "explanation": "Les microprogestatifs ne passent pas significativement dans le lait maternel et n'altèrent ni la quantité ni la qualité de la lactation, contrairement aux œstrogènes.",
+    "explanation": "Explication détaillée tirée du document de référence officiel de la Faculté de Médecine.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -4394,18 +4419,21 @@ export const GYNECOLOGY_QUESTIONS: Question[] = [
     "courseId": "c-gyn-contraception",
     "questionNumber": 14,
     "type": "QCM",
-    "questionText": "Parmi les médicaments suivants, lequel est un inducteur enzymatique hépatique puissant capable de diminuer l'efficacité des pilules contraceptives ?",
+    "questionText": "Concernant le stérilet hormonal (DIU au lévonorgestrel), quelles propositions sont exactes ?",
     "options": [
-      "La Rifampicine (et certains antiépileptiques : carbamazépine, phénytoïne)",
-      "Le paracétamol à dose thérapeutique",
-      "La vitamine C",
-      "L'aspirine à 100 mg",
-      "Le sérum physiologique"
+      "Il libère quotidiennement de très petites quantités d'hormones",
+      "Il ralentit l'épaississement de la muqueuse utérine",
+      "Il inhibe la mobilité des spermatozoïdes",
+      "Il épaissit la glaire cervicale",
+      "Sa durée d'action est de 10 ans"
     ],
     "correctAnswers": [
-      0
+      0,
+      1,
+      2,
+      3
     ],
-    "explanation": "Les inducteurs du cytochrome P450 (rifampicine, phénobarbital, carbamazépine, millepertuis) accélèrent le catabolisme des stéroïdes contraceptifs et provoquent des échecs de contraception.",
+    "explanation": "Explication détaillée tirée du document de référence officiel de la Faculté de Médecine.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -4415,18 +4443,18 @@ export const GYNECOLOGY_QUESTIONS: Question[] = [
     "courseId": "c-gyn-contraception",
     "questionNumber": 15,
     "type": "QCM",
-    "questionText": "Avant la mise en place d'un dispositif intra-utérin (DIU), quel geste doit être réalisé systématiquement ?",
+    "questionText": "Concernant les œstroprogestatifs, quelle proposition est FAUSSE ?",
     "options": [
-      "Éliminer formellement une grossesse en cours (bêta-hCG ou date des règles) et dépister une infection cervico-vaginale active",
-      "Réaliser un scanner pelvien injecté",
-      "Effectuer un curage ganglionnaire iliaque",
-      "Pratiquer une laparotomie exploratrice",
-      "Administrer une héparinothérapie à dose curative"
+      "Les normodosés contiennent 50 µg d'éthinylestradiol",
+      "Les minidosés contiennent 15 à 35 µg d'éthinylestradiol",
+      "L'indice de Pearl des œstroprogestatifs est inférieur à 0,5",
+      "Le blocage de l'ovulation est leur seul mécanisme d'action",
+      "Ils modifient l'endomètre"
     ],
     "correctAnswers": [
-      0
+      3
     ],
-    "explanation": "Éliminer une grossesse et toute infection génitale active sont les deux prérequis absolus avant la pose d'un DIU pour éviter la dissémination endo-utérine.",
+    "explanation": "faux : triple mécanisme (ovulation + glaire + endomètre).",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -4436,18 +4464,18 @@ export const GYNECOLOGY_QUESTIONS: Question[] = [
     "courseId": "c-gyn-contraception",
     "questionNumber": 16,
     "type": "QCM",
-    "questionText": "Quel est l'indice international utilisé pour évaluer l'efficacité statistique d'une méthode contraceptive ?",
+    "questionText": "L'indice de Pearl se calcule par :",
     "options": [
-      "L'indice de Pearl (nombre de grossesses pour 100 années-femmes)",
-      "L'indice de Glasgow",
-      "Le score d'Apgar",
-      "L'index de Manning",
-      "L'indice de Bishop"
+      "Nombre de grossesses accidentelles / nombre de cycles × 12 × 100",
+      "Nombre de grossesses accidentelles / nombre de femmes × 100",
+      "Nombre de cycles / nombre de grossesses × 100",
+      "Nombre de grossesses / nombre d'années × 12",
+      "Nombre de femmes enceintes / nombre de rapports × 100"
     ],
     "correctAnswers": [
       0
     ],
-    "explanation": "L'indice de Pearl exprime le taux d'échec théorique et pratique d'une méthode contraceptive pour 100 femmes l'utilisant pendant 1 an.",
+    "explanation": "Explication détaillée tirée du document de référence officiel de la Faculté de Médecine.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -4457,18 +4485,21 @@ export const GYNECOLOGY_QUESTIONS: Question[] = [
     "courseId": "c-gyn-contraception",
     "questionNumber": 17,
     "type": "QCM",
-    "questionText": "Concernant la contraception définitive masculine (vasectomie), quelle affirmation est exacte ?",
+    "questionText": "Concernant la contraception locale (barrière), quelles propositions sont exactes ?",
     "options": [
-      "Elle consiste en la section et ligature bilatérale des canaux déférents sous anesthésie locale.",
-      "Elle provoque une impuissance érectile immédiate et définitive.",
-      "Elle arrête instantanément la spermatogenèse intra-testiculaire.",
-      "Le sperme devient azoosperme dès la première heure post-opératoire.",
-      "Elle protège à 100% contre la transmission du VIH et de la syphilis."
+      "Elle est généralement moins efficace que les méthodes hormonales",
+      "Le préservatif masculin protège contre les IST",
+      "Les spermicides seuls sont très efficaces",
+      "Le diaphragme nécessite l'utilisation conjointe de spermicides",
+      "Le préservatif féminin existe"
     ],
     "correctAnswers": [
-      0
+      0,
+      1,
+      3,
+      4
     ],
-    "explanation": "La vasectomie interrompt les canaux déférents. L'azoospermie n'est effective qu'après 3 mois (et une vingtaine d'éjaculations), contrôlée par un spermogramme.",
+    "explanation": "Explication détaillée tirée du document de référence officiel de la Faculté de Médecine.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -4478,18 +4509,18 @@ export const GYNECOLOGY_QUESTIONS: Question[] = [
     "courseId": "c-gyn-contraception",
     "questionNumber": 18,
     "type": "QCM",
-    "questionText": "Concernant la ligature tubaire chez la femme, quelle est la règle légale et médicale ?",
+    "questionText": "Concernant la stérilisation à visée contraceptive, quelle proposition est FAUSSE ?",
     "options": [
-      "Elle nécessite une information claire, un délai de réflexion obligatoire de 4 mois et un consentement écrit libre et éclairé.",
-      "Elle peut être imposée par le conjoint sans l'accord de la patiente.",
-      "Elle est réalisable dès l'âge de 14 ans sans autorisation.",
-      "Elle nécessite l'accord obligatoire d'un comité d'éthique hospitalier.",
-      "Elle entraîne systématiquement une ménopause précoce chirurgicale."
+      "Elle est définitive",
+      "La vasectomie est la stérilisation masculine",
+      "Elle est réversible à 100 %",
+      "Elle nécessite une information éclairée",
+      "La stérilisation féminine existe"
     ],
     "correctAnswers": [
-      0
+      2
     ],
-    "explanation": "Méthode de stérilisation à visée contraceptive encadrée par la loi avec délai de réflexion de 4 mois et consentement écrit signé.",
+    "explanation": "faux : méthode définitive, non réversible à 100 %.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -4499,18 +4530,18 @@ export const GYNECOLOGY_QUESTIONS: Question[] = [
     "courseId": "c-gyn-contraception",
     "questionNumber": 19,
     "type": "QCM",
-    "questionText": "Quelle méthode mécanique reste la SEULE capable d'assurer simultanément la contraception et la protection contre les IST ?",
+    "questionText": "Les contraceptifs œstroprogestatifs associent :",
     "options": [
-      "Le préservatif masculin (ou féminin)",
-      "Le stérilet au cuivre",
-      "L'implant sous-cutané",
-      "Le patch hebdomadaire",
-      "L'anneau vaginal œstroprogestatif"
+      "Deux progestatifs",
+      "Un œstrogène et un progestatif",
+      "Deux œstrogènes",
+      "Un progestatif seul",
+      "Un œstrogène seul"
     ],
     "correctAnswers": [
-      0
+      1
     ],
-    "explanation": "Le préservatif est la seule barrière physique réduisant la transmission des infections sexuellement transmissibles (VIH, hépatite B, gonococcie, Chlamydia).",
+    "explanation": "Explication détaillée tirée du document de référence officiel de la Faculté de Médecine.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -4520,18 +4551,21 @@ export const GYNECOLOGY_QUESTIONS: Question[] = [
     "courseId": "c-gyn-contraception",
     "questionNumber": 20,
     "type": "QCM",
-    "questionText": "Parmi les affirmations suivantes sur la contraception du post-partum immédiat, laquelle est FAUSSE ?",
+    "questionText": "En cas d'oubli de pilule de plus de 12 heures, quelles mesures sont correctes ?",
     "options": [
-      "La pilule œstroprogestative peut être débutée dès le premier jour suivant l'accouchement chez la femme qui allaite.",
-      "L'allaitement maternel exclusif (méthode MAMA) confère une protection contraceptive relative jusqu'à 6 mois si aménorrhée persistante.",
-      "Un microprogestatif peut être débuté dès J21-J28 du post-partum.",
-      "La pose d'un DIU peut être réalisée à la visite post-natale des 6-8 semaines.",
-      "Le risque thrombo-embolique est maximal dans les premières semaines du post-partum."
+      "Prendre le comprimé oublié dès que possible",
+      "Prendre le comprimé du jour comme d'habitude",
+      "Continuer la plaquette normalement jusqu'à la fin",
+      "Utiliser une méthode locale jusqu'à la fin de la plaquette",
+      "Arrêter immédiatement la plaquette"
     ],
     "correctAnswers": [
-      0
+      0,
+      1,
+      2,
+      3
     ],
-    "explanation": "La pilule combinée est formellement contre-indiquée dans les 3 à 6 premières semaines du post-partum en raison du pic majeur de risque thromboembolique veineux et de l'inhibition de la lactation.",
+    "explanation": "Explication détaillée tirée du document de référence officiel de la Faculté de Médecine.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -4541,18 +4575,18 @@ export const GYNECOLOGY_QUESTIONS: Question[] = [
     "courseId": "c-gyn-contraception",
     "questionNumber": 21,
     "type": "QCM",
-    "questionText": "Concernant l'anneau vaginal contraceptif (étonogestrel / éthinylestradiol), quelle est sa modalité d'utilisation ?",
+    "questionText": "Quel est le rôle de l'éthinylestradiol dans un contraceptif œstroprogestatif ?",
     "options": [
-      "Laissé en place pendant 3 semaines consécutives, puis retiré pendant 1 semaine pour provoquer l'hémorragie de privation",
-      "Changé chaque matin au réveil",
-      "Placé dans le canal cervical par un gynécologue chaque mois",
-      "Conservé pendant 5 années consécutives sans interruption",
-      "Exclusivement réservé aux femmes ménopausées"
+      "Il épaissit la glaire cervicale",
+      "Il participe au blocage de l'ovulation par rétrocontrôle négatif",
+      "Il provoque une réaction inflammatoire",
+      "Il détruit les spermatozoïdes",
+      "Il est inactif — seul le progestatif agit"
     ],
     "correctAnswers": [
-      0
+      1
     ],
-    "explanation": "L'anneau vaginal diffuse des hormones de façon constante pendant 21 jours, suivi d'une semaine d'arrêt.",
+    "explanation": "Explication détaillée tirée du document de référence officiel de la Faculté de Médecine.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -4562,18 +4596,18 @@ export const GYNECOLOGY_QUESTIONS: Question[] = [
     "courseId": "c-gyn-contraception",
     "questionNumber": 22,
     "type": "QCM",
-    "questionText": "Dans quel délai un dispositif intra-utérin déplacé ou dont les fils ne sont plus visibles doit-il être investigué ?",
+    "questionText": "Toutes les méthodes suivantes sont des contraceptions hormonales, SAUF :",
     "options": [
-      "Par échographie pelvienne rapide pour localiser le DIU (intra-utérin, intramural ou expulsé dans le péritoine)",
-      "Aucune exploration n'est nécessaire si la patiente ne se plaint de rien",
-      "Par laparotomie médiane exploratrice d'emblée sans imagerie",
-      "Par scintigraphie thyroïdienne",
-      "Par mise sous plâtre du membre inférieur"
+      "Pilule œstroprogestative",
+      "Patch transdermique",
+      "Anneau vaginal",
+      "Diaphragme",
+      "Implant sous-cutané"
     ],
     "correctAnswers": [
-      0
+      3
     ],
-    "explanation": "La disparition des fils au spéculum impose l'échographie endovaginale (ou radiographie de l'abdomen sans préparation en cas de suspicion de perforation péritonéale).",
+    "explanation": "Explication détaillée tirée du document de référence officiel de la Faculté de Médecine.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -4583,18 +4617,21 @@ export const GYNECOLOGY_QUESTIONS: Question[] = [
     "courseId": "c-gyn-contraception",
     "questionNumber": 23,
     "type": "QCM",
-    "questionText": "La présence d'un antécédent de cancer du sein hormonodépendant chez une patiente :",
+    "questionText": "Concernant la pilule progestative (microprogestative), quelles propositions sont exactes ?",
     "options": [
-      "Contre-indique formellement toute contraception hormonale, qu'elle soit œstroprogestative ou progestative pure (Catégorie 4 OMS)",
-      "Nécessite une augmentation des doses d'œstrogène",
-      "Indique la pose d'un implant progestatif à forte dose",
-      "Est sans importance vis-à-vis des récepteurs hormonaux",
-      "Autorise la prise de pilules combinées dès la rémission"
+      "Elle se prend en continu, sans interruption entre deux plaquettes",
+      "Elle doit être prise à heure fixe",
+      "Elle épaissit la glaire cervicale",
+      "Elle contient de l'éthinylestradiol",
+      "Elle est contre-indiquée en cas de cancer du sein"
     ],
     "correctAnswers": [
-      0
+      0,
+      1,
+      2,
+      4
     ],
-    "explanation": "Les tumeurs mammaires hormonodépendantes contre-indiquent toute hormonothérapie stéroïdienne. Le DIU au cuivre ou les barrières mécaniques sont alors indiqués.",
+    "explanation": "Explication détaillée tirée du document de référence officiel de la Faculté de Médecine.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -4604,18 +4641,18 @@ export const GYNECOLOGY_QUESTIONS: Question[] = [
     "courseId": "c-gyn-contraception",
     "questionNumber": 24,
     "type": "QCM",
-    "questionText": "Concernant la contraception chez l'adolescente, quelle est la priorité clinique ?",
+    "questionText": "Concernant l'indice de Pearl, quelle proposition est FAUSSE ?",
     "options": [
-      "Proposer une méthode efficace, accessible, confidentielle et promouvoir la double protection (contraception + préservatif)",
-      "Exiger obligatoirement la présence des deux parents lors de la délivrance",
-      "Refuser toute contraception avant 18 ans révolus",
-      "Imposer la ligature tubaire précoce",
-      "Interdire l'usage du préservatif"
+      "Le DIU au lévonorgestrel a un indice de Pearl de 0,2",
+      "Le préservatif masculin a un indice de Pearl de 2 à 15",
+      "Les spermicides ont un indice de Pearl de 18 à 29",
+      "Les méthodes naturelles ont un indice de Pearl de 1 à 9",
+      "Un indice de Pearl élevé signifie une meilleure efficacité"
     ],
     "correctAnswers": [
-      0
+      4
     ],
-    "explanation": "La double protection prévient à la fois les grossesses non prévues et les IST, avec garantie légale du secret et de la gratuité/confidentialité.",
+    "explanation": "faux : plus l'indice de Pearl est bas, plus la méthode est efficace.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -4625,18 +4662,18 @@ export const GYNECOLOGY_QUESTIONS: Question[] = [
     "courseId": "c-gyn-contraception",
     "questionNumber": 25,
     "type": "QCM",
-    "questionText": "Quel bilan biologique minimal préalable est recommandé avant la prescription d'une première pilule œstroprogestative chez une patiente sans antécédents ?",
+    "questionText": "La contraception d'urgence hormonale agit principalement par :",
     "options": [
-      "Glycémie à jeun et bilan lipidique (cholestérol total, triglycérides), associé à la mesure rigoureuse de la pression artérielle",
-      "Bilan de thrombophilie génétique complet avec recherche de mutation facteur V de Leiden chez toutes les patientes",
-      "IRM cérébrale et scanners thoraciques annuels",
-      "Ponction lombaire et myélogramme",
-      "Aucun interrogatoire ni mesure de la tension artérielle"
+      "Destruction de l'embryon",
+      "Retard ou inhibition de l'ovulation",
+      "Effet abortif",
+      "Stérilisation temporaire",
+      "Action spermicide directe"
     ],
     "correctAnswers": [
-      0
+      1
     ],
-    "explanation": "Recherche des facteurs de risque à l'interrogatoire, mesure de la TA et bilan lipidique/glycémique à 3-6 mois. Le bilan de thrombophilie n'est indiqué qu'en cas d'antécédents personnels ou familiaux au 1er degré de thrombose inexpliquée ou précoce.",
+    "explanation": "Explication détaillée tirée du document de référence officiel de la Faculté de Médecine.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -4647,18 +4684,18 @@ export const GYNECOLOGY_QUESTIONS: Question[] = [
     "questionNumber": 26,
     "type": "Cas Clinique",
     "clinicalCaseNumber": 1,
-    "questionText": "[Cas Clinique N°1 : Prescription contraceptive chez une fumeuse de 36 ans]\nMme N., 36 ans, consulte pour renouveler sa contraception. Elle fume 1 paquet de cigarettes par jour depuis 15 ans. Sa tension artérielle est de 125/80 mmHg. Elle demande une pilule combinée.\n\nQuestion : Question : Quelle est votre décision médicale argumentée ?",
+    "questionText": "[Cas n°1 — Première contraception chez une jeune femme]\nMme K.L., 22 ans, nulligeste, consulte au EPH de Tipaza pour une première contraception. Cycles réguliers (28 j), règles de 4 jours. TA 110/70 mmHg, IMC 22. Fume 5 cigarettes/jour. Pas de migraine avec aura. Pas d'antécédent personnel ni familial de thrombose. Pas de grossesse en cours.\n\nQuestion : Question 1",
     "options": [
-      "Contre-indication absolue à la pilule œstroprogestative (tabac > 35 ans = risque thromboembolique artériel et veineux majeur) ; orienter vers un DIU (cuivre ou lévonorgestrel) ou un microprogestatif.",
-      "Prescription d'une pilule combinée normodosée à 50 µg d'œstrogène.",
-      "Autorisation de la pilule à condition d'associer de l'aspirine à forte dose.",
-      "Ligature tubaire obligatoire immédiate sans son consentement.",
-      "Abstention contraceptive totale."
+      "Œstroprogestatif minidosé",
+      "Œstroprogestatif normodosé",
+      "Pilule progestative",
+      "DIU au cuivre",
+      "Stérilisation tubaire"
     ],
     "correctAnswers": [
       0
     ],
-    "explanation": "L'association âge > 35 ans et tabac est une contre-indication de catégorie 4 de l'OMS aux œstroprogestatifs.",
+    "explanation": "hez une femme < 35 ans, tabagisme < 15 cig/j, sans facteur de risque cardiovasculaire, l'œstroprogestatif minidosé est la première intention.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -4668,19 +4705,19 @@ export const GYNECOLOGY_QUESTIONS: Question[] = [
     "courseId": "c-gyn-contraception",
     "questionNumber": 27,
     "type": "Cas Clinique",
-    "clinicalCaseNumber": 2,
-    "questionText": "[Cas Clinique N°2 : Oubli de pilule au-delà de 12 heures]\nJeune femme de 21 ans sous œstroprogestatif minidosé (21 jours). Elle constate à 20h qu'elle a oublié le comprimé de la veille au soir (oubli de plus de 24 heures en première semaine de plaquette). Un rapport non protégé a eu lieu la veille.\n\nQuestion : Question : Quelle conduite à tenir immédiate recommandez-vous ?",
+    "clinicalCaseNumber": 1,
+    "questionText": "[Cas n°1 — Première contraception chez une jeune femme]\nMme K.L., 22 ans, nulligeste, consulte au EPH de Tipaza pour une première contraception. Cycles réguliers (28 j), règles de 4 jours. TA 110/70 mmHg, IMC 22. Fume 5 cigarettes/jour. Pas de migraine avec aura. Pas d'antécédent personnel ni familial de thrombose. Pas de grossesse en cours.\n\nQuestion : Question 2",
     "options": [
-      "Prendre immédiatement le comprimé oublié, prendre celui du jour à l'heure normale, prendre une contraception d'urgence hormonale sans délai et utiliser des préservatifs pendant 7 jours.",
-      "Arrêter la plaquette et attendre les prochaines règles dans un mois.",
-      "Prendre 10 comprimés en une seule prise.",
-      "Effectuer une hystérectomie de sécurité.",
-      "Ne rien faire car un oubli en première semaine est sans danger."
+      "Nulliparité",
+      "Tabagisme à 5 cig/jour",
+      "Migraine avec aura",
+      "Antécédent familial de diabète de type 2",
+      "IMC à 22"
     ],
     "correctAnswers": [
-      0
+      2
     ],
-    "explanation": "L'oubli en semaine 1 est le plus à risque car il prolonge l'intervalle sans hormones. La contraception d'urgence s'impose vu le rapport récent.",
+    "explanation": "La migraine avec aura est une contre-indication formelle aux COC.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -4690,19 +4727,19 @@ export const GYNECOLOGY_QUESTIONS: Question[] = [
     "courseId": "c-gyn-contraception",
     "questionNumber": 28,
     "type": "Cas Clinique",
-    "clinicalCaseNumber": 3,
-    "questionText": "[Cas Clinique N°3 : Disparition des fils de stérilet]\nPatiente de 29 ans porteuse d'un stérilet au cuivre depuis 2 ans. Lors de l'examen de routine au spéculum, le médecin ne retrouve pas les fils de traction au niveau de l'orifice externe du col.\n\nQuestion : Question : Quel examen complémentaire demandez-vous en première intention ?",
+    "clinicalCaseNumber": 1,
+    "questionText": "[Cas n°1 — Première contraception chez une jeune femme]\nMme K.L., 22 ans, nulligeste, consulte au EPH de Tipaza pour une première contraception. Cycles réguliers (28 j), règles de 4 jours. TA 110/70 mmHg, IMC 22. Fume 5 cigarettes/jour. Pas de migraine avec aura. Pas d'antécédent personnel ni familial de thrombose. Pas de grossesse en cours.\n\nQuestion : Question 3",
     "options": [
-      "Échographie pelvienne par voie endovaginale pour visualiser l'échogénicité du DIU dans la cavité endométriale ou rechercher une expulsion/perforation.",
-      "Scintigraphie myocardique au thallium.",
-      "Biopsie du col utérin aux 4 quadrants.",
-      "Laparotomie médiane d'urgence au bloc.",
-      "Cœlioscopie d'emblée sans imagerie préalable."
+      "Prescrire un COC minidosé",
+      "Prescrire un COC normodosé",
+      "Contre-indiquer les COC et proposer une méthode progestative ou un DIU",
+      "Prescrire un patch transdermique",
+      "Ne rien prescrire"
     ],
     "correctAnswers": [
-      0
+      2
     ],
-    "explanation": "L'échographie pelvienne confirme immédiatement si le stérilet est bien en place, s'il a migré dans le myomètre ou s'il a été expulsé.",
+    "explanation": "Âge ≥ 35 ans + tabac ≥ 15 cig/j = contre-indication absolue aux COC.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -4712,19 +4749,19 @@ export const GYNECOLOGY_QUESTIONS: Question[] = [
     "courseId": "c-gyn-contraception",
     "questionNumber": 29,
     "type": "Cas Clinique",
-    "clinicalCaseNumber": 4,
-    "questionText": "[Cas Clinique N°4 : Désir de contraception d'urgence après 4 jours]\nÉtudiante de 22 ans consulte 90 heures (près de 4 jours) après un rapport sexuel accidentellement non protégé en milieu de cycle.\n\nQuestion : Question : Quelle option contraceptive d'urgence est la plus efficace à ce stade ?",
+    "clinicalCaseNumber": 1,
+    "questionText": "[Cas n°1 — Première contraception chez une jeune femme]\nMme K.L., 22 ans, nulligeste, consulte au EPH de Tipaza pour une première contraception. Cycles réguliers (28 j), règles de 4 jours. TA 110/70 mmHg, IMC 22. Fume 5 cigarettes/jour. Pas de migraine avec aura. Pas d'antécédent personnel ni familial de thrombose. Pas de grossesse en cours.\n\nQuestion : Question 4",
     "options": [
-      "La pose d'un DIU au cuivre (efficace jusqu'à 120 heures) ou la prise d'Ulipristal acétate (EllaOne, efficace jusqu'à 5 jours).",
-      "Le lévonorgestrel classique qui reste efficace jusqu'à 10 jours.",
-      "L'injection d'ocytocine en intramusculaire.",
-      "La prise de 4 comprimés de paracétamol.",
-      "Il n'existe plus aucune solution après 24 heures."
+      "Pilule œstroprogestative",
+      "DIU au cuivre",
+      "Implant sous-cutané",
+      "Préservatif masculin",
+      "Anneau vaginal"
     ],
     "correctAnswers": [
-      0
+      3
     ],
-    "explanation": "Le DIU au cuivre est efficace jusqu'à 120h (et au-delà de 99%), tout comme l'ulipristal acétate jusqu'à 5 jours. Le lévonorgestrel est inefficace au-delà de 72h.",
+    "explanation": "hez une femme < 35 ans, tabagisme < 15 cig/j, sans facteur de risque cardiovasculaire, l'œstroprogestatif minidosé est la première intention.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -4734,19 +4771,305 @@ export const GYNECOLOGY_QUESTIONS: Question[] = [
     "courseId": "c-gyn-contraception",
     "questionNumber": 30,
     "type": "Cas Clinique",
-    "clinicalCaseNumber": 5,
-    "questionText": "[Cas Clinique N°5 : Antécédent de thrombophlébite et choix contraceptif]\nFemme de 31 ans avec antécédent documenté d'embolie pulmonaire post-fracture du fémur il y a 2 ans, porteuse d'une mutation hétérozygote du facteur V de Leiden. Elle souhaite une méthode contraceptive hautement fiable et de longue durée.\n\nQuestion : Question : Quelle méthode est la plus adaptée et sécuritaire ?",
+    "clinicalCaseNumber": 2,
+    "questionText": "[Cas n°2 — Oubli de pilule et rapport non protégé]\nMme B.S., 28 ans, G2P1, sous COC minidosée depuis 2 ans. Elle consulte au CHU Mustapha Pacha car elle a oublié 2 comprimés consécutifs en début de plaquette. Elle a eu un rapport non protégé il y a 48 h.\n\nQuestion : Question 1",
     "options": [
-      "Dispositif intra-utérin au cuivre (aucun impact hémostatique) ou DIU au Lévonorgestrel (progestatif local sans augmentation du risque thromboembolique).",
-      "Pilule œstroprogestative de 3ème génération.",
-      "Anneau vaginal combiné.",
-      "Patch contraceptif transdermique œstroprogestatif.",
-      "Pilule séquentielle normodosée."
+      "Prendre les 2 comprimés oubliés et continuer sans autre mesure",
+      "Prendre 1 comprimé immédiatement et utiliser une méthode locale 7 jours",
+      "Prendre les 2 comprimés oubliés, continuer la plaquette ET utiliser une méthode locale jusqu'à la fin de la plaquette",
+      "Arrêter la plaquette",
+      "Attendre les règles"
+    ],
+    "correctAnswers": [
+      2
+    ],
+    "explanation": "Oubli > 12 h : prendre comprimé oublié + comprimé du jour + méthode locale jusqu'à la fin de la plaquette.",
+    "difficulty": "Concours Résidanat",
+    "module": "mod-5-gyn",
+    "academicYear": "5ème Année"
+  },
+  {
+    "id": "q-c-gyn-contraception-31",
+    "courseId": "c-gyn-contraception",
+    "questionNumber": 31,
+    "type": "Cas Clinique",
+    "clinicalCaseNumber": 2,
+    "questionText": "[Cas n°2 — Oubli de pilule et rapport non protégé]\nMme B.S., 28 ans, G2P1, sous COC minidosée depuis 2 ans. Elle consulte au CHU Mustapha Pacha car elle a oublié 2 comprimés consécutifs en début de plaquette. Elle a eu un rapport non protégé il y a 48 h.\n\nQuestion : Question 2",
+    "options": [
+      "Aucune, le délai est trop long",
+      "Lévonorgestrel 1,5 mg dans les 72 h",
+      "DIU au cuivre dans les 5 jours",
+      "Ulipristal acétate dans les 120 h",
+      "Toutes les options B, C et D sont possibles"
+    ],
+    "correctAnswers": [
+      4
+    ],
+    "explanation": "Oubli > 12 h : prendre comprimé oublié + comprimé du jour + méthode locale jusqu'à la fin de la plaquette.",
+    "difficulty": "Concours Résidanat",
+    "module": "mod-5-gyn",
+    "academicYear": "5ème Année"
+  },
+  {
+    "id": "q-c-gyn-contraception-32",
+    "courseId": "c-gyn-contraception",
+    "questionNumber": 32,
+    "type": "Cas Clinique",
+    "clinicalCaseNumber": 2,
+    "questionText": "[Cas n°2 — Oubli de pilule et rapport non protégé]\nMme B.S., 28 ans, G2P1, sous COC minidosée depuis 2 ans. Elle consulte au CHU Mustapha Pacha car elle a oublié 2 comprimés consécutifs en début de plaquette. Elle a eu un rapport non protégé il y a 48 h.\n\nQuestion : Question 3",
+    "options": [
+      "24 h",
+      "48 h",
+      "7 jours",
+      "Jusqu'à la fin de la plaquette",
+      "Jusqu'au cycle suivant"
+    ],
+    "correctAnswers": [
+      3
+    ],
+    "explanation": "Oubli > 12 h : prendre comprimé oublié + comprimé du jour + méthode locale jusqu'à la fin de la plaquette.",
+    "difficulty": "Concours Résidanat",
+    "module": "mod-5-gyn",
+    "academicYear": "5ème Année"
+  },
+  {
+    "id": "q-c-gyn-contraception-33",
+    "courseId": "c-gyn-contraception",
+    "questionNumber": 33,
+    "type": "Cas Clinique",
+    "clinicalCaseNumber": 2,
+    "questionText": "[Cas n°2 — Oubli de pilule et rapport non protégé]\nMme B.S., 28 ans, G2P1, sous COC minidosée depuis 2 ans. Elle consulte au CHU Mustapha Pacha car elle a oublié 2 comprimés consécutifs en début de plaquette. Elle a eu un rapport non protégé il y a 48 h.\n\nQuestion : Question 4",
+    "options": [
+      "Grossesse non désirée",
+      "Ménopause précoce",
+      "Cancer ovarien",
+      "Ostéoporose",
+      "Thrombose veineuse"
     ],
     "correctAnswers": [
       0
     ],
-    "explanation": "Toute contraception contenant des œstrogènes est formellement contre-indiquée. Le DIU au cuivre est la méthode de choix de première intention sans risque thrombotique.",
+    "explanation": "Oubli > 12 h : prendre comprimé oublié + comprimé du jour + méthode locale jusqu'à la fin de la plaquette.",
+    "difficulty": "Concours Résidanat",
+    "module": "mod-5-gyn",
+    "academicYear": "5ème Année"
+  },
+  {
+    "id": "q-c-gyn-contraception-34",
+    "courseId": "c-gyn-contraception",
+    "questionNumber": 34,
+    "type": "Cas Clinique",
+    "clinicalCaseNumber": 3,
+    "questionText": "[Cas n°3 — Ménorragies et choix contraceptif]\nMme H.M., 35 ans, G3P3, consulte au CHU de Blida pour ménorragies depuis 1 an avec asthénie. Hb = 9 g/dL, ferritine basse. Échographie : utérus augmenté de volume avec petit fibrome sous-muqueux de 2 cm. Souhaite une contraception fiable.\n\nQuestion : Question 1",
+    "options": [
+      "COC normodosé",
+      "DIU au cuivre",
+      "DIU au lévonorgestrel",
+      "Préservatif seul",
+      "Spermicides"
+    ],
+    "correctAnswers": [
+      2
+    ],
+    "explanation": "Le DIU au lévonorgestrel est la méthode de choix pour contraception et réduction des ménorragies.",
+    "difficulty": "Concours Résidanat",
+    "module": "mod-5-gyn",
+    "academicYear": "5ème Année"
+  },
+  {
+    "id": "q-c-gyn-contraception-35",
+    "courseId": "c-gyn-contraception",
+    "questionNumber": 35,
+    "type": "Cas Clinique",
+    "clinicalCaseNumber": 3,
+    "questionText": "[Cas n°3 — Ménorragies et choix contraceptif]\nMme H.M., 35 ans, G3P3, consulte au CHU de Blida pour ménorragies depuis 1 an avec asthénie. Hb = 9 g/dL, ferritine basse. Échographie : utérus augmenté de volume avec petit fibrome sous-muqueux de 2 cm. Souhaite une contraception fiable.\n\nQuestion : Question 2",
+    "options": [
+      "Destruction de l'endomètre",
+      "Ralentissement de l'épaississement de la muqueuse utérine",
+      "Action spermicide directe",
+      "Blocage de l'ovulation",
+      "Effet abortif"
+    ],
+    "correctAnswers": [
+      1
+    ],
+    "explanation": "Le DIU au lévonorgestrel est la méthode de choix pour contraception et réduction des ménorragies.",
+    "difficulty": "Concours Résidanat",
+    "module": "mod-5-gyn",
+    "academicYear": "5ème Année"
+  },
+  {
+    "id": "q-c-gyn-contraception-36",
+    "courseId": "c-gyn-contraception",
+    "questionNumber": 36,
+    "type": "Cas Clinique",
+    "clinicalCaseNumber": 3,
+    "questionText": "[Cas n°3 — Ménorragies et choix contraceptif]\nMme H.M., 35 ans, G3P3, consulte au CHU de Blida pour ménorragies depuis 1 an avec asthénie. Hb = 9 g/dL, ferritine basse. Échographie : utérus augmenté de volume avec petit fibrome sous-muqueux de 2 cm. Souhaite une contraception fiable.\n\nQuestion : Question 3",
+    "options": [
+      "1 an",
+      "3 ans",
+      "5 ans",
+      "10 ans",
+      "15 ans"
+    ],
+    "correctAnswers": [
+      2
+    ],
+    "explanation": "Le DIU au lévonorgestrel est la méthode de choix pour contraception et réduction des ménorragies.",
+    "difficulty": "Concours Résidanat",
+    "module": "mod-5-gyn",
+    "academicYear": "5ème Année"
+  },
+  {
+    "id": "q-c-gyn-contraception-37",
+    "courseId": "c-gyn-contraception",
+    "questionNumber": 37,
+    "type": "Cas Clinique",
+    "clinicalCaseNumber": 4,
+    "questionText": "[Cas n°4 — Antécédent thromboembolique]\nMme S.A., 30 ans, G1P1, antécédent de thrombose veineuse profonde il y a 2 ans (sous AVK). Consulte au CHU d'Oran pour contraception.\n\nQuestion : Question 1",
+    "options": [
+      "DIU au cuivre",
+      "DIU au lévonorgestrel",
+      "COC",
+      "Pilule progestative",
+      "Implant"
+    ],
+    "correctAnswers": [
+      2
+    ],
+    "explanation": "Explication et démarche diagnostique issues du cas clinique officiel.",
+    "difficulty": "Concours Résidanat",
+    "module": "mod-5-gyn",
+    "academicYear": "5ème Année"
+  },
+  {
+    "id": "q-c-gyn-contraception-38",
+    "courseId": "c-gyn-contraception",
+    "questionNumber": 38,
+    "type": "Cas Clinique",
+    "clinicalCaseNumber": 4,
+    "questionText": "[Cas n°4 — Antécédent thromboembolique]\nMme S.A., 30 ans, G1P1, antécédent de thrombose veineuse profonde il y a 2 ans (sous AVK). Consulte au CHU d'Oran pour contraception.\n\nQuestion : Question 2",
+    "options": [
+      "COC minidosé",
+      "Patch transdermique",
+      "DIU au cuivre ou contraception progestative seule",
+      "Anneau vaginal",
+      "Aucune contraception"
+    ],
+    "correctAnswers": [
+      2
+    ],
+    "explanation": "Explication et démarche diagnostique issues du cas clinique officiel.",
+    "difficulty": "Concours Résidanat",
+    "module": "mod-5-gyn",
+    "academicYear": "5ème Année"
+  },
+  {
+    "id": "q-c-gyn-contraception-39",
+    "courseId": "c-gyn-contraception",
+    "questionNumber": 39,
+    "type": "Cas Clinique",
+    "clinicalCaseNumber": 4,
+    "questionText": "[Cas n°4 — Antécédent thromboembolique]\nMme S.A., 30 ans, G1P1, antécédent de thrombose veineuse profonde il y a 2 ans (sous AVK). Consulte au CHU d'Oran pour contraception.\n\nQuestion : Question 3",
+    "options": [
+      "Risque hémorragique",
+      "Risque thromboembolique veineux et artériel",
+      "Risque d'infertilité définitive",
+      "Risque de cancer ovarien",
+      "Risque d'ostéoporose"
+    ],
+    "correctAnswers": [
+      1
+    ],
+    "explanation": "Explication et démarche diagnostique issues du cas clinique officiel.",
+    "difficulty": "Concours Résidanat",
+    "module": "mod-5-gyn",
+    "academicYear": "5ème Année"
+  },
+  {
+    "id": "q-c-gyn-contraception-40",
+    "courseId": "c-gyn-contraception",
+    "questionNumber": 40,
+    "type": "Cas Clinique",
+    "clinicalCaseNumber": 5,
+    "questionText": "[Cas n°5 — Contraception d'urgence aux urgences]\nMme R.N., 19 ans, étudiante, consulte aux urgences gynécologiques du CHU de Constantine 2 h après un rapport non protégé. Pas de contraception. Dernières règles il y a 14 jours.\n\nQuestion : Question 1",
+    "options": [
+      "Lévonorgestrel 1,5 mg dans les 72 h",
+      "Ulipristal acétate dans les 120 h",
+      "DIU au cuivre dans les 5 jours",
+      "Toutes les propositions A, B et C sont possibles",
+      "Aucune"
+    ],
+    "correctAnswers": [
+      3
+    ],
+    "explanation": "Explication et démarche diagnostique issues du cas clinique officiel.",
+    "difficulty": "Concours Résidanat",
+    "module": "mod-5-gyn",
+    "academicYear": "5ème Année"
+  },
+  {
+    "id": "q-c-gyn-contraception-41",
+    "courseId": "c-gyn-contraception",
+    "questionNumber": 41,
+    "type": "Cas Clinique",
+    "clinicalCaseNumber": 5,
+    "questionText": "[Cas n°5 — Contraception d'urgence aux urgences]\nMme R.N., 19 ans, étudiante, consulte aux urgences gynécologiques du CHU de Constantine 2 h après un rapport non protégé. Pas de contraception. Dernières règles il y a 14 jours.\n\nQuestion : Question 2",
+    "options": [
+      "12 h",
+      "24 h",
+      "48 h",
+      "72 h",
+      "120 h"
+    ],
+    "correctAnswers": [
+      3
+    ],
+    "explanation": "Explication et démarche diagnostique issues du cas clinique officiel.",
+    "difficulty": "Concours Résidanat",
+    "module": "mod-5-gyn",
+    "academicYear": "5ème Année"
+  },
+  {
+    "id": "q-c-gyn-contraception-42",
+    "courseId": "c-gyn-contraception",
+    "questionNumber": 42,
+    "type": "Cas Clinique",
+    "clinicalCaseNumber": 5,
+    "questionText": "[Cas n°5 — Contraception d'urgence aux urgences]\nMme R.N., 19 ans, étudiante, consulte aux urgences gynécologiques du CHU de Constantine 2 h après un rapport non protégé. Pas de contraception. Dernières règles il y a 14 jours.\n\nQuestion : Question 3",
+    "options": [
+      "Débuter une contraception régulière",
+      "Utiliser un préservatif en attendant",
+      "Faire un test de grossesse si retard de règles",
+      "Proposer un dépistage des IST",
+      "Toutes les propositions"
+    ],
+    "correctAnswers": [
+      4
+    ],
+    "explanation": "Explication et démarche diagnostique issues du cas clinique officiel.",
+    "difficulty": "Concours Résidanat",
+    "module": "mod-5-gyn",
+    "academicYear": "5ème Année"
+  },
+  {
+    "id": "q-c-gyn-contraception-43",
+    "courseId": "c-gyn-contraception",
+    "questionNumber": 43,
+    "type": "Cas Clinique",
+    "clinicalCaseNumber": 5,
+    "questionText": "[Cas n°5 — Contraception d'urgence aux urgences]\nMme R.N., 19 ans, étudiante, consulte aux urgences gynécologiques du CHU de Constantine 2 h après un rapport non protégé. Pas de contraception. Dernières règles il y a 14 jours.\n\nQuestion : Question 4",
+    "options": [
+      "Oui, totalement",
+      "Oui, partiellement",
+      "Non",
+      "Seulement contre le VIH",
+      "Seulement contre la syphilis"
+    ],
+    "correctAnswers": [
+      2
+    ],
+    "explanation": "Explication et démarche diagnostique issues du cas clinique officiel.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"

@@ -1961,18 +1961,18 @@ export const OBSTETRICS_QUESTIONS_PART2: Question[] = [
     "courseId": "c-gyn-delivrance-artificielle",
     "questionNumber": 1,
     "type": "QCM",
-    "questionText": "Quelle est la définition exacte de la délivrance artificielle (DA) ?",
+    "questionText": "La délivrance artificielle se définit comme :",
     "options": [
-      "L'extraction manuelle du placenta hors de la cavité utérine par l'opérateur en introduisant une main stérile dans l'utérus à travers les voies naturelles",
-      "L'expulsion spontanée du placenta sous l'effet des contractions sans aucune aide",
-      "La traction vigoureuse sur le cordon ombilical à travers la paroi abdominale",
-      "L'ablation chirurgicale de l'utérus en post-partum immédiat",
-      "Le curetage métallique à la curette mousse sous anesthésie locale"
+      "L'extraction instrumentale du fœtus après échec de l'expulsion",
+      "Le décollement manuel du placenta suivi de son extraction hors de l'utérus et du vagin",
+      "L'expression du fond utérin après un décollement placentaire spontané",
+      "La révision utérine systématique réalisée après tout accouchement",
+      "L'administration d'utérotoniques destinés à accélérer la délivrance"
     ],
     "correctAnswers": [
-      0
+      1
     ],
-    "explanation": "La DA consiste à décoller et extraire manuellement le placenta de la cavité utérine lorsque le décollement spontané n'a pas eu lieu.",
+    "explanation": "La délivrance artificielle est un geste strictement placentaire : il consiste à décoller manuellement le placenta puis à l'extérioriser par les voies génitales naturelles. Elle se pratique donc après l'expulsion du fœtus.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -1982,18 +1982,18 @@ export const OBSTETRICS_QUESTIONS_PART2: Question[] = [
     "courseId": "c-gyn-delivrance-artificielle",
     "questionNumber": 2,
     "type": "QCM",
-    "questionText": "Quel est le délai temporel classique définissant la rétention placentaire et posant l'indication formelle d'une délivrance artificielle ?",
+    "questionText": "Concernant la « ligature vivante de Pinard », choisissez la réponse juste :",
     "options": [
-      "30 minutes après l'expulsion du fœtus sans décollement placentaire",
-      "5 minutes après l'expulsion fœtale",
-      "2 heures après le début du travail",
-      "24 heures après la naissance",
-      "7 jours après l'accouchement"
+      "Elle correspond à une ligature chirurgicale des artères utérines",
+      "Elle désigne l'hémostase de la zone d'insertion placentaire par rétraction et contraction du myomètre",
+      "Elle précède obligatoirement le décollement placentaire",
+      "Elle dépend exclusivement de la coagulation plasmatique",
+      "Elle est assurée par le tonus du segment inférieur"
     ],
     "correctAnswers": [
-      0
+      1
     ],
-    "explanation": "u-delà de 30 minutes après la sortie du fœtus (ou immédiatement en cas d'hémorragie active), l'absence de décollement placentaire impose la délivrance artificielle.",
+    "explanation": "La ligature vivante de Pinard est un phénomène physiologique : les vaisseaux de la zone d'insertion placentaire sont comprimés « à vif » par la rétraction et la contraction du myomètre.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -2003,18 +2003,20 @@ export const OBSTETRICS_QUESTIONS_PART2: Question[] = [
     "courseId": "c-gyn-delivrance-artificielle",
     "questionNumber": 3,
     "type": "QCM",
-    "questionText": "Quelle règle d'asepsie et de sécurité majeure doit impérativement encadrer la délivrance artificielle ?",
+    "questionText": "Parmi les indications de la délivrance artificielle, on retient :",
     "options": [
-      "Asepsie chirurgicale rigoureuse (lavage chirurgical des mains, gants longs stériles, badigeon vulvo-périnéal), vessie vide et analgésie/anesthésie efficace",
-      "Geste réalisé sans gants à mains nues pour une meilleure sensibilité tactile",
-      "Vessie pleine sous pression pour repousser l'utérus",
-      "Aucune désinfection périnéale nécessaire",
-      "Réalisation du geste en position debout"
+      "La rétention placentaire",
+      "Le placenta praevia hémorragique",
+      "L'hématome rétro-placentaire",
+      "La rupture utérine",
+      "Une délivrance spontanée normale survenue à 10 minutes"
     ],
     "correctAnswers": [
-      0
+      0,
+      1,
+      2
     ],
-    "explanation": "L'asepsie chirurgicale absolue et les gants stériles évitent l'introduction de germes dans la cavité utérine béante, sous analgésie adaptée.",
+    "explanation": "Les quatre indications canoniques du cours sont : rétention placentaire, placenta praevia hémorragique, hématome rétro-placentaire, et indication primaire de la révision utérine.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -2024,18 +2026,18 @@ export const OBSTETRICS_QUESTIONS_PART2: Question[] = [
     "courseId": "c-gyn-delivrance-artificielle",
     "questionNumber": 4,
     "type": "QCM",
-    "questionText": "Quel geste obstétrical endo-utérin doit SYSTÉMATIQUEMENT suivre toute délivrance artificielle ?",
+    "questionText": "Concernant la rétention placentaire, choisissez la réponse fausse :",
     "options": [
-      "La révision utérine (RU) systématique pour vérifier la vacuité complète et l'absence de rupture utérine",
-      "Une hystérectomie d'hémostase de principe",
-      "La pose d'une sonde de Blakemore intra-utérine",
-      "L'amputation du col utérin",
-      "Une salpingectomie bilatérale"
+      "Elle est définie par l'absence de délivrance spontanée 30 minutes après l'accouchement",
+      "Elle peut résulter d'anomalies du décollement placentaire",
+      "Elle peut résulter d'une absence de migration du placenta",
+      "Elle constitue la principale étiologie des hémorragies de la délivrance",
+      "Elle impose d'attendre 60 minutes avant toute intervention"
     ],
     "correctAnswers": [
-      0
+      4
     ],
-    "explanation": "Toute DA est systématiquement complétée par une révision utérine soigneuse pour s'assurer qu'aucun cotylédon ou fragment placentaire n'est retenu et qu'il n'y a pas de brèche utérine.",
+    "explanation": "Le seuil diagnostique est de 30 minutes. Attendre 60 minutes exposerait la patiente à une hémorragie de la délivrance.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -2045,18 +2047,18 @@ export const OBSTETRICS_QUESTIONS_PART2: Question[] = [
     "courseId": "c-gyn-delivrance-artificielle",
     "questionNumber": 5,
     "type": "QCM",
-    "questionText": "Quelle est la technique manuelle correcte pour décoller le placenta lors de la délivrance artificielle ?",
+    "questionText": "Toutes les propositions suivantes sont exactes concernant le défaut d'implantation placentaire, SAUF :",
     "options": [
-      "Suivre le cordon ombilical jusqu'à l'insertion placentaire, trouver le plan de clivage décidual et décoller le placenta de la périphérie vers le centre avec le tranchant de la main en regardant le fond utérin maintenu par l'autre main abdominale",
-      "Arracher violemment le placenta avec les doigts repliés en griffe",
-      "Tirer de toutes ses forces sur le cordon ombilical jusqu'à rupture",
-      "Utiliser une pince de Pozzi pour broyer les cotylédons",
-      "Injecter de l'eau savonneuse sous haute pression dans la trompe"
+      "Il résulte d'une muqueuse utérine altérée",
+      "Les antécédents de curetage constituent un facteur favorisant",
+      "Les myomes sous-muqueux et les polypes endo-cavitaires y contribuent",
+      "Il est favorisé par un utérus sain, sans aucun antécédent",
+      "Les agressions chimiques et l'infection endo-utérine en sont des causes"
     ],
     "correctAnswers": [
-      0
+      3
     ],
-    "explanation": "La main intra-utérine progresse le long du cordon, trouve le bord placentaire et clive doucement au tranchant de la main dans l'espace décidual, tandis que la main sus-pubienne empaume et abaisse le fond utérin.",
+    "explanation": "Le défaut d'implantation naît d'une muqueuse utérine altérée. Un utérus sain ne constitue pas un terrain de défaut d'implantation.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -2066,18 +2068,20 @@ export const OBSTETRICS_QUESTIONS_PART2: Question[] = [
     "courseId": "c-gyn-delivrance-artificielle",
     "questionNumber": 6,
     "type": "QCM",
-    "questionText": "Quelle anomalie redoutée d'adhérence placentaire anormale se caractérise par l'absence totale de plan de clivage entre le placenta et le myomètre ?",
+    "questionText": "Parmi les facteurs suivants, lesquels correspondent à des anomalies du placenta favorisant la rétention placentaire ?",
     "options": [
-      "Placenta accreta (ou increta / percreta)",
-      "Placenta circumvallata bénin",
-      "Insertion vélamenteuse du cordon sans adhérence",
-      "Cotylédon aberrant isolé facilement clivable",
-      "Placenta praevia latéral non adhérent"
+      "Insertion fundique normale du placenta",
+      "Placenta accreta (forte adhérence à la paroi utérine)",
+      "Excès de volume placentaire (macrosomie, grossesse multiple)",
+      "Insertion sur le segment inférieur",
+      "Antécédent d'utérus cicatriciel"
     ],
     "correctAnswers": [
-      0
+      1,
+      2,
+      3
     ],
-    "explanation": "Le placenta accreta correspond à une pénétration directe des villosités choriales dans le myomètre sans caduque basale intermédiaire, rendant le clivage manuel impossible et très hémorragique.",
+    "explanation": "Le cours range sous « anomalies du placenta » trois groupes : le siège (segment inférieur), l'insertion (placenta accreta), et l'excès de volume (macrosomie, grossesse multiple, diabète, etc.).",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -2087,18 +2091,18 @@ export const OBSTETRICS_QUESTIONS_PART2: Question[] = [
     "courseId": "c-gyn-delivrance-artificielle",
     "questionNumber": 7,
     "type": "QCM",
-    "questionText": "En cas d'échec de clivage au tranchant de la main et de constatation d'un placenta accreta complet, quelle attitude doit être adoptée ?",
+    "questionText": "Parmi les causes d'inertie utérine, laquelle est d'origine iatrogène ?",
     "options": [
-      "Ne pas s'acharner à arracher le placenta (risque d'hémorragie cataclysmique), tamponner, débuter les solutés/transfusion et envisager un traitement conservateur ou chirurgical (hystérectomie d'hémostase)",
-      "Continuer à tirer avec des pinces métalliques jusqu'à déchirure du myomètre",
-      "Laisser la patiente rentrer chez elle sans surveillance",
-      "Prescrire uniquement des antalgiques mineurs",
-      "Faire une manœuvre de Sellick"
+      "La surdistension utérine",
+      "L'épuisement après un travail prolongé",
+      "L'administration de bêta-2 mimétiques",
+      "L'utérus malformé",
+      "La multiparité"
     ],
     "correctAnswers": [
-      0
+      2
     ],
-    "explanation": "Forcer le décollement d'un placenta accreta entraîne une hémorragie massive incoercible et une perforation utérine fatale. Il faut stopper les tractions et recourir aux gestes hémostatiques experts.",
+    "explanation": "Les bêta-2 mimétiques sont des tocolytiques qui inhibent la contractilité myométriale : cause iatrogène par excellence.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -2108,18 +2112,18 @@ export const OBSTETRICS_QUESTIONS_PART2: Question[] = [
     "courseId": "c-gyn-delivrance-artificielle",
     "questionNumber": 8,
     "type": "QCM",
-    "questionText": "Quel examen visuel indispensable doit être réalisé immédiatement après l'extraction du placenta et des membranes ?",
+    "questionText": "Choisissez la réponse juste concernant l'absence de migration placentaire :",
     "options": [
-      "L'examen attentif du placenta (face fœtale, face maternelle avec cotylédons jointifs et intègres) et des membranes (orifice de déchirure, vaisseaux interrompus)",
-      "La pesée exclusive du liquide amniotique résiduel",
-      "L'analyse au microscope optique au lit de la malade",
-      "L'immersion du placenta dans du formol sans l'examiner",
-      "Aucun examen du délivre n'est utile"
+      "L'incarcération placentaire résulte d'un spasme du col",
+      "L'enchatonnement résulte d'un spasme cervical",
+      "Le globe vésical favorise la migration placentaire",
+      "L'hypertonie localisée du myomètre n'intervient jamais",
+      "L'antéversion utérine exagérée est une cause de décollement"
     ],
     "correctAnswers": [
       0
     ],
-    "explanation": "L'intégrité de la galette placentaire et la continuité des cotylédons garantissent l'absence de rétention de cotylédon aberrant.",
+    "explanation": "L'incarcération placentaire est due à un spasme cervical qui empêche le placenta déjà décollé de sortir.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -2129,18 +2133,20 @@ export const OBSTETRICS_QUESTIONS_PART2: Question[] = [
     "courseId": "c-gyn-delivrance-artificielle",
     "questionNumber": 9,
     "type": "QCM",
-    "questionText": "Quel médicament utérotonique est systématiquement administré dès la réalisation de la délivrance artificielle pour favoriser la rétraction utérine ?",
+    "questionText": "Concernant la préparation de la patiente et de l'opérateur avant une délivrance artificielle :",
     "options": [
-      "L'ocytocine (Syntocinon) en injection intraveineuse lente ou perfusion continue",
-      "La progestérone retard injectable",
-      "Le sulfate de magnésium à forte dose",
-      "La terbutaline tocolytique",
-      "L'héparine non fractionnée en bolus"
+      "Installation en position gynécologique, vessie vide",
+      "Réalisation sous anesthésie générale",
+      "Asepsie rigoureuse avec toilette vulvo-vaginale et champs stériles",
+      "L'opérateur peut ne pas être habillé stérilement en situation d'urgence",
+      "La toilette vulvo-vaginale est facultative"
     ],
     "correctAnswers": [
-      0
+      0,
+      1,
+      2
     ],
-    "explanation": "L'ocytocine provoque des contractions puissantes et la rétraction du myomètre, assurant l'hémostase par les « ligatures vivantes » de Pinard comprimant les vaisseaux utérins.",
+    "explanation": "La DA est un geste endo-utérin exigeant une asepsie rigoureuse, une vessie vide, une position gynécologique et une anesthésie générale.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -2150,18 +2156,18 @@ export const OBSTETRICS_QUESTIONS_PART2: Question[] = [
     "courseId": "c-gyn-delivrance-artificielle",
     "questionNumber": 10,
     "type": "QCM",
-    "questionText": "Quelle antibioprophylaxie est préconisée lors de la réalisation d'une manœuvre endo-utérine (DA et RU) ?",
+    "questionText": "Dans la technique proprement dite de la délivrance artificielle, le rôle de la main gauche est de :",
     "options": [
-      "Antibioprophylaxie par Céfaoline ou Amoxicilline-acide clavulanique (dose unique IV)",
-      "Antibiothérapie par collyre ophtalmique",
-      "Chimiothérapie anticancéreuse",
-      "Traitement antiviral par oseltamivir",
-      "Aucun antibiotique n'est jamais indiqué"
+      "Pénétrer dans la cavité utérine jusqu'au fond",
+      "Empaumer le fond utérin à travers les champs",
+      "Repérer le rebord placentaire par le bout des doigts",
+      "Décoller le placenta par son bord cubital",
+      "Suivre le cordon ombilical dans le vagin"
     ],
     "correctAnswers": [
-      0
+      1
     ],
-    "explanation": "L'effraction des barrières endo-utérines expose à l'endométrite bactérienne post-partum, justifiant une antibioprophylaxie parentérale systématique.",
+    "explanation": "La main gauche empaume le fond utérin à travers les champs : elle contrôle la rétraction utérine et sert de repère de sécurité.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -2171,18 +2177,18 @@ export const OBSTETRICS_QUESTIONS_PART2: Question[] = [
     "courseId": "c-gyn-delivrance-artificielle",
     "questionNumber": 11,
     "type": "QCM",
-    "questionText": "Quelle complication iatrogène majeure peut être provoquée par une manœuvre de délivrance artificielle brutale ou une traction excessive sur le cordon utérus hypotonique ?",
+    "questionText": "Concernant la manœuvre de BUDDIN, choisissez la réponse fausse :",
     "options": [
-      "L'inversion utérine aiguë avec état de choc vagal et hémorragique sévère",
-      "La rupture de la rate",
-      "L'ulcère de stress duodénal",
-      "Une dissection aortique aiguë",
-      "Une appendicite aiguë"
+      "Elle s'utilise en cas d'adhérences placentaires profondes",
+      "Elle consiste à prendre les cotylédons un à un",
+      "Elle est réalisée avec le bout des doigts",
+      "Elle remplace la révision utérine",
+      "Elle intervient après la recherche du plan de clivage"
     ],
     "correctAnswers": [
-      0
+      3
     ],
-    "explanation": "Tirer sur le cordon avec un utérus non décollé et hypotonique peut invaginer le fond utérin dans la cavité (doigt de gant), réalisant une inversion utérine dramatique.",
+    "explanation": "La manœuvre de BUDDIN ne remplace jamais la révision utérine qui reste systématique après toute délivrance artificielle.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -2192,18 +2198,20 @@ export const OBSTETRICS_QUESTIONS_PART2: Question[] = [
     "courseId": "c-gyn-delivrance-artificielle",
     "questionNumber": 12,
     "type": "QCM",
-    "questionText": "Quelle manœuvre permet la réduction immédiate d'une inversion utérine aiguë survenant en salle de travail ?",
+    "questionText": "La révision utérine systématique, réalisée après la délivrance artificielle, permet de :",
     "options": [
-      "La manœuvre de Johnson (repousser manuellement le fond utérin vers le haut à travers le col sous tocolyse et anesthésie)",
-      "La manœuvre de McRoberts",
-      "La manœuvre de Mauriceau",
-      "La manœuvre de Lovset",
-      "L'ablation du col utérin à la lame froide"
+      "Vérifier la vacuité utérine",
+      "Vérifier l'intégrité utérine",
+      "S'assurer de la bonne rétraction de l'utérus",
+      "Remplacer l'examen du délivre",
+      "Éviter le recours aux utérotoniques"
     ],
     "correctAnswers": [
-      0
+      0,
+      1,
+      2
     ],
-    "explanation": "La manœuvre de Johnson consiste à replacer le fond utérin avec la paume de la main dans l'axe de la cavité avant la constitution d'un anneau de striction cervical.",
+    "explanation": "La révision utérine est un triple contrôle : vacuité, intégrité, rétraction.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -2213,18 +2221,18 @@ export const OBSTETRICS_QUESTIONS_PART2: Question[] = [
     "courseId": "c-gyn-delivrance-artificielle",
     "questionNumber": 13,
     "type": "QCM",
-    "questionText": "En cas d'hémorragie active immédiate de la délivrance avec placenta non décollé, quel est le délai d'attente avant la DA ?",
+    "questionText": "Après la délivrance artificielle, l'ordre logique correct des gestes est :",
     "options": [
-      "Zéro délai : réalisation immédiate de la délivrance artificielle et révision utérine sans attendre les 30 minutes",
-      "Attente stricte de 30 minutes quoi qu'il arrive",
-      "Attente de 2 heures sous surveillance du pouls",
-      "Attente du lendemain matin",
-      "Attente de la survenue d'un arrêt circulatoire"
+      "Réparation de l'épisiotomie, puis révision utérine",
+      "Révision utérine, examen du délivre, utérotoniques et antibiotiques, puis réparation des déchirures et de l'épisiotomie",
+      "Administration d'antibiotiques seuls, puis surveillance",
+      "Surveillance à 48 h uniquement, sans geste complémentaire",
+      "Injection d'utérotoniques avant toute exploration utérine"
     ],
     "correctAnswers": [
-      0
+      1
     ],
-    "explanation": "L'hémorragie active de la délivrance est une urgence vitale : la délivrance artificielle manuelle doit être réalisée immédiatement sans délai.",
+    "explanation": "La séquence est stricte : révision utérine, examen du délivre, utérotoniques + antibiotiques, puis réparation des déchirures/épisiotomie, et surveillance 24 h.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -2234,18 +2242,18 @@ export const OBSTETRICS_QUESTIONS_PART2: Question[] = [
     "courseId": "c-gyn-delivrance-artificielle",
     "questionNumber": 14,
     "type": "QCM",
-    "questionText": "Quel est le risque infectieux tardif d'un cotylédon placentaire méconnu et retenu dans la cavité utérine ?",
+    "questionText": "Choisissez la réponse juste concernant les difficultés de la délivrance artificielle :",
     "options": [
-      "Endométrite du post-partum, lochies fétides, métrorragies secondaires et synéchies cicatricielles",
-      "Pancréatite aiguë nécrosante",
-      "Glomérulonéphrite aiguë post-streptococcique",
-      "Thyroïdite subaiguë de De Quervain",
-      "Ostéomyélite du fémur"
+      "L'anneau de rétraction constitue une difficulté d'accès au placenta",
+      "L'anneau de rétraction se traite uniquement par de fortes doses d'oxytocine",
+      "Le plan de clivage est toujours facile à identifier",
+      "Un placenta très adhérent diminue le risque d'effraction myométriale",
+      "Incarcération et enchatonnement sont synonymes d'atonie utérine"
     ],
     "correctAnswers": [
       0
     ],
-    "explanation": "La rétention d'un cotylédon maintient une béance vasculaire (métrorragies secondaires) et sert de foyer de surinfection pour l'endométrite puerpérale.",
+    "explanation": "L'anneau de rétraction referme la cavité et rend l'accès difficile (nécessite anesthésie / spasmolytique).",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -2255,18 +2263,20 @@ export const OBSTETRICS_QUESTIONS_PART2: Question[] = [
     "courseId": "c-gyn-delivrance-artificielle",
     "questionNumber": 15,
     "type": "QCM",
-    "questionText": "Quelle est la définition de la « révision utérine » isolée (sans délivrance artificielle préalable) ?",
+    "questionText": "Parmi les accidents mécaniques immédiats de la délivrance artificielle, on cite :",
     "options": [
-      "L'exploration manuelle de la cavité utérine après expulsion spontanée du placenta, indiquée en cas d'hémorragie du post-partum ou de doute sur l'intégrité du délivre",
-      "Le curetage métallique sous hystéroscopie opératoire",
-      "La palpation superficielle de la peau du nombril",
-      "L'examen du col au miroir vaginal seul",
-      "La mesure de la hauteur utérine au mètre-ruban"
+      "La perforation du cul-de-sac de Douglas",
+      "L'effraction du myomètre",
+      "L'inversion utérine, complète ou incomplète",
+      "L'endométrite",
+      "L'hématome rétro-placentaire"
     ],
     "correctAnswers": [
-      0
+      0,
+      1,
+      2
     ],
-    "explanation": "La RU consiste à introduire la main gantée dans l'utérus après délivrance pour vérifier la vacuité totale de la cavité et la continuité de la paroi myométriale.",
+    "explanation": "Les accidents mécaniques sont la perforation du Douglas, l'effraction myométriale et l'inversion utérine.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -2276,18 +2286,18 @@ export const OBSTETRICS_QUESTIONS_PART2: Question[] = [
     "courseId": "c-gyn-delivrance-artificielle",
     "questionNumber": 16,
     "type": "QCM",
-    "questionText": "Chez une femme ayant un utérus cicatriciel (antécédent de césarienne), dans quelle situation la révision utérine est-elle formellement indiquée après accouchement par voie basse ?",
+    "questionText": "Toutes les propositions suivantes concernant l'inversion utérine sont exactes, SAUF :",
     "options": [
-      "En cas d'hémorragie du post-partum, d'instabilité hémodynamique ou de douleurs sus-pubiennes anormales pour palper la cicatrice utérine",
-      "Elle est interdite de façon absolue en cas de cicatrice utérine",
-      "Uniquement chez les femmes de moins de 20 ans",
-      "Uniquement si l'enfant est de sexe masculin",
-      "Uniquement en l'absence de tout anesthésiste"
+      "Elle peut être complète ou incomplète",
+      "Elle est une complication possible de la délivrance artificielle",
+      "Elle peut résulter de manœuvres intempestives sur le fond utérin",
+      "Sa survenue est toujours tardive, au-delà de 24 heures",
+      "Elle nécessite une prise en charge urgente"
     ],
     "correctAnswers": [
-      0
+      3
     ],
-    "explanation": "hez la parturiente à utérus cicatriciel, la révision utérine permet de palper le segment inférieur et de vérifier l'intégrité de la déhiscence ou de la rupture utérine.",
+    "explanation": "L'inversion utérine est un accident immédiat ou à court terme, survenant pendant ou juste après les manœuvres.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -2297,18 +2307,18 @@ export const OBSTETRICS_QUESTIONS_PART2: Question[] = [
     "courseId": "c-gyn-delivrance-artificielle",
     "questionNumber": 17,
     "type": "QCM",
-    "questionText": "Lors de la délivrance artificielle, quel est le rôle fondamental de la main non dominante de l'opérateur placée sur l'abdomen maternel ?",
+    "questionText": "Concernant le placenta praevia hémorragique, choisissez la réponse juste :",
     "options": [
-      "Empaumer le fond utérin, le maintenir fermement abaissé et guider la main endo-utérine tout en évitant la perforation et l'inversion utérine",
-      "Prendre la tension artérielle au brassard",
-      "Écarter les cuisses de la patiente",
-      "Injecter les solutés dans la perfusion",
-      "Rédiger le compte-rendu d'accouchement"
+      "On attend systématiquement la délivrance spontanée",
+      "L'importance du saignement peut compromettre la vie de la parturiente",
+      "La délivrance artificielle y est formellement contre-indiquée",
+      "Le placenta praevia ne saigne jamais avant l'accouchement",
+      "La délivrance artificielle n'y est jamais suivie de révision utérine"
     ],
     "correctAnswers": [
-      0
+      1
     ],
-    "explanation": "La main sus-pubienne est indispensable : elle contre-appuie le fond utérin, l'abaisse et protège contre les déchirures et perforations utérines.",
+    "explanation": "ns le placenta praevia hémorragique, on n'attend pas la délivrance spontanée car le saignement engage le pronostic vital.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -2318,18 +2328,20 @@ export const OBSTETRICS_QUESTIONS_PART2: Question[] = [
     "courseId": "c-gyn-delivrance-artificielle",
     "questionNumber": 18,
     "type": "QCM",
-    "questionText": "Quelle anomalie de rétention placentaire par striction myométriale localisée emprisonne le placenta décollé dans l'utérus ?",
+    "questionText": "Parmi les indications primaires de la révision utérine (réalisée d'emblée), on retient :",
     "options": [
-      "L'incarcération ou enchatonnement placentaire par spasme d'un anneau de striction cervical ou corporéal",
-      "Le placenta praevia recouvrant",
-      "L'hématome rétro-placentaire",
-      "Le décollement prématuré du placenta",
-      "La môle hydatiforme embryonnée"
+      "Un utérus cicatriciel",
+      "Un accouchement après manœuvres endo-utérines",
+      "Une suspicion de malformation utérine",
+      "Une épisiotomie simple",
+      "Une primipare sans aucun facteur de risque"
     ],
     "correctAnswers": [
-      0
+      0,
+      1,
+      2
     ],
-    "explanation": "L'enchatonnement ou incarcération survient lorsqu'un spasme localisé du myomètre emprisonne le placenta déjà décollé, nécessitant parfois une tocolyse d'appoint pour lever le spasme avant l'extraction.",
+    "explanation": "Indications primaires : utérus cicatriciel, manœuvres endo-utérines antérieures, suspicion de malformation utérine.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -2339,18 +2351,18 @@ export const OBSTETRICS_QUESTIONS_PART2: Question[] = [
     "courseId": "c-gyn-delivrance-artificielle",
     "questionNumber": 19,
     "type": "QCM",
-    "questionText": "Quel soluté tocolytique d'action rapide peut être utilisé transitoirement pour relâcher un anneau de striction cervical lors d'une délivrance artificielle difficile ?",
+    "questionText": "La durée du « repos physiologique » précédant la reprise des contractions utérines de la délivrance est de :",
     "options": [
-      "Un dérivé nitré sublingual ou tocolytique d'action brève",
-      "Une injection massive d'ocytociques",
-      "Un bolus de gluconate de calcium",
-      "De l'insuline rapide",
-      "De la vitamine K"
+      "2 à 5 minutes",
+      "10 à 15 minutes",
+      "20 à 25 minutes",
+      "30 minutes",
+      "45 minutes"
     ],
     "correctAnswers": [
-      0
+      1
     ],
-    "explanation": "Les dérivés nitrés (trinitrine) entraînent une relaxation transitoire puissante du myomètre et facilitent le passage de la main à travers l'anneau spastique.",
+    "explanation": "Le repos physiologique correspond à une rétraction sans contraction pendant 10 à 15 minutes.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -2360,18 +2372,18 @@ export const OBSTETRICS_QUESTIONS_PART2: Question[] = [
     "courseId": "c-gyn-delivrance-artificielle",
     "questionNumber": 20,
     "type": "QCM",
-    "questionText": "Quelle surveillance clinique rapprochée doit être assurée en salle de travail pendant les 2 heures suivant une délivrance artificielle ?",
+    "questionText": "Concernant l'inertie utérine, choisissez la réponse fausse :",
     "options": [
-      "Surveillance continue du globe de sécurité utérin (utérus tonique et rétracté), des pertes sanguines vulvaires, du pouls et de la pression artérielle toutes les 15 minutes",
-      "Surveillance de la température une fois par semaine",
-      "Aucune surveillance : transfert immédiat en chambre individuelle sans personnel",
-      "Contrôle exclusif du poids de la patiente",
-      "Réalisation d'une IRM corps entier"
+      "Elle peut résulter d'un travail prolongé",
+      "Elle peut être due à la surdistension utérine",
+      "Les bêta-2 mimétiques peuvent en être une cause iatrogène",
+      "Elle est favorisée par un utérus de bonne qualité musculaire",
+      "Elle participe à l'absence de migration placentaire"
     ],
     "correctAnswers": [
-      0
+      3
     ],
-    "explanation": "La fenêtre des 2 heures du post-partum immédiat concentre plus de 80% des hémorragies de la délivrance ; le globe utérin ferme et rétracté sous l'ombilic est le signe cardinal de bonne hémostase.",
+    "explanation": "Un muscle de bonne qualité s'oppose à l'inertie ; ce sont les utérus altérés ou épuisés qui la favorisent.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -2381,18 +2393,18 @@ export const OBSTETRICS_QUESTIONS_PART2: Question[] = [
     "courseId": "c-gyn-delivrance-artificielle",
     "questionNumber": 21,
     "type": "QCM",
-    "questionText": "En cas d'hémorragie persistante malgré une délivrance artificielle et une révision utérine complètes confirmant la vacuité utérine, quelle autre étiologie doit être recherchée systématiquement sous valves ?",
+    "questionText": "Lorsque le placenta est peu adhérent, le décollement s'obtient préférentiellement par :",
     "options": [
-      "Une déchirure des parties molles (déchirure cervicale, vaginale haute ou périnéale profonde)",
-      "Une lithiase biliaire asymptomatique",
-      "Une otite moyenne aiguë",
-      "Une hernie inguinale réductible",
-      "Un kyste synovial du poignet"
+      "La prise des cotylédons un à un",
+      "Le bord radial ou cubital de la main",
+      "Une pince de Pozzi sur le cordon",
+      "Une sonde urétérale introduite dans la cavité",
+      "Une ventouse obstétricale appliquée sur le placenta"
     ],
     "correctAnswers": [
-      0
+      1
     ],
-    "explanation": "L'examen sous valves de l'ensemble de la filière génitale (vagin, col, périnée) permet de suturer une déchirure vasculaire cervicale ou vaginale passée inaperçue.",
+    "explanation": "ord radial ou cubital de la main si peu adhérent ; bout des doigts si plus adhérent ; Buddin si adhérences profondes.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -2402,18 +2414,20 @@ export const OBSTETRICS_QUESTIONS_PART2: Question[] = [
     "courseId": "c-gyn-delivrance-artificielle",
     "questionNumber": 22,
     "type": "QCM",
-    "questionText": "Quelle prostaglandine de 2ème intention est administrée en perfusion continue en cas d'atonie utérine persistante réfractaire à l'ocytocine après délivrance artificielle ?",
+    "questionText": "Concernant la prise en charge et la surveillance après délivrance artificielle :",
     "options": [
-      "Le Sulprostone (Nalador) en perfusion intraveineuse stricte au pousse-seringue électrique",
-      "La prostacycline inhalée",
-      "Le misoprostol par voie oculaire",
-      "L'adrénaline en aérosol",
-      "L'atropine en sous-cutané"
+      "La surveillance de la femme se poursuit sur 24 heures",
+      "Une injection d'utérotoniques est réalisée",
+      "Une antibiothérapie est administrée",
+      "La surveillance peut être limitée à 2 heures si la révision est normale",
+      "Aucune surveillance n'est nécessaire en l'absence de saignement"
     ],
     "correctAnswers": [
-      0
+      0,
+      1,
+      2
     ],
-    "explanation": "Le sulprostone (analogue de la prostaglandine E2) est le traitement pharmacologique de référence de l'atonie utérine résistante à l'ocytocine, administré sous surveillance cardiovasculaire étroite.",
+    "explanation": "La surveillance dure 24 heures avec utérotoniques et antibiothérapie.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -2423,18 +2437,18 @@ export const OBSTETRICS_QUESTIONS_PART2: Question[] = [
     "courseId": "c-gyn-delivrance-artificielle",
     "questionNumber": 23,
     "type": "QCM",
-    "questionText": "Quel geste de tamponnement intra-utérin mécanique temporaire peut être utilisé pour juguler une hémorragie de la délivrance persistante après révision utérine ?",
+    "questionText": "Toutes les propositions suivantes sont exactes, SAUF :",
     "options": [
-      "La mise en place d'un ballon de tamponnement intra-utérin (ballon de Bakri)",
-      "L'insertion d'une serviette éponge non stérile",
-      "Le clampage de la trachée",
-      "La pose d'un plâtre pelvien",
-      "La résection transurétrale de la vessie"
+      "La délivrance artificielle nécessite une asepsie rigoureuse",
+      "Le non-respect de l'asepsie expose à l'endométrite",
+      "La délivrance artificielle est un geste anodin",
+      "La délivrance artificielle peut compromettre l'avenir génital de la femme",
+      "Une antibiothérapie fait partie de la prise en charge"
     ],
     "correctAnswers": [
-      0
+      2
     ],
-    "explanation": "Le ballon de Bakri gonflé au sérum physiologique stérile exerce une contre-pression hydrostatique hémostatique sur la surface endométriale hémorragique.",
+    "explanation": "La DA n'est jamais un geste anodin ; c'est un geste à haut risque de complications.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -2444,18 +2458,18 @@ export const OBSTETRICS_QUESTIONS_PART2: Question[] = [
     "courseId": "c-gyn-delivrance-artificielle",
     "questionNumber": 24,
     "type": "QCM",
-    "questionText": "Quelle est la cause d'anémie aiguë maternelle la plus fréquente dans les suites de couches immédiates après rétention placentaire ?",
+    "questionText": "Choisissez la réponse juste concernant les objectifs de la délivrance artificielle :",
     "options": [
-      "L'hémorragie de la délivrance avec spoliation sanguine supérieure à 500 mL (ou 1000 mL en césarienne)",
-      "Le paludisme congénital",
-      "La carence d'apport en fer survenue pendant la nuit",
-      "Une leucémie aiguë lymphoblastique foudroyante",
-      "Une hémodilution physiologique exclusive"
+      "Accélérer l'expulsion fœtale en cas de non-progression",
+      "Prévenir l'hémorragie de la délivrance",
+      "Dispenser l'opérateur de connaître les indications du geste",
+      "Éviter la révision utérine qui devient inutile",
+      "Être réalisée avant l'expulsion du fœtus"
     ],
     "correctAnswers": [
-      0
+      1
     ],
-    "explanation": "La perte sanguine supérieure à 500 mL définit l'hémorragie du post-partum, dont la rétention placentaire et l'atonie utérine sont les deux causes majeures.",
+    "explanation": "L'objectif principal est de prévenir l'hémorragie de la délivrance.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -2465,18 +2479,20 @@ export const OBSTETRICS_QUESTIONS_PART2: Question[] = [
     "courseId": "c-gyn-delivrance-artificielle",
     "questionNumber": 25,
     "type": "QCM",
-    "questionText": "Après réalisation d'une délivrance artificielle chez une patiente de groupe sanguin Rhésus négatif avec nouveau-né Rhésus positif, quelle mesure immuno-hématologique est impérative ?",
+    "questionText": "Concernant la délivrance artificielle, quelles propositions sont exactes ?",
     "options": [
-      "Doser les hématies fœtales dans le sang maternel (test de Kleihauer) et injecter des immunoglobulines anti-D dans les 72 heures pour prévenir l'allo-immunisation rhésus",
-      "Réaliser une exsanguino-transfusion maternelle totale",
-      "Interdire tout contact entre la mère et son enfant",
-      "Prescrire une chimiothérapie immunosuppressive à vie",
-      "Aucune mesure n'est requise en cas de Rhésus négatif"
+      "C'est un geste non anodin",
+      "Elle peut compromettre l'avenir génital de la femme",
+      "Une asepsie rigoureuse est indispensable",
+      "Elle peut être réalisée par un opérateur non entraîné sans risque supplémentaire",
+      "Elle ne requiert aucune connaissance technique particulière"
     ],
     "correctAnswers": [
-      0
+      0,
+      1,
+      2
     ],
-    "explanation": "Toute manœuvre endo-utérine majore le passage d'hématies fœtales dans la circulation maternelle, imposant le test de Kleihauer et l'injection d'anti-D adaptée à la dose d'hématies fœtales.",
+    "explanation": "'est un geste sérieux, non anodin, nécessitant une technique rigoureuse et une asepsie stricte.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -2487,18 +2503,18 @@ export const OBSTETRICS_QUESTIONS_PART2: Question[] = [
     "questionNumber": 26,
     "type": "Cas Clinique",
     "clinicalCaseNumber": 1,
-    "questionText": "[Cas Clinique N°1 : Rétention placentaire complète à 35 minutes de l'expulsion]\nPrimipare de 25 ans vient d'accoucher d'un nouveau-né eutrophe. 35 minutes après la naissance, le placenta n'est toujours pas décollé malgré des contractions utérines modérées. Il n'y a pas de saignement extériorisé. L'utérus est mou au-dessus de l'ombilic.\n\nQuestion : Question : Quelle est la prise en charge immédiate adaptée ?",
+    "questionText": "[Cas n°1 — « Le placenta qui ne vient pas »]\nMme B., 26 ans, G2P1, accouche à terme par voie basse d'un nouveau-né de 3 150 g. 35 minutes après l'expulsion fœtale, le placenta n'est toujours pas expulsé. L'utérus est bien rétracté. Le cordon ne remonte pas à la pression sus-pubienne.\n\nQuestion : Quel est le diagnostic le plus probable ?",
     "options": [
-      "Réaliser une délivrance artificielle manuelle en asepsie chirurgicale sous analgésie, suivie d'une révision utérine systématique et de l'administration d'ocytociques.",
-      "Attendre 4 heures supplémentaires sans rien faire.",
-      "Tirer violemment sur le cordon à pleines mains.",
-      "Transférer la patiente au bloc de neurochirurgie.",
-      "Appliquer des poches de glace sur le crâne."
+      "Hémorragie de la délivrance par atonie utérine",
+      "Rétention placentaire",
+      "Rupture utérine spontanée",
+      "Inversion utérine",
+      "Hématome rétro-placentaire"
     ],
     "correctAnswers": [
-      0
+      1
     ],
-    "explanation": "Le dépassement des 30 minutes pose l'indication formelle de la délivrance artificielle pour prévenir l'hémorragie et l'infection.",
+    "explanation": "élai > 30 min = rétention placentaire.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -2509,18 +2525,18 @@ export const OBSTETRICS_QUESTIONS_PART2: Question[] = [
     "questionNumber": 27,
     "type": "Cas Clinique",
     "clinicalCaseNumber": 2,
-    "questionText": "[Cas Clinique N°2 : Hémorragie active immédiate de la délivrance]\nMultigeste de 33 ans (G4P3). Immédiatement après la sortie du fœtus (à 10 minutes), un saignement génital brutal rouge vif avec caillots survient, dépassant rapidement 400 mL. Le placenta est toujours intra-utérin.\n\nQuestion : Question : Quelle est la conduite d'urgence sans aucun délai d'attente ?",
+    "questionText": "[Cas n°2 — « Le placenta qui colle »]\nMme K., 34 ans, G4P3, antécédents de deux curetages, d'une myomectomie et d'une césarienne. À 30 minutes, aucune délivrance. Au cours de la DA, le plan de clivage est difficile à trouver.\n\nQuestion : Quel mécanisme explique le mieux cette rétention placentaire ?",
     "options": [
-      "Appel de renforts, délivrance artificielle d'urgence sans attendre, révision utérine, massage utérin, ocytocine en perfusion et pose de 2 voies veineuses de gros calibre.",
-      "Attendre l'expiration stricte des 30 minutes avant de toucher au placenta.",
-      "Faire asseoir la patiente sur un fauteuil.",
-      "Administrer un somnifère per os.",
-      "Réaliser un lavement rectal évacuateur."
+      "Inertie utérine par surdistension",
+      "Défaut d'implantation sur muqueuse utérine altérée",
+      "Incarcération placentaire par spasme cervical",
+      "Globe vésical",
+      "Excès de volume placentaire"
     ],
     "correctAnswers": [
-      0
+      1
     ],
-    "explanation": "n présence d'un saignement actif abondant, la DA n'attend jamais 30 minutes : elle est immédiate pour juguler la source de l'hémorragie.",
+    "explanation": "ntécédents de curetage, myomectomie et césarienne = altération muqueuse = défaut d'implantation.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -2531,18 +2547,18 @@ export const OBSTETRICS_QUESTIONS_PART2: Question[] = [
     "questionNumber": 28,
     "type": "Cas Clinique",
     "clinicalCaseNumber": 3,
-    "questionText": "[Cas Clinique N°3 : Suspicion de placenta accreta lors de la tentative de DA]\nPatiente de 34 ans avec antécédent de 2 césariennes antérieures et placenta praevia antérieur. Lors de la délivrance artificielle, l'opérateur constate une absence complète de plan de clivage décidual sur toute la zone cicatricielle avec début de saignement important.\n\nQuestion : Question : Quelle attitude salvatrice s'impose à l'équipe obstétricale ?",
+    "questionText": "[Cas n°3 — « Saignement et placenta praevia »]\nMme T., 31 ans, G3P2, placenta praevia recouvrant à 37 SA avec métrorragies abondantes. Césarienne en urgence.\n\nQuestion : Pourquoi ne doit-on pas attendre la délivrance spontanée chez cette patiente ?",
     "options": [
-      "Ne pas s'acharner à arracher le myomètre, tamponnement pelvien, appel de l'anesthésiste et du chirurgien gynécologue, transfert au bloc pour traitement conservateur ou hystérectomie d'hémostase.",
-      "Forcer le décollement en arrachant la paroi utérine aux doigts.",
-      "Injecter de l'alcool pur dans la cavité utérine.",
-      "Déclarer l'accouchement terminé sans perfusion.",
-      "Retirer la main et prescrire des antalgiques simples en chambre."
+      "Parce que le placenta praevia ne se décollera jamais spontanément",
+      "Parce que l'importance du saignement peut compromettre la vie de la parturiente",
+      "Parce que le délai de 30 minutes est un dogme absolu",
+      "Parce que le placenta praevia expose à la dystocie des épaules",
+      "Parce que la délivrance spontanée est toujours impossible après césarienne"
     ],
     "correctAnswers": [
-      0
+      1
     ],
-    "explanation": "Le placenta accreta sur utérus cicatriciel ne doit jamais être arraché au risque d'une hémorragie cataclysmique foudroyante.",
+    "explanation": "Le saignement peut être massif et menacer le pronostic vital.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -2553,18 +2569,18 @@ export const OBSTETRICS_QUESTIONS_PART2: Question[] = [
     "questionNumber": 29,
     "type": "Cas Clinique",
     "clinicalCaseNumber": 4,
-    "questionText": "[Cas Clinique N°4 : Métrorragies secondaires à un cotylédon aberrant retenu]\nAccouchée à J+2 post-partum présentant des métrorragies rouges répétées avec utérus mal involué et fébricule à 38°C. L'échographie pelvienne retrouve une masse échogène intracavitaire de 25 mm richement vascularisée au Doppler.\n\nQuestion : Question : Quel est le diagnostic et quelle est la prise en charge ?",
+    "questionText": "[Cas n°4 — « La main ne passe pas »]\nMme L., 29 ans, G2P2. À 40 min, pas de délivrance. À la DA, le col est spasmé et un anneau de rétraction empêche l'accès au placenta décollé.\n\nQuestion : Quel diagnostic évoquez-vous devant ce spasme cervical ?",
     "options": [
-      "Rétention d'un cotylédon placentaire avec début d'endométrite ; évacuation utérine douce par révision utérine ou aspiration sous couverture antibiotique adaptée.",
-      "Cancer de l'endomètre métastatique nécessitant une chimiothérapie lourde.",
-      "Kyste de l'ovaire droit nécessitant une ponction transcutanée.",
-      "Pyélonéphrite aiguë bilatérale sans anomalie gynécologique.",
-      "Invagination intestinale aiguë."
+      "Enchatonnement placentaire",
+      "Incarcération placentaire",
+      "Placenta accreta",
+      "Inertie utérine",
+      "Rupture utérine"
     ],
     "correctAnswers": [
-      0
+      1
     ],
-    "explanation": "La rétention de débris placentaires provoque métrorragies et endométrite, justifiant l'évacuation cavitaire et les antibiotiques.",
+    "explanation": "Incarcération placentaire = spasme cervical retenant le placenta décollé.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -2575,18 +2591,18 @@ export const OBSTETRICS_QUESTIONS_PART2: Question[] = [
     "questionNumber": 30,
     "type": "Cas Clinique",
     "clinicalCaseNumber": 5,
-    "questionText": "[Cas Clinique N°5 : Inversion utérine aiguë lors de la délivrance]\nAprès la naissance, l'interne tire sur le cordon alors que l'utérus n'est pas contracté. Brutalement, une masse rouge sombre volumineuse fait issue à la vulve, accompagnée d'une douleur syncopale foudroyante et d'un collapsus tensionnel à 70/40 mmHg avec bradycardie.\n\nQuestion : Question : Quel est le diagnostic et quel est le geste immédiat à réaliser avant la constriction du col ?",
+    "questionText": "[Cas n°5 — « Le choc après la délivrance »]\nMme S., 24 ans, G1P1. DA en urgence avec tractions répétées sur le cordon. Douleur brutale, choc à 80/50 mmHg, fond utérin non perçu, masse charnue à la vulve.\n\nQuestion : Quel diagnostic évoquez-vous en priorité ?",
     "options": [
-      "Inversion utérine aiguë de stade 3 ; manœuvre de Johnson immédiate (réduction manuelle du fond utérin par voie vaginale vers la cavité abdominale) sous anesthésie générale et tocolyse brève.",
-      "Prolapsus rectal strangulé nécessitant une colostomie.",
-      "Rupture de la vessie avec hernie vésicale.",
-      "Hématome sous-cutané périnéal nécessitant de la glace.",
-      "Infarctus du mésentère."
+      "Hémorragie de la délivrance par atonie utérine",
+      "Inversion utérine",
+      "Rupture du cul-de-sac de Douglas",
+      "Endométrite aiguë",
+      "Embolie amniotique"
     ],
     "correctAnswers": [
-      0
+      1
     ],
-    "explanation": "L'inversion utérine est une urgence dramatique avec choc neurogénique et hémorragique. La réintégration immédiate par la manœuvre de Johnson est salvatrice.",
+    "explanation": "hoc + fond utérin absent + masse vaginale = inversion utérine.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -3253,18 +3269,18 @@ export const OBSTETRICS_QUESTIONS_PART2: Question[] = [
     "courseId": "c-gyn-maladies-trophoblastiques",
     "questionNumber": 1,
     "type": "QCM",
-    "questionText": "Concernant la constitution génétique de la môle hydatiforme complète (MHC), quelle est l'affirmation exacte ?",
+    "questionText": "Concernant l'épidémiologie de la môle hydatiforme en Algérie, quelle est la proposition exacte ?",
     "options": [
-      "Elle est diploïde (46,XX dans 90% des cas) d'origine exclusivement paternelle (androgénique) par fécondation d'un ovocyte anucléé",
-      "Elle est constamment triploïde (69,XXY) avec présence constante d'un embryon viable",
-      "Elle provient d'une mutation mitochondriale maternelle exclusive",
-      "Elle présente une caryotype 47,XXY de type Klinefelter",
-      "Elle est liée à une délétion du chromosome 5p (cri-du-chat)"
+      "L'incidence est de 1 cas pour 1000 grossesses à l'échelle nationale.",
+      "L'incidence au CHU de Blida est de 6,2 môles pour 1000 grossesses.",
+      "Elle est plus fréquente chez la race caucasienne.",
+      "Elle est exceptionnelle en Asie.",
+      "L'âge paternel n'a aucune influence."
     ],
     "correctAnswers": [
-      0
+      1
     ],
-    "explanation": "La môle complète est diploïde 46,XX (ou 46,XY) exclusivement androgénique (duplication d'un spermatozoïde haploïde dans un ovule énucléé ou dispermie), sans embryon ni tissu fœtal.",
+    "explanation": "Bonne réponse : B En Algérie, l'incidence au CHU de Blida est de 6,2 pour 1000 grossesses (3,2 à l'échelle nationale). Elle est plus fréquente en Asie et chez la race noire.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -3274,18 +3290,18 @@ export const OBSTETRICS_QUESTIONS_PART2: Question[] = [
     "courseId": "c-gyn-maladies-trophoblastiques",
     "questionNumber": 2,
     "type": "QCM",
-    "questionText": "Quelle est la formule génétique et la composition tissulaire caractéristique de la môle hydatiforme partielle (MHP) ?",
+    "questionText": "Concernant la môle hydatiforme complète, quelle proposition est FAUSSE ?",
     "options": [
-      "Elle est triploïde (le plus souvent 69,XXY) par fécondation d'un ovocyte normal par deux spermatozoïdes (dispermie), avec présence possible de tissu embryonnaire",
-      "Elle est haploïde 23,X",
-      "Elle est tétraploïde 92,XXXX sans aucun tissu",
-      "Elle est diploïde 46,YY non viable",
-      "Elle est strictement identique à la môle complète"
+      "Elle est d'origine maternelle exclusive.",
+      "Le caryotype est 46XX dans 90% des cas.",
+      "Elle résulte de la fécondation d'un ovocyte sans génome par un spermatozoïde haploïde qui se duplique.",
+      "Elle est caractérisée par l'absence totale d'embryon.",
+      "Elle peut être due à la fécondation d'un ovule diploïde dans 15% des cas."
     ],
     "correctAnswers": [
-      0
+      4
     ],
-    "explanation": "La môle partielle est triploïde (69 chromosomes) par diandrie (2 lots paternels, 1 maternel) et comporte des fragments embryonnaires ou des globules rouges fœtaux.",
+    "explanation": "Bonne réponse : E La fécondation d'un ovule diploïde est un mécanisme de la môle partielle, pas de la môle complète.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -3295,18 +3311,20 @@ export const OBSTETRICS_QUESTIONS_PART2: Question[] = [
     "courseId": "c-gyn-maladies-trophoblastiques",
     "questionNumber": 3,
     "type": "QCM",
-    "questionText": "Quel signe clinique cardinal au premier trimestre est le plus fréquemment révélateur d'une môle hydatiforme complète ?",
+    "questionText": "Parmi les facteurs de risque de la maladie trophoblastique, lesquels sont reconnus ? (Choisissez 2 à 3 réponses)",
     "options": [
-      "Des métrorragies spontanées indolores, classiquement répétées et d'aspect « en jus de prune » ou séro-sanglantes",
-      "Une aménorrhée avec douleurs brutales de la fosse iliaque droite sans aucun saignement",
-      "Un ictère cutanéo-muqueux cholestatique pur",
-      "Une alopécie aiguë diffuse",
-      "Des céphalées isolées sans signe gynécologique"
+      "Un âge maternel inférieur à 20 ans ou supérieur à 35 ans.",
+      "Une carence en vitamine C.",
+      "Les groupes sanguins A et AB.",
+      "La primiparité.",
+      "Les antécédents de grossesse molaire."
     ],
     "correctAnswers": [
-      0
+      0,
+      2,
+      4
     ],
-    "explanation": "Les métrorragies du premier trimestre (saignement brunâtre en « jus de prune ») constituent le signe d'appel dans plus de 80% des môles complètes.",
+    "explanation": "Bonne réponse : A, C, E Facteurs de risque : âges extrêmes (35 ans), groupes A et AB, antécédents de grossesse molaire, multiparité et carence en bêta-carotène.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -3316,18 +3334,18 @@ export const OBSTETRICS_QUESTIONS_PART2: Question[] = [
     "courseId": "c-gyn-maladies-trophoblastiques",
     "questionNumber": 4,
     "type": "QCM",
-    "questionText": "À l'examen clinique d'une môle hydatiforme complète typique, quel élément physique est particulièrement évocateur ?",
+    "questionText": "Quel signe clinique est le plus caractéristique et constant de la môle hydatiforme complète au premier trimestre ?",
     "options": [
-      "Un utérus augmenté de volume, mou, nettement plus gros que ne le voudrait l'âge gestationnel théorique",
-      "Un utérus hypoplasique plus petit que la normale",
-      "Un utérus dur comme du bois sans modification de volume",
-      "Un col totalement absent",
-      "Une inversion utérine spontanée"
+      "Des vomissements incoercibles.",
+      "Des métrorragies faites de sang rouge noirâtre, parfois accompagnées de vésicules.",
+      "Une pré-éclampsie sévère.",
+      "Une hyperthyroïdie.",
+      "Une douleur abdominale aiguë localisée."
     ],
     "correctAnswers": [
-      0
+      1
     ],
-    "explanation": "L'hypertrophie utérine discordante (utérus trop grand pour le terme) et mou est retrouvée dans la moitié des môles complètes.",
+    "explanation": "Bonne réponse : B Les métrorragies de sang rouge noirâtre avec expulsion de vésicules sont le signe cardinal.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -3337,18 +3355,18 @@ export const OBSTETRICS_QUESTIONS_PART2: Question[] = [
     "courseId": "c-gyn-maladies-trophoblastiques",
     "questionNumber": 5,
     "type": "QCM",
-    "questionText": "Quel est l'aspect échographique caractéristique en « tempête de neige » ou « floconneux » au cours de la môle complète ?",
+    "questionText": "Concernant les examens paracliniques dans la môle hydatiforme, quelle proposition est FAUSSE ?",
     "options": [
-      "Cavité utérine distendue occupée par une masse hétérogène hyperéchogène criblée de multiples petites vésicules anéchogènes en grappes, sans embryon ni sac gestationnel visible",
-      "Un embryon unique avec activité cardiaque normale",
-      "Une cavité utérine strictement vide avec endomètre linéaire de 2 mm",
-      "Un épanchement liquidien péritonéal isolé sans masse utérine",
-      "Une lithiase intra-cavitaire calcifiée"
+      "Le dosage des BHCG plasmatiques est souvent supérieur à 100 000 UI/L.",
+      "L'échographie pelvienne montre un aspect en \"nid d'abeille\" ou \"grappe de raisin\".",
+      "La radiographie du thorax est systématique avant le curetage pour rechercher des métastases pulmonaires.",
+      "L'anatomopathologie confirme le diagnostic par une hyperplasie diffuse du cytotrophoblaste et du syncitiotrophoblaste.",
+      "Le caryotype est réalisé en urgence pour guider la prise en charge thérapeutique immédiate."
     ],
     "correctAnswers": [
-      0
+      4
     ],
-    "explanation": "L'image en « grappe de raisin » ou « tempête de neige » correspond à l'œdème villositaire diffus et aux cavités kystiques du trophoblaste proliférant.",
+    "explanation": "Bonne réponse : E Le caryotype n'est pas un examen d'urgence immédiate pour le traitement chirurgical.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -3358,18 +3376,20 @@ export const OBSTETRICS_QUESTIONS_PART2: Question[] = [
     "courseId": "c-gyn-maladies-trophoblastiques",
     "questionNumber": 6,
     "type": "QCM",
-    "questionText": "Quelle complication ovarienne bilatérale fréquente est induite par la stimulation massive des récepteurs à la LH par des taux d'hCG vertigineux ?",
+    "questionText": "Devant des métrorragies du premier trimestre, quels sont les diagnostics différentiels à évoquer face à une suspicion de môle ? (Choisissez 2 à 3 réponses)",
     "options": [
-      "Kystes théco-lutéiniques bilatéraux volumineux et multiloculaires",
-      "Tératomes kystiques matures calcifiés",
-      "Tumeurs de Brenner fibromateuses",
-      "Endométriomes ovariens cicatriciels",
-      "Aplasie ovarienne bilatérale"
+      "La menace d'avortement spontané.",
+      "La grossesse extra-utérine (GEU).",
+      "La nécrobiosie aseptique d'un fibrome sous-séreux.",
+      "Un polype endométrial.",
+      "Une môle partielle."
     ],
     "correctAnswers": [
-      0
+      0,
+      1,
+      2
     ],
-    "explanation": "L'hypersécrétion d'hCG (dépassant souvent 100 000 à 200 000 UI/L) stimule les cellules de la thèque ovarienne, générant de volumineux kystes théco-lutéiniques bilatéraux qui régressent après l'évacuation de la môle.",
+    "explanation": "Bonne réponse : A, B, C Menace d'avortement, GEU et fibrome nécrobiotique sont les principaux diagnostics différentiels.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -3379,18 +3399,18 @@ export const OBSTETRICS_QUESTIONS_PART2: Question[] = [
     "courseId": "c-gyn-maladies-trophoblastiques",
     "questionNumber": 7,
     "type": "QCM",
-    "questionText": "Parmi les manifestations endocriniennes et générales de la môle hydatiforme complète, laquelle est liée à l'analogie structurale entre l'hCG et la TSH ?",
+    "questionText": "Lors de l'évacuation utérine d'une môle hydatiforme, quel traitement est formellement CONTRE-INDIQUÉ ?",
     "options": [
-      "Hyperthyroïdie clinique ou biologique (tachycardie, thermophobie, tremblements, baisse de la TSH et élévation de la T4 libre)",
-      "Hypothyroïdie avec myxœdème congénital",
-      "Diabète insipide central complet",
-      "Syndrome de Cushing par adénome surrénalien",
-      "Acromégalie par adénome hypophysaire"
+      "L'utilisation d'utérotoniques.",
+      "L'utilisation de prostaglandines.",
+      "L'antibiothérapie post-opératoire.",
+      "Le traitement martial (fer).",
+      "Le sérum anti-D."
     ],
     "correctAnswers": [
-      0
+      1
     ],
-    "explanation": "La sous-unité alpha de l'hCG est identique à celle de la TSH, LH et FSH. Des taux astronomiques d'hCG activent les récepteurs à la TSH et induisent une thyrotoxicose gravidique.",
+    "explanation": "Bonne réponse : B Les prostaglandines sont formellement contre-indiquées (risque d'embolie trophoblastique).",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -3400,18 +3420,18 @@ export const OBSTETRICS_QUESTIONS_PART2: Question[] = [
     "courseId": "c-gyn-maladies-trophoblastiques",
     "questionNumber": 8,
     "type": "QCM",
-    "questionText": "Quel traitement de première intention est indispensable pour évacuer une môle hydatiforme de la cavité utérine ?",
+    "questionText": "Quel est l'élément clé de la surveillance post-môlaire pour définir la rémission complète ?",
     "options": [
-      "Aspiration endo-utérine douce sous contrôle échographique avec curetage prudent, envoyant TOUT le matériel évacué en analyse anatomopathologique",
-      "Curetage métallique agressif à la curette tranchante sans contrôle",
-      "Hystérectomie subtotale avec conservation des ovaires chez toutes les patientes",
-      "Chimiothérapie exclusive sans évacuer l'utérus",
-      "Surveillance sans évacuation pendant 9 mois"
+      "L'involution utérine clinique.",
+      "La régression des kystes lutéiniques.",
+      "Trois dosages hebdomadaires successifs de BHCG négatifs (< 12 semaines).",
+      "Une échographie pelvienne normale.",
+      "Une radiographie du thorax normale à 1 mois."
     ],
     "correctAnswers": [
-      0
+      2
     ],
-    "explanation": "L'aspiration sous contrôle échographique à la canule de gros calibre est la méthode de référence, limitant les risques de perforation du myomètre fragilisé.",
+    "explanation": "Bonne réponse : C Rémission complète = 3 dosages hebdomadaires successifs négatifs de BHCG.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -3421,18 +3441,18 @@ export const OBSTETRICS_QUESTIONS_PART2: Question[] = [
     "courseId": "c-gyn-maladies-trophoblastiques",
     "questionNumber": 9,
     "type": "QCM",
-    "questionText": "Quelle analyse de laboratoire est formellement indispensable pour confirmer le diagnostic de certitude de môle hydatiforme ?",
+    "questionText": "Concernant la môle hydatiforme partielle, quelle proposition est FAUSSE ?",
     "options": [
-      "L'examen anatomopathologique des produits d'aspiration (hyperplasie trophoblastique et œdème villositaire)",
-      "La numération formule sanguine seule",
-      "La vitesse de sédimentation à 1 heure",
-      "L'ionogramme sanguin",
-      "Le dosage du cholestérol HDL"
+      "99% des môles partielles ont un caryotype triploïde (3n).",
+      "Les caryotypes retrouvés sont 69XXY ou 69XXX.",
+      "Elle est d'origine paternelle dans 85% des cas.",
+      "Elle est caractérisée par la présence constante d'un embryon viable à terme.",
+      "Elle peut résulter de la fécondation d'un ovule diploïde."
     ],
     "correctAnswers": [
-      0
+      3
     ],
-    "explanation": "Seule l'histologie affirme le caractère molaire, distingue la môle complète de la partielle et élimine un choriocarcinome d'emblée.",
+    "explanation": "Bonne réponse : D L'embryon meurt généralement avant 7-8 SA et n'est pas viable à terme.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -3442,18 +3462,20 @@ export const OBSTETRICS_QUESTIONS_PART2: Question[] = [
     "courseId": "c-gyn-maladies-trophoblastiques",
     "questionNumber": 10,
     "type": "QCM",
-    "questionText": "Quelle est la règle d'or du suivi biologique après évacuation complète d'une môle hydatiforme ?",
+    "questionText": "Quelles sont les caractéristiques macroscopiques et microscopiques de la môle hydatiforme complète ? (Choisissez 2 à 3 réponses)",
     "options": [
-      "Dosage hebdomadaire de l'hCG plasmatique totale jusqu'à négativation (taux indétectable 3 semaines consécutives), puis mensuel pendant 6 mois (môle complète)",
-      "Dosage annuel de la TSH uniquement",
-      "Dosage unique à 24 heures post-évacuation puis arrêt de toute surveillance",
-      "Aucun dosage si la patiente ne saigne plus",
-      "Dosage des plaquettes chaque jour pendant 5 ans"
+      "Macroscopiquement, présence de multiples vésicules de 5 à 15 mm.",
+      "Macroscopiquement, aspect en \"grappe de raisin\" avec absence totale de villosités normales.",
+      "Microscopiquement, hyperplasie diffuse du trophoblaste péri-villositaire.",
+      "Microscopiquement, présence d'un axe conjonctivo-vasculaire bien vascularisé.",
+      "Microscopiquement, présence constante d'une cavité amniotique."
     ],
     "correctAnswers": [
-      0
+      0,
+      1,
+      2
     ],
-    "explanation": "La surveillance de la décroissance de l'hCG est la clé de voûte du suivi pour dépister précocement une rétention ou une tumeur trophoblastique gestationnelle (TTG).",
+    "explanation": "Bonne réponse : A, B, C Vésicules 5-15 mm en grappe de raisin et hyperplasie trophoblastique diffuse.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -3463,18 +3485,18 @@ export const OBSTETRICS_QUESTIONS_PART2: Question[] = [
     "courseId": "c-gyn-maladies-trophoblastiques",
     "questionNumber": 11,
     "type": "QCM",
-    "questionText": "Selon les critères FIGO, quelle anomalie de la cinétique des bêta-hCG pose le diagnostic de Tumeur Trophoblastique Gestationnelle (TTG) post-molaire ?",
+    "questionText": "Toutes les propositions suivantes concernant l'évolution favorable d'une môle sont exactes, SAUF :",
     "options": [
-      "Stagnation de l'hCG sur 4 dosages hebdomadaires successifs (J1, J7, J14, J21) OU réascension de l'hCG sur 3 dosages hebdomadaires consécutifs (J1, J7, J14)",
-      "Baisse régulière de 50% de l'hCG chaque semaine",
-      "Négativation complète de l'hCG dès la 2ème semaine",
-      "Présence d'un taux d'hCG normal pour l'absence de grossesse",
-      "Baisse de l'hCG accompagnée d'une perte de poids"
+      "La négativation du BHCG se fait en 8 semaines environ.",
+      "La courbe de décroissance est régulière et exponentielle.",
+      "La rémission complète se définit par 3 dosages hebdomadaires successifs négatifs.",
+      "Après la rémission, un dosage mensuel est utile pendant 1 an.",
+      "L'évolution favorable est caractérisée par une ré-ascension des BHCG après négativation."
     ],
     "correctAnswers": [
-      0
+      4
     ],
-    "explanation": "Les critères FIGO définissent la TTG par : plateau de l'hCG sur 4 mesures consécutives sur au moins 3 semaines, ou réascension sur au moins 3 mesures sur 2 semaines, ou persistance d'hCG détectable à 6 mois.",
+    "explanation": "Bonne réponse : E La ré-ascension des BHCG est un signe d'évolution défavorable (maladie persistante).",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -3484,18 +3506,18 @@ export const OBSTETRICS_QUESTIONS_PART2: Question[] = [
     "courseId": "c-gyn-maladies-trophoblastiques",
     "questionNumber": 12,
     "type": "QCM",
-    "questionText": "Quelle contraception efficace et obligatoire doit être prescrite pendant toute la durée de la surveillance post-molaire ?",
+    "questionText": "Chez une patiente Rhésus négatif, quelle est l'attitude à adopter après l'évacuation d'une môle hydatiforme ?",
     "options": [
-      "Une contraception hormonale efficace (œstroprogestative ou progestative) pour éviter toute grossesse qui fausserait la surveillance des hCG",
-      "Aucune contraception : la grossesse est encouragée immédiatement",
-      "Pose immédiate d'un DIU dans la cavité encore hémorragique",
-      "La ligature tubaire systématique chez toutes les patientes",
-      "L'abstinence périodique non protégée"
+      "Administrer le sérum anti-D uniquement si le mari est Rhésus positif.",
+      "Administrer le sérum anti-D chez toutes les patientes Rh négatif, quel que soit le statut du mari.",
+      "Administrer le sérum anti-D si les agglutinines irrégulières sont positives.",
+      "Ne pas administrer le sérum anti-D car la môle est une tumeur.",
+      "Administrer le sérum anti-D uniquement si la patiente a déjà fait une fausse couche."
     ],
     "correctAnswers": [
       0
     ],
-    "explanation": "Une nouvelle grossesse sécrétant de l'hCG empêcherait de distinguer une rechute maligne d'une grossesse physiologique. Le DIU est évité au début en raison du risque de perforation.",
+    "explanation": "Bonne réponse : A Le sérum anti-D est administré si la femme est Rh négatif, RAI négatives et mari Rh positif.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -3505,18 +3527,18 @@ export const OBSTETRICS_QUESTIONS_PART2: Question[] = [
     "courseId": "c-gyn-maladies-trophoblastiques",
     "questionNumber": 13,
     "type": "QCM",
-    "questionText": "Quel organe est le site métastatique le plus fréquent du choriocarcinome gestationnel ?",
+    "questionText": "Concernant la présentation clinique de la môle hydatiforme partielle, quelle proposition est FAUSSE ?",
     "options": [
-      "Les poumons (métastases pulmonaires en « lâcher de ballons » à la radiographie ou au scanner thoracique)",
-      "La rate",
-      "Les os du tarse",
-      "Le pancréas endocrine",
-      "Le cristallin"
+      "Les manifestations cliniques sont moins importantes que dans la môle complète.",
+      "Le tableau clinique est souvent celui d'un avortement.",
+      "L'embryon meurt en général avant 7-8 semaines d'aménorrhée.",
+      "Si la grossesse se poursuit, le fœtus est toujours normal.",
+      "On peut observer un retard de croissance intra-utérin (RCIU) si la grossesse se poursuit."
     ],
     "correctAnswers": [
-      0
+      3
     ],
-    "explanation": "n raison du tropisme vasculaire hématogène majeur du trophoblaste, les métastases pulmonaires surviennent dans plus de 80% des TTG métastatiques, suivies du vagin et du cerveau.",
+    "explanation": "Bonne réponse : D Le fœtus présente un syndrome polymalformatif sévère.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -3526,18 +3548,20 @@ export const OBSTETRICS_QUESTIONS_PART2: Question[] = [
     "courseId": "c-gyn-maladies-trophoblastiques",
     "questionNumber": 14,
     "type": "QCM",
-    "questionText": "Quel examen d'imagerie doit être réalisé systématiquement dans le bilan d'extension de toute tumeur trophoblastique gestationnelle diagnostiquée ?",
+    "questionText": "Quels sont les critères biologiques définissant une évolution défavorable (Maladie Trophoblastique Persistante) ? (Choisissez 2 à 3 réponses)",
     "options": [
-      "Scanner thoraco-abdomino-pelvien et IRM cérébrale (ou scanner cérébral)",
-      "Radiographie des sinus de la face",
-      "Échographie de la cheville",
-      "Scintigraphie salivaire",
-      "Transit œso-gastro-duodénal"
+      "Un taux de BHCG qui reste positif après 24 semaines (6 mois).",
+      "Une décroissance puis stagnation des taux pendant 3 semaines.",
+      "Une ré-ascension après négativation survenant > 3 mois.",
+      "Une décroissance exponentielle régulière du BHCG jusqu'à négativation en 8 semaines.",
+      "Un taux de BHCG négatif à 3 mois."
     ],
     "correctAnswers": [
-      0
+      0,
+      1,
+      2
     ],
-    "explanation": "Recherche systématique de métastases pulmonaires, hépatiques, pelviennes et cérébrales pour établir le score pronostique FIGO / OMS.",
+    "explanation": "Bonne réponse : A, B, C Critères : persistance > 6 mois, plateau pendant 3 semaines, ou réascension.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -3547,18 +3571,18 @@ export const OBSTETRICS_QUESTIONS_PART2: Question[] = [
     "courseId": "c-gyn-maladies-trophoblastiques",
     "questionNumber": 15,
     "type": "QCM",
-    "questionText": "Quelle chimiothérapie en monothérapie est le traitement de première ligne des tumeurs trophoblastiques gestationnelles à bas risque (score FIGO ≤ 6) ?",
+    "questionText": "Toutes les propositions suivantes concernant l'examen physique d'une patiente atteinte de môle hydatiforme complète sont exactes, SAUF :",
     "options": [
-      "Méthotrexate (associé à l'acide folinique)",
-      "Polychimiothérapie lourde type cisplatine-doxorubicine",
-      "Interféron alpha à forte dose",
-      "Radiothérapie corporelle totale",
-      "Immunothérapie par anticorps anti-CD20 seuls"
+      "L'utérus est mou et augmenté de volume plus que l'âge présumé de la grossesse.",
+      "On peut observer un \"utérus accordéon\" (volume variant d'un jour à l'autre).",
+      "Le ballottement fœtal est présent.",
+      "Le toucher vaginal peut percevoir des kystes lutéiniques bilatéraux.",
+      "L'examen au spéculum peut révéler un saignement avec expulsion de vésicules môlaires."
     ],
     "correctAnswers": [
-      0
+      2
     ],
-    "explanation": "Le Méthotrexate en monothérapie guérit plus de 90% des TTG à bas risque tout en préservant parfaitement la fertilité ultérieure.",
+    "explanation": "Bonne réponse : C Le ballottement fœtal est absent dans la môle complète car il n'y a pas d'embryon.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -3568,18 +3592,18 @@ export const OBSTETRICS_QUESTIONS_PART2: Question[] = [
     "courseId": "c-gyn-maladies-trophoblastiques",
     "questionNumber": 16,
     "type": "QCM",
-    "questionText": "Quel protocole de polychimiothérapie de référence est utilisé dans les tumeurs trophoblastiques gestationnelles à haut risque pronostique (score FIGO ≥ 7) ?",
+    "questionText": "Concernant l'aspect échographique de la môle hydatiforme complète, quelle proposition est FAUSSE ?",
     "options": [
-      "Protocole EMA-CO (Étoposide, Méthotrexate, Actinomycine D, Cyclophosphamide, Oncovin/Vincristine)",
-      "Monothérapie par aspirine",
-      "Cure unique de 5-fluorouracile per os",
-      "Hormonothérapie par tamoxifène",
-      "Antibiotiques oraux simples"
+      "L'échographie est l'examen de choix pour le diagnostic précoce.",
+      "L'aspect typique est celui d'un \"nid d'abeille\" ou \"grappe de raisin\".",
+      "On peut observer des kystes ovariens (kystes lutéiniques).",
+      "L'échographie permet de visualiser un embryon viable.",
+      "L'échographie est systématique avant la sortie de la patiente pour contrôler la vacuité utérine."
     ],
     "correctAnswers": [
-      0
+      3
     ],
-    "explanation": "Le schéma EMA-CO permet d'obtenir une rémission complète dans plus de 85-90% des formes métastatiques à haut risque.",
+    "explanation": "Bonne réponse : D Il n'y a pas d'embryon dans la môle complète.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -3589,18 +3613,18 @@ export const OBSTETRICS_QUESTIONS_PART2: Question[] = [
     "courseId": "c-gyn-maladies-trophoblastiques",
     "questionNumber": 17,
     "type": "QCM",
-    "questionText": "Concernant la guérison du choriocarcinome gestationnel sous chimiothérapie, quelle est la réalité pronostique actuelle ?",
+    "questionText": "Dans quel cas une hystérectomie peut-elle être proposée d'emblée pour une môle hydatiforme ?",
     "options": [
-      "C'est l'un des cancers les plus chimiosensibles et curables en oncologie humaine, avec un taux de guérison global supérieur à 90-95%",
-      "C'est une tumeur totalement résistante à toute forme de chimiothérapie",
-      "L'espérance de vie ne dépasse jamais 3 semaines après le diagnostic",
-      "La mortalité est de 100% à court terme",
-      "Seule la greffe de moelle osseuse allogénique est efficace"
+      "Chez une femme de 25 ans primipare.",
+      "Chez une femme de plus de 40 ans ou multipare présentant une môle géante.",
+      "Systématiquement chez toutes les patientes de plus de 35 ans.",
+      "Uniquement si le curetage aspiratif a échoué.",
+      "Chez une femme Rhésus négatif."
     ],
     "correctAnswers": [
-      0
+      1
     ],
-    "explanation": "Le choriocarcinome est un modèle remarquable de curabilité des tumeurs solides chimiosensibles, avec préservation de la fertilité dans la grande majorité des cas.",
+    "explanation": "Bonne réponse : B Indiquée chez les femmes >40 ans ou multipares avec môle géante.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -3610,18 +3634,20 @@ export const OBSTETRICS_QUESTIONS_PART2: Question[] = [
     "courseId": "c-gyn-maladies-trophoblastiques",
     "questionNumber": 18,
     "type": "QCM",
-    "questionText": "Quelle tumeur trophoblastique rare dérive du trophoblaste intermédiaire du site d'implantation et se caractérise par une faible sécrétion d'hCG mais une sécrétion d'hPL (hormone lactogène placentaire) ?",
+    "questionText": "Concernant la contraception après une môle hydatiforme, quelles propositions sont exactes ? (Choisissez 2 à 3 réponses)",
     "options": [
-      "La tumeur trophoblastique du site d'implantation (TTSI)",
-      "La môle hydatiforme complète classique",
-      "Le tératome mature de l'ovaire",
-      "Le polype endométrial glandulaire",
-      "Le fibrome sous-séreux"
+      "Elle est systématique.",
+      "La contraception oestro-progestative est recommandée pendant 1 an.",
+      "Le DIU est la méthode de choix.",
+      "Une grossesse est autorisée après 1 année de surveillance.",
+      "Une grossesse est autorisée dès que le BHCG est négatif."
     ],
     "correctAnswers": [
-      0
+      0,
+      1,
+      3
     ],
-    "explanation": "La TTSI produit peu d'hCG, est relativement chimiorésistante et son traitement repose principalement sur la chirurgie (hystérectomie).",
+    "explanation": "Bonne réponse : A, B, D Contraception systématique par OP pendant 1 an avant d'autoriser une grossesse.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -3631,18 +3657,18 @@ export const OBSTETRICS_QUESTIONS_PART2: Question[] = [
     "courseId": "c-gyn-maladies-trophoblastiques",
     "questionNumber": 19,
     "type": "QCM",
-    "questionText": "Devant des métrorragies inexpliquées survenant des semaines ou des mois après un avortement, un accouchement à terme ou une GEU, quel dosage biologique simple doit être immédiatement demandé ?",
+    "questionText": "Parmi les propositions suivantes, laquelle n'est PAS un diagnostic différentiel de l'aspect échographique de la môle hydatiforme ?",
     "options": [
-      "Dosage plasmatique quantitatif de l'hCG totale",
-      "Vitesse de sédimentation",
-      "Frottis de dépistage du col",
-      "Bilan d'hémostase standard seul",
-      "Électrophorèse des protéines sériques"
+      "La nécrobiosie aseptique d'un fibrome sous-séreux.",
+      "La grossesse arrêtée ancienne.",
+      "Les kystes ovariens (tumeurs de l'ovaire).",
+      "L'endométriose pelvienne.",
+      "Une GEU."
     ],
     "correctAnswers": [
-      0
+      3
     ],
-    "explanation": "Un choriocarcinome peut survenir après TOUTE grossesse (50% après môle, 25% après avortement/GEU, 25% après accouchement normal). Tout saignement anormal post-gravidique impose un dosage des hCG.",
+    "explanation": "Bonne réponse : D L'endométriose pelvienne n'a pas cet aspect échographique intra-utérin.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -3652,18 +3678,18 @@ export const OBSTETRICS_QUESTIONS_PART2: Question[] = [
     "courseId": "c-gyn-maladies-trophoblastiques",
     "questionNumber": 20,
     "type": "QCM",
-    "questionText": "Quelle lésion métastatique vulvo-vaginale très évocatrice de choriocarcinome se présente sous la forme d'un nodule bleuté hypervascularisé ?",
+    "questionText": "Toutes les propositions suivantes sont des signes généraux ou biologiques possibles de la môle hydatiforme, SAUF :",
     "options": [
-      "Nodule vaginal sous-urétral bleuté, très friable et hémorragique (qu'il ne faut JAMAIS biopsier en consultation)",
-      "Un chancre syphilitique induré blanc",
-      "Une condylomatose acuminée en crête de coq",
-      "Un kyste de la glande de Skene indolore",
-      "Un angiome plan congénital"
+      "Des signes sympathiques exagérés (vomissements).",
+      "Une pré-éclampsie d'apparition précoce.",
+      "Des signes de dysthyroïdie.",
+      "Une hypercalcémie sévère.",
+      "Une anémie."
     ],
     "correctAnswers": [
-      0
+      3
     ],
-    "explanation": "Les métastases vaginales de choriocarcinome sont extrêmement vasculaires. Toute tentative de biopsie risque de provoquer une hémorragie cataclysmique incontrôlable. Le diagnostic est biologique (hCG élevés) et radiologique.",
+    "explanation": "Bonne réponse : D L'hypercalcémie n'est pas un signe de môle hydatiforme.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -3673,18 +3699,18 @@ export const OBSTETRICS_QUESTIONS_PART2: Question[] = [
     "courseId": "c-gyn-maladies-trophoblastiques",
     "questionNumber": 21,
     "type": "QCM",
-    "questionText": "Parmi les facteurs de risque reconnus de survenue d'une môle hydatiforme, quel facteur épidémiologique est classiquement retrouvé ?",
+    "questionText": "Quel est l'objectif de la radiographie du thorax dans le bilan d'une môle hydatiforme ?",
     "options": [
-      "Les âges extrêmes de la reproduction (grossesses avant 15-18 ans et surtout après 40-45 ans)",
-      "La grande multiparité entre 25 et 30 ans",
-      "L'hypertension artérielle essentielle bien traitée",
-      "L'activité sportive professionnelle de haut niveau",
-      "Le tabagisme exclusif du père"
+      "Évaluer la fonction respiratoire.",
+      "Rechercher des métastases pulmonaires.",
+      "Diagnostiquer une tuberculose associée.",
+      "Vérifier la taille du cœur.",
+      "Prévenir une embolie pulmonaire."
     ],
     "correctAnswers": [
-      0
+      1
     ],
-    "explanation": "Le risque de môle complète est multiplié par 5 à 10 après 40 ans et considérablement accru après 45 ans.",
+    "explanation": "Bonne réponse : B Recherche systématique de métastases pulmonaires (lâcher de ballons).",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -3694,18 +3720,20 @@ export const OBSTETRICS_QUESTIONS_PART2: Question[] = [
     "courseId": "c-gyn-maladies-trophoblastiques",
     "questionNumber": 22,
     "type": "QCM",
-    "questionText": "À l'examen histologique d'une môle hydatiforme complète, on retrouve typiquement :",
+    "questionText": "Quels sont les risques ou complications évolutives de la môle hydatiforme ? (Choisissez 2 à 3 réponses)",
     "options": [
-      "Une dégénérescence kystique hydropique de la totalité des villosités choriales, une hyperplasie trophoblastique diffuse circonférentielle et une absence totale de vaisseaux fœtaux",
-      "Des villosités normales avec présence constante d'érythrocytes nucléés fœtaux",
-      "Des cellules musculaires lisses bénignes sans aucun trophoblaste",
-      "Du cartilage bronchique fœtal mature",
-      "Un épithélium malpighien kératinisant"
+      "Le risque hémorragique engageant le pronostic vital.",
+      "La dégénérescence choriocarcinomateuse.",
+      "La maladie trophoblastique persistante.",
+      "Le risque de fausse couche spontanée lors de la grossesse suivante.",
+      "Le risque d'infection urinaire."
     ],
     "correctAnswers": [
-      0
+      0,
+      1,
+      2
     ],
-    "explanation": "Histologie clé de la MHC : œdème hydropique généralisé (« citernes »), prolifération trophoblastique (syncytio et cytotrophoblaste) sans embryon ni vaisseaux fœtaux.",
+    "explanation": "Bonne réponse : A, B, C Hémorragie, transformation maligne et maladie persistante sont les risques majeurs.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -3715,18 +3743,18 @@ export const OBSTETRICS_QUESTIONS_PART2: Question[] = [
     "courseId": "c-gyn-maladies-trophoblastiques",
     "questionNumber": 23,
     "type": "QCM",
-    "questionText": "Quelle complication clinique aiguë précoce peut compliquer une môle hydatiforme au 1er ou début du 2ème trimestre avant 20 SA ?",
+    "questionText": "Concernant la surveillance post-môlaire, quelle proposition est FAUSSE ?",
     "options": [
-      "Prééclampsie précoce (HTA + protéinurie) survenant avant 20 SA, ce qui est quasi pathognomonique de la môle",
-      "Choc anaphylactique au sperme",
-      "Péritonite biliaire par rupture de la vésicule",
-      "Embolie gazeuse artérielle",
-      "Hypercalcémie maligne hypocalciurique"
+      "L'échographie pelvienne est systématique avant la sortie de la patiente.",
+      "Les dosages de BHCG sérique se font tous les 7 jours.",
+      "Les résultats des BHCG sont transcrits sur une courbe semi-logarithmique.",
+      "La surveillance clinique porte sur l'involution utérine et la régression des kystes lutéiniques.",
+      "La radiographie du thorax est réalisée uniquement avant le curetage."
     ],
     "correctAnswers": [
-      0
+      4
     ],
-    "explanation": "Une prééclampsie avant 20 semaines d'aménorrhée doit faire évoquer en tout premier lieu une môle hydatiforme ou un syndrome des antiphospholipides.",
+    "explanation": "Bonne réponse : E La radiographie pulmonaire est répétée 1 mois après l'évacuation.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -3736,18 +3764,20 @@ export const OBSTETRICS_QUESTIONS_PART2: Question[] = [
     "courseId": "c-gyn-maladies-trophoblastiques",
     "questionNumber": 24,
     "type": "QCM",
-    "questionText": "Après rémission complète d'une tumeur trophoblastique gestationnelle sous chimiothérapie, quel délai de contraception est généralement conseillé avant d'autoriser une nouvelle grossesse ?",
+    "questionText": "Devant une absence de négativation des BHCG après évacuation, quelles sont les attitudes correctes ? (Choisissez 2 à 3 réponses)",
     "options": [
-      "Un délai de 12 mois de rémission avec hCG négatifs réguliers",
-      "Aucun délai : autorisation le jour même de la dernière cure",
-      "Une interdiction définitive de toute nouvelle grossesse à vie",
-      "Un délai obligatoire de 15 ans",
-      "Une semaine après la cure"
+      "Évoquer en premier lieu une rétention môlaire.",
+      "Réaliser une échographie pelvienne.",
+      "Réaliser une deuxième aspiration si nécessaire.",
+      "Administrer des prostaglandines pour évacuer l'utérus.",
+      "Attendre 6 mois sans intervention."
     ],
     "correctAnswers": [
-      0
+      0,
+      1,
+      2
     ],
-    "explanation": "Un intervalle de 12 mois permet de s'assurer de l'absence de rechute et d'éliminer les effets potentiellement tératogènes résiduels des cytostatiques.",
+    "explanation": "Bonne réponse : A, B, C Rechercher une rétention par échographie et envisager une 2e aspiration.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -3757,18 +3787,20 @@ export const OBSTETRICS_QUESTIONS_PART2: Question[] = [
     "courseId": "c-gyn-maladies-trophoblastiques",
     "questionNumber": 25,
     "type": "QCM",
-    "questionText": "Dans une grossesse ultérieure chez une patiente ayant des antécédents de môle hydatiforme, quelle surveillance est préconisée ?",
+    "questionText": "Quelles sont les affirmations exactes concernant la môle hydatiforme en général ? (Choisissez 2 à 3 réponses)",
     "options": [
-      "Échographie pelvienne précoce dès 6-8 SA pour confirmer la normalité du sac gestationnel et analyse anatomopathologique du placenta à l'accouchement avec contrôle de l'hCG à 6 semaines du post-partum",
-      "Aucune précaution particulière car la récidive est rigoureusement impossible",
-      "Avortement thérapeutique systématique préventif",
-      "Ligature tubaire de précaution dès le test positif",
-      "Chimiothérapie préventive par méthotrexate pendant toute la grossesse"
+      "C'est une urgence gynécologique.",
+      "C'est une tumeur bénigne potentiellement maligne.",
+      "L'évacuation utérine s'impose une fois le diagnostic posé.",
+      "Le curetage aspiratif se fait sans contrôle échographique.",
+      "L'examen anatomopathologique du produit d'expulsion est facultatif."
     ],
     "correctAnswers": [
-      0
+      0,
+      1,
+      2
     ],
-    "explanation": "Le risque de récidive de môle est d'environ 1 à 2% (10 fois plus élevé que dans la population générale), justifiant une échographie précoce et un contrôle systématique post-partum.",
+    "explanation": "Bonne réponse : A, B, C Urgence gynécologique, bénigne potentiellement maligne, évacuation indispensable.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -3779,18 +3811,18 @@ export const OBSTETRICS_QUESTIONS_PART2: Question[] = [
     "questionNumber": 26,
     "type": "Cas Clinique",
     "clinicalCaseNumber": 1,
-    "questionText": "[Cas Clinique N°1 : Métrorragies en jus de prune et utérus discordeur]\nPatiente de 42 ans, G3P2, aménorrhée de 11 SA. Consulte pour métrorragies brunâtres intermittentes en « jus de prune » et vomissements incoercibles. À l'examen : utérus augmenté de volume correspondant à 16 SA, mou et indolore. Bêta-hCG plasmatique à 240 000 UI/L.\n\nQuestion : Question : Quel diagnostic suspectez-vous et quel examen d'imagerie confirme immédiatement cette hypothèse ?",
+    "questionText": "[Cas Clinique N°1 : Urgence au CHU]\nMme B., 28 ans, G2P1, se présente aux urgences gynécologiques du CHU de Blida pour des métrorragies de sang rouge noirâtre survenant à 12 semaines d'aménorrhée (SA). L'utérus correspond à 18 SA. BHCG = 250 000 UI/L. Échographie : \"nid d'abeille\" sans embryon.\n\nQuestion : Question 1 : Quel est le diagnostic le plus probable ?",
     "options": [
-      "Môle hydatiforme complète ; échographie pelvienne montrant l'image en « tempête de neige » intracavitaire sans embryon et de volumineux kystes théco-lutéiniques bilatéraux.",
-      "Grossesse gémellaire normale sans anomalie.",
-      "Appendicite aiguë avec réaction péritonéale.",
-      "Fibrome utérin en nécrobiose aseptique sans grossesse.",
-      "Grossesse arrêtée simple sans anomalie trophoblastique."
+      "Grossesse arrêtée ancienne.",
+      "Môle hydatiforme complète.",
+      "Môle hydatiforme partielle.",
+      "Grossesse gémellaire avec une môle complète et un fœtus.",
+      "Menace d'avortement spontané."
     ],
     "correctAnswers": [
-      0
+      1
     ],
-    "explanation": "L'association âge maternel, métrorragies foncées, utérus trop grand, hyperémèse gravidique, hCG vertigineux et image échographique floconneuse est typique de la môle complète.",
+    "explanation": "Bonne réponse : B Métrorragies, utérus > terme, BHCG > 100 000, nid d'abeille sans embryon = môle complète.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -3801,18 +3833,18 @@ export const OBSTETRICS_QUESTIONS_PART2: Question[] = [
     "questionNumber": 27,
     "type": "Cas Clinique",
     "clinicalCaseNumber": 2,
-    "questionText": "[Cas Clinique N°2 : Évacuation molaire et protocole opératoire]\nPatiente de 38 ans chez qui le diagnostic de môle hydatiforme complète est posé à 10 SA. L'utérus mesure 14 cm de hauteur utérine.\n\nQuestion : Question : Quelle modalité d'évacuation utérine devez-vous mettre en œuvre ?",
+    "questionText": "[Cas Clinique N°2 : EPH (Hémorragie sévère)]\nMme K., 42 ans, G5P4, admise pour hémorragie massive à 10 SA. Utérus à 22 SA. Môle géante. Patiente Rhésus O négatif, mari O positif, RAI négatives.\n\nQuestion : Question 1 : Face à cette môle géante chez une patiente de 42 ans, quelle intervention chirurgicale peut être proposée d'emblée ?",
     "options": [
-      "Aspiration endo-utérine sous contrôle échographique au bloc opératoire avec canule large, examen anatomopathologique complet de la totalité des débris et surveillance de la rétraction utérine.",
-      "Curetage à la curette tranchante à sec en consultation.",
-      "Déclenchement par perfusion d'ocytocine à forte dose sur col fermé.",
-      "Laparotomie avec hystérotomie corporéale d'emblée.",
-      "Attente de l'expulsion spontanée à domicile."
+      "Curetage aspiratif simple.",
+      "Hystérectomie.",
+      "Salpingectomie bilatérale.",
+      "Kystectomie ovarienne.",
+      "Traitement médicamenteux par méthotrexate."
     ],
     "correctAnswers": [
-      0
+      1
     ],
-    "explanation": "L'aspiration sous contrôle échographique évacue le tissu molaire en limitant le risque de perforation myométriale et d'hémorragie.",
+    "explanation": "Bonne réponse : B Hystérectomie d'emblée recommandée chez la femme >40 ans multipare avec môle géante.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -3823,18 +3855,18 @@ export const OBSTETRICS_QUESTIONS_PART2: Question[] = [
     "questionNumber": 28,
     "type": "Cas Clinique",
     "clinicalCaseNumber": 3,
-    "questionText": "[Cas Clinique N°3 : Plateau de l'hCG et diagnostic de TTG post-molaire]\nJeune femme de 26 ans évacuée d'une môle complète il y a 6 semaines. Les dosages d'hCG hebdomadaires successifs montrent : S3 = 4500 UI/L ; S4 = 4300 UI/L ; S5 = 4450 UI/L ; S6 = 4400 UI/L (stagnation sur 4 dosages).\n\nQuestion : Question : Quel diagnostic devez-vous porter et quel bilan devez-vous réaliser immédiatement ?",
+    "questionText": "[Cas Clinique N°3 : Consultation post-abortum]\nMme L., 22 ans, G1P0, curetage pour fausse couche à 9 SA. Anapath : villosités molaires et embryon. Caryotype : 69XXY.\n\nQuestion : Question 1 : Quel est le mécanisme physiopathologique le plus probable ?",
     "options": [
-      "Tumeur Trophoblastique Gestationnelle (TTG) post-molaire selon les critères FIGO ; réaliser un bilan d'extension (scanner TAP, IRM cérébrale, écho pelvienne) et calculer le score pronostique FIGO.",
-      "Évolution normale de la môle : poursuivre la surveillance sans traitement.",
-      "Nouvelle grossesse intra-utérine débutante.",
-      "Guérison définitive de la maladie molaire.",
-      "Faux positif de laboratoire sans aucune valeur."
+      "Fécondation d'un ovocyte sans génome par un spermatozoïde haploïde qui se duplique.",
+      "Fécondation d'un ovule haploïde par deux spermatozoïdes haploïdes.",
+      "Fécondation d'un ovule diploïde par un spermatozoïde haploïde.",
+      "Mutation génétique du trophoblaste.",
+      "Fécondation d'un ovule par un spermatozoïde diploïde."
     ],
     "correctAnswers": [
-      0
+      1
     ],
-    "explanation": "La stagnation des taux d'hCG sur 4 dosages hebdomadaires successifs affirme la TTG post-molaire imposant le bilan d'extension et la chimiothérapie.",
+    "explanation": "Bonne réponse : B Môle partielle = triploïdie par dispermie dans 85% des cas.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -3845,18 +3877,18 @@ export const OBSTETRICS_QUESTIONS_PART2: Question[] = [
     "questionNumber": 29,
     "type": "Cas Clinique",
     "clinicalCaseNumber": 4,
-    "questionText": "[Cas Clinique N°4 : Prise en charge d'une TTG à bas risque]\nPatiente de 28 ans diagnostiquée avec une TTG post-molaire sans métastase extra-utérine (stade I FIGO), score pronostique OMS évalué à 2 (bas risque).\n\nQuestion : Question : Quel traitement médical de première intention garantit une guérison complète avec préservation de la fertilité ?",
+    "questionText": "[Cas Clinique N°4 : Suivi post-môlaire]\nMme T., 35 ans. BHCG à S1 : 10 000, S2 : 8 000, S3 : 8 200, S4 : 8 100 UI/L.\n\nQuestion : Question 1 : Comment interprétez-vous ces résultats ?",
     "options": [
-      "Monochimiothérapie par Méthotrexate (associé à l'acide folinique) jusqu'à normalisation des hCG plus 2 à 3 cures de consolidation.",
-      "Hystérectomie totale avec ovariectomie bilatérale d'emblée.",
-      "Polychimiothérapie lourde avec autogreffe de moelle.",
-      "Radiothérapie pelvienne externe.",
-      "Abstention thérapeutique complète."
+      "Évolution favorable.",
+      "Rétention môlaire ou maladie trophoblastique persistante.",
+      "Rémission complète.",
+      "Nouvelle grossesse.",
+      "Insuffisance rénale."
     ],
     "correctAnswers": [
-      0
+      1
     ],
-    "explanation": "Les TTG à bas risque répondent remarquablement au Méthotrexate seul avec plus de 90-95% de rémission complète sans chirurgie mutilante.",
+    "explanation": "Bonne réponse : B Stagnation sur 3 semaines = maladie persistante ou rétention.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"
@@ -3867,18 +3899,18 @@ export const OBSTETRICS_QUESTIONS_PART2: Question[] = [
     "questionNumber": 30,
     "type": "Cas Clinique",
     "clinicalCaseNumber": 5,
-    "questionText": "[Cas Clinique N°5 : Choriocarcinome métastatique pulmonaire après accouchement]\nFemme de 30 ans ayant accouché à terme il y a 4 mois sans incident. Consulte pour des hémoptysies répétées et des métrorragies persistantes. La radiographie thoracique montre de multiples opacités nodulaires bilatérales (« lâcher de ballons »). Le taux d'hCG est de 180 000 UI/L.\n\nQuestion : Question : Quel est le diagnostic le plus probable et quel est le pronostic global ?",
+    "questionText": "[Cas Clinique N°5 : Désir de grossesse]\nMme A., 30 ans, rémission complète d'une môle depuis 1 an sous surveillance mensuelle négative. Désir de grossesse.\n\nQuestion : Question 1 : Quelle est la conduite à tenir ?",
     "options": [
-      "Choriocarcinome gestationnel métastatique pulmonaire post-grossesse à terme ; le pronostic reste excellent (> 85-90% de guérison) grâce à la polychimiothérapie adaptée de type EMA-CO.",
-      "Tuberculose pulmonaire miliaire sans rapport avec la grossesse.",
-      "Cancer bronchique primitif à petites cellules de pronostic catastrophique.",
-      "Embolie pulmonaire fibrino-cruorique bilatérale simple.",
-      "Pneumonie à pneumocoque nécrosante."
+      "Lui dire d'attendre encore 2 ans avant toute grossesse.",
+      "L'autoriser à concevoir, mais prévoir un dosage de BHCG 3 mois après l'accouchement avec étude anatomopathologique du placenta.",
+      "Lui prescrire une contraception définitive.",
+      "Réaliser une hystérectomie préventive.",
+      "Lui dire qu'elle ne pourra jamais avoir d'enfant."
     ],
     "correctAnswers": [
-      0
+      1
     ],
-    "explanation": "Le choriocarcinome post-accouchement à terme est une tumeur hautement vasculaire métastasant aux poumons, mais qui demeure exceptionnellement curable sous polychimiothérapie spécialisée (EMA-CO).",
+    "explanation": "Bonne réponse : B Grossesse autorisée après 1 an de rémission complète avec contrôle post-partum.",
     "difficulty": "Concours Résidanat",
     "module": "mod-5-gyn",
     "academicYear": "5ème Année"

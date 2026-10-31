@@ -4,15 +4,186 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Présentations Défléchies - Révision Intensive</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #0f172a;
+            --teal: #0d9488;
+            --teal-light: #ccfbf1;
+            --slate: #475569;
+            --slate-light: #f1f5f9;
+            --red: #be123c;
+            --red-light: #ffe4e6;
+            --white: #ffffff;
+            --bg: #f8fafc;
+            --border: #e2e8f0;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--bg);
+            color: var(--navy);
+            line-height: 1.6;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 40px;
+            padding: 30px;
+            background: linear-gradient(135deg, var(--navy) 0%, var(--teal) 100%);
+            border-radius: 16px;
+            color: var(--white);
+            box-shadow: 0 10px 25px rgba(13, 148, 136, 0.2);
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        header p {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            color: var(--navy);
+            margin: 40px 0 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--teal);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card {
+            background: var(--white);
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            border-left: 6px solid var(--teal);
+            transition: transform 0.2s;
+        }
+
+        .card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        .card.danger {
+            border-left-color: var(--red);
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .badge-teal { background-color: var(--teal-light); color: var(--teal); }
+        .badge-navy { background-color: #e0e7ff; color: var(--navy); }
+        .badge-red { background-color: var(--red-light); color: var(--red); }
+        .badge-slate { background-color: var(--slate-light); color: var(--slate); }
+
+        .question-text {
+            font-weight: 600;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+        }
+
+        .options {
+            list-style: none;
+            padding-left: 0;
+        }
+
+        .options li {
+            padding: 10px 15px;
+            margin-bottom: 8px;
+            background: var(--slate-light);
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            transition: background 0.2s;
+        }
+
+        .options li:hover {
+            background: #e2e8f0;
+        }
+
+        details {
+            margin-top: 15px;
+            background: #f0fdfa;
+            border: 1px solid #99f6e4;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        summary {
+            padding: 12px 15px;
+            font-weight: 600;
+            color: var(--teal);
+            cursor: pointer;
+            background: #ccfbf1;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        summary::-webkit-details-marker {
+            display: none;
+        }
+
+        summary::before {
+            content: "▶";
+            font-size: 0.8rem;
+            transition: transform 0.2s;
+        }
+
+        details[open] summary::before {
+            transform: rotate(90deg);
+        }
+
+        .explanation {
+            padding: 15px;
+            font-size: 0.95rem;
+            color: var(--slate);
+            border-top: 1px solid #99f6e4;
+        }
+
+        .explanation strong {
+            color: var(--navy);
+        }
+    </style>
 </head>
 <body>
+
 <div class="container">
+
     <header>
         <h1>Les Présentations Défléchies</h1>
         <p>Préparation Intensive - Gynécologie Obstétrique (5ème Année)</p>
     </header>
 
-    <!-- SECTION 1 : QCM -->
     <h2 class="section-title">1. Banque de 25 QCM Exigeants</h2>
 
     <!-- Q1 -->
@@ -50,7 +221,7 @@
             <summary>Voir la correction & l'explication</summary>
             <div class="explanation">
                 <strong>Réponses : A, C, E.</strong><br>
-                Les causes fœtales incluent la dolichocéphalie, l'hypertonie des extenseurs du cou, et la macrosomie. Bassin rétréci et fibrome sont maternels.
+                Les causes fœtales incluent la dolichocéphalie, l'hypertonie des muscles extenseurs du cou, et la macrosomie.
             </div>
         </details>
     </div>
@@ -90,7 +261,7 @@
             <summary>Voir la correction & l'explication</summary>
             <div class="explanation">
                 <strong>Réponse : B.</strong><br>
-                Le diamètre présenté est le syncipito-mentonnier (13,5 cm), supérieur aux diamètres d'un bassin normal.
+                Dans la présentation du front, le diamètre syncipito-mentonnier (13,5 cm) est supérieur aux diamètres du bassin normal.
             </div>
         </details>
     </div>
@@ -110,7 +281,7 @@
             <summary>Voir la correction & l'explication</summary>
             <div class="explanation">
                 <strong>Réponse : E.</strong><br>
-                La présentation du bregma est potentiellement dystocique (40% de césarienne).
+                La présentation du bregma est partiellement dystocique (40% césarienne, 40% forceps).
             </div>
         </details>
     </div>
@@ -130,7 +301,7 @@
             <summary>Voir la correction & l'explication</summary>
             <div class="explanation">
                 <strong>Réponse : B.</strong><br>
-                Le menton doit impérativement se placer sous la symphyse pubienne (mento-pubien).
+                Le menton doit obligatoirement tourner en avant sous la symphyse pubienne (mento-pubien).
             </div>
         </details>
     </div>
@@ -150,7 +321,7 @@
             <summary>Voir la correction & l'explication</summary>
             <div class="explanation">
                 <strong>Réponses : A, E.</strong><br>
-                Perception de la bouche (différente de l'anus par gencives/langue), des arcades et du nez.
+                La perception des structures propres de la face (bouche avec langue/gencives, arcades orbitaires, nez) permet de distinguer la face du siège.
             </div>
         </details>
     </div>
@@ -170,7 +341,7 @@
             <summary>Voir la correction & l'explication</summary>
             <div class="explanation">
                 <strong>Réponse : D.</strong><br>
-                Si la face n'est pas engagée au-dessus du détroit supérieur, la césarienne est l'intervention la mieux adaptée.
+                Si la face n'est pas engagée au-dessus du DS, la césarienne est indiquée.
             </div>
         </details>
     </div>
@@ -190,7 +361,7 @@
             <summary>Voir la correction & l'explication</summary>
             <div class="explanation">
                 <strong>Réponse : B.</strong><br>
-                Enclavement avec butée du menton contre le sacrum (mortalité fœtale 33%).
+                L'enclavement de la tête par butée du menton contre le sacrum (33% de mortalité fœtale).
             </div>
         </details>
     </div>
@@ -210,7 +381,7 @@
             <summary>Voir la correction & l'explication</summary>
             <div class="explanation">
                 <strong>Réponse : B.</strong><br>
-                Elle est secondaire, conséquence d'un travail prolongé, il n'y a pas de front mobile.
+                La présentation du front est secondaire au travail prolongé, il n'y a pas de front mobile.
             </div>
         </details>
     </div>
@@ -230,7 +401,7 @@
             <summary>Voir la correction & l'explication</summary>
             <div class="explanation">
                 <strong>Réponses : A, B, E.</strong><br>
-                On perçoit le bregma, les arcades sourcilières, les globes oculaires et la racine du nez (repère).
+                Bregma d'un côté, arcades sourcilières, globes oculaires et racine du nez à l'opposé (bouche et menton inaccessibles).
             </div>
         </details>
     </div>
@@ -250,7 +421,7 @@
             <summary>Voir la correction & l'explication</summary>
             <div class="explanation">
                 <strong>Réponses : A, B, C.</strong><br>
-                Complications maternelles : rupture utérine, délabrements périnéaux, fistules urinaires. D et E sont fœtales.
+                Rupture utérine, délabrements périnéaux et fistules urinaires sont les complications maternelles.
             </div>
         </details>
     </div>
@@ -270,7 +441,7 @@
             <summary>Voir la correction & l'explication</summary>
             <div class="explanation">
                 <strong>Réponse : B.</strong><br>
-                La racine du nez sous la symphyse pubienne sert de point de pivot.
+                La racine du nez sous la symphyse pubienne sert de point de pivot lors du dégagement du bregma.
             </div>
         </details>
     </div>
@@ -290,7 +461,7 @@
             <summary>Voir la correction & l'explication</summary>
             <div class="explanation">
                 <strong>Réponses : A, D, E.</strong><br>
-                Hydramnios, placenta prævia et anomalies du cordon sont annexielles.
+                Hydramnios, placenta prævia et anomalies du cordon sont des causes annexielles.
             </div>
         </details>
     </div>
@@ -310,7 +481,7 @@
             <summary>Voir la correction & l'explication</summary>
             <div class="explanation">
                 <strong>Réponse : B.</strong><br>
-                Sous-mento-bregmatique (9,5 cm).
+                Le diamètre sous-mento-bregmatique (9,5 cm) grâce à la déflexion maximale.
             </div>
         </details>
     </div>
@@ -330,7 +501,7 @@
             <summary>Voir la correction & l'explication</summary>
             <div class="explanation">
                 <strong>Réponse : B.</strong><br>
-                Le « coup de hache » (dépression nucale profonde).
+                Le coup de hache (dépression nucale profonde entre le dos et l'occiput).
             </div>
         </details>
     </div>
@@ -350,7 +521,7 @@
             <summary>Voir la correction & l'explication</summary>
             <div class="explanation">
                 <strong>Réponse : B.</strong><br>
-                Ligne horizontale passant par le menton plus basse que celle passant par le Bregma.
+                La ligne horizontale passant par le menton est plus basse que celle passant par le bregma.
             </div>
         </details>
     </div>
@@ -370,7 +541,7 @@
             <summary>Voir la correction & l'explication</summary>
             <div class="explanation">
                 <strong>Réponses : A, B, D, E.</strong><br>
-                Faciès de boxeur, opisthotonos, raucité du cri, troubles de déglutition. La BSS siège sur la face.
+                Faciès de boxeur, opisthotonos, raucité du cri et troubles de déglutition.
             </div>
         </details>
     </div>
@@ -390,7 +561,7 @@
             <summary>Voir la correction & l'explication</summary>
             <div class="explanation">
                 <strong>Réponse : B.</strong><br>
-                Préserver les membranes le plus longtemps possible (TV rares et prudents).
+                Préserver les membranes le plus longtemps possible, TV rares et prudents.
             </div>
         </details>
     </div>
@@ -410,7 +581,7 @@
             <summary>Voir la correction & l'explication</summary>
             <div class="explanation">
                 <strong>Réponse : B.</strong><br>
-                Mortalité fœtale de 33% en cas de défaut de rotation (enclavement).
+                Mortalité fœtale de 33% en cas de défaut de rotation antérieure (enclavement).
             </div>
         </details>
     </div>
@@ -430,7 +601,7 @@
             <summary>Voir la correction & l'explication</summary>
             <div class="explanation">
                 <strong>Réponse : B.</strong><br>
-                Possible exceptionnellement si poids fœtal &lt; 2000g.
+                Possible exceptionnellement si poids < 2000g par frottement dur.
             </div>
         </details>
     </div>
@@ -450,7 +621,7 @@
             <summary>Voir la correction & l'explication</summary>
             <div class="explanation">
                 <strong>Réponse : B.</strong><br>
-                BSS créant le « signe de la croix » masquant les repères.
+                La bosse séro-sanguine peut réaliser le "signe de la croix" masquant le bregma.
             </div>
         </details>
     </div>
@@ -470,7 +641,7 @@
             <summary>Voir la correction & l'explication</summary>
             <div class="explanation">
                 <strong>Réponse : B.</strong><br>
-                Diamètres obliques (surtout le gauche).
+                Engagement préférentiel dans l'un des diamètres obliques (surtout le gauche).
             </div>
         </details>
     </div>
@@ -488,9 +659,9 @@
         </ul>
         <details>
             <summary>Voir la correction & l'explication</summary>
-            <div class="explanation">
+            <div class="correction-content">
                 <strong>Réponse : B.</strong><br>
-                L'épisiotomie protège le périnée maternel.
+                Épisiotomie recommandée pour protéger le périnée face au diamètre occipito-frontal.
             </div>
         </details>
     </div>
@@ -510,7 +681,7 @@
             <summary>Voir la correction & l'explication</summary>
             <div class="explanation">
                 <strong>Réponse : B.</strong><br>
-                Face (souvent voie basse si antérieure) &gt; Bregma (intermédiaire, 40% césarienne) &gt; Front (voie basse impossible).
+                Face (souvent eutocique si mento-pubien) > Bregma (partiellement dystocique) > Front (toujours dystocique).
             </div>
         </details>
     </div>
@@ -519,159 +690,237 @@
     <h2 class="section-title">2. Cas Cliniques Hospitaliers (Contexte Algérien)</h2>
 
     <!-- Cas 1 -->
-    <div class="card">
+    <div class="card danger">
         <span class="badge badge-red">Cas Clinique N°1 - CHU d'Alger (Urgences)</span>
         <div class="question-text">
-            Mme B., primipare de 24 ans, 39 SA, en travail prolongé. Palpation : dépression profonde entre la tête et le dos (coup de hache). TV (dilatation 6 cm, membranes intactes) : arcades orbitaires, nez, bouche. Menton perçu en arrière à droite.
+            <strong>Énoncé :</strong> Une patiente primipare de 24 ans, à 39 SA, se présente aux urgences pour un travail prolongé. L'utérus est développé longitudinalement. À la palpation, on note une dépression profonde entre la tête et le dos (coup de hache). Au TV (dilatation à 6 cm, membranes intactes), on perçoit les arcades orbitaires, le nez et la bouche. Le menton est perçu en arrière à droite.
         </div>
-        <div class="question-text">Q1. Quel est votre diagnostic précis ?</div>
-        <ul class="options">
-            <li>A. Présentation du front en variété naso-iliaque droite postérieure.</li>
-            <li>B. Présentation de la face en variété mento-iliaque droite postérieure (MIDP).</li>
-            <li>C. Présentation du bregma en variété fronto-iliaque droite postérieure.</li>
-            <li>D. Présentation du siège décomplété.</li>
-            <li>E. Présentation de la face en variété mento-iliaque droite antérieure (MIDA).</li>
-        </ul>
-        <details><summary>Correction Q1</summary><div class="explanation"><strong>Réponse : B.</strong> Face en MIDP.</div></details>
+        
+        <div style="margin-top: 15px; border-top: 1px solid var(--border); padding-top: 15px;">
+            <div class="question-text">Q1. Quel est votre diagnostic précis ?</div>
+            <ul class="options">
+                <li>A. Présentation du front en variété naso-iliaque droite postérieure.</li>
+                <li>B. Présentation de la face en variété mento-iliaque droite postérieure (MIDP).</li>
+                <li>C. Présentation du bregma en variété fronto-iliaque droite postérieure.</li>
+                <li>D. Présentation du siège décomplété.</li>
+                <li>E. Présentation de la face en variété mento-iliaque droite antérieure (MIDA).</li>
+            </ul>
+            <details>
+                <summary>Correction Q1</summary>
+                <div class="explanation">
+                    <strong>Réponse : B.</strong> La perception des arcades, du nez et de la bouche confirme la face. Le menton (repère) est perçu en arrière à droite, donc MIDP. <br>
+                    <em>Pourquoi les autres sont fausses :</em> A (front) ne permet pas de percevoir la bouche. C (bregma) ne permet pas de percevoir le nez/bouche. D (siège) ne présente pas ces structures. E serait en avant.
+                </div>
+            </details>
 
-        <div class="question-text">Q2. Quelle est la complication majeure à craindre si le travail se poursuit ainsi ?</div>
-        <ul class="options">
-            <li>A. La procidence du cordon.</li>
-            <li>B. L'enclavement de la tête par butée du menton contre le sacrum.</li>
-            <li>C. La rupture utérine sur bassin rétréci.</li>
-            <li>D. L'hydrocéphalie fœtale.</li>
-            <li>E. La présentation du front secondaire.</li>
-        </ul>
-        <details><summary>Correction Q2</summary><div class="explanation"><strong>Réponse : B.</strong> Enclavement par butée du menton contre le sacrum.</div></details>
+            <div class="question-text" style="margin-top: 15px;">Q2. Quelle est la complication majeure à craindre si le travail se poursuit ainsi ?</div>
+            <ul class="options">
+                <li>A. La procidence du cordon.</li>
+                <li>B. L'enclavement de la tête par butée du menton contre le sacrum.</li>
+                <li>C. La rupture utérine sur bassin rétréci.</li>
+                <li>D. L'hydrocéphalie fœtale.</li>
+                <li>E. La présentation du front secondaire.</li>
+            </ul>
+            <details>
+                <summary>Correction Q2</summary>
+                <div class="explanation">
+                    <strong>Réponse : B.</strong> En MIDP, le menton tente de tourner en arrière mais bute contre le sacrum, empêchant la descente. C'est l'enclavement, avec un risque de mortalité fœtale de 33%.
+                </div>
+            </details>
 
-        <div class="question-text">Q3. Quelle est votre conduite à tenir immédiate ?</div>
-        <ul class="options">
-            <li>A. Attendre la rotation spontanée en avant.</li>
-            <li>B. Rompre la poche des eaux pour accélérer.</li>
-            <li>C. Réaliser une césarienne en urgence.</li>
-            <li>D. Appliquer des forceps pour aider la rotation.</li>
-            <li>E. Administrer des ocytociques.</li>
-        </ul>
-        <details><summary>Correction Q3</summary><div class="explanation"><strong>Réponse : C.</strong> Césarienne en urgence.</div></details>
+            <div class="question-text" style="margin-top: 15px;">Q3. Quelle est votre conduite à tenir immédiate ?</div>
+            <ul class="options">
+                <li>A. Attendre la rotation spontanée en avant.</li>
+                <li>B. Rompre la poche des eaux pour accélérer.</li>
+                <li>C. Réaliser une césarienne en urgence.</li>
+                <li>D. Appliquer des forceps pour aider la rotation.</li>
+                <li>E. Administrer des ocytociques.</li>
+            </ul>
+            <details>
+                <summary>Correction Q3</summary>
+                <div class="explanation">
+                    <strong>Réponse : C.</strong> La face en variété postérieure (MIDP) est une indication formelle de césarienne car la rotation en avant est compromise et l'enclavement est imminent ou déjà présent.
+                </div>
+            </details>
+        </div>
     </div>
 
     <!-- Cas 2 -->
     <div class="card">
         <span class="badge badge-teal">Cas Clinique N°2 - EPH de Blida</span>
         <div class="question-text">
-            Patiente de 30 ans, G3P2, 40 SA, HU 38 cm. Col long et fermé.
+            <strong>Énoncé :</strong> Une patiente de 30 ans, G3P2, à 40 SA, consulte pour une absence de contractions mais une hauteur utérine à 38 cm. L'échographie révèle un fœtus en présentation céphalique avec un diamètre bipariétal normal. À l'examen, le col est long et fermé. La patiente est à terme.
         </div>
-        <div class="question-text">Q1. Comment suspectez-vous une présentation défléchie à l'examen clinique ?</div>
-        <ul class="options">
-            <li>A. Par la palpation de la petite fontanelle.</li>
-            <li>B. Par la perception du "coup de hache" et une tête haute et mobile.</li>
-            <li>C. Par la perception du sillon inter-fessier.</li>
-            <li>D. Par la présence de contractions utérines régulières.</li>
-            <li>E. Par l'auscultation des BCF au niveau de l'ombilic.</li>
-        </ul>
-        <details><summary>Correction Q1</summary><div class="explanation"><strong>Réponse : B.</strong> Perception du coup de hache et tête haute.</div></details>
-
-        <div class="question-text">Q2. Si l'échographie révèle un fœtus avec une tumeur du cou, quelle est l'étiologie de la déflexion ?</div>
-        <ul class="options">
-            <li>A. Cause maternelle.</li>
-            <li>B. Cause fœtale.</li>
-            <li>C. Cause annexielle.</li>
-            <li>D. Cause iatrogène.</li>
-            <li>E. Idiopathique.</li>
-        </ul>
-        <details><summary>Correction Q2</summary><div class="explanation"><strong>Réponse : B.</strong> Cause fœtale.</div></details>
+        
+        <div style="margin-top: 15px; border-top: 1px solid var(--border); padding-top: 15px;">
+            <div class="question-text">Q1. Le diagnostic de présentation défléchie ne peut être fait qu'au travail. Comment suspectez-vous ce diagnostic à l'examen clinique ?</div>
+            <ul class="options">
+                <li>A. Par la palpation de la petite fontanelle.</li>
+                <li>B. Par la perception du "coup de hache" et une tête haute et mobile.</li>
+                <li>C. Par la perception du sillon inter-fessier.</li>
+                <li>D. Par la présence de contractions utérines régulières.</li>
+                <li>E. Par l'auscultation des BCF au niveau de l'ombilic.</li>
+            </ul>
+            <details>
+                <summary>Correction Q1</summary>
+                <div class="explanation">
+                    <strong>Réponse : B.</strong> La tête est haute, peu mobile, et la palpation retrouve le coup de hache (nuque).
+                </div>
+            </details>
+            
+            <div class="question-text" style="margin-top: 15px;">Q2. Si l'échographie révèle un fœtus avec une tumeur du cou, quelle est l'étiologie de la déflexion ?</div>
+            <ul class="options">
+                <li>A. Cause maternelle.</li>
+                <li>B. Cause fœtale.</li>
+                <li>C. Cause annexielle.</li>
+                <li>D. Cause iatrogène.</li>
+                <li>E. Idiopathique.</li>
+            </ul>
+            <details>
+                <summary>Correction Q2</summary>
+                <div class="explanation">
+                    <strong>Réponse : B.</strong> Les malformations fœtales (tumeurs du cou, vertébrales) sont des causes fœtales de déflexion.
+                </div>
+            </details>
+        </div>
     </div>
 
     <!-- Cas 3 -->
-    <div class="card">
+    <div class="card danger">
         <span class="badge badge-red">Cas Clinique N°3 - Maternité de Sétif</span>
         <div class="question-text">
-            Primipare de 28 ans, 41 SA, travail depuis 12h, dilatation 8 cm, membranes rompues. TV : fontanelle losangique (bregma), sutures sagittales, arcades sourcilières, nez au centre. Petite fontanelle non perçue.
+            <strong>Énoncé :</strong> Une primipare de 28 ans, à 41 SA, est en travail depuis 12 heures. La dilatation est à 8 cm. La poche des eaux est rompue. Au TV, on perçoit une fontanelle losangique (bregma), les sutures sagittales et les arcades sourcilières. Le nez est au centre. La petite fontanelle n'est pas perçue.
         </div>
-        <div class="question-text">Q1. De quelle présentation s'agit-il ?</div>
-        <ul class="options">
-            <li>A. Présentation du sommet.</li>
-            <li>B. Présentation de la face.</li>
-            <li>C. Présentation du front.</li>
-            <li>D. Présentation du bregma.</li>
-            <li>E. Présentation du siège.</li>
-        </ul>
-        <details><summary>Correction Q1</summary><div class="explanation"><strong>Réponse : C.</strong> Présentation du front.</div></details>
+        
+        <div style="margin-top: 15px; border-top: 1px solid var(--border); padding-top: 15px;">
+            <div class="question-text">Q1. De quelle présentation s'agit-il ?</div>
+            <ul class="options">
+                <li>A. Présentation du sommet.</li>
+                <li>B. Présentation de la face.</li>
+                <li>C. Présentation du front.</li>
+                <li>D. Présentation du bregma.</li>
+                <li>E. Présentation du siège.</li>
+            </ul>
+            <details>
+                <summary>Correction Q1</summary>
+                <div class="explanation">
+                    <strong>Réponse : C.</strong> La perception du bregma, des arcades sourcilières, du nez et l'absence de la petite fontanelle et de la bouche orientent vers le front (déflexion 2/3).
+                </div>
+            </details>
 
-        <div class="question-text">Q2. Quel est le diamètre engagé dans le détroit supérieur ?</div>
-        <ul class="options">
-            <li>A. Sous-mento-bregmatique (9,5 cm).</li>
-            <li>B. Occipito-frontal (12 cm).</li>
-            <li>C. Syncipito-mentonnier (13,5 cm).</li>
-            <li>D. Bipariétal (9,5 cm).</li>
-            <li>E. Front-occipital (13 cm).</li>
-        </ul>
-        <details><summary>Correction Q2</summary><div class="explanation"><strong>Réponse : C.</strong> Syncipito-mentonnier (13,5 cm).</div></details>
+            <div class="question-text" style="margin-top: 15px;">Q2. Quel est le diamètre engagé dans le détroit supérieur ?</div>
+            <ul class="options">
+                <li>A. Sous-mento-bregmatique (9,5 cm).</li>
+                <li>B. Occipito-frontal (12 cm).</li>
+                <li>C. Syncipito-mentonnier (13,5 cm).</li>
+                <li>D. Bipariétal (9,5 cm).</li>
+                <li>E. Front-occipital (13 cm).</li>
+            </ul>
+            <details>
+                <summary>Correction Q2</summary>
+                <div class="explanation">
+                    <strong>Réponse : C.</strong> Le front présente le diamètre syncipito-mentonnier (13,5 cm) qui est irréductible et supérieur aux diamètres du bassin normal.
+                </div>
+            </details>
 
-        <div class="question-text">Q3. Quelle est la meilleure attitude thérapeutique ?</div>
-        <ul class="options">
-            <li>A. Attendre la fin de la dilatation et laisser la nature faire.</li>
-            <li>B. Réaliser une césarienne en urgence.</li>
-            <li>C. Appliquer des forceps.</li>
-            <li>D. Faire une version par manœuvre interne.</li>
-            <li>E. Utiliser la ventouse.</li>
-        </ul>
-        <details><summary>Correction Q3</summary><div class="explanation"><strong>Réponse : B.</strong> Césarienne en urgence.</div></details>
+            <div class="question-text" style="margin-top: 15px;">Q3. Quelle est la meilleure attitude thérapeutique ?</div>
+            <ul class="options">
+                <li>A. Attendre la fin de la dilatation et laisser la nature faire.</li>
+                <li>B. Réaliser une césarienne en urgence.</li>
+                <li>C. Appliquer des forceps.</li>
+                <li>D. Faire une version par manœuvre interne.</li>
+                <li>E. Utiliser la ventouse.</li>
+            </ul>
+            <details>
+                <summary>Correction Q3</summary>
+                <div class="explanation">
+                    <strong>Réponse : B.</strong> Le front est hautement dystocique et l'accouchement par voie basse est impossible (sauf <2000g). La césarienne est obligatoire.
+                </div>
+            </details>
+        </div>
     </div>
 
     <!-- Cas 4 -->
     <div class="card">
         <span class="badge badge-slate">Cas Clinique N°4 - CHU de Constantine</span>
         <div class="question-text">
-            Multipare de 35 ans, 38 SA, légère déflexion. Écho : diamètre occipito-frontal 12 cm. TV : 4 angles du bregma, nez sous la symphyse.
+            <strong>Énoncé :</strong> Une multipare de 35 ans, à 38 SA, présente une présentation céphalique avec une légère déflexion. L'échographie note un diamètre occipito-frontal de 12 cm. La patiente entre en travail. Au TV, on perçoit les 4 angles du bregma. Le nez est perçu sous la symphyse.
         </div>
-        <div class="question-text">Q1. Quel est le diagnostic exact ?</div>
-        <ul class="options">
-            <li>A. Présentation de la face.</li>
-            <li>B. Présentation du front.</li>
-            <li>C. Présentation du bregma.</li>
-            <li>D. Présentation du sommet.</li>
-            <li>E. Présentation du siège.</li>
-        </ul>
-        <details><summary>Correction Q1</summary><div class="explanation"><strong>Réponse : C.</strong> Présentation du bregma.</div></details>
+        
+        <div style="margin-top: 15px; border-top: 1px solid var(--border); padding-top: 15px;">
+            <div class="question-text">Q1. Quel est le diagnostic exact ?</div>
+            <ul class="options">
+                <li>A. Présentation de la face.</li>
+                <li>B. Présentation du front.</li>
+                <li>C. Présentation du bregma.</li>
+                <li>D. Présentation du sommet.</li>
+                <li>E. Présentation du siège.</li>
+            </ul>
+            <details>
+                <summary>Correction Q1</summary>
+                <div class="explanation">
+                    <strong>Réponse : C.</strong> La perception des 4 angles du bregma, l'absence de la petite fontanelle et le diamètre occipito-frontal (12 cm) sont caractéristiques du bregma (déflexion 1/3).
+                </div>
+            </details>
 
-        <div class="question-text">Q2. Quel est le pronostic de cette présentation ?</div>
-        <ul class="options">
-            <li>A. Toujours eutocique.</li>
-            <li>B. Partiellement dystocique (40% de césarienne, 40% d'extractions).</li>
-            <li>C. Toujours dystocique (césarienne obligatoire).</li>
-            <li>D. Mortalité fœtale de 33%.</li>
-            <li>E. Impossibilité totale d'accouchement par voie basse.</li>
-        </ul>
-        <details><summary>Correction Q2</summary><div class="explanation"><strong>Réponse : B.</strong> Partiellement dystocique.</div></details>
+            <div class="question-text" style="margin-top: 15px;">Q2. Quel est le pronostic de cette présentation ?</div>
+            <ul class="options">
+                <li>A. Toujours eutocique.</li>
+                <li>B. Partiellement dystocique (40% de césarienne, 40% d'extractions).</li>
+                <li>C. Toujours dystocique (césarienne obligatoire).</li>
+                <li>D. Mortalité fœtale de 33%.</li>
+                <li>E. Impossibilité totale d'accouchement par voie basse.</li>
+            </ul>
+            <details>
+                <summary>Correction Q2</summary>
+                <div class="explanation">
+                    <strong>Réponse : B.</strong> Le bregma est une présentation intermédiaire, potentiellement dystocique, avec 40% de césariennes et 40% d'extractions instrumentales.
+                </div>
+            </details>
+        </div>
     </div>
 
     <!-- Cas 5 -->
-    <div class="card">
+    <div class="card danger">
         <span class="badge badge-red">Cas Clinique N°5 - Urgences Gynéco (Oran)</span>
         <div class="question-text">
-            Nouveau-né admis après extraction instrumentale difficile : faciès œdématié de boxeur, ecchymoses paupières/joues, attitude en opisthotonos, cri rauque.
+            <strong>Énoncé :</strong> Un nouveau-né est admis en néonatologie après un accouchement par voie basse difficile (extraction instrumentale). L'examen révèle un faciès très œdématié, des ecchymoses sur les paupières et les joues, une attitude en opisthotonos, et un cri rauque.
         </div>
-        <div class="question-text">Q1. Quel type de présentation défléchie a très probablement précédé cet accouchement ?</div>
-        <ul class="options">
-            <li>A. Présentation du sommet.</li>
-            <li>B. Présentation du bregma.</li>
-            <li>C. Présentation du front.</li>
-            <li>D. Présentation de la face.</li>
-            <li>E. Présentation du siège.</li>
-        </ul>
-        <details><summary>Correction Q1</summary><div class="explanation"><strong>Réponse : D.</strong> Présentation de la face.</div></details>
+        
+        <div style="margin-top: 15px; border-top: 1px solid var(--border); padding-top: 15px;">
+            <div class="question-text">Q1. Quel type de présentation défléchie a très probablement précédé cet accouchement ?</div>
+            <ul class="options">
+                <li>A. Présentation du sommet.</li>
+                <li>B. Présentation du bregma.</li>
+                <li>C. Présentation du front.</li>
+                <li>D. Présentation de la face.</li>
+                <li>E. Présentation du siège.</li>
+            </ul>
+            <details>
+                <summary>Correction Q1</summary>
+                <div class="explanation">
+                    <strong>Réponse : D.</strong> Le "faciès de boxeur", l'opisthotonos et la raucité du cri sont les phénomènes plastiques classiques de la présentation de la face.
+                </div>
+            </details>
 
-        <div class="question-text">Q2. Quel est le mécanisme physiopathologique de l'opisthotonos ?</div>
-        <ul class="options">
-            <li>A. Une paralysie du plexus brachial.</li>
-            <li>B. Une hypertonie des muscles extenseurs du cou.</li>
-            <li>C. Une hémorragie intracrânienne.</li>
-            <li>D. Une luxation de la hanche.</li>
-            <li>E. Une hypoxie sévère.</li>
-        </ul>
-        <details><summary>Correction Q2</summary><div class="explanation"><strong>Réponse : B.</strong> Hypertonie des muscles extenseurs du cou.</div></details>
+            <div class="question-text" style="margin-top: 15px;">Q2. Quel est le mécanisme physiopathologique de l'opisthotonos ?</div>
+            <ul class="options">
+                <li>A. Une paralysie du plexus brachial.</li>
+                <li>B. Une hypertonie des muscles extenseurs du cou.</li>
+                <li>C. Une hémorragie intracrânienne.</li>
+                <li>D. Une luxation de la hanche.</li>
+                <li>E. Une hypoxie sévère.</li>
+            </ul>
+            <details>
+                <summary>Correction Q2</summary>
+                <div class="explanation">
+                    <strong>Réponse : B.</strong> L'extension prolongée du cou due à la déflexion maximale entraîne une hypertonie des muscles extenseurs, donnant cette attitude.
+                </div>
+            </details>
+        </div>
     </div>
+
 </div>
+
 </body>
 </html>

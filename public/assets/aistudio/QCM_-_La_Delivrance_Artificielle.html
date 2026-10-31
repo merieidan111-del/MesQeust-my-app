@@ -3,732 +3,1146 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>La Délivrance Artificielle & Révision Utérine | Révision 5ème Année Médecine</title>
+<title>Délivrance Artificielle — Révision & QCM (5e Année Médecine)</title>
+<style>
+  :root{
+    --navy:#0f2a44;
+    --navy-light:#1b3f63;
+    --slate:#475569;
+    --slate-light:#e2e8f0;
+    --teal:#0d9488;
+    --teal-light:#ccfbf1;
+    --teal-dark:#0f766e;
+    --amber:#b45309;
+    --amber-light:#fef3c7;
+    --rose:#9f1239;
+    --rose-light:#ffe4e6;
+    --indigo:#4338ca;
+    --indigo-light:#e0e7ff;
+    --bg:#f8fafc;
+    --card:#ffffff;
+    --shadow:0 4px 6px -1px rgba(15,42,68,.08),0 2px 4px -2px rgba(15,42,68,.06);
+    --shadow-lg:0 10px 25px -5px rgba(15,42,68,.15),0 8px 10px -6px rgba(15,42,68,.1);
+    --radius:16px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{
+    font-family:'Inter','Roboto','Segoe UI',system-ui,-apple-system,sans-serif;
+    background:var(--bg);
+    color:var(--slate);
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+    padding:0 0 60px 0;
+  }
+  header.hero{
+    background:linear-gradient(135deg,var(--navy) 0%,var(--navy-light) 55%,var(--teal-dark) 100%);
+    color:#fff;
+    padding:52px 24px 44px;
+    text-align:center;
+    position:relative;
+    overflow:hidden;
+  }
+  header.hero::after{
+    content:"";
+    position:absolute;
+    width:520px;height:520px;
+    background:radial-gradient(circle,rgba(13,148,136,.35),transparent 70%);
+    top:-260px;right:-160px;border-radius:50%;
+  }
+  header.hero h1{
+    font-size:clamp(1.6rem,4vw,2.6rem);
+    font-weight:800;
+    letter-spacing:-.02em;
+    margin-bottom:12px;
+    position:relative;z-index:1;
+  }
+  header.hero p.sub{
+    font-size:clamp(.9rem,2vw,1.05rem);
+    opacity:.92;
+    max-width:760px;margin:0 auto 22px;
+    position:relative;z-index:1;
+  }
+  .hero-badges{
+    display:flex;flex-wrap:wrap;gap:10px;justify-content:center;
+    position:relative;z-index:1;
+  }
+  .hero-badges span{
+    background:rgba(255,255,255,.14);
+    border:1px solid rgba(255,255,255,.28);
+    padding:6px 16px;border-radius:999px;
+    font-size:.78rem;font-weight:600;letter-spacing:.03em;
+    backdrop-filter:blur(4px);
+  }
+  nav.quicknav{
+    position:sticky;top:0;z-index:50;
+    background:rgba(255,255,255,.92);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--slate-light);
+    display:flex;gap:6px;overflow-x:auto;
+    padding:10px 16px;
+    scrollbar-width:none;
+  }
+  nav.quicknav::-webkit-scrollbar{display:none;}
+  nav.quicknav a{
+    flex:0 0 auto;
+    text-decoration:none;
+    color:var(--navy);
+    font-size:.8rem;font-weight:600;
+    padding:8px 15px;border-radius:999px;
+    background:var(--slate-light);
+    transition:.2s;
+    white-space:nowrap;
+  }
+  nav.quicknav a:hover{background:var(--teal);color:#fff;}
+  main{max-width:1080px;margin:0 auto;padding:0 18px;}
+  section{margin-top:54px;}
+  .section-head{
+    display:flex;align-items:center;gap:14px;
+    margin-bottom:8px;
+  }
+  .section-num{
+    flex:0 0 auto;
+    width:44px;height:44px;border-radius:14px;
+    background:linear-gradient(135deg,var(--navy),var(--teal-dark));
+    color:#fff;font-weight:800;font-size:1.1rem;
+    display:grid;place-items:center;
+    box-shadow:var(--shadow);
+  }
+  .section-head h2{
+    font-size:clamp(1.15rem,2.6vw,1.5rem);
+    color:var(--navy);font-weight:800;letter-spacing:-.01em;
+  }
+  .section-desc{
+    color:#64748b;font-size:.9rem;margin-bottom:24px;
+    padding-left:58px;
+  }
+  .qcm{
+    background:var(--card);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    border:1px solid #e6edf3;
+    padding:22px 24px;
+    margin-bottom:18px;
+    transition:transform .18s ease, box-shadow .18s ease;
+    border-left:5px solid var(--navy);
+  }
+  .qcm:hover{transform:translateY(-2px);box-shadow:var(--shadow-lg);}
+  .qcm-head{
+    display:flex;flex-wrap:wrap;gap:8px;align-items:center;
+    margin-bottom:14px;
+  }
+  .badge{
+    font-size:.68rem;font-weight:700;
+    padding:4px 11px;border-radius:999px;
+    letter-spacing:.04em;text-transform:uppercase;
+  }
+  .badge.theme{background:var(--indigo-light);color:var(--indigo);}
+  .badge.rj{background:var(--teal-light);color:var(--teal-dark);}
+  .badge.rf{background:var(--rose-light);color:var(--rose);}
+  .badge.multi{background:var(--amber-light);color:var(--amber);}
+  .badge.simple{background:#e0f2fe;color:#075985;}
+  .badge.cas{background:#f3e8ff;color:#6b21a8;}
+  .qnum{
+    font-size:.72rem;font-weight:800;color:#94a3b8;
+    letter-spacing:.08em;
+  }
+  .question{
+    font-weight:600;color:var(--navy);
+    font-size:1rem;margin-bottom:14px;
+  }
+  ul.options{list-style:none;display:grid;gap:7px;}
+  ul.options li{
+    padding:9px 14px;
+    background:#f8fafc;
+    border:1px solid #eef2f6;
+    border-radius:10px;
+    font-size:.9rem;
+    color:#334155;
+  }
+  ul.options li b{color:var(--teal-dark);margin-right:8px;}
+  details{
+    margin-top:16px;
+    background:linear-gradient(180deg,#f0fdfa,#f8fafc);
+    border:1px solid #d1fae5;
+    border-radius:12px;
+    overflow:hidden;
+  }
+  details[open]{box-shadow:inset 0 0 0 1px #a7f3d0;}
+  summary{
+    cursor:pointer;
+    padding:12px 16px;
+    font-weight:700;font-size:.85rem;
+    color:var(--teal-dark);
+    display:flex;align-items:center;gap:9px;
+    list-style:none;
+    user-select:none;
+    transition:.2s;
+  }
+  summary::-webkit-details-marker{display:none;}
+  summary::before{
+    content:"▸";
+    font-size:1rem;
+    transition:transform .25s;
+    display:inline-block;
+  }
+  details[open] summary::before{transform:rotate(90deg);}
+  summary:hover{background:#ccfbf1;}
+  .correction{
+    padding:4px 18px 18px;
+    font-size:.88rem;
+    color:#334155;
+  }
+  .correction .answer-line{
+    background:#fff;border-left:4px solid var(--teal);
+    padding:10px 14px;border-radius:8px;
+    margin-bottom:12px;font-weight:700;color:var(--teal-dark);
+    font-size:.88rem;
+  }
+  .correction p{margin-bottom:9px;}
+  .correction ul{margin:6px 0 10px 20px;}
+  .correction li{margin-bottom:5px;}
+  .correction .why{
+    background:#fff;padding:11px 14px;border-radius:9px;
+    border:1px dashed #cbd5e1;font-size:.85rem;
+  }
+  .correction strong{color:var(--navy);}
+  .case{
+    background:var(--card);
+    border-radius:var(--radius);
+    box-shadow:var(--shadow);
+    border:1px solid #e6edf3;
+    margin-bottom:32px;
+    overflow:hidden;
+  }
+  .case-header{
+    background:linear-gradient(135deg,var(--navy),var(--navy-light));
+    color:#fff;
+    padding:18px 24px;
+    display:flex;flex-wrap:wrap;gap:12px;align-items:center;justify-content:space-between;
+  }
+  .case-header h3{font-size:1rem;font-weight:700;letter-spacing:-.01em;}
+  .case-header .loc{
+    font-size:.72rem;font-weight:600;
+    background:rgba(255,255,255,.16);
+    padding:4px 12px;border-radius:999px;
+    border:1px solid rgba(255,255,255,.25);
+  }
+  .vignette{
+    padding:20px 24px;
+    background:#f1f5f9;
+    border-bottom:1px solid #e2e8f0;
+    font-size:.9rem;
+    color:#334155;
+    line-height:1.75;
+  }
+  .vignette b{color:var(--navy);}
+  .case .qcm{
+    margin:16px 24px;
+    border-left-color:var(--teal);
+    box-shadow:none;
+    border:1px solid #eef2f6;
+    padding:18px 18px;
+  }
+  .case .qcm:last-child{margin-bottom:22px;}
+</style>
 </head>
 <body>
-<header>
-  <h1>La Délivrance Artificielle & Révision Utérine</h1>
-  <p>Indications, Technique, Révision Utérine & Complications | 5ème Année</p>
+
+<header class="hero">
+  <h1>La Délivrance Artificielle</h1>
+  <p class="sub">Support de révision complet — QCM exigeants, cas cliniques hospitaliers, carte conceptuelle et mnémotechniques. Conforme aux standards des facultés de médecine algériennes.</p>
+  <div class="hero-badges">
+    <span>5ᵉ Année Médecine</span>
+    <span>Gynéco-Obstétrique</span>
+    <span>25 QCM + 5 Cas</span>
+    <span>Hémorragie de la Délivrance</span>
+  </div>
 </header>
+
+<nav class="quicknav">
+  <a href="#qcm">① Banque de QCM</a>
+  <a href="#cas">② Cas Cliniques</a>
+</nav>
+
 <main>
+
 <section id="qcm">
-  <h2>Banque de 25 QCM exigeants</h2>
+  <div class="section-head">
+    <div class="section-num">1</div>
+    <h2>Banque de 25 QCM Exigeants</h2>
+  </div>
+  <p class="section-desc">Questions à difficulté progressive, mélangeant réponse juste (RJ), réponse fausse (RF), choix multiples et choix simple.</p>
 
   <!-- Q1 -->
-  <div class="q-card">
-    <div class="q-top">
-      <span class="q-num">Q1</span>
-      <span class="badge">QCM</span>
+  <div class="qcm">
+    <div class="qcm-head">
+      <span class="qnum">Q1</span>
+      <span class="badge theme">Définition</span>
+      <span class="badge simple">Choix simple</span>
     </div>
-    <p class="q-text">Quelle est la définition exacte de la délivrance artificielle (DA) ?</p>
-    <ul class="q-options">
-      <li data-letter="A">L'extraction manuelle du placenta hors de la cavité utérine par l'opérateur en introduisant une main stérile dans l'utérus à travers les voies naturelles</li>
-      <li data-letter="B">L'expulsion spontanée du placenta sous l'effet des contractions sans aucune aide</li>
-      <li data-letter="C">La traction vigoureuse sur le cordon ombilical à travers la paroi abdominale</li>
-      <li data-letter="D">L'ablation chirurgicale de l'utérus en post-partum immédiat</li>
-      <li data-letter="E">Le curetage métallique à la curette mousse sous anesthésie locale</li>
+    <p class="question">La délivrance artificielle se définit comme :</p>
+    <ul class="options">
+      <li><b>A.</b> L'extraction instrumentale du fœtus après échec de l'expulsion</li>
+      <li><b>B.</b> Le décollement manuel du placenta suivi de son extraction hors de l'utérus et du vagin</li>
+      <li><b>C.</b> L'expression du fond utérin après un décollement placentaire spontané</li>
+      <li><b>D.</b> La révision utérine systématique réalisée après tout accouchement</li>
+      <li><b>E.</b> L'administration d'utérotoniques destinés à accélérer la délivrance</li>
     </ul>
-    <details class="correction">
-      <summary>Voir la correction et l'explication détaillée</summary>
-      <div class="correction-body">
-        <span class="answer-line">Réponse : A</span>
-        <div class="why">La DA consiste à décoller et extraire manuellement le placenta de la cavité utérine lorsque le décollement spontané n'a pas eu lieu.</div>
+    <details>
+      <summary>Correction &amp; explication</summary>
+      <div class="correction">
+        <div class="answer-line">Réponse : B</div>
+        <p>La délivrance artificielle est un geste <strong>strictement placentaire</strong> : il consiste à décoller <em>manuellement</em> le placenta puis à l'extérioriser par les voies génitales naturelles. Elle se pratique donc <strong>après l'expulsion du fœtus</strong>.</p>
       </div>
     </details>
   </div>
 
   <!-- Q2 -->
-  <div class="q-card">
-    <div class="q-top">
-      <span class="q-num">Q2</span>
-      <span class="badge">QCM</span>
+  <div class="qcm">
+    <div class="qcm-head">
+      <span class="qnum">Q2</span>
+      <span class="badge theme">Physiologie — Hémostase</span>
+      <span class="badge rj">Réponse juste</span>
     </div>
-    <p class="q-text">Quel est le délai temporel classique définissant la rétention placentaire et posant l'indication formelle d'une délivrance artificielle ?</p>
-    <ul class="q-options">
-      <li data-letter="A">30 minutes après l'expulsion du fœtus sans décollement placentaire</li>
-      <li data-letter="B">5 minutes après l'expulsion fœtale</li>
-      <li data-letter="C">2 heures après le début du travail</li>
-      <li data-letter="D">24 heures après la naissance</li>
-      <li data-letter="E">7 jours après l'accouchement</li>
+    <p class="question">Concernant la « ligature vivante de Pinard », choisissez la réponse juste :</p>
+    <ul class="options">
+      <li><b>A.</b> Elle correspond à une ligature chirurgicale des artères utérines</li>
+      <li><b>B.</b> Elle désigne l'hémostase de la zone d'insertion placentaire par rétraction et contraction du myomètre</li>
+      <li><b>C.</b> Elle précède obligatoirement le décollement placentaire</li>
+      <li><b>D.</b> Elle dépend exclusivement de la coagulation plasmatique</li>
+      <li><b>E.</b> Elle est assurée par le tonus du segment inférieur</li>
     </ul>
-    <details class="correction">
-      <summary>Voir la correction et l'explication détaillée</summary>
-      <div class="correction-body">
-        <span class="answer-line">Réponse : A</span>
-        <div class="why">Au-delà de 30 minutes après la sortie du fœtus (ou immédiatement en cas d'hémorragie active), l'absence de décollement placentaire impose la délivrance artificielle.</div>
+    <details>
+      <summary>Correction &amp; explication</summary>
+      <div class="correction">
+        <div class="answer-line">Réponse : B</div>
+        <p>La ligature vivante de Pinard est un phénomène <strong>physiologique</strong> : les vaisseaux de la zone d'insertion placentaire sont comprimés « à vif » par la <strong>rétraction</strong> et la <strong>contraction</strong> du myomètre.</p>
       </div>
     </details>
   </div>
 
   <!-- Q3 -->
-  <div class="q-card">
-    <div class="q-top">
-      <span class="q-num">Q3</span>
-      <span class="badge">QCM</span>
+  <div class="qcm">
+    <div class="qcm-head">
+      <span class="qnum">Q3</span>
+      <span class="badge theme">Indications</span>
+      <span class="badge multi">Choix multiples (2–3)</span>
     </div>
-    <p class="q-text">Quelle règle d'asepsie et de sécurité majeure doit impérativement encadrer la délivrance artificielle ?</p>
-    <ul class="q-options">
-      <li data-letter="A">Asepsie chirurgicale rigoureuse (lavage chirurgical des mains, gants longs stériles, badigeon vulvo-périnéal), vessie vide et analgésie/anesthésie efficace</li>
-      <li data-letter="B">Geste réalisé sans gants à mains nues pour une meilleure sensibilité tactile</li>
-      <li data-letter="C">Vessie pleine sous pression pour repousser l'utérus</li>
-      <li data-letter="D">Aucune désinfection périnéale nécessaire</li>
-      <li data-letter="E">Réalisation du geste en position debout</li>
+    <p class="question">Parmi les indications de la délivrance artificielle, on retient :</p>
+    <ul class="options">
+      <li><b>A.</b> La rétention placentaire</li>
+      <li><b>B.</b> Le placenta praevia hémorragique</li>
+      <li><b>C.</b> L'hématome rétro-placentaire</li>
+      <li><b>D.</b> La rupture utérine</li>
+      <li><b>E.</b> Une délivrance spontanée normale survenue à 10 minutes</li>
     </ul>
-    <details class="correction">
-      <summary>Voir la correction et l'explication détaillée</summary>
-      <div class="correction-body">
-        <span class="answer-line">Réponse : A</span>
-        <div class="why">L'asepsie chirurgicale absolue et les gants stériles évitent l'introduction de germes dans la cavité utérine béante, sous analgésie adaptée.</div>
+    <details>
+      <summary>Correction &amp; explication</summary>
+      <div class="correction">
+        <div class="answer-line">Réponses : A, B, C</div>
+        <p>Les quatre indications canoniques du cours sont : <strong>rétention placentaire</strong>, <strong>placenta praevia hémorragique</strong>, <strong>hématome rétro-placentaire</strong>, et <strong>indication primaire de la révision utérine</strong>.</p>
       </div>
     </details>
   </div>
 
   <!-- Q4 -->
-  <div class="q-card">
-    <div class="q-top">
-      <span class="q-num">Q4</span>
-      <span class="badge">QCM</span>
+  <div class="qcm">
+    <div class="qcm-head">
+      <span class="qnum">Q4</span>
+      <span class="badge theme">Rétention placentaire</span>
+      <span class="badge rf">Réponse fausse</span>
     </div>
-    <p class="q-text">Quel geste obstétrical endo-utérin doit SYSTÉMATIQUEMENT suivre toute délivrance artificielle ?</p>
-    <ul class="q-options">
-      <li data-letter="A">La révision utérine (RU) systématique pour vérifier la vacuité complète et l'absence de rupture utérine</li>
-      <li data-letter="B">Une hystérectomie d'hémostase de principe</li>
-      <li data-letter="C">La pose d'une sonde de Blakemore intra-utérine</li>
-      <li data-letter="D">L'amputation du col utérin</li>
-      <li data-letter="E">Une salpingectomie bilatérale</li>
+    <p class="question">Concernant la rétention placentaire, choisissez la réponse fausse :</p>
+    <ul class="options">
+      <li><b>A.</b> Elle est définie par l'absence de délivrance spontanée 30 minutes après l'accouchement</li>
+      <li><b>B.</b> Elle peut résulter d'anomalies du décollement placentaire</li>
+      <li><b>C.</b> Elle peut résulter d'une absence de migration du placenta</li>
+      <li><b>D.</b> Elle constitue la principale étiologie des hémorragies de la délivrance</li>
+      <li><b>E.</b> Elle impose d'attendre 60 minutes avant toute intervention</li>
     </ul>
-    <details class="correction">
-      <summary>Voir la correction et l'explication détaillée</summary>
-      <div class="correction-body">
-        <span class="answer-line">Réponse : A</span>
-        <div class="why">Toute DA est systématiquement complétée par une révision utérine soigneuse pour s'assurer qu'aucun cotylédon ou fragment placentaire n'est retenu et qu'il n'y a pas de brèche utérine.</div>
+    <details>
+      <summary>Correction &amp; explication</summary>
+      <div class="correction">
+        <div class="answer-line">Réponse fausse : E</div>
+        <p>Le <strong>seuil diagnostique est de 30 minutes</strong>. Attendre 60 minutes exposerait la patiente à une hémorragie de la délivrance.</p>
       </div>
     </details>
   </div>
 
   <!-- Q5 -->
-  <div class="q-card">
-    <div class="q-top">
-      <span class="q-num">Q5</span>
-      <span class="badge">QCM</span>
+  <div class="qcm">
+    <div class="qcm-head">
+      <span class="qnum">Q5</span>
+      <span class="badge theme">Défaut d'implantation</span>
+      <span class="badge simple">Toutes exactes SAUF</span>
     </div>
-    <p class="q-text">Quelle est la technique manuelle correcte pour décoller le placenta lors de la délivrance artificielle ?</p>
-    <ul class="q-options">
-      <li data-letter="A">Suivre le cordon ombilical jusqu'à l'insertion placentaire, trouver le plan de clivage décidual et décoller le placenta de la périphérie vers le centre avec le tranchant de la main en regardant le fond utérin maintenu par l'autre main abdominale</li>
-      <li data-letter="B">Arracher violemment le placenta avec les doigts repliés en griffe</li>
-      <li data-letter="C">Tirer de toutes ses forces sur le cordon ombilical jusqu'à rupture</li>
-      <li data-letter="D">Utiliser une pince de Pozzi pour broyer les cotylédons</li>
-      <li data-letter="E">Injecter de l'eau savonneuse sous haute pression dans la trompe</li>
+    <p class="question">Toutes les propositions suivantes sont exactes concernant le défaut d'implantation placentaire, SAUF :</p>
+    <ul class="options">
+      <li><b>A.</b> Il résulte d'une muqueuse utérine altérée</li>
+      <li><b>B.</b> Les antécédents de curetage constituent un facteur favorisant</li>
+      <li><b>C.</b> Les myomes sous-muqueux et les polypes endo-cavitaires y contribuent</li>
+      <li><b>D.</b> Il est favorisé par un utérus sain, sans aucun antécédent</li>
+      <li><b>E.</b> Les agressions chimiques et l'infection endo-utérine en sont des causes</li>
     </ul>
-    <details class="correction">
-      <summary>Voir la correction et l'explication détaillée</summary>
-      <div class="correction-body">
-        <span class="answer-line">Réponse : A</span>
-        <div class="why">La main intra-utérine progresse le long du cordon, trouve le bord placentaire et clive doucement au tranchant de la main dans l'espace décidual, tandis que la main sus-pubienne empaume et abaisse le fond utérin.</div>
+    <details>
+      <summary>Correction &amp; explication</summary>
+      <div class="correction">
+        <div class="answer-line">Réponse fausse : D</div>
+        <p>Le défaut d'implantation naît d'une <strong>muqueuse utérine altérée</strong>. Un utérus sain ne constitue pas un terrain de défaut d'implantation.</p>
       </div>
     </details>
   </div>
 
   <!-- Q6 -->
-  <div class="q-card">
-    <div class="q-top">
-      <span class="q-num">Q6</span>
-      <span class="badge">QCM</span>
+  <div class="qcm">
+    <div class="qcm-head">
+      <span class="qnum">Q6</span>
+      <span class="badge theme">Anomalies du placenta</span>
+      <span class="badge multi">Choix multiples (2–3)</span>
     </div>
-    <p class="q-text">Quelle anomalie redoutée d'adhérence placentaire anormale se caractérise par l'absence totale de plan de clivage entre le placenta et le myomètre ?</p>
-    <ul class="q-options">
-      <li data-letter="A">Placenta accreta (ou increta / percreta)</li>
-      <li data-letter="B">Placenta circumvallata bénin</li>
-      <li data-letter="C">Insertion vélamenteuse du cordon sans adhérence</li>
-      <li data-letter="D">Cotylédon aberrant isolé facilement clivable</li>
-      <li data-letter="E">Placenta praevia latéral non adhérent</li>
+    <p class="question">Parmi les facteurs suivants, lesquels correspondent à des anomalies du placenta favorisant la rétention placentaire ?</p>
+    <ul class="options">
+      <li><b>A.</b> Insertion fundique normale du placenta</li>
+      <li><b>B.</b> Placenta accreta (forte adhérence à la paroi utérine)</li>
+      <li><b>C.</b> Excès de volume placentaire (macrosomie, grossesse multiple)</li>
+      <li><b>D.</b> Insertion sur le segment inférieur</li>
+      <li><b>E.</b> Antécédent d'utérus cicatriciel</li>
     </ul>
-    <details class="correction">
-      <summary>Voir la correction et l'explication détaillée</summary>
-      <div class="correction-body">
-        <span class="answer-line">Réponse : A</span>
-        <div class="why">Le placenta accreta correspond à une pénétration directe des villosités choriales dans le myomètre sans caduque basale intermédiaire, rendant le clivage manuel impossible et très hémorragique.</div>
+    <details>
+      <summary>Correction &amp; explication</summary>
+      <div class="correction">
+        <div class="answer-line">Réponses : B, C, D</div>
+        <p>Le cours range sous « anomalies du placenta » trois groupes : <strong>le siège</strong> (segment inférieur), <strong>l'insertion</strong> (placenta accreta), et <strong>l'excès de volume</strong> (macrosomie, grossesse multiple, diabète, etc.).</p>
       </div>
     </details>
   </div>
 
   <!-- Q7 -->
-  <div class="q-card">
-    <div class="q-top">
-      <span class="q-num">Q7</span>
-      <span class="badge">QCM</span>
+  <div class="qcm">
+    <div class="qcm-head">
+      <span class="qnum">Q7</span>
+      <span class="badge theme">Inertie utérine</span>
+      <span class="badge simple">Choix simple</span>
     </div>
-    <p class="q-text">En cas d'échec de clivage au tranchant de la main et de constatation d'un placenta accreta complet, quelle attitude doit être adoptée ?</p>
-    <ul class="q-options">
-      <li data-letter="A">Ne pas s'acharner à arracher le placenta (risque d'hémorragie cataclysmique), tamponner, débuter les solutés/transfusion et envisager un traitement conservateur ou chirurgical (hystérectomie d'hémostase)</li>
-      <li data-letter="B">Continuer à tirer avec des pinces métalliques jusqu'à déchirure du myomètre</li>
-      <li data-letter="C">Laisser la patiente rentrer chez elle sans surveillance</li>
-      <li data-letter="D">Prescrire uniquement des antalgiques mineurs</li>
-      <li data-letter="E">Faire une manœuvre de Sellick</li>
+    <p class="question">Parmi les causes d'inertie utérine, laquelle est d'origine iatrogène ?</p>
+    <ul class="options">
+      <li><b>A.</b> La surdistension utérine</li>
+      <li><b>B.</b> L'épuisement après un travail prolongé</li>
+      <li><b>C.</b> L'administration de bêta-2 mimétiques</li>
+      <li><b>D.</b> L'utérus malformé</li>
+      <li><b>E.</b> La multiparité</li>
     </ul>
-    <details class="correction">
-      <summary>Voir la correction et l'explication détaillée</summary>
-      <div class="correction-body">
-        <span class="answer-line">Réponse : A</span>
-        <div class="why">Forcer le décollement d'un placenta accreta entraîne une hémorragie massive incoercible et une perforation utérine fatale. Il faut stopper les tractions et recourir aux gestes hémostatiques experts.</div>
+    <details>
+      <summary>Correction &amp; explication</summary>
+      <div class="correction">
+        <div class="answer-line">Réponse : C</div>
+        <p>Les bêta-2 mimétiques sont des tocolytiques qui inhibent la contractilité myométriale : cause iatrogène par excellence.</p>
       </div>
     </details>
   </div>
 
   <!-- Q8 -->
-  <div class="q-card">
-    <div class="q-top">
-      <span class="q-num">Q8</span>
-      <span class="badge">QCM</span>
+  <div class="qcm">
+    <div class="qcm-head">
+      <span class="qnum">Q8</span>
+      <span class="badge theme">Absence de migration</span>
+      <span class="badge rj">Réponse juste</span>
     </div>
-    <p class="q-text">Quel examen visuel indispensable doit être réalisé immédiatement après l'extraction du placenta et des membranes ?</p>
-    <ul class="q-options">
-      <li data-letter="A">L'examen attentif du placenta (face fœtale, face maternelle avec cotylédons jointifs et intègres) et des membranes (orifice de déchirure, vaisseaux interrompus)</li>
-      <li data-letter="B">La pesée exclusive du liquide amniotique résiduel</li>
-      <li data-letter="C">L'analyse au microscope optique au lit de la malade</li>
-      <li data-letter="D">L'immersion du placenta dans du formol sans l'examiner</li>
-      <li data-letter="E">Aucun examen du délivre n'est utile</li>
+    <p class="question">Choisissez la réponse juste concernant l'absence de migration placentaire :</p>
+    <ul class="options">
+      <li><b>A.</b> L'incarcération placentaire résulte d'un spasme du col</li>
+      <li><b>B.</b> L'enchatonnement résulte d'un spasme cervical</li>
+      <li><b>C.</b> Le globe vésical favorise la migration placentaire</li>
+      <li><b>D.</b> L'hypertonie localisée du myomètre n'intervient jamais</li>
+      <li><b>E.</b> L'antéversion utérine exagérée est une cause de décollement</li>
     </ul>
-    <details class="correction">
-      <summary>Voir la correction et l'explication détaillée</summary>
-      <div class="correction-body">
-        <span class="answer-line">Réponse : A</span>
-        <div class="why">L'intégrité de la galette placentaire et la continuité des cotylédons garantissent l'absence de rétention de cotylédon aberrant.</div>
+    <details>
+      <summary>Correction &amp; explication</summary>
+      <div class="correction">
+        <div class="answer-line">Réponse : A</div>
+        <p>L'<strong>incarcération placentaire</strong> est due à un <strong>spasme cervical</strong> qui empêche le placenta déjà décollé de sortir.</p>
       </div>
     </details>
   </div>
 
   <!-- Q9 -->
-  <div class="q-card">
-    <div class="q-top">
-      <span class="q-num">Q9</span>
-      <span class="badge">QCM</span>
+  <div class="qcm">
+    <div class="qcm-head">
+      <span class="qnum">Q9</span>
+      <span class="badge theme">Technique — Préparation</span>
+      <span class="badge multi">Choix multiples (2–3)</span>
     </div>
-    <p class="q-text">Quel médicament utérotonique est systématiquement administré dès la réalisation de la délivrance artificielle pour favoriser la rétraction utérine ?</p>
-    <ul class="q-options">
-      <li data-letter="A">L'ocytocine (Syntocinon) en injection intraveineuse lente ou perfusion continue</li>
-      <li data-letter="B">La progestérone retard injectable</li>
-      <li data-letter="C">Le sulfate de magnésium à forte dose</li>
-      <li data-letter="D">La terbutaline tocolytique</li>
-      <li data-letter="E">L'héparine non fractionnée en bolus</li>
+    <p class="question">Concernant la préparation de la patiente et de l'opérateur avant une délivrance artificielle :</p>
+    <ul class="options">
+      <li><b>A.</b> Installation en position gynécologique, vessie vide</li>
+      <li><b>B.</b> Réalisation sous anesthésie générale</li>
+      <li><b>C.</b> Asepsie rigoureuse avec toilette vulvo-vaginale et champs stériles</li>
+      <li><b>D.</b> L'opérateur peut ne pas être habillé stérilement en situation d'urgence</li>
+      <li><b>E.</b> La toilette vulvo-vaginale est facultative</li>
     </ul>
-    <details class="correction">
-      <summary>Voir la correction et l'explication détaillée</summary>
-      <div class="correction-body">
-        <span class="answer-line">Réponse : A</span>
-        <div class="why">L'ocytocine provoque des contractions puissantes et la rétraction du myomètre, assurant l'hémostase par les « ligatures vivantes » de Pinard comprimant les vaisseaux utérins.</div>
+    <details>
+      <summary>Correction &amp; explication</summary>
+      <div class="correction">
+        <div class="answer-line">Réponses : A, B, C</div>
+        <p>La DA est un geste endo-utérin exigeant une <strong>asepsie rigoureuse</strong>, une <strong>vessie vide</strong>, une <strong>position gynécologique</strong> et une <strong>anesthésie générale</strong>.</p>
       </div>
     </details>
   </div>
 
   <!-- Q10 -->
-  <div class="q-card">
-    <div class="q-top">
-      <span class="q-num">Q10</span>
-      <span class="badge">QCM</span>
+  <div class="qcm">
+    <div class="qcm-head">
+      <span class="qnum">Q10</span>
+      <span class="badge theme">Technique proprement dite</span>
+      <span class="badge simple">Choix simple</span>
     </div>
-    <p class="q-text">Quelle antibioprophylaxie est préconisée lors de la réalisation d'une manœuvre endo-utérine (DA et RU) ?</p>
-    <ul class="q-options">
-      <li data-letter="A">Antibioprophylaxie par Céfaoline ou Amoxicilline-acide clavulanique (dose unique IV)</li>
-      <li data-letter="B">Antibiothérapie par collyre ophtalmique</li>
-      <li data-letter="C">Chimiothérapie anticancéreuse</li>
-      <li data-letter="D">Traitement antiviral par oseltamivir</li>
-      <li data-letter="E">Aucun antibiotique n'est jamais indiqué</li>
+    <p class="question">Dans la technique proprement dite de la délivrance artificielle, le rôle de la main gauche est de :</p>
+    <ul class="options">
+      <li><b>A.</b> Pénétrer dans la cavité utérine jusqu'au fond</li>
+      <li><b>B.</b> Empaumer le fond utérin à travers les champs</li>
+      <li><b>C.</b> Repérer le rebord placentaire par le bout des doigts</li>
+      <li><b>D.</b> Décoller le placenta par son bord cubital</li>
+      <li><b>E.</b> Suivre le cordon ombilical dans le vagin</li>
     </ul>
-    <details class="correction">
-      <summary>Voir la correction et l'explication détaillée</summary>
-      <div class="correction-body">
-        <span class="answer-line">Réponse : A</span>
-        <div class="why">L'effraction des barrières endo-utérines expose à l'endométrite bactérienne post-partum, justifiant une antibioprophylaxie parentérale systématique.</div>
+    <details>
+      <summary>Correction &amp; explication</summary>
+      <div class="correction">
+        <div class="answer-line">Réponse : B</div>
+        <p>La main gauche <strong>empaume le fond utérin à travers les champs</strong> : elle contrôle la rétraction utérine et sert de repère de sécurité.</p>
       </div>
     </details>
   </div>
 
   <!-- Q11 -->
-  <div class="q-card">
-    <div class="q-top">
-      <span class="q-num">Q11</span>
-      <span class="badge">QCM</span>
+  <div class="qcm">
+    <div class="qcm-head">
+      <span class="qnum">Q11</span>
+      <span class="badge theme">Manœuvre de BUDDIN</span>
+      <span class="badge rf">Réponse fausse</span>
     </div>
-    <p class="q-text">Quelle complication iatrogène majeure peut être provoquée par une manœuvre de délivrance artificielle brutale ou une traction excessive sur le cordon utérus hypotonique ?</p>
-    <ul class="q-options">
-      <li data-letter="A">L'inversion utérine aiguë avec état de choc vagal et hémorragique sévère</li>
-      <li data-letter="B">La rupture de la rate</li>
-      <li data-letter="C">L'ulcère de stress duodénal</li>
-      <li data-letter="D">Une dissection aortique aiguë</li>
-      <li data-letter="E">Une appendicite aiguë</li>
+    <p class="question">Concernant la manœuvre de BUDDIN, choisissez la réponse fausse :</p>
+    <ul class="options">
+      <li><b>A.</b> Elle s'utilise en cas d'adhérences placentaires profondes</li>
+      <li><b>B.</b> Elle consiste à prendre les cotylédons un à un</li>
+      <li><b>C.</b> Elle est réalisée avec le bout des doigts</li>
+      <li><b>D.</b> Elle remplace la révision utérine</li>
+      <li><b>E.</b> Elle intervient après la recherche du plan de clivage</li>
     </ul>
-    <details class="correction">
-      <summary>Voir la correction et l'explication détaillée</summary>
-      <div class="correction-body">
-        <span class="answer-line">Réponse : A</span>
-        <div class="why">Tirer sur le cordon avec un utérus non décollé et hypotonique peut invaginer le fond utérin dans la cavité (doigt de gant), réalisant une inversion utérine dramatique.</div>
+    <details>
+      <summary>Correction &amp; explication</summary>
+      <div class="correction">
+        <div class="answer-line">Réponse fausse : D</div>
+        <p>La manœuvre de BUDDIN ne remplace jamais la révision utérine qui reste systématique après toute délivrance artificielle.</p>
       </div>
     </details>
   </div>
 
   <!-- Q12 -->
-  <div class="q-card">
-    <div class="q-top">
-      <span class="q-num">Q12</span>
-      <span class="badge">QCM</span>
+  <div class="qcm">
+    <div class="qcm-head">
+      <span class="qnum">Q12</span>
+      <span class="badge theme">Révision utérine</span>
+      <span class="badge multi">Choix multiples (2–3)</span>
     </div>
-    <p class="q-text">Quelle manœuvre permet la réduction immédiate d'une inversion utérine aiguë survenant en salle de travail ?</p>
-    <ul class="q-options">
-      <li data-letter="A">La manœuvre de Johnson (repousser manuellement le fond utérin vers le haut à travers le col sous tocolyse et anesthésie)</li>
-      <li data-letter="B">La manœuvre de McRoberts</li>
-      <li data-letter="C">La manœuvre de Mauriceau</li>
-      <li data-letter="D">La manœuvre de Lovset</li>
-      <li data-letter="E">L'ablation du col utérin à la lame froide</li>
+    <p class="question">La révision utérine systématique, réalisée après la délivrance artificielle, permet de :</p>
+    <ul class="options">
+      <li><b>A.</b> Vérifier la vacuité utérine</li>
+      <li><b>B.</b> Vérifier l'intégrité utérine</li>
+      <li><b>C.</b> S'assurer de la bonne rétraction de l'utérus</li>
+      <li><b>D.</b> Remplacer l'examen du délivre</li>
+      <li><b>E.</b> Éviter le recours aux utérotoniques</li>
     </ul>
-    <details class="correction">
-      <summary>Voir la correction et l'explication détaillée</summary>
-      <div class="correction-body">
-        <span class="answer-line">Réponse : A</span>
-        <div class="why">La manœuvre de Johnson consiste à replacer le fond utérin avec la paume de la main dans l'axe de la cavité avant la constitution d'un anneau de striction cervical.</div>
+    <details>
+      <summary>Correction &amp; explication</summary>
+      <div class="correction">
+        <div class="answer-line">Réponses : A, B, C</div>
+        <p>La révision utérine est un triple contrôle : <strong>vacuité</strong>, <strong>intégrité</strong>, <strong>rétraction</strong>.</p>
       </div>
     </details>
   </div>
 
   <!-- Q13 -->
-  <div class="q-card">
-    <div class="q-top">
-      <span class="q-num">Q13</span>
-      <span class="badge">QCM</span>
+  <div class="qcm">
+    <div class="qcm-head">
+      <span class="qnum">Q13</span>
+      <span class="badge theme">Suites de la DA</span>
+      <span class="badge simple">Choix simple</span>
     </div>
-    <p class="q-text">En cas d'hémorragie active immédiate de la délivrance avec placenta non décollé, quel est le délai d'attente avant la DA ?</p>
-    <ul class="q-options">
-      <li data-letter="A">Zéro délai : réalisation immédiate de la délivrance artificielle et révision utérine sans attendre les 30 minutes</li>
-      <li data-letter="B">Attente stricte de 30 minutes quoi qu'il arrive</li>
-      <li data-letter="C">Attente de 2 heures sous surveillance du pouls</li>
-      <li data-letter="D">Attente du lendemain matin</li>
-      <li data-letter="E">Attente de la survenue d'un arrêt circulatoire</li>
+    <p class="question">Après la délivrance artificielle, l'ordre logique correct des gestes est :</p>
+    <ul class="options">
+      <li><b>A.</b> Réparation de l'épisiotomie, puis révision utérine</li>
+      <li><b>B.</b> Révision utérine, examen du délivre, utérotoniques et antibiotiques, puis réparation des déchirures et de l'épisiotomie</li>
+      <li><b>C.</b> Administration d'antibiotiques seuls, puis surveillance</li>
+      <li><b>D.</b> Surveillance à 48 h uniquement, sans geste complémentaire</li>
+      <li><b>E.</b> Injection d'utérotoniques avant toute exploration utérine</li>
     </ul>
-    <details class="correction">
-      <summary>Voir la correction et l'explication détaillée</summary>
-      <div class="correction-body">
-        <span class="answer-line">Réponse : A</span>
-        <div class="why">L'hémorragie active de la délivrance est une urgence vitale : la délivrance artificielle manuelle doit être réalisée immédiatement sans délai.</div>
+    <details>
+      <summary>Correction &amp; explication</summary>
+      <div class="correction">
+        <div class="answer-line">Réponse : B</div>
+        <p>La séquence est stricte : révision utérine, examen du délivre, utérotoniques + antibiotiques, puis réparation des déchirures/épisiotomie, et surveillance 24 h.</p>
       </div>
     </details>
   </div>
 
   <!-- Q14 -->
-  <div class="q-card">
-    <div class="q-top">
-      <span class="q-num">Q14</span>
-      <span class="badge">QCM</span>
+  <div class="qcm">
+    <div class="qcm-head">
+      <span class="qnum">Q14</span>
+      <span class="badge theme">Difficultés</span>
+      <span class="badge rj">Réponse juste</span>
     </div>
-    <p class="q-text">Quel est le risque infectieux tardif d'un cotylédon placentaire méconnu et retenu dans la cavité utérine ?</p>
-    <ul class="q-options">
-      <li data-letter="A">Endométrite du post-partum, lochies fétides, métrorragies secondaires et synéchies cicatricielles</li>
-      <li data-letter="B">Pancréatite aiguë nécrosante</li>
-      <li data-letter="C">Glomérulonéphrite aiguë post-streptococcique</li>
-      <li data-letter="D">Thyroïdite subaiguë de De Quervain</li>
-      <li data-letter="E">Ostéomyélite du fémur</li>
+    <p class="question">Choisissez la réponse juste concernant les difficultés de la délivrance artificielle :</p>
+    <ul class="options">
+      <li><b>A.</b> L'anneau de rétraction constitue une difficulté d'accès au placenta</li>
+      <li><b>B.</b> L'anneau de rétraction se traite uniquement par de fortes doses d'oxytocine</li>
+      <li><b>C.</b> Le plan de clivage est toujours facile à identifier</li>
+      <li><b>D.</b> Un placenta très adhérent diminue le risque d'effraction myométriale</li>
+      <li><b>E.</b> Incarcération et enchatonnement sont synonymes d'atonie utérine</li>
     </ul>
-    <details class="correction">
-      <summary>Voir la correction et l'explication détaillée</summary>
-      <div class="correction-body">
-        <span class="answer-line">Réponse : A</span>
-        <div class="why">La rétention d'un cotylédon maintient une béance vasculaire (métrorragies secondaires) et sert de foyer de surinfection pour l'endométrite puerpérale.</div>
+    <details>
+      <summary>Correction &amp; explication</summary>
+      <div class="correction">
+        <div class="answer-line">Réponse : A</div>
+        <p>L'anneau de rétraction referme la cavité et rend l'accès difficile (nécessite anesthésie / spasmolytique).</p>
       </div>
     </details>
   </div>
 
   <!-- Q15 -->
-  <div class="q-card">
-    <div class="q-top">
-      <span class="q-num">Q15</span>
-      <span class="badge">QCM</span>
+  <div class="qcm">
+    <div class="qcm-head">
+      <span class="qnum">Q15</span>
+      <span class="badge theme">Accidents</span>
+      <span class="badge multi">Choix multiples (2–3)</span>
     </div>
-    <p class="q-text">Quelle est la définition de la « révision utérine » isolée (sans délivrance artificielle préalable) ?</p>
-    <ul class="q-options">
-      <li data-letter="A">L'exploration manuelle de la cavité utérine après expulsion spontanée du placenta, indiquée en cas d'hémorragie du post-partum ou de doute sur l'intégrité du délivre</li>
-      <li data-letter="B">Le curetage métallique sous hystéroscopie opératoire</li>
-      <li data-letter="C">La palpation superficielle de la peau du nombril</li>
-      <li data-letter="D">L'examen du col au miroir vaginal seul</li>
-      <li data-letter="E">La mesure de la hauteur utérine au mètre-ruban</li>
+    <p class="question">Parmi les accidents mécaniques immédiats de la délivrance artificielle, on cite :</p>
+    <ul class="options">
+      <li><b>A.</b> La perforation du cul-de-sac de Douglas</li>
+      <li><b>B.</b> L'effraction du myomètre</li>
+      <li><b>C.</b> L'inversion utérine, complète ou incomplète</li>
+      <li><b>D.</b> L'endométrite</li>
+      <li><b>E.</b> L'hématome rétro-placentaire</li>
     </ul>
-    <details class="correction">
-      <summary>Voir la correction et l'explication détaillée</summary>
-      <div class="correction-body">
-        <span class="answer-line">Réponse : A</span>
-        <div class="why">La RU consiste à introduire la main gantée dans l'utérus après délivrance pour vérifier la vacuité totale de la cavité et la continuité de la paroi myométriale.</div>
+    <details>
+      <summary>Correction &amp; explication</summary>
+      <div class="correction">
+        <div class="answer-line">Réponses : A, B, C</div>
+        <p>Les accidents mécaniques sont la perforation du Douglas, l'effraction myométriale et l'inversion utérine.</p>
       </div>
     </details>
   </div>
 
   <!-- Q16 -->
-  <div class="q-card">
-    <div class="q-top">
-      <span class="q-num">Q16</span>
-      <span class="badge">QCM</span>
+  <div class="qcm">
+    <div class="qcm-head">
+      <span class="qnum">Q16</span>
+      <span class="badge theme">Inversion utérine</span>
+      <span class="badge simple">Toutes exactes SAUF</span>
     </div>
-    <p class="q-text">Chez une femme ayant un utérus cicatriciel (antécédent de césarienne), dans quelle situation la révision utérine est-elle formellement indiquée après accouchement par voie basse ?</p>
-    <ul class="q-options">
-      <li data-letter="A">En cas d'hémorragie du post-partum, d'instabilité hémodynamique ou de douleurs sus-pubiennes anormales pour palper la cicatrice utérine</li>
-      <li data-letter="B">Elle est interdite de façon absolue en cas de cicatrice utérine</li>
-      <li data-letter="C">Uniquement chez les femmes de moins de 20 ans</li>
-      <li data-letter="D">Uniquement si l'enfant est de sexe masculin</li>
-      <li data-letter="E">Uniquement en l'absence de tout anesthésiste</li>
+    <p class="question">Toutes les propositions suivantes concernant l'inversion utérine sont exactes, SAUF :</p>
+    <ul class="options">
+      <li><b>A.</b> Elle peut être complète ou incomplète</li>
+      <li><b>B.</b> Elle est une complication possible de la délivrance artificielle</li>
+      <li><b>C.</b> Elle peut résulter de manœuvres intempestives sur le fond utérin</li>
+      <li><b>D.</b> Sa survenue est toujours tardive, au-delà de 24 heures</li>
+      <li><b>E.</b> Elle nécessite une prise en charge urgente</li>
     </ul>
-    <details class="correction">
-      <summary>Voir la correction et l'explication détaillée</summary>
-      <div class="correction-body">
-        <span class="answer-line">Réponse : A</span>
-        <div class="why">Chez la parturiente à utérus cicatriciel, la révision utérine permet de palper le segment inférieur et de vérifier l'intégrité de la déhiscence ou de la rupture utérine.</div>
+    <details>
+      <summary>Correction &amp; explication</summary>
+      <div class="correction">
+        <div class="answer-line">Réponse fausse : D</div>
+        <p>L'inversion utérine est un accident immédiat ou à court terme, survenant pendant ou juste après les manœuvres.</p>
       </div>
     </details>
   </div>
 
   <!-- Q17 -->
-  <div class="q-card">
-    <div class="q-top">
-      <span class="q-num">Q17</span>
-      <span class="badge">QCM</span>
+  <div class="qcm">
+    <div class="qcm-head">
+      <span class="qnum">Q17</span>
+      <span class="badge theme">Placenta praevia hémorragique</span>
+      <span class="badge simple">Choix simple</span>
     </div>
-    <p class="q-text">Lors de la délivrance artificielle, quel est le rôle fondamental de la main non dominante de l'opérateur placée sur l'abdomen maternel ?</p>
-    <ul class="q-options">
-      <li data-letter="A">Empaumer le fond utérin, le maintenir fermement abaissé et guider la main endo-utérine tout en évitant la perforation et l'inversion utérine</li>
-      <li data-letter="B">Prendre la tension artérielle au brassard</li>
-      <li data-letter="C">Écarter les cuisses de la patiente</li>
-      <li data-letter="D">Injecter les solutés dans la perfusion</li>
-      <li data-letter="E">Rédiger le compte-rendu d'accouchement</li>
+    <p class="question">Concernant le placenta praevia hémorragique, choisissez la réponse juste :</p>
+    <ul class="options">
+      <li><b>A.</b> On attend systématiquement la délivrance spontanée</li>
+      <li><b>B.</b> L'importance du saignement peut compromettre la vie de la parturiente</li>
+      <li><b>C.</b> La délivrance artificielle y est formellement contre-indiquée</li>
+      <li><b>D.</b> Le placenta praevia ne saigne jamais avant l'accouchement</li>
+      <li><b>E.</b> La délivrance artificielle n'y est jamais suivie de révision utérine</li>
     </ul>
-    <details class="correction">
-      <summary>Voir la correction et l'explication détaillée</summary>
-      <div class="correction-body">
-        <span class="answer-line">Réponse : A</span>
-        <div class="why">La main sus-pubienne est indispensable : elle contre-appuie le fond utérin, l'abaisse et protège contre les déchirures et perforations utérines.</div>
+    <details>
+      <summary>Correction &amp; explication</summary>
+      <div class="correction">
+        <div class="answer-line">Réponse : B</div>
+        <p>Dans le placenta praevia hémorragique, on n'attend pas la délivrance spontanée car le saignement engage le pronostic vital.</p>
       </div>
     </details>
   </div>
 
   <!-- Q18 -->
-  <div class="q-card">
-    <div class="q-top">
-      <span class="q-num">Q18</span>
-      <span class="badge">QCM</span>
+  <div class="qcm">
+    <div class="qcm-head">
+      <span class="qnum">Q18</span>
+      <span class="badge theme">Révision utérine primaire</span>
+      <span class="badge multi">Choix multiples (2–3)</span>
     </div>
-    <p class="q-text">Quelle anomalie de rétention placentaire par striction myométriale localisée emprisonne le placenta décollé dans l'utérus ?</p>
-    <ul class="q-options">
-      <li data-letter="A">L'incarcération ou enchatonnement placentaire par spasme d'un anneau de striction cervical ou corporéal</li>
-      <li data-letter="B">Le placenta praevia recouvrant</li>
-      <li data-letter="C">L'hématome rétro-placentaire</li>
-      <li data-letter="D">Le décollement prématuré du placenta</li>
-      <li data-letter="E">La môle hydatiforme embryonnée</li>
+    <p class="question">Parmi les indications primaires de la révision utérine (réalisée d'emblée), on retient :</p>
+    <ul class="options">
+      <li><b>A.</b> Un utérus cicatriciel</li>
+      <li><b>B.</b> Un accouchement après manœuvres endo-utérines</li>
+      <li><b>C.</b> Une suspicion de malformation utérine</li>
+      <li><b>D.</b> Une épisiotomie simple</li>
+      <li><b>E.</b> Une primipare sans aucun facteur de risque</li>
     </ul>
-    <details class="correction">
-      <summary>Voir la correction et l'explication détaillée</summary>
-      <div class="correction-body">
-        <span class="answer-line">Réponse : A</span>
-        <div class="why">L'enchatonnement ou incarcération survient lorsqu'un spasme localisé du myomètre emprisonne le placenta déjà décollé, nécessitant parfois une tocolyse d'appoint pour lever le spasme avant l'extraction.</div>
+    <details>
+      <summary>Correction &amp; explication</summary>
+      <div class="correction">
+        <div class="answer-line">Réponses : A, B, C</div>
+        <p>Indications primaires : utérus cicatriciel, manœuvres endo-utérines antérieures, suspicion de malformation utérine.</p>
       </div>
     </details>
   </div>
 
   <!-- Q19 -->
-  <div class="q-card">
-    <div class="q-top">
-      <span class="q-num">Q19</span>
-      <span class="badge">QCM</span>
+  <div class="qcm">
+    <div class="qcm-head">
+      <span class="qnum">Q19</span>
+      <span class="badge theme">Physiologie normale</span>
+      <span class="badge simple">Choix simple</span>
     </div>
-    <p class="q-text">Quel soluté tocolytique d'action rapide peut être utilisé transitoirement pour relâcher un anneau de striction cervical lors d'une délivrance artificielle difficile ?</p>
-    <ul class="q-options">
-      <li data-letter="A">Un dérivé nitré sublingual ou tocolytique d'action brève</li>
-      <li data-letter="B">Une injection massive d'ocytociques</li>
-      <li data-letter="C">Un bolus de gluconate de calcium</li>
-      <li data-letter="D">De l'insuline rapide</li>
-      <li data-letter="E">De la vitamine K</li>
+    <p class="question">La durée du « repos physiologique » précédant la reprise des contractions utérines de la délivrance est de :</p>
+    <ul class="options">
+      <li><b>A.</b> 2 à 5 minutes</li>
+      <li><b>B.</b> 10 à 15 minutes</li>
+      <li><b>C.</b> 20 à 25 minutes</li>
+      <li><b>D.</b> 30 minutes</li>
+      <li><b>E.</b> 45 minutes</li>
     </ul>
-    <details class="correction">
-      <summary>Voir la correction et l'explication détaillée</summary>
-      <div class="correction-body">
-        <span class="answer-line">Réponse : A</span>
-        <div class="why">Les dérivés nitrés (trinitrine) entraînent une relaxation transitoire puissante du myomètre et facilitent le passage de la main à travers l'anneau spastique.</div>
+    <details>
+      <summary>Correction &amp; explication</summary>
+      <div class="correction">
+        <div class="answer-line">Réponse : B</div>
+        <p>Le repos physiologique correspond à une rétraction sans contraction pendant 10 à 15 minutes.</p>
       </div>
     </details>
   </div>
 
   <!-- Q20 -->
-  <div class="q-card">
-    <div class="q-top">
-      <span class="q-num">Q20</span>
-      <span class="badge">QCM</span>
+  <div class="qcm">
+    <div class="qcm-head">
+      <span class="qnum">Q20</span>
+      <span class="badge theme">Inertie utérine</span>
+      <span class="badge rf">Réponse fausse</span>
     </div>
-    <p class="q-text">Quelle surveillance clinique rapprochée doit être assurée en salle de travail pendant les 2 heures suivant une délivrance artificielle ?</p>
-    <ul class="q-options">
-      <li data-letter="A">Surveillance continue du globe de sécurité utérin (utérus tonique et rétracté), des pertes sanguines vulvaires, du pouls et de la pression artérielle toutes les 15 minutes</li>
-      <li data-letter="B">Surveillance de la température une fois par semaine</li>
-      <li data-letter="C">Aucune surveillance : transfert immédiat en chambre individuelle sans personnel</li>
-      <li data-letter="D">Contrôle exclusif du poids de la patiente</li>
-      <li data-letter="E">Réalisation d'une IRM corps entier</li>
+    <p class="question">Concernant l'inertie utérine, choisissez la réponse fausse :</p>
+    <ul class="options">
+      <li><b>A.</b> Elle peut résulter d'un travail prolongé</li>
+      <li><b>B.</b> Elle peut être due à la surdistension utérine</li>
+      <li><b>C.</b> Les bêta-2 mimétiques peuvent en être une cause iatrogène</li>
+      <li><b>D.</b> Elle est favorisée par un utérus de bonne qualité musculaire</li>
+      <li><b>E.</b> Elle participe à l'absence de migration placentaire</li>
     </ul>
-    <details class="correction">
-      <summary>Voir la correction et l'explication détaillée</summary>
-      <div class="correction-body">
-        <span class="answer-line">Réponse : A</span>
-        <div class="why">La fenêtre des 2 heures du post-partum immédiat concentre plus de 80% des hémorragies de la délivrance ; le globe utérin ferme et rétracté sous l'ombilic est le signe cardinal de bonne hémostase.</div>
+    <details>
+      <summary>Correction &amp; explication</summary>
+      <div class="correction">
+        <div class="answer-line">Réponse fausse : D</div>
+        <p>Un muscle de bonne qualité s'oppose à l'inertie ; ce sont les utérus altérés ou épuisés qui la favorisent.</p>
       </div>
     </details>
   </div>
 
   <!-- Q21 -->
-  <div class="q-card">
-    <div class="q-top">
-      <span class="q-num">Q21</span>
-      <span class="badge">QCM</span>
+  <div class="qcm">
+    <div class="qcm-head">
+      <span class="qnum">Q21</span>
+      <span class="badge theme">Technique — Décollement</span>
+      <span class="badge simple">Choix simple</span>
     </div>
-    <p class="q-text">En cas d'hémorragie persistante malgré une délivrance artificielle et une révision utérine complètes confirmant la vacuité utérine, quelle autre étiologie doit être recherchée systématiquement sous valves ?</p>
-    <ul class="q-options">
-      <li data-letter="A">Une déchirure des parties molles (déchirure cervicale, vaginale haute ou périnéale profonde)</li>
-      <li data-letter="B">Une lithiase biliaire asymptomatique</li>
-      <li data-letter="C">Une otite moyenne aiguë</li>
-      <li data-letter="D">Une hernie inguinale réductible</li>
-      <li data-letter="E">Un kyste synovial du poignet</li>
+    <p class="question">Lorsque le placenta est peu adhérent, le décollement s'obtient préférentiellement par :</p>
+    <ul class="options">
+      <li><b>A.</b> La prise des cotylédons un à un</li>
+      <li><b>B.</b> Le bord radial ou cubital de la main</li>
+      <li><b>C.</b> Une pince de Pozzi sur le cordon</li>
+      <li><b>D.</b> Une sonde urétérale introduite dans la cavité</li>
+      <li><b>E.</b> Une ventouse obstétricale appliquée sur le placenta</li>
     </ul>
-    <details class="correction">
-      <summary>Voir la correction et l'explication détaillée</summary>
-      <div class="correction-body">
-        <span class="answer-line">Réponse : A</span>
-        <div class="why">L'examen sous valves de l'ensemble de la filière génitale (vagin, col, périnée) permet de suturer une déchirure vasculaire cervicale ou vaginale passée inaperçue.</div>
+    <details>
+      <summary>Correction &amp; explication</summary>
+      <div class="correction">
+        <div class="answer-line">Réponse : B</div>
+        <p>Bord radial ou cubital de la main si peu adhérent ; bout des doigts si plus adhérent ; Buddin si adhérences profondes.</p>
       </div>
     </details>
   </div>
 
   <!-- Q22 -->
-  <div class="q-card">
-    <div class="q-top">
-      <span class="q-num">Q22</span>
-      <span class="badge">QCM</span>
+  <div class="qcm">
+    <div class="qcm-head">
+      <span class="qnum">Q22</span>
+      <span class="badge theme">Surveillance</span>
+      <span class="badge multi">Choix multiples (2–3)</span>
     </div>
-    <p class="q-text">Quelle prostaglandine de 2ème intention est administrée en perfusion continue en cas d'atonie utérine persistante réfractaire à l'ocytocine après délivrance artificielle ?</p>
-    <ul class="q-options">
-      <li data-letter="A">Le Sulprostone (Nalador) en perfusion intraveineuse stricte au pousse-seringue électrique</li>
-      <li data-letter="B">La prostacycline inhalée</li>
-      <li data-letter="C">Le misoprostol par voie oculaire</li>
-      <li data-letter="D">L'adrénaline en aérosol</li>
-      <li data-letter="E">L'atropine en sous-cutané</li>
+    <p class="question">Concernant la prise en charge et la surveillance après délivrance artificielle :</p>
+    <ul class="options">
+      <li><b>A.</b> La surveillance de la femme se poursuit sur 24 heures</li>
+      <li><b>B.</b> Une injection d'utérotoniques est réalisée</li>
+      <li><b>C.</b> Une antibiothérapie est administrée</li>
+      <li><b>D.</b> La surveillance peut être limitée à 2 heures si la révision est normale</li>
+      <li><b>E.</b> Aucune surveillance n'est nécessaire en l'absence de saignement</li>
     </ul>
-    <details class="correction">
-      <summary>Voir la correction et l'explication détaillée</summary>
-      <div class="correction-body">
-        <span class="answer-line">Réponse : A</span>
-        <div class="why">Le sulprostone (analogue de la prostaglandine E2) est le traitement pharmacologique de référence de l'atonie utérine résistante à l'ocytocine, administré sous surveillance cardiovasculaire étroite.</div>
+    <details>
+      <summary>Correction &amp; explication</summary>
+      <div class="correction">
+        <div class="answer-line">Réponses : A, B, C</div>
+        <p>La surveillance dure 24 heures avec utérotoniques et antibiothérapie.</p>
       </div>
     </details>
   </div>
 
   <!-- Q23 -->
-  <div class="q-card">
-    <div class="q-top">
-      <span class="q-num">Q23</span>
-      <span class="badge">QCM</span>
+  <div class="qcm">
+    <div class="qcm-head">
+      <span class="qnum">Q23</span>
+      <span class="badge theme">Asepsie &amp; Complications</span>
+      <span class="badge simple">Toutes exactes SAUF</span>
     </div>
-    <p class="q-text">Quel geste de tamponnement intra-utérin mécanique temporaire peut être utilisé pour juguler une hémorragie de la délivrance persistante après révision utérine ?</p>
-    <ul class="q-options">
-      <li data-letter="A">La mise en place d'un ballon de tamponnement intra-utérin (ballon de Bakri)</li>
-      <li data-letter="B">L'insertion d'une serviette éponge non stérile</li>
-      <li data-letter="C">Le clampage de la trachée</li>
-      <li data-letter="D">La pose d'un plâtre pelvien</li>
-      <li data-letter="E">La résection transurétrale de la vessie</li>
+    <p class="question">Toutes les propositions suivantes sont exactes, SAUF :</p>
+    <ul class="options">
+      <li><b>A.</b> La délivrance artificielle nécessite une asepsie rigoureuse</li>
+      <li><b>B.</b> Le non-respect de l'asepsie expose à l'endométrite</li>
+      <li><b>C.</b> La délivrance artificielle est un geste anodin</li>
+      <li><b>D.</b> La délivrance artificielle peut compromettre l'avenir génital de la femme</li>
+      <li><b>E.</b> Une antibiothérapie fait partie de la prise en charge</li>
     </ul>
-    <details class="correction">
-      <summary>Voir la correction et l'explication détaillée</summary>
-      <div class="correction-body">
-        <span class="answer-line">Réponse : A</span>
-        <div class="why">Le ballon de Bakri gonflé au sérum physiologique stérile exerce une contre-pression hydrostatique hémostatique sur la surface endométriale hémorragique.</div>
+    <details>
+      <summary>Correction &amp; explication</summary>
+      <div class="correction">
+        <div class="answer-line">Réponse fausse : C</div>
+        <p>La DA n'est jamais un geste anodin ; c'est un geste à haut risque de complications.</p>
       </div>
     </details>
   </div>
 
   <!-- Q24 -->
-  <div class="q-card">
-    <div class="q-top">
-      <span class="q-num">Q24</span>
-      <span class="badge">QCM</span>
+  <div class="qcm">
+    <div class="qcm-head">
+      <span class="qnum">Q24</span>
+      <span class="badge theme">Objectifs</span>
+      <span class="badge rj">Réponse juste</span>
     </div>
-    <p class="q-text">Quelle est la cause d'anémie aiguë maternelle la plus fréquente dans les suites de couches immédiates après rétention placentaire ?</p>
-    <ul class="q-options">
-      <li data-letter="A">L'hémorragie de la délivrance avec spoliation sanguine supérieure à 500 mL (ou 1000 mL en césarienne)</li>
-      <li data-letter="B">Le paludisme congénital</li>
-      <li data-letter="C">La carence d'apport en fer survenue pendant la nuit</li>
-      <li data-letter="D">Une leucémie aiguë lymphoblastique foudroyante</li>
-      <li data-letter="E">Une hémodilution physiologique exclusive</li>
+    <p class="question">Choisissez la réponse juste concernant les objectifs de la délivrance artificielle :</p>
+    <ul class="options">
+      <li><b>A.</b> Accélérer l'expulsion fœtale en cas de non-progression</li>
+      <li><b>B.</b> Prévenir l'hémorragie de la délivrance</li>
+      <li><b>C.</b> Dispenser l'opérateur de connaître les indications du geste</li>
+      <li><b>D.</b> Éviter la révision utérine qui devient inutile</li>
+      <li><b>E.</b> Être réalisée avant l'expulsion du fœtus</li>
     </ul>
-    <details class="correction">
-      <summary>Voir la correction et l'explication détaillée</summary>
-      <div class="correction-body">
-        <span class="answer-line">Réponse : A</span>
-        <div class="why">La perte sanguine supérieure à 500 mL définit l'hémorragie du post-partum, dont la rétention placentaire et l'atonie utérine sont les deux causes majeures.</div>
+    <details>
+      <summary>Correction &amp; explication</summary>
+      <div class="correction">
+        <div class="answer-line">Réponse : B</div>
+        <p>L'objectif principal est de prévenir l'hémorragie de la délivrance.</p>
       </div>
     </details>
   </div>
 
   <!-- Q25 -->
-  <div class="q-card">
-    <div class="q-top">
-      <span class="q-num">Q25</span>
-      <span class="badge">QCM</span>
+  <div class="qcm">
+    <div class="qcm-head">
+      <span class="qnum">Q25</span>
+      <span class="badge theme">Synthèse / Pronostic</span>
+      <span class="badge multi">Choix multiples (2–3)</span>
     </div>
-    <p class="q-text">Après réalisation d'une délivrance artificielle chez une patiente de groupe sanguin Rhésus négatif avec nouveau-né Rhésus positif, quelle mesure immuno-hématologique est impérative ?</p>
-    <ul class="q-options">
-      <li data-letter="A">Doser les hématies fœtales dans le sang maternel (test de Kleihauer) et injecter des immunoglobulines anti-D dans les 72 heures pour prévenir l'allo-immunisation rhésus</li>
-      <li data-letter="B">Réaliser une exsanguino-transfusion maternelle totale</li>
-      <li data-letter="C">Interdire tout contact entre la mère et son enfant</li>
-      <li data-letter="D">Prescrire une chimiothérapie immunosuppressive à vie</li>
-      <li data-letter="E">Aucune mesure n'est requise en cas de Rhésus négatif</li>
+    <p class="question">Concernant la délivrance artificielle, quelles propositions sont exactes ?</p>
+    <ul class="options">
+      <li><b>A.</b> C'est un geste non anodin</li>
+      <li><b>B.</b> Elle peut compromettre l'avenir génital de la femme</li>
+      <li><b>C.</b> Une asepsie rigoureuse est indispensable</li>
+      <li><b>D.</b> Elle peut être réalisée par un opérateur non entraîné sans risque supplémentaire</li>
+      <li><b>E.</b> Elle ne requiert aucune connaissance technique particulière</li>
     </ul>
-    <details class="correction">
-      <summary>Voir la correction et l'explication détaillée</summary>
-      <div class="correction-body">
-        <span class="answer-line">Réponse : A</span>
-        <div class="why">Toute manœuvre endo-utérine majore le passage d'hématies fœtales dans la circulation maternelle, imposant le test de Kleihauer et l'injection d'anti-D adaptée à la dose d'hématies fœtales.</div>
+    <details>
+      <summary>Correction &amp; explication</summary>
+      <div class="correction">
+        <div class="answer-line">Réponses : A, B, C</div>
+        <p>C'est un geste sérieux, non anodin, nécessitant une technique rigoureuse et une asepsie stricte.</p>
       </div>
     </details>
   </div>
 
 </section>
+
+<!-- =================== SECTION 2 : CAS CLINIQUES =================== -->
 <section id="cas">
-  <h2>5 Cas Cliniques Hospitaliers Algériens</h2>
+  <div class="section-head">
+    <div class="section-num">2</div>
+    <h2>5 Cas Cliniques Hospitaliers Algériens</h2>
+  </div>
 
   <!-- CAS 1 -->
-  <article class="case">
-    <div class="case-head">
-      <h3>Cas Clinique N°1 : Rétention placentaire complète à 35 minutes de l'expulsion</h3>
+  <div class="case">
+    <div class="case-header">
+      <h3>Cas n°1 — « Le placenta qui ne vient pas »</h3>
+      <span class="loc">CHU — Salle d'accouchement</span>
     </div>
     <div class="vignette">
-      <p>Primipare de 25 ans vient d'accoucher d'un nouveau-né eutrophe. 35 minutes après la naissance, le placenta n'est toujours pas décollé malgré des contractions utérines modérées. Il n'y a pas de saignement extériorisé. L'utérus est mou au-dessus de l'ombilic.</p>
+      <b>Mme B.</b>, 26 ans, G2P1, accouche à terme par voie basse d'un nouveau-né de <b>3 150 g</b>. <b>35 minutes</b> après l'expulsion fœtale, le placenta n'est toujours pas expulsé. L'utérus est <b>bien rétracté</b>. Le cordon ne remonte pas à la pression sus-pubienne.
     </div>
-    <div class="case-q">
-      <p class="q-text"><strong>Question :</strong> Quelle est la prise en charge immédiate adaptée ?</p>
-      <ul class="q-options">
-      <li data-letter="A">Réaliser une délivrance artificielle manuelle en asepsie chirurgicale sous analgésie, suivie d'une révision utérine systématique et de l'administration d'ocytociques.</li>
-      <li data-letter="B">Attendre 4 heures supplémentaires sans rien faire.</li>
-      <li data-letter="C">Tirer violemment sur le cordon à pleines mains.</li>
-      <li data-letter="D">Transférer la patiente au bloc de neurochirurgie.</li>
-      <li data-letter="E">Appliquer des poches de glace sur le crâne.</li>
+
+    <div class="qcm">
+      <div class="qcm-head">
+        <span class="badge cas">Cas 1 · Q1</span>
+        <span class="badge simple">Choix simple</span>
+      </div>
+      <p class="question">Quel est le diagnostic le plus probable ?</p>
+      <ul class="options">
+        <li><b>A.</b> Hémorragie de la délivrance par atonie utérine</li>
+        <li><b>B.</b> Rétention placentaire</li>
+        <li><b>C.</b> Rupture utérine spontanée</li>
+        <li><b>D.</b> Inversion utérine</li>
+        <li><b>E.</b> Hématome rétro-placentaire</li>
       </ul>
-      <details class="correction">
-        <summary>Correction</summary>
-        <div class="correction-body">
-          <span class="answer-line">Réponse : A</span>
-          <div class="why">Le dépassement des 30 minutes pose l'indication formelle de la délivrance artificielle pour prévenir l'hémorragie et l'infection.</div>
+      <details>
+        <summary>Correction &amp; explication</summary>
+        <div class="correction">
+          <div class="answer-line">Réponse : B</div>
+          <p>Délai &gt; 30 min = rétention placentaire.</p>
         </div>
       </details>
     </div>
-  </article>
+
+    <div class="qcm">
+      <div class="qcm-head">
+        <span class="badge cas">Cas 1 · Q2</span>
+        <span class="badge simple">Choix simple</span>
+      </div>
+      <p class="question">Quelle est la conduite à tenir immédiate la plus appropriée ?</p>
+      <ul class="options">
+        <li><b>A.</b> Poursuivre la surveillance simple pendant 60 minutes supplémentaires</li>
+        <li><b>B.</b> Réaliser une délivrance artificielle sous anesthésie générale, après vérification de la vacuité vésicale</li>
+        <li><b>C.</b> Injecter 10 UI d'oxytocine et attendre l'expulsion spontanée</li>
+        <li><b>D.</b> Réaliser immédiatement une hystérectomie d'hémostase</li>
+        <li><b>E.</b> Effectuer une révision utérine seule, sans décollement préalable</li>
+      </ul>
+      <details>
+        <summary>Correction &amp; explication</summary>
+        <div class="correction">
+          <div class="answer-line">Réponse : B</div>
+          <p>DA sous AG, vessie vide, asepsie stricte.</p>
+        </div>
+      </details>
+    </div>
+
+    <div class="qcm">
+      <div class="qcm-head">
+        <span class="badge cas">Cas 1 · Q3</span>
+        <span class="badge multi">Choix multiples (2–3)</span>
+      </div>
+      <p class="question">Concernant la technique de ce geste, quelles affirmations sont exactes ?</p>
+      <ul class="options">
+        <li><b>A.</b> La main gauche empaume le fond utérin à travers les champs stériles</li>
+        <li><b>B.</b> La main droite suit le cordon ombilical puis pénètre dans le vagin et l'utérus</li>
+        <li><b>C.</b> Le rebord placentaire est recherché du bout des doigts</li>
+        <li><b>D.</b> Le décollement s'effectue par traction sur le cordon ombilical</li>
+        <li><b>E.</b> L'opérateur peut travailler sans gants stériles en urgence</li>
+      </ul>
+      <details>
+        <summary>Correction &amp; explication</summary>
+        <div class="correction">
+          <div class="answer-line">Réponses : A, B, C</div>
+          <p>La main gauche maintient le fond utérin, la main droite décolle.</p>
+        </div>
+      </details>
+    </div>
+  </div>
 
   <!-- CAS 2 -->
-  <article class="case">
-    <div class="case-head">
-      <h3>Cas Clinique N°2 : Hémorragie active immédiate de la délivrance</h3>
+  <div class="case">
+    <div class="case-header">
+      <h3>Cas n°2 — « Le placenta qui colle »</h3>
+      <span class="loc">EPH — Maternité de proximité</span>
     </div>
     <div class="vignette">
-      <p>Multigeste de 33 ans (G4P3). Immédiatement après la sortie du fœtus (à 10 minutes), un saignement génital brutal rouge vif avec caillots survient, dépassant rapidement 400 mL. Le placenta est toujours intra-utérin.</p>
+      <b>Mme K.</b>, 34 ans, G4P3, antécédents de <b>deux curetages</b>, d'une <b>myomectomie</b> et d'une <b>césarienne</b>. À <b>30 minutes</b>, aucune délivrance. Au cours de la DA, le <b>plan de clivage est difficile à trouver</b>.
     </div>
-    <div class="case-q">
-      <p class="q-text"><strong>Question :</strong> Quelle est la conduite d'urgence sans aucun délai d'attente ?</p>
-      <ul class="q-options">
-      <li data-letter="A">Appel de renforts, délivrance artificielle d'urgence sans attendre, révision utérine, massage utérin, ocytocine en perfusion et pose de 2 voies veineuses de gros calibre.</li>
-      <li data-letter="B">Attendre l'expiration stricte des 30 minutes avant de toucher au placenta.</li>
-      <li data-letter="C">Faire asseoir la patiente sur un fauteuil.</li>
-      <li data-letter="D">Administrer un somnifère per os.</li>
-      <li data-letter="E">Réaliser un lavement rectal évacuateur.</li>
+
+    <div class="qcm">
+      <div class="qcm-head">
+        <span class="badge cas">Cas 2 · Q1</span>
+        <span class="badge simple">Choix simple</span>
+      </div>
+      <p class="question">Quel mécanisme explique le mieux cette rétention placentaire ?</p>
+      <ul class="options">
+        <li><b>A.</b> Inertie utérine par surdistension</li>
+        <li><b>B.</b> Défaut d'implantation sur muqueuse utérine altérée</li>
+        <li><b>C.</b> Incarcération placentaire par spasme cervical</li>
+        <li><b>D.</b> Globe vésical</li>
+        <li><b>E.</b> Excès de volume placentaire</li>
       </ul>
-      <details class="correction">
-        <summary>Correction</summary>
-        <div class="correction-body">
-          <span class="answer-line">Réponse : A</span>
-          <div class="why">En présence d'un saignement actif abondant, la DA n'attend jamais 30 minutes : elle est immédiate pour juguler la source de l'hémorragie.</div>
+      <details>
+        <summary>Correction &amp; explication</summary>
+        <div class="correction">
+          <div class="answer-line">Réponse : B</div>
+          <p>Antécédents de curetage, myomectomie et césarienne = altération muqueuse = défaut d'implantation.</p>
         </div>
       </details>
     </div>
-  </article>
+
+    <div class="qcm">
+      <div class="qcm-head">
+        <span class="badge cas">Cas 2 · Q2</span>
+        <span class="badge simple">Choix simple</span>
+      </div>
+      <p class="question">Face à des adhérences profondes, quelle manœuvre l'opérateur doit-il employer ?</p>
+      <ul class="options">
+        <li><b>A.</b> Traction ferme et prolongée sur le cordon</li>
+        <li><b>B.</b> Manœuvre de BUDDIN : prise des cotylédons un à un</li>
+        <li><b>C.</b> Curetage instrumental à la curette mousse</li>
+        <li><b>D.</b> Expression vigoureuse du fond utérin</li>
+        <li><b>E.</b> Aspiration endo-utérine</li>
+      </ul>
+      <details>
+        <summary>Correction &amp; explication</summary>
+        <div class="correction">
+          <div class="answer-line">Réponse : B</div>
+          <p>Manœuvre de BUDDIN : prise des cotylédons un à un avec le bout des doigts.</p>
+        </div>
+      </details>
+    </div>
+  </div>
 
   <!-- CAS 3 -->
-  <article class="case">
-    <div class="case-head">
-      <h3>Cas Clinique N°3 : Suspicion de placenta accreta lors de la tentative de DA</h3>
+  <div class="case">
+    <div class="case-header">
+      <h3>Cas n°3 — « Saignement et placenta praevia »</h3>
+      <span class="loc">CHU — Bloc obstétrical</span>
     </div>
     <div class="vignette">
-      <p>Patiente de 34 ans avec antécédent de 2 césariennes antérieures et placenta praevia antérieur. Lors de la délivrance artificielle, l'opérateur constate une absence complète de plan de clivage décidual sur toute la zone cicatricielle avec début de saignement important.</p>
+      <b>Mme T.</b>, 31 ans, G3P2, <b>placenta praevia recouvrant</b> à 37 SA avec métrorragies abondantes. Césarienne en urgence.
     </div>
-    <div class="case-q">
-      <p class="q-text"><strong>Question :</strong> Quelle attitude salvatrice s'impose à l'équipe obstétricale ?</p>
-      <ul class="q-options">
-      <li data-letter="A">Ne pas s'acharner à arracher le myomètre, tamponnement pelvien, appel de l'anesthésiste et du chirurgien gynécologue, transfert au bloc pour traitement conservateur ou hystérectomie d'hémostase.</li>
-      <li data-letter="B">Forcer le décollement en arrachant la paroi utérine aux doigts.</li>
-      <li data-letter="C">Injecter de l'alcool pur dans la cavité utérine.</li>
-      <li data-letter="D">Déclarer l'accouchement terminé sans perfusion.</li>
-      <li data-letter="E">Retirer la main et prescrire des antalgiques simples en chambre.</li>
+
+    <div class="qcm">
+      <div class="qcm-head">
+        <span class="badge cas">Cas 3 · Q1</span>
+        <span class="badge simple">Choix simple</span>
+      </div>
+      <p class="question">Pourquoi ne doit-on pas attendre la délivrance spontanée chez cette patiente ?</p>
+      <ul class="options">
+        <li><b>A.</b> Parce que le placenta praevia ne se décollera jamais spontanément</li>
+        <li><b>B.</b> Parce que l'importance du saignement peut compromettre la vie de la parturiente</li>
+        <li><b>C.</b> Parce que le délai de 30 minutes est un dogme absolu</li>
+        <li><b>D.</b> Parce que le placenta praevia expose à la dystocie des épaules</li>
+        <li><b>E.</b> Parce que la délivrance spontanée est toujours impossible après césarienne</li>
       </ul>
-      <details class="correction">
-        <summary>Correction</summary>
-        <div class="correction-body">
-          <span class="answer-line">Réponse : A</span>
-          <div class="why">Le placenta accreta sur utérus cicatriciel ne doit jamais être arraché au risque d'une hémorragie cataclysmique foudroyante.</div>
+      <details>
+        <summary>Correction &amp; explication</summary>
+        <div class="correction">
+          <div class="answer-line">Réponse : B</div>
+          <p>Le saignement peut être massif et menacer le pronostic vital.</p>
         </div>
       </details>
     </div>
-  </article>
+  </div>
 
   <!-- CAS 4 -->
-  <article class="case">
-    <div class="case-head">
-      <h3>Cas Clinique N°4 : Métrorragies secondaires à un cotylédon aberrant retenu</h3>
+  <div class="case">
+    <div class="case-header">
+      <h3>Cas n°4 — « La main ne passe pas »</h3>
+      <span class="loc">CHU — Urgences gynéco-obstétricales</span>
     </div>
     <div class="vignette">
-      <p>Accouchée à J+2 post-partum présentant des métrorragies rouges répétées avec utérus mal involué et fébricule à 38°C. L'échographie pelvienne retrouve une masse échogène intracavitaire de 25 mm richement vascularisée au Doppler.</p>
+      <b>Mme L.</b>, 29 ans, G2P2. À 40 min, pas de délivrance. À la DA, <b>le col est spasmé</b> et un <b>anneau de rétraction</b> empêche l'accès au placenta décollé.
     </div>
-    <div class="case-q">
-      <p class="q-text"><strong>Question :</strong> Quel est le diagnostic et quelle est la prise en charge ?</p>
-      <ul class="q-options">
-      <li data-letter="A">Rétention d'un cotylédon placentaire avec début d'endométrite ; évacuation utérine douce par révision utérine ou aspiration sous couverture antibiotique adaptée.</li>
-      <li data-letter="B">Cancer de l'endomètre métastatique nécessitant une chimiothérapie lourde.</li>
-      <li data-letter="C">Kyste de l'ovaire droit nécessitant une ponction transcutanée.</li>
-      <li data-letter="D">Pyélonéphrite aiguë bilatérale sans anomalie gynécologique.</li>
-      <li data-letter="E">Invagination intestinale aiguë.</li>
+
+    <div class="qcm">
+      <div class="qcm-head">
+        <span class="badge cas">Cas 4 · Q1</span>
+        <span class="badge simple">Choix simple</span>
+      </div>
+      <p class="question">Quel diagnostic évoquez-vous devant ce spasme cervical ?</p>
+      <ul class="options">
+        <li><b>A.</b> Enchatonnement placentaire</li>
+        <li><b>B.</b> Incarcération placentaire</li>
+        <li><b>C.</b> Placenta accreta</li>
+        <li><b>D.</b> Inertie utérine</li>
+        <li><b>E.</b> Rupture utérine</li>
       </ul>
-      <details class="correction">
-        <summary>Correction</summary>
-        <div class="correction-body">
-          <span class="answer-line">Réponse : A</span>
-          <div class="why">La rétention de débris placentaires provoque métrorragies et endométrite, justifiant l'évacuation cavitaire et les antibiotiques.</div>
+      <details>
+        <summary>Correction &amp; explication</summary>
+        <div class="correction">
+          <div class="answer-line">Réponse : B</div>
+          <p>Incarcération placentaire = spasme cervical retenant le placenta décollé.</p>
         </div>
       </details>
     </div>
-  </article>
+
+    <div class="qcm">
+      <div class="qcm-head">
+        <span class="badge cas">Cas 4 · Q2</span>
+        <span class="badge multi">Choix multiples (2–3)</span>
+      </div>
+      <p class="question">Quels moyens peuvent aider à lever cet anneau de rétraction ?</p>
+      <ul class="options">
+        <li><b>A.</b> Approfondir l'anesthésie générale</li>
+        <li><b>B.</b> Administrer un spasmolytique</li>
+        <li><b>C.</b> Augmenter la dose d'oxytocine</li>
+        <li><b>D.</b> Tractionner fermement le cordon</li>
+        <li><b>E.</b> Réaliser une expression vigoureuse du fond utérin</li>
+      </ul>
+      <details>
+        <summary>Correction &amp; explication</summary>
+        <div class="correction">
+          <div class="answer-line">Réponses : A, B</div>
+          <p>Anesthésie ou spasmolytique pour relâcher le spasme myométrial.</p>
+        </div>
+      </details>
+    </div>
+  </div>
 
   <!-- CAS 5 -->
-  <article class="case">
-    <div class="case-head">
-      <h3>Cas Clinique N°5 : Inversion utérine aiguë lors de la délivrance</h3>
+  <div class="case">
+    <div class="case-header">
+      <h3>Cas n°5 — « Le choc après la délivrance »</h3>
+      <span class="loc">EPH — Post-partum immédiat</span>
     </div>
     <div class="vignette">
-      <p>Après la naissance, l'interne tire sur le cordon alors que l'utérus n'est pas contracté. Brutalement, une masse rouge sombre volumineuse fait issue à la vulve, accompagnée d'une douleur syncopale foudroyante et d'un collapsus tensionnel à 70/40 mmHg avec bradycardie.</p>
+      <b>Mme S.</b>, 24 ans, G1P1. DA en urgence avec tractions répétées sur le cordon. Douleur brutale, choc à 80/50 mmHg, <b>fond utérin non perçu</b>, <b>masse charnue à la vulve</b>.
     </div>
-    <div class="case-q">
-      <p class="q-text"><strong>Question :</strong> Quel est le diagnostic et quel est le geste immédiat à réaliser avant la constriction du col ?</p>
-      <ul class="q-options">
-      <li data-letter="A">Inversion utérine aiguë de stade 3 ; manœuvre de Johnson immédiate (réduction manuelle du fond utérin par voie vaginale vers la cavité abdominale) sous anesthésie générale et tocolyse brève.</li>
-      <li data-letter="B">Prolapsus rectal strangulé nécessitant une colostomie.</li>
-      <li data-letter="C">Rupture de la vessie avec hernie vésicale.</li>
-      <li data-letter="D">Hématome sous-cutané périnéal nécessitant de la glace.</li>
-      <li data-letter="E">Infarctus du mésentère.</li>
+
+    <div class="qcm">
+      <div class="qcm-head">
+        <span class="badge cas">Cas 5 · Q1</span>
+        <span class="badge simple">Choix simple</span>
+      </div>
+      <p class="question">Quel diagnostic évoquez-vous en priorité ?</p>
+      <ul class="options">
+        <li><b>A.</b> Hémorragie de la délivrance par atonie utérine</li>
+        <li><b>B.</b> Inversion utérine</li>
+        <li><b>C.</b> Rupture du cul-de-sac de Douglas</li>
+        <li><b>D.</b> Endométrite aiguë</li>
+        <li><b>E.</b> Embolie amniotique</li>
       </ul>
-      <details class="correction">
-        <summary>Correction</summary>
-        <div class="correction-body">
-          <span class="answer-line">Réponse : A</span>
-          <div class="why">L'inversion utérine est une urgence dramatique avec choc neurogénique et hémorragique. La réintégration immédiate par la manœuvre de Johnson est salvatrice.</div>
+      <details>
+        <summary>Correction &amp; explication</summary>
+        <div class="correction">
+          <div class="answer-line">Réponse : B</div>
+          <p>Choc + fond utérin absent + masse vaginale = inversion utérine.</p>
         </div>
       </details>
     </div>
-  </article>
+  </div>
 
 </section>
+
 </main>
+
+<footer>
+  <p>Support pédagogique de révision — Délivrance Artificielle · Gynéco-Obstétrique · 5ᵉ Année Médecine · Facultés de Médecine Algériennes</p>
+</footer>
+
 </body>
 </html>
