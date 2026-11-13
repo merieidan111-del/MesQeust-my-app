@@ -32,7 +32,7 @@ export const ALL_GYNECO_COURSES: Course[] = [
     "orderIndex": 3,
     "subdivision": "Gynecology",
     "qcmCount": 25,
-    "casCliniqueCount": 5,
+    "casCliniqueCount": 9,
     "resumesCount": 1,
     "astucesCount": 1,
     "completedPercent": 0
@@ -56,7 +56,7 @@ export const ALL_GYNECO_COURSES: Course[] = [
     "orderIndex": 5,
     "subdivision": "Gynecology",
     "qcmCount": 25,
-    "casCliniqueCount": 5,
+    "casCliniqueCount": 15,
     "resumesCount": 1,
     "astucesCount": 1,
     "completedPercent": 0
@@ -68,7 +68,7 @@ export const ALL_GYNECO_COURSES: Course[] = [
     "orderIndex": 6,
     "subdivision": "Gynecology",
     "qcmCount": 25,
-    "casCliniqueCount": 5,
+    "casCliniqueCount": 18,
     "resumesCount": 1,
     "astucesCount": 1,
     "completedPercent": 0
@@ -80,7 +80,7 @@ export const ALL_GYNECO_COURSES: Course[] = [
     "orderIndex": 7,
     "subdivision": "Gynecology",
     "qcmCount": 25,
-    "casCliniqueCount": 5,
+    "casCliniqueCount": 11,
     "resumesCount": 1,
     "astucesCount": 1,
     "completedPercent": 0
@@ -92,7 +92,7 @@ export const ALL_GYNECO_COURSES: Course[] = [
     "orderIndex": 8,
     "subdivision": "Gynecology",
     "qcmCount": 25,
-    "casCliniqueCount": 5,
+    "casCliniqueCount": 18,
     "resumesCount": 1,
     "astucesCount": 1,
     "completedPercent": 0
@@ -116,7 +116,7 @@ export const ALL_GYNECO_COURSES: Course[] = [
     "orderIndex": 10,
     "subdivision": "Obstetrics",
     "qcmCount": 25,
-    "casCliniqueCount": 5,
+    "casCliniqueCount": 16,
     "resumesCount": 1,
     "astucesCount": 1,
     "completedPercent": 0
@@ -128,7 +128,7 @@ export const ALL_GYNECO_COURSES: Course[] = [
     "orderIndex": 11,
     "subdivision": "Obstetrics",
     "qcmCount": 25,
-    "casCliniqueCount": 29,
+    "casCliniqueCount": 24,
     "resumesCount": 1,
     "astucesCount": 1,
     "completedPercent": 0
@@ -140,7 +140,7 @@ export const ALL_GYNECO_COURSES: Course[] = [
     "orderIndex": 12,
     "subdivision": "Obstetrics",
     "qcmCount": 25,
-    "casCliniqueCount": 5,
+    "casCliniqueCount": 11,
     "resumesCount": 1,
     "astucesCount": 1,
     "completedPercent": 0
@@ -176,7 +176,7 @@ export const ALL_GYNECO_COURSES: Course[] = [
     "orderIndex": 15,
     "subdivision": "Obstetrics",
     "qcmCount": 25,
-    "casCliniqueCount": 5,
+    "casCliniqueCount": 15,
     "resumesCount": 1,
     "astucesCount": 1,
     "completedPercent": 0
@@ -188,7 +188,7 @@ export const ALL_GYNECO_COURSES: Course[] = [
     "orderIndex": 16,
     "subdivision": "Obstetrics",
     "qcmCount": 25,
-    "casCliniqueCount": 5,
+    "casCliniqueCount": 13,
     "resumesCount": 1,
     "astucesCount": 1,
     "completedPercent": 0
@@ -200,7 +200,7 @@ export const ALL_GYNECO_COURSES: Course[] = [
     "orderIndex": 17,
     "subdivision": "Obstetrics",
     "qcmCount": 25,
-    "casCliniqueCount": 5,
+    "casCliniqueCount": 19,
     "resumesCount": 1,
     "astucesCount": 1,
     "completedPercent": 0
@@ -212,7 +212,7 @@ export const ALL_GYNECO_COURSES: Course[] = [
     "orderIndex": 18,
     "subdivision": "Obstetrics",
     "qcmCount": 25,
-    "casCliniqueCount": 5,
+    "casCliniqueCount": 12,
     "resumesCount": 1,
     "astucesCount": 1,
     "completedPercent": 0
@@ -224,7 +224,7 @@ export const ALL_GYNECO_COURSES: Course[] = [
     "orderIndex": 19,
     "subdivision": "Obstetrics",
     "qcmCount": 25,
-    "casCliniqueCount": 5,
+    "casCliniqueCount": 15,
     "resumesCount": 1,
     "astucesCount": 1,
     "completedPercent": 0
@@ -236,7 +236,7 @@ export const ALL_GYNECO_COURSES: Course[] = [
     "orderIndex": 20,
     "subdivision": "Obstetrics",
     "qcmCount": 25,
-    "casCliniqueCount": 5,
+    "casCliniqueCount": 9,
     "resumesCount": 1,
     "astucesCount": 1,
     "completedPercent": 0
@@ -248,7 +248,7 @@ export const ALL_GYNECO_COURSES: Course[] = [
     "orderIndex": 21,
     "subdivision": "Obstetrics",
     "qcmCount": 25,
-    "casCliniqueCount": 5,
+    "casCliniqueCount": 12,
     "resumesCount": 1,
     "astucesCount": 1,
     "completedPercent": 0
@@ -260,7 +260,7 @@ export const ALL_GYNECO_COURSES: Course[] = [
     "orderIndex": 22,
     "subdivision": "Obstetrics",
     "qcmCount": 25,
-    "casCliniqueCount": 5,
+    "casCliniqueCount": 6,
     "resumesCount": 1,
     "astucesCount": 1,
     "completedPercent": 0

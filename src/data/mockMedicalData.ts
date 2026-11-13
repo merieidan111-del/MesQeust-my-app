@@ -147,7 +147,7 @@ export const MEDICAL_MODULES: Module[] = [
     academicYear: '5ème Année',
     icon: 'HeartHandshake',
     color: 'from-rose-500 to-pink-600',
-    description: 'Programme officiel complet (22 cours & 731 QCMs/Cas dont 154 à choix multiples) structuré en 3 subdivisions : Anapat (Pathologie du col & ovaires), Gynécologie (Fibromes, couple infertile, aménorrhées, endométriose, cycle, infections, contraception) et Obstétrique (Grossesse normale, GHR, GEU, avortement, MAP, diabète, accouchement, délivrance, etc.).',
+    description: 'Programme officiel complet (22 cours & 863 QCMs/Cas dont 231 à choix multiples) structuré en 3 subdivisions : Anapat (Pathologie du col & ovaires), Gynécologie (Fibromes, couple infertile, aménorrhées, endométriose, cycle, infections, contraception) et Obstétrique (Grossesse normale, GHR, GEU, avortement, MAP, diabète, accouchement, délivrance, etc.).',
     totalQuestions: ALL_GYNECO_QUESTIONS.length,
     coursesCount: ALL_GYNECO_COURSES.length,
     progressPercent: 0,
@@ -247,7 +247,7 @@ export const MEDICAL_COURSES: Course[] = [
 ];
 
 export const INITIAL_QUESTIONS: Question[] = [
-  // All 716 Gyneco-Obstétrique questions with Anapat first
+  // All 863 Gyneco-Obstétrique questions with Anapat first
   ...ALL_GYNECO_QUESTIONS,
 
   // All comprehensive Cardiology questions integrated without skipping any

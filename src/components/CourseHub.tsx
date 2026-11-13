@@ -402,7 +402,9 @@ export const CourseHub: React.FC<CourseHubProps> = ({
                 {hasSubdivisions && (
                   <span className="text-[11px] font-extrabold uppercase tracking-wider text-fuchsia-600 px-2 py-0.5 rounded-full bg-fuchsia-50 border border-fuchsia-200 flex items-center gap-1">
                     <Sparkles className="w-3 h-3 text-fuchsia-500" />
-                    Double Subdivision Spécialisée
+                    {subdivisions.length === 2
+                      ? 'Double Subdivision Spécialisée'
+                      : `${subdivisions.length} Subdivisions Spécialisées`}
                   </span>
                 )}
               </div>

@@ -460,7 +460,7 @@ export const QCMEngine: React.FC<QCMEngineProps> = ({
     markQuestionCompletedInModule(modId, currentQ.id);
 
     if (isAllCorrect) {
-      const xpEarned = currentQ.type === 'CasClinique' ? 30 : 20;
+      const xpEarned = currentQ.type === 'CasClinique' || currentQ.type === 'Cas Clinique' ? 30 : 20;
       onAwardXp(xpEarned, `Réponse exacte : ${currentQ.type} n°${currentQ.questionNumber}`);
       onQuestionCompleted(true, currentQ.id, selectedOptions);
     } else {
@@ -708,7 +708,47 @@ export const QCMEngine: React.FC<QCMEngineProps> = ({
               </button>
               {availableSubdivisions.map((sub) => {
                 const isSelected = selectedSubdivision === sub;
-                const isHem = sub === 'Hématologie';
+                const lower = sub.toLowerCase();
+                let IconComp = Folder;
+                let label = sub;
+                let activeClass = 'bg-sky-600 text-white shadow-xs';
+                let inactiveClass = 'text-sky-700 hover:bg-sky-50';
+
+                if (lower.includes('anapat')) {
+                  IconComp = Microscope;
+                  label = 'Anapat';
+                  activeClass = 'bg-teal-600 text-white shadow-xs';
+                  inactiveClass = 'text-teal-700 hover:bg-teal-50';
+                } else if (lower.includes('gyneco') || lower.includes('gynéco')) {
+                  IconComp = HeartHandshake;
+                  label = 'Gynécologie';
+                  activeClass = 'bg-rose-600 text-white shadow-xs';
+                  inactiveClass = 'text-rose-700 hover:bg-rose-50';
+                } else if (lower.includes('obstet') || lower.includes('obstét')) {
+                  IconComp = Baby;
+                  label = 'Obstétrique';
+                  activeClass = 'bg-amber-600 text-white shadow-xs';
+                  inactiveClass = 'text-amber-800 hover:bg-amber-50';
+                } else if (lower.includes('hémato') || lower.includes('hemato')) {
+                  IconComp = Droplets;
+                  label = 'Hématologie';
+                  activeClass = 'bg-rose-600 text-white shadow-xs';
+                  inactiveClass = 'text-rose-700 hover:bg-rose-50';
+                } else if (lower.includes('onco') || lower.includes('cancer')) {
+                  IconComp = Award;
+                  label = sub;
+                  activeClass = 'bg-purple-600 text-white shadow-xs';
+                  inactiveClass = 'text-purple-700 hover:bg-purple-50';
+                } else if (lower.includes('urgence')) {
+                  IconComp = ShieldAlert;
+                  activeClass = 'bg-rose-600 text-white shadow-xs';
+                  inactiveClass = 'text-rose-700 hover:bg-rose-50';
+                } else if (lower.includes('gastro')) {
+                  IconComp = Stethoscope;
+                  activeClass = 'bg-amber-600 text-white shadow-xs';
+                  inactiveClass = 'text-amber-800 hover:bg-amber-50';
+                }
+
                 return (
                   <button
                     key={sub}
@@ -717,26 +757,11 @@ export const QCMEngine: React.FC<QCMEngineProps> = ({
                       setCurrentIndex(0);
                     }}
                     className={`px-2.5 py-1 rounded-full text-[11px] font-extrabold whitespace-nowrap transition-all cursor-pointer flex items-center gap-1 ${
-                      isSelected
-                        ? isHem
-                          ? 'bg-rose-600 text-white shadow-xs'
-                          : 'bg-purple-600 text-white shadow-xs'
-                        : isHem
-                        ? 'text-rose-700 hover:bg-rose-50'
-                        : 'text-purple-700 hover:bg-purple-50'
+                      isSelected ? activeClass : inactiveClass
                     }`}
                   >
-                    {isHem ? (
-                      <>
-                        <Droplets className="w-3 h-3" />
-                        <span>Hématologie</span>
-                      </>
-                    ) : (
-                      <>
-                        <Award className="w-3 h-3" />
-                        <span>Oncologie</span>
-                      </>
-                    )}
+                    <IconComp className="w-3 h-3" />
+                    <span>{label}</span>
                   </button>
                 );
               })}
@@ -827,7 +852,7 @@ export const QCMEngine: React.FC<QCMEngineProps> = ({
                     className={`h-11 rounded-2xl border text-xs flex flex-col items-center justify-center transition-all cursor-pointer ${bgBtn}`}
                   >
                     <span>{idx + 1}</span>
-                    <span className="text-[8px] opacity-75">{q.type === 'CasClinique' ? 'Cas' : 'QCM'}</span>
+                    <span className="text-[8px] opacity-75">{q.type === 'CasClinique' || q.type === 'Cas Clinique' ? 'Cas' : 'QCM'}</span>
                   </button>
                 );
               })}
@@ -946,6 +971,12 @@ export const QCMEngine: React.FC<QCMEngineProps> = ({
               } else if (lower.includes('hémato') || lower.includes('hemato')) {
                 IconComponent = Droplets;
                 badgeStyle = 'bg-rose-50 text-rose-700 border-rose-200';
+              } else if (lower.includes('gyneco') || lower.includes('gynéco')) {
+                IconComponent = HeartHandshake;
+                badgeStyle = 'bg-rose-50 text-rose-800 border-rose-200';
+              } else if (lower.includes('obstet') || lower.includes('obstét')) {
+                IconComponent = Baby;
+                badgeStyle = 'bg-amber-50 text-amber-800 border-amber-200';
               } else if (lower.includes('onco')) {
                 IconComponent = Award;
                 badgeStyle = 'bg-purple-50 text-purple-700 border-purple-200';

@@ -1,4 +1,4 @@
-import { Course, Question } from '../../types/medical';
+import { Question } from '../../types/medical';
 import { ALL_GYNECO_COURSES } from './gynecoCourses';
 import { ANAPAT_QUESTIONS } from './gynecoAnapat';
 import { GYNECOLOGY_QUESTIONS } from './gynecoGynecology';
